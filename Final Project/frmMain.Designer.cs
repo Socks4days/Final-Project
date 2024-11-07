@@ -87,8 +87,7 @@
             // 
             // frmMain
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             ClientSize = new Size(970, 560);
             Controls.Add(pnlFormContainer);
             Controls.Add(pnlTitleBar);

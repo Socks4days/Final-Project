@@ -36,11 +36,11 @@
             txtBoxPassword = new TextBox();
             lblTitle = new Label();
             lblError = new Label();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            button1 = new Button();
+            lblErrorUsername = new Label();
+            lblSurname = new Label();
+            lblErrorPassword = new Label();
+            lblForename = new Label();
+            btnBack = new Button();
             SuspendLayout();
             // 
             // btnClear
@@ -70,7 +70,7 @@
             txtBoxUsername.Location = new Point(141, 134);
             txtBoxUsername.Name = "txtBoxUsername";
             txtBoxUsername.PlaceholderText = "Username:";
-            txtBoxUsername.Size = new Size(200, 34);
+            txtBoxUsername.Size = new Size(200, 29);
             txtBoxUsername.TabIndex = 2;
             // 
             // txtBoxSurname
@@ -79,7 +79,7 @@
             txtBoxSurname.Location = new Point(391, 198);
             txtBoxSurname.Name = "txtBoxSurname";
             txtBoxSurname.PlaceholderText = "Surname:";
-            txtBoxSurname.Size = new Size(200, 34);
+            txtBoxSurname.Size = new Size(200, 29);
             txtBoxSurname.TabIndex = 3;
             // 
             // txtBoxForename
@@ -88,7 +88,7 @@
             txtBoxForename.Location = new Point(391, 134);
             txtBoxForename.Name = "txtBoxForename";
             txtBoxForename.PlaceholderText = "Forename:";
-            txtBoxForename.Size = new Size(200, 34);
+            txtBoxForename.Size = new Size(200, 29);
             txtBoxForename.TabIndex = 4;
             // 
             // txtBoxPassword
@@ -97,7 +97,7 @@
             txtBoxPassword.Location = new Point(141, 198);
             txtBoxPassword.Name = "txtBoxPassword";
             txtBoxPassword.PlaceholderText = "Password:";
-            txtBoxPassword.Size = new Size(200, 34);
+            txtBoxPassword.Size = new Size(200, 29);
             txtBoxPassword.TabIndex = 5;
             // 
             // lblTitle
@@ -107,7 +107,7 @@
             lblTitle.ForeColor = SystemColors.Control;
             lblTitle.Location = new Point(304, 41);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(125, 41);
+            lblTitle.Size = new Size(99, 32);
             lblTitle.TabIndex = 6;
             lblTitle.Text = "Register";
             // 
@@ -118,73 +118,72 @@
             lblError.ForeColor = Color.Coral;
             lblError.Location = new Point(110, 262);
             lblError.Name = "lblError";
-            lblError.Size = new Size(112, 37);
+            lblError.Size = new Size(91, 30);
             lblError.TabIndex = 7;
             lblError.Text = "Register";
             lblError.Visible = false;
             // 
-            // label1
+            // lblErrorUsername
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 15F);
-            label1.ForeColor = Color.Coral;
-            label1.Location = new Point(122, 134);
-            label1.Name = "label1";
-            label1.Size = new Size(25, 35);
-            label1.TabIndex = 8;
-            label1.Text = "*";
+            lblErrorUsername.AutoSize = true;
+            lblErrorUsername.Font = new Font("Segoe UI", 15F);
+            lblErrorUsername.ForeColor = Color.Coral;
+            lblErrorUsername.Location = new Point(122, 134);
+            lblErrorUsername.Name = "lblErrorUsername";
+            lblErrorUsername.Size = new Size(20, 28);
+            lblErrorUsername.TabIndex = 8;
+            lblErrorUsername.Text = "*";
             // 
-            // label2
+            // lblSurname
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 15F);
-            label2.ForeColor = Color.Coral;
-            label2.Location = new Point(371, 198);
-            label2.Name = "label2";
-            label2.Size = new Size(25, 35);
-            label2.TabIndex = 9;
-            label2.Text = "*";
+            lblSurname.AutoSize = true;
+            lblSurname.Font = new Font("Segoe UI", 15F);
+            lblSurname.ForeColor = Color.Coral;
+            lblSurname.Location = new Point(371, 198);
+            lblSurname.Name = "lblSurname";
+            lblSurname.Size = new Size(20, 28);
+            lblSurname.TabIndex = 9;
+            lblSurname.Text = "*";
             // 
-            // label3
+            // lblErrorPassword
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 15F);
-            label3.ForeColor = Color.Coral;
-            label3.Location = new Point(123, 198);
-            label3.Name = "label3";
-            label3.Size = new Size(25, 35);
-            label3.TabIndex = 10;
-            label3.Text = "*";
+            lblErrorPassword.AutoSize = true;
+            lblErrorPassword.Font = new Font("Segoe UI", 15F);
+            lblErrorPassword.ForeColor = Color.Coral;
+            lblErrorPassword.Location = new Point(123, 198);
+            lblErrorPassword.Name = "lblErrorPassword";
+            lblErrorPassword.Size = new Size(20, 28);
+            lblErrorPassword.TabIndex = 10;
+            lblErrorPassword.Text = "*";
             // 
-            // label4
+            // lblForename
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 15F);
-            label4.ForeColor = Color.Coral;
-            label4.Location = new Point(371, 134);
-            label4.Name = "label4";
-            label4.Size = new Size(25, 35);
-            label4.TabIndex = 11;
-            label4.Text = "*";
+            lblForename.AutoSize = true;
+            lblForename.Font = new Font("Segoe UI", 15F);
+            lblForename.ForeColor = Color.Coral;
+            lblForename.Location = new Point(371, 134);
+            lblForename.Name = "lblForename";
+            lblForename.Size = new Size(20, 28);
+            lblForename.TabIndex = 11;
+            lblForename.Text = "*";
             // 
-            // button1
+            // btnBack
             // 
-            button1.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.Location = new Point(12, 12);
-            button1.Name = "button1";
-            button1.Size = new Size(90, 50);
-            button1.TabIndex = 12;
-            button1.Text = "←";
-            button1.TextAlign = ContentAlignment.TopCenter;
-            button1.UseVisualStyleBackColor = true;
+            btnBack.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnBack.Location = new Point(12, 12);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(80, 40);
+            btnBack.TabIndex = 12;
+            btnBack.Text = "←";
+            btnBack.TextAlign = ContentAlignment.TopCenter;
+            btnBack.UseVisualStyleBackColor = true;
             // 
             // frmRegister
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.SteelBlue;
             ClientSize = new Size(732, 453);
-            Controls.Add(button1);
+            Controls.Add(btnBack);
             Controls.Add(lblError);
             Controls.Add(lblTitle);
             Controls.Add(txtBoxPassword);
@@ -193,10 +192,10 @@
             Controls.Add(txtBoxUsername);
             Controls.Add(btnRegister);
             Controls.Add(btnClear);
-            Controls.Add(label1);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(label2);
+            Controls.Add(lblErrorUsername);
+            Controls.Add(lblForename);
+            Controls.Add(lblErrorPassword);
+            Controls.Add(lblSurname);
             Name = "frmRegister";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmRegister";
@@ -214,10 +213,10 @@
         private TextBox txtBoxPassword;
         private Label lblTitle;
         private Label lblError;
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private Label label4;
-        private Button button1;
+        private Label lblErrorUsername;
+        private Label lblSurname;
+        private Label lblErrorPassword;
+        private Label lblForename;
+        private Button btnBack;
     }
 }

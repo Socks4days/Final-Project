@@ -128,8 +128,7 @@
             // 
             // frmLoginScreen
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.SteelBlue;
             ClientSize = new Size(732, 453);
             Controls.Add(lblError);

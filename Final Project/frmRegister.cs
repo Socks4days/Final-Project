@@ -17,11 +17,26 @@ namespace Final_Project
             InitializeComponent();
         }
 
-        List<Staff> staffMembers = StaffDal.GetAllStaff();
+       // List<Staff> staffMembers = StaffDal.GetAllStaff();
+        Staff newStaff =  new Staff();
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
+            try
+            {
+                newStaff.username = txtBoxUsername.Text;
+                newStaff.password = txtBoxPassword.Text;
+                newStaff.forename = txtBoxForename.Text;
+                newStaff.surname = txtBoxSurname.Text;
+                newStaff.staffPosition = "Newbie";
+                newStaff.active = 0;
+            }
+            catch (Exception ex) 
+            { 
+                lblError.Text = ex.Message;
+            }
 
+            StaffDal.AddStaffMember(newStaff);
         }
     }
 }

@@ -48,5 +48,32 @@ namespace Final_Project
                 return staffMembers;
             }
         }
+
+        public static int AddStaffMember(Staff newStaff)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionstring))
+            {
+                connection.Open();
+
+                SqlCommand insertProjectCommand = new SqlCommand();
+                insertProjectCommand.Connection = connection;
+
+                insertProjectCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                insertProjectCommand.CommandText = "AddStaffMember";
+
+                insertProjectCommand.Parameters.Add(new SqlParameter("@Username", newStaff.username));
+                insertProjectCommand.Parameters.Add(new SqlParameter("@Password", newStaff.password));
+                insertProjectCommand.Parameters.Add(new SqlParameter("@Forename", newStaff.forename));
+                insertProjectCommand.Parameters.Add(new SqlParameter("@Surname", newStaff.surname));
+                insertProjectCommand.Parameters.Add(new SqlParameter("@StaffPosition", newStaff.staffPosition));
+                insertProjectCommand.Parameters.Add(new SqlParameter("@Active", newStaff.active));
+
+                int rowsAffected =  insertProjectCommand.ExecuteNonQuery();
+
+                connection.Close();
+
+                return rowsAffected;
+            }
+        }
     }
 }
