@@ -4,15 +4,16 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Final_Project
 {
+
     public partial class frmLoginScreen : Form
     {
-        public static frmMain mainMenu ;
         public frmLoginScreen()
         {
             InitializeComponent();
@@ -56,10 +57,7 @@ namespace Final_Project
             {
                 if (staff.username == username && staff.password == password)
                 {
-                    this.Hide();
-                    MessageBox.Show($"Welcome {staff.forename}", "Welcome");
-                    mainMenu = new frmMain();
-                    mainMenu.Show();
+                    frmMainScreen.frmMain.OpenChildForm(null);
                     break;
                 }
                 else if (staff.username == username)
@@ -73,6 +71,11 @@ namespace Final_Project
                     break;
                 }
             }
+        }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            frmMainScreen.frmMain.OpenChildForm(new frmRegisterScreen());
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -120,5 +123,7 @@ namespace Final_Project
                 txtBoxPassword.PasswordChar = '*';
             }
         }
+
+        
     }
 }

@@ -10,33 +10,39 @@ using System.Windows.Forms;
 
 namespace Final_Project
 {
-    public partial class frmRegister : Form
+    public partial class frmRegisterScreen : Form
     {
-        public frmRegister()
+        public frmRegisterScreen()
         {
             InitializeComponent();
         }
 
-       // List<Staff> staffMembers = StaffDal.GetAllStaff();
-        Staff newStaff =  new Staff();
+        // List<Staff> staffMembers = StaffDal.GetAllStaff();
+        Staff newStaff = new Staff();
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
             try
             {
-                newStaff.username = txtBoxUsername.Text;
-                newStaff.password = txtBoxPassword.Text;
+                // Staff staff = new Staff(txtBoxForename.Text, txtBoxSurname.Text, txtBoxUsername.Text, txtBoxPassword.Text, "Newbie", 0);
+                                
                 newStaff.forename = txtBoxForename.Text;
                 newStaff.surname = txtBoxSurname.Text;
                 newStaff.staffPosition = "Newbie";
+                newStaff.username = txtBoxUsername.Text;
+                newStaff.password = txtBoxPassword.Text;
                 newStaff.active = 0;
             }
-            catch (Exception ex) 
-            { 
+            catch (Exception ex)
+            {
                 lblError.Text = ex.Message;
             }
-
             StaffDal.AddStaffMember(newStaff);
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            frmMainScreen.frmMain.OpenChildForm(new frmLoginScreen());
         }
     }
 }

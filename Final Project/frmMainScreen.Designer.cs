@@ -1,6 +1,6 @@
 ﻿namespace Final_Project
 {
-    partial class frmMain
+    partial class frmMainScreen
     {
         /// <summary>
         /// Required designer variable.
