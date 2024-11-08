@@ -39,11 +39,7 @@ namespace Final_Project
             }
 
             // If an existing child form is already open, close it
-            if (activeForm != null)
-            {
-                activeForm.Close();
-                activeForm = null;
-            }
+            CloseChildForm();
 
             // If a new child form has been passed in, open it
             if (childForm != null)
@@ -56,11 +52,6 @@ namespace Final_Project
                 pnlFormContainer.Controls.Add(childForm);
                 childForm.BringToFront();
                 childForm.Show();
-                MessageBox.Show("Opened " + childForm.Name);
-            }
-            else
-            {
-                MessageBox.Show("Opened main menu");
             }
         }
 

@@ -85,14 +85,14 @@
             pnlFormContainer.Size = new Size(750, 500);
             pnlFormContainer.TabIndex = 2;
             // 
-            // frmMain
+            // frmMainScreen
             // 
             AutoScaleMode = AutoScaleMode.None;
             ClientSize = new Size(970, 560);
             Controls.Add(pnlFormContainer);
             Controls.Add(pnlTitleBar);
             Controls.Add(pnlSideBar);
-            Name = "frmMain";
+            Name = "frmMainScreen";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmMain";
             pnlSideBar.ResumeLayout(false);

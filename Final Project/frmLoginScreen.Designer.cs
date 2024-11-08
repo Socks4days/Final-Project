@@ -161,7 +161,7 @@
             Name = "frmLoginScreen";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
-            FormClosed += frmLoginScreen_FormClosed;
+           // FormClosed += frmLoginScreen_FormClosed;
             ResumeLayout(false);
             PerformLayout();
         }

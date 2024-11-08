@@ -104,12 +104,6 @@ namespace Final_Project
             lblError.Visible = false;
         }
 
-        private void frmLoginScreen_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            // exits the program if window is closed
-            System.Windows.Forms.Application.Exit();
-        }
-
         private void cBoxPassword_CheckedChanged(object sender, EventArgs e)
         {
             if (cBoxPassword.Checked)
