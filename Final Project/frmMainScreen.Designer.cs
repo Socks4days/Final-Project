@@ -94,7 +94,7 @@
             Controls.Add(pnlSideBar);
             Name = "frmMainScreen";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "frmMain";
+            Text = "Stock Control";
             pnlSideBar.ResumeLayout(false);
             ResumeLayout(false);
         }

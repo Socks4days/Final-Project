@@ -27,7 +27,7 @@ namespace Final_Project
         public void OpenChildForm(Form childForm)
         {
             // Check if title/side panels should be display
-            if (childForm == null || (childForm.Name != "frmLoginScreen" && childForm.Name != "frmRegister"))
+            if (childForm == null || (childForm.Name != "frmLoginScreen" && childForm.Name != "frmRegisterScreen"))
             {
                 pnlTitleBar.Visible = true;
                 pnlSideBar.Visible = true;

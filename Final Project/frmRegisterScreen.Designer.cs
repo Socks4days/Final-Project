@@ -37,26 +37,27 @@
             lblTitle = new Label();
             lblError = new Label();
             lblErrorUsername = new Label();
-            lblSurname = new Label();
+            lblErrorSurname = new Label();
             lblErrorPassword = new Label();
-            lblForename = new Label();
+            lblErrorForename = new Label();
             btnBack = new Button();
             SuspendLayout();
             // 
             // btnClear
             // 
             btnClear.Font = new Font("Segoe UI", 14.5F);
-            btnClear.Location = new Point(110, 361);
+            btnClear.Location = new Point(244, 398);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(220, 50);
             btnClear.TabIndex = 5;
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = true;
+            btnClear.Click += btnClear_Click;
             // 
             // btnRegister
             // 
             btnRegister.Font = new Font("Segoe UI", 14.5F);
-            btnRegister.Location = new Point(402, 361);
+            btnRegister.Location = new Point(536, 398);
             btnRegister.Name = "btnRegister";
             btnRegister.Size = new Size(220, 50);
             btnRegister.TabIndex = 0;
@@ -67,37 +68,37 @@
             // txtBoxUsername
             // 
             txtBoxUsername.Font = new Font("Segoe UI", 12F);
-            txtBoxUsername.Location = new Point(141, 134);
+            txtBoxUsername.Location = new Point(226, 173);
             txtBoxUsername.Name = "txtBoxUsername";
             txtBoxUsername.PlaceholderText = "Username:";
-            txtBoxUsername.Size = new Size(200, 34);
+            txtBoxUsername.Size = new Size(240, 34);
             txtBoxUsername.TabIndex = 1;
             // 
             // txtBoxSurname
             // 
             txtBoxSurname.Font = new Font("Segoe UI", 12F);
-            txtBoxSurname.Location = new Point(391, 198);
+            txtBoxSurname.Location = new Point(525, 239);
             txtBoxSurname.Name = "txtBoxSurname";
             txtBoxSurname.PlaceholderText = "Surname:";
-            txtBoxSurname.Size = new Size(200, 34);
+            txtBoxSurname.Size = new Size(240, 34);
             txtBoxSurname.TabIndex = 4;
             // 
             // txtBoxForename
             // 
             txtBoxForename.Font = new Font("Segoe UI", 12F);
-            txtBoxForename.Location = new Point(141, 200);
+            txtBoxForename.Location = new Point(226, 239);
             txtBoxForename.Name = "txtBoxForename";
             txtBoxForename.PlaceholderText = "Forename:";
-            txtBoxForename.Size = new Size(200, 34);
+            txtBoxForename.Size = new Size(240, 34);
             txtBoxForename.TabIndex = 3;
             // 
             // txtBoxPassword
             // 
             txtBoxPassword.Font = new Font("Segoe UI", 12F);
-            txtBoxPassword.Location = new Point(391, 134);
+            txtBoxPassword.Location = new Point(525, 175);
             txtBoxPassword.Name = "txtBoxPassword";
             txtBoxPassword.PlaceholderText = "Password:";
-            txtBoxPassword.Size = new Size(200, 34);
+            txtBoxPassword.Size = new Size(240, 34);
             txtBoxPassword.TabIndex = 2;
             // 
             // lblTitle
@@ -105,7 +106,7 @@
             lblTitle.AutoSize = true;
             lblTitle.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblTitle.ForeColor = SystemColors.Control;
-            lblTitle.Location = new Point(304, 41);
+            lblTitle.Location = new Point(436, 60);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(125, 41);
             lblTitle.TabIndex = 6;
@@ -116,7 +117,7 @@
             lblError.AutoSize = true;
             lblError.Font = new Font("Segoe UI", 16F);
             lblError.ForeColor = Color.Coral;
-            lblError.Location = new Point(110, 262);
+            lblError.Location = new Point(244, 299);
             lblError.Name = "lblError";
             lblError.Size = new Size(112, 37);
             lblError.TabIndex = 7;
@@ -128,44 +129,44 @@
             lblErrorUsername.AutoSize = true;
             lblErrorUsername.Font = new Font("Segoe UI", 15F);
             lblErrorUsername.ForeColor = Color.Coral;
-            lblErrorUsername.Location = new Point(122, 134);
+            lblErrorUsername.Location = new Point(206, 171);
             lblErrorUsername.Name = "lblErrorUsername";
             lblErrorUsername.Size = new Size(25, 35);
             lblErrorUsername.TabIndex = 8;
             lblErrorUsername.Text = "*";
             // 
-            // lblSurname
+            // lblErrorSurname
             // 
-            lblSurname.AutoSize = true;
-            lblSurname.Font = new Font("Segoe UI", 15F);
-            lblSurname.ForeColor = Color.Coral;
-            lblSurname.Location = new Point(371, 198);
-            lblSurname.Name = "lblSurname";
-            lblSurname.Size = new Size(25, 35);
-            lblSurname.TabIndex = 9;
-            lblSurname.Text = "*";
+            lblErrorSurname.AutoSize = true;
+            lblErrorSurname.Font = new Font("Segoe UI", 15F);
+            lblErrorSurname.ForeColor = Color.Coral;
+            lblErrorSurname.Location = new Point(505, 239);
+            lblErrorSurname.Name = "lblErrorSurname";
+            lblErrorSurname.Size = new Size(25, 35);
+            lblErrorSurname.TabIndex = 9;
+            lblErrorSurname.Text = "*";
             // 
             // lblErrorPassword
             // 
             lblErrorPassword.AutoSize = true;
             lblErrorPassword.Font = new Font("Segoe UI", 15F);
             lblErrorPassword.ForeColor = Color.Coral;
-            lblErrorPassword.Location = new Point(373, 134);
+            lblErrorPassword.Location = new Point(507, 175);
             lblErrorPassword.Name = "lblErrorPassword";
             lblErrorPassword.Size = new Size(25, 35);
             lblErrorPassword.TabIndex = 10;
             lblErrorPassword.Text = "*";
             // 
-            // lblForename
+            // lblErrorForename
             // 
-            lblForename.AutoSize = true;
-            lblForename.Font = new Font("Segoe UI", 15F);
-            lblForename.ForeColor = Color.Coral;
-            lblForename.Location = new Point(121, 200);
-            lblForename.Name = "lblForename";
-            lblForename.Size = new Size(25, 35);
-            lblForename.TabIndex = 11;
-            lblForename.Text = "*";
+            lblErrorForename.AutoSize = true;
+            lblErrorForename.Font = new Font("Segoe UI", 15F);
+            lblErrorForename.ForeColor = Color.Coral;
+            lblErrorForename.Location = new Point(205, 237);
+            lblErrorForename.Name = "lblErrorForename";
+            lblErrorForename.Size = new Size(25, 35);
+            lblErrorForename.TabIndex = 11;
+            lblErrorForename.Text = "*";
             // 
             // btnBack
             // 
@@ -179,11 +180,11 @@
             btnBack.UseVisualStyleBackColor = true;
             btnBack.Click += btnBack_Click;
             // 
-            // frmRegister
+            // frmRegisterScreen
             // 
             AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.SteelBlue;
-            ClientSize = new Size(732, 453);
+            ClientSize = new Size(970, 557);
             Controls.Add(btnBack);
             Controls.Add(lblError);
             Controls.Add(lblTitle);
@@ -194,10 +195,10 @@
             Controls.Add(btnRegister);
             Controls.Add(btnClear);
             Controls.Add(lblErrorUsername);
-            Controls.Add(lblForename);
+            Controls.Add(lblErrorForename);
             Controls.Add(lblErrorPassword);
-            Controls.Add(lblSurname);
-            Name = "frmRegister";
+            Controls.Add(lblErrorSurname);
+            Name = "frmRegisterScreen";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmRegister";
             ResumeLayout(false);
@@ -215,9 +216,9 @@
         private Label lblTitle;
         private Label lblError;
         private Label lblErrorUsername;
-        private Label lblSurname;
+        private Label lblErrorSurname;
         private Label lblErrorPassword;
-        private Label lblForename;
+        private Label lblErrorForename;
         private Button btnBack;
     }
 }

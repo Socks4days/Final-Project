@@ -135,10 +135,10 @@
             btnRegister.FlatStyle = FlatStyle.Flat;
             btnRegister.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Underline);
             btnRegister.ForeColor = SystemColors.Control;
-            btnRegister.Location = new Point(375, 431);
+            btnRegister.Location = new Point(355, 431);
             btnRegister.Margin = new Padding(3, 4, 3, 4);
             btnRegister.Name = "btnRegister";
-            btnRegister.Size = new Size(220, 50);
+            btnRegister.Size = new Size(260, 50);
             btnRegister.TabIndex = 7;
             btnRegister.Text = "Register a new account";
             btnRegister.UseVisualStyleBackColor = false;
@@ -161,7 +161,6 @@
             Name = "frmLoginScreen";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
-           // FormClosed += frmLoginScreen_FormClosed;
             ResumeLayout(false);
             PerformLayout();
         }
