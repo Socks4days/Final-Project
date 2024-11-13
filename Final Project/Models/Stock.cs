@@ -36,9 +36,8 @@ namespace Final_Project.Models
 
         public Stock() { }
 
-        public Stock (int stockId, string stockName, string stockDescription, decimal price, int deliveryTimeDays, int maximumLevel, int minimumLevel, int orderQuantity, int stockCheckFrequency, int stockLevel, int lastUpdatedByStaffId)
+        public Stock (string stockName, string stockDescription, decimal price, int deliveryTimeDays, int maximumLevel, int minimumLevel, int orderQuantity, int stockCheckFrequency, int stockLevel, int lastUpdatedByStaffId)
         {
-            this.stockId = stockId;
             this.stockName = stockName;
             this.stockDescription = stockDescription;
             this.price = price;

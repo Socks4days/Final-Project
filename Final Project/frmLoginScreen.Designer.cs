@@ -40,7 +40,7 @@
             // 
             // btnClear
             // 
-            btnClear.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnClear.Anchor = AnchorStyles.None;
             btnClear.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnClear.Location = new Point(246, 340);
             btnClear.Margin = new Padding(3, 4, 3, 4);
@@ -53,7 +53,7 @@
             // 
             // lblLogin
             // 
-            lblLogin.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lblLogin.Anchor = AnchorStyles.None;
             lblLogin.AutoSize = true;
             lblLogin.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblLogin.ForeColor = SystemColors.Control;
@@ -65,7 +65,7 @@
             // 
             // txtBoxUsername
             // 
-            txtBoxUsername.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            txtBoxUsername.Anchor = AnchorStyles.None;
             txtBoxUsername.Font = new Font("Segoe UI", 14.25F);
             txtBoxUsername.Location = new Point(299, 115);
             txtBoxUsername.Margin = new Padding(3, 4, 3, 4);
@@ -76,7 +76,7 @@
             // 
             // cBoxPassword
             // 
-            cBoxPassword.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            cBoxPassword.Anchor = AnchorStyles.None;
             cBoxPassword.AutoSize = true;
             cBoxPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cBoxPassword.ForeColor = SystemColors.Control;
@@ -91,7 +91,7 @@
             // 
             // btnSubmit
             // 
-            btnSubmit.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnSubmit.Anchor = AnchorStyles.None;
             btnSubmit.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSubmit.Location = new Point(516, 340);
             btnSubmit.Margin = new Padding(3, 4, 3, 4);
@@ -104,7 +104,7 @@
             // 
             // txtBoxPassword
             // 
-            txtBoxPassword.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            txtBoxPassword.Anchor = AnchorStyles.None;
             txtBoxPassword.Font = new Font("Segoe UI", 14.25F);
             txtBoxPassword.Location = new Point(299, 184);
             txtBoxPassword.Margin = new Padding(3, 4, 3, 4);
@@ -116,7 +116,7 @@
             // 
             // lblError
             // 
-            lblError.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lblError.Anchor = AnchorStyles.None;
             lblError.AutoSize = true;
             lblError.Font = new Font("Segoe UI", 16F);
             lblError.ForeColor = Color.Coral;
@@ -129,7 +129,7 @@
             // 
             // btnRegister
             // 
-            btnRegister.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnRegister.Anchor = AnchorStyles.None;
             btnRegister.BackColor = Color.SteelBlue;
             btnRegister.FlatAppearance.BorderSize = 0;
             btnRegister.FlatStyle = FlatStyle.Flat;

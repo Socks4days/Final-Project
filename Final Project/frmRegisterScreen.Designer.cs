@@ -45,6 +45,7 @@
             // 
             // btnClear
             // 
+            btnClear.Anchor = AnchorStyles.None;
             btnClear.Font = new Font("Segoe UI", 14.5F);
             btnClear.Location = new Point(244, 398);
             btnClear.Name = "btnClear";
@@ -56,6 +57,7 @@
             // 
             // btnRegister
             // 
+            btnRegister.Anchor = AnchorStyles.None;
             btnRegister.Font = new Font("Segoe UI", 14.5F);
             btnRegister.Location = new Point(536, 398);
             btnRegister.Name = "btnRegister";
@@ -67,6 +69,7 @@
             // 
             // txtBoxUsername
             // 
+            txtBoxUsername.Anchor = AnchorStyles.None;
             txtBoxUsername.Font = new Font("Segoe UI", 12F);
             txtBoxUsername.Location = new Point(226, 173);
             txtBoxUsername.Name = "txtBoxUsername";
@@ -76,6 +79,7 @@
             // 
             // txtBoxSurname
             // 
+            txtBoxSurname.Anchor = AnchorStyles.None;
             txtBoxSurname.Font = new Font("Segoe UI", 12F);
             txtBoxSurname.Location = new Point(525, 239);
             txtBoxSurname.Name = "txtBoxSurname";
@@ -85,6 +89,7 @@
             // 
             // txtBoxForename
             // 
+            txtBoxForename.Anchor = AnchorStyles.None;
             txtBoxForename.Font = new Font("Segoe UI", 12F);
             txtBoxForename.Location = new Point(226, 239);
             txtBoxForename.Name = "txtBoxForename";
@@ -94,6 +99,7 @@
             // 
             // txtBoxPassword
             // 
+            txtBoxPassword.Anchor = AnchorStyles.None;
             txtBoxPassword.Font = new Font("Segoe UI", 12F);
             txtBoxPassword.Location = new Point(525, 175);
             txtBoxPassword.Name = "txtBoxPassword";
@@ -103,6 +109,7 @@
             // 
             // lblTitle
             // 
+            lblTitle.Anchor = AnchorStyles.None;
             lblTitle.AutoSize = true;
             lblTitle.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblTitle.ForeColor = SystemColors.Control;
@@ -114,18 +121,20 @@
             // 
             // lblError
             // 
-            lblError.AutoSize = true;
+            lblError.Anchor = AnchorStyles.None;
             lblError.Font = new Font("Segoe UI", 16F);
             lblError.ForeColor = Color.Coral;
-            lblError.Location = new Point(244, 299);
+            lblError.Location = new Point(79, 292);
             lblError.Name = "lblError";
-            lblError.Size = new Size(112, 37);
+            lblError.Size = new Size(812, 96);
             lblError.TabIndex = 7;
             lblError.Text = "Register";
+            lblError.TextAlign = ContentAlignment.TopCenter;
             lblError.Visible = false;
             // 
             // lblErrorUsername
             // 
+            lblErrorUsername.Anchor = AnchorStyles.None;
             lblErrorUsername.AutoSize = true;
             lblErrorUsername.Font = new Font("Segoe UI", 15F);
             lblErrorUsername.ForeColor = Color.Coral;
@@ -137,6 +146,7 @@
             // 
             // lblErrorSurname
             // 
+            lblErrorSurname.Anchor = AnchorStyles.None;
             lblErrorSurname.AutoSize = true;
             lblErrorSurname.Font = new Font("Segoe UI", 15F);
             lblErrorSurname.ForeColor = Color.Coral;
@@ -148,6 +158,7 @@
             // 
             // lblErrorPassword
             // 
+            lblErrorPassword.Anchor = AnchorStyles.None;
             lblErrorPassword.AutoSize = true;
             lblErrorPassword.Font = new Font("Segoe UI", 15F);
             lblErrorPassword.ForeColor = Color.Coral;
@@ -159,6 +170,7 @@
             // 
             // lblErrorForename
             // 
+            lblErrorForename.Anchor = AnchorStyles.None;
             lblErrorForename.AutoSize = true;
             lblErrorForename.Font = new Font("Segoe UI", 15F);
             lblErrorForename.ForeColor = Color.Coral;

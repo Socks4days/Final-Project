@@ -16,6 +16,7 @@ namespace Final_Project
         public frmRegisterScreen()
         {
             InitializeComponent();
+            ClearError();
         }
 
         Staff newStaff = new Staff();
@@ -46,11 +47,6 @@ namespace Final_Project
                 // if all are filled in, then begin the Verification process
                 UsernameAndPasswordValidation();
             }
-
-
-
-
-
         }
 
         public void UsernameAndPasswordValidation()
@@ -115,6 +111,8 @@ namespace Final_Project
                 lblError.Text = ex.Message;
             }
             StaffDal.AddStaffMember(newStaff);
+            MessageBox.Show("Account Created \nReturning to login screen now");
+            frmMainScreen.frmMain.OpenChildForm(new frmLoginScreen());
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -130,12 +128,16 @@ namespace Final_Project
             if (txtBoxForename.Text == "") lblErrorForename.Visible = true;
             if (txtBoxSurname.Text == "") lblErrorSurname.Visible = true;
             lblError.Text = errorMessage;
-            lblError.Visible = true;
+            lblError.Visible = true;          
         }
 
         private void ClearError()
         {
             // hide error message
+            lblErrorUsername.Visible = false;
+            lblErrorPassword.Visible = false;
+            lblErrorForename.Visible = false;
+            lblErrorSurname.Visible = false;
             lblError.Text = "";
             lblError.Visible = false;
         }

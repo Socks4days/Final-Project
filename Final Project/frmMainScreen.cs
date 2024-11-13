@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Final_Project
 {
-    public partial class frmMainScreen: Form
+    public partial class frmMainScreen : Form
     {
         public static frmMainScreen frmMain;
 
@@ -23,19 +23,17 @@ namespace Final_Project
         }
 
         private Form activeForm = null;
-       
+
         public void OpenChildForm(Form childForm)
         {
             // Check if title/side panels should be display
             if (childForm == null || (childForm.Name != "frmLoginScreen" && childForm.Name != "frmRegisterScreen"))
             {
-                pnlTitleBar.Visible = true;
-                pnlSideBar.Visible = true;
+                showMenus();
             }
             else
             {
-                pnlSideBar.Visible = false;
-                pnlTitleBar.Visible = false;
+                hideMenus();
             }
 
             // If an existing child form is already open, close it
@@ -63,6 +61,54 @@ namespace Final_Project
                 activeForm.Close();
                 activeForm = null;
             }
+        }
+
+        #region toggleSubMenus
+        private void btnStock_Click(object sender, EventArgs e)
+        {
+            CloseChildForm();
+            toggleSubMenu(pnlStock);
+        }
+
+        // Hide the settings and admin submenus when a menu option is clicked
+        private void hideSubMenus()
+        {
+            pnlStock.Visible = false;
+        }
+
+        // Hide the main menu and title bar
+        private void hideMenus()
+        {
+            pnlSideBar.Visible = false;
+            pnlTitleBar.Visible = false;
+        }
+
+        // Show the main menu and title bar
+        private void showMenus()
+        {
+            pnlSideBar.Visible = true;
+            pnlTitleBar.Visible = true;
+        }
+
+        // Show or hide the sub menu when it is clicked
+        private void toggleSubMenu(Panel selectedSubMenu)
+        {
+            if (selectedSubMenu.Visible == true)
+            {
+                hideSubMenus();
+            }
+            else
+            {
+                hideSubMenus();
+                selectedSubMenu.Visible = true;
+            }
+        }
+
+        #endregion toggleSubMenus
+
+        private void btnViewStock_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmViewStock());
         }
     }
 }

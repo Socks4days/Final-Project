@@ -36,8 +36,7 @@ namespace Final_Project
 
                 while (sqlDataReader.Read())
                 {
-                    stock = new Stock(
-                        (int)sqlDataReader["StockId"],
+                    stock = new Stock(                        
                         (string)sqlDataReader["StockName"],
                         (string)sqlDataReader["StockDescription"],
                         (decimal)sqlDataReader["Price"],
@@ -49,6 +48,8 @@ namespace Final_Project
                         (int)sqlDataReader["StockLevel"],
                         (int)sqlDataReader["LastUpdatedByStaffId"]
                         );
+
+                    stock.stockId = (int)sqlDataReader["StockId"];
                 }
                 return stock;
             }
@@ -85,6 +86,41 @@ namespace Final_Project
                 connection.Close();
 
                 return rowsAffected;
+            }
+        }
+
+        public static List<Stock> GetAllStock()
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionstring))
+            {
+                List<Stock> stockItems = new List<Stock>();
+                connection.Open();
+
+                string sqlQuery = "SELECT * FROM Stock";
+
+                SqlCommand getAllStockCommand = new SqlCommand(sqlQuery, connection);
+
+                SqlDataReader sqlDataReader = getAllStockCommand.ExecuteReader();
+
+                while (sqlDataReader.Read())
+                {
+                    Stock stock = new Stock(
+                        (string)sqlDataReader["StockName"],
+                        (string)sqlDataReader["StockDescription"],
+                        (decimal)sqlDataReader["Price"],
+                        (int)sqlDataReader["DeliveryTimeDays"],
+                        (int)sqlDataReader["MaximumLevel"],
+                        (int)sqlDataReader["MinimumLevel"],
+                        (int)sqlDataReader["OrderQuantity"],
+                        (int)sqlDataReader["StockCheckFrequency"],
+                        (int)sqlDataReader["StockLevel"],
+                        (int)sqlDataReader["LastUpdatedByStaffId"]
+                        );
+
+                    stock.stockId = (int)sqlDataReader["StockId"];
+                    stockItems.Add(stock);
+                }
+                return stockItems;
             }
         }
     }

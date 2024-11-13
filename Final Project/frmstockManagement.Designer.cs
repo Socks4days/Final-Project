@@ -46,6 +46,7 @@
             txtBoxNewStockDescription = new TextBox();
             lblAddNewStock = new Label();
             btnAddNewStock = new Button();
+            panel1 = new Panel();
             pnlAddStock.SuspendLayout();
             pnlManageStock.SuspendLayout();
             pnlAddNewStock.SuspendLayout();
@@ -61,7 +62,7 @@
             pnlAddStock.Dock = DockStyle.Top;
             pnlAddStock.Location = new Point(0, 0);
             pnlAddStock.Name = "pnlAddStock";
-            pnlAddStock.Size = new Size(783, 450);
+            pnlAddStock.Size = new Size(779, 450);
             pnlAddStock.TabIndex = 0;
             // 
             // txtBoxAddStock
@@ -69,7 +70,7 @@
             txtBoxAddStock.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtBoxAddStock.Location = new Point(291, 203);
             txtBoxAddStock.Name = "txtBoxAddStock";
-            txtBoxAddStock.Size = new Size(216, 32);
+            txtBoxAddStock.Size = new Size(216, 38);
             txtBoxAddStock.TabIndex = 3;
             // 
             // lblAddStock
@@ -79,7 +80,7 @@
             lblAddStock.ForeColor = SystemColors.Control;
             lblAddStock.Location = new Point(324, 128);
             lblAddStock.Name = "lblAddStock";
-            lblAddStock.Size = new Size(121, 32);
+            lblAddStock.Size = new Size(153, 41);
             lblAddStock.TabIndex = 2;
             lblAddStock.Text = "Add Stock";
             // 
@@ -112,7 +113,7 @@
             pnlManageStock.Dock = DockStyle.Top;
             pnlManageStock.Location = new Point(0, 450);
             pnlManageStock.Name = "pnlManageStock";
-            pnlManageStock.Size = new Size(783, 450);
+            pnlManageStock.Size = new Size(779, 450);
             pnlManageStock.TabIndex = 1;
             // 
             // btnSearch
@@ -132,7 +133,7 @@
             lblEnterStockId.ForeColor = SystemColors.Control;
             lblEnterStockId.Location = new Point(247, 188);
             lblEnterStockId.Name = "lblEnterStockId";
-            lblEnterStockId.Size = new Size(225, 21);
+            lblEnterStockId.Size = new Size(285, 28);
             lblEnterStockId.TabIndex = 2;
             lblEnterStockId.Text = "Enter a stock id to view options";
             // 
@@ -142,7 +143,7 @@
             txtBoxEnterStockId.Location = new Point(247, 241);
             txtBoxEnterStockId.Name = "txtBoxEnterStockId";
             txtBoxEnterStockId.PlaceholderText = "Enter Stock Id:";
-            txtBoxEnterStockId.Size = new Size(285, 32);
+            txtBoxEnterStockId.Size = new Size(285, 38);
             txtBoxEnterStockId.TabIndex = 1;
             // 
             // lblTitle
@@ -152,7 +153,7 @@
             lblTitle.ForeColor = SystemColors.Control;
             lblTitle.Location = new Point(250, 106);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(221, 32);
+            lblTitle.Size = new Size(275, 41);
             lblTitle.TabIndex = 0;
             lblTitle.Text = "Stock Management";
             // 
@@ -169,7 +170,7 @@
             pnlAddNewStock.Dock = DockStyle.Top;
             pnlAddNewStock.Location = new Point(0, 900);
             pnlAddNewStock.Name = "pnlAddNewStock";
-            pnlAddNewStock.Size = new Size(783, 450);
+            pnlAddNewStock.Size = new Size(779, 450);
             pnlAddNewStock.TabIndex = 2;
             // 
             // txtBoxNewStockName
@@ -178,7 +179,7 @@
             txtBoxNewStockName.Location = new Point(276, 112);
             txtBoxNewStockName.Name = "txtBoxNewStockName";
             txtBoxNewStockName.PlaceholderText = "Stock Name";
-            txtBoxNewStockName.Size = new Size(221, 33);
+            txtBoxNewStockName.Size = new Size(221, 39);
             txtBoxNewStockName.TabIndex = 12;
             // 
             // txtBoxNewMinimumLevel
@@ -187,7 +188,7 @@
             txtBoxNewMinimumLevel.Location = new Point(410, 224);
             txtBoxNewMinimumLevel.Name = "txtBoxNewMinimumLevel";
             txtBoxNewMinimumLevel.PlaceholderText = "Minimum Level";
-            txtBoxNewMinimumLevel.Size = new Size(221, 33);
+            txtBoxNewMinimumLevel.Size = new Size(221, 39);
             txtBoxNewMinimumLevel.TabIndex = 6;
             // 
             // txtBoxNewStockPrice
@@ -196,7 +197,7 @@
             txtBoxNewStockPrice.Location = new Point(410, 168);
             txtBoxNewStockPrice.Name = "txtBoxNewStockPrice";
             txtBoxNewStockPrice.PlaceholderText = "Price";
-            txtBoxNewStockPrice.Size = new Size(221, 33);
+            txtBoxNewStockPrice.Size = new Size(221, 39);
             txtBoxNewStockPrice.TabIndex = 5;
             // 
             // txtBoxNewMaximumLevel
@@ -205,7 +206,7 @@
             txtBoxNewMaximumLevel.Location = new Point(152, 224);
             txtBoxNewMaximumLevel.Name = "txtBoxNewMaximumLevel";
             txtBoxNewMaximumLevel.PlaceholderText = "Maximum Level";
-            txtBoxNewMaximumLevel.Size = new Size(221, 33);
+            txtBoxNewMaximumLevel.Size = new Size(221, 39);
             txtBoxNewMaximumLevel.TabIndex = 4;
             // 
             // txtBoxNewStockDescription
@@ -214,7 +215,7 @@
             txtBoxNewStockDescription.Location = new Point(152, 168);
             txtBoxNewStockDescription.Name = "txtBoxNewStockDescription";
             txtBoxNewStockDescription.PlaceholderText = "Stock Description";
-            txtBoxNewStockDescription.Size = new Size(221, 33);
+            txtBoxNewStockDescription.Size = new Size(221, 39);
             txtBoxNewStockDescription.TabIndex = 2;
             // 
             // lblAddNewStock
@@ -224,26 +225,35 @@
             lblAddNewStock.ForeColor = SystemColors.Control;
             lblAddNewStock.Location = new Point(302, 32);
             lblAddNewStock.Name = "lblAddNewStock";
-            lblAddNewStock.Size = new Size(176, 32);
+            lblAddNewStock.Size = new Size(221, 41);
             lblAddNewStock.TabIndex = 1;
             lblAddNewStock.Text = "Add New Stock";
             // 
             // btnAddNewStock
             // 
             btnAddNewStock.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnAddNewStock.Location = new Point(310, 305);
+            btnAddNewStock.Location = new Point(279, 321);
             btnAddNewStock.Name = "btnAddNewStock";
-            btnAddNewStock.Size = new Size(158, 33);
+            btnAddNewStock.Size = new Size(220, 50);
             btnAddNewStock.TabIndex = 0;
             btnAddNewStock.Text = "Add New Stock";
             btnAddNewStock.UseVisualStyleBackColor = true;
             btnAddNewStock.Click += btnAddNewStock_Click;
+            // 
+            // panel1
+            // 
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 1350);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(779, 439);
+            panel1.TabIndex = 3;
             // 
             // frmStockManagement
             // 
             AutoScaleMode = AutoScaleMode.None;
             AutoScroll = true;
             ClientSize = new Size(800, 455);
+            Controls.Add(panel1);
             Controls.Add(pnlAddNewStock);
             Controls.Add(pnlManageStock);
             Controls.Add(pnlAddStock);
@@ -278,5 +288,6 @@
         private TextBox txtBoxNewStockPrice;
         private TextBox txtBoxNewMaximumLevel;
         private TextBox txtBoxNewStockName;
+        private Panel panel1;
     }
 }
