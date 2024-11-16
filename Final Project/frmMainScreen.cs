@@ -20,6 +20,7 @@ namespace Final_Project
             frmMainScreen.frmMain = this;
             //OpenChildForm(null);
             OpenChildForm(new frmLoginScreen());
+            hideSubMenus();
         }
 
         private Form activeForm = null;
@@ -80,14 +81,12 @@ namespace Final_Project
         private void hideMenus()
         {
             pnlSideBar.Visible = false;
-            pnlTitleBar.Visible = false;
         }
 
         // Show the main menu and title bar
         private void showMenus()
         {
             pnlSideBar.Visible = true;
-            pnlTitleBar.Visible = true;
         }
 
         // Show or hide the sub menu when it is clicked
@@ -109,6 +108,16 @@ namespace Final_Project
         private void btnViewStock_Click(object sender, EventArgs e)
         {
             OpenChildForm(new frmViewStock());
+        }
+
+        private void btnEditStockLevels_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmStockManagement());
+        }
+
+        private void btnAddNewStock_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmStockManagement());
         }
     }
 }

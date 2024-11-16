@@ -55,6 +55,20 @@ namespace Final_Project
             }
         }
 
+        public static void UpdateStockByStockId(Stock stock)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionstring))
+            {
+                connection.Open();
+
+                string sqlQuery = string.Format($"UPDATE Stock SET stockLevel = '{stock.stockLevel}' WHERE stockId = {stock.stockId}");
+
+                SqlCommand updateStockByStockIdCommand = new SqlCommand(sqlQuery, connection);
+
+                updateStockByStockIdCommand.ExecuteNonQuery();
+            }
+        }
+
         public static int AddNewStock(Stock newStock)
         {
             using (SqlConnection connection = new SqlConnection(_connectionstring))
