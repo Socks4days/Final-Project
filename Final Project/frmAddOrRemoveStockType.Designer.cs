@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             pnlAddNewStock = new Panel();
+            lblError = new Label();
             txtBoxNewStockName = new TextBox();
             txtBoxNewMinimumLevel = new TextBox();
             txtBoxNewStockPrice = new TextBox();
@@ -37,6 +38,7 @@
             lblAddNewStock = new Label();
             btnAddNewStock = new Button();
             pnlConfirmation = new Panel();
+            lblSuccess = new Label();
             btnReturn = new Button();
             lblStockTo = new Label();
             lblStockName = new Label();
@@ -53,6 +55,7 @@
             // pnlAddNewStock
             // 
             pnlAddNewStock.BackColor = Color.DarkCyan;
+            pnlAddNewStock.Controls.Add(lblError);
             pnlAddNewStock.Controls.Add(txtBoxNewStockName);
             pnlAddNewStock.Controls.Add(txtBoxNewMinimumLevel);
             pnlAddNewStock.Controls.Add(txtBoxNewStockPrice);
@@ -65,6 +68,17 @@
             pnlAddNewStock.Name = "pnlAddNewStock";
             pnlAddNewStock.Size = new Size(783, 560);
             pnlAddNewStock.TabIndex = 3;
+            // 
+            // lblError
+            // 
+            lblError.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblError.ForeColor = Color.Coral;
+            lblError.Location = new Point(138, 275);
+            lblError.Name = "lblError";
+            lblError.Size = new Size(505, 61);
+            lblError.TabIndex = 15;
+            lblError.Text = "Error message goes here";
+            lblError.TextAlign = ContentAlignment.TopCenter;
             // 
             // txtBoxNewStockName
             // 
@@ -125,7 +139,7 @@
             // btnAddNewStock
             // 
             btnAddNewStock.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnAddNewStock.Location = new Point(279, 321);
+            btnAddNewStock.Location = new Point(281, 367);
             btnAddNewStock.Name = "btnAddNewStock";
             btnAddNewStock.Size = new Size(220, 50);
             btnAddNewStock.TabIndex = 0;
@@ -136,6 +150,7 @@
             // pnlConfirmation
             // 
             pnlConfirmation.BackColor = Color.DarkCyan;
+            pnlConfirmation.Controls.Add(lblSuccess);
             pnlConfirmation.Controls.Add(btnReturn);
             pnlConfirmation.Controls.Add(lblStockTo);
             pnlConfirmation.Controls.Add(lblStockName);
@@ -150,6 +165,17 @@
             pnlConfirmation.Name = "pnlConfirmation";
             pnlConfirmation.Size = new Size(783, 560);
             pnlConfirmation.TabIndex = 4;
+            // 
+            // lblSuccess
+            // 
+            lblSuccess.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblSuccess.ForeColor = Color.Coral;
+            lblSuccess.Location = new Point(153, 488);
+            lblSuccess.Name = "lblSuccess";
+            lblSuccess.Size = new Size(505, 63);
+            lblSuccess.TabIndex = 14;
+            lblSuccess.Text = "Success message goes here";
+            lblSuccess.TextAlign = ContentAlignment.TopCenter;
             // 
             // btnReturn
             // 
@@ -284,5 +310,7 @@
         private Label lblMaximumLevel;
         private Label lblPrice;
         private Button btnReturn;
+        private Label lblSuccess;
+        private Label lblError;
     }
 }
