@@ -12,10 +12,7 @@ namespace Final_Project
             showStockSearch();
         }
 
-        private void btnAddStock_Click(object sender, EventArgs e)
-        {
 
-        }
 
         public static Stock lookupStock = new Stock();
 
@@ -28,6 +25,7 @@ namespace Final_Project
                 if (stock.stockId.ToString() == stockId)
                 {
                     lookupStock = StockDal.GetStockByStockId(stockId);
+                    lblStockLevelToEdit.Text = $"You are currently editing the stock levels for {stock.stockName}";                    
                     showEditStock();
                 }
                 else
@@ -38,41 +36,14 @@ namespace Final_Project
 
         }
 
-        private void btnAddNewStock_Click(object sender, EventArgs e)
-        {
-            Stock newStock = new Stock();
-
-            newStock.stockName = txtBoxNewStockName.Text;
-            newStock.stockDescription = txtBoxNewStockDescription.Text;
-            newStock.price = Convert.ToDecimal(txtBoxNewStockPrice.Text);
-            newStock.maximumLevel = Convert.ToInt32(txtBoxNewMaximumLevel.Text);
-            newStock.minimumLevel = Convert.ToInt32(txtBoxNewMinimumLevel.Text);
-
-            int rowsAffected = StockDal.AddNewStock(newStock);
-
-            if (rowsAffected > 0)
-            {
-                MessageBox.Show("New Stock Added Successfully!", "Successful");
-            }
-            else
-            {
-                MessageBox.Show("New Stock Not Added!", "Unsuccessful");
-            }
-        }
-
         private void showStockSearch()
         {
-            pnlAddNewStock.Visible = false;
-            pnlAddStock.Visible = false;
             pnlAddOrDepleteFromStock.Visible = false;
-            pnlLookupStock.Visible = true;
-            ClearError();
+            pnlLookupStock.Visible = true;            
         }
 
         private void showEditStock()
         {
-            pnlAddNewStock.Visible = false;
-            pnlAddStock.Visible = false;
             pnlLookupStock.Visible = false;
             pnlAddOrDepleteFromStock.Visible = true;
         }
@@ -87,18 +58,18 @@ namespace Final_Project
             }
             catch (Exception ex)
             {
-                ShowErrorStockLevel("That is not a valid number");
+                ShowMessageStockLevel("That is not a valid number");
             }
 
             if (lookupStock.stockLevel + amountToAdd <= lookupStock.maximumLevel)
             {
                 lookupStock.stockLevel += amountToAdd;
                 StockDal.UpdateStockByStockId(lookupStock);
-                MessageBox.Show($"Successfully added {amountToAdd} to stock level!", "Successful");
+                ShowMessageStockLevel($"Successfully added {amountToAdd} to stock level!");
             }
             else if (lookupStock.stockLevel == lookupStock.maximumLevel)
             {
-                ShowErrorStockLevel("This item of stock's storage is full. 0 items added.");
+                ShowMessageStockLevel("This item of stock's storage is full. 0 items added.");
             }
             else
             {
@@ -106,10 +77,9 @@ namespace Final_Project
 
                 StockDal.UpdateStockByStockId(lookupStock);
 
-                ShowErrorStockLevel($"The amount you are attempting to add exceeds the maximum capacity for this stock item. " +
+                ShowMessageStockLevel($"The amount you are attempting to add exceeds the maximum capacity for this stock item. " +
                     $"{lookupStock.maximumLevel - originalStockLevel} items have been added to stock. This stock is now full.");
             }
-            ClearError();
         }
 
         private void btnRemoveFromStock_Click(object sender, EventArgs e)
@@ -123,18 +93,22 @@ namespace Final_Project
             }
             catch (Exception ex)
             {
-                ShowErrorStockLevel("That is not a valid number");
+                ShowMessageStockLevel("That is not a valid number.");
+            }
+            if(amountToRemove <= 0)
+            {
+                ShowMessageStockLevel("That is not a valid number.");
             }
 
             if (lookupStock.stockLevel - amountToRemove >= 0)
             {
                 lookupStock.stockLevel -= amountToRemove;
                 StockDal.UpdateStockByStockId(lookupStock);
-                MessageBox.Show($"Successfully removed {amountToRemove} to stock level!", "Successful");
+                ShowMessageStockLevel($"Successfully removed {amountToRemove} to stock level!");
             }
             else if (lookupStock.stockLevel == 0)
             {
-                ShowErrorStockLevel("This item of stock's storage is empty. 0 items removed.");
+                ShowMessageStockLevel("This item of stock's storage is empty. 0 items removed.");
             }
             else
             {
@@ -142,13 +116,12 @@ namespace Final_Project
 
                 StockDal.UpdateStockByStockId(lookupStock);
 
-                ShowErrorStockLevel($"The amount you are attempting to remove leaves less than 0 remaining for this stock item. " +
+                ShowMessageStockLevel($"The amount you are attempting to remove leaves less than 0 remaining for this stock item. " +
                     $"{lookupStock.maximumLevel - originalStockLevel} items have been removed to stock. This stock is now empty.");
             }
-            ClearError();
         }
 
-        private void ShowErrorStockLevel(string errorMessage)
+        private void ShowMessageStockLevel(string errorMessage)
         {
             // shows an error indicating which boxes need to be filled in to be valid
             lblErrorStockLevel.Text = errorMessage;
@@ -169,9 +142,13 @@ namespace Final_Project
             lblErrorStockLookup.Text = "";
             lblErrorStockLookup.Visible = false;
             txtBoxAmountOfStockToChange.Text = "";
+            txtBoxEnterStockId.Text = "";
         }
 
-        
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            ClearError();
+            showStockSearch();
+        }
     }
-
 }

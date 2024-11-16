@@ -34,22 +34,15 @@
             lblEnterStockId = new Label();
             txtBoxEnterStockId = new TextBox();
             lblTitle = new Label();
-            pnlAddNewStock = new Panel();
-            txtBoxNewStockName = new TextBox();
-            txtBoxNewMinimumLevel = new TextBox();
-            txtBoxNewStockPrice = new TextBox();
-            txtBoxNewMaximumLevel = new TextBox();
-            txtBoxNewStockDescription = new TextBox();
-            lblAddNewStock = new Label();
-            btnAddNewStock = new Button();
             pnlAddOrDepleteFromStock = new Panel();
+            lblStockLevelToEdit = new Label();
+            btnBack = new Button();
             lblErrorStockLevel = new Label();
             txtBoxAmountOfStockToChange = new TextBox();
             btnRemoveFromStock = new Button();
             label1 = new Label();
             btnAddToStock = new Button();
             pnlLookupStock.SuspendLayout();
-            pnlAddNewStock.SuspendLayout();
             pnlAddOrDepleteFromStock.SuspendLayout();
             SuspendLayout();
             // 
@@ -83,9 +76,10 @@
             // btnSearch
             // 
             btnSearch.Anchor = AnchorStyles.None;
-            btnSearch.Location = new Point(319, 357);
+            btnSearch.Font = new Font("Segoe UI", 12F);
+            btnSearch.Location = new Point(284, 350);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(151, 42);
+            btnSearch.Size = new Size(220, 50);
             btnSearch.TabIndex = 3;
             btnSearch.Text = "Search  🔎";
             btnSearch.UseVisualStyleBackColor = true;
@@ -125,102 +119,44 @@
             lblTitle.TabIndex = 0;
             lblTitle.Text = "Stock Management";
             // 
-            // pnlAddNewStock
-            // 
-            pnlAddNewStock.BackColor = Color.SteelBlue;
-            pnlAddNewStock.Controls.Add(txtBoxNewStockName);
-            pnlAddNewStock.Controls.Add(txtBoxNewMinimumLevel);
-            pnlAddNewStock.Controls.Add(txtBoxNewStockPrice);
-            pnlAddNewStock.Controls.Add(txtBoxNewMaximumLevel);
-            pnlAddNewStock.Controls.Add(txtBoxNewStockDescription);
-            pnlAddNewStock.Controls.Add(lblAddNewStock);
-            pnlAddNewStock.Controls.Add(btnAddNewStock);
-            pnlAddNewStock.Dock = DockStyle.Top;
-            pnlAddNewStock.Location = new Point(0, 560);
-            pnlAddNewStock.Name = "pnlAddNewStock";
-            pnlAddNewStock.Size = new Size(783, 560);
-            pnlAddNewStock.TabIndex = 2;
-            // 
-            // txtBoxNewStockName
-            // 
-            txtBoxNewStockName.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtBoxNewStockName.Location = new Point(276, 112);
-            txtBoxNewStockName.Name = "txtBoxNewStockName";
-            txtBoxNewStockName.PlaceholderText = "Stock Name";
-            txtBoxNewStockName.Size = new Size(221, 33);
-            txtBoxNewStockName.TabIndex = 12;
-            // 
-            // txtBoxNewMinimumLevel
-            // 
-            txtBoxNewMinimumLevel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtBoxNewMinimumLevel.Location = new Point(410, 224);
-            txtBoxNewMinimumLevel.Name = "txtBoxNewMinimumLevel";
-            txtBoxNewMinimumLevel.PlaceholderText = "Minimum Level";
-            txtBoxNewMinimumLevel.Size = new Size(221, 33);
-            txtBoxNewMinimumLevel.TabIndex = 6;
-            // 
-            // txtBoxNewStockPrice
-            // 
-            txtBoxNewStockPrice.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtBoxNewStockPrice.Location = new Point(410, 168);
-            txtBoxNewStockPrice.Name = "txtBoxNewStockPrice";
-            txtBoxNewStockPrice.PlaceholderText = "Price";
-            txtBoxNewStockPrice.Size = new Size(221, 33);
-            txtBoxNewStockPrice.TabIndex = 5;
-            // 
-            // txtBoxNewMaximumLevel
-            // 
-            txtBoxNewMaximumLevel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtBoxNewMaximumLevel.Location = new Point(152, 224);
-            txtBoxNewMaximumLevel.Name = "txtBoxNewMaximumLevel";
-            txtBoxNewMaximumLevel.PlaceholderText = "Maximum Level";
-            txtBoxNewMaximumLevel.Size = new Size(221, 33);
-            txtBoxNewMaximumLevel.TabIndex = 4;
-            // 
-            // txtBoxNewStockDescription
-            // 
-            txtBoxNewStockDescription.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtBoxNewStockDescription.Location = new Point(152, 168);
-            txtBoxNewStockDescription.Name = "txtBoxNewStockDescription";
-            txtBoxNewStockDescription.PlaceholderText = "Stock Description";
-            txtBoxNewStockDescription.Size = new Size(221, 33);
-            txtBoxNewStockDescription.TabIndex = 2;
-            // 
-            // lblAddNewStock
-            // 
-            lblAddNewStock.AutoSize = true;
-            lblAddNewStock.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblAddNewStock.ForeColor = SystemColors.Control;
-            lblAddNewStock.Location = new Point(279, 32);
-            lblAddNewStock.Name = "lblAddNewStock";
-            lblAddNewStock.Size = new Size(176, 32);
-            lblAddNewStock.TabIndex = 1;
-            lblAddNewStock.Text = "Add New Stock";
-            // 
-            // btnAddNewStock
-            // 
-            btnAddNewStock.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnAddNewStock.Location = new Point(279, 321);
-            btnAddNewStock.Name = "btnAddNewStock";
-            btnAddNewStock.Size = new Size(220, 50);
-            btnAddNewStock.TabIndex = 0;
-            btnAddNewStock.Text = "Add New Stock";
-            btnAddNewStock.UseVisualStyleBackColor = true;
-            btnAddNewStock.Click += btnAddNewStock_Click;
-            // 
             // pnlAddOrDepleteFromStock
             // 
             pnlAddOrDepleteFromStock.BackColor = Color.DarkCyan;
+            pnlAddOrDepleteFromStock.Controls.Add(lblStockLevelToEdit);
+            pnlAddOrDepleteFromStock.Controls.Add(btnBack);
             pnlAddOrDepleteFromStock.Controls.Add(lblErrorStockLevel);
             pnlAddOrDepleteFromStock.Controls.Add(txtBoxAmountOfStockToChange);
             pnlAddOrDepleteFromStock.Controls.Add(btnRemoveFromStock);
             pnlAddOrDepleteFromStock.Controls.Add(label1);
             pnlAddOrDepleteFromStock.Controls.Add(btnAddToStock);
             pnlAddOrDepleteFromStock.Dock = DockStyle.Top;
-            pnlAddOrDepleteFromStock.Location = new Point(0, 1120);
+            pnlAddOrDepleteFromStock.Location = new Point(0, 560);
             pnlAddOrDepleteFromStock.Name = "pnlAddOrDepleteFromStock";
             pnlAddOrDepleteFromStock.Size = new Size(783, 560);
             pnlAddOrDepleteFromStock.TabIndex = 3;
+            // 
+            // lblStockLevelToEdit
+            // 
+            lblStockLevelToEdit.Anchor = AnchorStyles.None;
+            lblStockLevelToEdit.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblStockLevelToEdit.ForeColor = SystemColors.Control;
+            lblStockLevelToEdit.Location = new Point(152, 114);
+            lblStockLevelToEdit.Name = "lblStockLevelToEdit";
+            lblStockLevelToEdit.Size = new Size(479, 58);
+            lblStockLevelToEdit.TabIndex = 10;
+            lblStockLevelToEdit.Text = "Stock name goes here";
+            lblStockLevelToEdit.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // btnBack
+            // 
+            btnBack.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnBack.Location = new Point(12, 16);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(90, 50);
+            btnBack.TabIndex = 9;
+            btnBack.Text = "Back";
+            btnBack.UseVisualStyleBackColor = true;
+            btnBack.Click += btnBack_Click;
             // 
             // lblErrorStockLevel
             // 
@@ -263,7 +199,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.Control;
-            label1.Location = new Point(275, 107);
+            label1.Location = new Point(272, 68);
             label1.Name = "label1";
             label1.Size = new Size(232, 32);
             label1.TabIndex = 2;
@@ -285,16 +221,13 @@
             // 
             AutoScaleMode = AutoScaleMode.None;
             AutoScroll = true;
-            ClientSize = new Size(800, 513);
+            ClientSize = new Size(800, 521);
             Controls.Add(pnlAddOrDepleteFromStock);
-            Controls.Add(pnlAddNewStock);
             Controls.Add(pnlLookupStock);
             Name = "frmStockManagement";
             Text = "Stock Management";
             pnlLookupStock.ResumeLayout(false);
             pnlLookupStock.PerformLayout();
-            pnlAddNewStock.ResumeLayout(false);
-            pnlAddNewStock.PerformLayout();
             pnlAddOrDepleteFromStock.ResumeLayout(false);
             pnlAddOrDepleteFromStock.PerformLayout();
             ResumeLayout(false);
@@ -306,14 +239,6 @@
         private Button btnSearch;
         private Label lblEnterStockId;
         private TextBox txtBoxEnterStockId;
-        private Panel pnlAddNewStock;
-        private TextBox txtBoxNewStockDescription;
-        private Label lblAddNewStock;
-        private Button btnAddNewStock;
-        private TextBox txtBoxNewMinimumLevel;
-        private TextBox txtBoxNewStockPrice;
-        private TextBox txtBoxNewMaximumLevel;
-        private TextBox txtBoxNewStockName;
         private Panel pnlAddOrDepleteFromStock;
         private Button btnRemoveFromStock;
         private Label label1;
@@ -321,5 +246,7 @@
         private TextBox txtBoxAmountOfStockToChange;
         private Label lblErrorStockLevel;
         private Label lblErrorStockLookup;
+        private Button btnBack;
+        private Label lblStockLevelToEdit;
     }
 }

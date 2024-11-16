@@ -30,12 +30,12 @@
         {
             pnlSideBar = new Panel();
             pnlStock = new Panel();
+            btnAddNewStock = new Button();
             btnEditStockLevels = new Button();
             btnViewStock = new Button();
             btnStock = new Button();
             pnlAvatar = new Panel();
             pnlFormContainer = new Panel();
-            btnAddNewStock = new Button();
             pnlSideBar.SuspendLayout();
             pnlStock.SuspendLayout();
             SuspendLayout();
@@ -64,13 +64,29 @@
             pnlStock.Size = new Size(220, 150);
             pnlStock.TabIndex = 3;
             // 
+            // btnAddNewStock
+            // 
+            btnAddNewStock.BackColor = Color.LightSeaGreen;
+            btnAddNewStock.Dock = DockStyle.Top;
+            btnAddNewStock.FlatAppearance.BorderSize = 0;
+            btnAddNewStock.FlatStyle = FlatStyle.Flat;
+            btnAddNewStock.Font = new Font("Segoe UI", 12F);
+            btnAddNewStock.ForeColor = SystemColors.Control;
+            btnAddNewStock.Location = new Point(0, 100);
+            btnAddNewStock.Name = "btnAddNewStock";
+            btnAddNewStock.Size = new Size(220, 50);
+            btnAddNewStock.TabIndex = 6;
+            btnAddNewStock.Text = "Add New Stock";
+            btnAddNewStock.UseVisualStyleBackColor = false;
+            btnAddNewStock.Click += btnAddNewStock_Click;
+            // 
             // btnEditStockLevels
             // 
             btnEditStockLevels.BackColor = Color.LightSeaGreen;
             btnEditStockLevels.Dock = DockStyle.Top;
             btnEditStockLevels.FlatAppearance.BorderSize = 0;
             btnEditStockLevels.FlatStyle = FlatStyle.Flat;
-            btnEditStockLevels.Font = new Font("Segoe UI", 14.5F);
+            btnEditStockLevels.Font = new Font("Segoe UI", 12F);
             btnEditStockLevels.ForeColor = SystemColors.Control;
             btnEditStockLevels.Location = new Point(0, 50);
             btnEditStockLevels.Name = "btnEditStockLevels";
@@ -86,7 +102,7 @@
             btnViewStock.Dock = DockStyle.Top;
             btnViewStock.FlatAppearance.BorderSize = 0;
             btnViewStock.FlatStyle = FlatStyle.Flat;
-            btnViewStock.Font = new Font("Segoe UI", 14.5F);
+            btnViewStock.Font = new Font("Segoe UI", 12F);
             btnViewStock.ForeColor = SystemColors.Control;
             btnViewStock.Location = new Point(0, 0);
             btnViewStock.Name = "btnViewStock";
@@ -101,7 +117,7 @@
             btnStock.Dock = DockStyle.Top;
             btnStock.FlatAppearance.BorderSize = 0;
             btnStock.FlatStyle = FlatStyle.Flat;
-            btnStock.Font = new Font("Segoe UI", 14.5F);
+            btnStock.Font = new Font("Segoe UI", 12F);
             btnStock.ForeColor = SystemColors.Control;
             btnStock.Location = new Point(0, 125);
             btnStock.Name = "btnStock";
@@ -127,22 +143,6 @@
             pnlFormContainer.Name = "pnlFormContainer";
             pnlFormContainer.Size = new Size(750, 560);
             pnlFormContainer.TabIndex = 2;
-            // 
-            // btnAddNewStock
-            // 
-            btnAddNewStock.BackColor = Color.LightSeaGreen;
-            btnAddNewStock.Dock = DockStyle.Top;
-            btnAddNewStock.FlatAppearance.BorderSize = 0;
-            btnAddNewStock.FlatStyle = FlatStyle.Flat;
-            btnAddNewStock.Font = new Font("Segoe UI", 14.5F);
-            btnAddNewStock.ForeColor = SystemColors.Control;
-            btnAddNewStock.Location = new Point(0, 100);
-            btnAddNewStock.Name = "btnAddNewStock";
-            btnAddNewStock.Size = new Size(220, 50);
-            btnAddNewStock.TabIndex = 6;
-            btnAddNewStock.Text = "Add New Stock";
-            btnAddNewStock.UseVisualStyleBackColor = false;
-            btnAddNewStock.Click += btnAddNewStock_Click;
             // 
             // frmMainScreen
             // 
