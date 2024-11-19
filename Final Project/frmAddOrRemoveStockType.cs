@@ -16,73 +16,102 @@ namespace Final_Project
     {
         private System.Timers.Timer timer;
         private int count = 0;
-        public frmAddOrRemoveStockType()
+        public frmAddOrRemoveStockType(string panelToShow)
         {
             InitializeComponent();
-            ShowStockDetails();
-            lblError.Visible = false;
+
+            if(panelToShow == "Add Stock")
+            {
+                ShowStockDetails();
+                lblError.Visible = false;
+            }
+            else if(panelToShow == "Remove Stock")
+            {
+                ShowRemoveStock();
+                lblErrorRemoveStock.Visible = false;
+            }
             lblSuccess.Visible = false;
+
             timer = new System.Timers.Timer(1000);
             timer.Elapsed += OnTimedEvent;
         }
-        Stock newStock = new Stock();
+        Stock stockToAdd = new Stock();
+        Stock stockToRemove = new Stock();
 
         private void btnAddNewStock_Click(object sender, EventArgs e)
         {
             try
             {
-                newStock.stockName = txtBoxNewStockName.Text;
-                newStock.stockDescription = txtBoxNewStockDescription.Text;
-                newStock.price = Convert.ToDecimal(txtBoxNewStockPrice.Text);
-                newStock.maximumLevel = Convert.ToInt32(txtBoxNewMaximumLevel.Text);
-                newStock.minimumLevel = Convert.ToInt32(txtBoxNewMinimumLevel.Text);
+                stockToAdd.stockName = txtBoxNewStockName.Text;
+                stockToAdd.stockDescription = txtBoxNewStockDescription.Text;
+                stockToAdd.price = Convert.ToDecimal(txtBoxNewStockPrice.Text);
+                stockToAdd.maximumLevel = Convert.ToInt32(txtBoxNewMaximumLevel.Text);
+                stockToAdd.minimumLevel = Convert.ToInt32(txtBoxNewMinimumLevel.Text);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 lblError.Visible = true;
                 lblError.Text = "Insufficient details have been provided, please try again.";
                 return;
-            }            
+            }
 
             ShowConfirmation();
             lblStockTo.Text = "Stock To Add:";
-            lblStockName.Text = $"Stock Name: {newStock.stockName}";
-            lblStockDescription.Text = $"Stock Description: {newStock.stockDescription}";
-            lblPrice.Text = $"Price: {newStock.price}";
-            lblMaximumLevel.Text = $"Maximum Level: {newStock.maximumLevel}";
-            lblMinimumLevel.Text = $"Minimum Level: {newStock.minimumLevel}";
+            lblStockName.Text = $"Stock Name: {stockToAdd.stockName}";
+            lblStockDescription.Text = $"Stock Description: {stockToAdd.stockDescription}";
+            lblPrice.Text = $"Price: {stockToAdd.price}";
+            lblMaximumLevel.Text = $"Maximum Level: {stockToAdd.maximumLevel}";
+            lblMinimumLevel.Text = $"Minimum Level: {stockToAdd.minimumLevel}";
         }
 
         private void ShowConfirmation()
         {
             pnlConfirmation.Visible = true;
             pnlAddNewStock.Visible = false;
+            pnlRemoveStock.Visible = false;
         }
 
         private void ShowStockDetails()
         {
             pnlAddNewStock.Visible = true;
             pnlConfirmation.Visible = false;
+            pnlRemoveStock.Visible = false;
         }
-               
+
+        private void ShowRemoveStock()
+        {
+            pnlRemoveStock.Visible = true;
+            pnlAddNewStock.Visible = false;
+            pnlConfirmation.Visible = false;
+        }
+
         private void btnConfirmed_Click(object sender, EventArgs e)
         {
             count = 0;
             timer.Start();
             lblSuccess.Visible = true;
-            lblSuccess.Text = "New stock added successfully! Returning to previous screen in 3 seconds...";
-            StockDal.AddNewStock(newStock);           
+
+            if (stockToAdd.stockName != null)
+            {
+                lblSuccess.Text = "New stock added successfully! Returning to previous screen in 3 seconds...";
+                StockDal.AddNewStock(stockToAdd);
+            }
+            else if (stockToRemove.stockName != null)
+            {
+                lblSuccess.Text = "Stock removed successfully! Returning to previous screen in 3 seconds...";
+                StockDal.RemoveStock(stockToRemove);
+            }            
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
             ShowStockDetails();
             lblError.Visible = false;
-            txtBoxNewStockName.Text = newStock.stockName;
-            txtBoxNewStockDescription.Text = newStock.stockDescription;
-            txtBoxNewStockPrice.Text = newStock.price.ToString();
-            txtBoxNewMaximumLevel.Text = newStock.maximumLevel.ToString();
-            txtBoxNewMinimumLevel.Text = newStock.minimumLevel.ToString();
+            txtBoxNewStockName.Text = stockToAdd.stockName;
+            txtBoxNewStockDescription.Text = stockToAdd.stockDescription;
+            txtBoxNewStockPrice.Text = stockToAdd.price.ToString();
+            txtBoxNewMaximumLevel.Text = stockToAdd.maximumLevel.ToString();
+            txtBoxNewMinimumLevel.Text = stockToAdd.minimumLevel.ToString();
         }
 
         private void OnTimedEvent(Object source, ElapsedEventArgs e)
@@ -99,9 +128,46 @@ namespace Final_Project
                     txtBoxNewStockPrice.Text = "";
                     txtBoxNewMaximumLevel.Text = "";
                     txtBoxNewMinimumLevel.Text = "";
-                    pnlAddNewStock.Visible = true;
+                    if (stockToAdd != null)
+                    {
+                        pnlAddNewStock.Visible = true;
+                    }
+                    else if (stockToRemove != null) 
+                    {
+                        pnlRemoveStock.Visible = true;
+                    }
+                    
                     pnlConfirmation.Visible = false;
                 });
+            }
+        }
+
+        private void btnRemoveStock_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                stockToRemove.stockName = txtBoxRemoveStockName.Text;
+            }
+            catch (Exception ex) 
+            {
+                lblErrorRemoveStock.Visible = true;
+                lblErrorRemoveStock.Text = "There is no stock with that name, please try again...";
+            }
+
+            List<Stock> allStock = StockDal.GetAllStock();
+            foreach (Stock stock in allStock) 
+            {
+                if(stock.stockName == stockToRemove.stockName)
+                {
+                    stockToRemove = stock;
+                    ShowConfirmation();
+                    lblStockTo.Text = "Stock To Remove:";
+                    lblStockName.Text = $"Stock Name: {stockToRemove.stockName}";
+                    lblStockDescription.Text = $"Stock Description: {stockToRemove.stockDescription}";
+                    lblPrice.Text = $"Price: {stockToRemove.price}";
+                    lblMaximumLevel.Text = $"Maximum Level: {stockToRemove.maximumLevel}";
+                    lblMinimumLevel.Text = $"Minimum Level: {stockToRemove.minimumLevel}";
+                }
             }
         }
     }

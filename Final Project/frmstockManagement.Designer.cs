@@ -57,7 +57,7 @@
             pnlLookupStock.Dock = DockStyle.Top;
             pnlLookupStock.Location = new Point(0, 0);
             pnlLookupStock.Name = "pnlLookupStock";
-            pnlLookupStock.Size = new Size(783, 560);
+            pnlLookupStock.Size = new Size(779, 560);
             pnlLookupStock.TabIndex = 1;
             // 
             // lblErrorStockLookup
@@ -65,7 +65,7 @@
             lblErrorStockLookup.Anchor = AnchorStyles.None;
             lblErrorStockLookup.Font = new Font("Segoe UI", 16F);
             lblErrorStockLookup.ForeColor = Color.Coral;
-            lblErrorStockLookup.Location = new Point(59, 416);
+            lblErrorStockLookup.Location = new Point(57, 348);
             lblErrorStockLookup.Name = "lblErrorStockLookup";
             lblErrorStockLookup.Size = new Size(664, 119);
             lblErrorStockLookup.TabIndex = 9;
@@ -77,7 +77,7 @@
             // 
             btnSearch.Anchor = AnchorStyles.None;
             btnSearch.Font = new Font("Segoe UI", 12F);
-            btnSearch.Location = new Point(284, 350);
+            btnSearch.Location = new Point(279, 282);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(220, 50);
             btnSearch.TabIndex = 3;
@@ -91,9 +91,9 @@
             lblEnterStockId.AutoSize = true;
             lblEnterStockId.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblEnterStockId.ForeColor = SystemColors.Control;
-            lblEnterStockId.Location = new Point(279, 243);
+            lblEnterStockId.Location = new Point(247, 175);
             lblEnterStockId.Name = "lblEnterStockId";
-            lblEnterStockId.Size = new Size(225, 21);
+            lblEnterStockId.Size = new Size(285, 28);
             lblEnterStockId.TabIndex = 2;
             lblEnterStockId.Text = "Enter a stock id to view options";
             // 
@@ -101,10 +101,10 @@
             // 
             txtBoxEnterStockId.Anchor = AnchorStyles.None;
             txtBoxEnterStockId.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtBoxEnterStockId.Location = new Point(249, 296);
+            txtBoxEnterStockId.Location = new Point(247, 228);
             txtBoxEnterStockId.Name = "txtBoxEnterStockId";
             txtBoxEnterStockId.PlaceholderText = "Enter Stock Id:";
-            txtBoxEnterStockId.Size = new Size(285, 32);
+            txtBoxEnterStockId.Size = new Size(285, 38);
             txtBoxEnterStockId.TabIndex = 1;
             // 
             // lblTitle
@@ -113,9 +113,9 @@
             lblTitle.AutoSize = true;
             lblTitle.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblTitle.ForeColor = SystemColors.Control;
-            lblTitle.Location = new Point(282, 161);
+            lblTitle.Location = new Point(252, 93);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(221, 32);
+            lblTitle.Size = new Size(275, 41);
             lblTitle.TabIndex = 0;
             lblTitle.Text = "Stock Management";
             // 
@@ -132,7 +132,7 @@
             pnlAddOrDepleteFromStock.Dock = DockStyle.Top;
             pnlAddOrDepleteFromStock.Location = new Point(0, 560);
             pnlAddOrDepleteFromStock.Name = "pnlAddOrDepleteFromStock";
-            pnlAddOrDepleteFromStock.Size = new Size(783, 560);
+            pnlAddOrDepleteFromStock.Size = new Size(779, 560);
             pnlAddOrDepleteFromStock.TabIndex = 3;
             // 
             // lblStockLevelToEdit
@@ -140,9 +140,9 @@
             lblStockLevelToEdit.Anchor = AnchorStyles.None;
             lblStockLevelToEdit.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblStockLevelToEdit.ForeColor = SystemColors.Control;
-            lblStockLevelToEdit.Location = new Point(152, 114);
+            lblStockLevelToEdit.Location = new Point(51, 114);
             lblStockLevelToEdit.Name = "lblStockLevelToEdit";
-            lblStockLevelToEdit.Size = new Size(479, 58);
+            lblStockLevelToEdit.Size = new Size(676, 73);
             lblStockLevelToEdit.TabIndex = 10;
             lblStockLevelToEdit.Text = "Stock name goes here";
             lblStockLevelToEdit.TextAlign = ContentAlignment.TopCenter;
@@ -163,7 +163,7 @@
             lblErrorStockLevel.Anchor = AnchorStyles.None;
             lblErrorStockLevel.Font = new Font("Segoe UI", 16F);
             lblErrorStockLevel.ForeColor = Color.Coral;
-            lblErrorStockLevel.Location = new Point(59, 253);
+            lblErrorStockLevel.Location = new Point(57, 253);
             lblErrorStockLevel.Name = "lblErrorStockLevel";
             lblErrorStockLevel.Size = new Size(664, 119);
             lblErrorStockLevel.TabIndex = 8;
@@ -175,17 +175,17 @@
             // 
             txtBoxAmountOfStockToChange.Anchor = AnchorStyles.None;
             txtBoxAmountOfStockToChange.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtBoxAmountOfStockToChange.Location = new Point(281, 184);
+            txtBoxAmountOfStockToChange.Location = new Point(279, 207);
             txtBoxAmountOfStockToChange.Name = "txtBoxAmountOfStockToChange";
             txtBoxAmountOfStockToChange.PlaceholderText = "Enter Amount:";
-            txtBoxAmountOfStockToChange.Size = new Size(220, 32);
+            txtBoxAmountOfStockToChange.Size = new Size(220, 38);
             txtBoxAmountOfStockToChange.TabIndex = 4;
             // 
             // btnRemoveFromStock
             // 
             btnRemoveFromStock.Anchor = AnchorStyles.None;
             btnRemoveFromStock.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnRemoveFromStock.Location = new Point(423, 375);
+            btnRemoveFromStock.Location = new Point(421, 375);
             btnRemoveFromStock.Name = "btnRemoveFromStock";
             btnRemoveFromStock.Size = new Size(220, 50);
             btnRemoveFromStock.TabIndex = 3;
@@ -199,9 +199,9 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.Control;
-            label1.Location = new Point(272, 68);
+            label1.Location = new Point(245, 68);
             label1.Name = "label1";
-            label1.Size = new Size(232, 32);
+            label1.Size = new Size(288, 41);
             label1.TabIndex = 2;
             label1.Text = "Change Stock Levels";
             // 
@@ -209,7 +209,7 @@
             // 
             btnAddToStock.Anchor = AnchorStyles.None;
             btnAddToStock.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnAddToStock.Location = new Point(139, 375);
+            btnAddToStock.Location = new Point(137, 375);
             btnAddToStock.Name = "btnAddToStock";
             btnAddToStock.Size = new Size(220, 50);
             btnAddToStock.TabIndex = 0;

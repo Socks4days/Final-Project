@@ -48,8 +48,14 @@
             lblPrice = new Label();
             lblConfirmation = new Label();
             btnConfirmed = new Button();
+            pnlRemoveStock = new Panel();
+            lblErrorRemoveStock = new Label();
+            txtBoxRemoveStockName = new TextBox();
+            lblRemoveStock = new Label();
+            btnRemoveStock = new Button();
             pnlAddNewStock.SuspendLayout();
             pnlConfirmation.SuspendLayout();
+            pnlRemoveStock.SuspendLayout();
             SuspendLayout();
             // 
             // pnlAddNewStock
@@ -66,7 +72,7 @@
             pnlAddNewStock.Dock = DockStyle.Top;
             pnlAddNewStock.Location = new Point(0, 0);
             pnlAddNewStock.Name = "pnlAddNewStock";
-            pnlAddNewStock.Size = new Size(783, 560);
+            pnlAddNewStock.Size = new Size(779, 560);
             pnlAddNewStock.TabIndex = 3;
             // 
             // lblError
@@ -86,8 +92,8 @@
             txtBoxNewStockName.Location = new Point(281, 112);
             txtBoxNewStockName.Name = "txtBoxNewStockName";
             txtBoxNewStockName.PlaceholderText = "Stock Name";
-            txtBoxNewStockName.Size = new Size(221, 33);
-            txtBoxNewStockName.TabIndex = 12;
+            txtBoxNewStockName.Size = new Size(221, 39);
+            txtBoxNewStockName.TabIndex = 0;
             // 
             // txtBoxNewMinimumLevel
             // 
@@ -95,8 +101,8 @@
             txtBoxNewMinimumLevel.Location = new Point(410, 224);
             txtBoxNewMinimumLevel.Name = "txtBoxNewMinimumLevel";
             txtBoxNewMinimumLevel.PlaceholderText = "Minimum Level";
-            txtBoxNewMinimumLevel.Size = new Size(221, 33);
-            txtBoxNewMinimumLevel.TabIndex = 6;
+            txtBoxNewMinimumLevel.Size = new Size(221, 39);
+            txtBoxNewMinimumLevel.TabIndex = 4;
             // 
             // txtBoxNewStockPrice
             // 
@@ -104,8 +110,8 @@
             txtBoxNewStockPrice.Location = new Point(410, 168);
             txtBoxNewStockPrice.Name = "txtBoxNewStockPrice";
             txtBoxNewStockPrice.PlaceholderText = "Price";
-            txtBoxNewStockPrice.Size = new Size(221, 33);
-            txtBoxNewStockPrice.TabIndex = 5;
+            txtBoxNewStockPrice.Size = new Size(221, 39);
+            txtBoxNewStockPrice.TabIndex = 2;
             // 
             // txtBoxNewMaximumLevel
             // 
@@ -113,8 +119,8 @@
             txtBoxNewMaximumLevel.Location = new Point(152, 224);
             txtBoxNewMaximumLevel.Name = "txtBoxNewMaximumLevel";
             txtBoxNewMaximumLevel.PlaceholderText = "Maximum Level";
-            txtBoxNewMaximumLevel.Size = new Size(221, 33);
-            txtBoxNewMaximumLevel.TabIndex = 4;
+            txtBoxNewMaximumLevel.Size = new Size(221, 39);
+            txtBoxNewMaximumLevel.TabIndex = 3;
             // 
             // txtBoxNewStockDescription
             // 
@@ -122,17 +128,17 @@
             txtBoxNewStockDescription.Location = new Point(152, 168);
             txtBoxNewStockDescription.Name = "txtBoxNewStockDescription";
             txtBoxNewStockDescription.PlaceholderText = "Stock Description";
-            txtBoxNewStockDescription.Size = new Size(221, 33);
-            txtBoxNewStockDescription.TabIndex = 2;
+            txtBoxNewStockDescription.Size = new Size(221, 39);
+            txtBoxNewStockDescription.TabIndex = 1;
             // 
             // lblAddNewStock
             // 
             lblAddNewStock.AutoSize = true;
             lblAddNewStock.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblAddNewStock.ForeColor = SystemColors.Control;
-            lblAddNewStock.Location = new Point(303, 32);
+            lblAddNewStock.Location = new Point(279, 32);
             lblAddNewStock.Name = "lblAddNewStock";
-            lblAddNewStock.Size = new Size(176, 32);
+            lblAddNewStock.Size = new Size(221, 41);
             lblAddNewStock.TabIndex = 1;
             lblAddNewStock.Text = "Add New Stock";
             // 
@@ -142,7 +148,7 @@
             btnAddNewStock.Location = new Point(281, 367);
             btnAddNewStock.Name = "btnAddNewStock";
             btnAddNewStock.Size = new Size(220, 50);
-            btnAddNewStock.TabIndex = 0;
+            btnAddNewStock.TabIndex = 5;
             btnAddNewStock.Text = "Add New Stock";
             btnAddNewStock.UseVisualStyleBackColor = true;
             btnAddNewStock.Click += btnAddNewStock_Click;
@@ -163,16 +169,16 @@
             pnlConfirmation.Dock = DockStyle.Top;
             pnlConfirmation.Location = new Point(0, 560);
             pnlConfirmation.Name = "pnlConfirmation";
-            pnlConfirmation.Size = new Size(783, 560);
+            pnlConfirmation.Size = new Size(779, 560);
             pnlConfirmation.TabIndex = 4;
             // 
             // lblSuccess
             // 
             lblSuccess.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblSuccess.ForeColor = Color.Coral;
-            lblSuccess.Location = new Point(153, 488);
+            lblSuccess.Location = new Point(34, 467);
             lblSuccess.Name = "lblSuccess";
-            lblSuccess.Size = new Size(505, 63);
+            lblSuccess.Size = new Size(711, 84);
             lblSuccess.TabIndex = 14;
             lblSuccess.Text = "Success message goes here";
             lblSuccess.TextAlign = ContentAlignment.TopCenter;
@@ -180,7 +186,7 @@
             // btnReturn
             // 
             btnReturn.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnReturn.Location = new Point(153, 417);
+            btnReturn.Location = new Point(153, 397);
             btnReturn.Name = "btnReturn";
             btnReturn.Size = new Size(220, 50);
             btnReturn.TabIndex = 13;
@@ -190,11 +196,12 @@
             // 
             // lblStockTo
             // 
+            lblStockTo.AutoSize = true;
             lblStockTo.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblStockTo.ForeColor = SystemColors.Control;
-            lblStockTo.Location = new Point(166, 126);
+            lblStockTo.Location = new Point(187, 126);
             lblStockTo.Name = "lblStockTo";
-            lblStockTo.Size = new Size(179, 32);
+            lblStockTo.Size = new Size(121, 37);
             lblStockTo.TabIndex = 12;
             lblStockTo.Text = "Stock To ";
             // 
@@ -203,9 +210,9 @@
             lblStockName.AutoSize = true;
             lblStockName.Font = new Font("Segoe UI", 14.25F);
             lblStockName.ForeColor = SystemColors.Control;
-            lblStockName.Location = new Point(166, 171);
+            lblStockName.Location = new Point(187, 171);
             lblStockName.Name = "lblStockName";
-            lblStockName.Size = new Size(115, 25);
+            lblStockName.Size = new Size(147, 32);
             lblStockName.TabIndex = 11;
             lblStockName.Text = "Stock Name:";
             // 
@@ -214,9 +221,9 @@
             lblStockDescription.AutoSize = true;
             lblStockDescription.Font = new Font("Segoe UI", 14.25F);
             lblStockDescription.ForeColor = SystemColors.Control;
-            lblStockDescription.Location = new Point(166, 211);
+            lblStockDescription.Location = new Point(187, 211);
             lblStockDescription.Name = "lblStockDescription";
-            lblStockDescription.Size = new Size(161, 25);
+            lblStockDescription.Size = new Size(204, 32);
             lblStockDescription.TabIndex = 10;
             lblStockDescription.Text = "Stock Description:";
             // 
@@ -225,9 +232,9 @@
             lblMinimumLevel.AutoSize = true;
             lblMinimumLevel.Font = new Font("Segoe UI", 14.25F);
             lblMinimumLevel.ForeColor = SystemColors.Control;
-            lblMinimumLevel.Location = new Point(166, 331);
+            lblMinimumLevel.Location = new Point(187, 331);
             lblMinimumLevel.Name = "lblMinimumLevel";
-            lblMinimumLevel.Size = new Size(145, 25);
+            lblMinimumLevel.Size = new Size(185, 32);
             lblMinimumLevel.TabIndex = 9;
             lblMinimumLevel.Text = "Minimum Level:";
             // 
@@ -236,9 +243,9 @@
             lblMaximumLevel.AutoSize = true;
             lblMaximumLevel.Font = new Font("Segoe UI", 14.25F);
             lblMaximumLevel.ForeColor = SystemColors.Control;
-            lblMaximumLevel.Location = new Point(166, 291);
+            lblMaximumLevel.Location = new Point(187, 291);
             lblMaximumLevel.Name = "lblMaximumLevel";
-            lblMaximumLevel.Size = new Size(148, 25);
+            lblMaximumLevel.Size = new Size(188, 32);
             lblMaximumLevel.TabIndex = 8;
             lblMaximumLevel.Text = "Maximum Level:";
             // 
@@ -247,9 +254,9 @@
             lblPrice.AutoSize = true;
             lblPrice.Font = new Font("Segoe UI", 14.25F);
             lblPrice.ForeColor = SystemColors.Control;
-            lblPrice.Location = new Point(166, 251);
+            lblPrice.Location = new Point(187, 251);
             lblPrice.Name = "lblPrice";
-            lblPrice.Size = new Size(58, 25);
+            lblPrice.Size = new Size(70, 32);
             lblPrice.TabIndex = 7;
             lblPrice.Text = "Price:";
             // 
@@ -258,16 +265,16 @@
             lblConfirmation.AutoSize = true;
             lblConfirmation.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblConfirmation.ForeColor = SystemColors.Control;
-            lblConfirmation.Location = new Point(166, 57);
+            lblConfirmation.Location = new Point(110, 57);
             lblConfirmation.Name = "lblConfirmation";
-            lblConfirmation.Size = new Size(451, 32);
+            lblConfirmation.Size = new Size(559, 41);
             lblConfirmation.TabIndex = 5;
             lblConfirmation.Text = "Please Confirm Details Below Are Correct";
             // 
             // btnConfirmed
             // 
             btnConfirmed.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnConfirmed.Location = new Point(438, 417);
+            btnConfirmed.Location = new Point(438, 397);
             btnConfirmed.Name = "btnConfirmed";
             btnConfirmed.Size = new Size(220, 50);
             btnConfirmed.TabIndex = 6;
@@ -275,11 +282,67 @@
             btnConfirmed.UseVisualStyleBackColor = true;
             btnConfirmed.Click += btnConfirmed_Click;
             // 
+            // pnlRemoveStock
+            // 
+            pnlRemoveStock.BackColor = Color.DarkCyan;
+            pnlRemoveStock.Controls.Add(lblErrorRemoveStock);
+            pnlRemoveStock.Controls.Add(txtBoxRemoveStockName);
+            pnlRemoveStock.Controls.Add(lblRemoveStock);
+            pnlRemoveStock.Controls.Add(btnRemoveStock);
+            pnlRemoveStock.Dock = DockStyle.Top;
+            pnlRemoveStock.Location = new Point(0, 1120);
+            pnlRemoveStock.Name = "pnlRemoveStock";
+            pnlRemoveStock.Size = new Size(779, 560);
+            pnlRemoveStock.TabIndex = 5;
+            // 
+            // lblErrorRemoveStock
+            // 
+            lblErrorRemoveStock.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblErrorRemoveStock.ForeColor = Color.Coral;
+            lblErrorRemoveStock.Location = new Point(138, 201);
+            lblErrorRemoveStock.Name = "lblErrorRemoveStock";
+            lblErrorRemoveStock.Size = new Size(505, 61);
+            lblErrorRemoveStock.TabIndex = 15;
+            lblErrorRemoveStock.Text = "Error message goes here";
+            lblErrorRemoveStock.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // txtBoxRemoveStockName
+            // 
+            txtBoxRemoveStockName.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtBoxRemoveStockName.Location = new Point(281, 112);
+            txtBoxRemoveStockName.Name = "txtBoxRemoveStockName";
+            txtBoxRemoveStockName.PlaceholderText = "Stock Name";
+            txtBoxRemoveStockName.Size = new Size(221, 39);
+            txtBoxRemoveStockName.TabIndex = 12;
+            // 
+            // lblRemoveStock
+            // 
+            lblRemoveStock.AutoSize = true;
+            lblRemoveStock.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblRemoveStock.ForeColor = SystemColors.Control;
+            lblRemoveStock.Location = new Point(287, 36);
+            lblRemoveStock.Name = "lblRemoveStock";
+            lblRemoveStock.Size = new Size(205, 41);
+            lblRemoveStock.TabIndex = 1;
+            lblRemoveStock.Text = "Remove Stock";
+            // 
+            // btnRemoveStock
+            // 
+            btnRemoveStock.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnRemoveStock.Location = new Point(282, 324);
+            btnRemoveStock.Name = "btnRemoveStock";
+            btnRemoveStock.Size = new Size(220, 50);
+            btnRemoveStock.TabIndex = 0;
+            btnRemoveStock.Text = "Remove Stock";
+            btnRemoveStock.UseVisualStyleBackColor = true;
+            btnRemoveStock.Click += btnRemoveStock_Click;
+            // 
             // frmAddOrRemoveStockType
             // 
             AutoScaleMode = AutoScaleMode.None;
             AutoScroll = true;
             ClientSize = new Size(800, 521);
+            Controls.Add(pnlRemoveStock);
             Controls.Add(pnlConfirmation);
             Controls.Add(pnlAddNewStock);
             Name = "frmAddOrRemoveStockType";
@@ -288,6 +351,8 @@
             pnlAddNewStock.PerformLayout();
             pnlConfirmation.ResumeLayout(false);
             pnlConfirmation.PerformLayout();
+            pnlRemoveStock.ResumeLayout(false);
+            pnlRemoveStock.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -312,5 +377,10 @@
         private Button btnReturn;
         private Label lblSuccess;
         private Label lblError;
+        private Panel pnlRemoveStock;
+        private Label lblErrorRemoveStock;
+        private TextBox txtBoxRemoveStockName;
+        private Label lblRemoveStock;
+        private Button btnRemoveStock;
     }
 }

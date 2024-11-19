@@ -117,7 +117,12 @@ namespace Final_Project
 
         private void btnAddNewStock_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new frmAddOrRemoveStockType());
+            OpenChildForm(new frmAddOrRemoveStockType("Add Stock"));
+        }
+
+        private void btnRemoveStock_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmAddOrRemoveStockType("Remove Stock"));
         }
     }
 }

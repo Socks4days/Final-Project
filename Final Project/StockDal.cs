@@ -103,6 +103,30 @@ namespace Final_Project
             }
         }
 
+        public static int RemoveStock(Stock stockToRemove)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionstring))
+            {
+                connection.Open();
+
+                SqlCommand removeStockCommand = new SqlCommand();
+                removeStockCommand.Connection = connection;
+                // specifies its a stored procedure
+                removeStockCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                // name of stored procedure to execute
+                removeStockCommand.CommandText = "RemoveStock";
+                // now add parameters that are passed to the stored procedure
+                // addStockCommand.Parameters.Add(new SqlParameter("@StockId", newStock.stockId));
+                removeStockCommand.Parameters.Add(new SqlParameter("@StockId", stockToRemove.stockId));
+                
+                int rowsAffected = removeStockCommand.ExecuteNonQuery();
+
+                connection.Close();
+
+                return rowsAffected;
+            }
+        }
+
         public static List<Stock> GetAllStock()
         {
             using (SqlConnection connection = new SqlConnection(_connectionstring))

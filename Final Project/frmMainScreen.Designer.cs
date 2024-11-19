@@ -36,6 +36,7 @@
             btnStock = new Button();
             pnlAvatar = new Panel();
             pnlFormContainer = new Panel();
+            btnRemoveStock = new Button();
             pnlSideBar.SuspendLayout();
             pnlStock.SuspendLayout();
             SuspendLayout();
@@ -55,13 +56,14 @@
             // 
             // pnlStock
             // 
+            pnlStock.Controls.Add(btnRemoveStock);
             pnlStock.Controls.Add(btnAddNewStock);
             pnlStock.Controls.Add(btnEditStockLevels);
             pnlStock.Controls.Add(btnViewStock);
             pnlStock.Dock = DockStyle.Top;
             pnlStock.Location = new Point(0, 175);
             pnlStock.Name = "pnlStock";
-            pnlStock.Size = new Size(220, 150);
+            pnlStock.Size = new Size(220, 217);
             pnlStock.TabIndex = 3;
             // 
             // btnAddNewStock
@@ -144,6 +146,22 @@
             pnlFormContainer.Size = new Size(750, 560);
             pnlFormContainer.TabIndex = 2;
             // 
+            // btnRemoveStock
+            // 
+            btnRemoveStock.BackColor = Color.LightSeaGreen;
+            btnRemoveStock.Dock = DockStyle.Top;
+            btnRemoveStock.FlatAppearance.BorderSize = 0;
+            btnRemoveStock.FlatStyle = FlatStyle.Flat;
+            btnRemoveStock.Font = new Font("Segoe UI", 12F);
+            btnRemoveStock.ForeColor = SystemColors.Control;
+            btnRemoveStock.Location = new Point(0, 150);
+            btnRemoveStock.Name = "btnRemoveStock";
+            btnRemoveStock.Size = new Size(220, 50);
+            btnRemoveStock.TabIndex = 7;
+            btnRemoveStock.Text = "Remove Stock";
+            btnRemoveStock.UseVisualStyleBackColor = false;
+            btnRemoveStock.Click += btnRemoveStock_Click;
+            // 
             // frmMainScreen
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -168,5 +186,6 @@
         private Button btnViewStock;
         private Button btnEditStockLevels;
         private Button btnAddNewStock;
+        private Button btnRemoveStock;
     }
 }
