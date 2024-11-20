@@ -29,15 +29,20 @@
         private void InitializeComponent()
         {
             pnlSideBar = new Panel();
+            pnlOrder = new Panel();
+            btnViewOrders = new Button();
+            btnOrderStock = new Button();
+            btnOrder = new Button();
             pnlStock = new Panel();
+            btnRemoveStock = new Button();
             btnAddNewStock = new Button();
             btnEditStockLevels = new Button();
             btnViewStock = new Button();
             btnStock = new Button();
             pnlAvatar = new Panel();
             pnlFormContainer = new Panel();
-            btnRemoveStock = new Button();
             pnlSideBar.SuspendLayout();
+            pnlOrder.SuspendLayout();
             pnlStock.SuspendLayout();
             SuspendLayout();
             // 
@@ -45,6 +50,8 @@
             // 
             pnlSideBar.AutoScroll = true;
             pnlSideBar.BackColor = Color.Teal;
+            pnlSideBar.Controls.Add(pnlOrder);
+            pnlSideBar.Controls.Add(btnOrder);
             pnlSideBar.Controls.Add(pnlStock);
             pnlSideBar.Controls.Add(btnStock);
             pnlSideBar.Controls.Add(pnlAvatar);
@@ -53,6 +60,61 @@
             pnlSideBar.Name = "pnlSideBar";
             pnlSideBar.Size = new Size(220, 560);
             pnlSideBar.TabIndex = 0;
+            // 
+            // pnlOrder
+            // 
+            pnlOrder.Controls.Add(btnViewOrders);
+            pnlOrder.Controls.Add(btnOrderStock);
+            pnlOrder.Dock = DockStyle.Top;
+            pnlOrder.Location = new Point(0, 425);
+            pnlOrder.Name = "pnlOrder";
+            pnlOrder.Size = new Size(220, 100);
+            pnlOrder.TabIndex = 9;
+            // 
+            // btnViewOrders
+            // 
+            btnViewOrders.BackColor = Color.LightSeaGreen;
+            btnViewOrders.Dock = DockStyle.Top;
+            btnViewOrders.FlatAppearance.BorderSize = 0;
+            btnViewOrders.FlatStyle = FlatStyle.Flat;
+            btnViewOrders.Font = new Font("Segoe UI", 12F);
+            btnViewOrders.ForeColor = SystemColors.Control;
+            btnViewOrders.Location = new Point(0, 50);
+            btnViewOrders.Name = "btnViewOrders";
+            btnViewOrders.Size = new Size(220, 50);
+            btnViewOrders.TabIndex = 5;
+            btnViewOrders.Text = "View Orders";
+            btnViewOrders.UseVisualStyleBackColor = false;
+            // 
+            // btnOrderStock
+            // 
+            btnOrderStock.BackColor = Color.LightSeaGreen;
+            btnOrderStock.Dock = DockStyle.Top;
+            btnOrderStock.FlatAppearance.BorderSize = 0;
+            btnOrderStock.FlatStyle = FlatStyle.Flat;
+            btnOrderStock.Font = new Font("Segoe UI", 12F);
+            btnOrderStock.ForeColor = SystemColors.Control;
+            btnOrderStock.Location = new Point(0, 0);
+            btnOrderStock.Name = "btnOrderStock";
+            btnOrderStock.Size = new Size(220, 50);
+            btnOrderStock.TabIndex = 4;
+            btnOrderStock.Text = "Order Stock";
+            btnOrderStock.UseVisualStyleBackColor = false;
+            // 
+            // btnOrder
+            // 
+            btnOrder.Dock = DockStyle.Top;
+            btnOrder.FlatAppearance.BorderSize = 0;
+            btnOrder.FlatStyle = FlatStyle.Flat;
+            btnOrder.Font = new Font("Segoe UI", 12F);
+            btnOrder.ForeColor = SystemColors.Control;
+            btnOrder.Location = new Point(0, 375);
+            btnOrder.Name = "btnOrder";
+            btnOrder.Size = new Size(220, 50);
+            btnOrder.TabIndex = 4;
+            btnOrder.Text = "Order";
+            btnOrder.UseVisualStyleBackColor = true;
+            btnOrder.Click += btnOrder_Click;
             // 
             // pnlStock
             // 
@@ -63,8 +125,24 @@
             pnlStock.Dock = DockStyle.Top;
             pnlStock.Location = new Point(0, 175);
             pnlStock.Name = "pnlStock";
-            pnlStock.Size = new Size(220, 217);
+            pnlStock.Size = new Size(220, 200);
             pnlStock.TabIndex = 3;
+            // 
+            // btnRemoveStock
+            // 
+            btnRemoveStock.BackColor = Color.LightSeaGreen;
+            btnRemoveStock.Dock = DockStyle.Top;
+            btnRemoveStock.FlatAppearance.BorderSize = 0;
+            btnRemoveStock.FlatStyle = FlatStyle.Flat;
+            btnRemoveStock.Font = new Font("Segoe UI", 12F);
+            btnRemoveStock.ForeColor = SystemColors.Control;
+            btnRemoveStock.Location = new Point(0, 150);
+            btnRemoveStock.Name = "btnRemoveStock";
+            btnRemoveStock.Size = new Size(220, 50);
+            btnRemoveStock.TabIndex = 9;
+            btnRemoveStock.Text = "Remove Stock";
+            btnRemoveStock.UseVisualStyleBackColor = false;
+            btnRemoveStock.Click += btnRemoveStock_Click;
             // 
             // btnAddNewStock
             // 
@@ -146,22 +224,6 @@
             pnlFormContainer.Size = new Size(750, 560);
             pnlFormContainer.TabIndex = 2;
             // 
-            // btnRemoveStock
-            // 
-            btnRemoveStock.BackColor = Color.LightSeaGreen;
-            btnRemoveStock.Dock = DockStyle.Top;
-            btnRemoveStock.FlatAppearance.BorderSize = 0;
-            btnRemoveStock.FlatStyle = FlatStyle.Flat;
-            btnRemoveStock.Font = new Font("Segoe UI", 12F);
-            btnRemoveStock.ForeColor = SystemColors.Control;
-            btnRemoveStock.Location = new Point(0, 150);
-            btnRemoveStock.Name = "btnRemoveStock";
-            btnRemoveStock.Size = new Size(220, 50);
-            btnRemoveStock.TabIndex = 7;
-            btnRemoveStock.Text = "Remove Stock";
-            btnRemoveStock.UseVisualStyleBackColor = false;
-            btnRemoveStock.Click += btnRemoveStock_Click;
-            // 
             // frmMainScreen
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -172,6 +234,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Stock Control";
             pnlSideBar.ResumeLayout(false);
+            pnlOrder.ResumeLayout(false);
             pnlStock.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -186,6 +249,10 @@
         private Button btnViewStock;
         private Button btnEditStockLevels;
         private Button btnAddNewStock;
+        private Button btnOrder;
+        private Panel pnlOrder;
+        private Button btnViewOrders;
+        private Button btnOrderStock;
         private Button btnRemoveStock;
     }
 }

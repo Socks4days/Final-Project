@@ -71,10 +71,17 @@ namespace Final_Project
             toggleSubMenu(pnlStock);
         }
 
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+            CloseChildForm();
+            toggleSubMenu(pnlOrder);
+        }
+
         // Hide the settings and admin submenus when a menu option is clicked
         private void hideSubMenus()
         {
             pnlStock.Visible = false;
+            pnlOrder.Visible = false;
         }
 
         // Hide the main menu and title bar

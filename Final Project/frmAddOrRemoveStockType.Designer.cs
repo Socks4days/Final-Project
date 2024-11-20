@@ -72,7 +72,7 @@
             pnlAddNewStock.Dock = DockStyle.Top;
             pnlAddNewStock.Location = new Point(0, 0);
             pnlAddNewStock.Name = "pnlAddNewStock";
-            pnlAddNewStock.Size = new Size(779, 560);
+            pnlAddNewStock.Size = new Size(783, 560);
             pnlAddNewStock.TabIndex = 3;
             // 
             // lblError
@@ -92,7 +92,7 @@
             txtBoxNewStockName.Location = new Point(281, 112);
             txtBoxNewStockName.Name = "txtBoxNewStockName";
             txtBoxNewStockName.PlaceholderText = "Stock Name";
-            txtBoxNewStockName.Size = new Size(221, 39);
+            txtBoxNewStockName.Size = new Size(221, 33);
             txtBoxNewStockName.TabIndex = 0;
             // 
             // txtBoxNewMinimumLevel
@@ -101,7 +101,7 @@
             txtBoxNewMinimumLevel.Location = new Point(410, 224);
             txtBoxNewMinimumLevel.Name = "txtBoxNewMinimumLevel";
             txtBoxNewMinimumLevel.PlaceholderText = "Minimum Level";
-            txtBoxNewMinimumLevel.Size = new Size(221, 39);
+            txtBoxNewMinimumLevel.Size = new Size(221, 33);
             txtBoxNewMinimumLevel.TabIndex = 4;
             // 
             // txtBoxNewStockPrice
@@ -110,7 +110,7 @@
             txtBoxNewStockPrice.Location = new Point(410, 168);
             txtBoxNewStockPrice.Name = "txtBoxNewStockPrice";
             txtBoxNewStockPrice.PlaceholderText = "Price";
-            txtBoxNewStockPrice.Size = new Size(221, 39);
+            txtBoxNewStockPrice.Size = new Size(221, 33);
             txtBoxNewStockPrice.TabIndex = 2;
             // 
             // txtBoxNewMaximumLevel
@@ -119,7 +119,7 @@
             txtBoxNewMaximumLevel.Location = new Point(152, 224);
             txtBoxNewMaximumLevel.Name = "txtBoxNewMaximumLevel";
             txtBoxNewMaximumLevel.PlaceholderText = "Maximum Level";
-            txtBoxNewMaximumLevel.Size = new Size(221, 39);
+            txtBoxNewMaximumLevel.Size = new Size(221, 33);
             txtBoxNewMaximumLevel.TabIndex = 3;
             // 
             // txtBoxNewStockDescription
@@ -128,7 +128,7 @@
             txtBoxNewStockDescription.Location = new Point(152, 168);
             txtBoxNewStockDescription.Name = "txtBoxNewStockDescription";
             txtBoxNewStockDescription.PlaceholderText = "Stock Description";
-            txtBoxNewStockDescription.Size = new Size(221, 39);
+            txtBoxNewStockDescription.Size = new Size(221, 33);
             txtBoxNewStockDescription.TabIndex = 1;
             // 
             // lblAddNewStock
@@ -138,7 +138,7 @@
             lblAddNewStock.ForeColor = SystemColors.Control;
             lblAddNewStock.Location = new Point(279, 32);
             lblAddNewStock.Name = "lblAddNewStock";
-            lblAddNewStock.Size = new Size(221, 41);
+            lblAddNewStock.Size = new Size(176, 32);
             lblAddNewStock.TabIndex = 1;
             lblAddNewStock.Text = "Add New Stock";
             // 
@@ -169,7 +169,7 @@
             pnlConfirmation.Dock = DockStyle.Top;
             pnlConfirmation.Location = new Point(0, 560);
             pnlConfirmation.Name = "pnlConfirmation";
-            pnlConfirmation.Size = new Size(779, 560);
+            pnlConfirmation.Size = new Size(783, 560);
             pnlConfirmation.TabIndex = 4;
             // 
             // lblSuccess
@@ -201,7 +201,7 @@
             lblStockTo.ForeColor = SystemColors.Control;
             lblStockTo.Location = new Point(187, 126);
             lblStockTo.Name = "lblStockTo";
-            lblStockTo.Size = new Size(121, 37);
+            lblStockTo.Size = new Size(95, 30);
             lblStockTo.TabIndex = 12;
             lblStockTo.Text = "Stock To ";
             // 
@@ -212,7 +212,7 @@
             lblStockName.ForeColor = SystemColors.Control;
             lblStockName.Location = new Point(187, 171);
             lblStockName.Name = "lblStockName";
-            lblStockName.Size = new Size(147, 32);
+            lblStockName.Size = new Size(115, 25);
             lblStockName.TabIndex = 11;
             lblStockName.Text = "Stock Name:";
             // 
@@ -223,7 +223,7 @@
             lblStockDescription.ForeColor = SystemColors.Control;
             lblStockDescription.Location = new Point(187, 211);
             lblStockDescription.Name = "lblStockDescription";
-            lblStockDescription.Size = new Size(204, 32);
+            lblStockDescription.Size = new Size(161, 25);
             lblStockDescription.TabIndex = 10;
             lblStockDescription.Text = "Stock Description:";
             // 
@@ -234,7 +234,7 @@
             lblMinimumLevel.ForeColor = SystemColors.Control;
             lblMinimumLevel.Location = new Point(187, 331);
             lblMinimumLevel.Name = "lblMinimumLevel";
-            lblMinimumLevel.Size = new Size(185, 32);
+            lblMinimumLevel.Size = new Size(145, 25);
             lblMinimumLevel.TabIndex = 9;
             lblMinimumLevel.Text = "Minimum Level:";
             // 
@@ -245,7 +245,7 @@
             lblMaximumLevel.ForeColor = SystemColors.Control;
             lblMaximumLevel.Location = new Point(187, 291);
             lblMaximumLevel.Name = "lblMaximumLevel";
-            lblMaximumLevel.Size = new Size(188, 32);
+            lblMaximumLevel.Size = new Size(148, 25);
             lblMaximumLevel.TabIndex = 8;
             lblMaximumLevel.Text = "Maximum Level:";
             // 
@@ -256,7 +256,7 @@
             lblPrice.ForeColor = SystemColors.Control;
             lblPrice.Location = new Point(187, 251);
             lblPrice.Name = "lblPrice";
-            lblPrice.Size = new Size(70, 32);
+            lblPrice.Size = new Size(58, 25);
             lblPrice.TabIndex = 7;
             lblPrice.Text = "Price:";
             // 
@@ -267,7 +267,7 @@
             lblConfirmation.ForeColor = SystemColors.Control;
             lblConfirmation.Location = new Point(110, 57);
             lblConfirmation.Name = "lblConfirmation";
-            lblConfirmation.Size = new Size(559, 41);
+            lblConfirmation.Size = new Size(451, 32);
             lblConfirmation.TabIndex = 5;
             lblConfirmation.Text = "Please Confirm Details Below Are Correct";
             // 
@@ -292,14 +292,14 @@
             pnlRemoveStock.Dock = DockStyle.Top;
             pnlRemoveStock.Location = new Point(0, 1120);
             pnlRemoveStock.Name = "pnlRemoveStock";
-            pnlRemoveStock.Size = new Size(779, 560);
+            pnlRemoveStock.Size = new Size(783, 560);
             pnlRemoveStock.TabIndex = 5;
             // 
             // lblErrorRemoveStock
             // 
             lblErrorRemoveStock.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblErrorRemoveStock.ForeColor = Color.Coral;
-            lblErrorRemoveStock.Location = new Point(138, 201);
+            lblErrorRemoveStock.Location = new Point(139, 225);
             lblErrorRemoveStock.Name = "lblErrorRemoveStock";
             lblErrorRemoveStock.Size = new Size(505, 61);
             lblErrorRemoveStock.TabIndex = 15;
@@ -309,10 +309,10 @@
             // txtBoxRemoveStockName
             // 
             txtBoxRemoveStockName.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtBoxRemoveStockName.Location = new Point(281, 112);
+            txtBoxRemoveStockName.Location = new Point(283, 173);
             txtBoxRemoveStockName.Name = "txtBoxRemoveStockName";
             txtBoxRemoveStockName.PlaceholderText = "Stock Name";
-            txtBoxRemoveStockName.Size = new Size(221, 39);
+            txtBoxRemoveStockName.Size = new Size(220, 33);
             txtBoxRemoveStockName.TabIndex = 12;
             // 
             // lblRemoveStock
@@ -320,16 +320,16 @@
             lblRemoveStock.AutoSize = true;
             lblRemoveStock.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblRemoveStock.ForeColor = SystemColors.Control;
-            lblRemoveStock.Location = new Point(287, 36);
+            lblRemoveStock.Location = new Point(310, 97);
             lblRemoveStock.Name = "lblRemoveStock";
-            lblRemoveStock.Size = new Size(205, 41);
+            lblRemoveStock.Size = new Size(164, 32);
             lblRemoveStock.TabIndex = 1;
             lblRemoveStock.Text = "Remove Stock";
             // 
             // btnRemoveStock
             // 
             btnRemoveStock.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnRemoveStock.Location = new Point(282, 324);
+            btnRemoveStock.Location = new Point(283, 300);
             btnRemoveStock.Name = "btnRemoveStock";
             btnRemoveStock.Size = new Size(220, 50);
             btnRemoveStock.TabIndex = 0;
