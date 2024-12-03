@@ -75,5 +75,35 @@ namespace Final_Project
                 return rowsAffected;
             }
         }
+
+        public static Staff GetStaffByStaffId(int staffId)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionstring))
+            {
+                Staff staff = new Staff();
+                connection.Open();
+
+                string sqlQuery = string.Format("SELECT * FROM Staff WHERE StaffId = {0}", staffId);
+
+                SqlCommand getStaffByStaffId = new SqlCommand(sqlQuery, connection);
+
+                SqlDataReader sqlDataReader = getStaffByStaffId.ExecuteReader();
+
+                while (sqlDataReader.Read())
+                {
+                    staff = new Staff(
+                        (string)sqlDataReader["Forename"],
+                        (string)sqlDataReader["Surname"],
+                        (string)sqlDataReader["Username"],
+                        (string)sqlDataReader["Password"],
+                        (string)sqlDataReader["StaffPosition"],
+                        (int)sqlDataReader["Active"]
+                        );
+
+                    staff.staffId = (int)sqlDataReader["StaffId"];
+                }
+                return staff;
+            }
+        }
     }
 }

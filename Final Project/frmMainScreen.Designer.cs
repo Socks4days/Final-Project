@@ -36,8 +36,7 @@
             pnlStock = new Panel();
             btnRemoveStock = new Button();
             btnAddNewStock = new Button();
-            btnEditStockLevels = new Button();
-            btnViewStock = new Button();
+            btnManageStockLevels = new Button();
             btnStock = new Button();
             pnlAvatar = new Panel();
             pnlFormContainer = new Panel();
@@ -66,7 +65,7 @@
             pnlOrder.Controls.Add(btnViewOrders);
             pnlOrder.Controls.Add(btnOrderStock);
             pnlOrder.Dock = DockStyle.Top;
-            pnlOrder.Location = new Point(0, 425);
+            pnlOrder.Location = new Point(0, 375);
             pnlOrder.Name = "pnlOrder";
             pnlOrder.Size = new Size(220, 100);
             pnlOrder.TabIndex = 9;
@@ -108,7 +107,7 @@
             btnOrder.FlatStyle = FlatStyle.Flat;
             btnOrder.Font = new Font("Segoe UI", 12F);
             btnOrder.ForeColor = SystemColors.Control;
-            btnOrder.Location = new Point(0, 375);
+            btnOrder.Location = new Point(0, 325);
             btnOrder.Name = "btnOrder";
             btnOrder.Size = new Size(220, 50);
             btnOrder.TabIndex = 4;
@@ -120,12 +119,11 @@
             // 
             pnlStock.Controls.Add(btnRemoveStock);
             pnlStock.Controls.Add(btnAddNewStock);
-            pnlStock.Controls.Add(btnEditStockLevels);
-            pnlStock.Controls.Add(btnViewStock);
+            pnlStock.Controls.Add(btnManageStockLevels);
             pnlStock.Dock = DockStyle.Top;
             pnlStock.Location = new Point(0, 175);
             pnlStock.Name = "pnlStock";
-            pnlStock.Size = new Size(220, 200);
+            pnlStock.Size = new Size(220, 150);
             pnlStock.TabIndex = 3;
             // 
             // btnRemoveStock
@@ -136,7 +134,7 @@
             btnRemoveStock.FlatStyle = FlatStyle.Flat;
             btnRemoveStock.Font = new Font("Segoe UI", 12F);
             btnRemoveStock.ForeColor = SystemColors.Control;
-            btnRemoveStock.Location = new Point(0, 150);
+            btnRemoveStock.Location = new Point(0, 100);
             btnRemoveStock.Name = "btnRemoveStock";
             btnRemoveStock.Size = new Size(220, 50);
             btnRemoveStock.TabIndex = 9;
@@ -152,7 +150,7 @@
             btnAddNewStock.FlatStyle = FlatStyle.Flat;
             btnAddNewStock.Font = new Font("Segoe UI", 12F);
             btnAddNewStock.ForeColor = SystemColors.Control;
-            btnAddNewStock.Location = new Point(0, 100);
+            btnAddNewStock.Location = new Point(0, 50);
             btnAddNewStock.Name = "btnAddNewStock";
             btnAddNewStock.Size = new Size(220, 50);
             btnAddNewStock.TabIndex = 6;
@@ -160,40 +158,25 @@
             btnAddNewStock.UseVisualStyleBackColor = false;
             btnAddNewStock.Click += btnAddNewStock_Click;
             // 
-            // btnEditStockLevels
+            // btnManageStockLevels
             // 
-            btnEditStockLevels.BackColor = Color.LightSeaGreen;
-            btnEditStockLevels.Dock = DockStyle.Top;
-            btnEditStockLevels.FlatAppearance.BorderSize = 0;
-            btnEditStockLevels.FlatStyle = FlatStyle.Flat;
-            btnEditStockLevels.Font = new Font("Segoe UI", 12F);
-            btnEditStockLevels.ForeColor = SystemColors.Control;
-            btnEditStockLevels.Location = new Point(0, 50);
-            btnEditStockLevels.Name = "btnEditStockLevels";
-            btnEditStockLevels.Size = new Size(220, 50);
-            btnEditStockLevels.TabIndex = 5;
-            btnEditStockLevels.Text = "Edit Stock Levels";
-            btnEditStockLevels.UseVisualStyleBackColor = false;
-            btnEditStockLevels.Click += btnEditStockLevels_Click;
-            // 
-            // btnViewStock
-            // 
-            btnViewStock.BackColor = Color.LightSeaGreen;
-            btnViewStock.Dock = DockStyle.Top;
-            btnViewStock.FlatAppearance.BorderSize = 0;
-            btnViewStock.FlatStyle = FlatStyle.Flat;
-            btnViewStock.Font = new Font("Segoe UI", 12F);
-            btnViewStock.ForeColor = SystemColors.Control;
-            btnViewStock.Location = new Point(0, 0);
-            btnViewStock.Name = "btnViewStock";
-            btnViewStock.Size = new Size(220, 50);
-            btnViewStock.TabIndex = 4;
-            btnViewStock.Text = "View Stock Levels";
-            btnViewStock.UseVisualStyleBackColor = false;
-            btnViewStock.Click += btnViewStock_Click;
+            btnManageStockLevels.BackColor = Color.LightSeaGreen;
+            btnManageStockLevels.Dock = DockStyle.Top;
+            btnManageStockLevels.FlatAppearance.BorderSize = 0;
+            btnManageStockLevels.FlatStyle = FlatStyle.Flat;
+            btnManageStockLevels.Font = new Font("Segoe UI", 12F);
+            btnManageStockLevels.ForeColor = SystemColors.Control;
+            btnManageStockLevels.Location = new Point(0, 0);
+            btnManageStockLevels.Name = "btnManageStockLevels";
+            btnManageStockLevels.Size = new Size(220, 50);
+            btnManageStockLevels.TabIndex = 4;
+            btnManageStockLevels.Text = "Manage Stock Levels";
+            btnManageStockLevels.UseVisualStyleBackColor = false;
+            btnManageStockLevels.Click += btnViewStock_Click;
             // 
             // btnStock
             // 
+            btnStock.BackColor = Color.Teal;
             btnStock.Dock = DockStyle.Top;
             btnStock.FlatAppearance.BorderSize = 0;
             btnStock.FlatStyle = FlatStyle.Flat;
@@ -204,7 +187,7 @@
             btnStock.Size = new Size(220, 50);
             btnStock.TabIndex = 1;
             btnStock.Text = "Stock";
-            btnStock.UseVisualStyleBackColor = true;
+            btnStock.UseVisualStyleBackColor = false;
             btnStock.Click += btnStock_Click;
             // 
             // pnlAvatar
@@ -246,8 +229,7 @@
         private Panel pnlAvatar;
         private Button btnStock;
         private Panel pnlStock;
-        private Button btnViewStock;
-        private Button btnEditStockLevels;
+        private Button btnManageStockLevels;
         private Button btnAddNewStock;
         private Button btnOrder;
         private Panel pnlOrder;

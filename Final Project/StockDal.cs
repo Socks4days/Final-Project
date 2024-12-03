@@ -83,7 +83,6 @@ namespace Final_Project
                 // name of stored procedure to execute
                 addStockCommand.CommandText = "AddStock";
                 // now add parameters that are passed to the stored procedure
-               // addStockCommand.Parameters.Add(new SqlParameter("@StockId", newStock.stockId));
                 addStockCommand.Parameters.Add(new SqlParameter("@StockName", newStock.stockName));
                 addStockCommand.Parameters.Add(new SqlParameter("@StockDescription", newStock.stockDescription));
                 addStockCommand.Parameters.Add(new SqlParameter("@Price", newStock.price));

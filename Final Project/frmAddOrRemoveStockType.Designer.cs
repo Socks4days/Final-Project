@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             pnlAddNewStock = new Panel();
+            txtBoxNewDeliveryTime = new TextBox();
+            txtBoxNewStockCheckFrequency = new TextBox();
+            txtBoxNewOrderQuantity = new TextBox();
             lblError = new Label();
             txtBoxNewStockName = new TextBox();
             txtBoxNewMinimumLevel = new TextBox();
@@ -61,6 +64,9 @@
             // pnlAddNewStock
             // 
             pnlAddNewStock.BackColor = Color.DarkCyan;
+            pnlAddNewStock.Controls.Add(txtBoxNewDeliveryTime);
+            pnlAddNewStock.Controls.Add(txtBoxNewStockCheckFrequency);
+            pnlAddNewStock.Controls.Add(txtBoxNewOrderQuantity);
             pnlAddNewStock.Controls.Add(lblError);
             pnlAddNewStock.Controls.Add(txtBoxNewStockName);
             pnlAddNewStock.Controls.Add(txtBoxNewMinimumLevel);
@@ -75,11 +81,38 @@
             pnlAddNewStock.Size = new Size(783, 560);
             pnlAddNewStock.TabIndex = 3;
             // 
+            // txtBoxNewDeliveryTime
+            // 
+            txtBoxNewDeliveryTime.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtBoxNewDeliveryTime.Location = new Point(410, 277);
+            txtBoxNewDeliveryTime.Name = "txtBoxNewDeliveryTime";
+            txtBoxNewDeliveryTime.PlaceholderText = "Delivery Time (Days)";
+            txtBoxNewDeliveryTime.Size = new Size(221, 33);
+            txtBoxNewDeliveryTime.TabIndex = 18;
+            // 
+            // txtBoxNewStockCheckFrequency
+            // 
+            txtBoxNewStockCheckFrequency.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtBoxNewStockCheckFrequency.Location = new Point(152, 277);
+            txtBoxNewStockCheckFrequency.Name = "txtBoxNewStockCheckFrequency";
+            txtBoxNewStockCheckFrequency.PlaceholderText = "Frequency Of Check";
+            txtBoxNewStockCheckFrequency.Size = new Size(221, 33);
+            txtBoxNewStockCheckFrequency.TabIndex = 17;
+            // 
+            // txtBoxNewOrderQuantity
+            // 
+            txtBoxNewOrderQuantity.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtBoxNewOrderQuantity.Location = new Point(410, 167);
+            txtBoxNewOrderQuantity.Name = "txtBoxNewOrderQuantity";
+            txtBoxNewOrderQuantity.PlaceholderText = "Order Quantity";
+            txtBoxNewOrderQuantity.Size = new Size(221, 33);
+            txtBoxNewOrderQuantity.TabIndex = 16;
+            // 
             // lblError
             // 
             lblError.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblError.ForeColor = Color.Coral;
-            lblError.Location = new Point(138, 275);
+            lblError.Location = new Point(139, 348);
             lblError.Name = "lblError";
             lblError.Size = new Size(505, 61);
             lblError.TabIndex = 15;
@@ -89,7 +122,7 @@
             // txtBoxNewStockName
             // 
             txtBoxNewStockName.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtBoxNewStockName.Location = new Point(281, 112);
+            txtBoxNewStockName.Location = new Point(152, 115);
             txtBoxNewStockName.Name = "txtBoxNewStockName";
             txtBoxNewStockName.PlaceholderText = "Stock Name";
             txtBoxNewStockName.Size = new Size(221, 33);
@@ -107,7 +140,7 @@
             // txtBoxNewStockPrice
             // 
             txtBoxNewStockPrice.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtBoxNewStockPrice.Location = new Point(410, 168);
+            txtBoxNewStockPrice.Location = new Point(152, 167);
             txtBoxNewStockPrice.Name = "txtBoxNewStockPrice";
             txtBoxNewStockPrice.PlaceholderText = "Price";
             txtBoxNewStockPrice.Size = new Size(221, 33);
@@ -125,7 +158,7 @@
             // txtBoxNewStockDescription
             // 
             txtBoxNewStockDescription.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtBoxNewStockDescription.Location = new Point(152, 168);
+            txtBoxNewStockDescription.Location = new Point(410, 115);
             txtBoxNewStockDescription.Name = "txtBoxNewStockDescription";
             txtBoxNewStockDescription.PlaceholderText = "Stock Description";
             txtBoxNewStockDescription.Size = new Size(221, 33);
@@ -136,7 +169,7 @@
             lblAddNewStock.AutoSize = true;
             lblAddNewStock.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblAddNewStock.ForeColor = SystemColors.Control;
-            lblAddNewStock.Location = new Point(279, 32);
+            lblAddNewStock.Location = new Point(303, 32);
             lblAddNewStock.Name = "lblAddNewStock";
             lblAddNewStock.Size = new Size(176, 32);
             lblAddNewStock.TabIndex = 1;
@@ -145,7 +178,7 @@
             // btnAddNewStock
             // 
             btnAddNewStock.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnAddNewStock.Location = new Point(281, 367);
+            btnAddNewStock.Location = new Point(283, 425);
             btnAddNewStock.Name = "btnAddNewStock";
             btnAddNewStock.Size = new Size(220, 50);
             btnAddNewStock.TabIndex = 5;
@@ -265,7 +298,7 @@
             lblConfirmation.AutoSize = true;
             lblConfirmation.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblConfirmation.ForeColor = SystemColors.Control;
-            lblConfirmation.Location = new Point(110, 57);
+            lblConfirmation.Location = new Point(166, 57);
             lblConfirmation.Name = "lblConfirmation";
             lblConfirmation.Size = new Size(451, 32);
             lblConfirmation.TabIndex = 5;
@@ -320,7 +353,7 @@
             lblRemoveStock.AutoSize = true;
             lblRemoveStock.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblRemoveStock.ForeColor = SystemColors.Control;
-            lblRemoveStock.Location = new Point(310, 97);
+            lblRemoveStock.Location = new Point(309, 97);
             lblRemoveStock.Name = "lblRemoveStock";
             lblRemoveStock.Size = new Size(164, 32);
             lblRemoveStock.TabIndex = 1;
@@ -382,5 +415,8 @@
         private TextBox txtBoxRemoveStockName;
         private Label lblRemoveStock;
         private Button btnRemoveStock;
+        private TextBox txtBoxNewOrderQuantity;
+        private TextBox txtBoxNewStockCheckFrequency;
+        private TextBox txtBoxNewDeliveryTime;
     }
 }

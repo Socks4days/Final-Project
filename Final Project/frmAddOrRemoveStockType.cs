@@ -57,8 +57,12 @@ namespace Final_Project
                 stockToAdd.stockName = txtBoxNewStockName.Text;
                 stockToAdd.stockDescription = txtBoxNewStockDescription.Text;
                 stockToAdd.price = Convert.ToDecimal(txtBoxNewStockPrice.Text);
+                stockToAdd.orderQuantity = Convert.ToInt32(txtBoxNewOrderQuantity.Text);
                 stockToAdd.maximumLevel = Convert.ToInt32(txtBoxNewMaximumLevel.Text);
                 stockToAdd.minimumLevel = Convert.ToInt32(txtBoxNewMinimumLevel.Text);
+                stockToAdd.stockLevel = 0;
+                stockToAdd.stockCheckFrequency = Convert.ToInt32(txtBoxNewStockCheckFrequency.Text);
+                stockToAdd.deliveryTimeDays = Convert.ToInt32(txtBoxNewDeliveryTime.Text);
             }
             catch (Exception ex)
             {

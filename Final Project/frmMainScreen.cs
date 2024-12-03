@@ -114,7 +114,7 @@ namespace Final_Project
 
         private void btnViewStock_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new frmViewStock());
+            OpenChildForm(new frmEditStockLevels());
         }
 
         private void btnEditStockLevels_Click(object sender, EventArgs e)
