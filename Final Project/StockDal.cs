@@ -186,12 +186,22 @@ namespace Final_Project
 
                 while (sqlDataReader.Read())
                 {
+                    DateTime? auditDate = null;
+                    var dbAuditDateTime = sqlDataReader["AuditDate"];
+                    if (dbAuditDateTime != DBNull.Value)
+                        auditDate = Convert.ToDateTime(dbAuditDateTime);
+
+                    int auditedByStaffId = 0;
+                    var dbAuditedByStaffId = sqlDataReader["AuditedByStaffId"];
+                    if (dbAuditedByStaffId != DBNull.Value)
+                        auditedByStaffId = Convert.ToInt32(dbAuditedByStaffId);
+
                     StockLevelsView stockLevel = new StockLevelsView(
                         (int)sqlDataReader["StockId"],
                         (string)sqlDataReader["StockName"],                        
                         (int)sqlDataReader["StockLevel"],
-                        (DateTime)sqlDataReader["AuditDate"],
-                        (int)sqlDataReader["AuditedByStaffId"],
+                        auditDate,
+                        auditedByStaffId,
                         (string)sqlDataReader["AuditedByStaffFullName"]                        
                         );
 

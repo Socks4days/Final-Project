@@ -14,14 +14,14 @@ namespace Final_Project
         public int stockLevel { get; set; }
         public int auditedByStaffId { get; set; }
         public string auditedByStaffFullName { get; set; }
-        public DateTime auditDate { get; set; }
+        public DateTime? auditDate { get; set; }
 
 
         #endregion Properties
 
         public StockLevelsView() { }
 
-        public StockLevelsView(int StockId, string stockName, int stockLevel, DateTime auditDate, int auditedByStaffId, string auditedByStaffFullName)
+        public StockLevelsView(int StockId, string stockName, int stockLevel, DateTime? auditDate, int auditedByStaffId, string auditedByStaffFullName)
         {
             this.stockId = StockId;
             this.stockName = stockName;            
