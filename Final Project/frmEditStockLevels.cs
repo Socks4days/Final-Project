@@ -18,13 +18,13 @@ namespace Final_Project
         public frmEditStockLevels()
         {
             InitializeComponent();
-            List<Stock> sortedStockList = StockDal.GetAllStock();
+            List<StockLevelsView> sortedStockList = StockDal.GetStockLevelsView();
 
             // Add each stock in the sorted list to the stock list
-            foreach (Stock stock in sortedStockList)
+            foreach (StockLevelsView stockLevel in sortedStockList)
             {
                 // Create an array with stock details
-                string[] row = { stock.stockName, stock.stockLevel.ToString(), "today", (StaffDal.GetStaffByStaffId(stock.lastUpdatedByStaffId).forename + " " + StaffDal.GetStaffByStaffId(stock.lastUpdatedByStaffId).surname) };
+                string[] row = { stockLevel.stockName, stockLevel.stockLevel.ToString(), stockLevel.auditDate.ToString(), stockLevel.auditedByStaffFullName };
 
                 // Create a new list item based on the array
                 ListViewItem item = new ListViewItem(row);

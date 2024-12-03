@@ -170,5 +170,36 @@ namespace Final_Project
                 return stockItems;
             }
         }
+
+        public static List<StockLevelsView> GetStockLevelsView()
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionstring))
+            {
+                List<StockLevelsView> stockLevelItems = new List<StockLevelsView>();
+                connection.Open();
+
+                string sqlQuery = "SELECT * FROM StockLevelsView";
+
+                SqlCommand getAllStockCommand = new SqlCommand(sqlQuery, connection);
+
+                SqlDataReader sqlDataReader = getAllStockCommand.ExecuteReader();
+
+                while (sqlDataReader.Read())
+                {
+                    StockLevelsView stockLevel = new StockLevelsView(
+                        (int)sqlDataReader["StockId"],
+                        (string)sqlDataReader["StockName"],                        
+                        (int)sqlDataReader["StockLevel"],
+                        (DateTime)sqlDataReader["AuditDate"],
+                        (int)sqlDataReader["AuditedByStaffId"],
+                        (string)sqlDataReader["AuditedByStaffFullName"]                        
+                        );
+
+                    
+                    stockLevelItems.Add(stockLevel);
+                }
+                return stockLevelItems;
+            }
+        }
     }
 }
