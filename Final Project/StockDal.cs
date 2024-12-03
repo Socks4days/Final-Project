@@ -55,13 +55,23 @@ namespace Final_Project
             }
         }
 
-        public static void UpdateStockByStockId(Stock stock)
+        public static void UpdateStockInformation(Stock stock)
         {
             using (SqlConnection connection = new SqlConnection(_connectionstring))
             {
                 connection.Open();
 
-                string sqlQuery = string.Format($"UPDATE Stock SET stockLevel = '{stock.stockLevel}' WHERE stockId = {stock.stockId}");
+                string sqlQuery = string.Format($"UPDATE Stock SET stockLevel = '{stock.stockLevel}', " +
+                    $"stockName = '{stock.stockName}', " +
+                    $"stockDescription = '{stock.stockDescription}', " +
+                    $"price = '{stock.price}', " +
+                    $"deliveryTimeDays = '{stock.deliveryTimeDays}', " +
+                    $"maximumLevel = '{stock.maximumLevel}', " +
+                    $"minimumLevel = '{stock.minimumLevel}', " +
+                    $"orderQuantity = '{stock.orderQuantity}', " +
+                    $"stockCheckFrequency = '{stock.stockCheckFrequency}', " +
+                    $"lastUpdatedByStaffId = '{stock.lastUpdatedByStaffId}' " +
+                    $"WHERE stockId = {stock.stockId}");
 
                 SqlCommand updateStockByStockIdCommand = new SqlCommand(sqlQuery, connection);
 

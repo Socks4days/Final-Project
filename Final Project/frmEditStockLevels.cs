@@ -81,7 +81,7 @@ namespace Final_Project
             if (lookupStock.stockLevel + amountToAdd <= lookupStock.maximumLevel)
             {
                 lookupStock.stockLevel += amountToAdd;
-                StockDal.UpdateStockByStockId(lookupStock);
+                StockDal.UpdateStockInformation(lookupStock);
                 ShowMessageStockLevel($"Successfully added {amountToAdd} to stock level!");
             }
             else if (lookupStock.stockLevel == lookupStock.maximumLevel)
@@ -114,7 +114,7 @@ namespace Final_Project
             if (lookupStock.stockLevel - amountToRemove >= 0)
             {
                 lookupStock.stockLevel -= amountToRemove;
-                StockDal.UpdateStockByStockId(lookupStock);
+                StockDal.UpdateStockInformation(lookupStock);
                 ShowMessageStockLevel($"Successfully removed {amountToRemove} to stock level!");
             }
             else if (lookupStock.stockLevel == 0)
@@ -211,12 +211,22 @@ namespace Final_Project
         private void btnEditStockItem_Click(object sender, EventArgs e)
         {
             lookupStock.stockName = txtBoxName.Text;
-            lookupStock.stockDescription =  txtBoxDescription.Text;
+            lookupStock.stockDescription = txtBoxDescription.Text;
             lookupStock.price = Convert.ToInt32(txtBoxPrice.Text);
             lookupStock.maximumLevel = Convert.ToInt32(txtBoxMaximumLevel.Text);
             lookupStock.minimumLevel = Convert.ToInt32(txtBoxMinimumLevel.Text);
             lookupStock.deliveryTimeDays = Convert.ToInt32(txtBoxDeliveryTime.Text);
             lookupStock.stockCheckFrequency = Convert.ToInt32(txtBoxStockCheckFrequency.Text);
+
+            StockDal.UpdateStockInformation(lookupStock);
+            lblErrorStockEdit.Visible = true;
+            lblErrorStockEdit.Text = $"{lookupStock.stockName} Updated Successfully!";
+        }
+
+        private void btnCancelStockEdit_Click(object sender, EventArgs e)
+        {
+            ClearError();
+            showViewStock();
         }
     }
 }

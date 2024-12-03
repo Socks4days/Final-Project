@@ -50,6 +50,11 @@
             btnRemoveStock = new Button();
             btnAddStock = new Button();
             pnlEditStockItem = new Panel();
+            btnReturnStockEdit = new Button();
+            txtBoxStockCheckFrequency = new TextBox();
+            txtBoxDeliveryTime = new TextBox();
+            lblStockCheckFrequency = new Label();
+            lblDeliveryTimeDays = new Label();
             txtBoxDescription = new TextBox();
             txtBoxMaximumLevel = new TextBox();
             txtBoxMinimumLevel = new TextBox();
@@ -65,10 +70,6 @@
             lblOrderQuantity = new Label();
             lblMaximumLevel = new Label();
             lblName = new Label();
-            txtBoxStockCheckFrequency = new TextBox();
-            txtBoxDeliveryTime = new TextBox();
-            lblStockCheckFrequency = new Label();
-            lblDeliveryTimeDays = new Label();
             pnlViewStock.SuspendLayout();
             pnlLstViewAndInstructions.SuspendLayout();
             pnlOptionButtons.SuspendLayout();
@@ -318,6 +319,7 @@
             // pnlEditStockItem
             // 
             pnlEditStockItem.BackColor = Color.LightSeaGreen;
+            pnlEditStockItem.Controls.Add(btnReturnStockEdit);
             pnlEditStockItem.Controls.Add(txtBoxStockCheckFrequency);
             pnlEditStockItem.Controls.Add(txtBoxDeliveryTime);
             pnlEditStockItem.Controls.Add(lblStockCheckFrequency);
@@ -342,6 +344,59 @@
             pnlEditStockItem.Name = "pnlEditStockItem";
             pnlEditStockItem.Size = new Size(750, 560);
             pnlEditStockItem.TabIndex = 2;
+            // 
+            // btnReturnStockEdit
+            // 
+            btnReturnStockEdit.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnReturnStockEdit.Location = new Point(122, 498);
+            btnReturnStockEdit.Name = "btnReturnStockEdit";
+            btnReturnStockEdit.Size = new Size(220, 50);
+            btnReturnStockEdit.TabIndex = 34;
+            btnReturnStockEdit.Text = "Return";
+            btnReturnStockEdit.UseVisualStyleBackColor = true;
+            btnReturnStockEdit.Click += btnCancelStockEdit_Click;
+            // 
+            // txtBoxStockCheckFrequency
+            // 
+            txtBoxStockCheckFrequency.Anchor = AnchorStyles.None;
+            txtBoxStockCheckFrequency.Font = new Font("Segoe UI", 12F);
+            txtBoxStockCheckFrequency.Location = new Point(511, 282);
+            txtBoxStockCheckFrequency.Name = "txtBoxStockCheckFrequency";
+            txtBoxStockCheckFrequency.Size = new Size(220, 29);
+            txtBoxStockCheckFrequency.TabIndex = 31;
+            // 
+            // txtBoxDeliveryTime
+            // 
+            txtBoxDeliveryTime.Anchor = AnchorStyles.None;
+            txtBoxDeliveryTime.Font = new Font("Segoe UI", 12F);
+            txtBoxDeliveryTime.Location = new Point(135, 279);
+            txtBoxDeliveryTime.Name = "txtBoxDeliveryTime";
+            txtBoxDeliveryTime.Size = new Size(220, 29);
+            txtBoxDeliveryTime.TabIndex = 30;
+            // 
+            // lblStockCheckFrequency
+            // 
+            lblStockCheckFrequency.Anchor = AnchorStyles.None;
+            lblStockCheckFrequency.AutoSize = true;
+            lblStockCheckFrequency.Font = new Font("Segoe UI", 12F);
+            lblStockCheckFrequency.ForeColor = SystemColors.Control;
+            lblStockCheckFrequency.Location = new Point(381, 285);
+            lblStockCheckFrequency.Name = "lblStockCheckFrequency";
+            lblStockCheckFrequency.Size = new Size(131, 21);
+            lblStockCheckFrequency.TabIndex = 33;
+            lblStockCheckFrequency.Text = "Check Frequency:";
+            // 
+            // lblDeliveryTimeDays
+            // 
+            lblDeliveryTimeDays.Anchor = AnchorStyles.None;
+            lblDeliveryTimeDays.AutoSize = true;
+            lblDeliveryTimeDays.Font = new Font("Segoe UI", 12F);
+            lblDeliveryTimeDays.ForeColor = SystemColors.Control;
+            lblDeliveryTimeDays.Location = new Point(21, 282);
+            lblDeliveryTimeDays.Name = "lblDeliveryTimeDays";
+            lblDeliveryTimeDays.Size = new Size(108, 21);
+            lblDeliveryTimeDays.TabIndex = 32;
+            lblDeliveryTimeDays.Text = "Delivery Time:";
             // 
             // txtBoxDescription
             // 
@@ -426,7 +481,7 @@
             // 
             btnEditStockItem.Anchor = AnchorStyles.None;
             btnEditStockItem.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEditStockItem.Location = new Point(265, 498);
+            btnEditStockItem.Location = new Point(409, 498);
             btnEditStockItem.Name = "btnEditStockItem";
             btnEditStockItem.Size = new Size(220, 50);
             btnEditStockItem.TabIndex = 14;
@@ -506,48 +561,6 @@
             lblName.TabIndex = 24;
             lblName.Text = "Name:";
             // 
-            // txtBoxStockCheckFrequency
-            // 
-            txtBoxStockCheckFrequency.Anchor = AnchorStyles.None;
-            txtBoxStockCheckFrequency.Font = new Font("Segoe UI", 12F);
-            txtBoxStockCheckFrequency.Location = new Point(511, 282);
-            txtBoxStockCheckFrequency.Name = "txtBoxStockCheckFrequency";
-            txtBoxStockCheckFrequency.Size = new Size(220, 29);
-            txtBoxStockCheckFrequency.TabIndex = 31;
-            // 
-            // txtBoxDeliveryTime
-            // 
-            txtBoxDeliveryTime.Anchor = AnchorStyles.None;
-            txtBoxDeliveryTime.Font = new Font("Segoe UI", 12F);
-            txtBoxDeliveryTime.Location = new Point(135, 279);
-            txtBoxDeliveryTime.Name = "txtBoxDeliveryTime";
-            txtBoxDeliveryTime.Size = new Size(220, 29);
-            txtBoxDeliveryTime.TabIndex = 30;
-            // 
-            // lblStockCheckFrequency
-            // 
-            lblStockCheckFrequency.Anchor = AnchorStyles.None;
-            lblStockCheckFrequency.AutoSize = true;
-            lblStockCheckFrequency.Font = new Font("Segoe UI", 12F);
-            lblStockCheckFrequency.ForeColor = SystemColors.Control;
-            lblStockCheckFrequency.Location = new Point(381, 285);
-            lblStockCheckFrequency.Name = "lblStockCheckFrequency";
-            lblStockCheckFrequency.Size = new Size(131, 21);
-            lblStockCheckFrequency.TabIndex = 33;
-            lblStockCheckFrequency.Text = "Check Frequency:";
-            // 
-            // lblDeliveryTimeDays
-            // 
-            lblDeliveryTimeDays.Anchor = AnchorStyles.None;
-            lblDeliveryTimeDays.AutoSize = true;
-            lblDeliveryTimeDays.Font = new Font("Segoe UI", 12F);
-            lblDeliveryTimeDays.ForeColor = SystemColors.Control;
-            lblDeliveryTimeDays.Location = new Point(21, 282);
-            lblDeliveryTimeDays.Name = "lblDeliveryTimeDays";
-            lblDeliveryTimeDays.Size = new Size(108, 21);
-            lblDeliveryTimeDays.TabIndex = 32;
-            lblDeliveryTimeDays.Text = "Delivery Time:";
-            // 
             // frmEditStockLevels
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -615,5 +628,6 @@
         private TextBox txtBoxDeliveryTime;
         private Label lblStockCheckFrequency;
         private Label lblDeliveryTimeDays;
+        private Button btnReturnStockEdit;
     }
 }

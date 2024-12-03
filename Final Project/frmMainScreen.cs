@@ -18,9 +18,8 @@ namespace Final_Project
         {
             InitializeComponent();
             frmMainScreen.frmMain = this;
-            //OpenChildForm(null);
             OpenChildForm(new frmLoginScreen());
-            hideSubMenus();
+            hideSubMenus();            
         }
 
         private Form activeForm = null;
@@ -111,6 +110,11 @@ namespace Final_Project
         }
 
         #endregion toggleSubMenus
+
+        private void SetLogo()
+        {
+          //  pctBoxLogo.Image = Resources.TitleIcon;
+        }
 
         private void btnViewStock_Click(object sender, EventArgs e)
         {

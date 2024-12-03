@@ -40,9 +40,13 @@
             btnStock = new Button();
             pnlAvatar = new Panel();
             pnlFormContainer = new Panel();
+            lblTitle = new Label();
+            pctBoxLogo = new PictureBox();
             pnlSideBar.SuspendLayout();
             pnlOrder.SuspendLayout();
             pnlStock.SuspendLayout();
+            pnlFormContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pctBoxLogo).BeginInit();
             SuspendLayout();
             // 
             // pnlSideBar
@@ -201,11 +205,33 @@
             // pnlFormContainer
             // 
             pnlFormContainer.BackColor = Color.LightSeaGreen;
+            pnlFormContainer.Controls.Add(pctBoxLogo);
+            pnlFormContainer.Controls.Add(lblTitle);
             pnlFormContainer.Dock = DockStyle.Fill;
             pnlFormContainer.Location = new Point(220, 0);
             pnlFormContainer.Name = "pnlFormContainer";
             pnlFormContainer.Size = new Size(750, 560);
             pnlFormContainer.TabIndex = 2;
+            // 
+            // lblTitle
+            // 
+            lblTitle.AutoSize = true;
+            lblTitle.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblTitle.ForeColor = SystemColors.Control;
+            lblTitle.Location = new Point(181, 85);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(436, 90);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "Movers Maintenance Garage \r\n      Stock Control System";
+            // 
+            // pctBoxLogo
+            // 
+            pctBoxLogo.Location = new Point(265, 194);
+            pctBoxLogo.Name = "pctBoxLogo";
+            pctBoxLogo.Size = new Size(250, 250);
+            pctBoxLogo.SizeMode = PictureBoxSizeMode.Zoom;
+            pctBoxLogo.TabIndex = 1;
+            pctBoxLogo.TabStop = false;
             // 
             // frmMainScreen
             // 
@@ -219,6 +245,9 @@
             pnlSideBar.ResumeLayout(false);
             pnlOrder.ResumeLayout(false);
             pnlStock.ResumeLayout(false);
+            pnlFormContainer.ResumeLayout(false);
+            pnlFormContainer.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pctBoxLogo).EndInit();
             ResumeLayout(false);
         }
 
@@ -236,5 +265,7 @@
         private Button btnViewOrders;
         private Button btnOrderStock;
         private Button btnRemoveStock;
+        private Label lblTitle;
+        private PictureBox pctBoxLogo;
     }
 }
