@@ -19,7 +19,7 @@ namespace Final_Project
             InitializeComponent();
             frmMainScreen.frmMain = this;
             OpenChildForm(new frmLoginScreen());
-            hideSubMenus();            
+            hideSubMenus();
         }
 
         private Form activeForm = null;
@@ -113,7 +113,7 @@ namespace Final_Project
 
         private void SetLogo()
         {
-          //  pctBoxLogo.Image = Resources.TitleIcon;
+            //  pctBoxLogo.Image = Resources.TitleIcon;
         }
 
         private void btnViewStock_Click(object sender, EventArgs e)
@@ -134,6 +134,11 @@ namespace Final_Project
         private void btnRemoveStock_Click(object sender, EventArgs e)
         {
             OpenChildForm(new frmAddOrRemoveStockType("Remove Stock"));
+        }
+
+        private void btnOrderStock_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmCreateOrder());
         }
     }
 }

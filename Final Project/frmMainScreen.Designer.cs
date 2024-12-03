@@ -40,8 +40,8 @@
             btnStock = new Button();
             pnlAvatar = new Panel();
             pnlFormContainer = new Panel();
-            lblTitle = new Label();
             pctBoxLogo = new PictureBox();
+            lblTitle = new Label();
             pnlSideBar.SuspendLayout();
             pnlOrder.SuspendLayout();
             pnlStock.SuspendLayout();
@@ -103,6 +103,7 @@
             btnOrderStock.TabIndex = 4;
             btnOrderStock.Text = "Order Stock";
             btnOrderStock.UseVisualStyleBackColor = false;
+            btnOrderStock.Click += btnOrderStock_Click;
             // 
             // btnOrder
             // 
@@ -213,6 +214,15 @@
             pnlFormContainer.Size = new Size(750, 560);
             pnlFormContainer.TabIndex = 2;
             // 
+            // pctBoxLogo
+            // 
+            pctBoxLogo.Location = new Point(265, 194);
+            pctBoxLogo.Name = "pctBoxLogo";
+            pctBoxLogo.Size = new Size(250, 250);
+            pctBoxLogo.SizeMode = PictureBoxSizeMode.Zoom;
+            pctBoxLogo.TabIndex = 1;
+            pctBoxLogo.TabStop = false;
+            // 
             // lblTitle
             // 
             lblTitle.AutoSize = true;
@@ -223,15 +233,6 @@
             lblTitle.Size = new Size(436, 90);
             lblTitle.TabIndex = 0;
             lblTitle.Text = "Movers Maintenance Garage \r\n      Stock Control System";
-            // 
-            // pctBoxLogo
-            // 
-            pctBoxLogo.Location = new Point(265, 194);
-            pctBoxLogo.Name = "pctBoxLogo";
-            pctBoxLogo.Size = new Size(250, 250);
-            pctBoxLogo.SizeMode = PictureBoxSizeMode.Zoom;
-            pctBoxLogo.TabIndex = 1;
-            pctBoxLogo.TabStop = false;
             // 
             // frmMainScreen
             // 
