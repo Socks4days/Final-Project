@@ -30,7 +30,7 @@
         {
             pnlAddItemToOrder = new Panel();
             lblWarning = new Label();
-            lblOrderNumber = new Label();
+            lblOrderNumberItem = new Label();
             lblCurrentStockLevel = new Label();
             nUDQuantity = new NumericUpDown();
             btnAddToOrder = new Button();
@@ -46,15 +46,15 @@
             btnRemoveFromStock = new Button();
             btnAddToStock = new Button();
             pnlOrderInfo = new Panel();
-            lblOrderNo = new Label();
+            lblOrderNumberOrder = new Label();
             lblOrderStatus = new Label();
             lblOrderTotal = new Label();
             lblInstructions = new Label();
             lstViewOrderItems = new ListView();
             cHeaderStockItem = new ColumnHeader();
             cHeaderUnit = new ColumnHeader();
-            cHeaderQuantity = new ColumnHeader();
             cHeaderUnitPrice = new ColumnHeader();
+            cHeaderNoOfUnits = new ColumnHeader();
             cHeaderTotalPrice = new ColumnHeader();
             pnlAddItemToOrder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nUDQuantity).BeginInit();
@@ -66,7 +66,7 @@
             // pnlAddItemToOrder
             // 
             pnlAddItemToOrder.Controls.Add(lblWarning);
-            pnlAddItemToOrder.Controls.Add(lblOrderNumber);
+            pnlAddItemToOrder.Controls.Add(lblOrderNumberItem);
             pnlAddItemToOrder.Controls.Add(lblCurrentStockLevel);
             pnlAddItemToOrder.Controls.Add(nUDQuantity);
             pnlAddItemToOrder.Controls.Add(btnAddToOrder);
@@ -92,16 +92,16 @@
             lblWarning.Text = "Warning goes here";
             lblWarning.TextAlign = ContentAlignment.TopCenter;
             // 
-            // lblOrderNumber
+            // lblOrderNumberItem
             // 
-            lblOrderNumber.AutoSize = true;
-            lblOrderNumber.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblOrderNumber.ForeColor = SystemColors.Control;
-            lblOrderNumber.Location = new Point(12, 21);
-            lblOrderNumber.Name = "lblOrderNumber";
-            lblOrderNumber.Size = new Size(136, 32);
-            lblOrderNumber.TabIndex = 26;
-            lblOrderNumber.Text = "Order No ...";
+            lblOrderNumberItem.AutoSize = true;
+            lblOrderNumberItem.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblOrderNumberItem.ForeColor = SystemColors.Control;
+            lblOrderNumberItem.Location = new Point(12, 21);
+            lblOrderNumberItem.Name = "lblOrderNumberItem";
+            lblOrderNumberItem.Size = new Size(136, 32);
+            lblOrderNumberItem.TabIndex = 26;
+            lblOrderNumberItem.Text = "Order No ...";
             // 
             // lblCurrentStockLevel
             // 
@@ -273,7 +273,7 @@
             // pnlOrderInfo
             // 
             pnlOrderInfo.BackColor = Color.White;
-            pnlOrderInfo.Controls.Add(lblOrderNo);
+            pnlOrderInfo.Controls.Add(lblOrderNumberOrder);
             pnlOrderInfo.Controls.Add(lblOrderStatus);
             pnlOrderInfo.Controls.Add(lblOrderTotal);
             pnlOrderInfo.Controls.Add(lblInstructions);
@@ -284,17 +284,17 @@
             pnlOrderInfo.Size = new Size(755, 413);
             pnlOrderInfo.TabIndex = 1;
             // 
-            // lblOrderNo
+            // lblOrderNumberOrder
             // 
-            lblOrderNo.AutoSize = true;
-            lblOrderNo.FlatStyle = FlatStyle.Flat;
-            lblOrderNo.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblOrderNo.ForeColor = SystemColors.ControlText;
-            lblOrderNo.Location = new Point(38, 337);
-            lblOrderNo.Name = "lblOrderNo";
-            lblOrderNo.Size = new Size(152, 25);
-            lblOrderNo.TabIndex = 18;
-            lblOrderNo.Text = "Order Number ...";
+            lblOrderNumberOrder.AutoSize = true;
+            lblOrderNumberOrder.FlatStyle = FlatStyle.Flat;
+            lblOrderNumberOrder.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblOrderNumberOrder.ForeColor = SystemColors.ControlText;
+            lblOrderNumberOrder.Location = new Point(38, 337);
+            lblOrderNumberOrder.Name = "lblOrderNumberOrder";
+            lblOrderNumberOrder.Size = new Size(152, 25);
+            lblOrderNumberOrder.TabIndex = 18;
+            lblOrderNumberOrder.Text = "Order Number ...";
             // 
             // lblOrderStatus
             // 
@@ -336,7 +336,7 @@
             // lstViewOrderItems
             // 
             lstViewOrderItems.BackColor = Color.LightSeaGreen;
-            lstViewOrderItems.Columns.AddRange(new ColumnHeader[] { cHeaderStockItem, cHeaderUnit, cHeaderQuantity, cHeaderUnitPrice, cHeaderTotalPrice });
+            lstViewOrderItems.Columns.AddRange(new ColumnHeader[] { cHeaderStockItem, cHeaderUnit, cHeaderUnitPrice, cHeaderNoOfUnits, cHeaderTotalPrice });
             lstViewOrderItems.Dock = DockStyle.Top;
             lstViewOrderItems.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lstViewOrderItems.FullRowSelect = true;
@@ -355,18 +355,18 @@
             // 
             // cHeaderUnit
             // 
-            cHeaderUnit.Text = "Units";
+            cHeaderUnit.Text = "Unit Size";
             cHeaderUnit.Width = 100;
-            // 
-            // cHeaderQuantity
-            // 
-            cHeaderQuantity.Text = "Quantity";
-            cHeaderQuantity.Width = 100;
             // 
             // cHeaderUnitPrice
             // 
             cHeaderUnitPrice.Text = "Unit Price";
             cHeaderUnitPrice.Width = 150;
+            // 
+            // cHeaderNoOfUnits
+            // 
+            cHeaderNoOfUnits.Text = "No. Units";
+            cHeaderNoOfUnits.Width = 100;
             // 
             // cHeaderTotalPrice
             // 
@@ -407,8 +407,8 @@
         private ListView lstViewOrderItems;
         private ColumnHeader cHeaderStockItem;
         private ColumnHeader cHeaderUnit;
-        private ColumnHeader cHeaderQuantity;
         private ColumnHeader cHeaderUnitPrice;
+        private ColumnHeader cHeaderNoOfUnits;
         private ColumnHeader cHeaderTotalPrice;
         private Panel pnlOrderInfo;
         private Label lblInstructions;
@@ -419,9 +419,9 @@
         private Label lblOrderTotal;
         private Button btnPlaceOrder;
         private Label lblOrderStatus;
-        private Label lblOrderNumber;
+        private Label lblOrderNumberItem;
         private Label lblWarning;
         private Button btnCancel;
-        private Label lblOrderNo;
+        private Label lblOrderNumberOrder;
     }
 }

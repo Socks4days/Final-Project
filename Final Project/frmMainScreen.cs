@@ -139,9 +139,10 @@ namespace Final_Project
         private void btnOrderStock_Click(object sender, EventArgs e)
         {
             Order newOrder = new Order();
-            newOrder.OrderStatus = "Draft";
-
-            OpenChildForm(new frmCreateOrder());
+            newOrder.orderStatus = "Draft";
+            newOrder.orderDate = DateTime.Now;
+            newOrder = OrderDal.AddOrder(newOrder);            
+            OpenChildForm(new frmCreateOrder(newOrder));
         }
     }
 }

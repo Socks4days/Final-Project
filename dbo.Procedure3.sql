@@ -1,8 +1,7 @@
 ﻿CREATE PROCEDURE [dbo].[AddOrder]
-	@OrderNumber int,
-	@OrderDate DateTime,
+	@OrderDate DateTime = NULL,
 	@OrderPlacedByStaffId int,
 	@OrderStatus nvarchar(50)
 AS
-	INSERT INTO "Order" VALUES(@OrderNumber, @OrderDate, @OrderPlacedByStaffId, @OrderStatus)
+	INSERT INTO "Order" VALUES(@OrderDate, @OrderPlacedByStaffId, @OrderStatus)
 RETURN 0

@@ -13,17 +13,21 @@ namespace Final_Project
 {
     public partial class frmCreateOrder : Form
     {
-        public frmCreateOrder()
+        public frmCreateOrder(Order order)
         {
             InitializeComponent();
+            this.order = order;
             PopulateComboBoxes();
             cBoxStock.DroppedDown = false;
+            UpdateOrderItemListView();
             ShowViewOrderItems();
+            lblOrderNumberOrder.Text = "Order Number " + order.orderNumber.ToString();
+            lblOrderStatus.Text = "Order Status: " + order.orderStatus;       
         }
 
+        Order order;
         List<Stock> allStock = StockDal.GetAllStock();
         List<string> allStockNames = new List<string>();
-
 
         private void PopulateComboBoxes()
         {
@@ -58,8 +62,10 @@ namespace Final_Project
             OrderItem newOrderItem = new OrderItem();
             newOrderItem.stockId = StockDal.GetStockByStockName(cBoxStock.Text).stockId;
             newOrderItem.orderItemQuantity = Convert.ToInt32(nUDQuantity.Value);
+            newOrderItem.orderNumber = this.order.orderNumber;
             OrderDal.AddOrderItem(newOrderItem);
-            ShowViewOrderItems();
+            UpdateOrderItemListView();
+            ShowViewOrderItems();            
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -77,6 +83,7 @@ namespace Final_Project
         {
             pnlViewOrderItems.Visible = false;
             pnlAddItemToOrder.Visible = true;
+            lblOrderNumberItem.Text = "Order Number " + order.orderNumber.ToString();
         }
 
         private void btnAddToStock_Click(object sender, EventArgs e)
@@ -86,20 +93,29 @@ namespace Final_Project
 
         private void UpdateOrderItemListView()
         {
-            List<OrderItem> sortedOrderItemList = OrderDal.GetAllOrderItems();
+            List<OrderItem> sortedOrderItemList = OrderDal.GetAllOrderItems(this.order.orderNumber);
+
+            decimal orderTotal = 0;
+            foreach (ListViewItem item in lstViewOrderItems.Items)
+            {                  
+                lstViewOrderItems.Items.Remove(item);
+            }
 
             // Add each stock in the sorted list to the stock list
             foreach (OrderItem orderItem in sortedOrderItemList)
             {
                 // Create an array with stock details
-                string[] row = { orderItem.stockName, orderItem.orderItemQuantity.ToString(), orderItem.stockItemOrderQuantity.ToString(), orderItem.unitPrice.ToString(), orderItem.totalPrice.ToString() };
+                string[] row = { orderItem.stockName, orderItem.unitSize.ToString(), orderItem.unitPrice.ToString(), orderItem.orderItemQuantity.ToString(), orderItem.totalPrice.ToString() };
 
                 // Create a new list item based on the array
                 ListViewItem item = new ListViewItem(row);
 
                 // Add the list item to the stock list view
                 lstViewOrderItems.Items.Add(item);
+                orderTotal += orderItem.totalPrice;
             }
+            lblOrderTotal.Text = $"Order Total: £{orderTotal}";
+
         }
     }
 }

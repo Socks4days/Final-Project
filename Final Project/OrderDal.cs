@@ -16,14 +16,14 @@ namespace Final_Project
         private static string projectDirectoryPath = Directory.GetParent(workingDirectoryPath).Parent.Parent.Parent.FullName;
         private static string _connectionstring = string.Format(ConfigurationManager.ConnectionStrings["StockManagementConnectionString"].ConnectionString, projectDirectoryPath);
 
-        public static List<OrderItem> GetAllOrderItems()
+        public static List<OrderItem> GetAllOrderItems(int orderNumber)
         {
             using (SqlConnection connection = new SqlConnection(_connectionstring))
             {
                 List<OrderItem> orderItems = new List<OrderItem>();
                 connection.Open();
 
-                string sqlQuery = "SELECT * FROM OrderLine";
+                string sqlQuery = $"SELECT * FROM OrderLine WHERE orderNumber = {orderNumber}";
 
                 SqlCommand getAllOrderItemsCommand = new SqlCommand(sqlQuery, connection);
 
@@ -75,7 +75,7 @@ namespace Final_Project
                 List<Order> orders = new List<Order>();
                 connection.Open();
 
-                string sqlQuery = "SELECT * FROM OrderLine";
+                string sqlQuery = "SELECT * FROM [Order]";
 
                 SqlCommand getAllOrdersCommand = new SqlCommand(sqlQuery, connection);
 
@@ -97,7 +97,7 @@ namespace Final_Project
             }
         }
 
-        public static int AddOrder(Order newOrder)
+        public static Order AddOrder(Order newOrder)
         {
             using (SqlConnection connection = new SqlConnection(_connectionstring))
             {
@@ -109,16 +109,21 @@ namespace Final_Project
                 insertOrderCommand.CommandType = System.Data.CommandType.StoredProcedure;
                 insertOrderCommand.CommandText = "AddOrder";
 
-                insertOrderCommand.Parameters.Add(new SqlParameter("@OrderNumber", newOrder.orderNumber));
+                SqlParameter dbOrderNumber = new SqlParameter("@OrderNumber", newOrder.orderNumber);
+                dbOrderNumber.Direction = System.Data.ParameterDirection.Output;
+
+                insertOrderCommand.Parameters.Add(dbOrderNumber);
                 insertOrderCommand.Parameters.Add(new SqlParameter("@OrderDate", newOrder.orderDate));
                 insertOrderCommand.Parameters.Add(new SqlParameter("@OrderPlacedByStaffId", newOrder.orderPlacedByStaffId));
                 insertOrderCommand.Parameters.Add(new SqlParameter("@OrderStatus", newOrder.orderStatus));
 
                 int rowsAffected = insertOrderCommand.ExecuteNonQuery();
 
+                newOrder.orderNumber = Convert.ToInt32(dbOrderNumber.Value);
+
                 connection.Close();
 
-                return rowsAffected;
+                return newOrder;
             }
         }
     }

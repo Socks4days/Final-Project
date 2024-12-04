@@ -19,7 +19,7 @@ namespace Final_Project
         public decimal unitPrice { get; set; }
         public decimal totalPrice { get; set; }
         public int orderItemQuantity { get; set; }
-        public int stockItemOrderQuantity { get; set; }
+        public int unitSize { get; set; }
 
         #endregion Properties
 
@@ -37,7 +37,7 @@ namespace Final_Project
             this.stockName = stock.stockName;
             this.unitPrice = stock.price;
             this.totalPrice = this.unitPrice * this.orderItemQuantity;
-            this.stockItemOrderQuantity = stock.orderQuantity;
+            this.unitSize = stock.orderQuantity;
         }
     }
 }
