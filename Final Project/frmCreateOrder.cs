@@ -18,6 +18,7 @@ namespace Final_Project
             InitializeComponent();
             PopulateComboBoxes();
             cBoxStock.DroppedDown = false;
+            ShowViewOrderItems();
         }
 
         List<Stock> allStock = StockDal.GetAllStock();
@@ -51,15 +52,26 @@ namespace Final_Project
 
         }
 
-        private void cBoxStock_Enter(object sender, EventArgs e)
-        {
-            cBoxStock.SelectedIndex = -1;
-            cBoxStock.Focus();
-        }
-
         private void btnAddToBasket_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            ShowViewOrderItems();
+        }
+
+        private void ShowViewOrderItems()
+        {
+            pnlViewOrderItems.Visible = true;
+            pnlAddItemToOrder.Visible = false;
+        }
+
+        private void ShowAddItemToOrder()
+        {
+            pnlViewOrderItems.Visible = false;
+            pnlAddItemToOrder.Visible = true;
         }
     }
 }
