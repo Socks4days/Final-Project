@@ -1,0 +1,17 @@
+USE [C:\USERS\ANDRE\ONEDRIVE\DESKTOP\A2 SSD\TASKS\FINAL PROJECT\FINAL PROJECT\FINAL PROJECT\STOCKMANAGEMENT.MDF]
+GO
+
+/****** Object: Table [dbo].[OrderLine] Script Date: 04/12/2024 19:23:52 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[OrderLine] (
+    [OrderNumber]       INT NOT NULL,
+    [StockId]           INT NOT NULL,
+    [OrderItemQuantity] INT NOT NULL
+);
+
+

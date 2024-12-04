@@ -1,0 +1,17 @@
+USE [C:\USERS\ANDRE\ONEDRIVE\DESKTOP\A2 SSD\TASKS\FINAL PROJECT\FINAL PROJECT\FINAL PROJECT\STOCKMANAGEMENT.MDF]
+GO
+
+/****** Object: Table [dbo].[Audit] Script Date: 04/12/2024 19:21:05 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Audit] (
+    [AuditId]          INT      IDENTITY (1, 1) NOT NULL,
+    [AuditDate]        DATETIME NOT NULL,
+    [AuditedByStaffId] INT      NOT NULL
+);
+
+
