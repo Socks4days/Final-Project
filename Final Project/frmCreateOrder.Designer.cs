@@ -32,8 +32,8 @@
             lblWarning = new Label();
             lblOrderNumber = new Label();
             lblCurrentStockLevel = new Label();
-            nUPQuantity = new NumericUpDown();
-            btnAddToBasket = new Button();
+            nUDQuantity = new NumericUpDown();
+            btnAddToOrder = new Button();
             btnCancel = new Button();
             lblQuantity = new Label();
             lblStockItem = new Label();
@@ -57,7 +57,7 @@
             cHeaderUnitPrice = new ColumnHeader();
             cHeaderTotalPrice = new ColumnHeader();
             pnlAddItemToOrder.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)nUPQuantity).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nUDQuantity).BeginInit();
             pnlViewOrderItems.SuspendLayout();
             pnlOptions.SuspendLayout();
             pnlOrderInfo.SuspendLayout();
@@ -68,8 +68,8 @@
             pnlAddItemToOrder.Controls.Add(lblWarning);
             pnlAddItemToOrder.Controls.Add(lblOrderNumber);
             pnlAddItemToOrder.Controls.Add(lblCurrentStockLevel);
-            pnlAddItemToOrder.Controls.Add(nUPQuantity);
-            pnlAddItemToOrder.Controls.Add(btnAddToBasket);
+            pnlAddItemToOrder.Controls.Add(nUDQuantity);
+            pnlAddItemToOrder.Controls.Add(btnAddToOrder);
             pnlAddItemToOrder.Controls.Add(btnCancel);
             pnlAddItemToOrder.Controls.Add(lblQuantity);
             pnlAddItemToOrder.Controls.Add(lblStockItem);
@@ -114,27 +114,27 @@
             lblCurrentStockLevel.Text = "Current Stock Level Goes Here";
             lblCurrentStockLevel.TextAlign = ContentAlignment.TopCenter;
             // 
-            // nUPQuantity
+            // nUDQuantity
             // 
-            nUPQuantity.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            nUPQuantity.Location = new Point(412, 183);
-            nUPQuantity.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            nUPQuantity.Name = "nUPQuantity";
-            nUPQuantity.Size = new Size(176, 33);
-            nUPQuantity.TabIndex = 24;
-            nUPQuantity.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            nUDQuantity.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            nUDQuantity.Location = new Point(412, 183);
+            nUDQuantity.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            nUDQuantity.Name = "nUDQuantity";
+            nUDQuantity.Size = new Size(176, 33);
+            nUDQuantity.TabIndex = 24;
+            nUDQuantity.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
-            // btnAddToBasket
+            // btnAddToOrder
             // 
-            btnAddToBasket.Anchor = AnchorStyles.None;
-            btnAddToBasket.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnAddToBasket.Location = new Point(523, 498);
-            btnAddToBasket.Name = "btnAddToBasket";
-            btnAddToBasket.Size = new Size(220, 50);
-            btnAddToBasket.TabIndex = 23;
-            btnAddToBasket.Text = "Add To Order";
-            btnAddToBasket.UseVisualStyleBackColor = true;
-            btnAddToBasket.Click += btnAddToBasket_Click;
+            btnAddToOrder.Anchor = AnchorStyles.None;
+            btnAddToOrder.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnAddToOrder.Location = new Point(523, 498);
+            btnAddToOrder.Name = "btnAddToOrder";
+            btnAddToOrder.Size = new Size(220, 50);
+            btnAddToOrder.TabIndex = 23;
+            btnAddToOrder.Text = "Add To Order";
+            btnAddToOrder.UseVisualStyleBackColor = true;
+            btnAddToOrder.Click += btnAddToOrder_Click;
             // 
             // btnCancel
             // 
@@ -268,6 +268,7 @@
             btnAddToStock.TabIndex = 9;
             btnAddToStock.Text = "Add Item To Order";
             btnAddToStock.UseVisualStyleBackColor = false;
+            btnAddToStock.Click += btnAddToStock_Click;
             // 
             // pnlOrderInfo
             // 
@@ -384,7 +385,7 @@
             Text = "frmCreateOrder";
             pnlAddItemToOrder.ResumeLayout(false);
             pnlAddItemToOrder.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)nUPQuantity).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nUDQuantity).EndInit();
             pnlViewOrderItems.ResumeLayout(false);
             pnlOptions.ResumeLayout(false);
             pnlOrderInfo.ResumeLayout(false);
@@ -396,8 +397,8 @@
         private ComboBox cBoxQuantity;
         private Panel pnlAddItemToOrder;
         private Label lblCurrentStockLevel;
-        private NumericUpDown nUPQuantity;
-        private Button btnAddToBasket;
+        private NumericUpDown nUDQuantity;
+        private Button btnAddToOrder;
         private Label lblQuantity;
         private Label lblStockItem;
         private Label lblTitle;

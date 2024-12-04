@@ -21,7 +21,7 @@ namespace Final_Project
         private static string _connectionstring = string.Format(ConfigurationManager.ConnectionStrings["StockManagementConnectionString"].ConnectionString, projectDirectoryPath);
 
 
-        public static Stock GetStockByStockId(string stockId)
+        public static Stock GetStockByStockId(int stockId)
         {
             using (SqlConnection connection = new SqlConnection(_connectionstring))
             {
@@ -37,6 +37,40 @@ namespace Final_Project
                 while (sqlDataReader.Read())
                 {
                     stock = new Stock(                        
+                        (string)sqlDataReader["StockName"],
+                        (string)sqlDataReader["StockDescription"],
+                        (decimal)sqlDataReader["Price"],
+                        (int)sqlDataReader["DeliveryTimeDays"],
+                        (int)sqlDataReader["MaximumLevel"],
+                        (int)sqlDataReader["MinimumLevel"],
+                        (int)sqlDataReader["OrderQuantity"],
+                        (int)sqlDataReader["StockCheckFrequency"],
+                        (int)sqlDataReader["StockLevel"],
+                        (int)sqlDataReader["LastUpdatedByStaffId"]
+                        );
+
+                    stock.stockId = (int)sqlDataReader["StockId"];
+                }
+                return stock;
+            }
+        }
+
+        public static Stock GetStockByStockName(string stockName)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionstring))
+            {
+                Stock stock = new Stock();
+                connection.Open();
+
+                string sqlQuery = string.Format("SELECT * FROM Stock WHERE StockName = '{0}'", stockName);
+
+                SqlCommand getStockByStockName = new SqlCommand(sqlQuery, connection);
+
+                SqlDataReader sqlDataReader = getStockByStockName.ExecuteReader();
+
+                while (sqlDataReader.Read())
+                {
+                    stock = new Stock(
                         (string)sqlDataReader["StockName"],
                         (string)sqlDataReader["StockDescription"],
                         (decimal)sqlDataReader["Price"],

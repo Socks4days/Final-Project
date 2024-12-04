@@ -44,8 +44,7 @@ namespace Final_Project
             {
                 if (stock.stockName.ToString() == stockName)
                 {
-                    lookupStock = StockDal.GetStockByStockId(stock.stockId.ToString());
-                    //showEditStockLevels();
+                    lookupStock = StockDal.GetStockByStockId(stock.stockId);
                 }
             }
         }

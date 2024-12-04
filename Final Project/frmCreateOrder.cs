@@ -24,6 +24,7 @@ namespace Final_Project
         List<Stock> allStock = StockDal.GetAllStock();
         List<string> allStockNames = new List<string>();
 
+
         private void PopulateComboBoxes()
         {
             foreach (Stock stock in allStock)
@@ -52,9 +53,13 @@ namespace Final_Project
 
         }
 
-        private void btnAddToBasket_Click(object sender, EventArgs e)
+        private void btnAddToOrder_Click(object sender, EventArgs e)
         {
-
+            OrderItem newOrderItem = new OrderItem();
+            newOrderItem.stockId = StockDal.GetStockByStockName(cBoxStock.Text).stockId;
+            newOrderItem.orderItemQuantity = Convert.ToInt32(nUDQuantity.Value);
+            OrderDal.AddOrderItem(newOrderItem);
+            ShowViewOrderItems();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -72,6 +77,29 @@ namespace Final_Project
         {
             pnlViewOrderItems.Visible = false;
             pnlAddItemToOrder.Visible = true;
+        }
+
+        private void btnAddToStock_Click(object sender, EventArgs e)
+        {
+            ShowAddItemToOrder();
+        }
+
+        private void UpdateOrderItemListView()
+        {
+            List<OrderItem> sortedOrderItemList = OrderDal.GetAllOrderItems();
+
+            // Add each stock in the sorted list to the stock list
+            foreach (OrderItem orderItem in sortedOrderItemList)
+            {
+                // Create an array with stock details
+                string[] row = { orderItem.stockName, orderItem.orderItemQuantity.ToString(), orderItem.stockItemOrderQuantity.ToString(), orderItem.unitPrice.ToString(), orderItem.totalPrice.ToString() };
+
+                // Create a new list item based on the array
+                ListViewItem item = new ListViewItem(row);
+
+                // Add the list item to the stock list view
+                lstViewOrderItems.Items.Add(item);
+            }
         }
     }
 }
