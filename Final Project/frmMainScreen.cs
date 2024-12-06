@@ -141,8 +141,13 @@ namespace Final_Project
             Order newOrder = new Order();
             newOrder.orderStatus = "Draft";
             newOrder.orderDate = DateTime.Now;
-            newOrder = OrderDal.AddOrder(newOrder);            
-            OpenChildForm(new frmCreateOrder(newOrder));
+            newOrder = OrderDal.AddOrder(newOrder);
+            OpenChildForm(new frmCreateOrUpdateOrder(newOrder));
+        }
+
+        private void btnViewOrders_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

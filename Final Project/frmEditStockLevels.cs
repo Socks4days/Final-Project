@@ -37,7 +37,7 @@ namespace Final_Project
 
         public static Stock lookupStock = new Stock();
 
-        private void LookupStock(string stockName)
+        public static void LookupStock(string stockName)
         {
             List<Stock> allStock = StockDal.GetAllStock();
             foreach (Stock stock in allStock)

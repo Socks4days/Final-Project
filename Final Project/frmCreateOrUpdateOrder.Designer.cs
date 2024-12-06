@@ -1,6 +1,6 @@
 ﻿namespace Final_Project
 {
-    partial class frmCreateOrder
+    partial class frmCreateOrUpdateOrder
     {
         /// <summary>
         /// Required designer variable.
@@ -43,8 +43,8 @@
             pnlOptions = new Panel();
             btnPlaceOrder = new Button();
             btnSaveAsDraft = new Button();
-            btnRemoveFromStock = new Button();
-            btnAddToStock = new Button();
+            btnRemoveFromOrder = new Button();
+            btnAddAnItemToOrder = new Button();
             pnlOrderInfo = new Panel();
             lblOrderNumberOrder = new Label();
             lblOrderStatus = new Label();
@@ -78,7 +78,7 @@
             pnlAddItemToOrder.Dock = DockStyle.Top;
             pnlAddItemToOrder.Location = new Point(0, 0);
             pnlAddItemToOrder.Name = "pnlAddItemToOrder";
-            pnlAddItemToOrder.Size = new Size(755, 560);
+            pnlAddItemToOrder.Size = new Size(751, 560);
             pnlAddItemToOrder.TabIndex = 0;
             // 
             // lblWarning
@@ -99,7 +99,7 @@
             lblOrderNumberItem.ForeColor = SystemColors.Control;
             lblOrderNumberItem.Location = new Point(12, 21);
             lblOrderNumberItem.Name = "lblOrderNumberItem";
-            lblOrderNumberItem.Size = new Size(136, 32);
+            lblOrderNumberItem.Size = new Size(172, 41);
             lblOrderNumberItem.TabIndex = 26;
             lblOrderNumberItem.Text = "Order No ...";
             // 
@@ -120,7 +120,7 @@
             nUDQuantity.Location = new Point(412, 183);
             nUDQuantity.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             nUDQuantity.Name = "nUDQuantity";
-            nUDQuantity.Size = new Size(176, 33);
+            nUDQuantity.Size = new Size(176, 39);
             nUDQuantity.TabIndex = 24;
             nUDQuantity.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
@@ -128,7 +128,7 @@
             // 
             btnAddToOrder.Anchor = AnchorStyles.None;
             btnAddToOrder.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnAddToOrder.Location = new Point(523, 498);
+            btnAddToOrder.Location = new Point(521, 498);
             btnAddToOrder.Name = "btnAddToOrder";
             btnAddToOrder.Size = new Size(220, 50);
             btnAddToOrder.TabIndex = 23;
@@ -140,7 +140,7 @@
             // 
             btnCancel.Anchor = AnchorStyles.None;
             btnCancel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnCancel.Location = new Point(285, 498);
+            btnCancel.Location = new Point(283, 498);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(220, 50);
             btnCancel.TabIndex = 22;
@@ -155,7 +155,7 @@
             lblQuantity.ForeColor = SystemColors.Control;
             lblQuantity.Location = new Point(412, 155);
             lblQuantity.Name = "lblQuantity";
-            lblQuantity.Size = new Size(84, 25);
+            lblQuantity.Size = new Size(106, 32);
             lblQuantity.TabIndex = 21;
             lblQuantity.Text = "Quantity";
             // 
@@ -166,7 +166,7 @@
             lblStockItem.ForeColor = SystemColors.Control;
             lblStockItem.Location = new Point(166, 155);
             lblStockItem.Name = "lblStockItem";
-            lblStockItem.Size = new Size(98, 25);
+            lblStockItem.Size = new Size(126, 32);
             lblStockItem.TabIndex = 20;
             lblStockItem.Text = "Stock Item";
             // 
@@ -177,7 +177,7 @@
             lblTitle.ForeColor = SystemColors.Control;
             lblTitle.Location = new Point(285, 21);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(212, 32);
+            lblTitle.Size = new Size(265, 41);
             lblTitle.TabIndex = 19;
             lblTitle.Text = "Add Item To Order";
             // 
@@ -187,7 +187,7 @@
             cBoxStock.FormattingEnabled = true;
             cBoxStock.Location = new Point(166, 183);
             cBoxStock.Name = "cBoxStock";
-            cBoxStock.Size = new Size(176, 33);
+            cBoxStock.Size = new Size(176, 40);
             cBoxStock.TabIndex = 18;
             // 
             // pnlViewOrderItems
@@ -198,19 +198,19 @@
             pnlViewOrderItems.Dock = DockStyle.Top;
             pnlViewOrderItems.Location = new Point(0, 560);
             pnlViewOrderItems.Name = "pnlViewOrderItems";
-            pnlViewOrderItems.Size = new Size(755, 560);
+            pnlViewOrderItems.Size = new Size(751, 560);
             pnlViewOrderItems.TabIndex = 26;
             // 
             // pnlOptions
             // 
             pnlOptions.Controls.Add(btnPlaceOrder);
             pnlOptions.Controls.Add(btnSaveAsDraft);
-            pnlOptions.Controls.Add(btnRemoveFromStock);
-            pnlOptions.Controls.Add(btnAddToStock);
+            pnlOptions.Controls.Add(btnRemoveFromOrder);
+            pnlOptions.Controls.Add(btnAddAnItemToOrder);
             pnlOptions.Dock = DockStyle.Top;
             pnlOptions.Location = new Point(0, 413);
             pnlOptions.Name = "pnlOptions";
-            pnlOptions.Size = new Size(755, 147);
+            pnlOptions.Size = new Size(751, 147);
             pnlOptions.TabIndex = 2;
             // 
             // btnPlaceOrder
@@ -226,6 +226,7 @@
             btnPlaceOrder.TabIndex = 12;
             btnPlaceOrder.Text = "Place Order";
             btnPlaceOrder.UseVisualStyleBackColor = false;
+            btnPlaceOrder.Click += btnPlaceOrder_Click;
             // 
             // btnSaveAsDraft
             // 
@@ -241,34 +242,35 @@
             btnSaveAsDraft.Text = "Save Order As Draft";
             btnSaveAsDraft.UseVisualStyleBackColor = false;
             // 
-            // btnRemoveFromStock
+            // btnRemoveFromOrder
             // 
-            btnRemoveFromStock.BackColor = Color.LightSeaGreen;
-            btnRemoveFromStock.FlatAppearance.BorderSize = 0;
-            btnRemoveFromStock.FlatStyle = FlatStyle.Flat;
-            btnRemoveFromStock.Font = new Font("Segoe UI", 12F);
-            btnRemoveFromStock.ForeColor = SystemColors.Control;
-            btnRemoveFromStock.Location = new Point(434, 21);
-            btnRemoveFromStock.Name = "btnRemoveFromStock";
-            btnRemoveFromStock.Size = new Size(220, 50);
-            btnRemoveFromStock.TabIndex = 10;
-            btnRemoveFromStock.Text = "Remove From Order";
-            btnRemoveFromStock.UseVisualStyleBackColor = false;
+            btnRemoveFromOrder.BackColor = Color.LightSeaGreen;
+            btnRemoveFromOrder.FlatAppearance.BorderSize = 0;
+            btnRemoveFromOrder.FlatStyle = FlatStyle.Flat;
+            btnRemoveFromOrder.Font = new Font("Segoe UI", 12F);
+            btnRemoveFromOrder.ForeColor = SystemColors.Control;
+            btnRemoveFromOrder.Location = new Point(434, 21);
+            btnRemoveFromOrder.Name = "btnRemoveFromOrder";
+            btnRemoveFromOrder.Size = new Size(220, 50);
+            btnRemoveFromOrder.TabIndex = 10;
+            btnRemoveFromOrder.Text = "Remove From Order";
+            btnRemoveFromOrder.UseVisualStyleBackColor = false;
+            btnRemoveFromOrder.Click += btnRemoveFromOrder_Click;
             // 
-            // btnAddToStock
+            // btnAddAnItemToOrder
             // 
-            btnAddToStock.BackColor = Color.LightSeaGreen;
-            btnAddToStock.FlatAppearance.BorderSize = 0;
-            btnAddToStock.FlatStyle = FlatStyle.Flat;
-            btnAddToStock.Font = new Font("Segoe UI", 12F);
-            btnAddToStock.ForeColor = SystemColors.Control;
-            btnAddToStock.Location = new Point(122, 21);
-            btnAddToStock.Name = "btnAddToStock";
-            btnAddToStock.Size = new Size(220, 50);
-            btnAddToStock.TabIndex = 9;
-            btnAddToStock.Text = "Add Item To Order";
-            btnAddToStock.UseVisualStyleBackColor = false;
-            btnAddToStock.Click += btnAddToStock_Click;
+            btnAddAnItemToOrder.BackColor = Color.LightSeaGreen;
+            btnAddAnItemToOrder.FlatAppearance.BorderSize = 0;
+            btnAddAnItemToOrder.FlatStyle = FlatStyle.Flat;
+            btnAddAnItemToOrder.Font = new Font("Segoe UI", 12F);
+            btnAddAnItemToOrder.ForeColor = SystemColors.Control;
+            btnAddAnItemToOrder.Location = new Point(122, 21);
+            btnAddAnItemToOrder.Name = "btnAddAnItemToOrder";
+            btnAddAnItemToOrder.Size = new Size(220, 50);
+            btnAddAnItemToOrder.TabIndex = 9;
+            btnAddAnItemToOrder.Text = "Add Item To Order";
+            btnAddAnItemToOrder.UseVisualStyleBackColor = false;
+            btnAddAnItemToOrder.Click += btnAddToStock_Click;
             // 
             // pnlOrderInfo
             // 
@@ -281,7 +283,7 @@
             pnlOrderInfo.Dock = DockStyle.Top;
             pnlOrderInfo.Location = new Point(0, 0);
             pnlOrderInfo.Name = "pnlOrderInfo";
-            pnlOrderInfo.Size = new Size(755, 413);
+            pnlOrderInfo.Size = new Size(751, 413);
             pnlOrderInfo.TabIndex = 1;
             // 
             // lblOrderNumberOrder
@@ -292,7 +294,7 @@
             lblOrderNumberOrder.ForeColor = SystemColors.ControlText;
             lblOrderNumberOrder.Location = new Point(38, 337);
             lblOrderNumberOrder.Name = "lblOrderNumberOrder";
-            lblOrderNumberOrder.Size = new Size(152, 25);
+            lblOrderNumberOrder.Size = new Size(192, 32);
             lblOrderNumberOrder.TabIndex = 18;
             lblOrderNumberOrder.Text = "Order Number ...";
             // 
@@ -304,7 +306,7 @@
             lblOrderStatus.ForeColor = SystemColors.ControlText;
             lblOrderStatus.Location = new Point(434, 374);
             lblOrderStatus.Name = "lblOrderStatus";
-            lblOrderStatus.Size = new Size(120, 25);
+            lblOrderStatus.Size = new Size(151, 32);
             lblOrderStatus.TabIndex = 17;
             lblOrderStatus.Text = "Order Status:";
             // 
@@ -316,7 +318,7 @@
             lblOrderTotal.ForeColor = SystemColors.ControlText;
             lblOrderTotal.Location = new Point(434, 337);
             lblOrderTotal.Name = "lblOrderTotal";
-            lblOrderTotal.Size = new Size(110, 25);
+            lblOrderTotal.Size = new Size(138, 32);
             lblOrderTotal.TabIndex = 16;
             lblOrderTotal.Text = "Order Total:";
             // 
@@ -329,9 +331,9 @@
             lblInstructions.ForeColor = SystemColors.ControlText;
             lblInstructions.Location = new Point(0, 292);
             lblInstructions.Name = "lblInstructions";
-            lblInstructions.Size = new Size(555, 32);
+            lblInstructions.Size = new Size(651, 41);
             lblInstructions.TabIndex = 15;
-            lblInstructions.Text = "Select an item to manage its level and information";
+            lblInstructions.Text = "Add or select an item to manage its information";
             // 
             // lstViewOrderItems
             // 
@@ -343,10 +345,11 @@
             lstViewOrderItems.GridLines = true;
             lstViewOrderItems.Location = new Point(0, 0);
             lstViewOrderItems.Name = "lstViewOrderItems";
-            lstViewOrderItems.Size = new Size(755, 292);
+            lstViewOrderItems.Size = new Size(751, 292);
             lstViewOrderItems.TabIndex = 0;
             lstViewOrderItems.UseCompatibleStateImageBehavior = false;
             lstViewOrderItems.View = View.Details;
+            lstViewOrderItems.ItemSelectionChanged += lstViewOrderItems_ItemSelectionChanged;
             // 
             // cHeaderStockItem
             // 
@@ -373,7 +376,7 @@
             cHeaderTotalPrice.Text = "Total Price";
             cHeaderTotalPrice.Width = 150;
             // 
-            // frmCreateOrder
+            // frmCreateOrUpdateOrder
             // 
             AutoScaleMode = AutoScaleMode.None;
             AutoScroll = true;
@@ -381,8 +384,8 @@
             ClientSize = new Size(772, 559);
             Controls.Add(pnlViewOrderItems);
             Controls.Add(pnlAddItemToOrder);
-            Name = "frmCreateOrder";
-            Text = "frmCreateOrder";
+            Name = "frmCreateOrUpdateOrder";
+            Text = "Order";
             pnlAddItemToOrder.ResumeLayout(false);
             pnlAddItemToOrder.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)nUDQuantity).EndInit();
@@ -414,8 +417,8 @@
         private Label lblInstructions;
         private Panel pnlOptions;
         private Button btnSaveAsDraft;
-        private Button btnRemoveFromStock;
-        private Button btnAddToStock;
+        private Button btnRemoveFromOrder;
+        private Button btnAddAnItemToOrder;
         private Label lblOrderTotal;
         private Button btnPlaceOrder;
         private Label lblOrderStatus;

@@ -23,7 +23,7 @@ namespace Final_Project
                 List<OrderItem> orderItems = new List<OrderItem>();
                 connection.Open();
 
-                string sqlQuery = $"SELECT * FROM OrderLine WHERE orderNumber = {orderNumber}";
+                string sqlQuery = $"SELECT * FROM OrderItem WHERE orderNumber = {orderNumber}";
 
                 SqlCommand getAllOrderItemsCommand = new SqlCommand(sqlQuery, connection);
 
@@ -61,6 +61,29 @@ namespace Final_Project
                 insertOrderItemCommand.Parameters.Add(new SqlParameter("@OrderItemQuantity", newOrderItem.orderItemQuantity));                
 
                 int rowsAffected = insertOrderItemCommand.ExecuteNonQuery();
+
+                connection.Close();
+
+                return rowsAffected;
+            }
+        }
+
+        public static int RemoveOrderItem(OrderItem orderItemToRemove)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionstring))
+            {
+                connection.Open();
+
+                SqlCommand removeOrderItemCommand = new SqlCommand();
+                removeOrderItemCommand.Connection = connection;
+
+                removeOrderItemCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                removeOrderItemCommand.CommandText = "RemoveOrderItem";
+
+                removeOrderItemCommand.Parameters.Add(new SqlParameter("@OrderNumber", orderItemToRemove.orderNumber));
+                removeOrderItemCommand.Parameters.Add(new SqlParameter("@StockId", orderItemToRemove.stockId));
+                
+                int rowsAffected = removeOrderItemCommand.ExecuteNonQuery();
 
                 connection.Close();
 
@@ -126,5 +149,7 @@ namespace Final_Project
                 return newOrder;
             }
         }
+
+
     }
 }

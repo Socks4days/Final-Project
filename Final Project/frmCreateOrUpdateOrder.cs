@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace Final_Project
 {
-    public partial class frmCreateOrder : Form
+    public partial class frmCreateOrUpdateOrder : Form
     {
-        public frmCreateOrder(Order order)
+        public frmCreateOrUpdateOrder(Order order)
         {
             InitializeComponent();
             this.order = order;
@@ -22,7 +22,7 @@ namespace Final_Project
             UpdateOrderItemListView();
             ShowViewOrderItems();
             lblOrderNumberOrder.Text = "Order Number " + order.orderNumber.ToString();
-            lblOrderStatus.Text = "Order Status: " + order.orderStatus;       
+            lblOrderStatus.Text = "Order Status: " + order.orderStatus;
         }
 
         Order order;
@@ -65,7 +65,16 @@ namespace Final_Project
             newOrderItem.orderNumber = this.order.orderNumber;
             OrderDal.AddOrderItem(newOrderItem);
             UpdateOrderItemListView();
-            ShowViewOrderItems();            
+            ShowViewOrderItems();
+        }
+
+        private void btnRemoveFromOrder_Click(object sender, EventArgs e)
+        {
+            OrderItem item = new OrderItem();
+            item.stockId = frmEditStockLevels.lookupStock.stockId;
+            item.orderNumber = order.orderNumber;
+            OrderDal.RemoveOrderItem(item);
+            UpdateOrderItemListView();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -97,7 +106,7 @@ namespace Final_Project
 
             decimal orderTotal = 0;
             foreach (ListViewItem item in lstViewOrderItems.Items)
-            {                  
+            {
                 lstViewOrderItems.Items.Remove(item);
             }
 
@@ -115,6 +124,26 @@ namespace Final_Project
                 orderTotal += orderItem.totalPrice;
             }
             lblOrderTotal.Text = $"Order Total: £{orderTotal}";
+
+        }
+
+        private void lstViewOrderItems_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            if (e.IsSelected)
+            {
+                lblInstructions.Text = "Select an option to proceed";
+                btnRemoveFromOrder.Enabled = true;
+                btnPlaceOrder.Enabled = true;
+                btnSaveAsDraft.Enabled = true;
+                string stockName = e.Item.SubItems[0].Text;
+                frmEditStockLevels.LookupStock(stockName);
+            }
+        }
+
+        private void btnPlaceOrder_Click(object sender, EventArgs e)
+        {
+            order.orderStatus = "Placed";
+            lblOrderStatus.Text = $"Order Status: {order.orderStatus}";
 
         }
     }

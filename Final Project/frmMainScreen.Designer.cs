@@ -88,6 +88,7 @@
             btnViewOrders.TabIndex = 5;
             btnViewOrders.Text = "View Orders";
             btnViewOrders.UseVisualStyleBackColor = false;
+            btnViewOrders.Click += btnViewOrders_Click;
             // 
             // btnOrderStock
             // 
@@ -230,7 +231,7 @@
             lblTitle.ForeColor = SystemColors.Control;
             lblTitle.Location = new Point(181, 85);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(436, 90);
+            lblTitle.Size = new Size(541, 108);
             lblTitle.TabIndex = 0;
             lblTitle.Text = "Movers Maintenance Garage \r\n      Stock Control System";
             // 

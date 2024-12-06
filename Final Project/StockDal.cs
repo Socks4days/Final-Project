@@ -159,7 +159,6 @@ namespace Final_Project
                 // name of stored procedure to execute
                 removeStockCommand.CommandText = "RemoveStock";
                 // now add parameters that are passed to the stored procedure
-                // addStockCommand.Parameters.Add(new SqlParameter("@StockId", newStock.stockId));
                 removeStockCommand.Parameters.Add(new SqlParameter("@StockId", stockToRemove.stockId));
                 
                 int rowsAffected = removeStockCommand.ExecuteNonQuery();
