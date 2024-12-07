@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainScreen));
             pnlSideBar = new Panel();
             pnlOrder = new Panel();
             btnViewOrders = new Button();
@@ -231,7 +232,7 @@
             lblTitle.ForeColor = SystemColors.Control;
             lblTitle.Location = new Point(181, 85);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(541, 108);
+            lblTitle.Size = new Size(436, 90);
             lblTitle.TabIndex = 0;
             lblTitle.Text = "Movers Maintenance Garage \r\n      Stock Control System";
             // 
@@ -241,6 +242,7 @@
             ClientSize = new Size(970, 560);
             Controls.Add(pnlFormContainer);
             Controls.Add(pnlSideBar);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmMainScreen";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Stock Control";

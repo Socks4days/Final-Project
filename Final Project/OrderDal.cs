@@ -181,7 +181,7 @@ namespace Final_Project
             {
                 connection.Open();
 
-                string sqlQuery = string.Format($"UPDATE [Order] SET OrderStatus = {order.orderStatus} WHERE OrderNumber = {order.orderNumber}");
+                string sqlQuery = string.Format($"UPDATE [Order] SET OrderStatus = '{order.orderStatus}' WHERE OrderNumber = {order.orderNumber}");
 
                 SqlCommand updateOrderStatusByOrderNumber = new SqlCommand(sqlQuery, connection);
 

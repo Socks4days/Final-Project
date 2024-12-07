@@ -142,7 +142,7 @@ namespace Final_Project
             newOrder.orderStatus = "Draft";
             newOrder.orderDate = DateTime.Now;
             newOrder = OrderDal.AddOrder(newOrder);
-            OpenChildForm(new frmCreateOrUpdateOrder(newOrder));
+            OpenChildForm(new frmCreateOrUpdateOrder(newOrder, "Edit"));
         }
 
         private void btnViewOrders_Click(object sender, EventArgs e)

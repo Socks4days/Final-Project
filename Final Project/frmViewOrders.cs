@@ -74,12 +74,12 @@ namespace Final_Project
 
         private void btnEditOrder_Click(object sender, EventArgs e)
         {
-            frmMainScreen.frmMain.OpenChildForm(new frmCreateOrUpdateOrder(order));
+            frmMainScreen.frmMain.OpenChildForm(new frmCreateOrUpdateOrder(order, "Edit"));
         }
 
         private void btnViewOrder_Click(object sender, EventArgs e)
         {
-            frmMainScreen.frmMain.OpenChildForm(new frmCreateOrUpdateOrder(order));
+            frmMainScreen.frmMain.OpenChildForm(new frmCreateOrUpdateOrder(order, "View"));            
         }
     }
 }

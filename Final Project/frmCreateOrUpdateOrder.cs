@@ -13,7 +13,7 @@ namespace Final_Project
 {
     public partial class frmCreateOrUpdateOrder : Form
     {
-        public frmCreateOrUpdateOrder(Order order)
+        public frmCreateOrUpdateOrder(Order order, string viewToShow)
         {
             InitializeComponent();
             this.order = order;
@@ -27,6 +27,20 @@ namespace Final_Project
             else
             {
                 pnlOptions.Visible = false;
+            }
+            if (viewToShow == "Edit")
+            {
+                pnlOptions.Visible = true;
+                lblInstructions.Visible = true;
+                lstViewOrderItems.FullRowSelect = true;
+                pnlOrderInfo.Dock = DockStyle.Top;
+            }
+            if (viewToShow == "View") 
+            {
+                pnlOptions.Visible = false; 
+                lblInstructions.Visible = false;
+                lstViewOrderItems.FullRowSelect = false;
+                pnlOrderInfo.Dock = DockStyle.Fill;
             }
             ShowViewOrderItems();
             lblOrderNumberOrder.Text = "Order Number " + order.orderNumber.ToString();
@@ -150,7 +164,7 @@ namespace Final_Project
         {
             order.orderStatus = "Placed";
             lblOrderStatus.Text = $"Order Status: {order.orderStatus}";
-
+            OrderDal.UpdateOrderStatus(order);
         }
 
         private void btnSaveAsDraft_Click(object sender, EventArgs e)
