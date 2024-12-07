@@ -113,7 +113,6 @@ namespace Final_Project
                         (int)sqlDataReader["OrderPlacedByStaffId"],
                         (string)sqlDataReader["OrderStatus"]
                         );
-
                     orders.Add(order);
                 }
                 return orders;
@@ -150,6 +149,44 @@ namespace Final_Project
             }
         }
 
+        public static Order GetOrderByOrderNumber(int orderNumber)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionstring))
+            {
+                Order order = new Order();
+                connection.Open();
 
+                string sqlQuery = string.Format($"SELECT * FROM [Order] WHERE OrderNumber = {orderNumber}");
+
+                SqlCommand getOrderByOrderNumber = new SqlCommand(sqlQuery, connection);
+
+                SqlDataReader sqlDataReader = getOrderByOrderNumber.ExecuteReader();
+
+                while (sqlDataReader.Read())
+                {
+                    order = new Order(
+                        (int)sqlDataReader["OrderNumber"],
+                        (DateTime)sqlDataReader["OrderDate"],
+                        (int)sqlDataReader["OrderPlacedByStaffId"],
+                        (string)sqlDataReader["OrderStatus"]
+                        );
+                }
+                return order;
+            }
+        }
+
+        public static void UpdateOrderStatus(Order order)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionstring))
+            {
+                connection.Open();
+
+                string sqlQuery = string.Format($"UPDATE [Order] SET OrderStatus = {order.orderStatus} WHERE OrderNumber = {order.orderNumber}");
+
+                SqlCommand updateOrderStatusByOrderNumber = new SqlCommand(sqlQuery, connection);
+
+                SqlDataReader sqlDataReader = updateOrderStatusByOrderNumber.ExecuteReader();
+            }
+        }
     }
 }

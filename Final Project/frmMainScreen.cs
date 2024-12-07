@@ -147,7 +147,7 @@ namespace Final_Project
 
         private void btnViewOrders_Click(object sender, EventArgs e)
         {
-
+            OpenChildForm(new frmViewOrders());
         }
     }
 }

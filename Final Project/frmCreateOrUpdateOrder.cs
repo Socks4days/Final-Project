@@ -20,6 +20,14 @@ namespace Final_Project
             PopulateComboBoxes();
             cBoxStock.DroppedDown = false;
             UpdateOrderItemListView();
+            if (order.orderStatus == "To Start" || order.orderStatus == "Draft")
+            {
+                pnlOptions.Visible = true;
+            }
+            else
+            {
+                pnlOptions.Visible = false;
+            }
             ShowViewOrderItems();
             lblOrderNumberOrder.Text = "Order Number " + order.orderNumber.ToString();
             lblOrderStatus.Text = "Order Status: " + order.orderStatus;
@@ -54,7 +62,6 @@ namespace Final_Project
                 cBoxStock.DroppedDown = true;
             }
             cBoxStock.SelectionStart = cBoxStock.Text.Length;
-
         }
 
         private void btnAddToOrder_Click(object sender, EventArgs e)
@@ -124,7 +131,6 @@ namespace Final_Project
                 orderTotal += orderItem.totalPrice;
             }
             lblOrderTotal.Text = $"Order Total: £{orderTotal}";
-
         }
 
         private void lstViewOrderItems_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
@@ -145,6 +151,13 @@ namespace Final_Project
             order.orderStatus = "Placed";
             lblOrderStatus.Text = $"Order Status: {order.orderStatus}";
 
+        }
+
+        private void btnSaveAsDraft_Click(object sender, EventArgs e)
+        {
+            order.orderStatus = "Draft";
+            OrderDal.UpdateOrderStatus(order);
+            this.Close();
         }
     }
 }
