@@ -20,6 +20,7 @@ namespace Final_Project
             frmMainScreen.frmMain = this;
             OpenChildForm(new frmLoginScreen());
             hideSubMenus();
+            SetLogo();
         }
 
         private Form activeForm = null;
@@ -113,7 +114,7 @@ namespace Final_Project
 
         private void SetLogo()
         {
-            //  pctBoxLogo.Image = Resources.TitleIcon;
+            pctBoxLogo.ImageLocation = @"C:\Users\andre\OneDrive\Desktop\A2 SSD\Tasks\Final Project\TitleIcon.ico";
         }
 
         private void btnViewStock_Click(object sender, EventArgs e)

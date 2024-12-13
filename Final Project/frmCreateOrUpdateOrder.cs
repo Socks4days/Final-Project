@@ -23,10 +23,13 @@ namespace Final_Project
             this.sortedOrderItemList = new List<OrderItem>();
 
             // add values to the combo box for stock
-            PopulateComboBox();
+            PopulateComboBox("cBoxStock");
 
             // make sure it isn't showing anything when initially show into the form
             cBoxStock.DroppedDown = false;
+
+            // hide the confirmation panel
+            pnlOrderConfirmation.Visible = false;
 
             // update the list view to show all items in the order
             UpdateOrderItemListView();
@@ -50,10 +53,10 @@ namespace Final_Project
                 lstViewOrderItems.FullRowSelect = true;
                 pnlOrderInfo.Dock = DockStyle.Top;
             }
-            if (viewToShow == "View") 
+            if (viewToShow == "View")
             {
                 // if the user is only viewing, hide option buttons, instructions and disallow full row selection
-                pnlOptions.Visible = false; 
+                pnlOptions.Visible = false;
                 lblInstructions.Visible = false;
                 lstViewOrderItems.FullRowSelect = false;
                 pnlOrderInfo.Dock = DockStyle.Fill;
@@ -73,26 +76,40 @@ namespace Final_Project
         List<OrderItem> sortedOrderItemList;
 
         // method to give values to the combo box for selection
-        private void PopulateComboBox()
+        private void PopulateComboBox(string comboBoxName)
         {
-            // get a list of all items in an order 
-            sortedOrderItemList = OrderDal.GetAllOrderItems(this.order.orderNumber);
-            allStockNames.Clear();
-            // add all stock names to a list
-            foreach (Stock stock in allStock)
+            if (comboBoxName == "cBoxStock")
             {
-                allStockNames.Add(stock.stockName);
-            }
-            
-            // remove all stock names of each order item from the stock name list
-            foreach (OrderItem orderItem in sortedOrderItemList)
-            {                
-                allStockNames.Remove(orderItem.stockName);
-            }
+                // get a list of all items in an order 
+                sortedOrderItemList = OrderDal.GetAllOrderItems(this.order.orderNumber);
+                allStockNames.Clear();
+                // add all stock names to a list
+                foreach (Stock stock in allStock)
+                {
+                    allStockNames.Add(stock.stockName);
+                }
 
-            // populate the combo box with this new list
-            cBoxStock.DataSource = allStockNames;
-            cBoxStock.DisplayMember = "Name";
+                // remove all stock names of each order item from the stock name list
+                foreach (OrderItem orderItem in sortedOrderItemList)
+                {
+                    allStockNames.Remove(orderItem.stockName);
+                }
+
+                // populate the combo box with this new list
+                cBoxStock.DataSource = allStockNames;
+                cBoxStock.DisplayMember = "Name";
+            }
+            else if (comboBoxName == "cBoxStaffMembers")
+            {
+                List<Staff> sortedStaffList = StaffDal.GetAllStaff();
+                List<string> staffNames = new List<string>();
+                foreach (Staff staff in sortedStaffList)
+                {
+                    string fullname = $"{staff.forename} {staff.surname}";
+                    staffNames.Add(fullname);
+                }
+                cBoxStaffMembers.DataSource = staffNames;
+            }
         }
 
         /*private void cBoxStock_TextChanged(object sender, EventArgs e)
@@ -119,13 +136,13 @@ namespace Final_Project
             {
                 stockId = StockDal.GetStockByStockName(cBoxStock.Text).stockId,
                 orderItemQuantity = Convert.ToInt32(nUDQuantity.Value),
-                orderNumber = this.order.orderNumber                
+                orderNumber = this.order.orderNumber
             };
             // add new order item to the order
             OrderDal.AddOrderItem(newOrderItem);
-            
+
             // refresh the combo box
-            PopulateComboBox();
+            PopulateComboBox("cBoxStock");
             // refresh the list view
             UpdateOrderItemListView();
             // show the list view of order items
@@ -174,13 +191,15 @@ namespace Final_Project
             ShowAddItemToOrder();
         }
 
+        decimal orderTotal = 0;
+
         // method to update the list view of items in an order
         private void UpdateOrderItemListView()
         {
             // create a list of items that are equal to all of the order items for a specific order
             List<OrderItem> sortedOrderItemList = OrderDal.GetAllOrderItems(this.order.orderNumber);
 
-            decimal orderTotal = 0;
+            
             foreach (ListViewItem item in lstViewOrderItems.Items)
             {
                 // reset list view back to nothing
@@ -222,10 +241,14 @@ namespace Final_Project
 
         private void btnPlaceOrder_Click(object sender, EventArgs e)
         {
-            // set the order status to 'placed' and save it
-            order.orderStatus = "Placed";
-            lblOrderStatus.Text = $"Order Status: {order.orderStatus}";
-            OrderDal.UpdateOrderStatus(order);
+            pnlOptions.Visible = false;
+            pnlOrderNoToStat.Visible = false;
+            pnlOrderConfirmation.Visible = true;
+            pnlOrderInfo.Size = lstViewOrderItems.Size;
+
+            lblFinalOrderTotal.Text = orderTotal.ToString();
+            
+            
         }
 
         private void btnSaveAsDraft_Click(object sender, EventArgs e)
@@ -234,6 +257,14 @@ namespace Final_Project
             order.orderStatus = "Draft";
             OrderDal.UpdateOrderStatus(order);
             this.Close();
+        }
+
+        private void btnConfirmAndPlace_Click(object sender, EventArgs e)
+        {
+            // set the order status to 'placed' and save it
+            order.orderStatus = "Placed";
+            lblOrderStatus.Text = $"Order Status: {order.orderStatus}";
+            OrderDal.UpdateOrderStatus(order);
         }
     }
 }

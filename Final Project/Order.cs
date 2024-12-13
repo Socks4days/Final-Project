@@ -8,10 +8,13 @@ namespace Final_Project
 {
     public class Order
     {
+        #region Properties
         public int orderNumber { get; set; }
         public DateTime orderDate { get; set; }
         public int orderPlacedByStaffId { get; set; }
         public string orderStatus { get; set; }
+
+        #endregion Properties
         public Order()
         {
 

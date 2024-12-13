@@ -32,7 +32,7 @@ namespace Final_Project
                 // Add the list item to the stock list view
                 lstViewStock.Items.Add(item);
             }
-            showViewStock();
+            ShowViewStock();
         }
 
         public static Stock lookupStock = new Stock();
@@ -51,7 +51,7 @@ namespace Final_Project
 
         private void btnAddToStock_Click(object sender, EventArgs e)
         {
-            showEditStockLevels();
+            ShowEditStockLevels();
             btnRemoveStock.Visible = false;
             btnAddToStock.Visible = true;
             lblStockLevelToEdit.Text = lookupStock.stockName;
@@ -60,7 +60,7 @@ namespace Final_Project
 
         private void btnRemoveFromStock_Click(object sender, EventArgs e)
         {
-            showEditStockLevels();
+            ShowEditStockLevels();
             btnAddStock.Visible = false;
             btnRemoveFromStock.Visible = true;
             lblStockLevelToEdit.Text = lookupStock.stockName;
@@ -138,10 +138,10 @@ namespace Final_Project
         private void btnBack_Click(object sender, EventArgs e)
         {
             ClearError();
-            showViewStock();
+            ShowViewStock();
         }
 
-        private void showViewStock()
+        private void ShowViewStock()
         {
             pnlEditStockLevels.Visible = false;
             pnlEditStockItem.Visible = false;
@@ -152,14 +152,14 @@ namespace Final_Project
             lblInstructions.Text = "Select an item to manage its level and information";
         }
 
-        private void showEditStockLevels()
+        private void ShowEditStockLevels()
         {
             pnlViewStock.Visible = false;
             pnlEditStockItem.Visible = false;
             pnlEditStockLevels.Visible = true;
         }
 
-        private void showEditStockItem()
+        private void ShowEditStockItem()
         {
             pnlEditStockItem.Visible = true;
             pnlEditStockLevels.Visible = false;
@@ -185,7 +185,7 @@ namespace Final_Project
 
         private void btnEditStock_Click(object sender, EventArgs e)
         {
-            showEditStockItem();
+            ShowEditStockItem();
             ClearError();
             txtBoxName.Text = lookupStock.stockName;
             txtBoxDescription.Text = lookupStock.stockDescription;
@@ -227,7 +227,7 @@ namespace Final_Project
         private void btnCancelStockEdit_Click(object sender, EventArgs e)
         {
             ClearError();
-            showViewStock();
+            ShowViewStock();
         }
     }
 }

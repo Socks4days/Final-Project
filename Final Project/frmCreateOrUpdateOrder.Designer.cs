@@ -36,31 +36,40 @@
             btnAddToOrder = new Button();
             btnCancel = new Button();
             lblQuantity = new Label();
-            lblStockItem = new Label();
             lblTitle = new Label();
             cBoxStock = new ComboBox();
+            lblStockItem = new Label();
             pnlViewOrderItems = new Panel();
+            pnlOrderConfirmation = new Panel();
+            lblFinalOrderTotal = new Label();
+            lblStaffNameToDeliverTo = new Label();
+            btnConfirmAndPlace = new Button();
+            btnReturnToEditScreen = new Button();
+            cBoxStaffMembers = new ComboBox();
             pnlOptions = new Panel();
             btnPlaceOrder = new Button();
             btnSaveAsDraft = new Button();
             btnRemoveFromOrder = new Button();
             btnAddAnItemToOrder = new Button();
             pnlOrderInfo = new Panel();
-            lblOrderNumberOrder = new Label();
-            lblOrderStatus = new Label();
-            lblOrderTotal = new Label();
-            lblInstructions = new Label();
             lstViewOrderItems = new ListView();
             cHeaderStockItem = new ColumnHeader();
             cHeaderUnit = new ColumnHeader();
             cHeaderUnitPrice = new ColumnHeader();
             cHeaderNoOfUnits = new ColumnHeader();
             cHeaderTotalPrice = new ColumnHeader();
+            pnlOrderNoToStat = new Panel();
+            lblInstructions = new Label();
+            lblOrderNumberOrder = new Label();
+            lblOrderStatus = new Label();
+            lblOrderTotal = new Label();
             pnlAddItemToOrder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nUDQuantity).BeginInit();
             pnlViewOrderItems.SuspendLayout();
+            pnlOrderConfirmation.SuspendLayout();
             pnlOptions.SuspendLayout();
             pnlOrderInfo.SuspendLayout();
+            pnlOrderNoToStat.SuspendLayout();
             SuspendLayout();
             // 
             // pnlAddItemToOrder
@@ -72,13 +81,13 @@
             pnlAddItemToOrder.Controls.Add(btnAddToOrder);
             pnlAddItemToOrder.Controls.Add(btnCancel);
             pnlAddItemToOrder.Controls.Add(lblQuantity);
-            pnlAddItemToOrder.Controls.Add(lblStockItem);
             pnlAddItemToOrder.Controls.Add(lblTitle);
             pnlAddItemToOrder.Controls.Add(cBoxStock);
+            pnlAddItemToOrder.Controls.Add(lblStockItem);
             pnlAddItemToOrder.Dock = DockStyle.Top;
             pnlAddItemToOrder.Location = new Point(0, 0);
             pnlAddItemToOrder.Name = "pnlAddItemToOrder";
-            pnlAddItemToOrder.Size = new Size(755, 560);
+            pnlAddItemToOrder.Size = new Size(751, 560);
             pnlAddItemToOrder.TabIndex = 0;
             // 
             // lblWarning
@@ -99,7 +108,7 @@
             lblOrderNumberItem.ForeColor = SystemColors.Control;
             lblOrderNumberItem.Location = new Point(12, 21);
             lblOrderNumberItem.Name = "lblOrderNumberItem";
-            lblOrderNumberItem.Size = new Size(136, 32);
+            lblOrderNumberItem.Size = new Size(172, 41);
             lblOrderNumberItem.TabIndex = 26;
             lblOrderNumberItem.Text = "Order No ...";
             // 
@@ -120,7 +129,7 @@
             nUDQuantity.Location = new Point(412, 183);
             nUDQuantity.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             nUDQuantity.Name = "nUDQuantity";
-            nUDQuantity.Size = new Size(176, 33);
+            nUDQuantity.Size = new Size(176, 39);
             nUDQuantity.TabIndex = 24;
             nUDQuantity.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
@@ -128,7 +137,7 @@
             // 
             btnAddToOrder.Anchor = AnchorStyles.None;
             btnAddToOrder.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnAddToOrder.Location = new Point(523, 498);
+            btnAddToOrder.Location = new Point(521, 498);
             btnAddToOrder.Name = "btnAddToOrder";
             btnAddToOrder.Size = new Size(220, 50);
             btnAddToOrder.TabIndex = 23;
@@ -140,7 +149,7 @@
             // 
             btnCancel.Anchor = AnchorStyles.None;
             btnCancel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnCancel.Location = new Point(285, 498);
+            btnCancel.Location = new Point(283, 498);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(220, 50);
             btnCancel.TabIndex = 22;
@@ -155,20 +164,9 @@
             lblQuantity.ForeColor = SystemColors.Control;
             lblQuantity.Location = new Point(412, 155);
             lblQuantity.Name = "lblQuantity";
-            lblQuantity.Size = new Size(84, 25);
+            lblQuantity.Size = new Size(106, 32);
             lblQuantity.TabIndex = 21;
             lblQuantity.Text = "Quantity";
-            // 
-            // lblStockItem
-            // 
-            lblStockItem.AutoSize = true;
-            lblStockItem.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblStockItem.ForeColor = SystemColors.Control;
-            lblStockItem.Location = new Point(166, 155);
-            lblStockItem.Name = "lblStockItem";
-            lblStockItem.Size = new Size(98, 25);
-            lblStockItem.TabIndex = 20;
-            lblStockItem.Text = "Stock Item";
             // 
             // lblTitle
             // 
@@ -177,7 +175,7 @@
             lblTitle.ForeColor = SystemColors.Control;
             lblTitle.Location = new Point(285, 21);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(212, 32);
+            lblTitle.Size = new Size(265, 41);
             lblTitle.TabIndex = 19;
             lblTitle.Text = "Add Item To Order";
             // 
@@ -187,19 +185,105 @@
             cBoxStock.FormattingEnabled = true;
             cBoxStock.Location = new Point(166, 183);
             cBoxStock.Name = "cBoxStock";
-            cBoxStock.Size = new Size(176, 33);
+            cBoxStock.Size = new Size(176, 40);
             cBoxStock.TabIndex = 18;
+            // 
+            // lblStockItem
+            // 
+            lblStockItem.AutoSize = true;
+            lblStockItem.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblStockItem.ForeColor = SystemColors.Control;
+            lblStockItem.Location = new Point(166, 155);
+            lblStockItem.Name = "lblStockItem";
+            lblStockItem.Size = new Size(126, 32);
+            lblStockItem.TabIndex = 20;
+            lblStockItem.Text = "Stock Item";
             // 
             // pnlViewOrderItems
             // 
             pnlViewOrderItems.BackColor = Color.White;
+            pnlViewOrderItems.Controls.Add(pnlOrderConfirmation);
             pnlViewOrderItems.Controls.Add(pnlOptions);
             pnlViewOrderItems.Controls.Add(pnlOrderInfo);
             pnlViewOrderItems.Dock = DockStyle.Top;
             pnlViewOrderItems.Location = new Point(0, 560);
             pnlViewOrderItems.Name = "pnlViewOrderItems";
-            pnlViewOrderItems.Size = new Size(755, 560);
+            pnlViewOrderItems.Size = new Size(751, 826);
             pnlViewOrderItems.TabIndex = 26;
+            // 
+            // pnlOrderConfirmation
+            // 
+            pnlOrderConfirmation.Controls.Add(lblFinalOrderTotal);
+            pnlOrderConfirmation.Controls.Add(lblStaffNameToDeliverTo);
+            pnlOrderConfirmation.Controls.Add(btnConfirmAndPlace);
+            pnlOrderConfirmation.Controls.Add(btnReturnToEditScreen);
+            pnlOrderConfirmation.Controls.Add(cBoxStaffMembers);
+            pnlOrderConfirmation.Dock = DockStyle.Top;
+            pnlOrderConfirmation.Location = new Point(0, 560);
+            pnlOrderConfirmation.Name = "pnlOrderConfirmation";
+            pnlOrderConfirmation.Size = new Size(751, 268);
+            pnlOrderConfirmation.TabIndex = 3;
+            // 
+            // lblFinalOrderTotal
+            // 
+            lblFinalOrderTotal.AutoSize = true;
+            lblFinalOrderTotal.FlatStyle = FlatStyle.Flat;
+            lblFinalOrderTotal.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblFinalOrderTotal.ForeColor = SystemColors.ControlText;
+            lblFinalOrderTotal.Location = new Point(434, 63);
+            lblFinalOrderTotal.Name = "lblFinalOrderTotal";
+            lblFinalOrderTotal.Size = new Size(138, 32);
+            lblFinalOrderTotal.TabIndex = 23;
+            lblFinalOrderTotal.Text = "Order Total:";
+            // 
+            // lblStaffNameToDeliverTo
+            // 
+            lblStaffNameToDeliverTo.AutoSize = true;
+            lblStaffNameToDeliverTo.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblStaffNameToDeliverTo.ForeColor = SystemColors.ControlText;
+            lblStaffNameToDeliverTo.Location = new Point(60, 16);
+            lblStaffNameToDeliverTo.Name = "lblStaffNameToDeliverTo";
+            lblStaffNameToDeliverTo.Size = new Size(333, 32);
+            lblStaffNameToDeliverTo.TabIndex = 22;
+            lblStaffNameToDeliverTo.Text = "Enter Staff name to deliver to:";
+            // 
+            // btnConfirmAndPlace
+            // 
+            btnConfirmAndPlace.BackColor = Color.LightSeaGreen;
+            btnConfirmAndPlace.FlatAppearance.BorderSize = 0;
+            btnConfirmAndPlace.FlatStyle = FlatStyle.Flat;
+            btnConfirmAndPlace.Font = new Font("Segoe UI", 12F);
+            btnConfirmAndPlace.ForeColor = SystemColors.Control;
+            btnConfirmAndPlace.Location = new Point(434, 204);
+            btnConfirmAndPlace.Name = "btnConfirmAndPlace";
+            btnConfirmAndPlace.Size = new Size(220, 50);
+            btnConfirmAndPlace.TabIndex = 21;
+            btnConfirmAndPlace.Text = "Confirm and Place";
+            btnConfirmAndPlace.UseVisualStyleBackColor = false;
+            btnConfirmAndPlace.Click += btnConfirmAndPlace_Click;
+            // 
+            // btnReturnToEditScreen
+            // 
+            btnReturnToEditScreen.BackColor = Color.LightSeaGreen;
+            btnReturnToEditScreen.FlatAppearance.BorderSize = 0;
+            btnReturnToEditScreen.FlatStyle = FlatStyle.Flat;
+            btnReturnToEditScreen.Font = new Font("Segoe UI", 12F);
+            btnReturnToEditScreen.ForeColor = SystemColors.Control;
+            btnReturnToEditScreen.Location = new Point(122, 204);
+            btnReturnToEditScreen.Name = "btnReturnToEditScreen";
+            btnReturnToEditScreen.Size = new Size(220, 50);
+            btnReturnToEditScreen.TabIndex = 20;
+            btnReturnToEditScreen.Text = "Cancel";
+            btnReturnToEditScreen.UseVisualStyleBackColor = false;
+            // 
+            // cBoxStaffMembers
+            // 
+            cBoxStaffMembers.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cBoxStaffMembers.FormattingEnabled = true;
+            cBoxStaffMembers.Location = new Point(146, 63);
+            cBoxStaffMembers.Name = "cBoxStaffMembers";
+            cBoxStaffMembers.Size = new Size(176, 40);
+            cBoxStaffMembers.TabIndex = 19;
             // 
             // pnlOptions
             // 
@@ -210,7 +294,7 @@
             pnlOptions.Dock = DockStyle.Top;
             pnlOptions.Location = new Point(0, 413);
             pnlOptions.Name = "pnlOptions";
-            pnlOptions.Size = new Size(755, 147);
+            pnlOptions.Size = new Size(751, 147);
             pnlOptions.TabIndex = 2;
             // 
             // btnPlaceOrder
@@ -276,65 +360,13 @@
             // pnlOrderInfo
             // 
             pnlOrderInfo.BackColor = Color.White;
-            pnlOrderInfo.Controls.Add(lblOrderNumberOrder);
-            pnlOrderInfo.Controls.Add(lblOrderStatus);
-            pnlOrderInfo.Controls.Add(lblOrderTotal);
-            pnlOrderInfo.Controls.Add(lblInstructions);
             pnlOrderInfo.Controls.Add(lstViewOrderItems);
+            pnlOrderInfo.Controls.Add(pnlOrderNoToStat);
             pnlOrderInfo.Dock = DockStyle.Top;
             pnlOrderInfo.Location = new Point(0, 0);
             pnlOrderInfo.Name = "pnlOrderInfo";
-            pnlOrderInfo.Size = new Size(755, 413);
+            pnlOrderInfo.Size = new Size(751, 413);
             pnlOrderInfo.TabIndex = 1;
-            // 
-            // lblOrderNumberOrder
-            // 
-            lblOrderNumberOrder.AutoSize = true;
-            lblOrderNumberOrder.FlatStyle = FlatStyle.Flat;
-            lblOrderNumberOrder.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblOrderNumberOrder.ForeColor = SystemColors.ControlText;
-            lblOrderNumberOrder.Location = new Point(38, 337);
-            lblOrderNumberOrder.Name = "lblOrderNumberOrder";
-            lblOrderNumberOrder.Size = new Size(152, 25);
-            lblOrderNumberOrder.TabIndex = 18;
-            lblOrderNumberOrder.Text = "Order Number ...";
-            // 
-            // lblOrderStatus
-            // 
-            lblOrderStatus.AutoSize = true;
-            lblOrderStatus.FlatStyle = FlatStyle.Flat;
-            lblOrderStatus.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblOrderStatus.ForeColor = SystemColors.ControlText;
-            lblOrderStatus.Location = new Point(434, 374);
-            lblOrderStatus.Name = "lblOrderStatus";
-            lblOrderStatus.Size = new Size(120, 25);
-            lblOrderStatus.TabIndex = 17;
-            lblOrderStatus.Text = "Order Status:";
-            // 
-            // lblOrderTotal
-            // 
-            lblOrderTotal.AutoSize = true;
-            lblOrderTotal.FlatStyle = FlatStyle.Flat;
-            lblOrderTotal.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblOrderTotal.ForeColor = SystemColors.ControlText;
-            lblOrderTotal.Location = new Point(434, 337);
-            lblOrderTotal.Name = "lblOrderTotal";
-            lblOrderTotal.Size = new Size(110, 25);
-            lblOrderTotal.TabIndex = 16;
-            lblOrderTotal.Text = "Order Total:";
-            // 
-            // lblInstructions
-            // 
-            lblInstructions.AutoSize = true;
-            lblInstructions.Dock = DockStyle.Top;
-            lblInstructions.FlatStyle = FlatStyle.Flat;
-            lblInstructions.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblInstructions.ForeColor = SystemColors.ControlText;
-            lblInstructions.Location = new Point(0, 292);
-            lblInstructions.Name = "lblInstructions";
-            lblInstructions.Size = new Size(527, 32);
-            lblInstructions.TabIndex = 15;
-            lblInstructions.Text = "Add or select an item to manage its information";
             // 
             // lstViewOrderItems
             // 
@@ -347,7 +379,7 @@
             lstViewOrderItems.GridLines = true;
             lstViewOrderItems.Location = new Point(0, 0);
             lstViewOrderItems.Name = "lstViewOrderItems";
-            lstViewOrderItems.Size = new Size(755, 292);
+            lstViewOrderItems.Size = new Size(751, 292);
             lstViewOrderItems.TabIndex = 0;
             lstViewOrderItems.UseCompatibleStateImageBehavior = false;
             lstViewOrderItems.View = View.Details;
@@ -378,6 +410,65 @@
             cHeaderTotalPrice.Text = "Total Price";
             cHeaderTotalPrice.Width = 150;
             // 
+            // pnlOrderNoToStat
+            // 
+            pnlOrderNoToStat.Controls.Add(lblInstructions);
+            pnlOrderNoToStat.Controls.Add(lblOrderNumberOrder);
+            pnlOrderNoToStat.Controls.Add(lblOrderStatus);
+            pnlOrderNoToStat.Controls.Add(lblOrderTotal);
+            pnlOrderNoToStat.Location = new Point(0, 292);
+            pnlOrderNoToStat.Name = "pnlOrderNoToStat";
+            pnlOrderNoToStat.Size = new Size(751, 121);
+            pnlOrderNoToStat.TabIndex = 19;
+            // 
+            // lblInstructions
+            // 
+            lblInstructions.AutoSize = true;
+            lblInstructions.FlatStyle = FlatStyle.Flat;
+            lblInstructions.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblInstructions.ForeColor = SystemColors.ControlText;
+            lblInstructions.Location = new Point(3, 3);
+            lblInstructions.Name = "lblInstructions";
+            lblInstructions.Size = new Size(651, 41);
+            lblInstructions.TabIndex = 15;
+            lblInstructions.Text = "Add or select an item to manage its information";
+            // 
+            // lblOrderNumberOrder
+            // 
+            lblOrderNumberOrder.AutoSize = true;
+            lblOrderNumberOrder.FlatStyle = FlatStyle.Flat;
+            lblOrderNumberOrder.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblOrderNumberOrder.ForeColor = SystemColors.ControlText;
+            lblOrderNumberOrder.Location = new Point(16, 49);
+            lblOrderNumberOrder.Name = "lblOrderNumberOrder";
+            lblOrderNumberOrder.Size = new Size(192, 32);
+            lblOrderNumberOrder.TabIndex = 18;
+            lblOrderNumberOrder.Text = "Order Number ...";
+            // 
+            // lblOrderStatus
+            // 
+            lblOrderStatus.AutoSize = true;
+            lblOrderStatus.FlatStyle = FlatStyle.Flat;
+            lblOrderStatus.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblOrderStatus.ForeColor = SystemColors.ControlText;
+            lblOrderStatus.Location = new Point(412, 86);
+            lblOrderStatus.Name = "lblOrderStatus";
+            lblOrderStatus.Size = new Size(151, 32);
+            lblOrderStatus.TabIndex = 17;
+            lblOrderStatus.Text = "Order Status:";
+            // 
+            // lblOrderTotal
+            // 
+            lblOrderTotal.AutoSize = true;
+            lblOrderTotal.FlatStyle = FlatStyle.Flat;
+            lblOrderTotal.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblOrderTotal.ForeColor = SystemColors.ControlText;
+            lblOrderTotal.Location = new Point(412, 49);
+            lblOrderTotal.Name = "lblOrderTotal";
+            lblOrderTotal.Size = new Size(138, 32);
+            lblOrderTotal.TabIndex = 16;
+            lblOrderTotal.Text = "Order Total:";
+            // 
             // frmCreateOrUpdateOrder
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -392,9 +483,12 @@
             pnlAddItemToOrder.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)nUDQuantity).EndInit();
             pnlViewOrderItems.ResumeLayout(false);
+            pnlOrderConfirmation.ResumeLayout(false);
+            pnlOrderConfirmation.PerformLayout();
             pnlOptions.ResumeLayout(false);
             pnlOrderInfo.ResumeLayout(false);
-            pnlOrderInfo.PerformLayout();
+            pnlOrderNoToStat.ResumeLayout(false);
+            pnlOrderNoToStat.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -428,5 +522,12 @@
         private Label lblWarning;
         private Button btnCancel;
         private Label lblOrderNumberOrder;
+        private Panel pnlOrderConfirmation;
+        private Panel pnlOrderNoToStat;
+        private Label lblStaffNameToDeliverTo;
+        private Button btnConfirmAndPlace;
+        private Button btnReturnToEditScreen;
+        private ComboBox cBoxStaffMembers;
+        private Label lblFinalOrderTotal;
     }
 }
