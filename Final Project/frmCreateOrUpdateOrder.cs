@@ -23,7 +23,7 @@ namespace Final_Project
             this.sortedOrderItemList = new List<OrderItem>();
 
             // add values to the combo box for stock
-            PopulateComboBox("cBoxStock");
+            PopulateComboBox();
 
             // make sure it isn't showing anything when initially show into the form
             cBoxStock.DroppedDown = false;
@@ -76,40 +76,26 @@ namespace Final_Project
         List<OrderItem> sortedOrderItemList;
 
         // method to give values to the combo box for selection
-        private void PopulateComboBox(string comboBoxName)
+        private void PopulateComboBox()
         {
-            if (comboBoxName == "cBoxStock")
+            // get a list of all items in an order 
+            sortedOrderItemList = OrderDal.GetAllOrderItems(this.order.orderNumber);
+            allStockNames.Clear();
+            // add all stock names to a list
+            foreach (Stock stock in allStock)
             {
-                // get a list of all items in an order 
-                sortedOrderItemList = OrderDal.GetAllOrderItems(this.order.orderNumber);
-                allStockNames.Clear();
-                // add all stock names to a list
-                foreach (Stock stock in allStock)
-                {
-                    allStockNames.Add(stock.stockName);
-                }
-
-                // remove all stock names of each order item from the stock name list
-                foreach (OrderItem orderItem in sortedOrderItemList)
-                {
-                    allStockNames.Remove(orderItem.stockName);
-                }
-
-                // populate the combo box with this new list
-                cBoxStock.DataSource = allStockNames;
-                cBoxStock.DisplayMember = "Name";
+                allStockNames.Add(stock.stockName);
             }
-            else if (comboBoxName == "cBoxStaffMembers")
+
+            // remove all stock names of each order item from the stock name list
+            foreach (OrderItem orderItem in sortedOrderItemList)
             {
-                List<Staff> sortedStaffList = StaffDal.GetAllStaff();
-                List<string> staffNames = new List<string>();
-                foreach (Staff staff in sortedStaffList)
-                {
-                    string fullname = $"{staff.forename} {staff.surname}";
-                    staffNames.Add(fullname);
-                }
-                cBoxStaffMembers.DataSource = staffNames;
+                allStockNames.Remove(orderItem.stockName);
             }
+
+            // populate the combo box with this new list
+            cBoxStock.DataSource = allStockNames;
+            cBoxStock.DisplayMember = "Name";
         }
 
         /*private void cBoxStock_TextChanged(object sender, EventArgs e)
@@ -142,7 +128,7 @@ namespace Final_Project
             OrderDal.AddOrderItem(newOrderItem);
 
             // refresh the combo box
-            PopulateComboBox("cBoxStock");
+            PopulateComboBox();
             // refresh the list view
             UpdateOrderItemListView();
             // show the list view of order items
@@ -199,7 +185,7 @@ namespace Final_Project
             // create a list of items that are equal to all of the order items for a specific order
             List<OrderItem> sortedOrderItemList = OrderDal.GetAllOrderItems(this.order.orderNumber);
 
-            
+
             foreach (ListViewItem item in lstViewOrderItems.Items)
             {
                 // reset list view back to nothing
@@ -245,10 +231,10 @@ namespace Final_Project
             pnlOrderNoToStat.Visible = false;
             pnlOrderConfirmation.Visible = true;
             pnlOrderInfo.Size = lstViewOrderItems.Size;
+            pnlViewOrderItems.Height = pnlOrderInfo.Height + pnlOrderConfirmation.Height;
 
-            lblFinalOrderTotal.Text = orderTotal.ToString();
-            
-            
+            lblFinalOrderTotal.Text = $"Order Total: £{orderTotal.ToString()}";
+            lblDeliveringTo.Text = $"Order For: Maintenance Department, Movers Ltd";
         }
 
         private void btnSaveAsDraft_Click(object sender, EventArgs e)
@@ -265,6 +251,20 @@ namespace Final_Project
             order.orderStatus = "Placed";
             lblOrderStatus.Text = $"Order Status: {order.orderStatus}";
             OrderDal.UpdateOrderStatus(order);
+        }
+
+        private void btnReturnToEditScreen_Click(object sender, EventArgs e)
+        {
+            pnlOptions.Visible = true;
+            pnlOrderNoToStat.Visible = true;
+            pnlOrderConfirmation.Visible = false;
+            pnlOrderInfo.Height = (lstViewOrderItems.Height + pnlOrderNoToStat.Height + pnlOptions.Height);
+            pnlViewOrderItems.Height = pnlOrderInfo.Height + pnlOptions.Height;
+        }
+
+        private void AddDeliveries()
+        {
+           
         }
     }
 }

@@ -38,6 +38,8 @@ namespace Final_Project
         // get list of all staff
         public List<Staff> staffList = StaffDal.GetAllStaff();
 
+        public static Staff loggedInStaff = new Staff();
+
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             // create default username and password strings
@@ -62,6 +64,7 @@ namespace Final_Project
                 // if user is found, proceed to main menu
                 if (staff.username == username && staff.password == password)
                 {
+                    loggedInStaff = staff;
                     frmMainScreen.frmMain.OpenChildForm(null);
                     break;
                 }

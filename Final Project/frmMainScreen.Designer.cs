@@ -43,6 +43,7 @@
             pnlFormContainer = new Panel();
             pctBoxLogo = new PictureBox();
             lblTitle = new Label();
+            btnDelivery = new Button();
             pnlSideBar.SuspendLayout();
             pnlOrder.SuspendLayout();
             pnlStock.SuspendLayout();
@@ -54,6 +55,7 @@
             // 
             pnlSideBar.AutoScroll = true;
             pnlSideBar.BackColor = Color.Teal;
+            pnlSideBar.Controls.Add(btnDelivery);
             pnlSideBar.Controls.Add(pnlOrder);
             pnlSideBar.Controls.Add(btnOrder);
             pnlSideBar.Controls.Add(pnlStock);
@@ -118,7 +120,7 @@
             btnOrder.Name = "btnOrder";
             btnOrder.Size = new Size(220, 50);
             btnOrder.TabIndex = 4;
-            btnOrder.Text = "Order";
+            btnOrder.Text = "Orders";
             btnOrder.UseVisualStyleBackColor = true;
             btnOrder.Click += btnOrder_Click;
             // 
@@ -232,9 +234,23 @@
             lblTitle.ForeColor = SystemColors.Control;
             lblTitle.Location = new Point(181, 85);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(541, 108);
+            lblTitle.Size = new Size(436, 90);
             lblTitle.TabIndex = 0;
             lblTitle.Text = "Movers Maintenance Garage \r\n      Stock Control System";
+            // 
+            // btnDelivery
+            // 
+            btnDelivery.Dock = DockStyle.Top;
+            btnDelivery.FlatAppearance.BorderSize = 0;
+            btnDelivery.FlatStyle = FlatStyle.Flat;
+            btnDelivery.Font = new Font("Segoe UI", 12F);
+            btnDelivery.ForeColor = SystemColors.Control;
+            btnDelivery.Location = new Point(0, 475);
+            btnDelivery.Name = "btnDelivery";
+            btnDelivery.Size = new Size(220, 50);
+            btnDelivery.TabIndex = 10;
+            btnDelivery.Text = "Deliveries";
+            btnDelivery.UseVisualStyleBackColor = true;
             // 
             // frmMainScreen
             // 
@@ -271,5 +287,6 @@
         private Button btnRemoveStock;
         private Label lblTitle;
         private PictureBox pctBoxLogo;
+        private Button btnDelivery;
     }
 }
