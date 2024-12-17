@@ -150,5 +150,10 @@ namespace Final_Project
         {
             OpenChildForm(new frmViewOrders());
         }
+
+        private void btnViewDeliveries_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmAddDelivery());
+        }
     }
 }

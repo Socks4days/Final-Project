@@ -251,6 +251,24 @@ namespace Final_Project
             order.orderStatus = "Placed";
             lblOrderStatus.Text = $"Order Status: {order.orderStatus}";
             OrderDal.UpdateOrderStatus(order);
+
+            // create a list of items that are equal to all of the order items for a specific order
+            List<OrderItem> sortedOrderItemList = OrderDal.GetAllOrderItems(this.order.orderNumber);
+
+            // create a list of items that are equal to all of the order items for a specific order
+            List<DeliveryItem> sortedDeliveryItemList = new List<DeliveryItem>();
+
+
+            foreach (OrderItem orderItem in sortedOrderItemList)
+            {
+                DeliveryItem item = new DeliveryItem();
+                item.stockId = item.stockId;                
+            }
+
+            Delivery delivery = new Delivery();
+            delivery.orderNumber = order.orderNumber;
+            delivery.deliveryDate = DateTime.Now;
+            DeliveryDal.AddDelivery(delivery);
         }
 
         private void btnReturnToEditScreen_Click(object sender, EventArgs e)
@@ -262,9 +280,6 @@ namespace Final_Project
             pnlViewOrderItems.Height = pnlOrderInfo.Height + pnlOptions.Height;
         }
 
-        private void AddDeliveries()
-        {
-           
-        }
+        
     }
 }

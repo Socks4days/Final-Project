@@ -69,35 +69,35 @@ namespace Final_Project
             }
         }
 
-        public static List<Order> GetAllOrders()
+        public static List<Delivery> GetAllDeliveries()
         {
             using (SqlConnection connection = new SqlConnection(_connectionstring))
             {
-                List<Order> orders = new List<Order>();
+                List<Delivery> deliveries = new List<Delivery>();
                 connection.Open();
 
-                string sqlQuery = "SELECT * FROM [Order]";
+                string sqlQuery = "SELECT * FROM Delivery";
 
-                SqlCommand getAllOrdersCommand = new SqlCommand(sqlQuery, connection);
+                SqlCommand getAllDeliveriesCommand = new SqlCommand(sqlQuery, connection);
 
-                SqlDataReader sqlDataReader = getAllOrdersCommand.ExecuteReader();
+                SqlDataReader sqlDataReader = getAllDeliveriesCommand.ExecuteReader();
 
                 while (sqlDataReader.Read())
                 {
-                    Order order = new Order(
+                    Delivery delivery = new Delivery(
 
+                        (int)sqlDataReader["DeliveryNumber"],
                         (int)sqlDataReader["OrderNumber"],
-                        (DateTime)sqlDataReader["OrderDate"],
-                        (int)sqlDataReader["OrderPlacedByStaffId"],
-                        (string)sqlDataReader["OrderStatus"]
+                        (DateTime)sqlDataReader["DeliveryDate"],
+                        (int)sqlDataReader["DeliveryCheckedByStaffId"]
                         );
-                    orders.Add(order);
+                    deliveries.Add(delivery);
                 }
-                return orders;
+                return deliveries;
             }
         }
 
-        public static Order AddOrder(Order newOrder)
+        public static Delivery AddDelivery(Delivery newDelivery)
         {
             using (SqlConnection connection = new SqlConnection(_connectionstring))
             {
@@ -107,23 +107,23 @@ namespace Final_Project
                 insertOrderCommand.Connection = connection;
 
                 insertOrderCommand.CommandType = System.Data.CommandType.StoredProcedure;
-                insertOrderCommand.CommandText = "AddOrder";
+                insertOrderCommand.CommandText = "AddDelivery";
 
-                SqlParameter dbOrderNumber = new SqlParameter("@OrderNumber", newOrder.orderNumber);
-                dbOrderNumber.Direction = System.Data.ParameterDirection.Output;
+                SqlParameter dbDeliveryNumber = new SqlParameter("@DeliveryNumber", newDelivery.orderNumber);
+                dbDeliveryNumber.Direction = System.Data.ParameterDirection.Output;
 
-                insertOrderCommand.Parameters.Add(dbOrderNumber);
-                insertOrderCommand.Parameters.Add(new SqlParameter("@OrderDate", newOrder.orderDate));
-                insertOrderCommand.Parameters.Add(new SqlParameter("@OrderPlacedByStaffId", newOrder.orderPlacedByStaffId));
-                insertOrderCommand.Parameters.Add(new SqlParameter("@OrderStatus", newOrder.orderStatus));
+                insertOrderCommand.Parameters.Add(dbDeliveryNumber);
+                insertOrderCommand.Parameters.Add(new SqlParameter("@OrderNumber", newDelivery.orderNumber));
+                insertOrderCommand.Parameters.Add(new SqlParameter("@DeliveryDate", newDelivery.deliveryDate));
+                insertOrderCommand.Parameters.Add(new SqlParameter("@DeliveryCheckedByStaffId", newDelivery.deliveryCheckedByStaffId));
 
                 int rowsAffected = insertOrderCommand.ExecuteNonQuery();
 
-                newOrder.orderNumber = Convert.ToInt32(dbOrderNumber.Value);
+                newDelivery.deliveryNumber = Convert.ToInt32(dbDeliveryNumber.Value);
 
                 connection.Close();
 
-                return newOrder;
+                return newDelivery;
             }
         }
 

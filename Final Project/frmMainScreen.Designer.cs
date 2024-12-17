@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainScreen));
             pnlSideBar = new Panel();
+            btnDelivery = new Button();
             pnlOrder = new Panel();
             btnViewOrders = new Button();
             btnOrderStock = new Button();
@@ -43,18 +44,21 @@
             pnlFormContainer = new Panel();
             pctBoxLogo = new PictureBox();
             lblTitle = new Label();
-            btnDelivery = new Button();
+            panel1 = new Panel();
+            btnViewDeliveries = new Button();
             pnlSideBar.SuspendLayout();
             pnlOrder.SuspendLayout();
             pnlStock.SuspendLayout();
             pnlFormContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pctBoxLogo).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // pnlSideBar
             // 
             pnlSideBar.AutoScroll = true;
             pnlSideBar.BackColor = Color.Teal;
+            pnlSideBar.Controls.Add(panel1);
             pnlSideBar.Controls.Add(btnDelivery);
             pnlSideBar.Controls.Add(pnlOrder);
             pnlSideBar.Controls.Add(btnOrder);
@@ -67,6 +71,20 @@
             pnlSideBar.Size = new Size(220, 560);
             pnlSideBar.TabIndex = 0;
             // 
+            // btnDelivery
+            // 
+            btnDelivery.Dock = DockStyle.Top;
+            btnDelivery.FlatAppearance.BorderSize = 0;
+            btnDelivery.FlatStyle = FlatStyle.Flat;
+            btnDelivery.Font = new Font("Segoe UI", 12F);
+            btnDelivery.ForeColor = SystemColors.Control;
+            btnDelivery.Location = new Point(0, 475);
+            btnDelivery.Name = "btnDelivery";
+            btnDelivery.Size = new Size(199, 50);
+            btnDelivery.TabIndex = 10;
+            btnDelivery.Text = "Deliveries";
+            btnDelivery.UseVisualStyleBackColor = true;
+            // 
             // pnlOrder
             // 
             pnlOrder.Controls.Add(btnViewOrders);
@@ -74,7 +92,7 @@
             pnlOrder.Dock = DockStyle.Top;
             pnlOrder.Location = new Point(0, 375);
             pnlOrder.Name = "pnlOrder";
-            pnlOrder.Size = new Size(220, 100);
+            pnlOrder.Size = new Size(199, 100);
             pnlOrder.TabIndex = 9;
             // 
             // btnViewOrders
@@ -87,7 +105,7 @@
             btnViewOrders.ForeColor = SystemColors.Control;
             btnViewOrders.Location = new Point(0, 50);
             btnViewOrders.Name = "btnViewOrders";
-            btnViewOrders.Size = new Size(220, 50);
+            btnViewOrders.Size = new Size(199, 50);
             btnViewOrders.TabIndex = 5;
             btnViewOrders.Text = "View Orders";
             btnViewOrders.UseVisualStyleBackColor = false;
@@ -103,7 +121,7 @@
             btnOrderStock.ForeColor = SystemColors.Control;
             btnOrderStock.Location = new Point(0, 0);
             btnOrderStock.Name = "btnOrderStock";
-            btnOrderStock.Size = new Size(220, 50);
+            btnOrderStock.Size = new Size(199, 50);
             btnOrderStock.TabIndex = 4;
             btnOrderStock.Text = "Order Stock";
             btnOrderStock.UseVisualStyleBackColor = false;
@@ -118,7 +136,7 @@
             btnOrder.ForeColor = SystemColors.Control;
             btnOrder.Location = new Point(0, 325);
             btnOrder.Name = "btnOrder";
-            btnOrder.Size = new Size(220, 50);
+            btnOrder.Size = new Size(199, 50);
             btnOrder.TabIndex = 4;
             btnOrder.Text = "Orders";
             btnOrder.UseVisualStyleBackColor = true;
@@ -132,7 +150,7 @@
             pnlStock.Dock = DockStyle.Top;
             pnlStock.Location = new Point(0, 175);
             pnlStock.Name = "pnlStock";
-            pnlStock.Size = new Size(220, 150);
+            pnlStock.Size = new Size(199, 150);
             pnlStock.TabIndex = 3;
             // 
             // btnRemoveStock
@@ -145,7 +163,7 @@
             btnRemoveStock.ForeColor = SystemColors.Control;
             btnRemoveStock.Location = new Point(0, 100);
             btnRemoveStock.Name = "btnRemoveStock";
-            btnRemoveStock.Size = new Size(220, 50);
+            btnRemoveStock.Size = new Size(199, 50);
             btnRemoveStock.TabIndex = 9;
             btnRemoveStock.Text = "Remove Stock";
             btnRemoveStock.UseVisualStyleBackColor = false;
@@ -161,7 +179,7 @@
             btnAddNewStock.ForeColor = SystemColors.Control;
             btnAddNewStock.Location = new Point(0, 50);
             btnAddNewStock.Name = "btnAddNewStock";
-            btnAddNewStock.Size = new Size(220, 50);
+            btnAddNewStock.Size = new Size(199, 50);
             btnAddNewStock.TabIndex = 6;
             btnAddNewStock.Text = "Add New Stock";
             btnAddNewStock.UseVisualStyleBackColor = false;
@@ -177,7 +195,7 @@
             btnManageStockLevels.ForeColor = SystemColors.Control;
             btnManageStockLevels.Location = new Point(0, 0);
             btnManageStockLevels.Name = "btnManageStockLevels";
-            btnManageStockLevels.Size = new Size(220, 50);
+            btnManageStockLevels.Size = new Size(199, 50);
             btnManageStockLevels.TabIndex = 4;
             btnManageStockLevels.Text = "Manage Stock Levels";
             btnManageStockLevels.UseVisualStyleBackColor = false;
@@ -193,7 +211,7 @@
             btnStock.ForeColor = SystemColors.Control;
             btnStock.Location = new Point(0, 125);
             btnStock.Name = "btnStock";
-            btnStock.Size = new Size(220, 50);
+            btnStock.Size = new Size(199, 50);
             btnStock.TabIndex = 1;
             btnStock.Text = "Stock";
             btnStock.UseVisualStyleBackColor = false;
@@ -204,7 +222,7 @@
             pnlAvatar.Dock = DockStyle.Top;
             pnlAvatar.Location = new Point(0, 0);
             pnlAvatar.Name = "pnlAvatar";
-            pnlAvatar.Size = new Size(220, 125);
+            pnlAvatar.Size = new Size(199, 125);
             pnlAvatar.TabIndex = 0;
             // 
             // pnlFormContainer
@@ -234,23 +252,34 @@
             lblTitle.ForeColor = SystemColors.Control;
             lblTitle.Location = new Point(181, 85);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(436, 90);
+            lblTitle.Size = new Size(541, 108);
             lblTitle.TabIndex = 0;
             lblTitle.Text = "Movers Maintenance Garage \r\n      Stock Control System";
             // 
-            // btnDelivery
+            // panel1
             // 
-            btnDelivery.Dock = DockStyle.Top;
-            btnDelivery.FlatAppearance.BorderSize = 0;
-            btnDelivery.FlatStyle = FlatStyle.Flat;
-            btnDelivery.Font = new Font("Segoe UI", 12F);
-            btnDelivery.ForeColor = SystemColors.Control;
-            btnDelivery.Location = new Point(0, 475);
-            btnDelivery.Name = "btnDelivery";
-            btnDelivery.Size = new Size(220, 50);
-            btnDelivery.TabIndex = 10;
-            btnDelivery.Text = "Deliveries";
-            btnDelivery.UseVisualStyleBackColor = true;
+            panel1.Controls.Add(btnViewDeliveries);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 525);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(199, 125);
+            panel1.TabIndex = 11;
+            // 
+            // btnViewDeliveries
+            // 
+            btnViewDeliveries.BackColor = Color.LightSeaGreen;
+            btnViewDeliveries.Dock = DockStyle.Top;
+            btnViewDeliveries.FlatAppearance.BorderSize = 0;
+            btnViewDeliveries.FlatStyle = FlatStyle.Flat;
+            btnViewDeliveries.Font = new Font("Segoe UI", 12F);
+            btnViewDeliveries.ForeColor = SystemColors.Control;
+            btnViewDeliveries.Location = new Point(0, 0);
+            btnViewDeliveries.Name = "btnViewDeliveries";
+            btnViewDeliveries.Size = new Size(199, 50);
+            btnViewDeliveries.TabIndex = 6;
+            btnViewDeliveries.Text = "View Deliveries";
+            btnViewDeliveries.UseVisualStyleBackColor = false;
+            btnViewDeliveries.Click += btnViewDeliveries_Click;
             // 
             // frmMainScreen
             // 
@@ -268,6 +297,7 @@
             pnlFormContainer.ResumeLayout(false);
             pnlFormContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pctBoxLogo).EndInit();
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -288,5 +318,7 @@
         private Label lblTitle;
         private PictureBox pctBoxLogo;
         private Button btnDelivery;
+        private Panel panel1;
+        private Button btnViewDeliveries;
     }
 }
