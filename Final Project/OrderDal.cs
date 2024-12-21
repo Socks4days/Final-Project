@@ -23,7 +23,7 @@ namespace Final_Project
                 List<OrderItem> orderItems = new List<OrderItem>();
                 connection.Open();
 
-                string sqlQuery = $"SELECT * FROM OrderItem WHERE orderNumber = {orderNumber}";
+                string sqlQuery = $"SELECT * FROM OrderItem WHERE OrderNumber = {orderNumber}";
 
                 SqlCommand getAllOrderItemsCommand = new SqlCommand(sqlQuery, connection);
 
@@ -48,22 +48,25 @@ namespace Final_Project
         {
             using (SqlConnection connection = new SqlConnection(_connectionstring))
             {
-                OrderItem lookupItem = new OrderItem();
+                OrderItem orderItem = new OrderItem();
                 connection.Open();
 
-                string sqlQuery = $"SELECT * FROM OrderItem WHERE orderNumber = {orderNumber} AND stockId = {stockId}";
+                string sqlQuery = $"SELECT * FROM OrderItem WHERE OrderNumber = {orderNumber} AND StockId = {stockId}";
 
                 SqlCommand getOrderItemByOrderNumberAndStockIdCommand = new SqlCommand(sqlQuery, connection);
 
                 SqlDataReader sqlDataReader = getOrderItemByOrderNumberAndStockIdCommand.ExecuteReader();
-                                
-                    OrderItem orderItem = new OrderItem(
+
+                while (sqlDataReader.Read())
+                {
+                     orderItem = new OrderItem(
 
                         (int)sqlDataReader["OrderNumber"],
                         (int)sqlDataReader["StockId"],
                         (int)sqlDataReader["OrderItemQuantity"]
                         );
-                
+                }
+
                 return orderItem;
             }
         }

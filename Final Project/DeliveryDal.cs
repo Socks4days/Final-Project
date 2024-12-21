@@ -156,21 +156,21 @@ namespace Final_Project
             {
                 connection.Open();
 
-                SqlCommand insertOrderCommand = new SqlCommand();
-                insertOrderCommand.Connection = connection;
+                SqlCommand insertDeliveryCommand = new SqlCommand();
+                insertDeliveryCommand.Connection = connection;
 
-                insertOrderCommand.CommandType = System.Data.CommandType.StoredProcedure;
-                insertOrderCommand.CommandText = "AddDelivery";
+                insertDeliveryCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                insertDeliveryCommand.CommandText = "AddDelivery";
 
-                SqlParameter dbDeliveryNumber = new SqlParameter("@DeliveryNumber", newDelivery.orderNumber);
+                SqlParameter dbDeliveryNumber = new SqlParameter("@DeliveryNumber", 0);
                 dbDeliveryNumber.Direction = System.Data.ParameterDirection.Output;
 
-                insertOrderCommand.Parameters.Add(dbDeliveryNumber);
-                insertOrderCommand.Parameters.Add(new SqlParameter("@OrderNumber", newDelivery.orderNumber));
-                insertOrderCommand.Parameters.Add(new SqlParameter("@DeliveryDate", newDelivery.deliveryDate));
-                insertOrderCommand.Parameters.Add(new SqlParameter("@DeliveryCheckedByStaffId", newDelivery.deliveryCheckedByStaffId));
+                insertDeliveryCommand.Parameters.Add(dbDeliveryNumber);
+                insertDeliveryCommand.Parameters.Add(new SqlParameter("@OrderNumber", newDelivery.orderNumber));
+                insertDeliveryCommand.Parameters.Add(new SqlParameter("@DeliveryDate", newDelivery.deliveryDate));
+                insertDeliveryCommand.Parameters.Add(new SqlParameter("@DeliveryCheckedByStaffId", newDelivery.deliveryCheckedByStaffId));
 
-                int rowsAffected = insertOrderCommand.ExecuteNonQuery();
+                int rowsAffected = insertDeliveryCommand.ExecuteNonQuery();
 
                 newDelivery.deliveryNumber = Convert.ToInt32(dbDeliveryNumber.Value);
 

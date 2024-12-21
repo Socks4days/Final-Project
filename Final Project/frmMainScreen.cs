@@ -77,11 +77,18 @@ namespace Final_Project
             toggleSubMenu(pnlOrder);
         }
 
+        private void btnDelivery_Click(object sender, EventArgs e)
+        {
+            CloseChildForm();
+            toggleSubMenu(pnlDelivery);
+        }
+
         // Hide the settings and admin submenus when a menu option is clicked
         private void hideSubMenus()
         {
             pnlStock.Visible = false;
             pnlOrder.Visible = false;
+            pnlDelivery.Visible = false;
         }
 
         // Hide the main menu and title bar
@@ -155,5 +162,7 @@ namespace Final_Project
         {
             OpenChildForm(new frmAddDelivery());
         }
+
+        
     }
 }

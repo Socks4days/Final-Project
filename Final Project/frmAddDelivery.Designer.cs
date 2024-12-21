@@ -40,14 +40,10 @@
             lstViewDeliveryItems = new ListView();
             cHeaderOrderItem = new ColumnHeader();
             cHeaderQuantityOrdered = new ColumnHeader();
+            cHeaderDelivered = new ColumnHeader();
+            cHeaderQuantityReceived = new ColumnHeader();
+            cHeaderQuantityFaulty = new ColumnHeader();
             lblOrderNumber = new Label();
-            pnlOrderItems = new Panel();
-            btnRecordItem = new Button();
-            button1 = new Button();
-            lstViewOrderItems = new ListView();
-            cHeaderItem = new ColumnHeader();
-            cHeaderQuantity = new ColumnHeader();
-            cHeaderSomething = new ColumnHeader();
             pnlItemToAddToDelivery = new Panel();
             btnAddItemToDelivery = new Button();
             label1 = new Label();
@@ -56,12 +52,8 @@
             nUDQuantityFaulty = new NumericUpDown();
             lblSelectedItem = new Label();
             lblSelectedItemQuantity = new Label();
-            cHeaderDelivered = new ColumnHeader();
-            cHeaderQuantityReceived = new ColumnHeader();
-            cHeaderQuantityFaulty = new ColumnHeader();
             pnlOrders.SuspendLayout();
             pnlDelivery.SuspendLayout();
-            pnlOrderItems.SuspendLayout();
             pnlItemToAddToDelivery.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nUDQuantityDelivered).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nUDQuantityFaulty).BeginInit();
@@ -136,9 +128,9 @@
             // 
             lblDate.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblDate.ForeColor = SystemColors.Control;
-            lblDate.Location = new Point(381, 19);
+            lblDate.Location = new Point(394, 19);
             lblDate.Name = "lblDate";
-            lblDate.Size = new Size(300, 32);
+            lblDate.Size = new Size(349, 32);
             lblDate.TabIndex = 28;
             lblDate.Text = "Date Goes Here";
             lblDate.TextAlign = ContentAlignment.MiddleRight;
@@ -184,6 +176,7 @@
             lstViewDeliveryItems.TabIndex = 2;
             lstViewDeliveryItems.UseCompatibleStateImageBehavior = false;
             lstViewDeliveryItems.View = View.Details;
+            lstViewDeliveryItems.ItemSelectionChanged += lstViewDeliveryItems_ItemSelectionChanged;
             // 
             // cHeaderOrderItem
             // 
@@ -195,85 +188,31 @@
             cHeaderQuantityOrdered.Text = "Qty Ordered";
             cHeaderQuantityOrdered.Width = 120;
             // 
+            // cHeaderDelivered
+            // 
+            cHeaderDelivered.Text = "Delivered";
+            cHeaderDelivered.Width = 120;
+            // 
+            // cHeaderQuantityReceived
+            // 
+            cHeaderQuantityReceived.Text = "Qty Received";
+            cHeaderQuantityReceived.Width = 120;
+            // 
+            // cHeaderQuantityFaulty
+            // 
+            cHeaderQuantityFaulty.Text = "Qty Faulty";
+            cHeaderQuantityFaulty.Width = 120;
+            // 
             // lblOrderNumber
             // 
             lblOrderNumber.AutoSize = true;
             lblOrderNumber.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblOrderNumber.ForeColor = SystemColors.Control;
-            lblOrderNumber.Location = new Point(76, 19);
+            lblOrderNumber.Location = new Point(12, 19);
             lblOrderNumber.Name = "lblOrderNumber";
             lblOrderNumber.Size = new Size(232, 32);
             lblOrderNumber.TabIndex = 0;
             lblOrderNumber.Text = "Order No Goes Here";
-            // 
-            // pnlOrderItems
-            // 
-            pnlOrderItems.Controls.Add(btnRecordItem);
-            pnlOrderItems.Controls.Add(button1);
-            pnlOrderItems.Controls.Add(lstViewOrderItems);
-            pnlOrderItems.Dock = DockStyle.Top;
-            pnlOrderItems.Location = new Point(0, 1120);
-            pnlOrderItems.Name = "pnlOrderItems";
-            pnlOrderItems.Size = new Size(755, 560);
-            pnlOrderItems.TabIndex = 5;
-            // 
-            // btnRecordItem
-            // 
-            btnRecordItem.Anchor = AnchorStyles.None;
-            btnRecordItem.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnRecordItem.Location = new Point(256, 148);
-            btnRecordItem.Margin = new Padding(3, 2, 3, 2);
-            btnRecordItem.Name = "btnRecordItem";
-            btnRecordItem.Size = new Size(220, 50);
-            btnRecordItem.TabIndex = 29;
-            btnRecordItem.Text = "Record Item";
-            btnRecordItem.UseVisualStyleBackColor = true;
-            btnRecordItem.Click += btnRecordItem_Click;
-            // 
-            // button1
-            // 
-            button1.Anchor = AnchorStyles.None;
-            button1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.Location = new Point(426, 489);
-            button1.Margin = new Padding(3, 2, 3, 2);
-            button1.Name = "button1";
-            button1.Size = new Size(220, 50);
-            button1.TabIndex = 27;
-            button1.Text = "Something Else?";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // lstViewOrderItems
-            // 
-            lstViewOrderItems.BackColor = Color.LightSeaGreen;
-            lstViewOrderItems.Columns.AddRange(new ColumnHeader[] { cHeaderItem, cHeaderQuantity, cHeaderSomething });
-            lstViewOrderItems.Dock = DockStyle.Top;
-            lstViewOrderItems.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lstViewOrderItems.ForeColor = SystemColors.Window;
-            lstViewOrderItems.FullRowSelect = true;
-            lstViewOrderItems.GridLines = true;
-            lstViewOrderItems.Location = new Point(0, 0);
-            lstViewOrderItems.Margin = new Padding(3, 2, 3, 2);
-            lstViewOrderItems.Name = "lstViewOrderItems";
-            lstViewOrderItems.Size = new Size(755, 467);
-            lstViewOrderItems.TabIndex = 1;
-            lstViewOrderItems.UseCompatibleStateImageBehavior = false;
-            lstViewOrderItems.View = View.Details;
-            lstViewOrderItems.ItemSelectionChanged += lstViewOrderItems_ItemSelectionChanged;
-            // 
-            // cHeaderItem
-            // 
-            cHeaderItem.Text = "Item";
-            cHeaderItem.Width = 300;
-            // 
-            // cHeaderQuantity
-            // 
-            cHeaderQuantity.Text = "Quantity Ordered";
-            cHeaderQuantity.Width = 300;
-            // 
-            // cHeaderSomething
-            // 
-            cHeaderSomething.Text = "Extra Column?";
-            cHeaderSomething.Width = 200;
             // 
             // pnlItemToAddToDelivery
             // 
@@ -285,7 +224,7 @@
             pnlItemToAddToDelivery.Controls.Add(lblSelectedItem);
             pnlItemToAddToDelivery.Controls.Add(lblSelectedItemQuantity);
             pnlItemToAddToDelivery.Dock = DockStyle.Top;
-            pnlItemToAddToDelivery.Location = new Point(0, 1680);
+            pnlItemToAddToDelivery.Location = new Point(0, 1120);
             pnlItemToAddToDelivery.Name = "pnlItemToAddToDelivery";
             pnlItemToAddToDelivery.Size = new Size(755, 560);
             pnlItemToAddToDelivery.TabIndex = 6;
@@ -301,6 +240,7 @@
             btnAddItemToDelivery.TabIndex = 29;
             btnAddItemToDelivery.Text = "Add Item To Delivery";
             btnAddItemToDelivery.UseVisualStyleBackColor = true;
+            btnAddItemToDelivery.Click += btnAddItemToDelivery_Click;
             // 
             // label1
             // 
@@ -340,11 +280,9 @@
             // 
             nUDQuantityFaulty.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             nUDQuantityFaulty.Location = new Point(440, 242);
-            nUDQuantityFaulty.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             nUDQuantityFaulty.Name = "nUDQuantityFaulty";
             nUDQuantityFaulty.Size = new Size(176, 33);
             nUDQuantityFaulty.TabIndex = 25;
-            nUDQuantityFaulty.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // lblSelectedItem
             // 
@@ -368,21 +306,6 @@
             lblSelectedItemQuantity.Text = "Item Quantity Goes Here";
             lblSelectedItemQuantity.TextAlign = ContentAlignment.TopCenter;
             // 
-            // cHeaderDelivered
-            // 
-            cHeaderDelivered.Text = "Delivered";
-            cHeaderDelivered.Width = 120;
-            // 
-            // cHeaderQuantityReceived
-            // 
-            cHeaderQuantityReceived.Text = "Qty Received";
-            cHeaderQuantityReceived.Width = 120;
-            // 
-            // cHeaderQuantityFaulty
-            // 
-            cHeaderQuantityFaulty.Text = "Qty Faulty";
-            cHeaderQuantityFaulty.Width = 120;
-            // 
             // frmAddDelivery
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -390,7 +313,6 @@
             BackColor = Color.LightSeaGreen;
             ClientSize = new Size(772, 559);
             Controls.Add(pnlItemToAddToDelivery);
-            Controls.Add(pnlOrderItems);
             Controls.Add(pnlDelivery);
             Controls.Add(pnlOrders);
             Name = "frmAddDelivery";
@@ -398,7 +320,6 @@
             pnlOrders.ResumeLayout(false);
             pnlDelivery.ResumeLayout(false);
             pnlDelivery.PerformLayout();
-            pnlOrderItems.ResumeLayout(false);
             pnlItemToAddToDelivery.ResumeLayout(false);
             pnlItemToAddToDelivery.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)nUDQuantityDelivered).EndInit();
@@ -420,13 +341,6 @@
         private ColumnHeader cHeaderOrderItem;
         private ColumnHeader cHeaderQuantityOrdered;
         private Label lblOrderNumber;
-        private Panel pnlOrderItems;
-        private Button btnRecordItem;
-        private Button button1;
-        private ListView lstViewOrderItems;
-        private ColumnHeader cHeaderItem;
-        private ColumnHeader cHeaderQuantity;
-        private ColumnHeader cHeaderSomething;
         private Panel pnlItemToAddToDelivery;
         private Label lblSelectedItem;
         private Label lblSelectedItemQuantity;
