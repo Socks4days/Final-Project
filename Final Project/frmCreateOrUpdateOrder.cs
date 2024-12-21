@@ -232,6 +232,7 @@ namespace Final_Project
             pnlOrderConfirmation.Visible = true;
             pnlOrderInfo.Size = lstViewOrderItems.Size;
             pnlViewOrderItems.Height = pnlOrderInfo.Height + pnlOrderConfirmation.Height;
+            btnConfirmAndPlace.Enabled = true;
 
             lblFinalOrderTotal.Text = $"Order Total: £{orderTotal.ToString()}";
             lblDeliveringTo.Text = $"Order For: Maintenance Department, Movers Ltd";
@@ -247,28 +248,11 @@ namespace Final_Project
 
         private void btnConfirmAndPlace_Click(object sender, EventArgs e)
         {
+            btnConfirmAndPlace.Enabled = false;
             // set the order status to 'placed' and save it
             order.orderStatus = "Placed";
             lblOrderStatus.Text = $"Order Status: {order.orderStatus}";
-            OrderDal.UpdateOrderStatus(order);
-
-            // create a list of items that are equal to all of the order items for a specific order
-            List<OrderItem> sortedOrderItemList = OrderDal.GetAllOrderItems(this.order.orderNumber);
-
-            // create a list of items that are equal to all of the order items for a specific order
-            List<DeliveryItem> sortedDeliveryItemList = new List<DeliveryItem>();
-
-
-            foreach (OrderItem orderItem in sortedOrderItemList)
-            {
-                DeliveryItem item = new DeliveryItem();
-                item.stockId = item.stockId;                
-            }
-
-            Delivery delivery = new Delivery();
-            delivery.orderNumber = order.orderNumber;
-            delivery.deliveryDate = DateTime.Now;
-            DeliveryDal.AddDelivery(delivery);
+            OrderDal.UpdateOrderStatus(order);            
         }
 
         private void btnReturnToEditScreen_Click(object sender, EventArgs e)
@@ -279,7 +263,5 @@ namespace Final_Project
             pnlOrderInfo.Height = (lstViewOrderItems.Height + pnlOrderNoToStat.Height + pnlOptions.Height);
             pnlViewOrderItems.Height = pnlOrderInfo.Height + pnlOptions.Height;
         }
-
-        
     }
 }

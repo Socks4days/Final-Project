@@ -49,9 +49,8 @@
             pnlViewAllOrders.Controls.Add(pnlOrderInfo);
             pnlViewAllOrders.Dock = DockStyle.Top;
             pnlViewAllOrders.Location = new Point(0, 0);
-            pnlViewAllOrders.Margin = new Padding(3, 4, 3, 4);
             pnlViewAllOrders.Name = "pnlViewAllOrders";
-            pnlViewAllOrders.Size = new Size(882, 747);
+            pnlViewAllOrders.Size = new Size(772, 560);
             pnlViewAllOrders.TabIndex = 0;
             // 
             // pnlOptions
@@ -60,10 +59,9 @@
             pnlOptions.Controls.Add(btnViewOrder);
             pnlOptions.Controls.Add(btnEditOrder);
             pnlOptions.Dock = DockStyle.Top;
-            pnlOptions.Location = new Point(0, 621);
-            pnlOptions.Margin = new Padding(3, 4, 3, 4);
+            pnlOptions.Location = new Point(0, 466);
             pnlOptions.Name = "pnlOptions";
-            pnlOptions.Size = new Size(882, 125);
+            pnlOptions.Size = new Size(772, 94);
             pnlOptions.TabIndex = 3;
             // 
             // btnViewOrder
@@ -73,10 +71,9 @@
             btnViewOrder.FlatStyle = FlatStyle.Flat;
             btnViewOrder.Font = new Font("Segoe UI", 12F);
             btnViewOrder.ForeColor = SystemColors.Control;
-            btnViewOrder.Location = new Point(152, 29);
-            btnViewOrder.Margin = new Padding(3, 4, 3, 4);
+            btnViewOrder.Location = new Point(133, 22);
             btnViewOrder.Name = "btnViewOrder";
-            btnViewOrder.Size = new Size(251, 67);
+            btnViewOrder.Size = new Size(220, 50);
             btnViewOrder.TabIndex = 10;
             btnViewOrder.Text = "View Order";
             btnViewOrder.UseVisualStyleBackColor = false;
@@ -89,10 +86,9 @@
             btnEditOrder.FlatStyle = FlatStyle.Flat;
             btnEditOrder.Font = new Font("Segoe UI", 12F);
             btnEditOrder.ForeColor = SystemColors.Control;
-            btnEditOrder.Location = new Point(479, 29);
-            btnEditOrder.Margin = new Padding(3, 4, 3, 4);
+            btnEditOrder.Location = new Point(419, 22);
             btnEditOrder.Name = "btnEditOrder";
-            btnEditOrder.Size = new Size(251, 67);
+            btnEditOrder.Size = new Size(220, 50);
             btnEditOrder.TabIndex = 9;
             btnEditOrder.Text = "Edit Order";
             btnEditOrder.UseVisualStyleBackColor = false;
@@ -105,9 +101,8 @@
             pnlOrderInfo.Controls.Add(lstViewOrders);
             pnlOrderInfo.Dock = DockStyle.Top;
             pnlOrderInfo.Location = new Point(0, 0);
-            pnlOrderInfo.Margin = new Padding(3, 4, 3, 4);
             pnlOrderInfo.Name = "pnlOrderInfo";
-            pnlOrderInfo.Size = new Size(882, 621);
+            pnlOrderInfo.Size = new Size(772, 466);
             pnlOrderInfo.TabIndex = 4;
             // 
             // lblInstructions
@@ -117,9 +112,9 @@
             lblInstructions.FlatStyle = FlatStyle.Flat;
             lblInstructions.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblInstructions.ForeColor = SystemColors.ControlText;
-            lblInstructions.Location = new Point(0, 545);
+            lblInstructions.Location = new Point(0, 410);
             lblInstructions.Name = "lblInstructions";
-            lblInstructions.Size = new Size(568, 41);
+            lblInstructions.Size = new Size(460, 32);
             lblInstructions.TabIndex = 15;
             lblInstructions.Text = "Select an order to manage its information";
             // 
@@ -133,9 +128,8 @@
             lstViewOrders.FullRowSelect = true;
             lstViewOrders.GridLines = true;
             lstViewOrders.Location = new Point(0, 0);
-            lstViewOrders.Margin = new Padding(3, 4, 3, 4);
             lstViewOrders.Name = "lstViewOrders";
-            lstViewOrders.Size = new Size(882, 545);
+            lstViewOrders.Size = new Size(772, 410);
             lstViewOrders.TabIndex = 0;
             lstViewOrders.UseCompatibleStateImageBehavior = false;
             lstViewOrders.View = View.Details;
@@ -158,11 +152,10 @@
             // 
             // frmViewOrders
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(882, 745);
+            ClientSize = new Size(772, 559);
             Controls.Add(pnlViewAllOrders);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "frmViewOrders";
             Text = "frmViewOrders";
             pnlViewAllOrders.ResumeLayout(false);

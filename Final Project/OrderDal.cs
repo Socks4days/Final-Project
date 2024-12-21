@@ -44,6 +44,30 @@ namespace Final_Project
             }
         }
 
+        public static OrderItem GetOrderItemByOrderNumberAndStockId(int orderNumber, int stockId)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionstring))
+            {
+                OrderItem lookupItem = new OrderItem();
+                connection.Open();
+
+                string sqlQuery = $"SELECT * FROM OrderItem WHERE orderNumber = {orderNumber} AND stockId = {stockId}";
+
+                SqlCommand getOrderItemByOrderNumberAndStockIdCommand = new SqlCommand(sqlQuery, connection);
+
+                SqlDataReader sqlDataReader = getOrderItemByOrderNumberAndStockIdCommand.ExecuteReader();
+                                
+                    OrderItem orderItem = new OrderItem(
+
+                        (int)sqlDataReader["OrderNumber"],
+                        (int)sqlDataReader["StockId"],
+                        (int)sqlDataReader["OrderItemQuantity"]
+                        );
+                
+                return orderItem;
+            }
+        }
+
         public static int AddOrderItem(OrderItem newOrderItem)
         {
             using (SqlConnection connection = new SqlConnection(_connectionstring))

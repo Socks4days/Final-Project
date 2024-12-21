@@ -16,7 +16,6 @@ namespace Final_Project
         public string auditedByStaffFullName { get; set; }
         public DateTime? auditDate { get; set; }
 
-
         #endregion Properties
 
         public StockLevelsView() { }

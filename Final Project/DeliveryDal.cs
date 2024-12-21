@@ -44,6 +44,59 @@ namespace Final_Project
             }
         }
 
+        public static List<DeliveryItemsView> GetDeliveryItemsView(int orderNumber)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionstring))
+            {
+                List<DeliveryItemsView> deliveryItems = new List<DeliveryItemsView>();
+                connection.Open();
+
+                string sqlQuery = $"SELECT * FROM DeliveryItemView WHERE OrderNumber = {orderNumber} ORDER BY StockName";
+
+                SqlCommand getAllDeliveryItemsCommand = new SqlCommand(sqlQuery, connection);
+
+                SqlDataReader sqlDataReader = getAllDeliveryItemsCommand.ExecuteReader();
+
+                while (sqlDataReader.Read())
+                {
+                    int? deliveryNumber = null;                   
+                    DateTime? deliveryDate = null;
+                    int? quantityDelivered = null;
+                    int? quantityFaulty = null;
+
+                    var dbDeliveryDateTime = sqlDataReader["DeliveryDate"];
+                    if (dbDeliveryDateTime != DBNull.Value)
+                        deliveryDate = Convert.ToDateTime(dbDeliveryDateTime);
+
+                    var dbDeliveryNumber = sqlDataReader["DeliveryNumber"];
+                    if (dbDeliveryNumber != DBNull.Value)
+                        deliveryNumber = Convert.ToInt32(dbDeliveryNumber);
+
+                    var dbQuantityDelivered = sqlDataReader["QuantityDelivered"];
+                    if (dbQuantityDelivered != DBNull.Value)
+                        quantityDelivered = Convert.ToInt32(dbQuantityDelivered);
+
+                    var dbQuantityFaulty = sqlDataReader["QuantityFaulty"];
+                    if (dbQuantityFaulty != DBNull.Value)
+                        quantityFaulty = Convert.ToInt32(dbQuantityFaulty);
+
+                    DeliveryItemsView deliveryItem = new DeliveryItemsView(
+                        (int)sqlDataReader["OrderNumber"],
+                        (int)sqlDataReader["StockId"],
+                        (string)sqlDataReader["StockName"],
+                        (int)sqlDataReader["OrderItemQuantity"],
+                        deliveryNumber,
+                        deliveryDate,
+                        quantityDelivered,
+                        quantityFaulty
+                        );
+
+                    deliveryItems.Add(deliveryItem);
+                }
+                return deliveryItems;
+            }
+        }
+
         public static int AddDeliveryItem(DeliveryItem newDeliveryItem)
         {
             using (SqlConnection connection = new SqlConnection(_connectionstring))
@@ -134,7 +187,7 @@ namespace Final_Project
                 Delivery delivery = new Delivery();
                 connection.Open();
 
-                string sqlQuery = string.Format($"SELECT * FROM [Delivery] WHERE DeliveryNumber = {deliveryNumber}");
+                string sqlQuery = string.Format($"SELECT * FROM Delivery WHERE DeliveryNumber = {deliveryNumber}");
 
                 SqlCommand getDeliveryByDeliveryNumber = new SqlCommand(sqlQuery, connection);
 
