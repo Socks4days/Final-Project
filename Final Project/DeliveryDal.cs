@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Final_Project.Models;
+﻿using Microsoft.Data.SqlClient;
 using System.Configuration;
-using Microsoft.Data.SqlClient;
 
 namespace Final_Project
 {
@@ -40,18 +34,20 @@ namespace Final_Project
 
                     deliveryItems.Add(deliveryItem);
                 }
+
+                connection.Close();
                 return deliveryItems;
             }
         }
 
-        public static List<DeliveryItemsView> GetDeliveryItemsView(int orderNumber)
+        public static List<OrderItemsDeliveredView> GetOrderItemsDeliveredView(int orderNumber)
         {
             using (SqlConnection connection = new SqlConnection(_connectionstring))
             {
-                List<DeliveryItemsView> deliveryItems = new List<DeliveryItemsView>();
+                List<OrderItemsDeliveredView> deliveryItems = new List<OrderItemsDeliveredView>();
                 connection.Open();
 
-                string sqlQuery = $"SELECT * FROM DeliveryItemView WHERE OrderNumber = {orderNumber} ORDER BY StockName";
+                string sqlQuery = $"SELECT * FROM OrderItemsDeliveredView WHERE OrderNumber = {orderNumber} ORDER BY StockName";
 
                 SqlCommand getAllDeliveryItemsCommand = new SqlCommand(sqlQuery, connection);
 
@@ -68,10 +64,6 @@ namespace Final_Project
                     if (dbDeliveryDateTime != DBNull.Value)
                         deliveryDate = Convert.ToDateTime(dbDeliveryDateTime);
 
-                    var dbDeliveryNumber = sqlDataReader["DeliveryNumber"];
-                    if (dbDeliveryNumber != DBNull.Value)
-                        deliveryNumber = Convert.ToInt32(dbDeliveryNumber);
-
                     var dbQuantityDelivered = sqlDataReader["QuantityDelivered"];
                     if (dbQuantityDelivered != DBNull.Value)
                         quantityDelivered = Convert.ToInt32(dbQuantityDelivered);
@@ -80,12 +72,11 @@ namespace Final_Project
                     if (dbQuantityFaulty != DBNull.Value)
                         quantityFaulty = Convert.ToInt32(dbQuantityFaulty);
 
-                    DeliveryItemsView deliveryItem = new DeliveryItemsView(
+                    OrderItemsDeliveredView deliveryItem = new OrderItemsDeliveredView(
                         (int)sqlDataReader["OrderNumber"],
                         (int)sqlDataReader["StockId"],
                         (string)sqlDataReader["StockName"],
                         (int)sqlDataReader["OrderItemQuantity"],
-                        deliveryNumber,
                         deliveryDate,
                         quantityDelivered,
                         quantityFaulty
@@ -93,6 +84,8 @@ namespace Final_Project
 
                     deliveryItems.Add(deliveryItem);
                 }
+
+                connection.Close();
                 return deliveryItems;
             }
         }
@@ -146,6 +139,8 @@ namespace Final_Project
                         );
                     deliveries.Add(delivery);
                 }
+
+                connection.Close();
                 return deliveries;
             }
         }
@@ -202,7 +197,60 @@ namespace Final_Project
                         (int)sqlDataReader["DeliveryCheckedByStaffId"]
                         );
                 }
+
+                connection.Close();
                 return delivery;
+            }
+        }
+
+        public static List<DeliveryItemsView> GetDeliveryItemsView(int deliveryNumberToLookup)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionstring))
+            {
+                List<DeliveryItemsView> deliveryItems = new List<DeliveryItemsView>();
+
+                connection.Open();
+
+                string sqlQuery = $"SELECT * FROM DeliveryItemsView WHERE DeliveryNumber = {deliveryNumberToLookup} ORDER BY StockName";
+
+                SqlCommand getAllDeliveryItemsCommand = new SqlCommand(sqlQuery, connection);
+
+                SqlDataReader sqlDataReader = getAllDeliveryItemsCommand.ExecuteReader();
+
+                while (sqlDataReader.Read())
+                {
+                    int? deliveryNumber = null;
+                    DateTime? deliveryDate = null;
+                    int? quantityDelivered = null;
+                    int? quantityFaulty = null;
+
+                    var dbDeliveryDateTime = sqlDataReader["DeliveryDate"];
+                    if (dbDeliveryDateTime != DBNull.Value)
+                        deliveryDate = Convert.ToDateTime(dbDeliveryDateTime);
+
+                    var dbQuantityDelivered = sqlDataReader["QuantityDelivered"];
+                    if (dbQuantityDelivered != DBNull.Value)
+                        quantityDelivered = Convert.ToInt32(dbQuantityDelivered);
+
+                    var dbQuantityFaulty = sqlDataReader["QuantityFaulty"];
+                    if (dbQuantityFaulty != DBNull.Value)
+                        quantityFaulty = Convert.ToInt32(dbQuantityFaulty);
+
+                    DeliveryItemsView deliveryItem = new DeliveryItemsView(
+                        (int)sqlDataReader["OrderNumber"],
+                        (int)sqlDataReader["StockId"],
+                        deliveryDate,
+                        (int)sqlDataReader["StockId"],
+                        (string)sqlDataReader["StockName"],                        
+                        quantityDelivered,
+                        quantityFaulty
+                        );
+
+                    deliveryItems.Add(deliveryItem);
+                }
+
+                connection.Close();
+                return deliveryItems;
             }
         }
     }

@@ -51,6 +51,7 @@ namespace Final_Project
 
                     stock.stockId = (int)sqlDataReader["StockId"];
                 }
+                connection.Close();
                 return stock;
             }
         }
@@ -85,6 +86,7 @@ namespace Final_Project
 
                     stock.stockId = (int)sqlDataReader["StockId"];
                 }
+                connection.Close();
                 return stock;
             }
         }
@@ -110,6 +112,8 @@ namespace Final_Project
                 SqlCommand updateStockByStockIdCommand = new SqlCommand(sqlQuery, connection);
 
                 updateStockByStockIdCommand.ExecuteNonQuery();
+
+                connection.Close();
             }
         }
 
@@ -200,6 +204,8 @@ namespace Final_Project
                     stock.stockId = (int)sqlDataReader["StockId"];
                     stockItems.Add(stock);
                 }
+
+                connection.Close();
                 return stockItems;
             }
         }
@@ -241,6 +247,7 @@ namespace Final_Project
                     
                     stockLevelItems.Add(stockLevel);
                 }
+                connection.Close();
                 return stockLevelItems;
             }
         }

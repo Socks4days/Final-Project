@@ -23,8 +23,10 @@ namespace Final_Project
         Order orderToAddDelivery = new Order();
         OrderItem orderItemSelected = new OrderItem();
         List<DeliveryItem> deliveryItemsToBeAdded = new List<DeliveryItem>();
-        DeliveryItemsView selectedDeliveryItemsView = new DeliveryItemsView();
-        List<DeliveryItemsView> sortedDeliveryItemList = new List<DeliveryItemsView>();
+        OrderItemsDeliveredView selectedOrderItemsDeliveredView = new OrderItemsDeliveredView();
+        List<OrderItemsDeliveredView> sortedOrderItemsDelivered = new List<OrderItemsDeliveredView>();
+        List<DeliveryItemsView> sortedDeliveryItems = new List<DeliveryItemsView>();
+
         Delivery delivery;
 
         private void UpdateOrderListView()
@@ -54,40 +56,68 @@ namespace Final_Project
             }
         }
 
-        private void UpdateDeliveryItemListView(int orderNumber)
+        private void UpdateOrderItemsDeliveredListView(int orderNumber)
         {
             // create a list of orders and fill with all orders
-            sortedDeliveryItemList = DeliveryDal.GetDeliveryItemsView(orderNumber);
+            sortedOrderItemsDelivered = DeliveryDal.GetOrderItemsDeliveredView(orderNumber);
 
+            foreach (ListViewItem item in lstViewOrderItemsDelivered.Items)
+            {
+                lstViewOrderItemsDelivered.Items.Remove(item);
+            }
+
+            // Add each order in the sorted list to the order list
+            foreach (OrderItemsDeliveredView orderItemDelivered in sortedOrderItemsDelivered)
+            {
+                string orderItemStatus = "Not Received";
+                string quantityReceived = "";
+                string quantityFaulty = "";
+
+                if (orderItemDelivered.quantityDelivered - orderItemDelivered.quantityFaulty >= orderItemDelivered.orderItemQuantity)
+                {
+                    orderItemStatus = "Fulfilled";
+                }
+                else if(orderItemDelivered.quantityDelivered - orderItemDelivered.quantityFaulty > 0)
+                {
+                    orderItemStatus = "Part Filled";
+                }
+
+                if (orderItemDelivered.quantityDelivered.HasValue)
+                {
+                    quantityReceived = orderItemDelivered.quantityDelivered.ToString();
+                }
+
+                if (orderItemDelivered.quantityFaulty.HasValue)
+                {
+                    quantityFaulty = orderItemDelivered.quantityFaulty.ToString();
+                }
+
+                // Create an array with order details
+                string[] row = { orderItemDelivered.stockName, orderItemDelivered.orderItemQuantity.ToString(), orderItemStatus, quantityReceived, quantityFaulty };
+
+                // Create a new list item based on the array
+                ListViewItem item = new ListViewItem(row);
+
+                // Add the list item to the order list view
+                lstViewOrderItemsDelivered.Items.Add(item);
+            }
+        }
+
+        private void UpdateDeliveryItemsListView()
+        {
             foreach (ListViewItem item in lstViewDeliveryItems.Items)
             {
                 lstViewDeliveryItems.Items.Remove(item);
             }
 
+            // create a list of orders and fill with all orders
+            sortedDeliveryItems = DeliveryDal.GetDeliveryItemsView(delivery.deliveryNumber);
+
             // Add each order in the sorted list to the order list
-            foreach (DeliveryItemsView deliveryItem in sortedDeliveryItemList)
+            foreach (DeliveryItemsView deliveryItem in sortedDeliveryItems)
             {
-                string delivered = "Not Received";
-                string quantityReceived = "";
-                string quantityFaulty = "";
-
-                if (deliveryItem.deliveryDate.HasValue)
-                {
-                    delivered = deliveryItem.deliveryDate.ToString();
-                }
-
-                if (deliveryItem.quantityDelivered.HasValue)
-                {
-                    quantityReceived = deliveryItem.quantityDelivered.ToString();
-                }
-
-                if (deliveryItem.quantityFaulty.HasValue)
-                {
-                    quantityFaulty = deliveryItem.quantityFaulty.ToString();
-                }
-
                 // Create an array with order details
-                string[] row = { deliveryItem.stockName, deliveryItem.orderItemQuantity.ToString(), delivered, quantityReceived, quantityFaulty };
+                string[] row = { deliveryItem.stockName, deliveryItem.quantityDelivered.ToString(), deliveryItem.quantityFaulty.ToString() };
 
                 // Create a new list item based on the array
                 ListViewItem item = new ListViewItem(row);
@@ -96,12 +126,13 @@ namespace Final_Project
                 lstViewDeliveryItems.Items.Add(item);
             }
         }
+
         private void lstViewOrders_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             // if an item in the list view is selected, set instructions text, enable the buttons and find the stock that is selected
             if (e.IsSelected)
             {
-                btnRecordDelivery.Enabled = true;
+                btnViewOrRecordDelivery.Enabled = true;
                 string orderNumber = e.Item.SubItems[0].Text;
                 orderToAddDelivery = OrderDal.GetOrderByOrderNumber(Convert.ToInt32(orderNumber));
             }
@@ -116,11 +147,11 @@ namespace Final_Project
                 string stockName = e.Item.SubItems[0].Text;
                 //int stockId = StockDal.GetStockByStockName(stockName).stockId;
                 //orderItemSelected = OrderDal.GetOrderItemByOrderNumberAndStockId(Convert.ToInt32(orderToAddDelivery.orderNumber), Convert.ToInt32(stockId));
-                foreach (DeliveryItemsView dIV in sortedDeliveryItemList)
+                foreach (OrderItemsDeliveredView dIV in sortedOrderItemsDelivered)
                 {
                     if (dIV.stockName == stockName)
                     {
-                        selectedDeliveryItemsView = dIV;
+                        selectedOrderItemsDeliveredView = dIV;
                     }
                 }
             }
@@ -128,10 +159,6 @@ namespace Final_Project
 
         private void btnRecordDelivery_Click(object sender, EventArgs e)
         {
-            delivery = new Delivery();
-            delivery.deliveryDate = DateTime.Now;
-            delivery.orderNumber = orderToAddDelivery.orderNumber;
-            delivery = DeliveryDal.AddDelivery(delivery);
             ShowDelivery();
         }
 
@@ -142,7 +169,7 @@ namespace Final_Project
 
         private void ShowOrders()
         {
-            btnRecordDelivery.Enabled = false;
+            btnViewOrRecordDelivery.Enabled = false;
             pnlDelivery.Visible = false;
             pnlOrders.Visible = true;
             pnlItemToAddToDelivery.Visible = false;
@@ -153,10 +180,11 @@ namespace Final_Project
             btnAddItem.Enabled = false;
             pnlDelivery.Visible = true;
             pnlOrders.Visible = false;
+            pnlDeliveryDetails.Visible = false;
             pnlItemToAddToDelivery.Visible = false;
             lblOrderNumber.Text = $"Order Number: {orderToAddDelivery.orderNumber}";
-            lblDate.Text = $"Order Date: {orderToAddDelivery.orderDate}";
-            UpdateDeliveryItemListView(orderToAddDelivery.orderNumber);
+            lblOrderDate.Text = $"Order Date: {orderToAddDelivery.orderDate}";
+            UpdateOrderItemsDeliveredListView(orderToAddDelivery.orderNumber);
         }
 
         private void ShowItemToAddToDelivery()
@@ -164,15 +192,26 @@ namespace Final_Project
             pnlDelivery.Visible = false;
             pnlOrders.Visible = false;
             pnlItemToAddToDelivery.Visible = true;
-            lblSelectedItem.Text = $"Item To Add: {selectedDeliveryItemsView.stockName}";
-            lblSelectedItemQuantity.Text = $"Quantity Ordered: {selectedDeliveryItemsView.orderItemQuantity}";
+            lblSelectedItem.Text = $"Item To Add: {selectedOrderItemsDeliveredView.stockName}";
+            lblSelectedItemQuantity.Text = $"Quantity Ordered: {selectedOrderItemsDeliveredView.orderItemQuantity}";
             SetNumberUpDownValues();
+        }
+
+        private void ShowDeliveryDetails()
+        {
+            pnlDeliveryDetails.Visible = true;
+            btnRecordDeliveryForOrder.Enabled = false;
+            lblDeliveryNumber.Text = $"Delivery Number: {delivery.deliveryNumber}";
+            lblDeliveryDate.Text = $"Delivery Date: {delivery.deliveryDate}";
+            UpdateDeliveryItemsListView();
         }
 
         private void SetNumberUpDownValues()
         {
-            nUDQuantityDelivered.Maximum = selectedDeliveryItemsView.orderItemQuantity;
-            nUDQuantityFaulty.Maximum = selectedDeliveryItemsView.orderItemQuantity;
+            nUDQuantityDelivered.Maximum = selectedOrderItemsDeliveredView.orderItemQuantity;
+            nUDQuantityFaulty.Maximum = selectedOrderItemsDeliveredView.orderItemQuantity;
+            nUDQuantityDelivered.Value = 1;
+            nUDQuantityFaulty.Value = 0;
         }
 
         private void btnAddItemToDelivery_Click(object sender, EventArgs e)
@@ -183,7 +222,7 @@ namespace Final_Project
             item.quantityDelivered = quantityDelivered;
             item.quantityFaulty = quantityFaulty;
             item.deliveryNumber = delivery.deliveryNumber;
-            item.stockId = selectedDeliveryItemsView.stockId;
+            item.stockId = selectedOrderItemsDeliveredView.stockId;
             DeliveryDal.AddDeliveryItem(item);
 
             Stock stock = StockDal.GetStockByStockId(orderItemSelected.stockId);
@@ -191,6 +230,22 @@ namespace Final_Project
             StockDal.UpdateStockInformation(stock);
 
             ShowDelivery();
+            ShowDeliveryDetails();
+        }
+
+        private void btnRecordDeliveryForOrder_Click(object sender, EventArgs e)
+        {
+            delivery = new Delivery();
+            delivery.deliveryDate = DateTime.Now;
+            delivery.orderNumber = orderToAddDelivery.orderNumber;
+            delivery = DeliveryDal.AddDelivery(delivery);
+            ShowDeliveryDetails();
+        }
+
+        private void btnMarkDeliveryAsCompleted_Click(object sender, EventArgs e)
+        {
+            pnlDeliveryDetails.Visible = false;
+            btnRecordDeliveryForOrder.Enabled = true;
         }
     }
 }

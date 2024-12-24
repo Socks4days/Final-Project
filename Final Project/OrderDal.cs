@@ -40,6 +40,8 @@ namespace Final_Project
 
                     orderItems.Add(orderItem);
                 }
+
+                connection.Close();
                 return orderItems;
             }
         }
@@ -67,6 +69,7 @@ namespace Final_Project
                         );
                 }
 
+                connection.Close();
                 return orderItem;
             }
         }
@@ -142,6 +145,8 @@ namespace Final_Project
                         );
                     orders.Add(order);
                 }
+
+                connection.Close();
                 return orders;
             }
         }
@@ -171,7 +176,6 @@ namespace Final_Project
                 newOrder.orderNumber = Convert.ToInt32(dbOrderNumber.Value);
 
                 connection.Close();
-
                 return newOrder;
             }
         }
@@ -198,6 +202,8 @@ namespace Final_Project
                         (string)sqlDataReader["OrderStatus"]
                         );
                 }
+
+                connection.Close();
                 return order;
             }
         }
@@ -213,6 +219,8 @@ namespace Final_Project
                 SqlCommand updateOrderStatusByOrderNumber = new SqlCommand(sqlQuery, connection);
 
                 SqlDataReader sqlDataReader = updateOrderStatusByOrderNumber.ExecuteReader();
+
+                connection.Close();
             }
         }
     }

@@ -45,6 +45,8 @@ namespace Final_Project
                     staffMembers.Add(staff);
 
                 }
+
+                connection.Close();
                 return staffMembers;
             }
         }
@@ -102,6 +104,8 @@ namespace Final_Project
 
                     staff.staffId = (int)sqlDataReader["StaffId"];
                 }
+
+                connection.Close();
                 return staff;
             }
         }
