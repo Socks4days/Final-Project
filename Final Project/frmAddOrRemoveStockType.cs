@@ -122,6 +122,7 @@ namespace Final_Project
             pnlConfirmation.Visible = true;
             pnlAddNewStock.Visible = false;
             pnlRemoveStock.Visible = false;
+            pnlConfirmation.Dock = DockStyle.Fill;
         }
 
         private void ShowAddStock()
@@ -130,6 +131,7 @@ namespace Final_Project
             pnlAddNewStock.Visible = true;
             pnlConfirmation.Visible = false;
             pnlRemoveStock.Visible = false;
+            pnlAddNewStock.Dock = DockStyle.Fill;
         }
 
         private void ShowRemoveStock()
@@ -138,7 +140,8 @@ namespace Final_Project
             pnlRemoveStock.Visible = true;
             pnlAddNewStock.Visible = false;
             pnlConfirmation.Visible = false;
-        }
+			pnlRemoveStock.Dock = DockStyle.Fill;
+		}
 
         private void btnConfirmed_Click(object sender, EventArgs e)
         {

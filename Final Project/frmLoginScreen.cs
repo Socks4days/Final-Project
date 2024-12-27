@@ -65,7 +65,7 @@ namespace Final_Project
                 if (staff.username == username && staff.password == password)
                 {
                     loggedInStaff = staff;
-                    frmMainScreen.frmMain.OpenChildForm(null);
+                    frmMainScreen.frmMain.OpenChildForm(null, null);
                     break;
                 }
                 // if only username is correct, tell them password is incorrect
@@ -86,7 +86,7 @@ namespace Final_Project
         private void btnRegister_Click(object sender, EventArgs e)
         {
             // show the register screen
-            frmMainScreen.frmMain.OpenChildForm(new frmRegisterScreen());
+            frmMainScreen.frmMain.OpenChildForm(new frmRegisterScreen(), null);
         }
 
         private void btnClear_Click(object sender, EventArgs e)

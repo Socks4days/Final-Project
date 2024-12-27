@@ -18,14 +18,15 @@ namespace Final_Project
         {
             InitializeComponent();
             frmMainScreen.frmMain = this;
-            OpenChildForm(new frmLoginScreen());
+            OpenChildForm(new frmLoginScreen(), null);
             hideSubMenus();
             SetLogo();
         }
 
         private Form activeForm = null;
+        private Button activeMenuButton = null;
 
-        public void OpenChildForm(Form childForm)
+        public void OpenChildForm(Form childForm, Button menuButton)
         {
             // Check if title/side panels should be display
             if (childForm == null || (childForm.Name != "frmLoginScreen" && childForm.Name != "frmRegisterScreen"))
@@ -50,8 +51,17 @@ namespace Final_Project
                 childForm.Dock = DockStyle.Fill;
                 pnlFormContainer.Controls.Add(childForm);
                 childForm.BringToFront();
-                childForm.Show();
+                childForm.Show();                
             }
+
+            // If a button has been passed in, set the colour theme
+            if(menuButton != null)
+            {
+                activeMenuButton = menuButton;
+				menuButton.BackColor = Color.FromArgb(33, 150, 243);
+				lblTitle.Text = menuButton.Text;
+				pnlTitleBar.BackColor = Color.FromArgb(33, 150, 243);
+			}            
         }
 
         // Close the child form if one is open
@@ -62,6 +72,14 @@ namespace Final_Project
                 activeForm.Close();
                 activeForm = null;
             }
+  
+            if (activeMenuButton != null)
+            {
+                activeMenuButton.BackColor = Color.Transparent;
+                activeMenuButton = null;
+            } 
+
+
         }
 
         #region toggleSubMenus
@@ -95,12 +113,14 @@ namespace Final_Project
         private void hideMenus()
         {
             pnlSideBar.Visible = false;
+            pnlTitleBar.Visible = false;
         }
 
         // Show the main menu and title bar
         private void showMenus()
         {
             pnlSideBar.Visible = true;
+            pnlTitleBar.Visible = true;
         }
 
         // Show or hide the sub menu when it is clicked
@@ -126,22 +146,17 @@ namespace Final_Project
 
         private void btnViewStock_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new frmEditStockLevels());
+            OpenChildForm(new frmEditStockLevels(), (Button)sender);
         }
-
-        private void btnEditStockLevels_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new frmStockManagement());
-        }
-
+       
         private void btnAddNewStock_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new frmAddOrRemoveStockType("Add Stock"));
+            OpenChildForm(new frmAddOrRemoveStockType("Add Stock"), (Button)sender);
         }
 
         private void btnRemoveStock_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new frmAddOrRemoveStockType("Remove Stock"));
+            OpenChildForm(new frmAddOrRemoveStockType("Remove Stock"), (Button)sender);
         }
 
         private void btnOrderStock_Click(object sender, EventArgs e)
@@ -150,17 +165,17 @@ namespace Final_Project
             newOrder.orderStatus = "Draft";
             newOrder.orderDate = DateTime.Now;
             newOrder = OrderDal.AddOrder(newOrder);
-            OpenChildForm(new frmCreateOrUpdateOrder(newOrder, "Edit"));
+            OpenChildForm(new frmCreateOrUpdateOrder(newOrder, "Edit"), (Button)sender);
         }
 
         private void btnViewOrders_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new frmViewOrders());
+            OpenChildForm(new frmViewOrders(), (Button)sender);
         }
 
         private void btnViewDeliveries_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new frmAddDelivery());
+            OpenChildForm(new frmAddDelivery(), (Button)sender);
         }
 
         
