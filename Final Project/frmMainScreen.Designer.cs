@@ -92,6 +92,7 @@
 			btnViewDeliveries.BackColor = Color.Transparent;
 			btnViewDeliveries.Dock = DockStyle.Top;
 			btnViewDeliveries.FlatAppearance.BorderSize = 0;
+			btnViewDeliveries.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
 			btnViewDeliveries.FlatStyle = FlatStyle.Flat;
 			btnViewDeliveries.Font = new Font("Segoe UI", 14F);
 			btnViewDeliveries.ForeColor = SystemColors.Control;
@@ -101,6 +102,7 @@
 			btnViewDeliveries.Size = new Size(200, 70);
 			btnViewDeliveries.TabIndex = 6;
 			btnViewDeliveries.Text = "View Deliveries";
+			btnViewDeliveries.TextAlign = ContentAlignment.MiddleLeft;
 			btnViewDeliveries.UseVisualStyleBackColor = false;
 			btnViewDeliveries.Click += btnViewDeliveries_Click;
 			// 
@@ -109,6 +111,7 @@
 			btnDelivery.BackColor = Color.Transparent;
 			btnDelivery.Dock = DockStyle.Top;
 			btnDelivery.FlatAppearance.BorderSize = 0;
+			btnDelivery.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
 			btnDelivery.FlatStyle = FlatStyle.Flat;
 			btnDelivery.Font = new Font("Segoe UI", 14F);
 			btnDelivery.ForeColor = SystemColors.Control;
@@ -118,6 +121,7 @@
 			btnDelivery.Size = new Size(200, 70);
 			btnDelivery.TabIndex = 10;
 			btnDelivery.Text = "Deliveries";
+			btnDelivery.TextAlign = ContentAlignment.MiddleLeft;
 			btnDelivery.UseVisualStyleBackColor = false;
 			btnDelivery.Click += btnDelivery_Click;
 			// 
@@ -137,6 +141,7 @@
 			btnViewOrders.BackColor = Color.Transparent;
 			btnViewOrders.Dock = DockStyle.Top;
 			btnViewOrders.FlatAppearance.BorderSize = 0;
+			btnViewOrders.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
 			btnViewOrders.FlatStyle = FlatStyle.Flat;
 			btnViewOrders.Font = new Font("Segoe UI", 14F);
 			btnViewOrders.ForeColor = SystemColors.Control;
@@ -146,6 +151,7 @@
 			btnViewOrders.Size = new Size(200, 70);
 			btnViewOrders.TabIndex = 5;
 			btnViewOrders.Text = "View Orders";
+			btnViewOrders.TextAlign = ContentAlignment.MiddleLeft;
 			btnViewOrders.UseVisualStyleBackColor = false;
 			btnViewOrders.Click += btnViewOrders_Click;
 			// 
@@ -154,6 +160,7 @@
 			btnOrderStock.BackColor = Color.Transparent;
 			btnOrderStock.Dock = DockStyle.Top;
 			btnOrderStock.FlatAppearance.BorderSize = 0;
+			btnOrderStock.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
 			btnOrderStock.FlatStyle = FlatStyle.Flat;
 			btnOrderStock.Font = new Font("Segoe UI", 14F);
 			btnOrderStock.ForeColor = SystemColors.Control;
@@ -163,6 +170,7 @@
 			btnOrderStock.Size = new Size(200, 70);
 			btnOrderStock.TabIndex = 4;
 			btnOrderStock.Text = "Order Stock";
+			btnOrderStock.TextAlign = ContentAlignment.MiddleLeft;
 			btnOrderStock.UseVisualStyleBackColor = false;
 			btnOrderStock.Click += btnOrderStock_Click;
 			// 
@@ -171,6 +179,7 @@
 			btnOrder.BackColor = Color.Transparent;
 			btnOrder.Dock = DockStyle.Top;
 			btnOrder.FlatAppearance.BorderSize = 0;
+			btnOrder.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
 			btnOrder.FlatStyle = FlatStyle.Flat;
 			btnOrder.Font = new Font("Segoe UI", 14F);
 			btnOrder.ForeColor = SystemColors.Control;
@@ -180,6 +189,7 @@
 			btnOrder.Size = new Size(200, 70);
 			btnOrder.TabIndex = 4;
 			btnOrder.Text = "Orders";
+			btnOrder.TextAlign = ContentAlignment.MiddleLeft;
 			btnOrder.UseVisualStyleBackColor = false;
 			btnOrder.Click += btnOrder_Click;
 			// 
@@ -200,6 +210,7 @@
 			btnRemoveStock.BackColor = Color.Transparent;
 			btnRemoveStock.Dock = DockStyle.Top;
 			btnRemoveStock.FlatAppearance.BorderSize = 0;
+			btnRemoveStock.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
 			btnRemoveStock.FlatStyle = FlatStyle.Flat;
 			btnRemoveStock.Font = new Font("Segoe UI", 14F);
 			btnRemoveStock.ForeColor = SystemColors.Control;
@@ -209,6 +220,7 @@
 			btnRemoveStock.Size = new Size(200, 70);
 			btnRemoveStock.TabIndex = 9;
 			btnRemoveStock.Text = "Remove Stock";
+			btnRemoveStock.TextAlign = ContentAlignment.MiddleLeft;
 			btnRemoveStock.UseVisualStyleBackColor = false;
 			btnRemoveStock.Click += btnRemoveStock_Click;
 			// 
@@ -217,6 +229,7 @@
 			btnAddNewStock.BackColor = Color.Transparent;
 			btnAddNewStock.Dock = DockStyle.Top;
 			btnAddNewStock.FlatAppearance.BorderSize = 0;
+			btnAddNewStock.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
 			btnAddNewStock.FlatStyle = FlatStyle.Flat;
 			btnAddNewStock.Font = new Font("Segoe UI", 14F);
 			btnAddNewStock.ForeColor = SystemColors.Control;
@@ -226,6 +239,7 @@
 			btnAddNewStock.Size = new Size(200, 70);
 			btnAddNewStock.TabIndex = 6;
 			btnAddNewStock.Text = "Add New Stock";
+			btnAddNewStock.TextAlign = ContentAlignment.MiddleLeft;
 			btnAddNewStock.UseVisualStyleBackColor = false;
 			btnAddNewStock.Click += btnAddNewStock_Click;
 			// 
@@ -234,6 +248,7 @@
 			btnManageStockLevels.BackColor = Color.Transparent;
 			btnManageStockLevels.Dock = DockStyle.Top;
 			btnManageStockLevels.FlatAppearance.BorderSize = 0;
+			btnManageStockLevels.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
 			btnManageStockLevels.FlatStyle = FlatStyle.Flat;
 			btnManageStockLevels.Font = new Font("Segoe UI", 14F);
 			btnManageStockLevels.ForeColor = SystemColors.Control;
@@ -243,6 +258,7 @@
 			btnManageStockLevels.Size = new Size(200, 70);
 			btnManageStockLevels.TabIndex = 4;
 			btnManageStockLevels.Text = "Manage Stock Levels";
+			btnManageStockLevels.TextAlign = ContentAlignment.MiddleLeft;
 			btnManageStockLevels.UseVisualStyleBackColor = false;
 			btnManageStockLevels.Click += btnViewStock_Click;
 			// 
@@ -251,6 +267,7 @@
 			btnStock.BackColor = Color.Transparent;
 			btnStock.Dock = DockStyle.Top;
 			btnStock.FlatAppearance.BorderSize = 0;
+			btnStock.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
 			btnStock.FlatStyle = FlatStyle.Flat;
 			btnStock.Font = new Font("Segoe UI", 14F);
 			btnStock.ForeColor = SystemColors.Control;
@@ -260,6 +277,7 @@
 			btnStock.Size = new Size(200, 70);
 			btnStock.TabIndex = 1;
 			btnStock.Text = "Stock";
+			btnStock.TextAlign = ContentAlignment.MiddleLeft;
 			btnStock.UseVisualStyleBackColor = false;
 			btnStock.Click += btnStock_Click;
 			// 

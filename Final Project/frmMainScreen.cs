@@ -25,6 +25,7 @@ namespace Final_Project
 
         private Form activeForm = null;
         private Button activeMenuButton = null;
+        private Button parentMenuButton = null;
 
         public void OpenChildForm(Form childForm, Button menuButton)
         {
@@ -51,17 +52,62 @@ namespace Final_Project
                 childForm.Dock = DockStyle.Fill;
                 pnlFormContainer.Controls.Add(childForm);
                 childForm.BringToFront();
-                childForm.Show();                
+                childForm.Show();
             }
 
             // If a button has been passed in, set the colour theme
             if(menuButton != null)
             {
                 activeMenuButton = menuButton;
-				menuButton.BackColor = Color.FromArgb(33, 150, 243);
 				lblTitle.Text = menuButton.Text;
-				pnlTitleBar.BackColor = Color.FromArgb(33, 150, 243);
-			}            
+                string name = menuButton.Text;
+
+                if (name == "Manage Stock Levels" || name == "Add New Stock" || name == "Remove Stock")
+                {
+                    btnStock.BackColor = Color.FromArgb(24, 105, 170);
+                    pnlTitleBar.BackColor = Color.FromArgb(33, 150, 243);
+                    switch (name)
+                    {
+                        case "Manage Stock Levels":
+                            btnManageStockLevels.BackColor = Color.FromArgb(33, 150, 243);
+                            break;
+                        case "Add New Stock":
+                            btnAddNewStock.BackColor = Color.FromArgb(33, 150, 243);
+                            break;
+                        case "Remove Stock":
+                            btnRemoveStock.BackColor = Color.FromArgb(33, 150, 243);
+                            break;
+                    }
+                }
+                else if (name == "Order Stock" || name == "View Orders")
+                {
+                    btnOrder.BackColor = Color.FromArgb(112, 21, 62);
+                    pnlTitleBar.BackColor = Color.FromArgb(161, 32, 89);
+                    switch (name)
+                    {
+                        case "Order Stock":
+                            btnOrderStock.BackColor = Color.FromArgb(161, 32, 89);
+                            break;
+                        case "View Orders":
+                            btnViewOrders.BackColor = Color.FromArgb(161, 32, 89);
+                            break;
+					}
+                }
+                else if (name == "View Deliveries")
+                {
+                    btnDelivery.BackColor = Color.FromArgb(0, 92, 83);
+                    pnlTitleBar.BackColor = Color.FromArgb(0, 151, 136);
+                    switch (name)
+                    {
+                        case "ADD ANOTHER HERE?":
+                            btnOrderStock.BackColor = Color.FromArgb(0, 151, 136);
+                            break;
+                        case "View Deliveries":
+                            btnViewDeliveries.BackColor = Color.FromArgb(0, 151, 136);
+                            break;
+					}
+                }
+            }            
         }
 
         // Close the child form if one is open
@@ -77,9 +123,8 @@ namespace Final_Project
             {
                 activeMenuButton.BackColor = Color.Transparent;
                 activeMenuButton = null;
+                parentMenuButton.BackColor = Color.Transparent;
             } 
-
-
         }
 
         #region toggleSubMenus
@@ -87,18 +132,24 @@ namespace Final_Project
         {
             CloseChildForm();
             toggleSubMenu(pnlStock);
-        }
+            btnStock.BackColor = Color.FromArgb(33, 150, 243);
+            parentMenuButton = btnStock;
+		}
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
             CloseChildForm();
             toggleSubMenu(pnlOrder);
+            btnOrder.BackColor = Color.FromArgb(161, 32, 89);
+            parentMenuButton = btnOrder;
         }
 
         private void btnDelivery_Click(object sender, EventArgs e)
         {
             CloseChildForm();
             toggleSubMenu(pnlDelivery);
+            btnDelivery.BackColor = Color.FromArgb(0, 151, 136);
+            parentMenuButton = btnDelivery;
         }
 
         // Hide the settings and admin submenus when a menu option is clicked
@@ -147,6 +198,7 @@ namespace Final_Project
         private void btnViewStock_Click(object sender, EventArgs e)
         {
             OpenChildForm(new frmEditStockLevels(), (Button)sender);
+
         }
        
         private void btnAddNewStock_Click(object sender, EventArgs e)
