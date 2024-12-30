@@ -75,7 +75,7 @@ namespace Final_Project
                             btnAddNewStock.BackColor = Color.FromArgb(33, 150, 243);
                             break;
                         case "Remove Stock":
-                            btnRemoveStock.BackColor = Color.FromArgb(33, 150, 243);
+                            btnRetireStock.BackColor = Color.FromArgb(33, 150, 243);
                             break;
                     }
                 }
@@ -193,22 +193,22 @@ namespace Final_Project
         private void SetLogo()
         {
             pctBoxLogo.ImageLocation = @"C:\Users\andre\OneDrive\Desktop\A2 SSD\Tasks\Final Project\TitleIcon.ico";
+            pctBoxSmallLogo.ImageLocation = @"C:\Users\andre\OneDrive\Desktop\A2 SSD\Tasks\Final Project\TitleIcon.ico";
         }
 
         private void btnViewStock_Click(object sender, EventArgs e)
         {
             OpenChildForm(new frmEditStockLevels(), (Button)sender);
-
         }
        
         private void btnAddNewStock_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new frmAddOrRemoveStockType("Add Stock"), (Button)sender);
+            OpenChildForm(new frmAddOrRetireStockType("Add Stock"), (Button)sender);
         }
 
-        private void btnRemoveStock_Click(object sender, EventArgs e)
+        private void btnRetireStock_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new frmAddOrRemoveStockType("Remove Stock"), (Button)sender);
+            OpenChildForm(new frmAddOrRetireStockType("Retire Stock"), (Button)sender);
         }
 
         private void btnOrderStock_Click(object sender, EventArgs e)
