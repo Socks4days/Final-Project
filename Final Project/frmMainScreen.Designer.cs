@@ -30,6 +30,9 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainScreen));
 			pnlSideBar = new Panel();
+			pnlAudits = new Panel();
+			btnCreateAudit = new Button();
+			btnAudits = new Button();
 			pnlDelivery = new Panel();
 			btnViewDeliveries = new Button();
 			btnDelivery = new Button();
@@ -49,6 +52,7 @@
 			pnlFormContainer = new Panel();
 			pctBoxLogo = new PictureBox();
 			pnlSideBar.SuspendLayout();
+			pnlAudits.SuspendLayout();
 			pnlDelivery.SuspendLayout();
 			pnlOrder.SuspendLayout();
 			pnlStock.SuspendLayout();
@@ -63,6 +67,8 @@
 			// 
 			pnlSideBar.AutoScroll = true;
 			pnlSideBar.BackColor = Color.FromArgb(51, 51, 79);
+			pnlSideBar.Controls.Add(pnlAudits);
+			pnlSideBar.Controls.Add(btnAudits);
 			pnlSideBar.Controls.Add(pnlDelivery);
 			pnlSideBar.Controls.Add(btnDelivery);
 			pnlSideBar.Controls.Add(pnlOrder);
@@ -77,6 +83,54 @@
 			pnlSideBar.Size = new Size(200, 750);
 			pnlSideBar.TabIndex = 0;
 			// 
+			// pnlAudits
+			// 
+			pnlAudits.Controls.Add(btnCreateAudit);
+			pnlAudits.Dock = DockStyle.Top;
+			pnlAudits.Location = new Point(0, 770);
+			pnlAudits.Name = "pnlAudits";
+			pnlAudits.Size = new Size(183, 70);
+			pnlAudits.TabIndex = 13;
+			// 
+			// btnCreateAudit
+			// 
+			btnCreateAudit.BackColor = Color.Transparent;
+			btnCreateAudit.Dock = DockStyle.Top;
+			btnCreateAudit.FlatAppearance.BorderSize = 0;
+			btnCreateAudit.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
+			btnCreateAudit.FlatStyle = FlatStyle.Flat;
+			btnCreateAudit.Font = new Font("Segoe UI", 14F);
+			btnCreateAudit.ForeColor = SystemColors.Control;
+			btnCreateAudit.Location = new Point(0, 0);
+			btnCreateAudit.Margin = new Padding(2);
+			btnCreateAudit.Name = "btnCreateAudit";
+			btnCreateAudit.Padding = new Padding(10, 0, 0, 0);
+			btnCreateAudit.Size = new Size(183, 70);
+			btnCreateAudit.TabIndex = 13;
+			btnCreateAudit.Text = "Create Audit";
+			btnCreateAudit.TextAlign = ContentAlignment.MiddleLeft;
+			btnCreateAudit.UseVisualStyleBackColor = false;
+			btnCreateAudit.Click += btnCreateAudit_Click;
+			// 
+			// btnAudits
+			// 
+			btnAudits.BackColor = Color.Transparent;
+			btnAudits.Dock = DockStyle.Top;
+			btnAudits.FlatAppearance.BorderSize = 0;
+			btnAudits.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
+			btnAudits.FlatStyle = FlatStyle.Flat;
+			btnAudits.Font = new Font("Segoe UI", 14F);
+			btnAudits.ForeColor = SystemColors.Control;
+			btnAudits.Location = new Point(0, 700);
+			btnAudits.Margin = new Padding(2);
+			btnAudits.Name = "btnAudits";
+			btnAudits.Size = new Size(183, 70);
+			btnAudits.TabIndex = 12;
+			btnAudits.Text = "Audits";
+			btnAudits.TextAlign = ContentAlignment.MiddleLeft;
+			btnAudits.UseVisualStyleBackColor = false;
+			btnAudits.Click += btnAudits_Click;
+			// 
 			// pnlDelivery
 			// 
 			pnlDelivery.Controls.Add(btnViewDeliveries);
@@ -85,7 +139,7 @@
 			pnlDelivery.Location = new Point(0, 630);
 			pnlDelivery.Margin = new Padding(2);
 			pnlDelivery.Name = "pnlDelivery";
-			pnlDelivery.Size = new Size(200, 70);
+			pnlDelivery.Size = new Size(183, 70);
 			pnlDelivery.TabIndex = 11;
 			// 
 			// btnViewDeliveries
@@ -100,7 +154,8 @@
 			btnViewDeliveries.Location = new Point(0, 0);
 			btnViewDeliveries.Margin = new Padding(2);
 			btnViewDeliveries.Name = "btnViewDeliveries";
-			btnViewDeliveries.Size = new Size(200, 70);
+			btnViewDeliveries.Padding = new Padding(10, 0, 0, 0);
+			btnViewDeliveries.Size = new Size(183, 70);
 			btnViewDeliveries.TabIndex = 6;
 			btnViewDeliveries.Text = "View Deliveries";
 			btnViewDeliveries.TextAlign = ContentAlignment.MiddleLeft;
@@ -119,7 +174,7 @@
 			btnDelivery.Location = new Point(0, 560);
 			btnDelivery.Margin = new Padding(2);
 			btnDelivery.Name = "btnDelivery";
-			btnDelivery.Size = new Size(200, 70);
+			btnDelivery.Size = new Size(183, 70);
 			btnDelivery.TabIndex = 10;
 			btnDelivery.Text = "Deliveries";
 			btnDelivery.TextAlign = ContentAlignment.MiddleLeft;
@@ -134,7 +189,7 @@
 			pnlOrder.Location = new Point(0, 420);
 			pnlOrder.Margin = new Padding(2);
 			pnlOrder.Name = "pnlOrder";
-			pnlOrder.Size = new Size(200, 140);
+			pnlOrder.Size = new Size(183, 140);
 			pnlOrder.TabIndex = 9;
 			// 
 			// btnViewOrders
@@ -149,7 +204,8 @@
 			btnViewOrders.Location = new Point(0, 70);
 			btnViewOrders.Margin = new Padding(2);
 			btnViewOrders.Name = "btnViewOrders";
-			btnViewOrders.Size = new Size(200, 70);
+			btnViewOrders.Padding = new Padding(10, 0, 0, 0);
+			btnViewOrders.Size = new Size(183, 70);
 			btnViewOrders.TabIndex = 5;
 			btnViewOrders.Text = "View Orders";
 			btnViewOrders.TextAlign = ContentAlignment.MiddleLeft;
@@ -168,7 +224,8 @@
 			btnOrderStock.Location = new Point(0, 0);
 			btnOrderStock.Margin = new Padding(2);
 			btnOrderStock.Name = "btnOrderStock";
-			btnOrderStock.Size = new Size(200, 70);
+			btnOrderStock.Padding = new Padding(10, 0, 0, 0);
+			btnOrderStock.Size = new Size(183, 70);
 			btnOrderStock.TabIndex = 4;
 			btnOrderStock.Text = "Order Stock";
 			btnOrderStock.TextAlign = ContentAlignment.MiddleLeft;
@@ -187,7 +244,7 @@
 			btnOrder.Location = new Point(0, 350);
 			btnOrder.Margin = new Padding(2);
 			btnOrder.Name = "btnOrder";
-			btnOrder.Size = new Size(200, 70);
+			btnOrder.Size = new Size(183, 70);
 			btnOrder.TabIndex = 4;
 			btnOrder.Text = "Orders";
 			btnOrder.TextAlign = ContentAlignment.MiddleLeft;
@@ -203,7 +260,7 @@
 			pnlStock.Location = new Point(0, 140);
 			pnlStock.Margin = new Padding(2);
 			pnlStock.Name = "pnlStock";
-			pnlStock.Size = new Size(200, 210);
+			pnlStock.Size = new Size(183, 210);
 			pnlStock.TabIndex = 3;
 			// 
 			// btnRetireStock
@@ -218,7 +275,8 @@
 			btnRetireStock.Location = new Point(0, 140);
 			btnRetireStock.Margin = new Padding(2);
 			btnRetireStock.Name = "btnRetireStock";
-			btnRetireStock.Size = new Size(200, 70);
+			btnRetireStock.Padding = new Padding(10, 0, 0, 0);
+			btnRetireStock.Size = new Size(183, 70);
 			btnRetireStock.TabIndex = 9;
 			btnRetireStock.Text = "Retire Stock";
 			btnRetireStock.TextAlign = ContentAlignment.MiddleLeft;
@@ -237,7 +295,8 @@
 			btnAddNewStock.Location = new Point(0, 70);
 			btnAddNewStock.Margin = new Padding(2);
 			btnAddNewStock.Name = "btnAddNewStock";
-			btnAddNewStock.Size = new Size(200, 70);
+			btnAddNewStock.Padding = new Padding(10, 0, 0, 0);
+			btnAddNewStock.Size = new Size(183, 70);
 			btnAddNewStock.TabIndex = 6;
 			btnAddNewStock.Text = "Add New Stock";
 			btnAddNewStock.TextAlign = ContentAlignment.MiddleLeft;
@@ -256,9 +315,10 @@
 			btnManageStockLevels.Location = new Point(0, 0);
 			btnManageStockLevels.Margin = new Padding(2);
 			btnManageStockLevels.Name = "btnManageStockLevels";
-			btnManageStockLevels.Size = new Size(200, 70);
+			btnManageStockLevels.Padding = new Padding(10, 0, 0, 0);
+			btnManageStockLevels.Size = new Size(183, 70);
 			btnManageStockLevels.TabIndex = 4;
-			btnManageStockLevels.Text = "Manage Stock Levels";
+			btnManageStockLevels.Text = "Manage Stock";
 			btnManageStockLevels.TextAlign = ContentAlignment.MiddleLeft;
 			btnManageStockLevels.UseVisualStyleBackColor = false;
 			btnManageStockLevels.Click += btnViewStock_Click;
@@ -275,7 +335,7 @@
 			btnStock.Location = new Point(0, 70);
 			btnStock.Margin = new Padding(2);
 			btnStock.Name = "btnStock";
-			btnStock.Size = new Size(200, 70);
+			btnStock.Size = new Size(183, 70);
 			btnStock.TabIndex = 1;
 			btnStock.Text = "Stock";
 			btnStock.TextAlign = ContentAlignment.MiddleLeft;
@@ -289,13 +349,13 @@
 			pnlLogo.Location = new Point(0, 0);
 			pnlLogo.Margin = new Padding(2);
 			pnlLogo.Name = "pnlLogo";
-			pnlLogo.Size = new Size(200, 70);
+			pnlLogo.Size = new Size(183, 70);
 			pnlLogo.TabIndex = 0;
 			// 
 			// pctBoxSmallLogo
 			// 
 			pctBoxSmallLogo.Anchor = AnchorStyles.None;
-			pctBoxSmallLogo.Location = new Point(68, 3);
+			pctBoxSmallLogo.Location = new Point(59, 3);
 			pctBoxSmallLogo.Margin = new Padding(2);
 			pctBoxSmallLogo.Name = "pctBoxSmallLogo";
 			pctBoxSmallLogo.Size = new Size(65, 65);
@@ -364,6 +424,7 @@
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Stock Control";
 			pnlSideBar.ResumeLayout(false);
+			pnlAudits.ResumeLayout(false);
 			pnlDelivery.ResumeLayout(false);
 			pnlOrder.ResumeLayout(false);
 			pnlStock.ResumeLayout(false);
@@ -397,5 +458,9 @@
 		private Panel pnlFormContainer;
 		private PictureBox pctBoxLogo;
 		private PictureBox pctBoxSmallLogo;
+		private Button button2;
+		private Button btnAudits;
+		private Panel pnlAudits;
+		private Button btnCreateAudit;
 	}
 }

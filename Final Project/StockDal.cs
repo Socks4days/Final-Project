@@ -20,79 +20,70 @@ namespace Final_Project
         // Replace {0} in connection string with project directory
         private static string _connectionstring = string.Format(ConfigurationManager.ConnectionStrings["StockManagementConnectionString"].ConnectionString, projectDirectoryPath);
 
-
         public static Stock GetStockByStockId(int stockId)
         {
-            using (SqlConnection connection = new SqlConnection(_connectionstring))
-            {
-                Stock stock = new Stock();
-                connection.Open();
+			string sqlQuery = string.Format("SELECT * FROM Stock WHERE StockId = {0}", stockId);
+			return GetStockSql(sqlQuery);
+		}
 
-                string sqlQuery = string.Format("SELECT * FROM Stock WHERE StockId = {0}", stockId);
-
-                SqlCommand getStockByStockId = new SqlCommand(sqlQuery, connection);
-
-                SqlDataReader sqlDataReader = getStockByStockId.ExecuteReader();
-
-                while (sqlDataReader.Read())
-                {
-                    stock = new Stock(                        
-                        (string)sqlDataReader["StockName"],
-                        (string)sqlDataReader["StockDescription"],
-                        (decimal)sqlDataReader["Price"],
-                        (int)sqlDataReader["DeliveryTimeDays"],
-                        (int)sqlDataReader["MaximumLevel"],
-                        (int)sqlDataReader["MinimumLevel"],
-                        (int)sqlDataReader["OrderQuantity"],
-                        (int)sqlDataReader["StockCheckFrequency"],
-                        (int)sqlDataReader["StockLevel"],
-                        (int)sqlDataReader["LastUpdatedByStaffId"]
-                        );
-
-                    stock.stockId = (int)sqlDataReader["StockId"];
-                }
-                connection.Close();
-                return stock;
-            }
-        }
-
-        public static Stock GetStockByStockName(string stockName)
+		public static Stock GetStockByStockName(string stockName)
         {
-            using (SqlConnection connection = new SqlConnection(_connectionstring))
-            {
-                Stock stock = new Stock();
-                connection.Open();
+			string sqlQuery = string.Format("SELECT * FROM Stock WHERE StockName = '{0}'", stockName);
 
-                string sqlQuery = string.Format("SELECT * FROM Stock WHERE StockName = '{0}'", stockName);
-
-                SqlCommand getStockByStockName = new SqlCommand(sqlQuery, connection);
-
-                SqlDataReader sqlDataReader = getStockByStockName.ExecuteReader();
-
-                while (sqlDataReader.Read())
-                {
-                    stock = new Stock(
-                        (string)sqlDataReader["StockName"],
-                        (string)sqlDataReader["StockDescription"],
-                        (decimal)sqlDataReader["Price"],
-                        (int)sqlDataReader["DeliveryTimeDays"],
-                        (int)sqlDataReader["MaximumLevel"],
-                        (int)sqlDataReader["MinimumLevel"],
-                        (int)sqlDataReader["OrderQuantity"],
-                        (int)sqlDataReader["StockCheckFrequency"],
-                        (int)sqlDataReader["StockLevel"],
-                        (int)sqlDataReader["LastUpdatedByStaffId"]
-                        );
-
-                    stock.stockId = (int)sqlDataReader["StockId"];
-                }
-                connection.Close();
-                return stock;
-            }
+			return GetStockSql(sqlQuery);
         }
+
+        private static Stock GetStockSql(string sqlQuery)
+        {
+			using (SqlConnection connection = new SqlConnection(_connectionstring))
+			{
+				Stock stock = new Stock();
+				connection.Open();
+
+
+				SqlCommand getStock = new SqlCommand(sqlQuery, connection);
+
+				SqlDataReader sqlDataReader = getStock.ExecuteReader();
+
+				while (sqlDataReader.Read())
+				{
+					bool active = false;
+					int sqlActive = (int)sqlDataReader["Active"];
+
+					if (sqlActive == 1)
+					{
+						active = true;
+					}
+
+					stock = new Stock(
+						(string)sqlDataReader["StockName"],
+						(string)sqlDataReader["StockDescription"],
+						(decimal)sqlDataReader["Price"],
+						(int)sqlDataReader["DeliveryTimeDays"],
+						(int)sqlDataReader["MaximumLevel"],
+						(int)sqlDataReader["MinimumLevel"],
+						(int)sqlDataReader["OrderQuantity"],
+						(int)sqlDataReader["StockCheckFrequency"],
+						(int)sqlDataReader["StockLevel"],
+						(int)sqlDataReader["LastUpdatedByStaffId"],
+						active
+						);
+
+					stock.stockId = (int)sqlDataReader["StockId"];
+				}
+				connection.Close();
+				return stock;
+			}
+		}
 
         public static void UpdateStockInformation(Stock stock)
         {
+            int sqlActive = 0;
+            if(stock.active == true)
+            {
+                sqlActive = 1;
+            }
+
             using (SqlConnection connection = new SqlConnection(_connectionstring))
             {
                 connection.Open();
@@ -106,7 +97,8 @@ namespace Final_Project
                     $"minimumLevel = '{stock.minimumLevel}', " +
                     $"orderQuantity = '{stock.orderQuantity}', " +
                     $"stockCheckFrequency = '{stock.stockCheckFrequency}', " +
-                    $"lastUpdatedByStaffId = '{stock.lastUpdatedByStaffId}' " +
+                    $"lastUpdatedByStaffId = '{stock.lastUpdatedByStaffId}', " +
+                    $"active = {sqlActive} " +
                     $"WHERE stockId = {stock.stockId}");
 
                 SqlCommand updateStockByStockIdCommand = new SqlCommand(sqlQuery, connection);
@@ -143,29 +135,6 @@ namespace Final_Project
                 addStockCommand.Parameters.Add(new SqlParameter("@LastUpdatedByStaffId", newStock.lastUpdatedByStaffId));
 
                 int rowsAffected = addStockCommand.ExecuteNonQuery();
-
-                connection.Close();
-
-                return rowsAffected;
-            }
-        }
-
-        public static int RemoveStock(Stock stockToRemove)
-        {
-            using (SqlConnection connection = new SqlConnection(_connectionstring))
-            {
-                connection.Open();
-
-                SqlCommand removeStockCommand = new SqlCommand();
-                removeStockCommand.Connection = connection;
-                // specifies its a stored procedure
-                removeStockCommand.CommandType = System.Data.CommandType.StoredProcedure;
-                // name of stored procedure to execute
-                removeStockCommand.CommandText = "RemoveStock";
-                // now add parameters that are passed to the stored procedure
-                removeStockCommand.Parameters.Add(new SqlParameter("@StockId", stockToRemove.stockId));
-                
-                int rowsAffected = removeStockCommand.ExecuteNonQuery();
 
                 connection.Close();
 

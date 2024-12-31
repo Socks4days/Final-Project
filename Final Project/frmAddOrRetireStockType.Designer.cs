@@ -48,7 +48,6 @@
 			txtBoxNewStockDescription = new TextBox();
 			btnAddNewStock = new Button();
 			pnlConfirmation = new Panel();
-			lblSuccess = new Label();
 			btnReturn = new Button();
 			lblStockTo = new Label();
 			lblStockName = new Label();
@@ -296,7 +295,6 @@
 			// pnlConfirmation
 			// 
 			pnlConfirmation.BackColor = Color.FromArgb(200, 200, 200);
-			pnlConfirmation.Controls.Add(lblSuccess);
 			pnlConfirmation.Controls.Add(btnReturn);
 			pnlConfirmation.Controls.Add(lblStockTo);
 			pnlConfirmation.Controls.Add(lblStockName);
@@ -311,20 +309,6 @@
 			pnlConfirmation.Name = "pnlConfirmation";
 			pnlConfirmation.Size = new Size(967, 711);
 			pnlConfirmation.TabIndex = 4;
-			// 
-			// lblSuccess
-			// 
-			lblSuccess.Anchor = AnchorStyles.None;
-			lblSuccess.BackColor = Color.FromArgb(209, 255, 209);
-			lblSuccess.BorderStyle = BorderStyle.FixedSingle;
-			lblSuccess.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-			lblSuccess.ForeColor = Color.FromArgb(0, 150, 0);
-			lblSuccess.Location = new Point(128, 518);
-			lblSuccess.Name = "lblSuccess";
-			lblSuccess.Size = new Size(711, 84);
-			lblSuccess.TabIndex = 14;
-			lblSuccess.Text = "Success message goes here";
-			lblSuccess.TextAlign = ContentAlignment.MiddleCenter;
 			// 
 			// btnReturn
 			// 
@@ -545,7 +529,6 @@
         private Label lblMaximumLevel;
         private Label lblPrice;
         private Button btnReturn;
-        private Label lblSuccess;
         private Label lblError;
         private Panel pnlRetireStock;
         private Label lblErrorRetireStock;

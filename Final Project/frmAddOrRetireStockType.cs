@@ -15,11 +15,6 @@ namespace Final_Project
 {
 	public partial class frmAddOrRetireStockType : Form
 	{
-		// create a timer
-		private System.Timers.Timer timer;
-
-		private int count = 0;
-
 		// class takes a panel as a parameter to check which panel to show first
 		public frmAddOrRetireStockType(string panelToShow)
 		{
@@ -38,11 +33,6 @@ namespace Final_Project
 				ShowRetireStock();
 				lblErrorRetireStock.Visible = false;
 			}
-			lblSuccess.Visible = false;
-
-			// sets the timer to one that ticks every second
-			timer = new System.Timers.Timer(1000);
-			timer.Elapsed += OnTimedEvent;
 		}
 
 		// base stock objects to hold information about the stock to add or delete
@@ -151,23 +141,18 @@ namespace Final_Project
 		}
 
 		private void btnConfirmed_Click(object sender, EventArgs e)
-		{
-			// starts the timer when button is clicked
-			count = 0;
-			timer.Start();
-			lblSuccess.Visible = true;
-
+		{		
 			// if the add stock object isn't null, it will add the stock to the database
 			if (stockToAdd.stockName != null)
 			{
-				lblSuccess.Text = "New stock added successfully! Returning to previous screen in 3 seconds...";
 				StockDal.AddNewStock(stockToAdd);
+				ReturnToPreviousScreen();
 			}
 			// if the remove stock object isn't null, it will remove the stock from the database
 			else if (stockToRetire.stockName != null)
 			{
-				lblSuccess.Text = "Stock removed successfully! Returning to previous screen in 3 seconds...";
-				
+				stockToRetire.active = false;
+				ReturnToPreviousScreen();
 			}
 		}
 
@@ -192,39 +177,28 @@ namespace Final_Project
 			}
 		}
 
-		private void OnTimedEvent(Object source, ElapsedEventArgs e)
+		private void ReturnToPreviousScreen()
 		{
-			// every time the timer ticks, it adds 1 to the count variable
-			count++;
+			lblError.Visible = false;
 
-			// when the count variable gets to 3, it resets the textboxes
-			if (count >= 3)
+			txtBoxNewStockName.Text = "";
+			txtBoxNewStockDescription.Text = "";
+			txtBoxNewStockPrice.Text = "";
+			txtBoxNewMaximumLevel.Text = "";
+			txtBoxNewMinimumLevel.Text = "";
+			txtBoxRetireStockName.Text = "";
+
+			// check to see which panel to show and then show the respective panel
+			if (stockToAdd != null)
 			{
-				timer.Stop(); // Stop the timer after 3 seconds
-				lblError.Visible = false;
-				this.Invoke((MethodInvoker)delegate
-				{
-					txtBoxNewStockName.Text = "";
-					txtBoxNewStockDescription.Text = "";
-					txtBoxNewStockPrice.Text = "";
-					txtBoxNewMaximumLevel.Text = "";
-					txtBoxNewMinimumLevel.Text = "";
-					txtBoxRetireStockName.Text = "";
-
-					// check to see which panel to show and then show the respective panel
-					if (stockToAdd != null)
-					{
-						pnlAddNewStock.Visible = true;
-					}
-					else if (stockToRetire != null)
-					{
-						pnlRetireStock.Visible = true;
-					}
-					// hides the confirmation panel
-					pnlConfirmation.Visible = false;
-				});
+				pnlAddNewStock.Visible = true;
 			}
-		}
-
+			else if (stockToRetire != null)
+			{
+				pnlRetireStock.Visible = true;
+			}
+			// hides the confirmation panel
+			pnlConfirmation.Visible = false;
+		}	
 	}
 }

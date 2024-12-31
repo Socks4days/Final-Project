@@ -31,23 +31,29 @@ namespace Final_Project.Models
         public int stockLevel { get; set; } 
 
         public int lastUpdatedByStaffId { get; set; }
+        public bool active { get; set; } = true;
 
 #endregion Properties
 
         public Stock() { }
 
-        public Stock (string stockName, string stockDescription, decimal price, int deliveryTimeDays, int maximumLevel, int minimumLevel, int orderQuantity, int stockCheckFrequency, int stockLevel, int lastUpdatedByStaffId)
-        {
-            this.stockName = stockName;
-            this.stockDescription = stockDescription;
-            this.price = price;
-            this.deliveryTimeDays = deliveryTimeDays;
-            this.maximumLevel = maximumLevel;
-            this.minimumLevel = minimumLevel;
-            this.orderQuantity = orderQuantity;
-            this.stockCheckFrequency = stockCheckFrequency;
-            this.stockLevel = stockLevel;
-            this.lastUpdatedByStaffId = lastUpdatedByStaffId;
-        }
-    }
+		public Stock(string stockName, string stockDescription, decimal price, int deliveryTimeDays, int maximumLevel, int minimumLevel, int orderQuantity, int stockCheckFrequency, int stockLevel, int lastUpdatedByStaffId, bool active)
+		{
+			this.stockName = stockName;
+			this.stockDescription = stockDescription;
+			this.price = price;
+			this.deliveryTimeDays = deliveryTimeDays;
+			this.maximumLevel = maximumLevel;
+			this.minimumLevel = minimumLevel;
+			this.orderQuantity = orderQuantity;
+			this.stockCheckFrequency = stockCheckFrequency;
+			this.stockLevel = stockLevel;
+			this.lastUpdatedByStaffId = lastUpdatedByStaffId;
+			this.active = active;
+		}
+
+		public Stock (string stockName, string stockDescription, decimal price, int deliveryTimeDays, int maximumLevel, int minimumLevel, int orderQuantity, int stockCheckFrequency, int stockLevel, int lastUpdatedByStaffId) :
+            this(stockName, stockDescription, price, deliveryTimeDays, maximumLevel, minimumLevel, orderQuantity, stockCheckFrequency, stockLevel, lastUpdatedByStaffId, true) { }
+        		
+	}
 }

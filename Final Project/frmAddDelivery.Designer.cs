@@ -117,7 +117,7 @@
 			lstViewOrders.BackColor = Color.FromArgb(0, 214, 194);
 			lstViewOrders.Columns.AddRange(new ColumnHeader[] { cHeaderOrderNumber, cHeaderOrderDate, cHeaderOrderStatus });
 			lstViewOrders.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			lstViewOrders.ForeColor = Color.White;
+			lstViewOrders.ForeColor = Color.Black;
 			lstViewOrders.FullRowSelect = true;
 			lstViewOrders.GridLines = true;
 			lstViewOrders.Location = new Point(44, 32);
@@ -207,7 +207,7 @@
 			lstViewOrderItemsDelivered.BackColor = Color.FromArgb(0, 214, 194);
 			lstViewOrderItemsDelivered.Columns.AddRange(new ColumnHeader[] { cHeaderOrderItem, cHeaderQuantityOrdered, cHeaderDeliveryStatus, cHeaderQuantityReceived, cHeaderQuantityFaulty });
 			lstViewOrderItemsDelivered.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			lstViewOrderItemsDelivered.ForeColor = Color.White;
+			lstViewOrderItemsDelivered.ForeColor = Color.Black;
 			lstViewOrderItemsDelivered.FullRowSelect = true;
 			lstViewOrderItemsDelivered.GridLines = true;
 			lstViewOrderItemsDelivered.Location = new Point(118, 66);
@@ -329,7 +329,7 @@
 			lstViewDeliveryItems.BackColor = Color.FromArgb(0, 214, 194);
 			lstViewDeliveryItems.Columns.AddRange(new ColumnHeader[] { cHeaderItem, cHeaderDeliveryQuantityReceived, cHeaderDeliveryQuantityFaulty });
 			lstViewDeliveryItems.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			lstViewDeliveryItems.ForeColor = Color.White;
+			lstViewDeliveryItems.ForeColor = Color.Black;
 			lstViewDeliveryItems.FullRowSelect = true;
 			lstViewDeliveryItems.GridLines = true;
 			lstViewDeliveryItems.Location = new Point(5, 44);

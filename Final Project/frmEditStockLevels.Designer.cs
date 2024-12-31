@@ -67,6 +67,7 @@
 			btnEditStock = new Button();
 			btnRemoveFromStock = new Button();
 			btnAddToStock = new Button();
+			lblAmountTo = new Label();
 			pnlEditStockLevels.SuspendLayout();
 			pnlEditStockItem.SuspendLayout();
 			pnlStockList.SuspendLayout();
@@ -76,6 +77,7 @@
 			// pnlEditStockLevels
 			// 
 			pnlEditStockLevels.BackColor = Color.FromArgb(200, 200, 200);
+			pnlEditStockLevels.Controls.Add(lblAmountTo);
 			pnlEditStockLevels.Controls.Add(lblCurrentStockLevel);
 			pnlEditStockLevels.Controls.Add(lblStockLevelToEdit);
 			pnlEditStockLevels.Controls.Add(btnCancel);
@@ -86,7 +88,7 @@
 			pnlEditStockLevels.Dock = DockStyle.Top;
 			pnlEditStockLevels.Location = new Point(0, 0);
 			pnlEditStockLevels.Name = "pnlEditStockLevels";
-			pnlEditStockLevels.Size = new Size(967, 637);
+			pnlEditStockLevels.Size = new Size(967, 680);
 			pnlEditStockLevels.TabIndex = 1;
 			// 
 			// lblCurrentStockLevel
@@ -94,7 +96,7 @@
 			lblCurrentStockLevel.Anchor = AnchorStyles.None;
 			lblCurrentStockLevel.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			lblCurrentStockLevel.ForeColor = Color.Black;
-			lblCurrentStockLevel.Location = new Point(145, 198);
+			lblCurrentStockLevel.Location = new Point(145, 160);
 			lblCurrentStockLevel.Name = "lblCurrentStockLevel";
 			lblCurrentStockLevel.Size = new Size(676, 40);
 			lblCurrentStockLevel.TabIndex = 18;
@@ -106,7 +108,7 @@
 			lblStockLevelToEdit.Anchor = AnchorStyles.None;
 			lblStockLevelToEdit.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			lblStockLevelToEdit.ForeColor = Color.Black;
-			lblStockLevelToEdit.Location = new Point(145, 158);
+			lblStockLevelToEdit.Location = new Point(145, 122);
 			lblStockLevelToEdit.Name = "lblStockLevelToEdit";
 			lblStockLevelToEdit.Size = new Size(676, 40);
 			lblStockLevelToEdit.TabIndex = 17;
@@ -115,60 +117,73 @@
 			// 
 			// btnCancel
 			// 
+			btnCancel.BackColor = Color.FromArgb(33, 150, 243);
+			btnCancel.FlatAppearance.BorderSize = 0;
+			btnCancel.FlatStyle = FlatStyle.Flat;
 			btnCancel.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			btnCancel.Location = new Point(92, 436);
+			btnCancel.ForeColor = Color.White;
+			btnCancel.Location = new Point(227, 415);
 			btnCancel.Name = "btnCancel";
 			btnCancel.Size = new Size(220, 50);
 			btnCancel.TabIndex = 16;
 			btnCancel.Text = "Cancel";
-			btnCancel.UseVisualStyleBackColor = true;
+			btnCancel.UseVisualStyleBackColor = false;
 			btnCancel.Click += btnBack_Click;
 			// 
 			// lblError
 			// 
 			lblError.Anchor = AnchorStyles.None;
-			lblError.Font = new Font("Segoe UI", 16F);
-			lblError.ForeColor = Color.Coral;
-			lblError.Location = new Point(151, 285);
+			lblError.BackColor = Color.FromArgb(255, 219, 219);
+			lblError.BorderStyle = BorderStyle.FixedSingle;
+			lblError.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+			lblError.ForeColor = Color.FromArgb(250, 0, 0);
+			lblError.Location = new Point(151, 316);
 			lblError.Name = "lblError";
-			lblError.Size = new Size(664, 119);
+			lblError.Size = new Size(664, 78);
 			lblError.TabIndex = 15;
 			lblError.Text = "Error message goes here";
-			lblError.TextAlign = ContentAlignment.TopCenter;
+			lblError.TextAlign = ContentAlignment.MiddleCenter;
 			lblError.Visible = false;
 			// 
 			// txtBoxAmountOfStockToChange
 			// 
 			txtBoxAmountOfStockToChange.Anchor = AnchorStyles.None;
 			txtBoxAmountOfStockToChange.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			txtBoxAmountOfStockToChange.Location = new Point(373, 239);
+			txtBoxAmountOfStockToChange.Location = new Point(373, 270);
 			txtBoxAmountOfStockToChange.Name = "txtBoxAmountOfStockToChange";
-			txtBoxAmountOfStockToChange.PlaceholderText = "Enter Amount:";
 			txtBoxAmountOfStockToChange.Size = new Size(220, 32);
 			txtBoxAmountOfStockToChange.TabIndex = 14;
 			// 
 			// btnRemoveStock
 			// 
 			btnRemoveStock.Anchor = AnchorStyles.None;
+			btnRemoveStock.BackColor = Color.FromArgb(33, 150, 243);
+			btnRemoveStock.FlatAppearance.BorderSize = 0;
+			btnRemoveStock.FlatStyle = FlatStyle.Flat;
 			btnRemoveStock.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			btnRemoveStock.Location = new Point(548, 474);
+			btnRemoveStock.ForeColor = Color.White;
+			btnRemoveStock.Location = new Point(520, 415);
 			btnRemoveStock.Name = "btnRemoveStock";
 			btnRemoveStock.Size = new Size(220, 50);
 			btnRemoveStock.TabIndex = 13;
 			btnRemoveStock.Text = "Remove From Stock";
-			btnRemoveStock.UseVisualStyleBackColor = true;
+			btnRemoveStock.UseVisualStyleBackColor = false;
 			btnRemoveStock.Click += btnRemoveStock_Click;
 			// 
 			// btnAddStock
 			// 
 			btnAddStock.Anchor = AnchorStyles.None;
+			btnAddStock.BackColor = Color.FromArgb(33, 150, 243);
+			btnAddStock.FlatAppearance.BorderSize = 0;
+			btnAddStock.FlatStyle = FlatStyle.Flat;
 			btnAddStock.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			btnAddStock.Location = new Point(548, 474);
+			btnAddStock.ForeColor = Color.White;
+			btnAddStock.Location = new Point(520, 415);
 			btnAddStock.Name = "btnAddStock";
 			btnAddStock.Size = new Size(220, 50);
 			btnAddStock.TabIndex = 11;
 			btnAddStock.Text = "Add To Stock";
-			btnAddStock.UseVisualStyleBackColor = true;
+			btnAddStock.UseVisualStyleBackColor = false;
 			btnAddStock.Click += btnAddStock_Click;
 			// 
 			// pnlEditStockItem
@@ -194,7 +209,7 @@
 			pnlEditStockItem.Controls.Add(lblMaximumLevel);
 			pnlEditStockItem.Controls.Add(lblName);
 			pnlEditStockItem.Dock = DockStyle.Top;
-			pnlEditStockItem.Location = new Point(0, 637);
+			pnlEditStockItem.Location = new Point(0, 680);
 			pnlEditStockItem.Name = "pnlEditStockItem";
 			pnlEditStockItem.Size = new Size(967, 680);
 			pnlEditStockItem.TabIndex = 2;
@@ -428,7 +443,7 @@
 			pnlStockList.BackColor = SystemColors.ScrollBar;
 			pnlStockList.Controls.Add(lstViewStock);
 			pnlStockList.Dock = DockStyle.Top;
-			pnlStockList.Location = new Point(0, 1317);
+			pnlStockList.Location = new Point(0, 1360);
 			pnlStockList.Name = "pnlStockList";
 			pnlStockList.Size = new Size(967, 580);
 			pnlStockList.TabIndex = 12;
@@ -480,7 +495,7 @@
 			pnlOptionButtons.Controls.Add(btnRemoveFromStock);
 			pnlOptionButtons.Controls.Add(btnAddToStock);
 			pnlOptionButtons.Dock = DockStyle.Bottom;
-			pnlOptionButtons.Location = new Point(0, 1897);
+			pnlOptionButtons.Location = new Point(0, 1940);
 			pnlOptionButtons.Name = "pnlOptionButtons";
 			pnlOptionButtons.Size = new Size(967, 100);
 			pnlOptionButtons.TabIndex = 13;
@@ -540,6 +555,18 @@
 			btnAddToStock.Text = "Add To Stock";
 			btnAddToStock.UseVisualStyleBackColor = false;
 			btnAddToStock.Click += btnAddToStock_Click;
+			// 
+			// lblAmountTo
+			// 
+			lblAmountTo.Anchor = AnchorStyles.None;
+			lblAmountTo.AutoSize = true;
+			lblAmountTo.Font = new Font("Segoe UI", 14F);
+			lblAmountTo.ForeColor = Color.Black;
+			lblAmountTo.Location = new Point(373, 242);
+			lblAmountTo.Name = "lblAmountTo";
+			lblAmountTo.Size = new Size(132, 25);
+			lblAmountTo.TabIndex = 25;
+			lblAmountTo.Text = "Enter Amount:";
 			// 
 			// frmEditStockLevels
 			// 
@@ -608,5 +635,6 @@
 		private Button btnEditStock;
 		private Button btnRemoveFromStock;
 		private Button btnAddToStock;
+		private Label lblAmountTo;
 	}
 }
