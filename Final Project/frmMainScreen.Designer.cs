@@ -89,7 +89,7 @@
 			pnlAudits.Dock = DockStyle.Top;
 			pnlAudits.Location = new Point(0, 770);
 			pnlAudits.Name = "pnlAudits";
-			pnlAudits.Size = new Size(183, 70);
+			pnlAudits.Size = new Size(182, 70);
 			pnlAudits.TabIndex = 13;
 			// 
 			// btnCreateAudit
@@ -105,7 +105,7 @@
 			btnCreateAudit.Margin = new Padding(2);
 			btnCreateAudit.Name = "btnCreateAudit";
 			btnCreateAudit.Padding = new Padding(10, 0, 0, 0);
-			btnCreateAudit.Size = new Size(183, 70);
+			btnCreateAudit.Size = new Size(182, 70);
 			btnCreateAudit.TabIndex = 13;
 			btnCreateAudit.Text = "Create Audit";
 			btnCreateAudit.TextAlign = ContentAlignment.MiddleLeft;
@@ -124,7 +124,7 @@
 			btnAudits.Location = new Point(0, 700);
 			btnAudits.Margin = new Padding(2);
 			btnAudits.Name = "btnAudits";
-			btnAudits.Size = new Size(183, 70);
+			btnAudits.Size = new Size(182, 70);
 			btnAudits.TabIndex = 12;
 			btnAudits.Text = "Audits";
 			btnAudits.TextAlign = ContentAlignment.MiddleLeft;
@@ -139,7 +139,7 @@
 			pnlDelivery.Location = new Point(0, 630);
 			pnlDelivery.Margin = new Padding(2);
 			pnlDelivery.Name = "pnlDelivery";
-			pnlDelivery.Size = new Size(183, 70);
+			pnlDelivery.Size = new Size(182, 70);
 			pnlDelivery.TabIndex = 11;
 			// 
 			// btnViewDeliveries
@@ -155,7 +155,7 @@
 			btnViewDeliveries.Margin = new Padding(2);
 			btnViewDeliveries.Name = "btnViewDeliveries";
 			btnViewDeliveries.Padding = new Padding(10, 0, 0, 0);
-			btnViewDeliveries.Size = new Size(183, 70);
+			btnViewDeliveries.Size = new Size(182, 70);
 			btnViewDeliveries.TabIndex = 6;
 			btnViewDeliveries.Text = "View Deliveries";
 			btnViewDeliveries.TextAlign = ContentAlignment.MiddleLeft;
@@ -174,7 +174,7 @@
 			btnDelivery.Location = new Point(0, 560);
 			btnDelivery.Margin = new Padding(2);
 			btnDelivery.Name = "btnDelivery";
-			btnDelivery.Size = new Size(183, 70);
+			btnDelivery.Size = new Size(182, 70);
 			btnDelivery.TabIndex = 10;
 			btnDelivery.Text = "Deliveries";
 			btnDelivery.TextAlign = ContentAlignment.MiddleLeft;
@@ -189,7 +189,7 @@
 			pnlOrder.Location = new Point(0, 420);
 			pnlOrder.Margin = new Padding(2);
 			pnlOrder.Name = "pnlOrder";
-			pnlOrder.Size = new Size(183, 140);
+			pnlOrder.Size = new Size(182, 140);
 			pnlOrder.TabIndex = 9;
 			// 
 			// btnViewOrders
@@ -205,7 +205,7 @@
 			btnViewOrders.Margin = new Padding(2);
 			btnViewOrders.Name = "btnViewOrders";
 			btnViewOrders.Padding = new Padding(10, 0, 0, 0);
-			btnViewOrders.Size = new Size(183, 70);
+			btnViewOrders.Size = new Size(182, 70);
 			btnViewOrders.TabIndex = 5;
 			btnViewOrders.Text = "View Orders";
 			btnViewOrders.TextAlign = ContentAlignment.MiddleLeft;
@@ -225,7 +225,7 @@
 			btnOrderStock.Margin = new Padding(2);
 			btnOrderStock.Name = "btnOrderStock";
 			btnOrderStock.Padding = new Padding(10, 0, 0, 0);
-			btnOrderStock.Size = new Size(183, 70);
+			btnOrderStock.Size = new Size(182, 70);
 			btnOrderStock.TabIndex = 4;
 			btnOrderStock.Text = "Order Stock";
 			btnOrderStock.TextAlign = ContentAlignment.MiddleLeft;
@@ -244,7 +244,7 @@
 			btnOrder.Location = new Point(0, 350);
 			btnOrder.Margin = new Padding(2);
 			btnOrder.Name = "btnOrder";
-			btnOrder.Size = new Size(183, 70);
+			btnOrder.Size = new Size(182, 70);
 			btnOrder.TabIndex = 4;
 			btnOrder.Text = "Orders";
 			btnOrder.TextAlign = ContentAlignment.MiddleLeft;
@@ -260,7 +260,7 @@
 			pnlStock.Location = new Point(0, 140);
 			pnlStock.Margin = new Padding(2);
 			pnlStock.Name = "pnlStock";
-			pnlStock.Size = new Size(183, 210);
+			pnlStock.Size = new Size(182, 210);
 			pnlStock.TabIndex = 3;
 			// 
 			// btnRetireStock
@@ -276,7 +276,7 @@
 			btnRetireStock.Margin = new Padding(2);
 			btnRetireStock.Name = "btnRetireStock";
 			btnRetireStock.Padding = new Padding(10, 0, 0, 0);
-			btnRetireStock.Size = new Size(183, 70);
+			btnRetireStock.Size = new Size(182, 70);
 			btnRetireStock.TabIndex = 9;
 			btnRetireStock.Text = "Retire Stock";
 			btnRetireStock.TextAlign = ContentAlignment.MiddleLeft;
@@ -296,7 +296,7 @@
 			btnAddNewStock.Margin = new Padding(2);
 			btnAddNewStock.Name = "btnAddNewStock";
 			btnAddNewStock.Padding = new Padding(10, 0, 0, 0);
-			btnAddNewStock.Size = new Size(183, 70);
+			btnAddNewStock.Size = new Size(182, 70);
 			btnAddNewStock.TabIndex = 6;
 			btnAddNewStock.Text = "Add New Stock";
 			btnAddNewStock.TextAlign = ContentAlignment.MiddleLeft;
@@ -316,7 +316,7 @@
 			btnManageStockLevels.Margin = new Padding(2);
 			btnManageStockLevels.Name = "btnManageStockLevels";
 			btnManageStockLevels.Padding = new Padding(10, 0, 0, 0);
-			btnManageStockLevels.Size = new Size(183, 70);
+			btnManageStockLevels.Size = new Size(182, 70);
 			btnManageStockLevels.TabIndex = 4;
 			btnManageStockLevels.Text = "Manage Stock";
 			btnManageStockLevels.TextAlign = ContentAlignment.MiddleLeft;
@@ -335,7 +335,7 @@
 			btnStock.Location = new Point(0, 70);
 			btnStock.Margin = new Padding(2);
 			btnStock.Name = "btnStock";
-			btnStock.Size = new Size(183, 70);
+			btnStock.Size = new Size(182, 70);
 			btnStock.TabIndex = 1;
 			btnStock.Text = "Stock";
 			btnStock.TextAlign = ContentAlignment.MiddleLeft;
@@ -349,7 +349,7 @@
 			pnlLogo.Location = new Point(0, 0);
 			pnlLogo.Margin = new Padding(2);
 			pnlLogo.Name = "pnlLogo";
-			pnlLogo.Size = new Size(183, 70);
+			pnlLogo.Size = new Size(182, 70);
 			pnlLogo.TabIndex = 0;
 			// 
 			// pctBoxSmallLogo

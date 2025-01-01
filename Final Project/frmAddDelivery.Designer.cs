@@ -81,7 +81,7 @@
 			pnlOrders.Location = new Point(0, 0);
 			pnlOrders.Margin = new Padding(3, 2, 3, 2);
 			pnlOrders.Name = "pnlOrders";
-			pnlOrders.Size = new Size(967, 680);
+			pnlOrders.Size = new Size(966, 680);
 			pnlOrders.TabIndex = 2;
 			// 
 			// lblOrderError
@@ -157,7 +157,7 @@
 			pnlDelivery.Dock = DockStyle.Top;
 			pnlDelivery.Location = new Point(0, 680);
 			pnlDelivery.Name = "pnlDelivery";
-			pnlDelivery.Size = new Size(967, 680);
+			pnlDelivery.Size = new Size(966, 680);
 			pnlDelivery.TabIndex = 4;
 			// 
 			// lblDeliveryItemError
@@ -384,7 +384,7 @@
 			pnlItemToAddToDelivery.Dock = DockStyle.Top;
 			pnlItemToAddToDelivery.Location = new Point(0, 1360);
 			pnlItemToAddToDelivery.Name = "pnlItemToAddToDelivery";
-			pnlItemToAddToDelivery.Size = new Size(967, 680);
+			pnlItemToAddToDelivery.Size = new Size(966, 680);
 			pnlItemToAddToDelivery.TabIndex = 6;
 			// 
 			// btnAddItemToDelivery
