@@ -16,8 +16,7 @@ namespace Final_Project
 		public frmAddDelivery()
 		{
 			InitializeComponent();
-			orderToAddDelivery = null;
-			UpdateOrderListView();
+			orderToAddDelivery = null;			
 			ShowOrders();
 		}
 
@@ -166,7 +165,7 @@ namespace Final_Project
 
 				// Add the list item to the order list view
 				lstViewDeliveryItems.Items.Add(item);
-			}			
+			}
 		}
 
 		private void lstViewOrders_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
@@ -180,15 +179,14 @@ namespace Final_Project
 			}
 		}
 
-		private void lstViewDeliveryItems_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+		private void lstViewOrderItemsDelivered_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
 		{
 			// if an item in the list view is selected, set instructions text, enable the buttons and find the stock that is selected
 			if (e.IsSelected)
 			{
 				btnAddItem.Enabled = true;
 				string stockName = e.Item.SubItems[0].Text;
-				//int stockId = StockDal.GetStockByStockName(stockName).stockId;
-				//orderItemSelected = OrderDal.GetOrderItemByOrderNumberAndStockId(Convert.ToInt32(orderToAddDelivery.orderNumber), Convert.ToInt32(stockId));
+				orderItemStatus = e.Item.SubItems[2].Text;
 				foreach (OrderItemsDeliveredView dIV in sortedOrderItemsDelivered)
 				{
 					if (dIV.stockName == stockName)
@@ -216,7 +214,7 @@ namespace Final_Project
 		{
 			if (orderItemStatus != Order.Fulfilled)
 				ShowItemToAddToDelivery();
-			else if (orderItemStatus == Order.NotReceived || orderItemStatus == Order.PartFilled)
+			else 
 			{
 				lblDeliveryItemError.Visible = true;
 				lblDeliveryItemError.Text = "Item already fully delivered!";
@@ -229,6 +227,7 @@ namespace Final_Project
 			pnlOrders.Visible = true;
 			pnlItemToAddToDelivery.Visible = false;
 			lblOrderError.Visible = false;
+			UpdateOrderListView();
 		}
 
 		private void ShowDelivery()
@@ -240,17 +239,42 @@ namespace Final_Project
 			pnlItemToAddToDelivery.Visible = false;
 			lblDeliveryItemError.Visible = false;
 			lblOrderNumber.Text = $"Order Number: {orderToAddDelivery.orderNumber}";
-			lblOrderDate.Text = $"Order Date: {orderToAddDelivery.orderDate}";
+			lblOrderDateAndStatus.Text = $"Placed On: {orderToAddDelivery.orderDate}  ({orderToAddDelivery.orderStatus})";
 			UpdateOrderItemsDeliveredListView(orderToAddDelivery.orderNumber);
 		}
 
+		private int itemsOrdered;
+		private int itemsReceived;
+		private int itemsFaulty;
+		private int itemsRemaining;
 		private void ShowItemToAddToDelivery()
 		{
+			itemsOrdered = selectedOrderItemsDeliveredView.orderItemQuantity;
+			if (selectedOrderItemsDeliveredView.quantityDelivered == null)
+			{
+				itemsReceived = 0;
+			}
+			else
+			{
+				itemsReceived = (int) selectedOrderItemsDeliveredView.quantityDelivered;
+			}
+			if (selectedOrderItemsDeliveredView.quantityFaulty == null)
+			{
+				itemsFaulty = 0;
+			}
+			else
+			{
+				itemsFaulty = (int)selectedOrderItemsDeliveredView.quantityFaulty;
+			}
+			itemsRemaining = itemsOrdered - itemsReceived + itemsFaulty;
 			pnlDelivery.Visible = false;
 			pnlOrders.Visible = false;
 			pnlItemToAddToDelivery.Visible = true;
-			lblSelectedItem.Text = $"Item To Add: {selectedOrderItemsDeliveredView.stockName}";
-			lblSelectedItemQuantity.Text = $"Quantity Ordered: {selectedOrderItemsDeliveredView.orderItemQuantity}";
+			lblSelectedItem.Text = $"Item: {selectedOrderItemsDeliveredView.stockName}";
+			lblSelectedItemQuantity.Text = $"Ordered: {itemsOrdered}\n"
+				+ $"Received: {itemsReceived}\n"
+				+ $"Faulty: {itemsFaulty}\n"
+				+ $"Remaining: {itemsRemaining}";
 			SetNumberUpDownValues();
 		}
 
@@ -265,8 +289,8 @@ namespace Final_Project
 
 		private void SetNumberUpDownValues()
 		{
-			nUDQuantityDelivered.Maximum = selectedOrderItemsDeliveredView.orderItemQuantity;
-			nUDQuantityFaulty.Maximum = selectedOrderItemsDeliveredView.orderItemQuantity;
+			nUDQuantityDelivered.Maximum = itemsRemaining;
+			nUDQuantityFaulty.Maximum = itemsRemaining;
 			nUDQuantityDelivered.Value = 1;
 			nUDQuantityFaulty.Value = 0;
 		}
@@ -322,6 +346,9 @@ namespace Final_Project
 		{
 			orderToAddDelivery.orderStatus = Order.Completed;
 			OrderDal.UpdateOrderStatus(orderToAddDelivery);
+			ShowOrders();
 		}
+
+		
 	}
 }

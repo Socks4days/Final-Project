@@ -39,7 +39,7 @@
 			lblDeliveryItemError = new Label();
 			btnRecordDeliveryForOrder = new Button();
 			btnMarkOrderAsCompleted = new Button();
-			lblOrderDate = new Label();
+			lblOrderDateAndStatus = new Label();
 			lstViewOrderItemsDelivered = new ListView();
 			cHeaderOrderItem = new ColumnHeader();
 			cHeaderQuantityOrdered = new ColumnHeader();
@@ -150,7 +150,7 @@
 			pnlDelivery.Controls.Add(lblDeliveryItemError);
 			pnlDelivery.Controls.Add(btnRecordDeliveryForOrder);
 			pnlDelivery.Controls.Add(btnMarkOrderAsCompleted);
-			pnlDelivery.Controls.Add(lblOrderDate);
+			pnlDelivery.Controls.Add(lblOrderDateAndStatus);
 			pnlDelivery.Controls.Add(lstViewOrderItemsDelivered);
 			pnlDelivery.Controls.Add(lblOrderNumber);
 			pnlDelivery.Controls.Add(pnlDeliveryDetails);
@@ -207,16 +207,16 @@
 			btnMarkOrderAsCompleted.UseVisualStyleBackColor = false;
 			btnMarkOrderAsCompleted.Click += btnMarkOrderAsCompleted_Click;
 			// 
-			// lblOrderDate
+			// lblOrderDateAndStatus
 			// 
-			lblOrderDate.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			lblOrderDate.ForeColor = Color.Black;
-			lblOrderDate.Location = new Point(500, 32);
-			lblOrderDate.Name = "lblOrderDate";
-			lblOrderDate.Size = new Size(349, 32);
-			lblOrderDate.TabIndex = 28;
-			lblOrderDate.Text = "Order Date Goes Here";
-			lblOrderDate.TextAlign = ContentAlignment.MiddleRight;
+			lblOrderDateAndStatus.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			lblOrderDateAndStatus.ForeColor = Color.Black;
+			lblOrderDateAndStatus.Location = new Point(334, 32);
+			lblOrderDateAndStatus.Name = "lblOrderDateAndStatus";
+			lblOrderDateAndStatus.Size = new Size(515, 32);
+			lblOrderDateAndStatus.TabIndex = 28;
+			lblOrderDateAndStatus.Text = "Order Date Goes Here";
+			lblOrderDateAndStatus.TextAlign = ContentAlignment.MiddleRight;
 			// 
 			// lstViewOrderItemsDelivered
 			// 
@@ -234,7 +234,7 @@
 			lstViewOrderItemsDelivered.TabIndex = 2;
 			lstViewOrderItemsDelivered.UseCompatibleStateImageBehavior = false;
 			lstViewOrderItemsDelivered.View = View.Details;
-			lstViewOrderItemsDelivered.ItemSelectionChanged += lstViewDeliveryItems_ItemSelectionChanged;
+			lstViewOrderItemsDelivered.ItemSelectionChanged += lstViewOrderItemsDelivered_ItemSelectionChanged;
 			// 
 			// cHeaderOrderItem
 			// 
@@ -450,7 +450,7 @@
 			// 
 			lblSelectedItem.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			lblSelectedItem.ForeColor = Color.Black;
-			lblSelectedItem.Location = new Point(218, 150);
+			lblSelectedItem.Location = new Point(218, 88);
 			lblSelectedItem.Name = "lblSelectedItem";
 			lblSelectedItem.Size = new Size(530, 32);
 			lblSelectedItem.TabIndex = 2;
@@ -461,9 +461,9 @@
 			// 
 			lblSelectedItemQuantity.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			lblSelectedItemQuantity.ForeColor = Color.Black;
-			lblSelectedItemQuantity.Location = new Point(218, 202);
+			lblSelectedItemQuantity.Location = new Point(218, 140);
 			lblSelectedItemQuantity.Name = "lblSelectedItemQuantity";
-			lblSelectedItemQuantity.Size = new Size(530, 32);
+			lblSelectedItemQuantity.Size = new Size(530, 108);
 			lblSelectedItemQuantity.TabIndex = 1;
 			lblSelectedItemQuantity.Text = "Item Quantity Goes Here";
 			lblSelectedItemQuantity.TextAlign = ContentAlignment.TopCenter;
@@ -527,7 +527,7 @@
         private Button btnMarkDeliveryAsCompleted;
         private Button btnRecordDeliveryForOrder;
         private ColumnHeader cHeaderOrderStatus;
-        private Label lblOrderDate;
+        private Label lblOrderDateAndStatus;
         private Panel pnlDeliveryDetails;
         private Label lblDeliveryDate;
 		private Label lblOrderError;
