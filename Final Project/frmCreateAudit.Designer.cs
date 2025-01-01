@@ -61,6 +61,7 @@
 			btnCancel.FlatAppearance.BorderSize = 0;
 			btnCancel.FlatStyle = FlatStyle.Flat;
 			btnCancel.Font = new Font("Segoe UI", 14F);
+			btnCancel.ForeColor = Color.White;
 			btnCancel.Location = new Point(232, 505);
 			btnCancel.Name = "btnCancel";
 			btnCancel.Size = new Size(220, 50);
@@ -114,6 +115,7 @@
 			btnCreatAudit.FlatAppearance.BorderSize = 0;
 			btnCreatAudit.FlatStyle = FlatStyle.Flat;
 			btnCreatAudit.Font = new Font("Segoe UI", 14F);
+			btnCreatAudit.ForeColor = Color.White;
 			btnCreatAudit.Location = new Point(507, 505);
 			btnCreatAudit.Name = "btnCreatAudit";
 			btnCreatAudit.Size = new Size(220, 50);

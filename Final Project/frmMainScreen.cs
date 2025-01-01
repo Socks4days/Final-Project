@@ -62,13 +62,13 @@ namespace Final_Project
 				lblTitle.Text = menuButton.Text;
 				string name = menuButton.Text;
 
-				if (name == "Manage Stock Levels" || name == "Add New Stock" || name == "Retire Stock")
+				if (name == "Manage Stock" || name == "Add New Stock" || name == "Retire Stock")
 				{
 					btnStock.BackColor = Color.FromArgb(24, 105, 170);
 					pnlTitleBar.BackColor = Color.FromArgb(33, 150, 243);
 					switch (name)
 					{
-						case "Manage Stock Levels":
+						case "Manage Stock":
 							btnManageStockLevels.BackColor = Color.FromArgb(33, 150, 243);
 							break;
 						case "Add New Stock":
@@ -141,7 +141,7 @@ namespace Final_Project
 				parentMenuButton.BackColor = Color.Transparent;
 			}
 
-			hideSubMenus();
+
 			pnlTitleBar.BackColor = Color.FromArgb(51, 51, 79);
 			lblTitle.Text = "Movers Maintenance Garage Stock Control System";
 		}
@@ -152,7 +152,14 @@ namespace Final_Project
 			CloseChildForm();
 			toggleSubMenu(pnlStock);
 			ResetMainButtonColours();
-			btnStock.BackColor = Color.FromArgb(33, 150, 243);
+			if (pnlStock.Visible == true)
+			{
+				btnStock.BackColor = Color.FromArgb(33, 150, 243);
+			}
+			else
+			{
+				btnStock.BackColor = Color.FromArgb(51, 51, 79);
+			}
 			parentMenuButton = btnStock;
 		}
 
@@ -161,7 +168,14 @@ namespace Final_Project
 			CloseChildForm();
 			toggleSubMenu(pnlOrder);
 			ResetMainButtonColours();
-			btnOrder.BackColor = Color.FromArgb(161, 32, 89);
+			if (pnlOrder.Visible == true)
+			{
+				btnOrder.BackColor = Color.FromArgb(161, 32, 89);
+			}
+			else
+			{
+				btnOrder.BackColor = Color.FromArgb(51, 51, 79);
+			}
 			parentMenuButton = btnOrder;
 		}
 
@@ -170,7 +184,14 @@ namespace Final_Project
 			CloseChildForm();
 			toggleSubMenu(pnlDelivery);
 			ResetMainButtonColours();
-			btnDelivery.BackColor = Color.FromArgb(0, 151, 136);
+			if (pnlDelivery.Visible == true)
+			{
+				btnDelivery.BackColor = Color.FromArgb(0, 151, 136);
+			}
+			else
+			{
+				btnDelivery.BackColor = Color.FromArgb(51, 51, 79);
+			}			
 			parentMenuButton = btnDelivery;
 		}
 
@@ -179,7 +200,14 @@ namespace Final_Project
 			CloseChildForm();
 			toggleSubMenu(pnlAudits);
 			ResetMainButtonColours();
-			btnAudits.BackColor = Color.FromArgb(255, 138, 98);
+			if (pnlAudits.Visible == true)
+			{
+				btnAudits.BackColor = Color.FromArgb(255, 138, 98);
+			}
+			else
+			{
+				btnAudits.BackColor = Color.FromArgb(51, 51, 79);
+			}			
 			parentMenuButton = btnAudits;
 		}
 
@@ -192,30 +220,30 @@ namespace Final_Project
 		}
 
 		// Hide the settings and admin submenus when a menu option is clicked
-		private void hideSubMenus()
-		{
+		public void hideSubMenus()
+		{			
 			pnlStock.Visible = false;
 			pnlOrder.Visible = false;
 			pnlDelivery.Visible = false;
-			pnlAudits.Visible = false;
+			pnlAudits.Visible = false;				
 		}
 
 		// Hide the main menu and title bar
-		private void hideMenus()
+		public void hideMenus()
 		{
 			pnlSideBar.Visible = false;
 			pnlTitleBar.Visible = false;
 		}
 
 		// Show the main menu and title bar
-		private void showMenus()
+		public void showMenus()
 		{
 			pnlSideBar.Visible = true;
 			pnlTitleBar.Visible = true;
 		}
 
 		// Show or hide the sub menu when it is clicked
-		private void toggleSubMenu(Panel selectedSubMenu)
+		public void toggleSubMenu(Panel selectedSubMenu)
 		{
 			if (selectedSubMenu.Visible == true)
 			{
@@ -236,7 +264,7 @@ namespace Final_Project
 			pctBoxSmallLogo.ImageLocation = @"C:\Users\andre\OneDrive\Desktop\A2 SSD\Tasks\Final Project\TitleIcon.ico";
 		}
 
-		private void btnViewStock_Click(object sender, EventArgs e)
+		private void btnManageStockLevels_Click(object sender, EventArgs e)
 		{
 			OpenChildForm(new frmEditStockLevels(), (Button)sender);
 		}

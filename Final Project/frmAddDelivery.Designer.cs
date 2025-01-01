@@ -36,6 +36,7 @@
 			cHeaderOrderDate = new ColumnHeader();
 			cHeaderOrderStatus = new ColumnHeader();
 			pnlDelivery = new Panel();
+			lblDeliveryItemError = new Label();
 			btnRecordDeliveryForOrder = new Button();
 			btnMarkOrderAsCompleted = new Button();
 			lblOrderDate = new Label();
@@ -146,6 +147,7 @@
 			// 
 			// pnlDelivery
 			// 
+			pnlDelivery.Controls.Add(lblDeliveryItemError);
 			pnlDelivery.Controls.Add(btnRecordDeliveryForOrder);
 			pnlDelivery.Controls.Add(btnMarkOrderAsCompleted);
 			pnlDelivery.Controls.Add(lblOrderDate);
@@ -157,6 +159,19 @@
 			pnlDelivery.Name = "pnlDelivery";
 			pnlDelivery.Size = new Size(967, 680);
 			pnlDelivery.TabIndex = 4;
+			// 
+			// lblDeliveryItemError
+			// 
+			lblDeliveryItemError.BackColor = Color.FromArgb(255, 209, 209);
+			lblDeliveryItemError.BorderStyle = BorderStyle.FixedSingle;
+			lblDeliveryItemError.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			lblDeliveryItemError.ForeColor = Color.FromArgb(250, 0, 0);
+			lblDeliveryItemError.Location = new Point(231, 598);
+			lblDeliveryItemError.Name = "lblDeliveryItemError";
+			lblDeliveryItemError.Size = new Size(505, 61);
+			lblDeliveryItemError.TabIndex = 34;
+			lblDeliveryItemError.Text = "Error message goes here";
+			lblDeliveryItemError.TextAlign = ContentAlignment.MiddleCenter;
 			// 
 			// btnRecordDeliveryForOrder
 			// 
@@ -190,6 +205,7 @@
 			btnMarkOrderAsCompleted.TabIndex = 27;
 			btnMarkOrderAsCompleted.Text = "Mark Order As Completed";
 			btnMarkOrderAsCompleted.UseVisualStyleBackColor = false;
+			btnMarkOrderAsCompleted.Click += btnMarkOrderAsCompleted_Click;
 			// 
 			// lblOrderDate
 			// 
@@ -263,7 +279,7 @@
 			pnlDeliveryDetails.Controls.Add(btnAddItem);
 			pnlDeliveryDetails.Controls.Add(lblDeliveryNumber);
 			pnlDeliveryDetails.Controls.Add(lstViewDeliveryItems);
-			pnlDeliveryDetails.Location = new Point(118, 325);
+			pnlDeliveryDetails.Location = new Point(118, 304);
 			pnlDeliveryDetails.Name = "pnlDeliveryDetails";
 			pnlDeliveryDetails.Size = new Size(731, 276);
 			pnlDeliveryDetails.TabIndex = 33;
@@ -515,5 +531,6 @@
         private Panel pnlDeliveryDetails;
         private Label lblDeliveryDate;
 		private Label lblOrderError;
+		private Label lblDeliveryItemError;
 	}
 }

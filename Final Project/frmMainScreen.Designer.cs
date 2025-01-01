@@ -119,7 +119,7 @@
 			btnAudits.FlatAppearance.BorderSize = 0;
 			btnAudits.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
 			btnAudits.FlatStyle = FlatStyle.Flat;
-			btnAudits.Font = new Font("Segoe UI", 14F);
+			btnAudits.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
 			btnAudits.ForeColor = SystemColors.Control;
 			btnAudits.Location = new Point(0, 700);
 			btnAudits.Margin = new Padding(2);
@@ -169,7 +169,7 @@
 			btnDelivery.FlatAppearance.BorderSize = 0;
 			btnDelivery.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
 			btnDelivery.FlatStyle = FlatStyle.Flat;
-			btnDelivery.Font = new Font("Segoe UI", 14F);
+			btnDelivery.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
 			btnDelivery.ForeColor = SystemColors.Control;
 			btnDelivery.Location = new Point(0, 560);
 			btnDelivery.Margin = new Padding(2);
@@ -239,7 +239,7 @@
 			btnOrder.FlatAppearance.BorderSize = 0;
 			btnOrder.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
 			btnOrder.FlatStyle = FlatStyle.Flat;
-			btnOrder.Font = new Font("Segoe UI", 14F);
+			btnOrder.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
 			btnOrder.ForeColor = SystemColors.Control;
 			btnOrder.Location = new Point(0, 350);
 			btnOrder.Margin = new Padding(2);
@@ -321,7 +321,7 @@
 			btnManageStockLevels.Text = "Manage Stock";
 			btnManageStockLevels.TextAlign = ContentAlignment.MiddleLeft;
 			btnManageStockLevels.UseVisualStyleBackColor = false;
-			btnManageStockLevels.Click += btnViewStock_Click;
+			btnManageStockLevels.Click += btnManageStockLevels_Click;
 			// 
 			// btnStock
 			// 
@@ -330,7 +330,7 @@
 			btnStock.FlatAppearance.BorderSize = 0;
 			btnStock.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
 			btnStock.FlatStyle = FlatStyle.Flat;
-			btnStock.Font = new Font("Segoe UI", 14F);
+			btnStock.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
 			btnStock.ForeColor = SystemColors.Control;
 			btnStock.Location = new Point(0, 70);
 			btnStock.Margin = new Padding(2);

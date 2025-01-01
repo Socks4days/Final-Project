@@ -43,10 +43,10 @@ namespace Final_Project
 			// Add each order in the sorted list to the order list
 			foreach (Order order in sortedOrderList)
 			{
-				if (order.orderStatus == "Placed")
+				if (order.orderStatus == Order.Placed || order.orderStatus == Order.PartFilled || order.orderStatus == Order.Fulfilled)
 				{
 					// Create an array with order details
-					string[] row = { order.orderNumber.ToString(), order.orderDate.ToString() };
+					string[] row = { order.orderNumber.ToString(), order.orderDate.ToString(), order.orderStatus };
 
 					// Create a new list item based on the array
 					ListViewItem item = new ListViewItem(row);
@@ -56,6 +56,8 @@ namespace Final_Project
 				}
 			}
 		}
+
+		string orderItemStatus = Order.NotReceived;
 
 		private void UpdateOrderItemsDeliveredListView(int orderNumber)
 		{
@@ -67,20 +69,35 @@ namespace Final_Project
 				lstViewOrderItemsDelivered.Items.Remove(item);
 			}
 
+			string currentOrderStatus = orderToAddDelivery.orderStatus;
+			string newOrderStatus = currentOrderStatus;
+			bool allOrderItemsFulfilled = true;
+			bool allOrderItemsNotReceived = true;
+
 			// Add each order in the sorted list to the order list
 			foreach (OrderItemsDeliveredView orderItemDelivered in sortedOrderItemsDelivered)
 			{
-				string orderItemStatus = "Not Received";
 				string quantityReceived = "";
 				string quantityFaulty = "";
 
 				if (orderItemDelivered.quantityDelivered - orderItemDelivered.quantityFaulty >= orderItemDelivered.orderItemQuantity)
 				{
-					orderItemStatus = "Fulfilled";
+					// Order item fulfilled
+					orderItemStatus = Order.Fulfilled;
+					allOrderItemsNotReceived = false;
 				}
 				else if (orderItemDelivered.quantityDelivered - orderItemDelivered.quantityFaulty > 0)
 				{
-					orderItemStatus = "Part Filled";
+					// Order item part filled
+					orderItemStatus = Order.PartFilled;
+					allOrderItemsNotReceived = false;
+					allOrderItemsFulfilled = false;
+				}
+				else
+				{
+					// Order item not received
+					orderItemStatus = Order.NotReceived;
+					allOrderItemsFulfilled = false;
 				}
 
 				if (orderItemDelivered.quantityDelivered.HasValue)
@@ -101,6 +118,30 @@ namespace Final_Project
 
 				// Add the list item to the order list view
 				lstViewOrderItemsDelivered.Items.Add(item);
+			}
+
+			// Check if overall order status needs updated
+			if (allOrderItemsFulfilled == true)
+			{
+				// If all order items are fulfilled, set the order status to fulfilled
+				newOrderStatus = Order.Fulfilled;
+			}
+			else if (allOrderItemsNotReceived == true)
+			{
+				// If all order items are still not received, leave the order status as placed
+				newOrderStatus = Order.Placed;
+			}
+			else
+			{
+				// Otherwise set the order status to part filled
+				newOrderStatus = Order.PartFilled;
+			}
+
+			if (newOrderStatus != currentOrderStatus)
+			{
+				// Order status has changed so update it
+				orderToAddDelivery.orderStatus = newOrderStatus;
+				OrderDal.UpdateOrderStatus(orderToAddDelivery);
 			}
 		}
 
@@ -125,7 +166,7 @@ namespace Final_Project
 
 				// Add the list item to the order list view
 				lstViewDeliveryItems.Items.Add(item);
-			}
+			}			
 		}
 
 		private void lstViewOrders_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
@@ -160,20 +201,26 @@ namespace Final_Project
 
 		private void btnRecordDelivery_Click(object sender, EventArgs e)
 		{
-			if(orderToAddDelivery != null)
+			if (orderToAddDelivery != null)
 			{
 				ShowDelivery();
 			}
 			else
 			{
 				lblOrderError.Visible = true;
-				lblOrderError.Text = "Select An Order To Add A Delivery!";
-			}			
+				lblOrderError.Text = "Select an order to add a delivery!";
+			}
 		}
 
 		private void btnAddItem_Click(object sender, EventArgs e)
 		{
-			ShowItemToAddToDelivery();
+			if (orderItemStatus != Order.Fulfilled)
+				ShowItemToAddToDelivery();
+			else if (orderItemStatus == Order.NotReceived || orderItemStatus == Order.PartFilled)
+			{
+				lblDeliveryItemError.Visible = true;
+				lblDeliveryItemError.Text = "Item already fully delivered!";
+			}
 		}
 
 		private void ShowOrders()
@@ -191,6 +238,7 @@ namespace Final_Project
 			pnlOrders.Visible = false;
 			pnlDeliveryDetails.Visible = false;
 			pnlItemToAddToDelivery.Visible = false;
+			lblDeliveryItemError.Visible = false;
 			lblOrderNumber.Text = $"Order Number: {orderToAddDelivery.orderNumber}";
 			lblOrderDate.Text = $"Order Date: {orderToAddDelivery.orderDate}";
 			UpdateOrderItemsDeliveredListView(orderToAddDelivery.orderNumber);
@@ -244,11 +292,19 @@ namespace Final_Project
 
 		private void btnRecordDeliveryForOrder_Click(object sender, EventArgs e)
 		{
-			delivery = new Delivery();
-			delivery.deliveryDate = DateTime.Now;
-			delivery.orderNumber = orderToAddDelivery.orderNumber;
-			delivery = DeliveryDal.AddDelivery(delivery);
-			ShowDeliveryDetails();
+			if (orderToAddDelivery.orderStatus != Order.Fulfilled && orderToAddDelivery.orderStatus != Order.Completed)
+			{
+				delivery = new Delivery();
+				delivery.deliveryDate = DateTime.Now;
+				delivery.orderNumber = orderToAddDelivery.orderNumber;
+				delivery = DeliveryDal.AddDelivery(delivery);
+				ShowDeliveryDetails();
+			}
+			else
+			{
+				lblDeliveryItemError.Visible = true;
+				lblDeliveryItemError.Text = "All items are fully delivered!";
+			}
 		}
 
 		private void btnMarkDeliveryAsCompleted_Click(object sender, EventArgs e)
@@ -260,6 +316,12 @@ namespace Final_Project
 		private void frmAddDelivery_Resize(object sender, EventArgs e)
 		{
 			lstViewOrders.Height = pnlOrders.Height - 282;
+		}
+
+		private void btnMarkOrderAsCompleted_Click(object sender, EventArgs e)
+		{
+			orderToAddDelivery.orderStatus = Order.Completed;
+			OrderDal.UpdateOrderStatus(orderToAddDelivery);
 		}
 	}
 }
