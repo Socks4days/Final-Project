@@ -145,9 +145,10 @@ namespace Final_Project
 		{
 			pnlEditStockLevels.Visible = false;
 			pnlEditStockItem.Visible = false;
-			pnlStockList.Visible = true;
 			pnlOptionButtons.Visible = false;
+			pnlStockList.Visible = true;			
 			pnlStockList.Dock = DockStyle.Fill;
+			lstViewStock.Height = (pnlStockList.Height - 58);
 			lstViewStock.SelectedItems.Clear();
 			lblInstructions.Text = "Select an item to manage its level and information";
 		}
@@ -182,10 +183,11 @@ namespace Final_Project
 			ShowEditStockItem();
 			ClearError();
 			txtBoxName.Text = lookupStock.stockName;
-			txtBoxDescription.Text = lookupStock.stockDescription;
-			txtBoxPrice.Text = lookupStock.price.ToString();
-			txtBoxMaximumLevel.Text = lookupStock.maximumLevel.ToString();
+			txtBoxDescription.Text = lookupStock.stockDescription;			
 			txtBoxMinimumLevel.Text = lookupStock.minimumLevel.ToString();
+			txtBoxMaximumLevel.Text = lookupStock.maximumLevel.ToString();
+			txtBoxOrderQuantity.Text = lookupStock.orderQuantity.ToString();
+			txtBoxPrice.Text = lookupStock.price.ToString();
 			txtBoxDeliveryTime.Text = lookupStock.deliveryTimeDays.ToString();
 			txtBoxStockCheckFrequency.Text = lookupStock.stockCheckFrequency.ToString();
 		}
@@ -194,15 +196,15 @@ namespace Final_Project
 		{
 			lookupStock.stockName = txtBoxName.Text;
 			lookupStock.stockDescription = txtBoxDescription.Text;
-			lookupStock.price = Convert.ToInt32(txtBoxPrice.Text);
-			lookupStock.maximumLevel = Convert.ToInt32(txtBoxMaximumLevel.Text);
 			lookupStock.minimumLevel = Convert.ToInt32(txtBoxMinimumLevel.Text);
+			lookupStock.maximumLevel = Convert.ToInt32(txtBoxMaximumLevel.Text);
+			lookupStock.orderQuantity = Convert.ToInt32(txtBoxOrderQuantity.Text);
+			lookupStock.price = Convert.ToInt32(txtBoxPrice.Text);
 			lookupStock.deliveryTimeDays = Convert.ToInt32(txtBoxDeliveryTime.Text);
 			lookupStock.stockCheckFrequency = Convert.ToInt32(txtBoxStockCheckFrequency.Text);
 
 			StockDal.UpdateStockInformation(lookupStock);
-			lblErrorStockEdit.Visible = true;
-			lblErrorStockEdit.Text = $"{lookupStock.stockName} Updated Successfully!";
+			ShowViewStock();
 		}
 
 		private void btnCancelStockEdit_Click(object sender, EventArgs e)

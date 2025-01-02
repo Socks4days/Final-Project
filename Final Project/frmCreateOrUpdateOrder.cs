@@ -27,7 +27,7 @@ namespace Final_Project
 
 			// make sure it isn't showing anything when initially show into the form
 			cBoxStock.DroppedDown = false;
-			cBoxStock.Text = "";			
+			cBoxStock.Text = "";
 
 			// hide the confirmation panel
 			pnlOrderConfirmation.Visible = false;
@@ -37,27 +37,23 @@ namespace Final_Project
 			UpdateOrderItemListView();
 
 			// check if an order is ready to start or if it is a draft
-			if (order.orderStatus == "To Start" || order.orderStatus == "Draft")
+			if (order.orderStatus == "Draft")
 			{
 				// if it is, show the options buttons
-				pnlOptions.Visible = true;
 			}
 			else
 			{
 				// if it is not, hide the options buttons
-				pnlOptions.Visible = false;
 			}
 			if (viewToShow == "Edit")
 			{
 				// if the edit view is to be shown, show the option buttons, show the instructions and allow user to select a full row
-				pnlOptions.Visible = true;
 				lblInstructions.Visible = true;
 				lstViewOrderItems.FullRowSelect = true;
 			}
 			if (viewToShow == "View")
 			{
 				// if the user is only viewing, hide option buttons, instructions and disallow full row selection
-				pnlOptions.Visible = false;
 				lblInstructions.Visible = false;
 				lstViewOrderItems.FullRowSelect = false;
 				lblWarning.Visible = false;
@@ -98,16 +94,16 @@ namespace Final_Project
 			// populate the combo box with this new list
 			cBoxStock.DataSource = allStockNames;
 			cBoxStock.DisplayMember = "Name";
-		}		
+		}
 
 		// method to add an item to an order
 		private void btnAddToOrder_Click(object sender, EventArgs e)
 		{
 			Stock stockToAdd = StockDal.GetStockByStockName(cBoxStock.Text);
-			if(((stockToAdd.stockLevel + (nUDQuantity.Value * stockToAdd.orderQuantity)) > stockToAdd.maximumLevel) && (warningNumber == 0))
+			if (((stockToAdd.stockLevel + (nUDQuantity.Value * stockToAdd.orderQuantity)) > stockToAdd.maximumLevel) && (warningNumber == 0))
 			{
 				lblWarning.Visible = true;
-				lblWarning.Text = "This amount is greater than storage can hold. Click Add again to continue.";
+				lblWarning.Text = "This amount is greater than storage can hold. Click 'Add To Order' again to continue.";
 				warningNumber = 1;
 				return;
 			}
@@ -154,8 +150,12 @@ namespace Final_Project
 		// method to show the view order items panel
 		private void ShowViewOrderItems()
 		{
-			pnlViewOrderItems.Visible = true;
 			pnlAddItemToOrder.Visible = false;
+			pnlOrderConfirmation.Visible = false;
+			pnlViewOrderItems.Visible = true;
+			pnlViewOrderItems.Dock = DockStyle.Fill;
+			pnlOrderNoToStat.Dock = DockStyle.Bottom;
+			pnlOrderInfo.Dock = DockStyle.Fill;
 		}
 
 		// method to show the add item to order panel
@@ -165,12 +165,12 @@ namespace Final_Project
 			pnlAddItemToOrder.Visible = true;
 			lblWarning.Visible = false;
 			lblOrderNumberItem.Text = "Order Number " + order.orderNumber.ToString();
+			warningNumber = 0;
 		}
 
 		// button click to show the add item to order panel
-		private void btnAddToStock_Click(object sender, EventArgs e)
+		private void btnAddAnItemToOrder_Click(object sender, EventArgs e)
 		{
-			warningNumber = 0;
 			ShowAddItemToOrder();
 		}
 
@@ -223,13 +223,12 @@ namespace Final_Project
 
 		private void btnPlaceOrder_Click(object sender, EventArgs e)
 		{
-			pnlOptions.Visible = false;
+			pnlOrderInfo.Dock = DockStyle.Top;
 			pnlOrderNoToStat.Visible = false;
 			pnlOrderConfirmation.Visible = true;
-			pnlOrderInfo.Size = lstViewOrderItems.Size;
-			pnlViewOrderItems.Height = pnlOrderInfo.Height + pnlOrderConfirmation.Height;
+			pnlOrderConfirmation.Dock = DockStyle.Bottom;
+			pnlOrderInfo.Dock = DockStyle.Fill;
 			btnConfirmAndPlace.Enabled = true;
-
 			lblFinalOrderTotal.Text = $"Order Total: £{orderTotal.ToString()}";
 			lblDeliveringTo.Text = $"Order For: Maintenance Department, Movers Ltd";
 		}
@@ -254,11 +253,10 @@ namespace Final_Project
 
 		private void btnReturnToEditScreen_Click(object sender, EventArgs e)
 		{
-			pnlOptions.Visible = true;
 			pnlOrderNoToStat.Visible = true;
 			pnlOrderConfirmation.Visible = false;
-			pnlOrderInfo.Height = (lstViewOrderItems.Height + pnlOrderNoToStat.Height + pnlOptions.Height);
-			pnlViewOrderItems.Height = pnlOrderInfo.Height + pnlOptions.Height;
+			pnlOrderInfo.Height = (lstViewOrderItems.Height + pnlOrderNoToStat.Height);
+			pnlViewOrderItems.Height = pnlOrderInfo.Height;
 		}
 
 		private void cBoxStock_SelectionChangeCommitted(object sender, EventArgs e)
@@ -267,5 +265,12 @@ namespace Final_Project
 			Stock selectedStock = StockDal.GetStockByStockName(stockName);
 			lblCurrentStockLevel.Text = $"Current Stock Level: {selectedStock.stockLevel}";
 		}
+
+		private void pnlOrderInfo_Resize(object sender, EventArgs e)
+		{
+			lstViewOrderItems.Height = pnlOrderInfo.Height - 50;
+		}
+
+		
 	}
 }

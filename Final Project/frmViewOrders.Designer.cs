@@ -49,7 +49,7 @@
 			pnlOrderInfo.Dock = DockStyle.Fill;
 			pnlOrderInfo.Location = new Point(0, 0);
 			pnlOrderInfo.Name = "pnlOrderInfo";
-			pnlOrderInfo.Size = new Size(984, 680);
+			pnlOrderInfo.Size = new Size(1000, 680);
 			pnlOrderInfo.TabIndex = 5;
 			// 
 			// btnViewOrder
@@ -107,7 +107,7 @@
 			lstViewOrders.GridLines = true;
 			lstViewOrders.Location = new Point(26, 23);
 			lstViewOrders.Name = "lstViewOrders";
-			lstViewOrders.Size = new Size(932, 518);
+			lstViewOrders.Size = new Size(942, 518);
 			lstViewOrders.TabIndex = 0;
 			lstViewOrders.UseCompatibleStateImageBehavior = false;
 			lstViewOrders.View = View.Details;
@@ -133,7 +133,7 @@
 			AutoScaleDimensions = new SizeF(96F, 96F);
 			AutoScaleMode = AutoScaleMode.Dpi;
 			AutoSize = true;
-			ClientSize = new Size(984, 680);
+			ClientSize = new Size(1000, 680);
 			Controls.Add(pnlOrderInfo);
 			Name = "frmViewOrders";
 			Text = "frmViewOrders";

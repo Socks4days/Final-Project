@@ -29,6 +29,7 @@
 		private void InitializeComponent()
 		{
 			pnlEditStockLevels = new Panel();
+			lblAmountTo = new Label();
 			lblCurrentStockLevel = new Label();
 			lblStockLevelToEdit = new Label();
 			btnCancel = new Button();
@@ -37,7 +38,7 @@
 			btnRemoveStock = new Button();
 			btnAddStock = new Button();
 			pnlEditStockItem = new Panel();
-			btnReturnStockEdit = new Button();
+			btnCancelStockEdit = new Button();
 			txtBoxStockCheckFrequency = new TextBox();
 			txtBoxDeliveryTime = new TextBox();
 			lblStockCheckFrequency = new Label();
@@ -49,7 +50,7 @@
 			txtBoxPrice = new TextBox();
 			lblErrorStockEdit = new Label();
 			txtBoxName = new TextBox();
-			btnEditStockItem = new Button();
+			btnConfirmEditStockItem = new Button();
 			lblDescription = new Label();
 			lblPrice = new Label();
 			lblMinimumLevel = new Label();
@@ -67,7 +68,6 @@
 			btnEditStock = new Button();
 			btnRemoveFromStock = new Button();
 			btnAddToStock = new Button();
-			lblAmountTo = new Label();
 			pnlEditStockLevels.SuspendLayout();
 			pnlEditStockItem.SuspendLayout();
 			pnlStockList.SuspendLayout();
@@ -88,8 +88,20 @@
 			pnlEditStockLevels.Dock = DockStyle.Top;
 			pnlEditStockLevels.Location = new Point(0, 0);
 			pnlEditStockLevels.Name = "pnlEditStockLevels";
-			pnlEditStockLevels.Size = new Size(967, 680);
+			pnlEditStockLevels.Size = new Size(966, 680);
 			pnlEditStockLevels.TabIndex = 1;
+			// 
+			// lblAmountTo
+			// 
+			lblAmountTo.Anchor = AnchorStyles.None;
+			lblAmountTo.AutoSize = true;
+			lblAmountTo.Font = new Font("Segoe UI", 14F);
+			lblAmountTo.ForeColor = Color.Black;
+			lblAmountTo.Location = new Point(373, 242);
+			lblAmountTo.Name = "lblAmountTo";
+			lblAmountTo.Size = new Size(132, 25);
+			lblAmountTo.TabIndex = 25;
+			lblAmountTo.Text = "Enter Amount:";
 			// 
 			// lblCurrentStockLevel
 			// 
@@ -189,7 +201,7 @@
 			// pnlEditStockItem
 			// 
 			pnlEditStockItem.BackColor = Color.FromArgb(200, 200, 200);
-			pnlEditStockItem.Controls.Add(btnReturnStockEdit);
+			pnlEditStockItem.Controls.Add(btnCancelStockEdit);
 			pnlEditStockItem.Controls.Add(txtBoxStockCheckFrequency);
 			pnlEditStockItem.Controls.Add(txtBoxDeliveryTime);
 			pnlEditStockItem.Controls.Add(lblStockCheckFrequency);
@@ -201,7 +213,7 @@
 			pnlEditStockItem.Controls.Add(txtBoxPrice);
 			pnlEditStockItem.Controls.Add(lblErrorStockEdit);
 			pnlEditStockItem.Controls.Add(txtBoxName);
-			pnlEditStockItem.Controls.Add(btnEditStockItem);
+			pnlEditStockItem.Controls.Add(btnConfirmEditStockItem);
 			pnlEditStockItem.Controls.Add(lblDescription);
 			pnlEditStockItem.Controls.Add(lblPrice);
 			pnlEditStockItem.Controls.Add(lblMinimumLevel);
@@ -211,24 +223,24 @@
 			pnlEditStockItem.Dock = DockStyle.Top;
 			pnlEditStockItem.Location = new Point(0, 680);
 			pnlEditStockItem.Name = "pnlEditStockItem";
-			pnlEditStockItem.Size = new Size(967, 680);
+			pnlEditStockItem.Size = new Size(966, 680);
 			pnlEditStockItem.TabIndex = 2;
 			// 
-			// btnReturnStockEdit
+			// btnCancelStockEdit
 			// 
-			btnReturnStockEdit.Anchor = AnchorStyles.None;
-			btnReturnStockEdit.BackColor = Color.FromArgb(33, 150, 243);
-			btnReturnStockEdit.FlatAppearance.BorderSize = 0;
-			btnReturnStockEdit.FlatStyle = FlatStyle.Flat;
-			btnReturnStockEdit.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			btnReturnStockEdit.ForeColor = Color.White;
-			btnReturnStockEdit.Location = new Point(242, 558);
-			btnReturnStockEdit.Name = "btnReturnStockEdit";
-			btnReturnStockEdit.Size = new Size(220, 50);
-			btnReturnStockEdit.TabIndex = 9;
-			btnReturnStockEdit.Text = "Return";
-			btnReturnStockEdit.UseVisualStyleBackColor = false;
-			btnReturnStockEdit.Click += btnCancelStockEdit_Click;
+			btnCancelStockEdit.Anchor = AnchorStyles.None;
+			btnCancelStockEdit.BackColor = Color.FromArgb(33, 150, 243);
+			btnCancelStockEdit.FlatAppearance.BorderSize = 0;
+			btnCancelStockEdit.FlatStyle = FlatStyle.Flat;
+			btnCancelStockEdit.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			btnCancelStockEdit.ForeColor = Color.White;
+			btnCancelStockEdit.Location = new Point(242, 558);
+			btnCancelStockEdit.Name = "btnCancelStockEdit";
+			btnCancelStockEdit.Size = new Size(220, 50);
+			btnCancelStockEdit.TabIndex = 9;
+			btnCancelStockEdit.Text = "Cancel";
+			btnCancelStockEdit.UseVisualStyleBackColor = false;
+			btnCancelStockEdit.Click += btnCancelStockEdit_Click;
 			// 
 			// txtBoxStockCheckFrequency
 			// 
@@ -350,21 +362,21 @@
 			txtBoxName.Size = new Size(220, 25);
 			txtBoxName.TabIndex = 0;
 			// 
-			// btnEditStockItem
+			// btnConfirmEditStockItem
 			// 
-			btnEditStockItem.Anchor = AnchorStyles.None;
-			btnEditStockItem.BackColor = Color.FromArgb(33, 150, 243);
-			btnEditStockItem.FlatAppearance.BorderSize = 0;
-			btnEditStockItem.FlatStyle = FlatStyle.Flat;
-			btnEditStockItem.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			btnEditStockItem.ForeColor = Color.White;
-			btnEditStockItem.Location = new Point(558, 558);
-			btnEditStockItem.Name = "btnEditStockItem";
-			btnEditStockItem.Size = new Size(220, 50);
-			btnEditStockItem.TabIndex = 8;
-			btnEditStockItem.Text = "Confirm Changes";
-			btnEditStockItem.UseVisualStyleBackColor = false;
-			btnEditStockItem.Click += btnEditStockItem_Click;
+			btnConfirmEditStockItem.Anchor = AnchorStyles.None;
+			btnConfirmEditStockItem.BackColor = Color.FromArgb(33, 150, 243);
+			btnConfirmEditStockItem.FlatAppearance.BorderSize = 0;
+			btnConfirmEditStockItem.FlatStyle = FlatStyle.Flat;
+			btnConfirmEditStockItem.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			btnConfirmEditStockItem.ForeColor = Color.White;
+			btnConfirmEditStockItem.Location = new Point(558, 558);
+			btnConfirmEditStockItem.Name = "btnConfirmEditStockItem";
+			btnConfirmEditStockItem.Size = new Size(220, 50);
+			btnConfirmEditStockItem.TabIndex = 8;
+			btnConfirmEditStockItem.Text = "Confirm Changes";
+			btnConfirmEditStockItem.UseVisualStyleBackColor = false;
+			btnConfirmEditStockItem.Click += btnEditStockItem_Click;
 			// 
 			// lblDescription
 			// 
@@ -445,7 +457,7 @@
 			pnlStockList.Dock = DockStyle.Top;
 			pnlStockList.Location = new Point(0, 1360);
 			pnlStockList.Name = "pnlStockList";
-			pnlStockList.Size = new Size(967, 580);
+			pnlStockList.Size = new Size(966, 580);
 			pnlStockList.TabIndex = 12;
 			pnlStockList.Click += pnlStockList_Click;
 			// 
@@ -497,7 +509,7 @@
 			pnlOptionButtons.Dock = DockStyle.Bottom;
 			pnlOptionButtons.Location = new Point(0, 1940);
 			pnlOptionButtons.Name = "pnlOptionButtons";
-			pnlOptionButtons.Size = new Size(967, 100);
+			pnlOptionButtons.Size = new Size(966, 100);
 			pnlOptionButtons.TabIndex = 13;
 			pnlOptionButtons.Click += pnlOptionButtons_Click;
 			// 
@@ -556,18 +568,6 @@
 			btnAddToStock.UseVisualStyleBackColor = false;
 			btnAddToStock.Click += btnAddToStock_Click;
 			// 
-			// lblAmountTo
-			// 
-			lblAmountTo.Anchor = AnchorStyles.None;
-			lblAmountTo.AutoSize = true;
-			lblAmountTo.Font = new Font("Segoe UI", 14F);
-			lblAmountTo.ForeColor = Color.Black;
-			lblAmountTo.Location = new Point(373, 242);
-			lblAmountTo.Name = "lblAmountTo";
-			lblAmountTo.Size = new Size(132, 25);
-			lblAmountTo.TabIndex = 25;
-			lblAmountTo.Text = "Enter Amount:";
-			// 
 			// frmEditStockLevels
 			// 
 			AutoScaleDimensions = new SizeF(96F, 96F);
@@ -607,7 +607,7 @@
         private Panel pnlEditStockItem;
         private Label lblErrorStockEdit;
         private TextBox txtBoxName;
-        private Button btnEditStockItem;
+        private Button btnConfirmEditStockItem;
         private Label lblMaximumLevel;
         private Label lblName;
         private TextBox txtBoxDescription;
@@ -623,7 +623,7 @@
         private TextBox txtBoxDeliveryTime;
         private Label lblStockCheckFrequency;
         private Label lblDeliveryTimeDays;
-        private Button btnReturnStockEdit;
+        private Button btnCancelStockEdit;
 		private Panel pnlStockList;
 		private ListView lstViewStock;
 		private ColumnHeader cHeaderStockName;
