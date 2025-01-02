@@ -173,7 +173,7 @@ namespace Final_Project
 			// if an item in the list view is selected, set instructions text, enable the buttons and find the stock that is selected
 			if (e.IsSelected)
 			{
-				btnViewOrRecordDelivery.Enabled = true;
+				btnRecordDelivery.Enabled = true;
 				string orderNumber = e.Item.SubItems[0].Text;
 				orderToAddDelivery = OrderDal.GetOrderByOrderNumber(Convert.ToInt32(orderNumber));
 			}
