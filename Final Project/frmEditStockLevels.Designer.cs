@@ -129,6 +129,7 @@
 			// 
 			// btnCancel
 			// 
+			btnCancel.Anchor = AnchorStyles.None;
 			btnCancel.BackColor = Color.FromArgb(33, 150, 243);
 			btnCancel.FlatAppearance.BorderSize = 0;
 			btnCancel.FlatStyle = FlatStyle.Flat;

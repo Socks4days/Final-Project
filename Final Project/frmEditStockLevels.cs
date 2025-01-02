@@ -53,7 +53,7 @@ namespace Final_Project
 		{
 			ShowEditStockLevels();
 			btnRemoveStock.Visible = false;
-			btnAddToStock.Visible = true;
+			btnAddStock.Visible = true;
 			lblStockLevelToEdit.Text = lookupStock.stockName;
 			lblCurrentStockLevel.Text = $"Current Stock Level: {lookupStock.stockLevel.ToString()}";
 		}
@@ -62,7 +62,7 @@ namespace Final_Project
 		{
 			ShowEditStockLevels();
 			btnAddStock.Visible = false;
-			btnRemoveFromStock.Visible = true;
+			btnRemoveStock.Visible = true;
 			lblStockLevelToEdit.Text = lookupStock.stockName;
 			lblCurrentStockLevel.Text = $"Current Stock Level: {lookupStock.stockLevel.ToString()}";
 		}
@@ -157,8 +157,9 @@ namespace Final_Project
 		{
 			pnlStockList.Visible = false;
 			pnlEditStockItem.Visible = false;
-			pnlEditStockLevels.Visible = true;
 			pnlOptionButtons.Visible = false;
+			pnlEditStockLevels.Visible = true;
+			pnlEditStockLevels.Dock = DockStyle.Fill;			
 		}
 
 		private void ShowEditStockItem()
