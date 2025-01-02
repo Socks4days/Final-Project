@@ -347,6 +347,7 @@ namespace Final_Project
 		{
 			pnlDeliveryDetails.Visible = false;
 			btnRecordDeliveryForOrder.Enabled = true;
+			lblOrderDateAndStatus.Text = $"Placed On: {orderToAddDelivery.orderDate}  ({orderToAddDelivery.orderStatus})";
 		}
 
 		private void frmAddDelivery_Resize(object sender, EventArgs e)
@@ -356,11 +357,18 @@ namespace Final_Project
 
 		private void btnMarkOrderAsCompleted_Click(object sender, EventArgs e)
 		{
-			orderToAddDelivery.orderStatus = Order.Completed;
-			OrderDal.UpdateOrderStatus(orderToAddDelivery);
-			ShowOrders();
-		}
-
-		
+			if(orderToAddDelivery.orderStatus == Order.Fulfilled)
+			{
+				orderToAddDelivery.orderStatus = Order.Completed;
+				OrderDal.UpdateOrderStatus(orderToAddDelivery);
+				ShowOrders();
+			}
+			else
+			{
+				lblDeliveryItemError.Visible = true;
+				lblDeliveryItemError.Text = "All items not fully delivered yet!";
+			}
+			
+		}		
 	}
 }
