@@ -213,7 +213,19 @@ namespace Final_Project
 		private void btnAddItem_Click(object sender, EventArgs e)
 		{
 			if (orderItemStatus != Order.Fulfilled)
+			{
+				foreach(ListViewItem item in lstViewDeliveryItems.Items)
+				{
+					if (item.SubItems[0].Text == selectedOrderItemsDeliveredView.stockName)
+					{
+						lblDeliveryItemError.Visible = true;
+						lblDeliveryItemError.Text = "You have already added that item in this delivery";
+						return;
+					}			
+				}
 				ShowItemToAddToDelivery();
+			}
+				
 			else 
 			{
 				lblDeliveryItemError.Visible = true;
