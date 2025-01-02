@@ -179,7 +179,7 @@ namespace Final_Project
             }
         }
 
-        public static List<StockLevelsView> GetStockLevelsView()
+        public static List<StockLevelsView> GetStockLevelsView(string orderBy)
         {
             using (SqlConnection connection = new SqlConnection(_connectionstring))
             {
@@ -187,6 +187,14 @@ namespace Final_Project
                 connection.Open();
 
                 string sqlQuery = "SELECT * FROM StockLevelsView";
+                if (orderBy == "StockName")
+                {
+                    sqlQuery += " ORDER BY [StockName] ASC";
+                }
+                else if (orderBy == "AuditDate")
+                {
+                    sqlQuery += " ORDER BY [AuditDate] DESC";
+                }
 
                 SqlCommand getAllStockCommand = new SqlCommand(sqlQuery, connection);
 

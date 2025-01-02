@@ -18,7 +18,7 @@ namespace Final_Project
 		public frmEditStockLevels()
 		{
 			InitializeComponent();
-			List<StockLevelsView> sortedStockList = StockDal.GetStockLevelsView();
+			List<StockLevelsView> sortedStockList = StockDal.GetStockLevelsView("StockName");
 
 			// Add each stock in the sorted list to the stock list
 			foreach (StockLevelsView stockLevel in sortedStockList)
