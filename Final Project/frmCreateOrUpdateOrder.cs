@@ -238,7 +238,8 @@ namespace Final_Project
 			// set status to a draft and close the form
 			order.orderStatus = "Draft";
 			OrderDal.UpdateOrderStatus(order);
-			this.Close();
+			frmMainScreen.frmMain.CloseChildForm();
+			frmMainScreen.frmMain.HideSubMenus();
 		}
 
 		private void btnConfirmAndPlace_Click(object sender, EventArgs e)

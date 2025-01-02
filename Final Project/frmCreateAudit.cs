@@ -24,7 +24,7 @@ namespace Final_Project
 		private void btnCancel_Click(object sender, EventArgs e)
 		{
 			frmMainScreen.frmMain.CloseChildForm();
-			frmMainScreen.frmMain.hideSubMenus();
+			frmMainScreen.frmMain.HideSubMenus();
 		}
 
 		private void cBoxStock_SelectionChangeCommitted(object sender, EventArgs e)

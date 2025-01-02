@@ -19,7 +19,7 @@ namespace Final_Project
 			InitializeComponent();
 			frmMainScreen.frmMain = this;
 			OpenChildForm(new frmLoginScreen(), null);
-			hideSubMenus();
+			HideSubMenus();
 			SetLogo();
 		}
 
@@ -32,11 +32,11 @@ namespace Final_Project
 			// Check if title/side panels should be display
 			if (childForm == null || (childForm.Name != "frmLoginScreen" && childForm.Name != "frmRegisterScreen"))
 			{
-				showMenus();
+				ShowMenus();
 			}
 			else
 			{
-				hideMenus();
+				HideMenus();
 			}
 
 			// If an existing child form is already open, close it
@@ -150,7 +150,7 @@ namespace Final_Project
 		private void btnStock_Click(object sender, EventArgs e)
 		{
 			CloseChildForm();
-			toggleSubMenu(pnlStock);
+			ToggleSubMenu(pnlStock);
 			ResetMainButtonColours();
 			if (pnlStock.Visible == true)
 			{
@@ -166,7 +166,7 @@ namespace Final_Project
 		private void btnOrder_Click(object sender, EventArgs e)
 		{
 			CloseChildForm();
-			toggleSubMenu(pnlOrder);
+			ToggleSubMenu(pnlOrder);
 			ResetMainButtonColours();
 			if (pnlOrder.Visible == true)
 			{
@@ -182,7 +182,7 @@ namespace Final_Project
 		private void btnDelivery_Click(object sender, EventArgs e)
 		{
 			CloseChildForm();
-			toggleSubMenu(pnlDelivery);
+			ToggleSubMenu(pnlDelivery);
 			ResetMainButtonColours();
 			if (pnlDelivery.Visible == true)
 			{
@@ -198,7 +198,7 @@ namespace Final_Project
 		private void btnAudits_Click(object sender, EventArgs e)
 		{
 			CloseChildForm();
-			toggleSubMenu(pnlAudits);
+			ToggleSubMenu(pnlAudits);
 			ResetMainButtonColours();
 			if (pnlAudits.Visible == true)
 			{
@@ -220,7 +220,7 @@ namespace Final_Project
 		}
 
 		// Hide the settings and admin submenus when a menu option is clicked
-		public void hideSubMenus()
+		public void HideSubMenus()
 		{			
 			pnlStock.Visible = false;
 			pnlOrder.Visible = false;
@@ -229,29 +229,29 @@ namespace Final_Project
 		}
 
 		// Hide the main menu and title bar
-		public void hideMenus()
+		public void HideMenus()
 		{
 			pnlSideBar.Visible = false;
 			pnlTitleBar.Visible = false;
 		}
 
 		// Show the main menu and title bar
-		public void showMenus()
+		public void ShowMenus()
 		{
 			pnlSideBar.Visible = true;
 			pnlTitleBar.Visible = true;
 		}
 
 		// Show or hide the sub menu when it is clicked
-		public void toggleSubMenu(Panel selectedSubMenu)
+		public void ToggleSubMenu(Panel selectedSubMenu)
 		{
 			if (selectedSubMenu.Visible == true)
 			{
-				hideSubMenus();
+				HideSubMenus();
 			}
 			else
 			{
-				hideSubMenus();
+				HideSubMenus();
 				selectedSubMenu.Visible = true;
 			}
 		}
