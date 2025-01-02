@@ -163,11 +163,12 @@ namespace Final_Project
 		}
 
 		private void ShowEditStockItem()
-		{
-			pnlEditStockItem.Visible = true;
+		{			
 			pnlEditStockLevels.Visible = false;
 			pnlStockList.Visible = false;
 			pnlOptionButtons.Visible = false;
+			pnlEditStockItem.Visible = true;
+			pnlEditStockItem.Dock = DockStyle.Fill;
 		}
 
 		private void ClearError()

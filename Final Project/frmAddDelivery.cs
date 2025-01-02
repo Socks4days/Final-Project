@@ -16,7 +16,7 @@ namespace Final_Project
 		public frmAddDelivery()
 		{
 			InitializeComponent();
-			orderToAddDelivery = null;			
+			orderToAddDelivery = null;
 			ShowOrders();
 		}
 
@@ -214,19 +214,19 @@ namespace Final_Project
 		{
 			if (orderItemStatus != Order.Fulfilled)
 			{
-				foreach(ListViewItem item in lstViewDeliveryItems.Items)
+				foreach (ListViewItem item in lstViewDeliveryItems.Items)
 				{
 					if (item.SubItems[0].Text == selectedOrderItemsDeliveredView.stockName)
 					{
 						lblDeliveryItemError.Visible = true;
 						lblDeliveryItemError.Text = "You have already added that item in this delivery";
 						return;
-					}			
+					}
 				}
 				ShowItemToAddToDelivery();
 			}
-				
-			else 
+
+			else
 			{
 				lblDeliveryItemError.Visible = true;
 				lblDeliveryItemError.Text = "Item already fully delivered!";
@@ -235,10 +235,11 @@ namespace Final_Project
 
 		private void ShowOrders()
 		{
-			pnlDelivery.Visible = false;
-			pnlOrders.Visible = true;
+			pnlDelivery.Visible = false;			
 			pnlItemToAddToDelivery.Visible = false;
 			lblOrderError.Visible = false;
+			pnlOrders.Visible = true;
+			pnlOrders.Dock = DockStyle.Fill;	
 			UpdateOrderListView();
 		}
 
@@ -268,7 +269,7 @@ namespace Final_Project
 			}
 			else
 			{
-				itemsReceived = (int) selectedOrderItemsDeliveredView.quantityDelivered;
+				itemsReceived = (int)selectedOrderItemsDeliveredView.quantityDelivered;
 			}
 			if (selectedOrderItemsDeliveredView.quantityFaulty == null)
 			{
@@ -357,7 +358,7 @@ namespace Final_Project
 
 		private void btnMarkOrderAsCompleted_Click(object sender, EventArgs e)
 		{
-			if(orderToAddDelivery.orderStatus == Order.Fulfilled)
+			if (orderToAddDelivery.orderStatus == Order.Fulfilled)
 			{
 				orderToAddDelivery.orderStatus = Order.Completed;
 				OrderDal.UpdateOrderStatus(orderToAddDelivery);
@@ -368,7 +369,12 @@ namespace Final_Project
 				lblDeliveryItemError.Visible = true;
 				lblDeliveryItemError.Text = "All items not fully delivered yet!";
 			}
-			
-		}		
+
+		}
+
+		private void pnlOrders_Resize(object sender, EventArgs e)
+		{
+			lstViewOrders.Height = pnlOrders.Height - 212;
+		}
 	}
 }

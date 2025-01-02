@@ -83,9 +83,11 @@
 			pnlOrders.Name = "pnlOrders";
 			pnlOrders.Size = new Size(966, 680);
 			pnlOrders.TabIndex = 2;
+			pnlOrders.Resize += pnlOrders_Resize;
 			// 
 			// lblOrderError
 			// 
+			lblOrderError.Anchor = AnchorStyles.Bottom;
 			lblOrderError.BackColor = Color.FromArgb(255, 209, 209);
 			lblOrderError.BorderStyle = BorderStyle.FixedSingle;
 			lblOrderError.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -99,6 +101,7 @@
 			// 
 			// btnViewOrRecordDelivery
 			// 
+			btnViewOrRecordDelivery.Anchor = AnchorStyles.Bottom;
 			btnViewOrRecordDelivery.BackColor = Color.FromArgb(0, 151, 136);
 			btnViewOrRecordDelivery.FlatAppearance.BorderSize = 0;
 			btnViewOrRecordDelivery.FlatStyle = FlatStyle.Flat;
@@ -109,12 +112,13 @@
 			btnViewOrRecordDelivery.Name = "btnViewOrRecordDelivery";
 			btnViewOrRecordDelivery.Size = new Size(220, 50);
 			btnViewOrRecordDelivery.TabIndex = 25;
-			btnViewOrRecordDelivery.Text = "View or Record Delivery";
+			btnViewOrRecordDelivery.Text = "View/Record Delivery";
 			btnViewOrRecordDelivery.UseVisualStyleBackColor = false;
 			btnViewOrRecordDelivery.Click += btnRecordDelivery_Click;
 			// 
 			// lstViewOrders
 			// 
+			lstViewOrders.Anchor = AnchorStyles.Top;
 			lstViewOrders.BackColor = Color.FromArgb(0, 214, 194);
 			lstViewOrders.Columns.AddRange(new ColumnHeader[] { cHeaderOrderNumber, cHeaderOrderDate, cHeaderOrderStatus });
 			lstViewOrders.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -162,6 +166,7 @@
 			// 
 			// lblDeliveryItemError
 			// 
+			lblDeliveryItemError.Anchor = AnchorStyles.None;
 			lblDeliveryItemError.BackColor = Color.FromArgb(255, 209, 209);
 			lblDeliveryItemError.BorderStyle = BorderStyle.FixedSingle;
 			lblDeliveryItemError.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -186,7 +191,7 @@
 			btnRecordDeliveryForOrder.Name = "btnRecordDeliveryForOrder";
 			btnRecordDeliveryForOrder.Size = new Size(220, 50);
 			btnRecordDeliveryForOrder.TabIndex = 31;
-			btnRecordDeliveryForOrder.Text = "Record Delivery For Order";
+			btnRecordDeliveryForOrder.Text = "Record Delivery";
 			btnRecordDeliveryForOrder.UseVisualStyleBackColor = false;
 			btnRecordDeliveryForOrder.Click += btnRecordDeliveryForOrder_Click;
 			// 
@@ -203,12 +208,13 @@
 			btnMarkOrderAsCompleted.Name = "btnMarkOrderAsCompleted";
 			btnMarkOrderAsCompleted.Size = new Size(220, 50);
 			btnMarkOrderAsCompleted.TabIndex = 27;
-			btnMarkOrderAsCompleted.Text = "Mark Order As Completed";
+			btnMarkOrderAsCompleted.Text = "Order Completed";
 			btnMarkOrderAsCompleted.UseVisualStyleBackColor = false;
 			btnMarkOrderAsCompleted.Click += btnMarkOrderAsCompleted_Click;
 			// 
 			// lblOrderDateAndStatus
 			// 
+			lblOrderDateAndStatus.Anchor = AnchorStyles.None;
 			lblOrderDateAndStatus.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			lblOrderDateAndStatus.ForeColor = Color.Black;
 			lblOrderDateAndStatus.Location = new Point(334, 32);
@@ -220,6 +226,7 @@
 			// 
 			// lstViewOrderItemsDelivered
 			// 
+			lstViewOrderItemsDelivered.Anchor = AnchorStyles.None;
 			lstViewOrderItemsDelivered.BackColor = Color.FromArgb(0, 214, 194);
 			lstViewOrderItemsDelivered.Columns.AddRange(new ColumnHeader[] { cHeaderOrderItem, cHeaderQuantityOrdered, cHeaderDeliveryStatus, cHeaderQuantityReceived, cHeaderQuantityFaulty });
 			lstViewOrderItemsDelivered.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -263,6 +270,7 @@
 			// 
 			// lblOrderNumber
 			// 
+			lblOrderNumber.Anchor = AnchorStyles.None;
 			lblOrderNumber.AutoSize = true;
 			lblOrderNumber.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			lblOrderNumber.ForeColor = Color.Black;
@@ -274,6 +282,7 @@
 			// 
 			// pnlDeliveryDetails
 			// 
+			pnlDeliveryDetails.Anchor = AnchorStyles.None;
 			pnlDeliveryDetails.Controls.Add(lblDeliveryDate);
 			pnlDeliveryDetails.Controls.Add(btnMarkDeliveryAsCompleted);
 			pnlDeliveryDetails.Controls.Add(btnAddItem);
@@ -288,7 +297,7 @@
 			// 
 			lblDeliveryDate.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			lblDeliveryDate.ForeColor = Color.Black;
-			lblDeliveryDate.Location = new Point(379, 10);
+			lblDeliveryDate.Location = new Point(377, 63);
 			lblDeliveryDate.Name = "lblDeliveryDate";
 			lblDeliveryDate.Size = new Size(349, 32);
 			lblDeliveryDate.TabIndex = 33;
@@ -303,12 +312,12 @@
 			btnMarkDeliveryAsCompleted.FlatStyle = FlatStyle.Flat;
 			btnMarkDeliveryAsCompleted.Font = new Font("Segoe UI", 12F);
 			btnMarkDeliveryAsCompleted.ForeColor = Color.White;
-			btnMarkDeliveryAsCompleted.Location = new Point(424, 210);
+			btnMarkDeliveryAsCompleted.Location = new Point(424, 2);
 			btnMarkDeliveryAsCompleted.Margin = new Padding(3, 2, 3, 2);
 			btnMarkDeliveryAsCompleted.Name = "btnMarkDeliveryAsCompleted";
 			btnMarkDeliveryAsCompleted.Size = new Size(220, 50);
 			btnMarkDeliveryAsCompleted.TabIndex = 32;
-			btnMarkDeliveryAsCompleted.Text = "Mark Delivery As Completed";
+			btnMarkDeliveryAsCompleted.Text = "Delivery Completed";
 			btnMarkDeliveryAsCompleted.UseVisualStyleBackColor = false;
 			btnMarkDeliveryAsCompleted.Click += btnMarkDeliveryAsCompleted_Click;
 			// 
@@ -320,12 +329,12 @@
 			btnAddItem.FlatStyle = FlatStyle.Flat;
 			btnAddItem.Font = new Font("Segoe UI", 12F);
 			btnAddItem.ForeColor = Color.White;
-			btnAddItem.Location = new Point(93, 210);
+			btnAddItem.Location = new Point(93, 2);
 			btnAddItem.Margin = new Padding(3, 2, 3, 2);
 			btnAddItem.Name = "btnAddItem";
 			btnAddItem.Size = new Size(220, 50);
 			btnAddItem.TabIndex = 26;
-			btnAddItem.Text = "Add Item For Delivery";
+			btnAddItem.Text = "Add Item";
 			btnAddItem.UseVisualStyleBackColor = false;
 			btnAddItem.Click += btnAddItem_Click;
 			// 
@@ -334,7 +343,7 @@
 			lblDeliveryNumber.AutoSize = true;
 			lblDeliveryNumber.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			lblDeliveryNumber.ForeColor = Color.Black;
-			lblDeliveryNumber.Location = new Point(5, 10);
+			lblDeliveryNumber.Location = new Point(3, 63);
 			lblDeliveryNumber.Name = "lblDeliveryNumber";
 			lblDeliveryNumber.Size = new Size(202, 25);
 			lblDeliveryNumber.TabIndex = 30;
@@ -348,11 +357,11 @@
 			lstViewDeliveryItems.ForeColor = Color.Black;
 			lstViewDeliveryItems.FullRowSelect = true;
 			lstViewDeliveryItems.GridLines = true;
-			lstViewDeliveryItems.Location = new Point(5, 44);
+			lstViewDeliveryItems.Location = new Point(3, 97);
 			lstViewDeliveryItems.Margin = new Padding(3, 2, 3, 2);
 			lstViewDeliveryItems.MultiSelect = false;
 			lstViewDeliveryItems.Name = "lstViewDeliveryItems";
-			lstViewDeliveryItems.Size = new Size(731, 150);
+			lstViewDeliveryItems.Size = new Size(731, 177);
 			lstViewDeliveryItems.TabIndex = 29;
 			lstViewDeliveryItems.UseCompatibleStateImageBehavior = false;
 			lstViewDeliveryItems.View = View.Details;
@@ -406,6 +415,7 @@
 			// 
 			// label1
 			// 
+			label1.Anchor = AnchorStyles.None;
 			label1.AutoSize = true;
 			label1.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			label1.ForeColor = Color.Black;
@@ -418,6 +428,7 @@
 			// 
 			// lblQuantityDelivered
 			// 
+			lblQuantityDelivered.Anchor = AnchorStyles.None;
 			lblQuantityDelivered.AutoSize = true;
 			lblQuantityDelivered.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			lblQuantityDelivered.ForeColor = Color.Black;
@@ -430,6 +441,7 @@
 			// 
 			// nUDQuantityDelivered
 			// 
+			nUDQuantityDelivered.Anchor = AnchorStyles.None;
 			nUDQuantityDelivered.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			nUDQuantityDelivered.Location = new Point(264, 293);
 			nUDQuantityDelivered.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
@@ -440,6 +452,7 @@
 			// 
 			// nUDQuantityFaulty
 			// 
+			nUDQuantityFaulty.Anchor = AnchorStyles.None;
 			nUDQuantityFaulty.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			nUDQuantityFaulty.Location = new Point(546, 293);
 			nUDQuantityFaulty.Name = "nUDQuantityFaulty";
@@ -448,6 +461,7 @@
 			// 
 			// lblSelectedItem
 			// 
+			lblSelectedItem.Anchor = AnchorStyles.None;
 			lblSelectedItem.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			lblSelectedItem.ForeColor = Color.Black;
 			lblSelectedItem.Location = new Point(218, 88);
@@ -459,6 +473,7 @@
 			// 
 			// lblSelectedItemQuantity
 			// 
+			lblSelectedItemQuantity.Anchor = AnchorStyles.None;
 			lblSelectedItemQuantity.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			lblSelectedItemQuantity.ForeColor = Color.Black;
 			lblSelectedItemQuantity.Location = new Point(218, 140);

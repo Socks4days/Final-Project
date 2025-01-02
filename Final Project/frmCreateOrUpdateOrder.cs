@@ -291,8 +291,6 @@ namespace Final_Project
 		private void pnlOrderInfo_Resize(object sender, EventArgs e)
 		{
 			lstViewOrderItems.Height = pnlOrderInfo.Height - 50;
-		}
-
-		
+		}		
 	}
 }

@@ -235,7 +235,7 @@
 			btnCancelStockEdit.FlatStyle = FlatStyle.Flat;
 			btnCancelStockEdit.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			btnCancelStockEdit.ForeColor = Color.White;
-			btnCancelStockEdit.Location = new Point(242, 558);
+			btnCancelStockEdit.Location = new Point(242, 521);
 			btnCancelStockEdit.Name = "btnCancelStockEdit";
 			btnCancelStockEdit.Size = new Size(220, 50);
 			btnCancelStockEdit.TabIndex = 9;
@@ -371,7 +371,7 @@
 			btnConfirmEditStockItem.FlatStyle = FlatStyle.Flat;
 			btnConfirmEditStockItem.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			btnConfirmEditStockItem.ForeColor = Color.White;
-			btnConfirmEditStockItem.Location = new Point(558, 558);
+			btnConfirmEditStockItem.Location = new Point(558, 521);
 			btnConfirmEditStockItem.Name = "btnConfirmEditStockItem";
 			btnConfirmEditStockItem.Size = new Size(220, 50);
 			btnConfirmEditStockItem.TabIndex = 8;

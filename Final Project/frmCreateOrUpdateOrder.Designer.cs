@@ -90,11 +90,12 @@
 			// 
 			// lblWarning
 			// 
+			lblWarning.Anchor = AnchorStyles.None;
 			lblWarning.BackColor = Color.FromArgb(255, 219, 219);
 			lblWarning.BorderStyle = BorderStyle.FixedSingle;
 			lblWarning.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
 			lblWarning.ForeColor = Color.FromArgb(250, 0, 0);
-			lblWarning.Location = new Point(228, 316);
+			lblWarning.Location = new Point(245, 316);
 			lblWarning.Name = "lblWarning";
 			lblWarning.Size = new Size(511, 56);
 			lblWarning.TabIndex = 27;
@@ -103,10 +104,11 @@
 			// 
 			// lblOrderNumberItem
 			// 
+			lblOrderNumberItem.Anchor = AnchorStyles.None;
 			lblOrderNumberItem.AutoSize = true;
 			lblOrderNumberItem.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			lblOrderNumberItem.ForeColor = Color.Black;
-			lblOrderNumberItem.Location = new Point(272, 115);
+			lblOrderNumberItem.Location = new Point(289, 115);
 			lblOrderNumberItem.Name = "lblOrderNumberItem";
 			lblOrderNumberItem.Size = new Size(108, 25);
 			lblOrderNumberItem.TabIndex = 26;
@@ -114,9 +116,10 @@
 			// 
 			// lblCurrentStockLevel
 			// 
+			lblCurrentStockLevel.Anchor = AnchorStyles.None;
 			lblCurrentStockLevel.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			lblCurrentStockLevel.ForeColor = Color.Black;
-			lblCurrentStockLevel.Location = new Point(228, 281);
+			lblCurrentStockLevel.Location = new Point(245, 281);
 			lblCurrentStockLevel.Name = "lblCurrentStockLevel";
 			lblCurrentStockLevel.Size = new Size(511, 35);
 			lblCurrentStockLevel.TabIndex = 25;
@@ -125,8 +128,9 @@
 			// 
 			// nUDQuantity
 			// 
+			nUDQuantity.Anchor = AnchorStyles.None;
 			nUDQuantity.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			nUDQuantity.Location = new Point(519, 230);
+			nUDQuantity.Location = new Point(536, 230);
 			nUDQuantity.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
 			nUDQuantity.Name = "nUDQuantity";
 			nUDQuantity.Size = new Size(176, 32);
@@ -167,10 +171,11 @@
 			// 
 			// lblQuantity
 			// 
+			lblQuantity.Anchor = AnchorStyles.None;
 			lblQuantity.AutoSize = true;
 			lblQuantity.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			lblQuantity.ForeColor = Color.Black;
-			lblQuantity.Location = new Point(518, 202);
+			lblQuantity.Location = new Point(535, 202);
 			lblQuantity.Name = "lblQuantity";
 			lblQuantity.Size = new Size(84, 25);
 			lblQuantity.TabIndex = 21;
@@ -178,10 +183,11 @@
 			// 
 			// lblTitle
 			// 
+			lblTitle.Anchor = AnchorStyles.None;
 			lblTitle.AutoSize = true;
 			lblTitle.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			lblTitle.ForeColor = Color.Black;
-			lblTitle.Location = new Point(518, 115);
+			lblTitle.Location = new Point(535, 115);
 			lblTitle.Name = "lblTitle";
 			lblTitle.Size = new Size(166, 25);
 			lblTitle.TabIndex = 19;
@@ -189,9 +195,10 @@
 			// 
 			// cBoxStock
 			// 
+			cBoxStock.Anchor = AnchorStyles.None;
 			cBoxStock.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			cBoxStock.FormattingEnabled = true;
-			cBoxStock.Location = new Point(272, 230);
+			cBoxStock.Location = new Point(289, 230);
 			cBoxStock.Name = "cBoxStock";
 			cBoxStock.Size = new Size(176, 33);
 			cBoxStock.TabIndex = 18;
@@ -199,10 +206,11 @@
 			// 
 			// lblStockItem
 			// 
+			lblStockItem.Anchor = AnchorStyles.None;
 			lblStockItem.AutoSize = true;
 			lblStockItem.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			lblStockItem.ForeColor = Color.Black;
-			lblStockItem.Location = new Point(272, 202);
+			lblStockItem.Location = new Point(289, 202);
 			lblStockItem.Name = "lblStockItem";
 			lblStockItem.Size = new Size(98, 25);
 			lblStockItem.TabIndex = 20;
