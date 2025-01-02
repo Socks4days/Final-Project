@@ -448,7 +448,7 @@
         private Button btnAddNewStock;
         private Button btnOrder;
         private Panel pnlOrder;
-        private Button btnViewOrders;
+        public Button btnViewOrders;
         private Button btnOrderStock;
         private Button btnRetireStock;
         private Button btnDelivery;

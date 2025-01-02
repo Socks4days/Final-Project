@@ -37,14 +37,24 @@ namespace Final_Project
 			UpdateOrderItemListView();
 
 			// check if an order is ready to start or if it is a draft
-			if (order.orderStatus == "Draft")
+			if (order.orderStatus == "Draft" && viewToShow == "Edit")
 			{
 				// if it is, show the options buttons
+				btnAddAnItemToOrder.Visible = true;
+				btnRemoveFromOrder.Visible = true;
+				btnSaveAsDraft.Visible = true;
+				btnPlaceOrder.Visible = true;
+				lstViewOrderItems.FullRowSelect = true;
 			}
 			else
 			{
 				// if it is not, hide the options buttons
+				btnAddAnItemToOrder.Visible = false;
+				btnRemoveFromOrder.Visible = false;
+				btnSaveAsDraft.Visible = false;
+				btnPlaceOrder.Visible = false;
 			}
+
 			if (viewToShow == "Edit")
 			{
 				// if the edit view is to be shown, show the option buttons, show the instructions and allow user to select a full row
@@ -91,14 +101,22 @@ namespace Final_Project
 				allStockNames.Remove(orderItem.stockName);
 			}
 
+			allStockNames = allStockNames.OrderBy(x => x).ToList();
+
 			// populate the combo box with this new list
 			cBoxStock.DataSource = allStockNames;
-			cBoxStock.DisplayMember = "Name";
 		}
 
 		// method to add an item to an order
 		private void btnAddToOrder_Click(object sender, EventArgs e)
 		{
+			if (cBoxStock.Text == "")
+			{
+				lblWarning.Visible = true;
+				lblWarning.Text = "Select an item to add to order.";
+				return;
+			}
+
 			Stock stockToAdd = StockDal.GetStockByStockName(cBoxStock.Text);
 			if (((stockToAdd.stockLevel + (nUDQuantity.Value * stockToAdd.orderQuantity)) > stockToAdd.maximumLevel) && (warningNumber == 0))
 			{
@@ -117,9 +135,11 @@ namespace Final_Project
 			};
 			// add new order item to the order
 			OrderDal.AddOrderItem(newOrderItem);
+			cBoxStock.DataSource = null;
+			allStockNames.Remove(stockToAdd.stockName);
+			cBoxStock.DataSource = allStockNames;
+			cBoxStock.Text = "";
 
-			// refresh the combo box
-			PopulateComboBox();
 			// refresh the list view
 			UpdateOrderItemListView();
 			// show the list view of order items
@@ -189,6 +209,8 @@ namespace Final_Project
 				lstViewOrderItems.Items.Remove(item);
 			}
 
+			// Reset order total to 0
+			orderTotal = 0;
 			// Add each stock in the sorted list to the stock list
 			foreach (OrderItem orderItem in sortedOrderItemList)
 			{
@@ -238,8 +260,7 @@ namespace Final_Project
 			// set status to a draft and close the form
 			order.orderStatus = "Draft";
 			OrderDal.UpdateOrderStatus(order);
-			frmMainScreen.frmMain.CloseChildForm();
-			frmMainScreen.frmMain.HideSubMenus();
+			frmMainScreen.frmMain.OpenChildForm(new frmViewOrders(), frmMainScreen.frmMain.btnViewOrders);
 		}
 
 		private void btnConfirmAndPlace_Click(object sender, EventArgs e)
@@ -249,7 +270,7 @@ namespace Final_Project
 			order.orderStatus = "Placed";
 			lblOrderStatus.Text = $"Order Status: {order.orderStatus}";
 			OrderDal.UpdateOrderStatus(order);
-			frmMainScreen.frmMain.CloseChildForm();
+			frmMainScreen.frmMain.OpenChildForm(new frmViewOrders(), frmMainScreen.frmMain.btnViewOrders);
 		}
 
 		private void btnReturnToEditScreen_Click(object sender, EventArgs e)
