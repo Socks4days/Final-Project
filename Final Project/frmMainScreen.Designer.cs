@@ -420,6 +420,7 @@
 			Controls.Add(pnlSideBar);
 			Icon = (Icon)resources.GetObject("$this.Icon");
 			Margin = new Padding(2);
+			MinimumSize = new Size(1218, 791);
 			Name = "frmMainScreen";
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Stock Control";

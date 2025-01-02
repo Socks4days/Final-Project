@@ -66,6 +66,7 @@
 			btnViewOrder.TabIndex = 17;
 			btnViewOrder.Text = "View Order";
 			btnViewOrder.UseVisualStyleBackColor = false;
+			btnViewOrder.Click += btnViewOrder_Click;
 			// 
 			// btnEditOrder
 			// 
@@ -81,6 +82,7 @@
 			btnEditOrder.TabIndex = 16;
 			btnEditOrder.Text = "Edit Order";
 			btnEditOrder.UseVisualStyleBackColor = false;
+			btnEditOrder.Click += btnEditOrder_Click;
 			// 
 			// lblInstructions
 			// 
