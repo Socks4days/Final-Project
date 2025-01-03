@@ -110,7 +110,7 @@ namespace Final_Project
 			// go through each stock to find the stock the user input
 			foreach (Stock stock in allStock)
 			{
-				if (stock.stockName == stockToRetire.stockName)
+				if (stock.stockName == stockToRetire.stockName && stock.stockLevel == 0)
 				{
 					// if found, show confirmation with the values of the input stock
 					stockToRetire = stock;
@@ -121,6 +121,12 @@ namespace Final_Project
 					lblPrice.Text = $"Price: {stockToRetire.price}";
 					lblMaximumLevel.Text = $"Maximum Level: {stockToRetire.maximumLevel}";
 					lblMinimumLevel.Text = $"Minimum Level: {stockToRetire.minimumLevel}";
+				}
+				else if(stock.stockName == stockToRetire.stockName && stock.stockLevel != 0)
+				{
+					lblErrorRetireStock.Visible = true;
+					lblErrorRetireStock.Text = "Use all items of this stock first before retiring!";
+					return;
 				}
 			}
 		}
