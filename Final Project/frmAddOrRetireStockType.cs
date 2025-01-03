@@ -100,7 +100,7 @@ namespace Final_Project
 				lblErrorRetireStock.Text = "There is no stock with that name, please try again...";
 			}
 
-			if(txtBoxRetireStockName.Text == "")
+			if (txtBoxRetireStockName.Text == "")
 			{
 				// if not valid, alert user
 				lblErrorRetireStock.Visible = true;
@@ -122,7 +122,7 @@ namespace Final_Project
 					lblMaximumLevel.Text = $"Maximum Level: {stockToRetire.maximumLevel}";
 					lblMinimumLevel.Text = $"Minimum Level: {stockToRetire.minimumLevel}";
 				}
-				else if(stock.stockName == stockToRetire.stockName && stock.stockLevel != 0)
+				else if (stock.stockName == stockToRetire.stockName && stock.stockLevel != 0)
 				{
 					lblErrorRetireStock.Visible = true;
 					lblErrorRetireStock.Text = "Use all items of this stock first before retiring!";

@@ -18,7 +18,6 @@ namespace Final_Project
 		{
 			InitializeComponent();
 
-			PopulateComboBox();
 		}
 
 		private void btnCancel_Click(object sender, EventArgs e)
@@ -27,12 +26,6 @@ namespace Final_Project
 			frmMainScreen.frmMain.HideSubMenus();
 		}
 
-		private void cBoxStock_SelectionChangeCommitted(object sender, EventArgs e)
-		{
-			lblNoExpectedInStock.Text = $"Number Expected In Stock: {StockDal.GetStockByStockName(cBoxStock.Text).stockLevel}";
-		}
-
-		
 		private void PopulateComboBox()
 		{
 			List<Stock> sortedStockList = StockDal.GetAllStock();
@@ -42,9 +35,6 @@ namespace Final_Project
 			{
 				allStockNames.Add(stock.stockName);
 			}
-
-			cBoxStock.Items.Clear();
-			cBoxStock.DataSource = allStockNames;
 		}
 	}
 }
