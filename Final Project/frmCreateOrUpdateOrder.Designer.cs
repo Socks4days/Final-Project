@@ -244,6 +244,7 @@
 			// 
 			// lblConfirmation
 			// 
+			lblConfirmation.Anchor = AnchorStyles.Top;
 			lblConfirmation.AutoSize = true;
 			lblConfirmation.FlatStyle = FlatStyle.Flat;
 			lblConfirmation.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -256,6 +257,7 @@
 			// 
 			// lblFinalOrderTotal
 			// 
+			lblFinalOrderTotal.Anchor = AnchorStyles.Top;
 			lblFinalOrderTotal.FlatStyle = FlatStyle.Flat;
 			lblFinalOrderTotal.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			lblFinalOrderTotal.ForeColor = SystemColors.ControlText;
@@ -268,6 +270,7 @@
 			// 
 			// lblDeliveringTo
 			// 
+			lblDeliveringTo.Anchor = AnchorStyles.Top;
 			lblDeliveringTo.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			lblDeliveringTo.ForeColor = SystemColors.ControlText;
 			lblDeliveringTo.Location = new Point(289, 52);
@@ -279,6 +282,7 @@
 			// 
 			// btnConfirmAndPlace
 			// 
+			btnConfirmAndPlace.Anchor = AnchorStyles.Top;
 			btnConfirmAndPlace.BackColor = Color.FromArgb(161, 32, 89);
 			btnConfirmAndPlace.FlatAppearance.BorderSize = 0;
 			btnConfirmAndPlace.FlatStyle = FlatStyle.Flat;
@@ -294,6 +298,7 @@
 			// 
 			// btnReturnToEditScreen
 			// 
+			btnReturnToEditScreen.Anchor = AnchorStyles.Top;
 			btnReturnToEditScreen.BackColor = Color.FromArgb(161, 32, 89);
 			btnReturnToEditScreen.FlatAppearance.BorderSize = 0;
 			btnReturnToEditScreen.FlatStyle = FlatStyle.Flat;
@@ -326,6 +331,7 @@
 			// 
 			// btnPlaceOrder
 			// 
+			btnPlaceOrder.Anchor = AnchorStyles.Top;
 			btnPlaceOrder.BackColor = Color.FromArgb(161, 32, 89);
 			btnPlaceOrder.FlatAppearance.BorderSize = 0;
 			btnPlaceOrder.FlatStyle = FlatStyle.Flat;
@@ -341,6 +347,7 @@
 			// 
 			// lblInstructions
 			// 
+			lblInstructions.Anchor = AnchorStyles.Top;
 			lblInstructions.AutoSize = true;
 			lblInstructions.FlatStyle = FlatStyle.Flat;
 			lblInstructions.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -353,6 +360,7 @@
 			// 
 			// btnRemoveFromOrder
 			// 
+			btnRemoveFromOrder.Anchor = AnchorStyles.Top;
 			btnRemoveFromOrder.BackColor = Color.FromArgb(161, 32, 89);
 			btnRemoveFromOrder.FlatAppearance.BorderSize = 0;
 			btnRemoveFromOrder.FlatStyle = FlatStyle.Flat;
@@ -368,6 +376,7 @@
 			// 
 			// btnAddAnItemToOrder
 			// 
+			btnAddAnItemToOrder.Anchor = AnchorStyles.Top;
 			btnAddAnItemToOrder.BackColor = Color.FromArgb(161, 32, 89);
 			btnAddAnItemToOrder.FlatAppearance.BorderSize = 0;
 			btnAddAnItemToOrder.FlatStyle = FlatStyle.Flat;
@@ -383,6 +392,7 @@
 			// 
 			// lblOrderNumberOrder
 			// 
+			lblOrderNumberOrder.Anchor = AnchorStyles.Top;
 			lblOrderNumberOrder.AutoSize = true;
 			lblOrderNumberOrder.FlatStyle = FlatStyle.Flat;
 			lblOrderNumberOrder.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -395,6 +405,7 @@
 			// 
 			// btnSaveAsDraft
 			// 
+			btnSaveAsDraft.Anchor = AnchorStyles.Top;
 			btnSaveAsDraft.BackColor = Color.FromArgb(161, 32, 89);
 			btnSaveAsDraft.FlatAppearance.BorderSize = 0;
 			btnSaveAsDraft.FlatStyle = FlatStyle.Flat;
@@ -410,6 +421,7 @@
 			// 
 			// lblOrderStatus
 			// 
+			lblOrderStatus.Anchor = AnchorStyles.Top;
 			lblOrderStatus.AutoSize = true;
 			lblOrderStatus.FlatStyle = FlatStyle.Flat;
 			lblOrderStatus.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -422,6 +434,7 @@
 			// 
 			// lblOrderTotal
 			// 
+			lblOrderTotal.Anchor = AnchorStyles.Top;
 			lblOrderTotal.AutoSize = true;
 			lblOrderTotal.FlatStyle = FlatStyle.Flat;
 			lblOrderTotal.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -445,6 +458,7 @@
 			// 
 			// lstViewOrderItems
 			// 
+			lstViewOrderItems.Anchor = AnchorStyles.Top;
 			lstViewOrderItems.BackColor = Color.FromArgb(227, 115, 166);
 			lstViewOrderItems.Columns.AddRange(new ColumnHeader[] { cHeaderStockItem, cHeaderUnit, cHeaderUnitPrice, cHeaderNoOfUnits, cHeaderTotalPrice });
 			lstViewOrderItems.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);

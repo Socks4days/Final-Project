@@ -54,7 +54,7 @@
 			// 
 			// btnViewOrder
 			// 
-			btnViewOrder.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+			btnViewOrder.Anchor = AnchorStyles.Bottom;
 			btnViewOrder.BackColor = Color.FromArgb(161, 32, 89);
 			btnViewOrder.FlatAppearance.BorderSize = 0;
 			btnViewOrder.FlatStyle = FlatStyle.Flat;
@@ -70,7 +70,7 @@
 			// 
 			// btnEditOrder
 			// 
-			btnEditOrder.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+			btnEditOrder.Anchor = AnchorStyles.Bottom;
 			btnEditOrder.BackColor = Color.FromArgb(161, 32, 89);
 			btnEditOrder.FlatAppearance.BorderSize = 0;
 			btnEditOrder.FlatStyle = FlatStyle.Flat;
@@ -86,7 +86,7 @@
 			// 
 			// lblInstructions
 			// 
-			lblInstructions.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+			lblInstructions.Anchor = AnchorStyles.Bottom;
 			lblInstructions.AutoSize = true;
 			lblInstructions.FlatStyle = FlatStyle.Flat;
 			lblInstructions.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -99,6 +99,7 @@
 			// 
 			// lstViewOrders
 			// 
+			lstViewOrders.Anchor = AnchorStyles.Top;
 			lstViewOrders.BackColor = Color.FromArgb(227, 115, 166);
 			lstViewOrders.Columns.AddRange(new ColumnHeader[] { cHeaderOrderNumber, cHeaderOrderStatus, cHeaderDateOrdered });
 			lstViewOrders.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);

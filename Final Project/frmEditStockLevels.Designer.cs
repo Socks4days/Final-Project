@@ -464,6 +464,7 @@
 			// 
 			// lstViewStock
 			// 
+			lstViewStock.Anchor = AnchorStyles.Top;
 			lstViewStock.BackColor = Color.FromArgb(149, 204, 249);
 			lstViewStock.BackgroundImageTiled = true;
 			lstViewStock.Columns.AddRange(new ColumnHeader[] { cHeaderStockName, cHeaderStockQuantity, cHeaderLastCheckedDate, cHeaderCheckedBy });
@@ -516,16 +517,18 @@
 			// 
 			// lblInstructions
 			// 
-			lblInstructions.AutoSize = true;
+			lblInstructions.Anchor = AnchorStyles.Top;
 			lblInstructions.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			lblInstructions.Location = new Point(37, 6);
+			lblInstructions.Location = new Point(266, 6);
 			lblInstructions.Name = "lblInstructions";
 			lblInstructions.Size = new Size(434, 25);
 			lblInstructions.TabIndex = 14;
 			lblInstructions.Text = "Select an item to manage its level and information";
+			lblInstructions.TextAlign = ContentAlignment.TopCenter;
 			// 
 			// btnEditStock
 			// 
+			btnEditStock.Anchor = AnchorStyles.Top;
 			btnEditStock.BackColor = Color.FromArgb(33, 150, 243);
 			btnEditStock.FlatAppearance.BorderSize = 0;
 			btnEditStock.FlatStyle = FlatStyle.Flat;
@@ -541,6 +544,7 @@
 			// 
 			// btnRemoveFromStock
 			// 
+			btnRemoveFromStock.Anchor = AnchorStyles.Top;
 			btnRemoveFromStock.BackColor = Color.FromArgb(33, 150, 243);
 			btnRemoveFromStock.FlatAppearance.BorderSize = 0;
 			btnRemoveFromStock.FlatStyle = FlatStyle.Flat;
@@ -556,6 +560,7 @@
 			// 
 			// btnAddToStock
 			// 
+			btnAddToStock.Anchor = AnchorStyles.Top;
 			btnAddToStock.BackColor = Color.FromArgb(33, 150, 243);
 			btnAddToStock.FlatAppearance.BorderSize = 0;
 			btnAddToStock.FlatStyle = FlatStyle.Flat;
@@ -592,7 +597,6 @@
 			pnlEditStockItem.PerformLayout();
 			pnlStockList.ResumeLayout(false);
 			pnlOptionButtons.ResumeLayout(false);
-			pnlOptionButtons.PerformLayout();
 			ResumeLayout(false);
 		}
 
