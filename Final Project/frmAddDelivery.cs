@@ -225,11 +225,10 @@ namespace Final_Project
 				}
 				ShowItemToAddToDelivery();
 			}
-
 			else
 			{
 				lblDeliveryItemError.Visible = true;
-				lblDeliveryItemError.Text = "Item already fully delivered!";
+				lblDeliveryItemError.Text = $"All {selectedOrderItemsDeliveredView.stockName} received! Select a different item to add a delivery for.";
 			}
 		}
 
