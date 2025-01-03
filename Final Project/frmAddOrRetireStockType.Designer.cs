@@ -40,7 +40,7 @@
 			txtBoxNewDeliveryTime = new TextBox();
 			txtBoxNewStockCheckFrequency = new TextBox();
 			txtBoxNewOrderQuantity = new TextBox();
-			lblError = new Label();
+			lblErrorAddNewStock = new Label();
 			txtBoxNewStockName = new TextBox();
 			txtBoxNewMinimumLevel = new TextBox();
 			txtBoxNewStockPrice = new TextBox();
@@ -81,7 +81,7 @@
 			pnlAddNewStock.Controls.Add(txtBoxNewDeliveryTime);
 			pnlAddNewStock.Controls.Add(txtBoxNewStockCheckFrequency);
 			pnlAddNewStock.Controls.Add(txtBoxNewOrderQuantity);
-			pnlAddNewStock.Controls.Add(lblError);
+			pnlAddNewStock.Controls.Add(lblErrorAddNewStock);
 			pnlAddNewStock.Controls.Add(txtBoxNewStockName);
 			pnlAddNewStock.Controls.Add(txtBoxNewMinimumLevel);
 			pnlAddNewStock.Controls.Add(txtBoxNewStockPrice);
@@ -91,7 +91,7 @@
 			pnlAddNewStock.Dock = DockStyle.Top;
 			pnlAddNewStock.Location = new Point(0, 0);
 			pnlAddNewStock.Name = "pnlAddNewStock";
-			pnlAddNewStock.Size = new Size(967, 711);
+			pnlAddNewStock.Size = new Size(966, 711);
 			pnlAddNewStock.TabIndex = 3;
 			// 
 			// lblNewDescription
@@ -148,7 +148,7 @@
 			lblNewMinimumLevel.AutoSize = true;
 			lblNewMinimumLevel.Font = new Font("Segoe UI", 14F);
 			lblNewMinimumLevel.ForeColor = Color.Black;
-			lblNewMinimumLevel.Location = new Point(502, 274);
+			lblNewMinimumLevel.Location = new Point(247, 275);
 			lblNewMinimumLevel.Name = "lblNewMinimumLevel";
 			lblNewMinimumLevel.Size = new Size(145, 25);
 			lblNewMinimumLevel.TabIndex = 22;
@@ -160,7 +160,7 @@
 			lblNewMaximumLevel.AutoSize = true;
 			lblNewMaximumLevel.Font = new Font("Segoe UI", 14F);
 			lblNewMaximumLevel.ForeColor = Color.Black;
-			lblNewMaximumLevel.Location = new Point(247, 274);
+			lblNewMaximumLevel.Location = new Point(502, 275);
 			lblNewMaximumLevel.Name = "lblNewMaximumLevel";
 			lblNewMaximumLevel.Size = new Size(148, 25);
 			lblNewMaximumLevel.TabIndex = 21;
@@ -217,19 +217,19 @@
 			txtBoxNewOrderQuantity.Size = new Size(221, 32);
 			txtBoxNewOrderQuantity.TabIndex = 16;
 			// 
-			// lblError
+			// lblErrorAddNewStock
 			// 
-			lblError.Anchor = AnchorStyles.None;
-			lblError.BackColor = Color.FromArgb(255, 209, 209);
-			lblError.BorderStyle = BorderStyle.FixedSingle;
-			lblError.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-			lblError.ForeColor = Color.FromArgb(250, 0, 0);
-			lblError.Location = new Point(231, 450);
-			lblError.Name = "lblError";
-			lblError.Size = new Size(505, 61);
-			lblError.TabIndex = 15;
-			lblError.Text = "Error message goes here";
-			lblError.TextAlign = ContentAlignment.MiddleCenter;
+			lblErrorAddNewStock.Anchor = AnchorStyles.None;
+			lblErrorAddNewStock.BackColor = Color.FromArgb(255, 209, 209);
+			lblErrorAddNewStock.BorderStyle = BorderStyle.FixedSingle;
+			lblErrorAddNewStock.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			lblErrorAddNewStock.ForeColor = Color.FromArgb(250, 0, 0);
+			lblErrorAddNewStock.Location = new Point(231, 450);
+			lblErrorAddNewStock.Name = "lblErrorAddNewStock";
+			lblErrorAddNewStock.Size = new Size(505, 61);
+			lblErrorAddNewStock.TabIndex = 15;
+			lblErrorAddNewStock.Text = "Error message goes here";
+			lblErrorAddNewStock.TextAlign = ContentAlignment.MiddleCenter;
 			// 
 			// txtBoxNewStockName
 			// 
@@ -244,7 +244,7 @@
 			// 
 			txtBoxNewMinimumLevel.Anchor = AnchorStyles.None;
 			txtBoxNewMinimumLevel.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			txtBoxNewMinimumLevel.Location = new Point(502, 302);
+			txtBoxNewMinimumLevel.Location = new Point(247, 303);
 			txtBoxNewMinimumLevel.Name = "txtBoxNewMinimumLevel";
 			txtBoxNewMinimumLevel.Size = new Size(221, 32);
 			txtBoxNewMinimumLevel.TabIndex = 4;
@@ -262,7 +262,7 @@
 			// 
 			txtBoxNewMaximumLevel.Anchor = AnchorStyles.None;
 			txtBoxNewMaximumLevel.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			txtBoxNewMaximumLevel.Location = new Point(247, 302);
+			txtBoxNewMaximumLevel.Location = new Point(502, 303);
 			txtBoxNewMaximumLevel.Name = "txtBoxNewMaximumLevel";
 			txtBoxNewMaximumLevel.Size = new Size(221, 32);
 			txtBoxNewMaximumLevel.TabIndex = 3;
@@ -307,7 +307,7 @@
 			pnlConfirmation.Dock = DockStyle.Top;
 			pnlConfirmation.Location = new Point(0, 711);
 			pnlConfirmation.Name = "pnlConfirmation";
-			pnlConfirmation.Size = new Size(967, 711);
+			pnlConfirmation.Size = new Size(966, 711);
 			pnlConfirmation.TabIndex = 4;
 			// 
 			// btnReturn
@@ -436,7 +436,7 @@
 			pnlRetireStock.Dock = DockStyle.Top;
 			pnlRetireStock.Location = new Point(0, 1422);
 			pnlRetireStock.Name = "pnlRetireStock";
-			pnlRetireStock.Size = new Size(967, 711);
+			pnlRetireStock.Size = new Size(966, 711);
 			pnlRetireStock.TabIndex = 5;
 			// 
 			// lblStockToRetire
@@ -529,7 +529,7 @@
         private Label lblMaximumLevel;
         private Label lblPrice;
         private Button btnReturn;
-        private Label lblError;
+        private Label lblErrorAddNewStock;
         private Panel pnlRetireStock;
         private Label lblErrorRetireStock;
         private TextBox txtBoxRetireStockName;

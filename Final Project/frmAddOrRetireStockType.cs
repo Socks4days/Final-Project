@@ -24,7 +24,7 @@ namespace Final_Project
 			if (panelToShow == "Add Stock")
 			{
 				ShowAddStock();
-				lblError.Visible = false;
+				lblErrorAddNewStock.Visible = false;
 			}
 
 			// if the panel is "Remove Stock" the form to remove the stock will be shown first
@@ -33,11 +33,16 @@ namespace Final_Project
 				ShowRetireStock();
 				lblErrorRetireStock.Visible = false;
 			}
+
+			
 		}
 
 		// base stock objects to hold information about the stock to add or delete
 		Stock stockToAdd = new Stock();
 		Stock stockToRetire = new Stock();
+
+		// get a list of all stock
+		List<Stock> allStock = StockDal.GetAllStock();
 
 		private void btnAddNewStock_Click(object sender, EventArgs e)
 		{
@@ -57,11 +62,21 @@ namespace Final_Project
 			catch (Exception ex)
 			{
 				// if there are any errors, the system rejects it and the user is told to try give better information
-				lblError.Visible = true;
-				lblError.Text = "Insufficient details have been provided, please try again.";
+				lblErrorAddNewStock.Visible = true;
+				lblErrorAddNewStock.Text = "Insufficient details have been provided, please try again.";
 				return;
 			}
 			// if all information looks good, show a panel with the information they input, allowing them to confirm if it is correct
+
+			foreach (Stock stock in allStock)
+			{
+				if(stock.stockName == stockToAdd.stockName)
+				{
+					lblErrorAddNewStock.Text = "There is already a stock item with that name, please enter another";
+					lblErrorAddNewStock.Visible = true;
+					return;
+				}				
+			}
 			ShowConfirmation();
 			lblStockTo.Text = "Stock To Add:";
 			lblStockName.Text = $"Stock Name: {stockToAdd.stockName}";
@@ -92,9 +107,6 @@ namespace Final_Project
 				lblErrorRetireStock.Text = "There is no stock with that name, please try again...";
 			}
 
-			// get a list of all stock
-			List<Stock> allStock = StockDal.GetAllStock();
-
 			// go through each stock to find the stock the user input
 			foreach (Stock stock in allStock)
 			{
@@ -122,6 +134,7 @@ namespace Final_Project
 			pnlConfirmation.Dock = DockStyle.Fill;
 		}
 
+		string actionTakingPlace = "";
 		private void ShowAddStock()
 		{
 			// shows the panel to add a new stock
@@ -129,6 +142,7 @@ namespace Final_Project
 			pnlConfirmation.Visible = false;
 			pnlRetireStock.Visible = false;
 			pnlAddNewStock.Dock = DockStyle.Fill;
+			actionTakingPlace = "Add Stock";
 		}
 
 		private void ShowRetireStock()
@@ -138,6 +152,7 @@ namespace Final_Project
 			pnlAddNewStock.Visible = false;
 			pnlConfirmation.Visible = false;
 			pnlRetireStock.Dock = DockStyle.Fill;
+			actionTakingPlace = "Retire Stock";
 		}
 
 		private void btnConfirmed_Click(object sender, EventArgs e)
@@ -152,17 +167,18 @@ namespace Final_Project
 			else if (stockToRetire.stockName != null)
 			{
 				stockToRetire.active = false;
+				StockDal.UpdateStockInformation(stockToRetire);
 				ReturnToPreviousScreen();
 			}
 		}
-
+		
 		private void btnReturn_Click(object sender, EventArgs e)
 		{
 			// if the return button is clicked, the information the user entered will reappear in the textbox(es)
 			if (stockToAdd.stockName != null)
 			{
 				ShowAddStock();
-				lblError.Visible = false;
+				lblErrorAddNewStock.Visible = false;
 				txtBoxNewStockName.Text = stockToAdd.stockName;
 				txtBoxNewStockDescription.Text = stockToAdd.stockDescription;
 				txtBoxNewStockPrice.Text = stockToAdd.price.ToString();
@@ -179,7 +195,7 @@ namespace Final_Project
 
 		private void ReturnToPreviousScreen()
 		{
-			lblError.Visible = false;
+			lblErrorAddNewStock.Visible = false;
 
 			txtBoxNewStockName.Text = "";
 			txtBoxNewStockDescription.Text = "";
@@ -189,11 +205,11 @@ namespace Final_Project
 			txtBoxRetireStockName.Text = "";
 
 			// check to see which panel to show and then show the respective panel
-			if (stockToAdd != null)
+			if (actionTakingPlace == "Add Stock")
 			{
 				pnlAddNewStock.Visible = true;
 			}
-			else if (stockToRetire != null)
+			else if (actionTakingPlace == "Retire Stock")
 			{
 				pnlRetireStock.Visible = true;
 			}
