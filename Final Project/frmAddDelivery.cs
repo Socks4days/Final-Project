@@ -334,6 +334,7 @@ namespace Final_Project
 				delivery.deliveryDate = DateTime.Now;
 				delivery.orderNumber = orderToAddDelivery.orderNumber;
 				delivery = DeliveryDal.AddDelivery(delivery);
+				btnMarkOrderAsCompleted.Enabled = false;
 				ShowDeliveryDetails();
 			}
 			else
@@ -347,6 +348,7 @@ namespace Final_Project
 		{
 			pnlDeliveryDetails.Visible = false;
 			btnRecordDeliveryForOrder.Enabled = true;
+			btnMarkOrderAsCompleted.Enabled = true;
 			lblOrderDateAndStatus.Text = $"Placed On: {orderToAddDelivery.orderDate}  ({orderToAddDelivery.orderStatus})";
 		}
 
