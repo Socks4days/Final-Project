@@ -100,7 +100,7 @@
 			lblNewDescription.AutoSize = true;
 			lblNewDescription.Font = new Font("Segoe UI", 14F);
 			lblNewDescription.ForeColor = Color.Black;
-			lblNewDescription.Location = new Point(502, 116);
+			lblNewDescription.Location = new Point(502, 127);
 			lblNewDescription.Name = "lblNewDescription";
 			lblNewDescription.Size = new Size(112, 25);
 			lblNewDescription.TabIndex = 26;
@@ -112,7 +112,7 @@
 			lblNewStockName.AutoSize = true;
 			lblNewStockName.Font = new Font("Segoe UI", 14F);
 			lblNewStockName.ForeColor = Color.Black;
-			lblNewStockName.Location = new Point(247, 116);
+			lblNewStockName.Location = new Point(247, 127);
 			lblNewStockName.Name = "lblNewStockName";
 			lblNewStockName.Size = new Size(66, 25);
 			lblNewStockName.TabIndex = 25;
@@ -124,7 +124,7 @@
 			lblNewOrderQuantity.AutoSize = true;
 			lblNewOrderQuantity.Font = new Font("Segoe UI", 14F);
 			lblNewOrderQuantity.ForeColor = Color.Black;
-			lblNewOrderQuantity.Location = new Point(502, 195);
+			lblNewOrderQuantity.Location = new Point(247, 278);
 			lblNewOrderQuantity.Name = "lblNewOrderQuantity";
 			lblNewOrderQuantity.Size = new Size(142, 25);
 			lblNewOrderQuantity.TabIndex = 24;
@@ -136,7 +136,7 @@
 			lblNewPrice.AutoSize = true;
 			lblNewPrice.Font = new Font("Segoe UI", 14F);
 			lblNewPrice.ForeColor = Color.Black;
-			lblNewPrice.Location = new Point(247, 195);
+			lblNewPrice.Location = new Point(503, 278);
 			lblNewPrice.Name = "lblNewPrice";
 			lblNewPrice.Size = new Size(58, 25);
 			lblNewPrice.TabIndex = 23;
@@ -148,7 +148,7 @@
 			lblNewMinimumLevel.AutoSize = true;
 			lblNewMinimumLevel.Font = new Font("Segoe UI", 14F);
 			lblNewMinimumLevel.ForeColor = Color.Black;
-			lblNewMinimumLevel.Location = new Point(247, 275);
+			lblNewMinimumLevel.Location = new Point(247, 205);
 			lblNewMinimumLevel.Name = "lblNewMinimumLevel";
 			lblNewMinimumLevel.Size = new Size(145, 25);
 			lblNewMinimumLevel.TabIndex = 22;
@@ -160,7 +160,7 @@
 			lblNewMaximumLevel.AutoSize = true;
 			lblNewMaximumLevel.Font = new Font("Segoe UI", 14F);
 			lblNewMaximumLevel.ForeColor = Color.Black;
-			lblNewMaximumLevel.Location = new Point(502, 275);
+			lblNewMaximumLevel.Location = new Point(502, 205);
 			lblNewMaximumLevel.Name = "lblNewMaximumLevel";
 			lblNewMaximumLevel.Size = new Size(148, 25);
 			lblNewMaximumLevel.TabIndex = 21;
@@ -212,7 +212,7 @@
 			// 
 			txtBoxNewOrderQuantity.Anchor = AnchorStyles.None;
 			txtBoxNewOrderQuantity.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			txtBoxNewOrderQuantity.Location = new Point(502, 223);
+			txtBoxNewOrderQuantity.Location = new Point(247, 306);
 			txtBoxNewOrderQuantity.Name = "txtBoxNewOrderQuantity";
 			txtBoxNewOrderQuantity.Size = new Size(221, 32);
 			txtBoxNewOrderQuantity.TabIndex = 16;
@@ -235,7 +235,7 @@
 			// 
 			txtBoxNewStockName.Anchor = AnchorStyles.None;
 			txtBoxNewStockName.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			txtBoxNewStockName.Location = new Point(246, 144);
+			txtBoxNewStockName.Location = new Point(246, 155);
 			txtBoxNewStockName.Name = "txtBoxNewStockName";
 			txtBoxNewStockName.Size = new Size(221, 32);
 			txtBoxNewStockName.TabIndex = 0;
@@ -244,7 +244,7 @@
 			// 
 			txtBoxNewMinimumLevel.Anchor = AnchorStyles.None;
 			txtBoxNewMinimumLevel.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			txtBoxNewMinimumLevel.Location = new Point(247, 303);
+			txtBoxNewMinimumLevel.Location = new Point(247, 233);
 			txtBoxNewMinimumLevel.Name = "txtBoxNewMinimumLevel";
 			txtBoxNewMinimumLevel.Size = new Size(221, 32);
 			txtBoxNewMinimumLevel.TabIndex = 4;
@@ -253,7 +253,7 @@
 			// 
 			txtBoxNewStockPrice.Anchor = AnchorStyles.None;
 			txtBoxNewStockPrice.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			txtBoxNewStockPrice.Location = new Point(246, 223);
+			txtBoxNewStockPrice.Location = new Point(502, 306);
 			txtBoxNewStockPrice.Name = "txtBoxNewStockPrice";
 			txtBoxNewStockPrice.Size = new Size(221, 32);
 			txtBoxNewStockPrice.TabIndex = 2;
@@ -262,7 +262,7 @@
 			// 
 			txtBoxNewMaximumLevel.Anchor = AnchorStyles.None;
 			txtBoxNewMaximumLevel.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			txtBoxNewMaximumLevel.Location = new Point(502, 303);
+			txtBoxNewMaximumLevel.Location = new Point(502, 233);
 			txtBoxNewMaximumLevel.Name = "txtBoxNewMaximumLevel";
 			txtBoxNewMaximumLevel.Size = new Size(221, 32);
 			txtBoxNewMaximumLevel.TabIndex = 3;
@@ -271,7 +271,7 @@
 			// 
 			txtBoxNewStockDescription.Anchor = AnchorStyles.None;
 			txtBoxNewStockDescription.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			txtBoxNewStockDescription.Location = new Point(502, 144);
+			txtBoxNewStockDescription.Location = new Point(502, 155);
 			txtBoxNewStockDescription.Name = "txtBoxNewStockDescription";
 			txtBoxNewStockDescription.Size = new Size(221, 32);
 			txtBoxNewStockDescription.TabIndex = 1;

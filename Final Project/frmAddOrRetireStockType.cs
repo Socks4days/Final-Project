@@ -199,9 +199,13 @@ namespace Final_Project
 
 			txtBoxNewStockName.Text = "";
 			txtBoxNewStockDescription.Text = "";
-			txtBoxNewStockPrice.Text = "";
-			txtBoxNewMaximumLevel.Text = "";
 			txtBoxNewMinimumLevel.Text = "";
+			txtBoxNewMaximumLevel.Text = "";
+			txtBoxNewOrderQuantity.Text = "";
+			txtBoxNewStockPrice.Text = "";
+			txtBoxNewStockCheckFrequency.Text = "";
+			txtBoxNewDeliveryTime.Text = "";	
+			
 			txtBoxRetireStockName.Text = "";
 
 			// check to see which panel to show and then show the respective panel
