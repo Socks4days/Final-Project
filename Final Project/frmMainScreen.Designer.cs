@@ -104,7 +104,7 @@
 			btnCreateAudit.Location = new Point(0, 0);
 			btnCreateAudit.Margin = new Padding(2);
 			btnCreateAudit.Name = "btnCreateAudit";
-			btnCreateAudit.Padding = new Padding(10, 0, 0, 0);
+			btnCreateAudit.Padding = new Padding(20, 0, 0, 0);
 			btnCreateAudit.Size = new Size(182, 70);
 			btnCreateAudit.TabIndex = 13;
 			btnCreateAudit.Text = "Create Audit";
@@ -154,7 +154,7 @@
 			btnViewDeliveries.Location = new Point(0, 0);
 			btnViewDeliveries.Margin = new Padding(2);
 			btnViewDeliveries.Name = "btnViewDeliveries";
-			btnViewDeliveries.Padding = new Padding(10, 0, 0, 0);
+			btnViewDeliveries.Padding = new Padding(20, 0, 0, 0);
 			btnViewDeliveries.Size = new Size(182, 70);
 			btnViewDeliveries.TabIndex = 6;
 			btnViewDeliveries.Text = "View Deliveries";
@@ -204,7 +204,7 @@
 			btnViewOrders.Location = new Point(0, 70);
 			btnViewOrders.Margin = new Padding(2);
 			btnViewOrders.Name = "btnViewOrders";
-			btnViewOrders.Padding = new Padding(10, 0, 0, 0);
+			btnViewOrders.Padding = new Padding(20, 0, 0, 0);
 			btnViewOrders.Size = new Size(182, 70);
 			btnViewOrders.TabIndex = 5;
 			btnViewOrders.Text = "View Orders";
@@ -224,7 +224,7 @@
 			btnOrderStock.Location = new Point(0, 0);
 			btnOrderStock.Margin = new Padding(2);
 			btnOrderStock.Name = "btnOrderStock";
-			btnOrderStock.Padding = new Padding(10, 0, 0, 0);
+			btnOrderStock.Padding = new Padding(20, 0, 0, 0);
 			btnOrderStock.Size = new Size(182, 70);
 			btnOrderStock.TabIndex = 4;
 			btnOrderStock.Text = "Order Stock";
@@ -275,7 +275,7 @@
 			btnRetireStock.Location = new Point(0, 140);
 			btnRetireStock.Margin = new Padding(2);
 			btnRetireStock.Name = "btnRetireStock";
-			btnRetireStock.Padding = new Padding(10, 0, 0, 0);
+			btnRetireStock.Padding = new Padding(20, 0, 0, 0);
 			btnRetireStock.Size = new Size(182, 70);
 			btnRetireStock.TabIndex = 9;
 			btnRetireStock.Text = "Retire Stock";
@@ -295,7 +295,7 @@
 			btnAddNewStock.Location = new Point(0, 70);
 			btnAddNewStock.Margin = new Padding(2);
 			btnAddNewStock.Name = "btnAddNewStock";
-			btnAddNewStock.Padding = new Padding(10, 0, 0, 0);
+			btnAddNewStock.Padding = new Padding(20, 0, 0, 0);
 			btnAddNewStock.Size = new Size(182, 70);
 			btnAddNewStock.TabIndex = 6;
 			btnAddNewStock.Text = "Add New Stock";
@@ -315,7 +315,7 @@
 			btnManageStockLevels.Location = new Point(0, 0);
 			btnManageStockLevels.Margin = new Padding(2);
 			btnManageStockLevels.Name = "btnManageStockLevels";
-			btnManageStockLevels.Padding = new Padding(10, 0, 0, 0);
+			btnManageStockLevels.Padding = new Padding(20, 0, 0, 0);
 			btnManageStockLevels.Size = new Size(182, 70);
 			btnManageStockLevels.TabIndex = 4;
 			btnManageStockLevels.Text = "Manage Stock";
