@@ -193,7 +193,7 @@ namespace Final_Project
                 }
                 else if (orderBy == "AuditDate")
                 {
-                    sqlQuery += " ORDER BY [AuditDate] DESC";
+                    sqlQuery += " ORDER BY [AuditDate] ASC";
                 }
 
                 SqlCommand getAllStockCommand = new SqlCommand(sqlQuery, connection);

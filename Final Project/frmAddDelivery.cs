@@ -349,6 +349,7 @@ namespace Final_Project
 			pnlDeliveryDetails.Visible = false;
 			btnRecordDeliveryForOrder.Enabled = true;
 			btnMarkOrderAsCompleted.Enabled = true;
+			lblDeliveryItemError.Visible = false;
 			lblOrderDateAndStatus.Text = $"Placed On: {orderToAddDelivery.orderDate}  ({orderToAddDelivery.orderStatus})";
 		}
 

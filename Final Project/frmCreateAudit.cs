@@ -17,24 +17,62 @@ namespace Final_Project
 		public frmCreateAudit()
 		{
 			InitializeComponent();
-
+			UpdateStockItems();
+			ShowAuditInfo();
 		}
 
 		private void btnCancel_Click(object sender, EventArgs e)
 		{
-			frmMainScreen.frmMain.CloseChildForm();
-			frmMainScreen.frmMain.HideSubMenus();
+			ShowAuditInfo();
 		}
 
-		private void PopulateComboBox()
+		private void btnCompleteAudit_Click(object sender, EventArgs e)
 		{
-			List<Stock> sortedStockList = StockDal.GetAllStock();
-			List<string> allStockNames = new List<string>();
 
-			foreach(Stock stock in sortedStockList)
+		}
+
+		private void UpdateStockItems()
+		{
+			List<StockLevelsView> sortedStockList = StockDal.GetStockLevelsView("AuditDate");
+
+			// Add each stock in the sorted list to the stock list
+			foreach (StockLevelsView stockLevel in sortedStockList)
 			{
-				allStockNames.Add(stock.stockName);
+				// Create an array with stock details
+				string[] row = { stockLevel.stockName, stockLevel.auditDate.ToString(), stockLevel.auditedByStaffFullName };
+
+				// Create a new list item based on the array
+				ListViewItem item = new ListViewItem(row);
+
+				// Add the list item to the stock list view
+				lstViewAllStock.Items.Add(item);
 			}
+		}
+
+		private void ShowAuditInfo()
+		{
+			pnlAuditInfo.Visible = true;
+			pnlCreateAudit.Visible = false;
+			pnlAuditHistory.Visible = false;
+		}
+
+		private void ShowCreateAudit()
+		{
+			pnlCreateAudit.Visible = true;
+			pnlAuditInfo.Visible = false;
+			pnlAuditHistory.Visible = false;
+		}
+
+		private void ShowAuditHistory()
+		{
+			pnlAuditHistory.Visible = true;
+			pnlCreateAudit.Visible = false;
+			pnlAuditInfo.Visible = false;
+		}
+
+		private void btnAddItemToAudit_Click(object sender, EventArgs e)
+		{
+			ShowCreateAudit();
 		}
 	}
 }
