@@ -54,6 +54,7 @@ namespace Final_Project
 			pnlAuditInfo.Visible = true;
 			pnlCreateAudit.Visible = false;
 			pnlAuditHistory.Visible = false;
+			lblAuditError.Visible = false;
 		}
 
 		private void ShowCreateAudit()

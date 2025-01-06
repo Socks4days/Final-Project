@@ -300,6 +300,7 @@ namespace Final_Project
 
 		private void btnCreateAudit_Click(object sender, EventArgs e)
 		{
+			
 			OpenChildForm(new frmCreateAudit(), (Button)sender);
 		}
 	}
