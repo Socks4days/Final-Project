@@ -300,7 +300,9 @@ namespace Final_Project
 
 		private void btnCreateAudit_Click(object sender, EventArgs e)
 		{
-			
+			Audit newAudit = new Audit();
+			newAudit.auditDate = DateTime.Now;
+			newAudit.auditedByStaffId = frmLoginScreen.loggedInStaff.staffId;
 			OpenChildForm(new frmCreateAudit(), (Button)sender);
 		}
 	}

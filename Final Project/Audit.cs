@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Final_Project
 {
 	public class Audit
 	{
-		private int auditId { get; set; }
-		private DateTime auditDate { get; set; }
-		private int auditedByStaffId { get; set; }
+		public int auditId { get; set; }
+		public DateTime auditDate { get; set; }
+		public int auditedByStaffId { get; set; }
 
 		public Audit() { }
 		public Audit(int auditId, DateTime auditDate, int auditedByStaffId)

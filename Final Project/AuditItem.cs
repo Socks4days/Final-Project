@@ -8,10 +8,10 @@ namespace Final_Project
 {
 	public class AuditItem
 	{
-		private int auditId {  get; set; }
-		private int stockId {  get; set; }
-		private int predictedAmount { get; set; }
-		private int actualAmount { get; set; }
+		public int auditId {  get; set; }
+		public int stockId {  get; set; }
+		public int predictedAmount { get; set; }
+		public int actualAmount { get; set; }
 
 		public AuditItem() { }
 		public AuditItem(int auditId, int stockId, int predictedAmount, int actualAmount)
