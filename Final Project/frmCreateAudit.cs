@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,12 +15,16 @@ namespace Final_Project
 {
 	public partial class frmCreateAudit : Form
 	{
-		public frmCreateAudit()
+		public frmCreateAudit(Audit newAudit)
 		{
 			InitializeComponent();
 			UpdateStockItems();
 			ShowAuditInfo();
+
+			audit = newAudit;
 		}
+
+		Audit audit;
 
 		private void btnCancel_Click(object sender, EventArgs e)
 		{
@@ -55,6 +60,7 @@ namespace Final_Project
 			pnlCreateAudit.Visible = false;
 			pnlAuditHistory.Visible = false;
 			lblAuditError.Visible = false;
+			lblAuditNumber.Text = $"Audit Number: {audit.auditId}";
 		}
 
 		private void ShowCreateAudit()
