@@ -303,7 +303,7 @@ namespace Final_Project
 			Audit newAudit = new Audit();
 			newAudit.auditDate = DateTime.Now;
 			newAudit.auditedByStaffId = frmLoginScreen.loggedInStaff.staffId;
-			AuditDal.AddAudit(newAudit);
+			newAudit = AuditDal.AddAudit(newAudit);
 			OpenChildForm(new frmCreateAudit(newAudit), (Button)sender);
 		}
 	}

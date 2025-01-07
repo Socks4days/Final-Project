@@ -14,14 +14,13 @@ using Final_Project.Models;
 namespace Final_Project
 {
 	public partial class frmCreateAudit : Form
-	{
-		public frmCreateAudit(Audit newAudit)
+	{	
+		public frmCreateAudit(Audit audit)
 		{
 			InitializeComponent();
+			this.audit = audit;
 			UpdateStockItems();
-			ShowAuditInfo();
-
-			audit = newAudit;
+			ShowAuditInfo();			
 		}
 
 		Audit audit;

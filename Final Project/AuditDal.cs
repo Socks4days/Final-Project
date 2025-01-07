@@ -42,5 +42,30 @@ namespace Final_Project
 				return newAudit;
 			}
 		}
+
+		public static int AddAuditItem(AuditItem newAuditItem)
+		{
+			using (SqlConnection connection = new SqlConnection(_connectionstring))
+			{
+				connection.Open();
+
+				SqlCommand insertAuditItemCommand = new SqlCommand();
+				insertAuditItemCommand.Connection = connection;
+
+				insertAuditItemCommand.CommandType = System.Data.CommandType.StoredProcedure;
+				insertAuditItemCommand.CommandText = "AddAuditItem";
+
+				insertAuditItemCommand.Parameters.Add(new SqlParameter("@AuditId", newAuditItem.auditId));
+				insertAuditItemCommand.Parameters.Add(new SqlParameter("@StockId", newAuditItem.stockId));
+				insertAuditItemCommand.Parameters.Add(new SqlParameter("@PredictedAmount", newAuditItem.predictedAmount));
+				insertAuditItemCommand.Parameters.Add(new SqlParameter("@ActualAmount", newAuditItem.actualAmount));
+
+				int rowsAffected = insertAuditItemCommand.ExecuteNonQuery();
+
+				connection.Close();
+
+				return rowsAffected;
+			}
+		}
 	}
 }
