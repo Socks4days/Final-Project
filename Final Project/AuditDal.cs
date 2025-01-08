@@ -67,5 +67,36 @@ namespace Final_Project
 				return rowsAffected;
 			}
 		}
+
+		public static List<AuditItem> GetAllAuditItems(int auditId)
+		{
+			using (SqlConnection connection = new SqlConnection(_connectionstring))
+			{
+				List<AuditItem> auditItems = new List<AuditItem>();
+				connection.Open();
+
+				string sqlQuery = $"SELECT * FROM AuditItem WHERE auditId = {auditId}";
+
+				SqlCommand getAllAuditItemsCommand = new SqlCommand(sqlQuery, connection);
+
+				SqlDataReader sqlDataReader = getAllAuditItemsCommand.ExecuteReader();
+
+				while (sqlDataReader.Read())
+				{
+					AuditItem auditItem = new AuditItem(
+
+						(int)sqlDataReader["AuditId"],
+						(int)sqlDataReader["StockId"],
+						(int)sqlDataReader["PredictedAmount"],
+						(int)sqlDataReader["ActualAmount"]
+						);
+
+					auditItems.Add(auditItem);
+				}
+
+				connection.Close();
+				return auditItems;
+			}
+		}
 	}
 }

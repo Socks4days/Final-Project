@@ -29,14 +29,15 @@
 		private void InitializeComponent()
 		{
 			pnlCreateAudit = new Panel();
+			lblStockToAudit = new Label();
 			btnCancel = new Button();
-			label1 = new Label();
+			lblEnterNumberInStock = new Label();
 			nUDNoInStockActual = new NumericUpDown();
 			lblNoExpectedInStock = new Label();
-			btnCreatAudit = new Button();
+			btnCreateAudit = new Button();
 			pnlAuditInfo = new Panel();
 			lblAuditNumber = new Label();
-			lstViewDeliveryItems = new ListView();
+			lstViewAuditItems = new ListView();
 			cHeaderStockItemAudited = new ColumnHeader();
 			cHeaderQuantityExpected = new ColumnHeader();
 			cHeaderActualQuantity = new ColumnHeader();
@@ -44,7 +45,7 @@
 			btnCompleteAudit = new Button();
 			lblAuditError = new Label();
 			lstViewAllStock = new ListView();
-			cHeaderOrderItem = new ColumnHeader();
+			cHeaderStockItem = new ColumnHeader();
 			cHeaderLastAudited = new ColumnHeader();
 			cHeaderLastCheckedBy = new ColumnHeader();
 			cHeaderItem = new ColumnHeader();
@@ -56,16 +57,28 @@
 			// 
 			// pnlCreateAudit
 			// 
+			pnlCreateAudit.Controls.Add(lblStockToAudit);
 			pnlCreateAudit.Controls.Add(btnCancel);
-			pnlCreateAudit.Controls.Add(label1);
+			pnlCreateAudit.Controls.Add(lblEnterNumberInStock);
 			pnlCreateAudit.Controls.Add(nUDNoInStockActual);
 			pnlCreateAudit.Controls.Add(lblNoExpectedInStock);
-			pnlCreateAudit.Controls.Add(btnCreatAudit);
+			pnlCreateAudit.Controls.Add(btnCreateAudit);
 			pnlCreateAudit.Dock = DockStyle.Top;
 			pnlCreateAudit.Location = new Point(0, 0);
 			pnlCreateAudit.Name = "pnlCreateAudit";
 			pnlCreateAudit.Size = new Size(966, 680);
 			pnlCreateAudit.TabIndex = 0;
+			// 
+			// lblStockToAudit
+			// 
+			lblStockToAudit.Anchor = AnchorStyles.Top;
+			lblStockToAudit.Font = new Font("Segoe UI", 14F);
+			lblStockToAudit.Location = new Point(298, 123);
+			lblStockToAudit.Name = "lblStockToAudit";
+			lblStockToAudit.Size = new Size(370, 25);
+			lblStockToAudit.TabIndex = 8;
+			lblStockToAudit.Text = "Stock To Audit:";
+			lblStockToAudit.TextAlign = ContentAlignment.MiddleCenter;
 			// 
 			// btnCancel
 			// 
@@ -83,16 +96,16 @@
 			btnCancel.UseVisualStyleBackColor = false;
 			btnCancel.Click += btnCancel_Click;
 			// 
-			// label1
+			// lblEnterNumberInStock
 			// 
-			label1.Anchor = AnchorStyles.Top;
-			label1.AutoSize = true;
-			label1.Font = new Font("Segoe UI", 14F);
-			label1.Location = new Point(373, 241);
-			label1.Name = "label1";
-			label1.Size = new Size(204, 25);
-			label1.TabIndex = 5;
-			label1.Text = "Enter Number In Stock:";
+			lblEnterNumberInStock.Anchor = AnchorStyles.Top;
+			lblEnterNumberInStock.AutoSize = true;
+			lblEnterNumberInStock.Font = new Font("Segoe UI", 14F);
+			lblEnterNumberInStock.Location = new Point(373, 241);
+			lblEnterNumberInStock.Name = "lblEnterNumberInStock";
+			lblEnterNumberInStock.Size = new Size(204, 25);
+			lblEnterNumberInStock.TabIndex = 5;
+			lblEnterNumberInStock.Text = "Enter Number In Stock:";
 			// 
 			// nUDNoInStockActual
 			// 
@@ -107,33 +120,34 @@
 			// lblNoExpectedInStock
 			// 
 			lblNoExpectedInStock.Anchor = AnchorStyles.Top;
-			lblNoExpectedInStock.AutoSize = true;
 			lblNoExpectedInStock.Font = new Font("Segoe UI", 14F);
-			lblNoExpectedInStock.Location = new Point(365, 173);
+			lblNoExpectedInStock.Location = new Point(324, 173);
 			lblNoExpectedInStock.Name = "lblNoExpectedInStock";
-			lblNoExpectedInStock.Size = new Size(236, 25);
+			lblNoExpectedInStock.Size = new Size(318, 25);
 			lblNoExpectedInStock.TabIndex = 2;
 			lblNoExpectedInStock.Text = "Number Expected In Stock:";
+			lblNoExpectedInStock.TextAlign = ContentAlignment.MiddleCenter;
 			// 
-			// btnCreatAudit
+			// btnCreateAudit
 			// 
-			btnCreatAudit.Anchor = AnchorStyles.Top;
-			btnCreatAudit.BackColor = Color.FromArgb(255, 138, 98);
-			btnCreatAudit.FlatAppearance.BorderSize = 0;
-			btnCreatAudit.FlatStyle = FlatStyle.Flat;
-			btnCreatAudit.Font = new Font("Segoe UI", 14F);
-			btnCreatAudit.ForeColor = Color.White;
-			btnCreatAudit.Location = new Point(511, 374);
-			btnCreatAudit.Name = "btnCreatAudit";
-			btnCreatAudit.Size = new Size(220, 50);
-			btnCreatAudit.TabIndex = 1;
-			btnCreatAudit.Text = "Create Audit";
-			btnCreatAudit.UseVisualStyleBackColor = false;
+			btnCreateAudit.Anchor = AnchorStyles.Top;
+			btnCreateAudit.BackColor = Color.FromArgb(255, 138, 98);
+			btnCreateAudit.FlatAppearance.BorderSize = 0;
+			btnCreateAudit.FlatStyle = FlatStyle.Flat;
+			btnCreateAudit.Font = new Font("Segoe UI", 14F);
+			btnCreateAudit.ForeColor = Color.White;
+			btnCreateAudit.Location = new Point(511, 374);
+			btnCreateAudit.Name = "btnCreateAudit";
+			btnCreateAudit.Size = new Size(220, 50);
+			btnCreateAudit.TabIndex = 1;
+			btnCreateAudit.Text = "Create Audit";
+			btnCreateAudit.UseVisualStyleBackColor = false;
+			btnCreateAudit.Click += btnCreateAudit_Click;
 			// 
 			// pnlAuditInfo
 			// 
 			pnlAuditInfo.Controls.Add(lblAuditNumber);
-			pnlAuditInfo.Controls.Add(lstViewDeliveryItems);
+			pnlAuditInfo.Controls.Add(lstViewAuditItems);
 			pnlAuditInfo.Controls.Add(btnAddItemToAudit);
 			pnlAuditInfo.Controls.Add(btnCompleteAudit);
 			pnlAuditInfo.Controls.Add(lblAuditError);
@@ -155,22 +169,22 @@
 			lblAuditNumber.TabIndex = 46;
 			lblAuditNumber.Text = "Audit No Goes Here";
 			// 
-			// lstViewDeliveryItems
+			// lstViewAuditItems
 			// 
-			lstViewDeliveryItems.BackColor = Color.FromArgb(255, 192, 167);
-			lstViewDeliveryItems.Columns.AddRange(new ColumnHeader[] { cHeaderStockItemAudited, cHeaderQuantityExpected, cHeaderActualQuantity });
-			lstViewDeliveryItems.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			lstViewDeliveryItems.ForeColor = Color.Black;
-			lstViewDeliveryItems.FullRowSelect = true;
-			lstViewDeliveryItems.GridLines = true;
-			lstViewDeliveryItems.Location = new Point(116, 329);
-			lstViewDeliveryItems.Margin = new Padding(3, 2, 3, 2);
-			lstViewDeliveryItems.MultiSelect = false;
-			lstViewDeliveryItems.Name = "lstViewDeliveryItems";
-			lstViewDeliveryItems.Size = new Size(735, 173);
-			lstViewDeliveryItems.TabIndex = 45;
-			lstViewDeliveryItems.UseCompatibleStateImageBehavior = false;
-			lstViewDeliveryItems.View = View.Details;
+			lstViewAuditItems.BackColor = Color.FromArgb(255, 192, 167);
+			lstViewAuditItems.Columns.AddRange(new ColumnHeader[] { cHeaderStockItemAudited, cHeaderQuantityExpected, cHeaderActualQuantity });
+			lstViewAuditItems.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			lstViewAuditItems.ForeColor = Color.Black;
+			lstViewAuditItems.FullRowSelect = true;
+			lstViewAuditItems.GridLines = true;
+			lstViewAuditItems.Location = new Point(116, 329);
+			lstViewAuditItems.Margin = new Padding(3, 2, 3, 2);
+			lstViewAuditItems.MultiSelect = false;
+			lstViewAuditItems.Name = "lstViewAuditItems";
+			lstViewAuditItems.Size = new Size(735, 173);
+			lstViewAuditItems.TabIndex = 45;
+			lstViewAuditItems.UseCompatibleStateImageBehavior = false;
+			lstViewAuditItems.View = View.Details;
 			// 
 			// cHeaderStockItemAudited
 			// 
@@ -239,7 +253,7 @@
 			// 
 			lstViewAllStock.Anchor = AnchorStyles.Top;
 			lstViewAllStock.BackColor = Color.FromArgb(255, 192, 167);
-			lstViewAllStock.Columns.AddRange(new ColumnHeader[] { cHeaderOrderItem, cHeaderLastAudited, cHeaderLastCheckedBy });
+			lstViewAllStock.Columns.AddRange(new ColumnHeader[] { cHeaderStockItem, cHeaderLastAudited, cHeaderLastCheckedBy });
 			lstViewAllStock.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			lstViewAllStock.ForeColor = Color.Black;
 			lstViewAllStock.FullRowSelect = true;
@@ -252,11 +266,12 @@
 			lstViewAllStock.TabIndex = 36;
 			lstViewAllStock.UseCompatibleStateImageBehavior = false;
 			lstViewAllStock.View = View.Details;
+			lstViewAllStock.ItemSelectionChanged += lstViewAllStock_ItemSelectionChanged;
 			// 
-			// cHeaderOrderItem
+			// cHeaderStockItem
 			// 
-			cHeaderOrderItem.Text = "Stock Item To Audit";
-			cHeaderOrderItem.Width = 350;
+			cHeaderStockItem.Text = "Stock Item To Audit";
+			cHeaderStockItem.Width = 350;
 			// 
 			// cHeaderLastAudited
 			// 
@@ -307,16 +322,16 @@
 		private Panel pnlCreateAudit;
 		private NumericUpDown numericUpDown1;
 		private Label lblNoExpectedInStock;
-		private Button btnCreatAudit;
+		private Button btnCreateAudit;
 		private NumericUpDown nUDNoInStockActual;
-		private Label label1;
+		private Label lblEnterNumberInStock;
 		private Button btnCancel;
 		private Panel pnlAuditInfo;
 		private Label lblAuditError;
 		private Button btnCompleteAudit;
 		private Label lblOrderDateAndStatus;
 		private ListView lstViewAllStock;
-		private ColumnHeader cHeaderOrderItem;
+		private ColumnHeader cHeaderStockItem;
 		private ColumnHeader cHeaderLastAudited;
 		private Label lblOrderNumber;
 		private Label lblInstructionsDeliveryItem;
@@ -327,11 +342,12 @@
 		private ColumnHeader cHeaderDeliveryQuantityReceived;
 		private Button btnAddItemToAudit;
 		private Label lblAuditNumber;
-		private ListView lstViewDeliveryItems;
+		private ListView lstViewAuditItems;
 		private ColumnHeader cHeaderStockItemAudited;
 		private ColumnHeader cHeaderQuantityExpected;
 		private ColumnHeader cHeaderActualQuantity;
 		private ColumnHeader cHeaderLastCheckedBy;
 		private Panel pnlAuditHistory;
+		private Label lblStockToAudit;
 	}
 }
