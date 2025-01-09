@@ -107,7 +107,7 @@ namespace Final_Project
 							break;
 					}
 				}
-				else if (name == "Create Audit")
+				else if (name == "Create Audit" || name == "Audit History")
 				{
 					btnAudits.BackColor = Color.FromArgb(255, 76, 5);
 					pnlTitleBar.BackColor = Color.FromArgb(255, 138, 98);
@@ -116,10 +116,10 @@ namespace Final_Project
 						case "Create Audit":
 							btnCreateAudit.BackColor = Color.FromArgb(255, 138, 98);
 							break;
-						case "ADD ANOTHER HERE?":
-							btnOrderStock.BackColor = Color.FromArgb(0, 151, 136);
+						case "Audit History":
+							btnAuditHistory.BackColor = Color.FromArgb(255, 138, 98);
 							break;
-						
+
 					}
 				}
 			}
@@ -191,7 +191,7 @@ namespace Final_Project
 			else
 			{
 				btnDelivery.BackColor = Color.FromArgb(51, 51, 79);
-			}			
+			}
 			parentMenuButton = btnDelivery;
 		}
 
@@ -207,7 +207,7 @@ namespace Final_Project
 			else
 			{
 				btnAudits.BackColor = Color.FromArgb(51, 51, 79);
-			}			
+			}
 			parentMenuButton = btnAudits;
 		}
 
@@ -221,11 +221,11 @@ namespace Final_Project
 
 		// Hide the settings and admin submenus when a menu option is clicked
 		public void HideSubMenus()
-		{			
+		{
 			pnlStock.Visible = false;
 			pnlOrder.Visible = false;
 			pnlDelivery.Visible = false;
-			pnlAudits.Visible = false;				
+			pnlAudits.Visible = false;
 		}
 
 		// Hide the main menu and title bar
@@ -260,8 +260,8 @@ namespace Final_Project
 
 		private void SetLogo()
 		{
-			pctBoxLogo.ImageLocation = @"C:\Users\andre\OneDrive\Desktop\A2 SSD\Tasks\Final Project\TitleIcon.ico";
-			pctBoxSmallLogo.ImageLocation = @"C:\Users\andre\OneDrive\Desktop\A2 SSD\Tasks\Final Project\TitleIcon.ico";
+			pctBoxLogo.ImageLocation = @"C:\Users\andre\OneDrive\Desktop\A2 SSD\Tasks\Final Project\Movers Logo Black.png";
+			pctBoxSmallLogo.ImageLocation = @"C:\Users\andre\OneDrive\Desktop\A2 SSD\Tasks\Final Project\Movers Logo White.png";
 		}
 
 		private void btnManageStockLevels_Click(object sender, EventArgs e)
@@ -304,7 +304,13 @@ namespace Final_Project
 			newAudit.auditDate = DateTime.Now;
 			newAudit.auditedByStaffId = frmLoginScreen.loggedInStaff.staffId;
 			newAudit = AuditDal.AddAudit(newAudit);
-			OpenChildForm(new frmCreateAudit(newAudit), (Button)sender);
+			OpenChildForm(new frmCreateAudit(newAudit, "Create Audit"), (Button)sender);
+		}
+
+		private void btnAuditHistory_Click(object sender, EventArgs e)
+		{
+			Audit audit = new Audit();
+			OpenChildForm(new frmCreateAudit(audit, "Audit History"), (Button)sender);
 		}
 	}
 }

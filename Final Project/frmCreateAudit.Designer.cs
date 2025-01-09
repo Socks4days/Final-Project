@@ -34,7 +34,7 @@
 			lblEnterNumberInStock = new Label();
 			nUDNoInStockActual = new NumericUpDown();
 			lblNoExpectedInStock = new Label();
-			btnCreateAudit = new Button();
+			btnAddToAudit = new Button();
 			pnlAuditInfo = new Panel();
 			lblAuditNumber = new Label();
 			lstViewAuditItems = new ListView();
@@ -50,9 +50,16 @@
 			cHeaderLastCheckedBy = new ColumnHeader();
 			cHeaderItem = new ColumnHeader();
 			pnlAuditHistory = new Panel();
+			lstViewAuditHistory = new ListView();
+			columnHeader1 = new ColumnHeader();
+			columnHeader2 = new ColumnHeader();
+			columnHeader3 = new ColumnHeader();
+			columnHeader4 = new ColumnHeader();
+			columnHeader5 = new ColumnHeader();
 			pnlCreateAudit.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)nUDNoInStockActual).BeginInit();
 			pnlAuditInfo.SuspendLayout();
+			pnlAuditHistory.SuspendLayout();
 			SuspendLayout();
 			// 
 			// pnlCreateAudit
@@ -62,7 +69,7 @@
 			pnlCreateAudit.Controls.Add(lblEnterNumberInStock);
 			pnlCreateAudit.Controls.Add(nUDNoInStockActual);
 			pnlCreateAudit.Controls.Add(lblNoExpectedInStock);
-			pnlCreateAudit.Controls.Add(btnCreateAudit);
+			pnlCreateAudit.Controls.Add(btnAddToAudit);
 			pnlCreateAudit.Dock = DockStyle.Top;
 			pnlCreateAudit.Location = new Point(0, 0);
 			pnlCreateAudit.Name = "pnlCreateAudit";
@@ -128,21 +135,21 @@
 			lblNoExpectedInStock.Text = "Number Expected In Stock:";
 			lblNoExpectedInStock.TextAlign = ContentAlignment.MiddleCenter;
 			// 
-			// btnCreateAudit
+			// btnAddToAudit
 			// 
-			btnCreateAudit.Anchor = AnchorStyles.Top;
-			btnCreateAudit.BackColor = Color.FromArgb(255, 138, 98);
-			btnCreateAudit.FlatAppearance.BorderSize = 0;
-			btnCreateAudit.FlatStyle = FlatStyle.Flat;
-			btnCreateAudit.Font = new Font("Segoe UI", 14F);
-			btnCreateAudit.ForeColor = Color.White;
-			btnCreateAudit.Location = new Point(511, 374);
-			btnCreateAudit.Name = "btnCreateAudit";
-			btnCreateAudit.Size = new Size(220, 50);
-			btnCreateAudit.TabIndex = 1;
-			btnCreateAudit.Text = "Create Audit";
-			btnCreateAudit.UseVisualStyleBackColor = false;
-			btnCreateAudit.Click += btnCreateAudit_Click;
+			btnAddToAudit.Anchor = AnchorStyles.Top;
+			btnAddToAudit.BackColor = Color.FromArgb(255, 138, 98);
+			btnAddToAudit.FlatAppearance.BorderSize = 0;
+			btnAddToAudit.FlatStyle = FlatStyle.Flat;
+			btnAddToAudit.Font = new Font("Segoe UI", 14F);
+			btnAddToAudit.ForeColor = Color.White;
+			btnAddToAudit.Location = new Point(511, 374);
+			btnAddToAudit.Name = "btnAddToAudit";
+			btnAddToAudit.Size = new Size(220, 50);
+			btnAddToAudit.TabIndex = 1;
+			btnAddToAudit.Text = "Add To Audit";
+			btnAddToAudit.UseVisualStyleBackColor = false;
+			btnAddToAudit.Click += btnCreateAudit_Click;
 			// 
 			// pnlAuditInfo
 			// 
@@ -290,11 +297,55 @@
 			// 
 			// pnlAuditHistory
 			// 
+			pnlAuditHistory.Controls.Add(lstViewAuditHistory);
 			pnlAuditHistory.Dock = DockStyle.Top;
 			pnlAuditHistory.Location = new Point(0, 1360);
 			pnlAuditHistory.Name = "pnlAuditHistory";
 			pnlAuditHistory.Size = new Size(966, 680);
 			pnlAuditHistory.TabIndex = 2;
+			// 
+			// lstViewAuditHistory
+			// 
+			lstViewAuditHistory.Anchor = AnchorStyles.Top;
+			lstViewAuditHistory.BackColor = Color.FromArgb(255, 192, 167);
+			lstViewAuditHistory.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5 });
+			lstViewAuditHistory.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			lstViewAuditHistory.ForeColor = Color.Black;
+			lstViewAuditHistory.FullRowSelect = true;
+			lstViewAuditHistory.GridLines = true;
+			lstViewAuditHistory.Location = new Point(93, 48);
+			lstViewAuditHistory.Margin = new Padding(3, 2, 3, 2);
+			lstViewAuditHistory.MultiSelect = false;
+			lstViewAuditHistory.Name = "lstViewAuditHistory";
+			lstViewAuditHistory.Size = new Size(790, 580);
+			lstViewAuditHistory.TabIndex = 46;
+			lstViewAuditHistory.UseCompatibleStateImageBehavior = false;
+			lstViewAuditHistory.View = View.Details;
+			// 
+			// columnHeader1
+			// 
+			columnHeader1.Text = "Audit Number";
+			columnHeader1.Width = 140;
+			// 
+			// columnHeader2
+			// 
+			columnHeader2.Text = "Date Checked";
+			columnHeader2.Width = 200;
+			// 
+			// columnHeader3
+			// 
+			columnHeader3.Text = "Checked By";
+			columnHeader3.Width = 200;
+			// 
+			// columnHeader4
+			// 
+			columnHeader4.Text = "Correct";
+			columnHeader4.Width = 120;
+			// 
+			// columnHeader5
+			// 
+			columnHeader5.Text = "Incorrect";
+			columnHeader5.Width = 120;
 			// 
 			// frmCreateAudit
 			// 
@@ -309,11 +360,13 @@
 			Controls.Add(pnlCreateAudit);
 			Name = "frmCreateAudit";
 			Text = "frmCreateAudit";
+			Resize += frmCreateAudit_Resize;
 			pnlCreateAudit.ResumeLayout(false);
 			pnlCreateAudit.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)nUDNoInStockActual).EndInit();
 			pnlAuditInfo.ResumeLayout(false);
 			pnlAuditInfo.PerformLayout();
+			pnlAuditHistory.ResumeLayout(false);
 			ResumeLayout(false);
 		}
 
@@ -322,7 +375,7 @@
 		private Panel pnlCreateAudit;
 		private NumericUpDown numericUpDown1;
 		private Label lblNoExpectedInStock;
-		private Button btnCreateAudit;
+		private Button btnAddToAudit;
 		private NumericUpDown nUDNoInStockActual;
 		private Label lblEnterNumberInStock;
 		private Button btnCancel;
@@ -349,5 +402,11 @@
 		private ColumnHeader cHeaderLastCheckedBy;
 		private Panel pnlAuditHistory;
 		private Label lblStockToAudit;
+		private ListView lstViewAuditHistory;
+		private ColumnHeader columnHeader1;
+		private ColumnHeader columnHeader2;
+		private ColumnHeader columnHeader3;
+		private ColumnHeader columnHeader4;
+		private ColumnHeader columnHeader5;
 	}
 }

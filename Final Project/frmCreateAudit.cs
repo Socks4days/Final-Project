@@ -15,17 +15,21 @@ namespace Final_Project
 {
 	public partial class frmCreateAudit : Form
 	{
-		public frmCreateAudit(Audit audit)
+		public frmCreateAudit(Audit audit, string viewToShow)
 		{
 			InitializeComponent();
 			this.audit = audit;
 			UpdateStockItems();
+
+			if(viewToShow == "Create Audit")
 			ShowAuditInfo();
+			else if(viewToShow == "Audit History")
+			ShowAuditHistory();
 		}
 
 		Audit audit;
 		Stock stockToAudit = new Stock();
-		List<AuditItem> auditItems = new List<AuditItem>(); 
+		List<AuditItem> auditItems = new List<AuditItem>();
 
 		private void btnCancel_Click(object sender, EventArgs e)
 		{
@@ -84,11 +88,6 @@ namespace Final_Project
 
 				// Add the list item to the order list view
 				lstViewAuditItems.Items.Add(item);
-			}
-
-			foreach(ListViewItem item in lstViewAllStock.Items)
-			{
-				//if (item.SubItems[0].Text == )
 			}
 		}
 
@@ -152,7 +151,7 @@ namespace Final_Project
 			stock.stockLevel = actualAmount;
 			StockDal.UpdateStockInformation(stock);
 
-			foreach(ListViewItem stockItem in lstViewAllStock.Items)
+			foreach (ListViewItem stockItem in lstViewAllStock.Items)
 			{
 				if (stockItem.SubItems[0].Text == StockDal.GetStockByStockId(item.stockId).stockName)
 				{
@@ -160,6 +159,11 @@ namespace Final_Project
 				}
 			}
 			ShowAuditInfo();
+		}
+
+		private void frmCreateAudit_Resize(object sender, EventArgs e)
+		{
+			lstViewAuditHistory.Height = (pnlAuditHistory.Height - 100);
 		}
 	}
 }

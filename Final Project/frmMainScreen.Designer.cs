@@ -31,6 +31,7 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainScreen));
 			pnlSideBar = new Panel();
 			pnlAudits = new Panel();
+			btnAuditHistory = new Button();
 			btnCreateAudit = new Button();
 			btnAudits = new Button();
 			pnlDelivery = new Panel();
@@ -85,12 +86,33 @@
 			// 
 			// pnlAudits
 			// 
+			pnlAudits.Controls.Add(btnAuditHistory);
 			pnlAudits.Controls.Add(btnCreateAudit);
 			pnlAudits.Dock = DockStyle.Top;
 			pnlAudits.Location = new Point(0, 770);
 			pnlAudits.Name = "pnlAudits";
-			pnlAudits.Size = new Size(182, 70);
+			pnlAudits.Size = new Size(182, 140);
 			pnlAudits.TabIndex = 13;
+			// 
+			// btnAuditHistory
+			// 
+			btnAuditHistory.BackColor = Color.Transparent;
+			btnAuditHistory.Dock = DockStyle.Top;
+			btnAuditHistory.FlatAppearance.BorderSize = 0;
+			btnAuditHistory.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
+			btnAuditHistory.FlatStyle = FlatStyle.Flat;
+			btnAuditHistory.Font = new Font("Segoe UI", 14F);
+			btnAuditHistory.ForeColor = SystemColors.Control;
+			btnAuditHistory.Location = new Point(0, 70);
+			btnAuditHistory.Margin = new Padding(2);
+			btnAuditHistory.Name = "btnAuditHistory";
+			btnAuditHistory.Padding = new Padding(20, 0, 0, 0);
+			btnAuditHistory.Size = new Size(182, 70);
+			btnAuditHistory.TabIndex = 14;
+			btnAuditHistory.Text = "Audit History";
+			btnAuditHistory.TextAlign = ContentAlignment.MiddleLeft;
+			btnAuditHistory.UseVisualStyleBackColor = false;
+			btnAuditHistory.Click += btnAuditHistory_Click;
 			// 
 			// btnCreateAudit
 			// 
@@ -354,11 +376,11 @@
 			// 
 			// pctBoxSmallLogo
 			// 
-			pctBoxSmallLogo.Anchor = AnchorStyles.None;
-			pctBoxSmallLogo.Location = new Point(59, 3);
+			pctBoxSmallLogo.Dock = DockStyle.Fill;
+			pctBoxSmallLogo.Location = new Point(0, 0);
 			pctBoxSmallLogo.Margin = new Padding(2);
 			pctBoxSmallLogo.Name = "pctBoxSmallLogo";
-			pctBoxSmallLogo.Size = new Size(65, 65);
+			pctBoxSmallLogo.Size = new Size(182, 70);
 			pctBoxSmallLogo.SizeMode = PictureBoxSizeMode.Zoom;
 			pctBoxSmallLogo.TabIndex = 2;
 			pctBoxSmallLogo.TabStop = false;
@@ -401,10 +423,10 @@
 			// pctBoxLogo
 			// 
 			pctBoxLogo.Anchor = AnchorStyles.None;
-			pctBoxLogo.Location = new Point(351, 184);
+			pctBoxLogo.Location = new Point(266, 70);
 			pctBoxLogo.Margin = new Padding(2);
 			pctBoxLogo.Name = "pctBoxLogo";
-			pctBoxLogo.Size = new Size(311, 306);
+			pctBoxLogo.Size = new Size(441, 186);
 			pctBoxLogo.SizeMode = PictureBoxSizeMode.Zoom;
 			pctBoxLogo.TabIndex = 1;
 			pctBoxLogo.TabStop = false;
@@ -463,5 +485,6 @@
 		private Button btnAudits;
 		private Panel pnlAudits;
 		private Button btnCreateAudit;
+		private Button btnAuditHistory;
 	}
 }
