@@ -494,7 +494,7 @@
 			// cHeaderLastCheckedDate
 			// 
 			cHeaderLastCheckedDate.Text = "Last Checked";
-			cHeaderLastCheckedDate.Width = 160;
+			cHeaderLastCheckedDate.Width = 250;
 			// 
 			// cHeaderCheckedBy
 			// 

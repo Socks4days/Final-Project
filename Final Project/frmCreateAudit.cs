@@ -100,6 +100,7 @@ namespace Final_Project
 			lblAuditError.Visible = false;
 			lblAuditNumber.Text = $"Audit Number: {audit.auditId}";
 			btnAddItemToAudit.Enabled = false;
+			lstViewAllStock.SelectedItems.Clear();
 			//UpdateStockItems();
 			UpdateAuditItems();
 		}
@@ -111,6 +112,7 @@ namespace Final_Project
 			pnlAuditHistory.Visible = false;
 			lblNoExpectedInStock.Text = $"Number expected in stock: {stockToAudit.stockLevel}";
 			lblStockToAudit.Text = $"You are auditing: {stockToAudit.stockName}";
+			nUDNoInStockActual.Value = 0;
 		}
 
 		private void ShowAuditHistory()
@@ -150,6 +152,13 @@ namespace Final_Project
 			stock.stockLevel = actualAmount;
 			StockDal.UpdateStockInformation(stock);
 
+			foreach(ListViewItem stockItem in lstViewAllStock.Items)
+			{
+				if (stockItem.SubItems[0].Text == StockDal.GetStockByStockId(item.stockId).stockName)
+				{
+					lstViewAllStock.Items.Remove(stockItem);
+				}
+			}
 			ShowAuditInfo();
 		}
 	}
