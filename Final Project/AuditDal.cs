@@ -98,5 +98,35 @@ namespace Final_Project
 				return auditItems;
 			}
 		}
+
+		public static List<Audit> GetAllAudits()
+		{
+			using (SqlConnection connection = new SqlConnection(_connectionstring))
+			{
+				List<Audit> audits = new List<Audit>();
+				connection.Open();
+
+				string sqlQuery = $"SELECT * FROM Audit";
+
+				SqlCommand getAllAuditsCommand = new SqlCommand(sqlQuery, connection);
+
+				SqlDataReader sqlDataReader = getAllAuditsCommand.ExecuteReader();
+
+				while (sqlDataReader.Read())
+				{
+					Audit audit = new Audit(
+
+						(int)sqlDataReader["AuditId"],
+						(DateTime)sqlDataReader["AuditDate"],
+						(int)sqlDataReader["AuditedByStaffId"]
+						);
+
+					audits.Add(audit);
+				}
+
+				connection.Close();
+				return audits;
+			}
+		}
 	}
 }

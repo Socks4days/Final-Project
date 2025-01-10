@@ -30,6 +30,7 @@ namespace Final_Project
 		Audit audit;
 		Stock stockToAudit = new Stock();
 		List<AuditItem> auditItems = new List<AuditItem>();
+		List<Audit> audits = new List<Audit>();
 
 		private void btnCancel_Click(object sender, EventArgs e)
 		{
@@ -91,6 +92,16 @@ namespace Final_Project
 			}
 		}
 
+		private void UpdateAuditHistoryItems()
+		{
+			foreach (ListViewItem item in lstViewAuditHistory.Items)
+			{
+				lstViewAuditHistory.Items.Remove(item);
+			}
+
+			audits = 
+		}
+
 		private void ShowAuditInfo()
 		{
 			pnlAuditInfo.Visible = true;
@@ -119,6 +130,7 @@ namespace Final_Project
 			pnlAuditHistory.Visible = true;
 			pnlCreateAudit.Visible = false;
 			pnlAuditInfo.Visible = false;
+			UpdateAuditHistoryItems();
 		}
 
 		private void btnAddItemToAudit_Click(object sender, EventArgs e)
