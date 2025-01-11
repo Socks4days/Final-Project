@@ -22,8 +22,14 @@ namespace Final_Project
         public const string Fulfilled = "Fulfilled";
         public const string Completed = "Completed";
 
-        #endregion Properties
-        public Order()
+        public string orderPlacedByStaffName { get; set; }
+        public DateTime? minDeliveryDueDate { get; set; }
+		public DateTime? maxDeliveryDueDate { get; set; }
+		public DateTime? lastDeliveryDate { get; set; }
+
+
+		#endregion Properties
+		public Order()
         {
 
         }
@@ -34,5 +40,18 @@ namespace Final_Project
             this.orderPlacedByStaffId = orderPlacedByStaffId;
             this.orderStatus = orderStatus;
         }
-    }
+
+		public Order(int orderNumber, DateTime orderDate, int orderPlacedByStaffId, string orderStatus,
+			string orderPlacedByStaffName, DateTime? minDeliveryDueDate, DateTime? maxDeliveryDueDate, DateTime? lastDeliveryDate)
+		{
+			this.orderNumber = orderNumber;
+			this.orderDate = orderDate;
+			this.orderPlacedByStaffId = orderPlacedByStaffId;
+			this.orderStatus = orderStatus;
+            this.orderPlacedByStaffName = orderPlacedByStaffName;
+            this.minDeliveryDueDate = minDeliveryDueDate;
+            this.maxDeliveryDueDate = maxDeliveryDueDate;
+            this.lastDeliveryDate = lastDeliveryDate;
+		}
+	}
 }

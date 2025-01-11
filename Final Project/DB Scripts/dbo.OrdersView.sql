@@ -1,7 +1,7 @@
 USE [C:\USERS\ANDRE\ONEDRIVE\DESKTOP\A2 SSD\TASKS\FINAL PROJECT\FINAL PROJECT\FINAL PROJECT\STOCKMANAGEMENT.MDF]
 GO
 
-/****** Object: View [dbo].[OrdersView] Script Date: 11/01/2025 18:01:42 ******/
+/****** Object: View [dbo].[OrdersView] Script Date: 11/01/2025 18:08:49 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -11,8 +11,8 @@ GO
 CREATE VIEW [OrdersView] AS SELECT [Order].OrderNumber, [Order].OrderDate, [Order].OrderPlacedByStaffId,
        CONCAT([Staff].Forename,' ',[Staff].Surname) AS OrderPlacedByStaffName,
        [Order].OrderStatus,
-       MIN([OrderItemsDeliveredView].DeliveryDueDate) AS MinDeliveryDateDate,
-       MAX([OrderItemsDeliveredView].DeliveryDueDate) AS MaxDeliveryDateDate,
+       MIN([OrderItemsDeliveredView].DeliveryDueDate) AS MinDeliveryDueDate,
+       MAX([OrderItemsDeliveredView].DeliveryDueDate) AS MaxDeliveryDueDate,
        MAX([OrderItemsDeliveredView].DeliveryDate) AS LastDeliveryDate
 
 FROM [Order]

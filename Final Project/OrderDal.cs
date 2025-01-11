@@ -142,7 +142,7 @@ namespace Final_Project
                         (DateTime)sqlDataReader["OrderDate"],
                         (int)sqlDataReader["OrderPlacedByStaffId"],
                         (string)sqlDataReader["OrderStatus"]
-                        );
+					);
                     orders.Add(order);
                 }
 
@@ -151,7 +151,59 @@ namespace Final_Project
             }
         }
 
-        public static Order AddOrder(Order newOrder)
+        public static DateTime? getSqlDate(SqlDataReader sqlDataReader, string columnName)
+        {
+            var dbDateTime = sqlDataReader[columnName];
+			DateTime? dateTime = null;
+            if (dbDateTime != DBNull.Value)
+				dateTime = Convert.ToDateTime(dbDateTime);
+            return dateTime;
+        }
+
+		public static string getSqlString(SqlDataReader sqlDataReader, string columnName)
+		{
+			var dbString = sqlDataReader[columnName];
+			string returnString = "";
+			if (dbString != DBNull.Value)
+				returnString = (string)dbString;
+			return returnString;
+		}
+
+		public static List<Order> GetAllOrdersWithDeliveryDetails()
+		{
+			using (SqlConnection connection = new SqlConnection(_connectionstring))
+			{
+				List<Order> orders = new List<Order>();
+				connection.Open();
+
+				string sqlQuery = "SELECT * FROM [OrdersView] ORDER BY OrderNumber DESC";
+
+				SqlCommand getAllOrdersCommand = new SqlCommand(sqlQuery, connection);
+
+				SqlDataReader sqlDataReader = getAllOrdersCommand.ExecuteReader();
+
+				while (sqlDataReader.Read())
+				{
+					Order order = new Order(
+
+						(int)sqlDataReader["OrderNumber"],
+						(DateTime)sqlDataReader["OrderDate"],
+						(int)sqlDataReader["OrderPlacedByStaffId"],
+						(string)sqlDataReader["OrderStatus"],
+						getSqlString(sqlDataReader, "OrderPlacedByStaffName"),
+						getSqlDate(sqlDataReader, "MinDeliveryDueDate"),
+						getSqlDate(sqlDataReader, "MaxDeliveryDueDate"),
+						getSqlDate(sqlDataReader, "LastDeliveryDate")
+					);
+					orders.Add(order);
+				}
+
+				connection.Close();
+				return orders;
+			}
+		}
+
+		public static Order AddOrder(Order newOrder)
         {
             using (SqlConnection connection = new SqlConnection(_connectionstring))
             {

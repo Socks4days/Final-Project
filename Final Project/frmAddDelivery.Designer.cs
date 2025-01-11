@@ -35,6 +35,8 @@
 			cHeaderOrderNumber = new ColumnHeader();
 			cHeaderOrderDate = new ColumnHeader();
 			cHeaderOrderStatus = new ColumnHeader();
+			cHeaderExpected = new ColumnHeader();
+			cHeaderLatestDelivery = new ColumnHeader();
 			pnlDelivery = new Panel();
 			lblDeliveryItemError = new Label();
 			btnRecordDeliveryForOrder = new Button();
@@ -121,7 +123,7 @@
 			// 
 			lstViewOrders.Anchor = AnchorStyles.Top;
 			lstViewOrders.BackColor = Color.FromArgb(0, 214, 194);
-			lstViewOrders.Columns.AddRange(new ColumnHeader[] { cHeaderOrderNumber, cHeaderOrderDate, cHeaderOrderStatus });
+			lstViewOrders.Columns.AddRange(new ColumnHeader[] { cHeaderOrderNumber, cHeaderOrderDate, cHeaderOrderStatus, cHeaderExpected, cHeaderLatestDelivery });
 			lstViewOrders.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			lstViewOrders.ForeColor = Color.Black;
 			lstViewOrders.FullRowSelect = true;
@@ -137,18 +139,28 @@
 			// 
 			// cHeaderOrderNumber
 			// 
-			cHeaderOrderNumber.Text = "Order Number";
-			cHeaderOrderNumber.Width = 200;
+			cHeaderOrderNumber.Text = "Order No.";
+			cHeaderOrderNumber.Width = 120;
 			// 
 			// cHeaderOrderDate
 			// 
 			cHeaderOrderDate.Text = "Order Date";
-			cHeaderOrderDate.Width = 250;
+			cHeaderOrderDate.Width = 150;
 			// 
 			// cHeaderOrderStatus
 			// 
 			cHeaderOrderStatus.Text = "Status";
-			cHeaderOrderStatus.Width = 250;
+			cHeaderOrderStatus.Width = 150;
+			// 
+			// cHeaderExpected
+			// 
+			cHeaderExpected.Text = "Expected";
+			cHeaderExpected.Width = 300;
+			// 
+			// cHeaderLatestDelivery
+			// 
+			cHeaderLatestDelivery.Text = "Latest Delivery";
+			cHeaderLatestDelivery.Width = 200;
 			// 
 			// pnlDelivery
 			// 
@@ -562,5 +574,7 @@
 		private Label lblOrderError;
 		private Label lblDeliveryItemError;
 		private Label lblInstructionsDeliveryItem;
+		private ColumnHeader cHeaderExpected;
+		private ColumnHeader cHeaderLatestDelivery;
 	}
 }

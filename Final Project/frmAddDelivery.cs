@@ -32,7 +32,7 @@ namespace Final_Project
 		private void UpdateOrderListView()
 		{
 			// create a list of orders and fill with all orders
-			List<Order> sortedOrderList = OrderDal.GetAllOrders();
+			List<Order> sortedOrderList = OrderDal.GetAllOrdersWithDeliveryDetails();
 
 			foreach (ListViewItem item in lstViewOrders.Items)
 			{
@@ -44,8 +44,31 @@ namespace Final_Project
 			{
 				if (order.orderStatus == Order.Placed || order.orderStatus == Order.PartFilled || order.orderStatus == Order.Fulfilled)
 				{
+					// Get expected delivery date(s)
+					string expected = "";
+
+					if(order.minDeliveryDueDate != null && order.maxDeliveryDueDate != null) 
+					{
+						if(order.minDeliveryDueDate == order.maxDeliveryDueDate)
+						{
+							expected = order.minDeliveryDueDate.Value.Date.ToString("dd/MM/yyyy");
+						}
+						else
+						{
+							expected = $"{order.minDeliveryDueDate.Value.Date.ToString("dd/MM/yyyy")} - {order.maxDeliveryDueDate.Value.Date.ToString("dd/MM/yyyy")}";
+						}
+					}
+
+					// Get last updated date
+					string lastUpdated = "No deliveries yet";				
+
+					if(order.lastDeliveryDate != null)
+					{
+						lastUpdated = order.lastDeliveryDate.Value.Date.ToString("dd/MM/yyyy");
+					}
+
 					// Create an array with order details
-					string[] row = { order.orderNumber.ToString(), order.orderDate.ToString(), order.orderStatus };
+					string[] row = { order.orderNumber.ToString(), order.orderDate.ToString("dd/MM/yyyy"), order.orderStatus, expected, lastUpdated };
 
 					// Create a new list item based on the array
 					ListViewItem item = new ListViewItem(row);
