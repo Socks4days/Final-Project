@@ -62,7 +62,7 @@ namespace Final_Project
 				lblTitle.Text = menuButton.Text;
 				string name = menuButton.Text;
 
-				if (name == "Manage Stock" || name == "Add New Stock" || name == "Retire Stock")
+				if (name == "Manage Stock" || name == "New Stock Item" || name == "Retire Stock Item")
 				{
 					btnStock.BackColor = Color.FromArgb(24, 105, 170);
 					pnlTitleBar.BackColor = Color.FromArgb(33, 150, 243);
@@ -71,11 +71,11 @@ namespace Final_Project
 						case "Manage Stock":
 							btnManageStockLevels.BackColor = Color.FromArgb(33, 150, 243);
 							break;
-						case "Add New Stock":
-							btnAddNewStock.BackColor = Color.FromArgb(33, 150, 243);
+						case "New Stock Item":
+							btnNewStockItem.BackColor = Color.FromArgb(33, 150, 243);
 							break;
-						case "Retire Stock":
-							btnRetireStock.BackColor = Color.FromArgb(33, 150, 243);
+						case "Retire Stock Item":
+							btnRetireStockItem.BackColor = Color.FromArgb(33, 150, 243);
 							break;
 					}
 				}
@@ -146,7 +146,7 @@ namespace Final_Project
 			lblTitle.Text = "Movers Maintenance Garage Stock Control System";
 		}
 
-		#region toggleSubMenus
+		#region ToggleSubMenus
 		private void btnStock_Click(object sender, EventArgs e)
 		{
 			CloseChildForm();
@@ -256,7 +256,7 @@ namespace Final_Project
 			}
 		}
 
-		#endregion toggleSubMenus
+		#endregion ToggleSubMenus
 
 		private void SetLogo()
 		{
@@ -269,12 +269,12 @@ namespace Final_Project
 			OpenChildForm(new frmEditStockLevels(), (Button)sender);
 		}
 
-		private void btnAddNewStock_Click(object sender, EventArgs e)
+		private void btnNewStockItem_Click(object sender, EventArgs e)
 		{
 			OpenChildForm(new frmAddOrRetireStockType("Add Stock"), (Button)sender);
 		}
 
-		private void btnRetireStock_Click(object sender, EventArgs e)
+		private void btnRetireStockItem_Click(object sender, EventArgs e)
 		{
 			OpenChildForm(new frmAddOrRetireStockType("Retire Stock"), (Button)sender);
 		}
@@ -311,6 +311,17 @@ namespace Final_Project
 		{
 			Audit audit = new Audit();
 			OpenChildForm(new frmCreateAudit(audit, "Audit History"), (Button)sender);
+		}
+
+		private void btnLogout_Click(object sender, EventArgs e)
+		{
+			OpenChildForm(new frmLoginScreen(), null);
+		}
+
+		private void pctBoxSmallLogo_Click(object sender, EventArgs e)
+		{
+			CloseChildForm();
+			HideSubMenus();
 		}
 	}
 }

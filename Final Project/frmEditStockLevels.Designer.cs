@@ -35,8 +35,8 @@
 			btnCancel = new Button();
 			lblError = new Label();
 			txtBoxAmountOfStockToChange = new TextBox();
-			btnRemoveStock = new Button();
-			btnAddStock = new Button();
+			btnTakeOutStockConfirm = new Button();
+			btnReturnStockConfirm = new Button();
 			pnlEditStockItem = new Panel();
 			btnCancelStockEdit = new Button();
 			txtBoxStockCheckFrequency = new TextBox();
@@ -64,10 +64,10 @@
 			cHeaderLastCheckedDate = new ColumnHeader();
 			cHeaderCheckedBy = new ColumnHeader();
 			pnlOptionButtons = new Panel();
-			lblInstructions = new Label();
 			btnEditStock = new Button();
-			btnRemoveFromStock = new Button();
-			btnAddToStock = new Button();
+			lblInstructions = new Label();
+			btnTakeOutStock = new Button();
+			btnReturnStock = new Button();
 			pnlEditStockLevels.SuspendLayout();
 			pnlEditStockItem.SuspendLayout();
 			pnlStockList.SuspendLayout();
@@ -83,8 +83,8 @@
 			pnlEditStockLevels.Controls.Add(btnCancel);
 			pnlEditStockLevels.Controls.Add(lblError);
 			pnlEditStockLevels.Controls.Add(txtBoxAmountOfStockToChange);
-			pnlEditStockLevels.Controls.Add(btnRemoveStock);
-			pnlEditStockLevels.Controls.Add(btnAddStock);
+			pnlEditStockLevels.Controls.Add(btnTakeOutStockConfirm);
+			pnlEditStockLevels.Controls.Add(btnReturnStockConfirm);
 			pnlEditStockLevels.Dock = DockStyle.Top;
 			pnlEditStockLevels.Location = new Point(0, 0);
 			pnlEditStockLevels.Name = "pnlEditStockLevels";
@@ -167,37 +167,37 @@
 			txtBoxAmountOfStockToChange.Size = new Size(220, 32);
 			txtBoxAmountOfStockToChange.TabIndex = 14;
 			// 
-			// btnRemoveStock
+			// btnTakeOutStockConfirm
 			// 
-			btnRemoveStock.Anchor = AnchorStyles.None;
-			btnRemoveStock.BackColor = Color.FromArgb(33, 150, 243);
-			btnRemoveStock.FlatAppearance.BorderSize = 0;
-			btnRemoveStock.FlatStyle = FlatStyle.Flat;
-			btnRemoveStock.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			btnRemoveStock.ForeColor = Color.White;
-			btnRemoveStock.Location = new Point(520, 415);
-			btnRemoveStock.Name = "btnRemoveStock";
-			btnRemoveStock.Size = new Size(220, 50);
-			btnRemoveStock.TabIndex = 13;
-			btnRemoveStock.Text = "Remove From Stock";
-			btnRemoveStock.UseVisualStyleBackColor = false;
-			btnRemoveStock.Click += btnRemoveStock_Click;
+			btnTakeOutStockConfirm.Anchor = AnchorStyles.None;
+			btnTakeOutStockConfirm.BackColor = Color.FromArgb(33, 150, 243);
+			btnTakeOutStockConfirm.FlatAppearance.BorderSize = 0;
+			btnTakeOutStockConfirm.FlatStyle = FlatStyle.Flat;
+			btnTakeOutStockConfirm.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			btnTakeOutStockConfirm.ForeColor = Color.White;
+			btnTakeOutStockConfirm.Location = new Point(520, 415);
+			btnTakeOutStockConfirm.Name = "btnTakeOutStockConfirm";
+			btnTakeOutStockConfirm.Size = new Size(220, 50);
+			btnTakeOutStockConfirm.TabIndex = 13;
+			btnTakeOutStockConfirm.Text = "Take Out Stock";
+			btnTakeOutStockConfirm.UseVisualStyleBackColor = false;
+			btnTakeOutStockConfirm.Click += btnTakeOutStockConfirm_Click;
 			// 
-			// btnAddStock
+			// btnReturnStockConfirm
 			// 
-			btnAddStock.Anchor = AnchorStyles.None;
-			btnAddStock.BackColor = Color.FromArgb(33, 150, 243);
-			btnAddStock.FlatAppearance.BorderSize = 0;
-			btnAddStock.FlatStyle = FlatStyle.Flat;
-			btnAddStock.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			btnAddStock.ForeColor = Color.White;
-			btnAddStock.Location = new Point(520, 415);
-			btnAddStock.Name = "btnAddStock";
-			btnAddStock.Size = new Size(220, 50);
-			btnAddStock.TabIndex = 11;
-			btnAddStock.Text = "Add To Stock";
-			btnAddStock.UseVisualStyleBackColor = false;
-			btnAddStock.Click += btnAddStock_Click;
+			btnReturnStockConfirm.Anchor = AnchorStyles.None;
+			btnReturnStockConfirm.BackColor = Color.FromArgb(33, 150, 243);
+			btnReturnStockConfirm.FlatAppearance.BorderSize = 0;
+			btnReturnStockConfirm.FlatStyle = FlatStyle.Flat;
+			btnReturnStockConfirm.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			btnReturnStockConfirm.ForeColor = Color.White;
+			btnReturnStockConfirm.Location = new Point(520, 415);
+			btnReturnStockConfirm.Name = "btnReturnStockConfirm";
+			btnReturnStockConfirm.Size = new Size(220, 50);
+			btnReturnStockConfirm.TabIndex = 11;
+			btnReturnStockConfirm.Text = "Return Stock";
+			btnReturnStockConfirm.UseVisualStyleBackColor = false;
+			btnReturnStockConfirm.Click += btnReturnStockConfirm_Click;
 			// 
 			// pnlEditStockItem
 			// 
@@ -504,16 +504,32 @@
 			// pnlOptionButtons
 			// 
 			pnlOptionButtons.BackColor = SystemColors.ScrollBar;
-			pnlOptionButtons.Controls.Add(lblInstructions);
 			pnlOptionButtons.Controls.Add(btnEditStock);
-			pnlOptionButtons.Controls.Add(btnRemoveFromStock);
-			pnlOptionButtons.Controls.Add(btnAddToStock);
+			pnlOptionButtons.Controls.Add(lblInstructions);
+			pnlOptionButtons.Controls.Add(btnTakeOutStock);
+			pnlOptionButtons.Controls.Add(btnReturnStock);
 			pnlOptionButtons.Dock = DockStyle.Bottom;
 			pnlOptionButtons.Location = new Point(0, 1940);
 			pnlOptionButtons.Name = "pnlOptionButtons";
 			pnlOptionButtons.Size = new Size(966, 100);
 			pnlOptionButtons.TabIndex = 13;
 			pnlOptionButtons.Click += pnlOptionButtons_Click;
+			// 
+			// btnEditStock
+			// 
+			btnEditStock.Anchor = AnchorStyles.Top;
+			btnEditStock.BackColor = Color.FromArgb(33, 150, 243);
+			btnEditStock.FlatAppearance.BorderSize = 0;
+			btnEditStock.FlatStyle = FlatStyle.Flat;
+			btnEditStock.Font = new Font("Segoe UI", 14F);
+			btnEditStock.ForeColor = SystemColors.Control;
+			btnEditStock.Location = new Point(640, 38);
+			btnEditStock.Name = "btnEditStock";
+			btnEditStock.Size = new Size(220, 50);
+			btnEditStock.TabIndex = 8;
+			btnEditStock.Text = "Edit Stock Item";
+			btnEditStock.UseVisualStyleBackColor = false;
+			btnEditStock.Click += btnEditStock_Click;
 			// 
 			// lblInstructions
 			// 
@@ -526,53 +542,37 @@
 			lblInstructions.Text = "Select an item to manage its level and information";
 			lblInstructions.TextAlign = ContentAlignment.TopCenter;
 			// 
-			// btnEditStock
+			// btnTakeOutStock
 			// 
-			btnEditStock.Anchor = AnchorStyles.Top;
-			btnEditStock.BackColor = Color.FromArgb(33, 150, 243);
-			btnEditStock.FlatAppearance.BorderSize = 0;
-			btnEditStock.FlatStyle = FlatStyle.Flat;
-			btnEditStock.Font = new Font("Segoe UI", 14F);
-			btnEditStock.ForeColor = SystemColors.Control;
-			btnEditStock.Location = new Point(120, 39);
-			btnEditStock.Name = "btnEditStock";
-			btnEditStock.Size = new Size(220, 50);
-			btnEditStock.TabIndex = 8;
-			btnEditStock.Text = "Edit Stock Item";
-			btnEditStock.UseVisualStyleBackColor = false;
-			btnEditStock.Click += btnEditStock_Click;
+			btnTakeOutStock.Anchor = AnchorStyles.Top;
+			btnTakeOutStock.BackColor = Color.FromArgb(33, 150, 243);
+			btnTakeOutStock.FlatAppearance.BorderSize = 0;
+			btnTakeOutStock.FlatStyle = FlatStyle.Flat;
+			btnTakeOutStock.Font = new Font("Segoe UI", 14F);
+			btnTakeOutStock.ForeColor = SystemColors.Control;
+			btnTakeOutStock.Location = new Point(106, 38);
+			btnTakeOutStock.Name = "btnTakeOutStock";
+			btnTakeOutStock.Size = new Size(220, 50);
+			btnTakeOutStock.TabIndex = 7;
+			btnTakeOutStock.Text = "Take Out Stock";
+			btnTakeOutStock.UseVisualStyleBackColor = false;
+			btnTakeOutStock.Click += btnTakeOutStock_Click;
 			// 
-			// btnRemoveFromStock
+			// btnReturnStock
 			// 
-			btnRemoveFromStock.Anchor = AnchorStyles.Top;
-			btnRemoveFromStock.BackColor = Color.FromArgb(33, 150, 243);
-			btnRemoveFromStock.FlatAppearance.BorderSize = 0;
-			btnRemoveFromStock.FlatStyle = FlatStyle.Flat;
-			btnRemoveFromStock.Font = new Font("Segoe UI", 14F);
-			btnRemoveFromStock.ForeColor = SystemColors.Control;
-			btnRemoveFromStock.Location = new Point(626, 39);
-			btnRemoveFromStock.Name = "btnRemoveFromStock";
-			btnRemoveFromStock.Size = new Size(220, 50);
-			btnRemoveFromStock.TabIndex = 7;
-			btnRemoveFromStock.Text = "Remove From Stock";
-			btnRemoveFromStock.UseVisualStyleBackColor = false;
-			btnRemoveFromStock.Click += btnRemoveFromStock_Click;
-			// 
-			// btnAddToStock
-			// 
-			btnAddToStock.Anchor = AnchorStyles.Top;
-			btnAddToStock.BackColor = Color.FromArgb(33, 150, 243);
-			btnAddToStock.FlatAppearance.BorderSize = 0;
-			btnAddToStock.FlatStyle = FlatStyle.Flat;
-			btnAddToStock.Font = new Font("Segoe UI", 14F);
-			btnAddToStock.ForeColor = SystemColors.Control;
-			btnAddToStock.Location = new Point(373, 39);
-			btnAddToStock.Name = "btnAddToStock";
-			btnAddToStock.Size = new Size(220, 50);
-			btnAddToStock.TabIndex = 5;
-			btnAddToStock.Text = "Add To Stock";
-			btnAddToStock.UseVisualStyleBackColor = false;
-			btnAddToStock.Click += btnAddToStock_Click;
+			btnReturnStock.Anchor = AnchorStyles.Top;
+			btnReturnStock.BackColor = Color.FromArgb(33, 150, 243);
+			btnReturnStock.FlatAppearance.BorderSize = 0;
+			btnReturnStock.FlatStyle = FlatStyle.Flat;
+			btnReturnStock.Font = new Font("Segoe UI", 14F);
+			btnReturnStock.ForeColor = SystemColors.Control;
+			btnReturnStock.Location = new Point(373, 38);
+			btnReturnStock.Name = "btnReturnStock";
+			btnReturnStock.Size = new Size(220, 50);
+			btnReturnStock.TabIndex = 5;
+			btnReturnStock.Text = "Return Stock";
+			btnReturnStock.UseVisualStyleBackColor = false;
+			btnReturnStock.Click += btnReturnStock_Click;
 			// 
 			// frmEditStockLevels
 			// 
@@ -606,8 +606,8 @@
         private Button btnCancel;
         private Label lblError;
         private TextBox txtBoxAmountOfStockToChange;
-        private Button btnRemoveStock;
-        private Button btnAddStock;
+        private Button btnTakeOutStockConfirm;
+        private Button btnReturnStockConfirm;
         private Label lblCurrentStockLevel;
         private Panel pnlEditStockItem;
         private Label lblErrorStockEdit;
@@ -638,8 +638,8 @@
 		private Panel pnlOptionButtons;
 		private Label lblInstructions;
 		private Button btnEditStock;
-		private Button btnRemoveFromStock;
-		private Button btnAddToStock;
+		private Button btnTakeOutStock;
+		private Button btnReturnStock;
 		private Label lblAmountTo;
 	}
 }

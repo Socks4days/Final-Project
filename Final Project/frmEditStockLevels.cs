@@ -18,20 +18,7 @@ namespace Final_Project
 		public frmEditStockLevels()
 		{
 			InitializeComponent();
-			List<StockLevelsView> sortedStockList = StockDal.GetStockLevelsView("StockName");
-
-			// Add each stock in the sorted list to the stock list
-			foreach (StockLevelsView stockLevel in sortedStockList)
-			{
-				// Create an array with stock details
-				string[] row = { stockLevel.stockName, stockLevel.stockLevel.ToString(), stockLevel.auditDate.ToString(), stockLevel.auditedByStaffFullName };
-
-				// Create a new list item based on the array
-				ListViewItem item = new ListViewItem(row);
-
-				// Add the list item to the stock list view
-				lstViewStock.Items.Add(item);
-			}
+			
 			ShowViewStock();
 		}
 
@@ -49,25 +36,27 @@ namespace Final_Project
 			}
 		}
 
-		private void btnAddToStock_Click(object sender, EventArgs e)
+		private void btnReturnStock_Click(object sender, EventArgs e)
 		{
 			ShowEditStockLevels();
-			btnRemoveStock.Visible = false;
-			btnAddStock.Visible = true;
+			btnTakeOutStockConfirm.Visible = false;
+			btnReturnStockConfirm.Visible = true;
 			lblStockLevelToEdit.Text = lookupStock.stockName;
+			frmMainScreen.frmMain.lblTitle.Text = "Return Stock";
 			lblCurrentStockLevel.Text = $"Current Stock Level: {lookupStock.stockLevel.ToString()}";
 		}
 
-		private void btnRemoveFromStock_Click(object sender, EventArgs e)
+		private void btnTakeOutStock_Click(object sender, EventArgs e)
 		{
 			ShowEditStockLevels();
-			btnAddStock.Visible = false;
-			btnRemoveStock.Visible = true;
+			btnReturnStockConfirm.Visible = false;
+			btnTakeOutStockConfirm.Visible = true;
 			lblStockLevelToEdit.Text = lookupStock.stockName;
+			frmMainScreen.frmMain.lblTitle.Text = "Take Out Stock";
 			lblCurrentStockLevel.Text = $"Current Stock Level: {lookupStock.stockLevel.ToString()}";
 		}
 
-		private void btnAddStock_Click(object sender, EventArgs e)
+		private void btnReturnStockConfirm_Click(object sender, EventArgs e)
 		{
 			int amountToAdd = 0;
 			int originalStockLevel = lookupStock.stockLevel;
@@ -83,7 +72,7 @@ namespace Final_Project
 			{
 				lookupStock.stockLevel += amountToAdd;
 				StockDal.UpdateStockInformation(lookupStock);
-				ShowMessageStockLevel($"Successfully added {amountToAdd} to stock level!");
+				ShowViewStock();
 			}
 			else if (lookupStock.stockLevel == lookupStock.maximumLevel)
 			{
@@ -95,7 +84,7 @@ namespace Final_Project
 			}
 		}
 
-		private void btnRemoveStock_Click(object sender, EventArgs e)
+		private void btnTakeOutStockConfirm_Click(object sender, EventArgs e)
 		{
 			int amountToRemove = 0;
 			int originalStockLevel = lookupStock.stockLevel;
@@ -116,7 +105,7 @@ namespace Final_Project
 			{
 				lookupStock.stockLevel -= amountToRemove;
 				StockDal.UpdateStockInformation(lookupStock);
-				ShowMessageStockLevel($"Successfully removed {amountToRemove} to stock level!");
+				ShowViewStock();
 			}
 			else if (lookupStock.stockLevel == 0)
 			{
@@ -143,6 +132,26 @@ namespace Final_Project
 
 		private void ShowViewStock()
 		{
+			foreach (ListViewItem item in lstViewStock.Items)
+			{
+				lstViewStock.Items.Remove(item);
+			}
+
+			List<StockLevelsView> sortedStockList = StockDal.GetStockLevelsView("StockName");
+
+			// Add each stock in the sorted list to the stock list
+			foreach (StockLevelsView stockLevel in sortedStockList)
+			{
+				// Create an array with stock details
+				string[] row = { stockLevel.stockName, stockLevel.stockLevel.ToString(), stockLevel.auditDate.ToString(), stockLevel.auditedByStaffFullName };
+
+				// Create a new list item based on the array
+				ListViewItem item = new ListViewItem(row);
+
+				// Add the list item to the stock list view
+				lstViewStock.Items.Add(item);
+			}
+
 			pnlEditStockLevels.Visible = false;
 			pnlEditStockItem.Visible = false;
 			pnlOptionButtons.Visible = false;
@@ -151,10 +160,12 @@ namespace Final_Project
 			lstViewStock.Height = (pnlStockList.Height - 58);
 			lstViewStock.SelectedItems.Clear();
 			lblInstructions.Text = "Select an item to manage its level and information";
+			frmMainScreen.frmMain.lblTitle.Text = "Manage Stock";
 		}
 
 		private void ShowEditStockLevels()
 		{
+			txtBoxAmountOfStockToChange.Text = "1";
 			pnlStockList.Visible = false;
 			pnlEditStockItem.Visible = false;
 			pnlOptionButtons.Visible = false;
@@ -163,7 +174,8 @@ namespace Final_Project
 		}
 
 		private void ShowEditStockItem()
-		{			
+		{
+			frmMainScreen.frmMain.lblTitle.Text = "Edit Stock Item";
 			pnlEditStockLevels.Visible = false;
 			pnlStockList.Visible = false;
 			pnlOptionButtons.Visible = false;

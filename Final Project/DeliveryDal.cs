@@ -100,7 +100,7 @@ namespace Final_Project
                 insertDeliveryItemCommand.Connection = connection;
 
                 insertDeliveryItemCommand.CommandType = System.Data.CommandType.StoredProcedure;
-                insertDeliveryItemCommand.CommandText = "AddAuditItem";
+                insertDeliveryItemCommand.CommandText = "AddDeliveryItem";
 
                 insertDeliveryItemCommand.Parameters.Add(new SqlParameter("@DeliveryNumber", newDeliveryItem.deliveryNumber));
                 insertDeliveryItemCommand.Parameters.Add(new SqlParameter("@StockId", newDeliveryItem.stockId));

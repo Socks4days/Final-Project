@@ -30,6 +30,7 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainScreen));
 			pnlSideBar = new Panel();
+			btnLogout = new Button();
 			pnlAudits = new Panel();
 			btnAuditHistory = new Button();
 			btnCreateAudit = new Button();
@@ -42,8 +43,8 @@
 			btnOrderStock = new Button();
 			btnOrder = new Button();
 			pnlStock = new Panel();
-			btnRetireStock = new Button();
-			btnAddNewStock = new Button();
+			btnRetireStockItem = new Button();
+			btnNewStockItem = new Button();
 			btnManageStockLevels = new Button();
 			btnStock = new Button();
 			pnlLogo = new Panel();
@@ -68,6 +69,7 @@
 			// 
 			pnlSideBar.AutoScroll = true;
 			pnlSideBar.BackColor = Color.FromArgb(51, 51, 79);
+			pnlSideBar.Controls.Add(btnLogout);
 			pnlSideBar.Controls.Add(pnlAudits);
 			pnlSideBar.Controls.Add(btnAudits);
 			pnlSideBar.Controls.Add(pnlDelivery);
@@ -83,6 +85,25 @@
 			pnlSideBar.Name = "pnlSideBar";
 			pnlSideBar.Size = new Size(200, 750);
 			pnlSideBar.TabIndex = 0;
+			// 
+			// btnLogout
+			// 
+			btnLogout.BackColor = Color.Transparent;
+			btnLogout.Dock = DockStyle.Bottom;
+			btnLogout.FlatAppearance.BorderSize = 0;
+			btnLogout.FlatAppearance.MouseOverBackColor = Color.FromArgb(250, 0, 0);
+			btnLogout.FlatStyle = FlatStyle.Flat;
+			btnLogout.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+			btnLogout.ForeColor = SystemColors.Control;
+			btnLogout.Location = new Point(0, 910);
+			btnLogout.Margin = new Padding(2);
+			btnLogout.Name = "btnLogout";
+			btnLogout.Size = new Size(182, 70);
+			btnLogout.TabIndex = 15;
+			btnLogout.Text = "Logout";
+			btnLogout.TextAlign = ContentAlignment.MiddleLeft;
+			btnLogout.UseVisualStyleBackColor = false;
+			btnLogout.Click += btnLogout_Click;
 			// 
 			// pnlAudits
 			// 
@@ -275,8 +296,8 @@
 			// 
 			// pnlStock
 			// 
-			pnlStock.Controls.Add(btnRetireStock);
-			pnlStock.Controls.Add(btnAddNewStock);
+			pnlStock.Controls.Add(btnRetireStockItem);
+			pnlStock.Controls.Add(btnNewStockItem);
 			pnlStock.Controls.Add(btnManageStockLevels);
 			pnlStock.Dock = DockStyle.Top;
 			pnlStock.Location = new Point(0, 140);
@@ -285,45 +306,45 @@
 			pnlStock.Size = new Size(182, 210);
 			pnlStock.TabIndex = 3;
 			// 
-			// btnRetireStock
+			// btnRetireStockItem
 			// 
-			btnRetireStock.BackColor = Color.Transparent;
-			btnRetireStock.Dock = DockStyle.Top;
-			btnRetireStock.FlatAppearance.BorderSize = 0;
-			btnRetireStock.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
-			btnRetireStock.FlatStyle = FlatStyle.Flat;
-			btnRetireStock.Font = new Font("Segoe UI", 14F);
-			btnRetireStock.ForeColor = SystemColors.Control;
-			btnRetireStock.Location = new Point(0, 140);
-			btnRetireStock.Margin = new Padding(2);
-			btnRetireStock.Name = "btnRetireStock";
-			btnRetireStock.Padding = new Padding(20, 0, 0, 0);
-			btnRetireStock.Size = new Size(182, 70);
-			btnRetireStock.TabIndex = 9;
-			btnRetireStock.Text = "Retire Stock";
-			btnRetireStock.TextAlign = ContentAlignment.MiddleLeft;
-			btnRetireStock.UseVisualStyleBackColor = false;
-			btnRetireStock.Click += btnRetireStock_Click;
+			btnRetireStockItem.BackColor = Color.Transparent;
+			btnRetireStockItem.Dock = DockStyle.Top;
+			btnRetireStockItem.FlatAppearance.BorderSize = 0;
+			btnRetireStockItem.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
+			btnRetireStockItem.FlatStyle = FlatStyle.Flat;
+			btnRetireStockItem.Font = new Font("Segoe UI", 14F);
+			btnRetireStockItem.ForeColor = SystemColors.Control;
+			btnRetireStockItem.Location = new Point(0, 140);
+			btnRetireStockItem.Margin = new Padding(2);
+			btnRetireStockItem.Name = "btnRetireStockItem";
+			btnRetireStockItem.Padding = new Padding(20, 0, 0, 0);
+			btnRetireStockItem.Size = new Size(182, 70);
+			btnRetireStockItem.TabIndex = 9;
+			btnRetireStockItem.Text = "Retire Stock Item";
+			btnRetireStockItem.TextAlign = ContentAlignment.MiddleLeft;
+			btnRetireStockItem.UseVisualStyleBackColor = false;
+			btnRetireStockItem.Click += btnRetireStockItem_Click;
 			// 
-			// btnAddNewStock
+			// btnNewStockItem
 			// 
-			btnAddNewStock.BackColor = Color.Transparent;
-			btnAddNewStock.Dock = DockStyle.Top;
-			btnAddNewStock.FlatAppearance.BorderSize = 0;
-			btnAddNewStock.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
-			btnAddNewStock.FlatStyle = FlatStyle.Flat;
-			btnAddNewStock.Font = new Font("Segoe UI", 14F);
-			btnAddNewStock.ForeColor = SystemColors.Control;
-			btnAddNewStock.Location = new Point(0, 70);
-			btnAddNewStock.Margin = new Padding(2);
-			btnAddNewStock.Name = "btnAddNewStock";
-			btnAddNewStock.Padding = new Padding(20, 0, 0, 0);
-			btnAddNewStock.Size = new Size(182, 70);
-			btnAddNewStock.TabIndex = 6;
-			btnAddNewStock.Text = "Add New Stock";
-			btnAddNewStock.TextAlign = ContentAlignment.MiddleLeft;
-			btnAddNewStock.UseVisualStyleBackColor = false;
-			btnAddNewStock.Click += btnAddNewStock_Click;
+			btnNewStockItem.BackColor = Color.Transparent;
+			btnNewStockItem.Dock = DockStyle.Top;
+			btnNewStockItem.FlatAppearance.BorderSize = 0;
+			btnNewStockItem.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
+			btnNewStockItem.FlatStyle = FlatStyle.Flat;
+			btnNewStockItem.Font = new Font("Segoe UI", 14F);
+			btnNewStockItem.ForeColor = SystemColors.Control;
+			btnNewStockItem.Location = new Point(0, 70);
+			btnNewStockItem.Margin = new Padding(2);
+			btnNewStockItem.Name = "btnNewStockItem";
+			btnNewStockItem.Padding = new Padding(20, 0, 0, 0);
+			btnNewStockItem.Size = new Size(182, 70);
+			btnNewStockItem.TabIndex = 6;
+			btnNewStockItem.Text = "New Stock Item";
+			btnNewStockItem.TextAlign = ContentAlignment.MiddleLeft;
+			btnNewStockItem.UseVisualStyleBackColor = false;
+			btnNewStockItem.Click += btnNewStockItem_Click;
 			// 
 			// btnManageStockLevels
 			// 
@@ -384,6 +405,7 @@
 			pctBoxSmallLogo.SizeMode = PictureBoxSizeMode.Zoom;
 			pctBoxSmallLogo.TabIndex = 2;
 			pctBoxSmallLogo.TabStop = false;
+			pctBoxSmallLogo.Click += pctBoxSmallLogo_Click;
 			// 
 			// pnlTitleBar
 			// 
@@ -467,17 +489,17 @@
         private Button btnStock;
         private Panel pnlStock;
         private Button btnManageStockLevels;
-        private Button btnAddNewStock;
+        private Button btnNewStockItem;
         private Button btnOrder;
         private Panel pnlOrder;
         public Button btnViewOrders;
         private Button btnOrderStock;
-        private Button btnRetireStock;
+        private Button btnRetireStockItem;
         private Button btnDelivery;
         private Panel pnlDelivery;
         private Button btnViewDeliveries;
 		private Panel pnlTitleBar;
-		private Label lblTitle;
+		public Label lblTitle;
 		private Panel pnlFormContainer;
 		private PictureBox pctBoxLogo;
 		private PictureBox pctBoxSmallLogo;
@@ -486,5 +508,6 @@
 		private Panel pnlAudits;
 		private Button btnCreateAudit;
 		private Button btnAuditHistory;
+		private Button btnLogout;
 	}
 }

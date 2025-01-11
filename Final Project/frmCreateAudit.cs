@@ -99,7 +99,40 @@ namespace Final_Project
 				lstViewAuditHistory.Items.Remove(item);
 			}
 
-			audits = 
+			audits = AuditDal.GetAllAudits();
+
+			
+
+			foreach (Audit audit in audits)
+			{
+				Staff staff = StaffDal.GetStaffByStaffId(audit.auditedByStaffId);
+				string fullname = string.Concat($"{staff.forename} {staff.surname}");
+
+				auditItems = AuditDal.GetAllAuditItems(audit.auditId);
+
+				int noCorrect = 0;
+				int noIncorrect = 0;
+
+				foreach (AuditItem auditItem in auditItems)
+				{
+					if (auditItem.predictedAmount == auditItem.actualAmount)
+					{
+						noCorrect++;
+					}
+					else
+					{
+						noIncorrect++;
+					}
+				}
+				// Create an array with order details
+				string[] row = { audit.auditId.ToString(), audit.auditDate.ToString(), fullname, noCorrect.ToString(), noIncorrect.ToString() };
+
+				// Create a new list item based on the array
+				ListViewItem item = new ListViewItem(row);
+
+				// Add the list item to the order list view
+				lstViewAuditHistory.Items.Add(item);
+			}
 		}
 
 		private void ShowAuditInfo()
