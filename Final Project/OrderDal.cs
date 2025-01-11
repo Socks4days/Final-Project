@@ -128,7 +128,7 @@ namespace Final_Project
                 List<Order> orders = new List<Order>();
                 connection.Open();
 
-                string sqlQuery = "SELECT * FROM [Order]";
+                string sqlQuery = "SELECT * FROM [Order] ORDER BY OrderNumber DESC";
 
                 SqlCommand getAllOrdersCommand = new SqlCommand(sqlQuery, connection);
 

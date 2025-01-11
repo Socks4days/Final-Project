@@ -106,7 +106,7 @@ namespace Final_Project
 				List<Audit> audits = new List<Audit>();
 				connection.Open();
 
-				string sqlQuery = $"SELECT * FROM Audit";
+				string sqlQuery = $"SELECT * FROM Audit ORDER BY AuditId DESC";
 
 				SqlCommand getAllAuditsCommand = new SqlCommand(sqlQuery, connection);
 

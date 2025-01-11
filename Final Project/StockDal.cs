@@ -195,8 +195,11 @@ namespace Final_Project
                 {
                     sqlQuery += " ORDER BY [AuditDate] ASC";
                 }
-
-                SqlCommand getAllStockCommand = new SqlCommand(sqlQuery, connection);
+				else if (orderBy == "NextAuditDueDate")
+				{
+					sqlQuery += " ORDER BY [NextAuditDueDate] ASC";
+				}
+				SqlCommand getAllStockCommand = new SqlCommand(sqlQuery, connection);
 
                 SqlDataReader sqlDataReader = getAllStockCommand.ExecuteReader();
 
@@ -212,14 +215,21 @@ namespace Final_Project
                     if (dbAuditedByStaffId != DBNull.Value)
                         auditedByStaffId = Convert.ToInt32(dbAuditedByStaffId);
 
-                    StockLevelsView stockLevel = new StockLevelsView(
+					DateTime? nextAuditDueDate = null;
+					var dbNextAuditDueDateTime = sqlDataReader["NextAuditDueDate"];
+					if (dbNextAuditDueDateTime != DBNull.Value)
+						nextAuditDueDate = Convert.ToDateTime(dbNextAuditDueDateTime);
+
+					StockLevelsView stockLevel = new StockLevelsView(
                         (int)sqlDataReader["StockId"],
                         (string)sqlDataReader["StockName"],                        
                         (int)sqlDataReader["StockLevel"],
                         auditDate,
                         auditedByStaffId,
-                        (string)sqlDataReader["AuditedByStaffFullName"]                        
-                        );
+                        (string)sqlDataReader["AuditedByStaffFullName"],
+                        nextAuditDueDate,
+						(int)sqlDataReader["DaysToNextAudit"]
+						);
 
                     
                     stockLevelItems.Add(stockLevel);

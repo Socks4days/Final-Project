@@ -15,12 +15,14 @@ namespace Final_Project
         public int auditedByStaffId { get; set; }
         public string auditedByStaffFullName { get; set; }
         public DateTime? auditDate { get; set; }
+		public DateTime? nextAuditDueDate { get; set; }
+        public int daysToNextAudit { get; set; }
 
-        #endregion Properties
+		#endregion Properties
 
-        public StockLevelsView() { }
+		public StockLevelsView() { }
 
-        public StockLevelsView(int StockId, string stockName, int stockLevel, DateTime? auditDate, int auditedByStaffId, string auditedByStaffFullName)
+        public StockLevelsView(int StockId, string stockName, int stockLevel, DateTime? auditDate, int auditedByStaffId, string auditedByStaffFullName, DateTime? nextAuditDueDate, int daysToNextAudit)
         {
             this.stockId = StockId;
             this.stockName = stockName;            
@@ -28,6 +30,8 @@ namespace Final_Project
             this.auditDate = auditDate;                      
             this.auditedByStaffId = auditedByStaffId;
             this.auditedByStaffFullName = auditedByStaffFullName;
+            this.nextAuditDueDate = nextAuditDueDate;
+            this.daysToNextAudit = daysToNextAudit;
         }
     }
 }

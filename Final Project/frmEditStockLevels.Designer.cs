@@ -63,6 +63,7 @@
 			cHeaderStockQuantity = new ColumnHeader();
 			cHeaderLastCheckedDate = new ColumnHeader();
 			cHeaderCheckedBy = new ColumnHeader();
+			cHeaderNextCheck = new ColumnHeader();
 			pnlOptionButtons = new Panel();
 			btnEditStock = new Button();
 			lblInstructions = new Label();
@@ -467,12 +468,12 @@
 			lstViewStock.Anchor = AnchorStyles.Top;
 			lstViewStock.BackColor = Color.FromArgb(149, 204, 249);
 			lstViewStock.BackgroundImageTiled = true;
-			lstViewStock.Columns.AddRange(new ColumnHeader[] { cHeaderStockName, cHeaderStockQuantity, cHeaderLastCheckedDate, cHeaderCheckedBy });
+			lstViewStock.Columns.AddRange(new ColumnHeader[] { cHeaderStockName, cHeaderStockQuantity, cHeaderLastCheckedDate, cHeaderCheckedBy, cHeaderNextCheck });
 			lstViewStock.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			lstViewStock.ForeColor = Color.Black;
 			lstViewStock.FullRowSelect = true;
 			lstViewStock.GridLines = true;
-			lstViewStock.Location = new Point(36, 27);
+			lstViewStock.Location = new Point(37, 29);
 			lstViewStock.Margin = new Padding(3, 2, 3, 2);
 			lstViewStock.Name = "lstViewStock";
 			lstViewStock.Size = new Size(892, 522);
@@ -500,6 +501,11 @@
 			// 
 			cHeaderCheckedBy.Text = "Checked By";
 			cHeaderCheckedBy.Width = 215;
+			// 
+			// cHeaderNextCheck
+			// 
+			cHeaderNextCheck.Text = "Next Check";
+			cHeaderNextCheck.Width = 150;
 			// 
 			// pnlOptionButtons
 			// 
@@ -641,5 +647,6 @@
 		private Button btnTakeOutStock;
 		private Button btnReturnStock;
 		private Label lblAmountTo;
+		private ColumnHeader cHeaderNextCheck;
 	}
 }

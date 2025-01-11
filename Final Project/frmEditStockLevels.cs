@@ -142,8 +142,17 @@ namespace Final_Project
 			// Add each stock in the sorted list to the stock list
 			foreach (StockLevelsView stockLevel in sortedStockList)
 			{
+				string nextCheckDue = "Overdue";
+
+				if (stockLevel.daysToNextAudit == 0)
+					nextCheckDue = "Today";
+				else if (stockLevel.daysToNextAudit == 1)
+					nextCheckDue = $"Tomorrow";
+				else if (stockLevel.daysToNextAudit > 1)
+					nextCheckDue = $"{stockLevel.daysToNextAudit} days";
+
 				// Create an array with stock details
-				string[] row = { stockLevel.stockName, stockLevel.stockLevel.ToString(), stockLevel.auditDate.ToString(), stockLevel.auditedByStaffFullName };
+				string[] row = { stockLevel.stockName, stockLevel.stockLevel.ToString(), stockLevel.auditDate.ToString(), stockLevel.auditedByStaffFullName, nextCheckDue };
 
 				// Create a new list item based on the array
 				ListViewItem item = new ListViewItem(row);

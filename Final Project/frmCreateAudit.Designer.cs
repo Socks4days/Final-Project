@@ -56,6 +56,7 @@
 			columnHeader3 = new ColumnHeader();
 			columnHeader4 = new ColumnHeader();
 			columnHeader5 = new ColumnHeader();
+			cHeaderNextCheck = new ColumnHeader();
 			pnlCreateAudit.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)nUDNoInStockActual).BeginInit();
 			pnlAuditInfo.SuspendLayout();
@@ -184,11 +185,11 @@
 			lstViewAuditItems.ForeColor = Color.Black;
 			lstViewAuditItems.FullRowSelect = true;
 			lstViewAuditItems.GridLines = true;
-			lstViewAuditItems.Location = new Point(116, 329);
+			lstViewAuditItems.Location = new Point(50, 330);
 			lstViewAuditItems.Margin = new Padding(3, 2, 3, 2);
 			lstViewAuditItems.MultiSelect = false;
 			lstViewAuditItems.Name = "lstViewAuditItems";
-			lstViewAuditItems.Size = new Size(735, 173);
+			lstViewAuditItems.Size = new Size(866, 173);
 			lstViewAuditItems.TabIndex = 45;
 			lstViewAuditItems.UseCompatibleStateImageBehavior = false;
 			lstViewAuditItems.View = View.Details;
@@ -260,16 +261,16 @@
 			// 
 			lstViewAllStock.Anchor = AnchorStyles.Top;
 			lstViewAllStock.BackColor = Color.FromArgb(255, 192, 167);
-			lstViewAllStock.Columns.AddRange(new ColumnHeader[] { cHeaderStockItem, cHeaderLastAudited, cHeaderLastCheckedBy });
+			lstViewAllStock.Columns.AddRange(new ColumnHeader[] { cHeaderStockItem, cHeaderLastAudited, cHeaderLastCheckedBy, cHeaderNextCheck });
 			lstViewAllStock.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			lstViewAllStock.ForeColor = Color.Black;
 			lstViewAllStock.FullRowSelect = true;
 			lstViewAllStock.GridLines = true;
-			lstViewAllStock.Location = new Point(116, 75);
+			lstViewAllStock.Location = new Point(50, 77);
 			lstViewAllStock.Margin = new Padding(3, 2, 3, 2);
 			lstViewAllStock.MultiSelect = false;
 			lstViewAllStock.Name = "lstViewAllStock";
-			lstViewAllStock.Size = new Size(735, 167);
+			lstViewAllStock.Size = new Size(866, 167);
 			lstViewAllStock.TabIndex = 36;
 			lstViewAllStock.UseCompatibleStateImageBehavior = false;
 			lstViewAllStock.View = View.Details;
@@ -347,6 +348,11 @@
 			columnHeader5.Text = "Incorrect";
 			columnHeader5.Width = 120;
 			// 
+			// cHeaderNextCheck
+			// 
+			cHeaderNextCheck.Text = "Next Check";
+			cHeaderNextCheck.Width = 150;
+			// 
 			// frmCreateAudit
 			// 
 			AutoScaleDimensions = new SizeF(96F, 96F);
@@ -408,5 +414,6 @@
 		private ColumnHeader columnHeader3;
 		private ColumnHeader columnHeader4;
 		private ColumnHeader columnHeader5;
+		private ColumnHeader cHeaderNextCheck;
 	}
 }
