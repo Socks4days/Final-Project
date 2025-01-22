@@ -21,6 +21,8 @@ namespace Final_Project
 
 		Staff newStaff = new Staff();
 		List<Staff> allStaff = StaffDal.GetAllStaff();
+
+		#region RegisteringProcess
 		private void btnRegister_Click(object sender, EventArgs e)
 		{
 			// Hide any previously shown error message
@@ -115,10 +117,9 @@ namespace Final_Project
 			frmMainScreen.frmMain.OpenChildForm(new frmLoginScreen(), null);
 		}
 
-		private void btnBack_Click(object sender, EventArgs e)
-		{
-			frmMainScreen.frmMain.OpenChildForm(new frmLoginScreen(), null);
-		}
+		#endregion RegisteringProcess
+
+		#region ErrorHandling
 
 		private void ShowError(string errorMessage)
 		{
@@ -142,9 +143,12 @@ namespace Final_Project
 			lblError.Visible = false;
 		}
 
+		#endregion ErrorHandling
+
+		#region Clearing
 		private void btnClear_Click(object sender, EventArgs e)
 		{
-			// when button is clicked, run the reset method
+			// when button is clicked, run the clear method
 			Clear();
 		}
 
@@ -157,6 +161,13 @@ namespace Final_Project
 			txtBoxPassword.Clear();
 			txtBoxForename.Clear();
 			txtBoxSurname.Clear();
+		}
+
+		#endregion Clearing
+
+		private void btnBack_Click(object sender, EventArgs e)
+		{
+			frmMainScreen.frmMain.OpenChildForm(new frmLoginScreen(), null);
 		}
 	}
 }

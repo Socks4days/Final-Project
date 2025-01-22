@@ -22,7 +22,8 @@ namespace Final_Project
             KeyDown += KeyPressedDown;
         }
 
-        private void KeyPressedDown(object sender, KeyEventArgs e)
+		#region EnterKeyLogic
+		private void KeyPressedDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
@@ -35,12 +36,18 @@ namespace Final_Project
             }
         }
 
-        // get list of all staff
-        public List<Staff> staffList = StaffDal.GetAllStaff();
+		#endregion EnterKeyLogic
 
+		#region StaffInfo
+
+		// get list of all staff
+		public List<Staff> staffList = StaffDal.GetAllStaff();
         public static Staff loggedInStaff = new Staff();
 
-        private void btnSubmit_Click(object sender, EventArgs e)
+		#endregion StaffInfo
+
+        #region ButtonLogic
+		private void btnSubmit_Click(object sender, EventArgs e)
         {
             // create default username and password strings
             string username = "";
@@ -100,7 +107,10 @@ namespace Final_Project
             txtBoxPassword.PasswordChar = '*';
         }
 
-        private void ShowError(string errorMessage)
+		#endregion ButtonLogic
+
+		#region ErrorHandling
+		private void ShowError(string errorMessage)
         {
             // shows an error indicating which boxes need to be filled in to be valid
             lblError.Text = errorMessage;
@@ -115,7 +125,9 @@ namespace Final_Project
             lblError.Visible = false;
         }
 
-        private void cBoxPassword_CheckedChanged(object sender, EventArgs e)
+		#endregion ErrorHandling
+
+		private void cBoxPassword_CheckedChanged(object sender, EventArgs e)
         {
             if (cBoxPassword.Checked)
             {

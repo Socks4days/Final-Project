@@ -23,6 +23,24 @@ namespace Final_Project
 			SetLogo();
 		}
 
+		#region LogoHandling
+
+		private void SetLogo()
+		{
+			pctBoxLogo.ImageLocation = @"C:\Users\andre\OneDrive\Desktop\A2 SSD\Tasks\Final Project\Movers Logo Black.png";
+			pctBoxSmallLogo.ImageLocation = @"C:\Users\andre\OneDrive\Desktop\A2 SSD\Tasks\Final Project\Movers Logo White.png";
+		}
+
+		private void pctBoxSmallLogo_Click(object sender, EventArgs e)
+		{
+			CloseChildForm();
+			HideSubMenus();
+		}
+
+		#endregion LogoHandling
+
+		#region FormNavigation
+
 		private Form activeForm = null;
 		private Button activeMenuButton = null;
 		private Button parentMenuButton = null;
@@ -54,6 +72,8 @@ namespace Final_Project
 				childForm.BringToFront();
 				childForm.Show();
 			}
+
+			#region Colouring
 
 			// If a button has been passed in, set the colour theme
 			if (menuButton != null)
@@ -123,6 +143,8 @@ namespace Final_Project
 					}
 				}
 			}
+
+			#endregion Colouring
 		}
 
 		// Close the child form if one is open
@@ -145,6 +167,8 @@ namespace Final_Project
 			pnlTitleBar.BackColor = Color.FromArgb(51, 51, 79);
 			lblTitle.Text = "Movers Maintenance Garage Stock Control System";
 		}
+
+		#endregion FormNavigation
 
 		#region ToggleSubMenus
 		private void btnStock_Click(object sender, EventArgs e)
@@ -258,12 +282,7 @@ namespace Final_Project
 
 		#endregion ToggleSubMenus
 
-		private void SetLogo()
-		{
-			pctBoxLogo.ImageLocation = @"C:\Users\andre\OneDrive\Desktop\A2 SSD\Tasks\Final Project\Movers Logo Black.png";
-			pctBoxSmallLogo.ImageLocation = @"C:\Users\andre\OneDrive\Desktop\A2 SSD\Tasks\Final Project\Movers Logo White.png";
-		}
-
+		#region ButtonNavigation
 		private void btnManageStockLevels_Click(object sender, EventArgs e)
 		{
 			OpenChildForm(new frmEditStockLevels(), (Button)sender);
@@ -318,10 +337,6 @@ namespace Final_Project
 			OpenChildForm(new frmLoginScreen(), null);
 		}
 
-		private void pctBoxSmallLogo_Click(object sender, EventArgs e)
-		{
-			CloseChildForm();
-			HideSubMenus();
-		}
+		#endregion ButtonNavigation
 	}
 }

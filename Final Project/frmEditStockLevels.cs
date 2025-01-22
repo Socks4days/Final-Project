@@ -22,114 +22,7 @@ namespace Final_Project
 			ShowViewStock();
 		}
 
-		public static Stock lookupStock = new Stock();
-
-		public static void LookupStock(string stockName)
-		{
-			List<Stock> allStock = StockDal.GetAllStock();
-			foreach (Stock stock in allStock)
-			{
-				if (stock.stockName.ToString() == stockName)
-				{
-					lookupStock = StockDal.GetStockByStockId(stock.stockId);
-				}
-			}
-		}
-
-		private void btnReturnStock_Click(object sender, EventArgs e)
-		{
-			ShowEditStockLevels();
-			btnTakeOutStockConfirm.Visible = false;
-			btnReturnStockConfirm.Visible = true;
-			lblStockLevelToEdit.Text = lookupStock.stockName;
-			frmMainScreen.frmMain.lblTitle.Text = "Return Stock";
-			lblCurrentStockLevel.Text = $"Current Stock Level: {lookupStock.stockLevel.ToString()}";
-		}
-
-		private void btnTakeOutStock_Click(object sender, EventArgs e)
-		{
-			ShowEditStockLevels();
-			btnReturnStockConfirm.Visible = false;
-			btnTakeOutStockConfirm.Visible = true;
-			lblStockLevelToEdit.Text = lookupStock.stockName;
-			frmMainScreen.frmMain.lblTitle.Text = "Take Out Stock";
-			lblCurrentStockLevel.Text = $"Current Stock Level: {lookupStock.stockLevel.ToString()}";
-		}
-
-		private void btnReturnStockConfirm_Click(object sender, EventArgs e)
-		{
-			int amountToAdd = 0;
-			int originalStockLevel = lookupStock.stockLevel;
-			try
-			{
-				amountToAdd = Convert.ToInt32(txtBoxAmountOfStockToChange.Text);
-			}
-			catch (Exception ex)
-			{
-				ShowMessageStockLevel("That is not a valid number");
-			}
-			if (lookupStock.stockLevel + amountToAdd <= lookupStock.maximumLevel)
-			{
-				lookupStock.stockLevel += amountToAdd;
-				StockDal.UpdateStockInformation(lookupStock);
-				ShowViewStock();
-			}
-			else if (lookupStock.stockLevel == lookupStock.maximumLevel)
-			{
-				ShowMessageStockLevel("This item of stock's storage is full. 0 items added.");
-			}
-			else
-			{
-				ShowMessageStockLevel($"The amount you are attempting to add exceeds the maximum capacity for this stock item. 0 items added.");
-			}
-		}
-
-		private void btnTakeOutStockConfirm_Click(object sender, EventArgs e)
-		{
-			int amountToRemove = 0;
-			int originalStockLevel = lookupStock.stockLevel;
-
-			try
-			{
-				amountToRemove = Convert.ToInt32(txtBoxAmountOfStockToChange.Text);
-			}
-			catch (Exception ex)
-			{
-				ShowMessageStockLevel("That is not a valid number.");
-			}
-			if (amountToRemove <= 0)
-			{
-				ShowMessageStockLevel("That is not a valid number.");
-			}
-			if (lookupStock.stockLevel - amountToRemove >= 0)
-			{
-				lookupStock.stockLevel -= amountToRemove;
-				StockDal.UpdateStockInformation(lookupStock);
-				ShowViewStock();
-			}
-			else if (lookupStock.stockLevel == 0)
-			{
-				ShowMessageStockLevel("This item of stock's storage is empty. 0 items removed.");
-			}
-			else
-			{
-				ShowMessageStockLevel($"You don't have that many items in storage. 0 items removed");
-			}
-		}
-
-		private void ShowMessageStockLevel(string errorMessage)
-		{
-			// shows an error indicating which boxes need to be filled in to be valid
-			lblError.Text = errorMessage;
-			lblError.Visible = true;
-		}
-
-		private void btnBack_Click(object sender, EventArgs e)
-		{
-			ClearError();
-			ShowViewStock();
-		}
-
+		#region PanelViewing
 		private void ShowViewStock()
 		{
 			foreach (ListViewItem item in lstViewStock.Items)
@@ -164,7 +57,7 @@ namespace Final_Project
 			pnlEditStockLevels.Visible = false;
 			pnlEditStockItem.Visible = false;
 			pnlOptionButtons.Visible = false;
-			pnlStockList.Visible = true;			
+			pnlStockList.Visible = true;
 			pnlStockList.Dock = DockStyle.Fill;
 			lstViewStock.Height = (pnlStockList.Height - 58);
 			lstViewStock.SelectedItems.Clear();
@@ -179,7 +72,7 @@ namespace Final_Project
 			pnlEditStockItem.Visible = false;
 			pnlOptionButtons.Visible = false;
 			pnlEditStockLevels.Visible = true;
-			pnlEditStockLevels.Dock = DockStyle.Fill;			
+			pnlEditStockLevels.Dock = DockStyle.Fill;
 		}
 
 		private void ShowEditStockItem()
@@ -192,6 +85,118 @@ namespace Final_Project
 			pnlEditStockItem.Dock = DockStyle.Fill;
 		}
 
+		#endregion PanelViewing
+
+		#region LookupStock
+
+		public static Stock lookupStock = new Stock();
+
+		public static void LookupStock(string stockName)
+		{
+			List<Stock> allStock = StockDal.GetAllStock();
+			foreach (Stock stock in allStock)
+			{
+				if (stock.stockName.ToString() == stockName)
+				{
+					lookupStock = StockDal.GetStockByStockId(stock.stockId);
+				}
+			}
+		}
+
+		#endregion LookupStock
+
+		#region TakingAndReturningStock
+		private void btnReturnStock_Click(object sender, EventArgs e)
+		{
+			ShowEditStockLevels();
+			btnTakeOutStockConfirm.Visible = false;
+			btnReturnStockConfirm.Visible = true;
+			lblStockLevelToEdit.Text = lookupStock.stockName;
+			frmMainScreen.frmMain.lblTitle.Text = "Return Stock";
+			lblCurrentStockLevel.Text = $"Current Stock Level: {lookupStock.stockLevel.ToString()}";
+		}
+
+		private void btnTakeOutStock_Click(object sender, EventArgs e)
+		{
+			ShowEditStockLevels();
+			btnReturnStockConfirm.Visible = false;
+			btnTakeOutStockConfirm.Visible = true;
+			lblStockLevelToEdit.Text = lookupStock.stockName;
+			frmMainScreen.frmMain.lblTitle.Text = "Take Out Stock";
+			lblCurrentStockLevel.Text = $"Current Stock Level: {lookupStock.stockLevel.ToString()}";
+		}
+
+		private void btnReturnStockConfirm_Click(object sender, EventArgs e)
+		{
+			int amountToAdd = 0;
+			int originalStockLevel = lookupStock.stockLevel;
+			try
+			{
+				amountToAdd = Convert.ToInt32(txtBoxAmountOfStockToChange.Text);
+			}
+			catch (Exception ex)
+			{
+				ShowErrorStockLevel("That is not a valid number");
+			}
+			if (lookupStock.stockLevel + amountToAdd <= lookupStock.maximumLevel)
+			{
+				lookupStock.stockLevel += amountToAdd;
+				StockDal.UpdateStockInformation(lookupStock);
+				ShowViewStock();
+			}
+			else if (lookupStock.stockLevel == lookupStock.maximumLevel)
+			{
+				ShowErrorStockLevel("This item of stock's storage is full. 0 items added.");
+			}
+			else
+			{
+				ShowErrorStockLevel($"The amount you are attempting to add exceeds the maximum capacity for this stock item. 0 items added.");
+			}
+		}
+
+		private void btnTakeOutStockConfirm_Click(object sender, EventArgs e)
+		{
+			int amountToRemove = 0;
+			int originalStockLevel = lookupStock.stockLevel;
+
+			try
+			{
+				amountToRemove = Convert.ToInt32(txtBoxAmountOfStockToChange.Text);
+			}
+			catch (Exception ex)
+			{
+				ShowErrorStockLevel("That is not a valid number.");
+			}
+			if (amountToRemove <= 0)
+			{
+				ShowErrorStockLevel("That is not a valid number.");
+			}
+			if (lookupStock.stockLevel - amountToRemove >= 0)
+			{
+				lookupStock.stockLevel -= amountToRemove;
+				StockDal.UpdateStockInformation(lookupStock);
+				ShowViewStock();
+			}
+			else if (lookupStock.stockLevel == 0)
+			{
+				ShowErrorStockLevel("This item of stock's storage is empty. 0 items removed.");
+			}
+			else
+			{
+				ShowErrorStockLevel($"You don't have that many items in storage. 0 items removed");
+			}
+		}
+
+		#endregion TakingAndReturningStock
+
+		#region ErrorHandling
+		private void ShowErrorStockLevel(string errorMessage)
+		{
+			// shows an error indicating which boxes need to be filled in to be valid
+			lblError.Text = errorMessage;
+			lblError.Visible = true;
+		}
+
 		private void ClearError()
 		{
 			// hide error message
@@ -201,6 +206,9 @@ namespace Final_Project
 			lblErrorStockEdit.Text = "";
 		}
 
+		#endregion ErrorHandling
+
+		#region EditingStock
 		private void btnEditStock_Click(object sender, EventArgs e)
 		{
 			ShowEditStockItem();
@@ -236,6 +244,9 @@ namespace Final_Project
 			ShowViewStock();
 		}
 
+		#endregion EditingStock
+
+		#region PanelClicks
 		private void pnlOptionButtons_Click(object sender, EventArgs e)
 		{
 			pnlOptionButtons.Visible = false;
@@ -252,6 +263,15 @@ namespace Final_Project
 			lblInstructions.Text = "Select an item to manage its level and information";
 		}
 
+		#endregion PanelClicks
+
+		private void btnBack_Click(object sender, EventArgs e)
+		{
+			ClearError();
+			ShowViewStock();
+		}
+
+		#region ListViewClick
 		private void lstViewStock_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
 		{
 			if (e.IsSelected)
@@ -266,9 +286,14 @@ namespace Final_Project
 			}
 		}
 
+		#endregion ListViewClick
+
+		#region Resizing
 		private void frmEditStockLevels_Resize(object sender, EventArgs e)
 		{
 			lstViewStock.Height = (pnlStockList.Height - 58);
 		}
+
+		#endregion Resizing
 	}
 }

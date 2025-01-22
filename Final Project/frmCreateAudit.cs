@@ -21,10 +21,10 @@ namespace Final_Project
 			this.audit = audit;
 			UpdateStockItems();
 
-			if(viewToShow == "Create Audit")
-			ShowAuditInfo();
-			else if(viewToShow == "Audit History")
-			ShowAuditHistory();
+			if (viewToShow == "Create Audit")
+				ShowAuditInfo();
+			else if (viewToShow == "Audit History")
+				ShowAuditHistory();
 		}
 
 		Audit audit;
@@ -101,16 +101,16 @@ namespace Final_Project
 			}
 		}
 
-		private void UpdateAuditHistoryItems()
+		private void UpdateAuditHistory()
 		{
+			lstViewAuditHistory.SelectedItems.Clear();
+
 			foreach (ListViewItem item in lstViewAuditHistory.Items)
 			{
 				lstViewAuditHistory.Items.Remove(item);
 			}
 
 			audits = AuditDal.GetAllAudits();
-
-			
 
 			foreach (Audit audit in audits)
 			{
@@ -121,6 +121,8 @@ namespace Final_Project
 
 				int noCorrect = 0;
 				int noIncorrect = 0;
+
+				string auditDate = audit.auditDate.Date.ToString("dd/MM/yyyy");
 
 				foreach (AuditItem auditItem in auditItems)
 				{
@@ -134,7 +136,7 @@ namespace Final_Project
 					}
 				}
 				// Create an array with order details
-				string[] row = { audit.auditId.ToString(), audit.auditDate.ToString(), fullname, noCorrect.ToString(), noIncorrect.ToString() };
+				string[] row = { audit.auditId.ToString(), auditDate, fullname, noCorrect.ToString(), noIncorrect.ToString() };
 
 				// Create a new list item based on the array
 				ListViewItem item = new ListViewItem(row);
@@ -144,16 +146,35 @@ namespace Final_Project
 			}
 		}
 
+		private void UpdateAuditHistoryDetails()
+		{
+			foreach (ListViewItem item in lstViewAuditHistoryDetails.Items)
+			{
+				lstViewAuditHistoryDetails.Items.Remove(item);
+			}
+
+			foreach (AuditItem auditItem in auditItems)
+			{
+				Stock stock = StockDal.GetStockByStockId(auditItem.stockId);
+
+				string[] row = { stock.stockName, auditItem.predictedAmount.ToString(), auditItem.actualAmount.ToString() };
+
+				ListViewItem item = new ListViewItem(row);
+
+				lstViewAuditHistoryDetails.Items.Add(item);
+			}
+		}
+
 		private void ShowAuditInfo()
 		{
 			pnlAuditInfo.Visible = true;
 			pnlCreateAudit.Visible = false;
 			pnlAuditHistory.Visible = false;
 			lblAuditError.Visible = false;
+			pnlAuditHistoryDetails.Visible = false;
 			lblAuditNumber.Text = $"Audit Number: {audit.auditId}";
 			btnAddItemToAudit.Enabled = false;
 			lstViewAllStock.SelectedItems.Clear();
-			//UpdateStockItems();
 			UpdateAuditItems();
 		}
 
@@ -162,6 +183,7 @@ namespace Final_Project
 			pnlCreateAudit.Visible = true;
 			pnlAuditInfo.Visible = false;
 			pnlAuditHistory.Visible = false;
+			pnlAuditHistoryDetails.Visible = false;
 			lblNoExpectedInStock.Text = $"Number expected in stock: {stockToAudit.stockLevel}";
 			lblStockToAudit.Text = $"You are auditing: {stockToAudit.stockName}";
 			nUDNoInStockActual.Value = 0;
@@ -172,7 +194,18 @@ namespace Final_Project
 			pnlAuditHistory.Visible = true;
 			pnlCreateAudit.Visible = false;
 			pnlAuditInfo.Visible = false;
-			UpdateAuditHistoryItems();
+			pnlAuditHistoryDetails.Visible = false;
+			btnViewAuditDetails.Enabled = false;
+			UpdateAuditHistory();
+		}
+
+		private void ShowAuditHistoryDetails()
+		{
+			pnlAuditHistoryDetails.Visible = true;
+			pnlCreateAudit.Visible = false;
+			pnlAuditInfo.Visible = false;
+			pnlAuditHistory.Visible = false;
+			UpdateAuditHistoryDetails();
 		}
 
 		private void btnAddItemToAudit_Click(object sender, EventArgs e)
@@ -182,7 +215,7 @@ namespace Final_Project
 
 		private void lstViewAllStock_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
 		{
-			if (e.IsSelected)
+			if (e.IsSelected && e.Item != null)
 			{
 				btnAddItemToAudit.Enabled = true;
 				string stockName = e.Item.SubItems[0].Text;
@@ -218,6 +251,26 @@ namespace Final_Project
 		private void frmCreateAudit_Resize(object sender, EventArgs e)
 		{
 			lstViewAuditHistory.Height = (pnlAuditHistory.Height - 100);
+		}
+
+		private void lstViewAuditHistory_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+		{
+			if (e.IsSelected && e.Item != null)
+			{
+				btnViewAuditDetails.Enabled = true;
+
+				auditItems = AuditDal.GetAllAuditItems(Convert.ToInt32(e.Item.SubItems[0].Text));
+			}
+		}
+
+		private void btnViewAuditDetails_Click(object sender, EventArgs e)
+		{
+			ShowAuditHistoryDetails();
+		}
+
+		private void btnBackToAuditHistory_Click(object sender, EventArgs e)
+		{
+			ShowAuditHistory();
 		}
 	}
 }
