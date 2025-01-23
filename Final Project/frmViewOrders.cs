@@ -22,6 +22,38 @@ namespace Final_Project
 			DisableButtons();
 		}
 
+		private string orderStatus = "";
+		private Order order;		
+
+		#region ButtonPermissions
+
+		// method to disable edit and view buttons 
+		private void DisableButtons()
+		{
+			btnEditOrder.Enabled = false;
+			btnViewOrder.Enabled = false;
+		}
+
+		#endregion ButtonPermissions
+
+		#region ButtonClicks
+
+		private void btnEditOrder_Click(object sender, EventArgs e)
+		{
+			// when edit is clicked, show the edit screen on update a order
+			frmMainScreen.frmMain.OpenChildForm(new frmCreateOrUpdateOrder(order, "Edit"), frmMainScreen.frmMain.btnViewOrders);
+		}
+
+		private void btnViewOrder_Click(object sender, EventArgs e)
+		{
+			// when view is clicked, show the view order screen on create or update screen
+			frmMainScreen.frmMain.OpenChildForm(new frmCreateOrUpdateOrder(order, "View"), frmMainScreen.frmMain.btnViewOrders);
+		}
+
+		#endregion ButtonClicks
+
+		#region ListViewFunctions
+
 		// method to update what the order list view shows
 		private void UpdateOrderListView()
 		{
@@ -48,17 +80,6 @@ namespace Final_Project
 			}
 		}
 
-		// method to disable edit and view buttons 
-		private void DisableButtons()
-		{
-			btnEditOrder.Enabled = false;
-			btnViewOrder.Enabled = false;
-		}
-
-
-		private string orderStatus = "";
-		private Order order;
-
 		// method that handles things when an item is selected in the list view
 		private void lstViewOrders_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
 		{
@@ -82,21 +103,15 @@ namespace Final_Project
 			}
 		}
 
-		private void btnEditOrder_Click(object sender, EventArgs e)
-		{
-			// when edit is clicked, show the edit screen on update a order
-			frmMainScreen.frmMain.OpenChildForm(new frmCreateOrUpdateOrder(order, "Edit"), frmMainScreen.frmMain.btnViewOrders);
-		}
+		#endregion ListViewFunctions		
 
-		private void btnViewOrder_Click(object sender, EventArgs e)
-		{
-			// when view is clicked, show the view order screen on create or update screen
-			frmMainScreen.frmMain.OpenChildForm(new frmCreateOrUpdateOrder(order, "View"), frmMainScreen.frmMain.btnViewOrders);
-		}
+		#region Resizing
 
 		private void frmViewOrders_Resize(object sender, EventArgs e)
 		{
 			lstViewOrders.Height = pnlOrderInfo.Height - 180;
 		}
+
+		#endregion Resizing
 	}
 }

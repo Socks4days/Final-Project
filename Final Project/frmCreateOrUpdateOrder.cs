@@ -36,6 +36,8 @@ namespace Final_Project
 			// update the list view to show all items in the order
 			UpdateOrderItemListView();
 
+			#region PanelSelection
+
 			// check if an order is ready to start or if it is a draft
 			if (order.orderStatus == "Draft" && viewToShow == "Edit")
 			{
@@ -71,41 +73,91 @@ namespace Final_Project
 			// show the view table
 			ShowViewOrderItems();
 
+			#endregion PanelSelection
+
 			// set labels to appropriate data depending on the order
 			lblOrderNumberOrder.Text = "Order Number " + order.orderNumber.ToString();
 			lblOrderStatus.Text = "Order Status: " + order.orderStatus;
 		}
 
-		// lists and order for use throughout the form
+		// lists, values and order for use throughout the form
 		Order order;
 		List<Stock> allStock = StockDal.GetAllStock();
 		List<string> allStockNames = new List<string>();
 		List<OrderItem> sortedOrderItemList;
 		int warningNumber = 0;
+		decimal orderTotal = 0;
 
-		// method to give values to the combo box for selection
-		private void PopulateComboBox()
+		#region PanelShowing
+
+		// method to show the view order items panel
+		private void ShowViewOrderItems()
 		{
-			// get a list of all items in an order 
-			sortedOrderItemList = OrderDal.GetAllOrderItems(this.order.orderNumber);
-			allStockNames.Clear();
-			// add all stock names to a list
-			foreach (Stock stock in allStock)
-			{
-				allStockNames.Add(stock.stockName);
-			}
-
-			// remove all stock names of each order item from the stock name list
-			foreach (OrderItem orderItem in sortedOrderItemList)
-			{
-				allStockNames.Remove(orderItem.stockName);
-			}
-
-			allStockNames = allStockNames.OrderBy(x => x).ToList();
-
-			// populate the combo box with this new list
-			cBoxStock.DataSource = allStockNames;
+			pnlAddItemToOrder.Visible = false;
+			pnlOrderConfirmation.Visible = false;
+			pnlViewOrderItems.Visible = true;
+			pnlViewOrderItems.Dock = DockStyle.Fill;
+			pnlOrderNoToStat.Dock = DockStyle.Bottom;
+			pnlOrderInfo.Dock = DockStyle.Fill;
 		}
+
+		// method to show the add item to order panel
+		private void ShowAddItemToOrder()
+		{
+			pnlViewOrderItems.Visible = false;
+			pnlAddItemToOrder.Visible = true;
+			lblWarning.Visible = false;
+			lblOrderNumberItem.Text = "Order Number " + order.orderNumber.ToString();
+			warningNumber = 0;
+		}
+
+		#endregion PanelShowing
+
+		#region OrderScreenButtonClicks
+
+		// button click to show the add item to order panel
+		private void btnAddAnItemToOrder_Click(object sender, EventArgs e)
+		{
+			ShowAddItemToOrder();
+		}
+
+		// method to remove an item from an order
+		private void btnRemoveFromOrder_Click(object sender, EventArgs e)
+		{
+			// create new instance of an order item
+			OrderItem item = new OrderItem();
+			// give values to order item
+			item.stockId = frmEditStockLevels.lookupStock.stockId;
+			item.orderNumber = order.orderNumber;
+			// remove item from order
+			OrderDal.RemoveOrderItem(item);
+			// update list view to show change
+			UpdateOrderItemListView();
+		}
+
+		private void btnSaveAsDraft_Click(object sender, EventArgs e)
+		{
+			// set status to a draft and close the form
+			order.orderStatus = "Draft";
+			OrderDal.UpdateOrderStatus(order);
+			frmMainScreen.frmMain.OpenChildForm(new frmViewOrders(), frmMainScreen.frmMain.btnViewOrders);
+		}
+
+		private void btnPlaceOrder_Click(object sender, EventArgs e)
+		{
+			pnlOrderInfo.Dock = DockStyle.Top;
+			pnlOrderNoToStat.Visible = false;
+			pnlOrderConfirmation.Visible = true;
+			pnlOrderConfirmation.Dock = DockStyle.Bottom;
+			pnlOrderInfo.Dock = DockStyle.Fill;
+			btnConfirmAndPlace.Enabled = true;
+			lblFinalOrderTotal.Text = $"Order Total: £{orderTotal.ToString()}";
+			lblDeliveringTo.Text = $"Order For: Maintenance Department, Movers Ltd";
+		}
+
+		#endregion OrderScreenButtonClicks
+
+		#region OrderItemButtonClicks
 
 		// method to add an item to an order
 		private void btnAddToOrder_Click(object sender, EventArgs e)
@@ -146,20 +198,6 @@ namespace Final_Project
 			ShowViewOrderItems();
 		}
 
-		// method to remove an item from an order
-		private void btnRemoveFromOrder_Click(object sender, EventArgs e)
-		{
-			// create new instance of an order item
-			OrderItem item = new OrderItem();
-			// give values to order item
-			item.stockId = frmEditStockLevels.lookupStock.stockId;
-			item.orderNumber = order.orderNumber;
-			// remove item from order
-			OrderDal.RemoveOrderItem(item);
-			// update list view to show change
-			UpdateOrderItemListView();
-		}
-
 		// method to cancel adding a new item to an order
 		private void btnCancel_Click(object sender, EventArgs e)
 		{
@@ -167,34 +205,54 @@ namespace Final_Project
 			ShowViewOrderItems();
 		}
 
-		// method to show the view order items panel
-		private void ShowViewOrderItems()
+		#endregion OrderItemButtonClicks
+
+		#region OrderConfirmationButtonClicks
+		private void btnConfirmAndPlace_Click(object sender, EventArgs e)
 		{
-			pnlAddItemToOrder.Visible = false;
+			btnConfirmAndPlace.Enabled = false;
+			// set the order status to 'placed' and save it
+			order.orderStatus = "Placed";
+			lblOrderStatus.Text = $"Order Status: {order.orderStatus}";
+			OrderDal.UpdateOrderStatus(order);
+			frmMainScreen.frmMain.OpenChildForm(new frmViewOrders(), frmMainScreen.frmMain.btnViewOrders);
+		}
+
+		private void btnReturnToEditScreen_Click(object sender, EventArgs e)
+		{
+			pnlOrderNoToStat.Visible = true;
 			pnlOrderConfirmation.Visible = false;
-			pnlViewOrderItems.Visible = true;
-			pnlViewOrderItems.Dock = DockStyle.Fill;
-			pnlOrderNoToStat.Dock = DockStyle.Bottom;
-			pnlOrderInfo.Dock = DockStyle.Fill;
+			pnlOrderInfo.Height = (lstViewOrderItems.Height + pnlOrderNoToStat.Height);
+			pnlViewOrderItems.Height = pnlOrderInfo.Height;
 		}
 
-		// method to show the add item to order panel
-		private void ShowAddItemToOrder()
+		#endregion OrderConfirmationButtonClicks		
+
+		#region OrderFormFunctions
+
+		// method to give values to the combo box for selection
+		private void PopulateComboBox()
 		{
-			pnlViewOrderItems.Visible = false;
-			pnlAddItemToOrder.Visible = true;
-			lblWarning.Visible = false;
-			lblOrderNumberItem.Text = "Order Number " + order.orderNumber.ToString();
-			warningNumber = 0;
-		}
+			// get a list of all items in an order 
+			sortedOrderItemList = OrderDal.GetAllOrderItems(this.order.orderNumber);
+			allStockNames.Clear();
+			// add all stock names to a list
+			foreach (Stock stock in allStock)
+			{
+				allStockNames.Add(stock.stockName);
+			}
 
-		// button click to show the add item to order panel
-		private void btnAddAnItemToOrder_Click(object sender, EventArgs e)
-		{
-			ShowAddItemToOrder();
-		}
+			// remove all stock names of each order item from the stock name list
+			foreach (OrderItem orderItem in sortedOrderItemList)
+			{
+				allStockNames.Remove(orderItem.stockName);
+			}
 
-		decimal orderTotal = 0;
+			allStockNames = allStockNames.OrderBy(x => x).ToList();
+
+			// populate the combo box with this new list
+			cBoxStock.DataSource = allStockNames;
+		}
 
 		// method to update the list view of items in an order
 		private void UpdateOrderItemListView()
@@ -229,6 +287,7 @@ namespace Final_Project
 			// set the value of the order total to the label
 			lblOrderTotal.Text = $"Order Total: £{orderTotal}";
 		}
+
 		private void lstViewOrderItems_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
 		{
 			// if an item in the list view is selected, set instructions text, enable the buttons and find the stock that is selected
@@ -243,43 +302,9 @@ namespace Final_Project
 			}
 		}
 
-		private void btnPlaceOrder_Click(object sender, EventArgs e)
-		{
-			pnlOrderInfo.Dock = DockStyle.Top;
-			pnlOrderNoToStat.Visible = false;
-			pnlOrderConfirmation.Visible = true;
-			pnlOrderConfirmation.Dock = DockStyle.Bottom;
-			pnlOrderInfo.Dock = DockStyle.Fill;
-			btnConfirmAndPlace.Enabled = true;
-			lblFinalOrderTotal.Text = $"Order Total: £{orderTotal.ToString()}";
-			lblDeliveringTo.Text = $"Order For: Maintenance Department, Movers Ltd";
-		}
+		#endregion OrderFormFunctions
 
-		private void btnSaveAsDraft_Click(object sender, EventArgs e)
-		{
-			// set status to a draft and close the form
-			order.orderStatus = "Draft";
-			OrderDal.UpdateOrderStatus(order);
-			frmMainScreen.frmMain.OpenChildForm(new frmViewOrders(), frmMainScreen.frmMain.btnViewOrders);
-		}
-
-		private void btnConfirmAndPlace_Click(object sender, EventArgs e)
-		{
-			btnConfirmAndPlace.Enabled = false;
-			// set the order status to 'placed' and save it
-			order.orderStatus = "Placed";
-			lblOrderStatus.Text = $"Order Status: {order.orderStatus}";
-			OrderDal.UpdateOrderStatus(order);
-			frmMainScreen.frmMain.OpenChildForm(new frmViewOrders(), frmMainScreen.frmMain.btnViewOrders);
-		}
-
-		private void btnReturnToEditScreen_Click(object sender, EventArgs e)
-		{
-			pnlOrderNoToStat.Visible = true;
-			pnlOrderConfirmation.Visible = false;
-			pnlOrderInfo.Height = (lstViewOrderItems.Height + pnlOrderNoToStat.Height);
-			pnlViewOrderItems.Height = pnlOrderInfo.Height;
-		}
+		#region OrderItemFormFunctions
 
 		private void cBoxStock_SelectionChangeCommitted(object sender, EventArgs e)
 		{
@@ -288,9 +313,14 @@ namespace Final_Project
 			lblCurrentStockLevel.Text = $"Current Stock Level: {selectedStock.stockLevel}";
 		}
 
+		#endregion OrderItemFormFunctions					
+
+		#region Resizing
 		private void pnlOrderInfo_Resize(object sender, EventArgs e)
 		{
 			lstViewOrderItems.Height = pnlOrderInfo.Height - 50;
-		}		
+		}
+
+		#endregion Resizing
 	}
 }

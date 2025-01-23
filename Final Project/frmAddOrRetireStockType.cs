@@ -44,6 +44,9 @@ namespace Final_Project
 		// get a list of all stock
 		List<Stock> allStock = StockDal.GetAllStock();
 
+		string actionTakingPlace = "";
+
+		#region AddingNewStock
 		private void btnAddNewStock_Click(object sender, EventArgs e)
 		{
 			// system will try to set each to an appropriate piece of information, catching any errors
@@ -85,6 +88,10 @@ namespace Final_Project
 			lblMaximumLevel.Text = $"Maximum Level: {stockToAdd.maximumLevel}";
 			lblMinimumLevel.Text = $"Minimum Level: {stockToAdd.minimumLevel}";
 		}
+
+		#endregion AddingNewStock
+
+		#region RetiringStock
 
 		private void btnRetireStock_Click(object sender, EventArgs e)
 		{
@@ -131,6 +138,9 @@ namespace Final_Project
 			}
 		}
 
+		#endregion RetiringStock
+
+		#region PanelShowing
 		private void ShowConfirmation()
 		{
 			// shows the confirmation panel
@@ -139,8 +149,7 @@ namespace Final_Project
 			pnlRetireStock.Visible = false;
 			pnlConfirmation.Dock = DockStyle.Fill;
 		}
-
-		string actionTakingPlace = "";
+		
 		private void ShowAddStock()
 		{
 			// shows the panel to add a new stock
@@ -161,6 +170,9 @@ namespace Final_Project
 			actionTakingPlace = "Retire Stock";
 		}
 
+		#endregion PanelShowing
+
+		#region Ending
 		private void btnConfirmed_Click(object sender, EventArgs e)
 		{		
 			// if the add stock object isn't null, it will add the stock to the database
@@ -177,7 +189,38 @@ namespace Final_Project
 				ReturnToPreviousScreen();
 			}
 		}
-		
+
+		private void ReturnToPreviousScreen()
+		{
+			lblErrorAddNewStock.Visible = false;
+
+			txtBoxNewStockName.Text = "";
+			txtBoxNewStockDescription.Text = "";
+			txtBoxNewMinimumLevel.Text = "";
+			txtBoxNewMaximumLevel.Text = "";
+			txtBoxNewOrderQuantity.Text = "";
+			txtBoxNewStockPrice.Text = "";
+			txtBoxNewStockCheckFrequency.Text = "";
+			txtBoxNewDeliveryTime.Text = "";
+
+			txtBoxRetireStockName.Text = "";
+
+			// check to see which panel to show and then show the respective panel
+			if (actionTakingPlace == "Add Stock")
+			{
+				pnlAddNewStock.Visible = true;
+			}
+			else if (actionTakingPlace == "Retire Stock")
+			{
+				pnlRetireStock.Visible = true;
+			}
+			// hides the confirmation panel
+			pnlConfirmation.Visible = false;
+		}
+
+		#endregion Ending
+
+		#region Return
 		private void btnReturn_Click(object sender, EventArgs e)
 		{
 			// if the return button is clicked, the information the user entered will reappear in the textbox(es)
@@ -199,32 +242,6 @@ namespace Final_Project
 			}
 		}
 
-		private void ReturnToPreviousScreen()
-		{
-			lblErrorAddNewStock.Visible = false;
-
-			txtBoxNewStockName.Text = "";
-			txtBoxNewStockDescription.Text = "";
-			txtBoxNewMinimumLevel.Text = "";
-			txtBoxNewMaximumLevel.Text = "";
-			txtBoxNewOrderQuantity.Text = "";
-			txtBoxNewStockPrice.Text = "";
-			txtBoxNewStockCheckFrequency.Text = "";
-			txtBoxNewDeliveryTime.Text = "";	
-			
-			txtBoxRetireStockName.Text = "";
-
-			// check to see which panel to show and then show the respective panel
-			if (actionTakingPlace == "Add Stock")
-			{
-				pnlAddNewStock.Visible = true;
-			}
-			else if (actionTakingPlace == "Retire Stock")
-			{
-				pnlRetireStock.Visible = true;
-			}
-			// hides the confirmation panel
-			pnlConfirmation.Visible = false;
-		}	
+		#endregion Return
 	}
 }

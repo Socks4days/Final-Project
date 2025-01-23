@@ -17,8 +17,7 @@ namespace Final_Project
 	{
 		public frmEditStockLevels()
 		{
-			InitializeComponent();
-			
+			InitializeComponent();			
 			ShowViewStock();
 		}
 
