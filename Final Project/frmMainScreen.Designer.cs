@@ -522,6 +522,7 @@
 			Name = "frmMainScreen";
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Stock Control";
+			FormClosed += frmMainScreen_FormClosed;
 			pnlSideBar.ResumeLayout(false);
 			pnlStaff.ResumeLayout(false);
 			pnlAudits.ResumeLayout(false);

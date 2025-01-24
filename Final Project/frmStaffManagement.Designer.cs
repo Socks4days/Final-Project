@@ -29,14 +29,16 @@
 		private void InitializeComponent()
 		{
 			pnlStaffInfo = new Panel();
-			btnEditPosition = new Button();
-			btnEditStaffMember = new Button();
-			lblInstructions = new Label();
-			lstViewOrders = new ListView();
+			pnlStaffListView = new Panel();
+			lstViewStaffMembers = new ListView();
 			cHeaderStaffForename = new ColumnHeader();
 			cHeaderStaffSurname = new ColumnHeader();
 			cHeaderPosition = new ColumnHeader();
 			cHeaderActive = new ColumnHeader();
+			lblInstructions = new Label();
+			pnlOptionButtons = new Panel();
+			btnEditPosition = new Button();
+			btnEditStaffMember = new Button();
 			pnlEditStaffMember = new Panel();
 			btnCancelStaffEdit = new Button();
 			txtBoxSurname = new TextBox();
@@ -49,18 +51,16 @@
 			lblUsername = new Label();
 			lblPassword = new Label();
 			lblForename = new Label();
-			panel1 = new Panel();
+			pnlEditStaffPosition = new Panel();
 			cBoxStaffPositions = new ComboBox();
-			button1 = new Button();
-			button2 = new Button();
+			btnCancelEditStaffPosition = new Button();
+			btnConfirmEditStaffPositionChanges = new Button();
 			lblStaffToEditPosition = new Label();
-			pnlStaffListView = new Panel();
-			pnlOptionButtons = new Panel();
 			pnlStaffInfo.SuspendLayout();
-			pnlEditStaffMember.SuspendLayout();
-			panel1.SuspendLayout();
 			pnlStaffListView.SuspendLayout();
 			pnlOptionButtons.SuspendLayout();
+			pnlEditStaffMember.SuspendLayout();
+			pnlEditStaffPosition.SuspendLayout();
 			SuspendLayout();
 			// 
 			// pnlStaffInfo
@@ -73,6 +73,76 @@
 			pnlStaffInfo.Name = "pnlStaffInfo";
 			pnlStaffInfo.Size = new Size(982, 680);
 			pnlStaffInfo.TabIndex = 6;
+			// 
+			// pnlStaffListView
+			// 
+			pnlStaffListView.Controls.Add(lstViewStaffMembers);
+			pnlStaffListView.Controls.Add(lblInstructions);
+			pnlStaffListView.Dock = DockStyle.Top;
+			pnlStaffListView.Location = new Point(0, 0);
+			pnlStaffListView.Name = "pnlStaffListView";
+			pnlStaffListView.Size = new Size(982, 598);
+			pnlStaffListView.TabIndex = 18;
+			// 
+			// lstViewStaffMembers
+			// 
+			lstViewStaffMembers.Anchor = AnchorStyles.Top;
+			lstViewStaffMembers.BackColor = Color.FromArgb(200, 12, 200);
+			lstViewStaffMembers.Columns.AddRange(new ColumnHeader[] { cHeaderStaffForename, cHeaderStaffSurname, cHeaderPosition, cHeaderActive });
+			lstViewStaffMembers.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			lstViewStaffMembers.ForeColor = Color.Black;
+			lstViewStaffMembers.FullRowSelect = true;
+			lstViewStaffMembers.GridLines = true;
+			lstViewStaffMembers.Location = new Point(12, 28);
+			lstViewStaffMembers.Name = "lstViewStaffMembers";
+			lstViewStaffMembers.Size = new Size(942, 518);
+			lstViewStaffMembers.TabIndex = 0;
+			lstViewStaffMembers.UseCompatibleStateImageBehavior = false;
+			lstViewStaffMembers.View = View.Details;
+			lstViewStaffMembers.ItemSelectionChanged += lstViewOrders_ItemSelectionChanged;
+			// 
+			// cHeaderStaffForename
+			// 
+			cHeaderStaffForename.Text = "Forename";
+			cHeaderStaffForename.Width = 250;
+			// 
+			// cHeaderStaffSurname
+			// 
+			cHeaderStaffSurname.Text = "Surname";
+			cHeaderStaffSurname.Width = 250;
+			// 
+			// cHeaderPosition
+			// 
+			cHeaderPosition.Text = "Position";
+			cHeaderPosition.Width = 250;
+			// 
+			// cHeaderActive
+			// 
+			cHeaderActive.Text = "Active";
+			cHeaderActive.Width = 150;
+			// 
+			// lblInstructions
+			// 
+			lblInstructions.Anchor = AnchorStyles.Bottom;
+			lblInstructions.AutoSize = true;
+			lblInstructions.FlatStyle = FlatStyle.Flat;
+			lblInstructions.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			lblInstructions.ForeColor = SystemColors.ControlText;
+			lblInstructions.Location = new Point(273, 560);
+			lblInstructions.Name = "lblInstructions";
+			lblInstructions.Size = new Size(436, 25);
+			lblInstructions.TabIndex = 15;
+			lblInstructions.Text = "Select a staff member to manage their information";
+			// 
+			// pnlOptionButtons
+			// 
+			pnlOptionButtons.Controls.Add(btnEditPosition);
+			pnlOptionButtons.Controls.Add(btnEditStaffMember);
+			pnlOptionButtons.Dock = DockStyle.Bottom;
+			pnlOptionButtons.Location = new Point(0, 598);
+			pnlOptionButtons.Name = "pnlOptionButtons";
+			pnlOptionButtons.Size = new Size(982, 82);
+			pnlOptionButtons.TabIndex = 19;
 			// 
 			// btnEditPosition
 			// 
@@ -103,56 +173,7 @@
 			btnEditStaffMember.TabIndex = 16;
 			btnEditStaffMember.Text = "Edit Staff Member";
 			btnEditStaffMember.UseVisualStyleBackColor = false;
-			// 
-			// lblInstructions
-			// 
-			lblInstructions.Anchor = AnchorStyles.Bottom;
-			lblInstructions.AutoSize = true;
-			lblInstructions.FlatStyle = FlatStyle.Flat;
-			lblInstructions.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			lblInstructions.ForeColor = SystemColors.ControlText;
-			lblInstructions.Location = new Point(273, 560);
-			lblInstructions.Name = "lblInstructions";
-			lblInstructions.Size = new Size(436, 25);
-			lblInstructions.TabIndex = 15;
-			lblInstructions.Text = "Select a staff member to manage their information";
-			// 
-			// lstViewOrders
-			// 
-			lstViewOrders.Anchor = AnchorStyles.Top;
-			lstViewOrders.BackColor = Color.FromArgb(200, 12, 200);
-			lstViewOrders.Columns.AddRange(new ColumnHeader[] { cHeaderStaffForename, cHeaderStaffSurname, cHeaderPosition, cHeaderActive });
-			lstViewOrders.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			lstViewOrders.ForeColor = Color.Black;
-			lstViewOrders.FullRowSelect = true;
-			lstViewOrders.GridLines = true;
-			lstViewOrders.Location = new Point(12, 28);
-			lstViewOrders.Name = "lstViewOrders";
-			lstViewOrders.Size = new Size(942, 518);
-			lstViewOrders.TabIndex = 0;
-			lstViewOrders.UseCompatibleStateImageBehavior = false;
-			lstViewOrders.View = View.Details;
-			lstViewOrders.ItemSelectionChanged += lstViewOrders_ItemSelectionChanged;
-			// 
-			// cHeaderStaffForename
-			// 
-			cHeaderStaffForename.Text = "Forename";
-			cHeaderStaffForename.Width = 250;
-			// 
-			// cHeaderStaffSurname
-			// 
-			cHeaderStaffSurname.Text = "Surname";
-			cHeaderStaffSurname.Width = 250;
-			// 
-			// cHeaderPosition
-			// 
-			cHeaderPosition.Text = "Position";
-			cHeaderPosition.Width = 250;
-			// 
-			// cHeaderActive
-			// 
-			cHeaderActive.Text = "Active";
-			cHeaderActive.Width = 150;
+			btnEditStaffMember.Click += btnEditStaffMember_Click;
 			// 
 			// pnlEditStaffMember
 			// 
@@ -188,6 +209,7 @@
 			btnCancelStaffEdit.TabIndex = 9;
 			btnCancelStaffEdit.Text = "Cancel";
 			btnCancelStaffEdit.UseVisualStyleBackColor = false;
+			btnCancelStaffEdit.Click += btnCancelStaffEdit_Click;
 			// 
 			// txtBoxSurname
 			// 
@@ -259,6 +281,7 @@
 			btnConfirmEditStaff.TabIndex = 8;
 			btnConfirmEditStaff.Text = "Confirm Changes";
 			btnConfirmEditStaff.UseVisualStyleBackColor = false;
+			btnConfirmEditStaff.Click += btnConfirmEditStaff_Click;
 			// 
 			// lblSurname
 			// 
@@ -308,18 +331,18 @@
 			lblForename.TabIndex = 24;
 			lblForename.Text = "Forename:";
 			// 
-			// panel1
+			// pnlEditStaffPosition
 			// 
-			panel1.BackColor = Color.FromArgb(200, 200, 200);
-			panel1.Controls.Add(cBoxStaffPositions);
-			panel1.Controls.Add(button1);
-			panel1.Controls.Add(button2);
-			panel1.Controls.Add(lblStaffToEditPosition);
-			panel1.Dock = DockStyle.Top;
-			panel1.Location = new Point(0, 1360);
-			panel1.Name = "panel1";
-			panel1.Size = new Size(982, 680);
-			panel1.TabIndex = 8;
+			pnlEditStaffPosition.BackColor = Color.FromArgb(200, 200, 200);
+			pnlEditStaffPosition.Controls.Add(cBoxStaffPositions);
+			pnlEditStaffPosition.Controls.Add(btnCancelEditStaffPosition);
+			pnlEditStaffPosition.Controls.Add(btnConfirmEditStaffPositionChanges);
+			pnlEditStaffPosition.Controls.Add(lblStaffToEditPosition);
+			pnlEditStaffPosition.Dock = DockStyle.Top;
+			pnlEditStaffPosition.Location = new Point(0, 1360);
+			pnlEditStaffPosition.Name = "pnlEditStaffPosition";
+			pnlEditStaffPosition.Size = new Size(982, 680);
+			pnlEditStaffPosition.TabIndex = 8;
 			// 
 			// cBoxStaffPositions
 			// 
@@ -330,35 +353,36 @@
 			cBoxStaffPositions.Size = new Size(220, 33);
 			cBoxStaffPositions.TabIndex = 25;
 			// 
-			// button1
+			// btnCancelEditStaffPosition
 			// 
-			button1.Anchor = AnchorStyles.None;
-			button1.BackColor = Color.FromArgb(150, 12, 150);
-			button1.FlatAppearance.BorderSize = 0;
-			button1.FlatStyle = FlatStyle.Flat;
-			button1.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			button1.ForeColor = Color.White;
-			button1.Location = new Point(223, 337);
-			button1.Name = "button1";
-			button1.Size = new Size(220, 50);
-			button1.TabIndex = 9;
-			button1.Text = "Cancel";
-			button1.UseVisualStyleBackColor = false;
+			btnCancelEditStaffPosition.Anchor = AnchorStyles.None;
+			btnCancelEditStaffPosition.BackColor = Color.FromArgb(150, 12, 150);
+			btnCancelEditStaffPosition.FlatAppearance.BorderSize = 0;
+			btnCancelEditStaffPosition.FlatStyle = FlatStyle.Flat;
+			btnCancelEditStaffPosition.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			btnCancelEditStaffPosition.ForeColor = Color.White;
+			btnCancelEditStaffPosition.Location = new Point(223, 337);
+			btnCancelEditStaffPosition.Name = "btnCancelEditStaffPosition";
+			btnCancelEditStaffPosition.Size = new Size(220, 50);
+			btnCancelEditStaffPosition.TabIndex = 9;
+			btnCancelEditStaffPosition.Text = "Cancel";
+			btnCancelEditStaffPosition.UseVisualStyleBackColor = false;
+			btnCancelEditStaffPosition.Click += btnCancelEditStaffPosition_Click;
 			// 
-			// button2
+			// btnConfirmEditStaffPositionChanges
 			// 
-			button2.Anchor = AnchorStyles.None;
-			button2.BackColor = Color.FromArgb(150, 12, 150);
-			button2.FlatAppearance.BorderSize = 0;
-			button2.FlatStyle = FlatStyle.Flat;
-			button2.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			button2.ForeColor = Color.White;
-			button2.Location = new Point(539, 337);
-			button2.Name = "button2";
-			button2.Size = new Size(220, 50);
-			button2.TabIndex = 8;
-			button2.Text = "Confirm Changes";
-			button2.UseVisualStyleBackColor = false;
+			btnConfirmEditStaffPositionChanges.Anchor = AnchorStyles.None;
+			btnConfirmEditStaffPositionChanges.BackColor = Color.FromArgb(150, 12, 150);
+			btnConfirmEditStaffPositionChanges.FlatAppearance.BorderSize = 0;
+			btnConfirmEditStaffPositionChanges.FlatStyle = FlatStyle.Flat;
+			btnConfirmEditStaffPositionChanges.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			btnConfirmEditStaffPositionChanges.ForeColor = Color.White;
+			btnConfirmEditStaffPositionChanges.Location = new Point(539, 337);
+			btnConfirmEditStaffPositionChanges.Name = "btnConfirmEditStaffPositionChanges";
+			btnConfirmEditStaffPositionChanges.Size = new Size(220, 50);
+			btnConfirmEditStaffPositionChanges.TabIndex = 8;
+			btnConfirmEditStaffPositionChanges.Text = "Confirm Changes";
+			btnConfirmEditStaffPositionChanges.UseVisualStyleBackColor = false;
 			// 
 			// lblStaffToEditPosition
 			// 
@@ -372,26 +396,6 @@
 			lblStaffToEditPosition.Text = "Editing position for:";
 			lblStaffToEditPosition.TextAlign = ContentAlignment.MiddleCenter;
 			// 
-			// pnlStaffListView
-			// 
-			pnlStaffListView.Controls.Add(lstViewOrders);
-			pnlStaffListView.Controls.Add(lblInstructions);
-			pnlStaffListView.Dock = DockStyle.Top;
-			pnlStaffListView.Location = new Point(0, 0);
-			pnlStaffListView.Name = "pnlStaffListView";
-			pnlStaffListView.Size = new Size(982, 598);
-			pnlStaffListView.TabIndex = 18;
-			// 
-			// pnlOptionButtons
-			// 
-			pnlOptionButtons.Controls.Add(btnEditPosition);
-			pnlOptionButtons.Controls.Add(btnEditStaffMember);
-			pnlOptionButtons.Dock = DockStyle.Bottom;
-			pnlOptionButtons.Location = new Point(0, 598);
-			pnlOptionButtons.Name = "pnlOptionButtons";
-			pnlOptionButtons.Size = new Size(982, 82);
-			pnlOptionButtons.TabIndex = 19;
-			// 
 			// frmStaffManagement
 			// 
 			AutoScaleDimensions = new SizeF(96F, 96F);
@@ -399,18 +403,19 @@
 			AutoScroll = true;
 			AutoSize = true;
 			ClientSize = new Size(1000, 680);
-			Controls.Add(panel1);
+			Controls.Add(pnlEditStaffPosition);
 			Controls.Add(pnlEditStaffMember);
 			Controls.Add(pnlStaffInfo);
 			Name = "frmStaffManagement";
 			Text = "frmStaffManagement";
+			Resize += frmStaffManagement_Resize;
 			pnlStaffInfo.ResumeLayout(false);
-			pnlEditStaffMember.ResumeLayout(false);
-			pnlEditStaffMember.PerformLayout();
-			panel1.ResumeLayout(false);
 			pnlStaffListView.ResumeLayout(false);
 			pnlStaffListView.PerformLayout();
 			pnlOptionButtons.ResumeLayout(false);
+			pnlEditStaffMember.ResumeLayout(false);
+			pnlEditStaffMember.PerformLayout();
+			pnlEditStaffPosition.ResumeLayout(false);
 			ResumeLayout(false);
 		}
 
@@ -420,7 +425,7 @@
 		private Button btnEditPosition;
 		private Button btnEditStaffMember;
 		private Label lblInstructions;
-		private ListView lstViewOrders;
+		private ListView lstViewStaffMembers;
 		private ColumnHeader cHeaderStaffForename;
 		private ColumnHeader cHeaderStaffSurname;
 		private ColumnHeader cHeaderPosition;
@@ -453,10 +458,10 @@
 		private Label lblMaximumLevel;
 		private Label lblForename;
 		private ColumnHeader cHeaderActive;
-		private Panel panel1;
+		private Panel pnlEditStaffPosition;
 		private ComboBox cBoxStaffPositions;
-		private Button button1;
-		private Button button2;
+		private Button btnCancelEditStaffPosition;
+		private Button btnConfirmEditStaffPositionChanges;
 		private Label lblStaffToEditPosition;
 		private Panel pnlStaffListView;
 		private Panel pnlOptionButtons;

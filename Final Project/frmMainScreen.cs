@@ -117,15 +117,7 @@ namespace Final_Project
 				{
 					btnDelivery.BackColor = Color.FromArgb(0, 92, 83);
 					pnlTitleBar.BackColor = Color.FromArgb(0, 151, 136);
-					switch (name)
-					{
-						case "ADD ANOTHER HERE?":
-							btnOrderStock.BackColor = Color.FromArgb(0, 151, 136);
-							break;
-						case "View Deliveries":
-							btnViewDeliveries.BackColor = Color.FromArgb(0, 151, 136);
-							break;
-					}
+					btnViewDeliveries.BackColor = Color.FromArgb(0, 151, 136);					
 				}
 				else if (name == "Create Audit" || name == "Audit History")
 				{
@@ -141,6 +133,12 @@ namespace Final_Project
 							break;
 
 					}
+				}
+				else if (name == "Manage Staff")
+				{
+					btnStaff.BackColor = Color.FromArgb(100, 12, 100);
+					pnlTitleBar.BackColor = Color.FromArgb(150, 12, 150);
+					btnManageStaff.BackColor = Color.FromArgb(150, 12, 150);
 				}
 			}
 
@@ -242,12 +240,13 @@ namespace Final_Project
 			ResetMainButtonColours();
 			if (pnlStaff.Visible == true)
 			{
-				btnStaff.BackColor = Color.FromArgb(100, 12, 100);
+				btnStaff.BackColor = Color.FromArgb(150, 12, 150);
 			}
 			else
 			{
 				btnStaff.BackColor = Color.FromArgb(51, 51, 79);
 			}
+			parentMenuButton = btnStaff;
 		}
 
 		private void ResetMainButtonColours()
@@ -351,7 +350,7 @@ namespace Final_Project
 
 		private void btnManageStaff_Click(object sender, EventArgs e)
 		{
-
+			OpenChildForm(new frmStaffManagement(), (Button)sender);
 		}
 
 		private void btnLogout_Click(object sender, EventArgs e)
@@ -425,5 +424,16 @@ namespace Final_Project
 		}
 
 		#endregion PermissionHandling		
+
+		#region Exiting
+
+		private void frmMainScreen_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			
+		}
+
+		#endregion Exiting
+
+
 	}
 }

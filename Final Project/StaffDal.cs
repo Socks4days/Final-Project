@@ -23,7 +23,7 @@ namespace Final_Project
                 List<Staff> staffMembers = new List<Staff>();
                 connection.Open();
 
-                string sqlQuery = "SELECT * FROM Staff";
+                string sqlQuery = "SELECT * FROM Staff ORDER BY [Forename] ASC";
 
                 SqlCommand getAllStaffCommand = new SqlCommand(sqlQuery, connection);
 
@@ -86,7 +86,7 @@ namespace Final_Project
 
         public static Staff GetStaffByStaffFullName(string staffForename, string staffSurname)
         {
-            string sqlQuery = string.Format($"SELECT * FROM Staff WHERE Forename = {staffForename} AND Surname = {staffSurname}");
+            string sqlQuery = string.Format($"SELECT * FROM Staff WHERE Forename = '{staffForename}' AND Surname = '{staffSurname}'");
             return GetStaffSql(sqlQuery);
         }
 
@@ -119,5 +119,30 @@ namespace Final_Project
 				return staff;
 			}
 		}
+
+        public static void UpdateStaffInformation(Staff staff)
+        {
+            using(SqlConnection connection = new SqlConnection(_connectionstring))
+            {
+				connection.Open();
+
+				SqlCommand updateStaffCommand = new SqlCommand();
+				updateStaffCommand.Connection = connection;
+				// specifies its a stored procedure
+				updateStaffCommand.CommandType = System.Data.CommandType.StoredProcedure;
+				// name of stored procedure to execute
+				updateStaffCommand.CommandText = "UpdateStaffMember";
+				// now add parameters that are passed to the stored procedure
+				updateStaffCommand.Parameters.Add(new SqlParameter("@StaffId", staff.staffId));
+				updateStaffCommand.Parameters.Add(new SqlParameter("@Forename", staff.forename));
+				updateStaffCommand.Parameters.Add(new SqlParameter("@Surname", staff.surname));
+				updateStaffCommand.Parameters.Add(new SqlParameter("@Username", staff.username));
+				updateStaffCommand.Parameters.Add(new SqlParameter("@Password", staff.password));
+
+				updateStaffCommand.ExecuteNonQuery();
+
+				connection.Close();
+			}
+        }
 	}
 }
