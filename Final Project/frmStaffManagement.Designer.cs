@@ -28,7 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			pnlOrderInfo = new Panel();
+			pnlStaffInfo = new Panel();
 			btnEditPosition = new Button();
 			btnEditStaffMember = new Button();
 			lblInstructions = new Label();
@@ -37,42 +37,34 @@
 			cHeaderStaffSurname = new ColumnHeader();
 			cHeaderPosition = new ColumnHeader();
 			cHeaderActive = new ColumnHeader();
-			pnlEditStockItem = new Panel();
-			btnCancelStockEdit = new Button();
-			txtBoxStockCheckFrequency = new TextBox();
-			txtBoxDeliveryTime = new TextBox();
-			lblStockCheckFrequency = new Label();
-			lblDeliveryTimeDays = new Label();
-			txtBoxDescription = new TextBox();
-			txtBoxMaximumLevel = new TextBox();
-			txtBoxMinimumLevel = new TextBox();
-			txtBoxOrderQuantity = new TextBox();
-			txtBoxPrice = new TextBox();
-			lblErrorStockEdit = new Label();
-			txtBoxName = new TextBox();
-			btnConfirmEditStockItem = new Button();
-			lblDescription = new Label();
-			lblPrice = new Label();
-			lblMinimumLevel = new Label();
-			lblOrderQuantity = new Label();
-			lblMaximumLevel = new Label();
-			lblName = new Label();
-			pnlOrderInfo.SuspendLayout();
-			pnlEditStockItem.SuspendLayout();
+			pnlEditStaffMember = new Panel();
+			btnCancelStaffEdit = new Button();
+			this.txtBoxSurname = new TextBox();
+			this.txtBoxPassword = new TextBox();
+			this.txtBoxUsername = new TextBox();
+			this.lblErrorStaffEdit = new Label();
+			this.txtBoxForename = new TextBox();
+			btnConfirmEditStaff = new Button();
+			this.lblSurname = new Label();
+			this.lblUsername = new Label();
+			this.lblPassword = new Label();
+			lblForename = new Label();
+			pnlStaffInfo.SuspendLayout();
+			pnlEditStaffMember.SuspendLayout();
 			SuspendLayout();
 			// 
-			// pnlOrderInfo
+			// pnlStaffInfo
 			// 
-			pnlOrderInfo.BackColor = SystemColors.ScrollBar;
-			pnlOrderInfo.Controls.Add(btnEditPosition);
-			pnlOrderInfo.Controls.Add(btnEditStaffMember);
-			pnlOrderInfo.Controls.Add(lblInstructions);
-			pnlOrderInfo.Controls.Add(lstViewOrders);
-			pnlOrderInfo.Dock = DockStyle.Top;
-			pnlOrderInfo.Location = new Point(0, 0);
-			pnlOrderInfo.Name = "pnlOrderInfo";
-			pnlOrderInfo.Size = new Size(982, 680);
-			pnlOrderInfo.TabIndex = 6;
+			pnlStaffInfo.BackColor = SystemColors.ScrollBar;
+			pnlStaffInfo.Controls.Add(btnEditPosition);
+			pnlStaffInfo.Controls.Add(btnEditStaffMember);
+			pnlStaffInfo.Controls.Add(lblInstructions);
+			pnlStaffInfo.Controls.Add(lstViewOrders);
+			pnlStaffInfo.Dock = DockStyle.Top;
+			pnlStaffInfo.Location = new Point(0, 0);
+			pnlStaffInfo.Name = "pnlStaffInfo";
+			pnlStaffInfo.Size = new Size(982, 680);
+			pnlStaffInfo.TabIndex = 6;
 			// 
 			// btnEditPosition
 			// 
@@ -153,255 +145,159 @@
 			cHeaderActive.Text = "Active";
 			cHeaderActive.Width = 150;
 			// 
-			// pnlEditStockItem
+			// pnlEditStaffMember
 			// 
-			pnlEditStockItem.BackColor = Color.FromArgb(200, 200, 200);
-			pnlEditStockItem.Controls.Add(btnCancelStockEdit);
-			pnlEditStockItem.Controls.Add(txtBoxStockCheckFrequency);
-			pnlEditStockItem.Controls.Add(txtBoxDeliveryTime);
-			pnlEditStockItem.Controls.Add(lblStockCheckFrequency);
-			pnlEditStockItem.Controls.Add(lblDeliveryTimeDays);
-			pnlEditStockItem.Controls.Add(txtBoxDescription);
-			pnlEditStockItem.Controls.Add(txtBoxMaximumLevel);
-			pnlEditStockItem.Controls.Add(txtBoxMinimumLevel);
-			pnlEditStockItem.Controls.Add(txtBoxOrderQuantity);
-			pnlEditStockItem.Controls.Add(txtBoxPrice);
-			pnlEditStockItem.Controls.Add(lblErrorStockEdit);
-			pnlEditStockItem.Controls.Add(txtBoxName);
-			pnlEditStockItem.Controls.Add(btnConfirmEditStockItem);
-			pnlEditStockItem.Controls.Add(lblDescription);
-			pnlEditStockItem.Controls.Add(lblPrice);
-			pnlEditStockItem.Controls.Add(lblMinimumLevel);
-			pnlEditStockItem.Controls.Add(lblOrderQuantity);
-			pnlEditStockItem.Controls.Add(lblMaximumLevel);
-			pnlEditStockItem.Controls.Add(lblName);
-			pnlEditStockItem.Dock = DockStyle.Top;
-			pnlEditStockItem.Location = new Point(0, 680);
-			pnlEditStockItem.Name = "pnlEditStockItem";
-			pnlEditStockItem.Size = new Size(982, 680);
-			pnlEditStockItem.TabIndex = 7;
+			pnlEditStaffMember.BackColor = Color.FromArgb(200, 200, 200);
+			pnlEditStaffMember.Controls.Add(btnCancelStaffEdit);
+			pnlEditStaffMember.Controls.Add(this.txtBoxSurname);
+			pnlEditStaffMember.Controls.Add(this.txtBoxPassword);
+			pnlEditStaffMember.Controls.Add(this.txtBoxUsername);
+			pnlEditStaffMember.Controls.Add(this.lblErrorStaffEdit);
+			pnlEditStaffMember.Controls.Add(this.txtBoxForename);
+			pnlEditStaffMember.Controls.Add(btnConfirmEditStaff);
+			pnlEditStaffMember.Controls.Add(this.lblSurname);
+			pnlEditStaffMember.Controls.Add(this.lblUsername);
+			pnlEditStaffMember.Controls.Add(this.lblPassword);
+			pnlEditStaffMember.Controls.Add(lblForename);
+			pnlEditStaffMember.Dock = DockStyle.Top;
+			pnlEditStaffMember.Location = new Point(0, 680);
+			pnlEditStaffMember.Name = "pnlEditStaffMember";
+			pnlEditStaffMember.Size = new Size(982, 680);
+			pnlEditStaffMember.TabIndex = 7;
 			// 
-			// btnCancelStockEdit
+			// btnCancelStaffEdit
 			// 
-			btnCancelStockEdit.Anchor = AnchorStyles.None;
-			btnCancelStockEdit.BackColor = Color.FromArgb(33, 150, 243);
-			btnCancelStockEdit.FlatAppearance.BorderSize = 0;
-			btnCancelStockEdit.FlatStyle = FlatStyle.Flat;
-			btnCancelStockEdit.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			btnCancelStockEdit.ForeColor = Color.White;
-			btnCancelStockEdit.Location = new Point(236, 513);
-			btnCancelStockEdit.Name = "btnCancelStockEdit";
-			btnCancelStockEdit.Size = new Size(220, 50);
-			btnCancelStockEdit.TabIndex = 9;
-			btnCancelStockEdit.Text = "Cancel";
-			btnCancelStockEdit.UseVisualStyleBackColor = false;
+			btnCancelStaffEdit.Anchor = AnchorStyles.None;
+			btnCancelStaffEdit.BackColor = Color.FromArgb(150, 12, 150);
+			btnCancelStaffEdit.FlatAppearance.BorderSize = 0;
+			btnCancelStaffEdit.FlatStyle = FlatStyle.Flat;
+			btnCancelStaffEdit.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			btnCancelStaffEdit.ForeColor = Color.White;
+			btnCancelStaffEdit.Location = new Point(236, 441);
+			btnCancelStaffEdit.Name = "btnCancelStaffEdit";
+			btnCancelStaffEdit.Size = new Size(220, 50);
+			btnCancelStaffEdit.TabIndex = 9;
+			btnCancelStaffEdit.Text = "Cancel";
+			btnCancelStaffEdit.UseVisualStyleBackColor = false;
 			// 
-			// txtBoxStockCheckFrequency
+			// txtBoxSurname
 			// 
-			txtBoxStockCheckFrequency.Anchor = AnchorStyles.None;
-			txtBoxStockCheckFrequency.BorderStyle = BorderStyle.None;
-			txtBoxStockCheckFrequency.Font = new Font("Segoe UI", 14F);
-			txtBoxStockCheckFrequency.Location = new Point(552, 337);
-			txtBoxStockCheckFrequency.Name = "txtBoxStockCheckFrequency";
-			txtBoxStockCheckFrequency.Size = new Size(220, 25);
-			txtBoxStockCheckFrequency.TabIndex = 7;
+			this.txtBoxSurname.Anchor = AnchorStyles.None;
+			this.txtBoxSurname.BorderStyle = BorderStyle.None;
+			this.txtBoxSurname.Font = new Font("Segoe UI", 14F);
+			this.txtBoxSurname.Location = new Point(552, 220);
+			this.txtBoxSurname.Name = "txtBoxSurname";
+			this.txtBoxSurname.Size = new Size(220, 25);
+			this.txtBoxSurname.TabIndex = 1;
 			// 
-			// txtBoxDeliveryTime
+			// txtBoxPassword
 			// 
-			txtBoxDeliveryTime.Anchor = AnchorStyles.None;
-			txtBoxDeliveryTime.BorderStyle = BorderStyle.None;
-			txtBoxDeliveryTime.Font = new Font("Segoe UI", 14F);
-			txtBoxDeliveryTime.Location = new Point(236, 337);
-			txtBoxDeliveryTime.Name = "txtBoxDeliveryTime";
-			txtBoxDeliveryTime.Size = new Size(220, 25);
-			txtBoxDeliveryTime.TabIndex = 6;
+			this.txtBoxPassword.Anchor = AnchorStyles.None;
+			this.txtBoxPassword.BorderStyle = BorderStyle.None;
+			this.txtBoxPassword.Font = new Font("Segoe UI", 14F);
+			this.txtBoxPassword.Location = new Point(552, 284);
+			this.txtBoxPassword.Name = "txtBoxPassword";
+			this.txtBoxPassword.Size = new Size(220, 25);
+			this.txtBoxPassword.TabIndex = 3;
 			// 
-			// lblStockCheckFrequency
+			// txtBoxUsername
 			// 
-			lblStockCheckFrequency.Anchor = AnchorStyles.None;
-			lblStockCheckFrequency.AutoSize = true;
-			lblStockCheckFrequency.Font = new Font("Segoe UI", 14F);
-			lblStockCheckFrequency.ForeColor = Color.Black;
-			lblStockCheckFrequency.Location = new Point(552, 309);
-			lblStockCheckFrequency.Name = "lblStockCheckFrequency";
-			lblStockCheckFrequency.Size = new Size(159, 25);
-			lblStockCheckFrequency.TabIndex = 33;
-			lblStockCheckFrequency.Text = "Check Frequency:";
+			this.txtBoxUsername.Anchor = AnchorStyles.None;
+			this.txtBoxUsername.BorderStyle = BorderStyle.None;
+			this.txtBoxUsername.Font = new Font("Segoe UI", 14F);
+			this.txtBoxUsername.Location = new Point(236, 284);
+			this.txtBoxUsername.Name = "txtBoxUsername";
+			this.txtBoxUsername.Size = new Size(220, 25);
+			this.txtBoxUsername.TabIndex = 2;
 			// 
-			// lblDeliveryTimeDays
+			// lblErrorStaffEdit
 			// 
-			lblDeliveryTimeDays.Anchor = AnchorStyles.None;
-			lblDeliveryTimeDays.AutoSize = true;
-			lblDeliveryTimeDays.Font = new Font("Segoe UI", 14F);
-			lblDeliveryTimeDays.ForeColor = Color.Black;
-			lblDeliveryTimeDays.Location = new Point(236, 309);
-			lblDeliveryTimeDays.Name = "lblDeliveryTimeDays";
-			lblDeliveryTimeDays.Size = new Size(130, 25);
-			lblDeliveryTimeDays.TabIndex = 32;
-			lblDeliveryTimeDays.Text = "Delivery Time:";
+			this.lblErrorStaffEdit.Anchor = AnchorStyles.None;
+			this.lblErrorStaffEdit.BackColor = Color.FromArgb(255, 209, 209);
+			this.lblErrorStaffEdit.BorderStyle = BorderStyle.FixedSingle;
+			this.lblErrorStaffEdit.FlatStyle = FlatStyle.Flat;
+			this.lblErrorStaffEdit.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			this.lblErrorStaffEdit.ForeColor = Color.FromArgb(250, 0, 0);
+			this.lblErrorStaffEdit.Location = new Point(128, 331);
+			this.lblErrorStaffEdit.Name = "lblErrorStaffEdit";
+			this.lblErrorStaffEdit.Size = new Size(726, 83);
+			this.lblErrorStaffEdit.TabIndex = 17;
+			this.lblErrorStaffEdit.Text = "Error message goes here";
+			this.lblErrorStaffEdit.TextAlign = ContentAlignment.MiddleCenter;
+			this.lblErrorStaffEdit.Visible = false;
 			// 
-			// txtBoxDescription
+			// txtBoxForename
 			// 
-			txtBoxDescription.Anchor = AnchorStyles.None;
-			txtBoxDescription.BorderStyle = BorderStyle.None;
-			txtBoxDescription.Font = new Font("Segoe UI", 14F);
-			txtBoxDescription.Location = new Point(552, 145);
-			txtBoxDescription.Name = "txtBoxDescription";
-			txtBoxDescription.Size = new Size(220, 25);
-			txtBoxDescription.TabIndex = 1;
+			this.txtBoxForename.Anchor = AnchorStyles.None;
+			this.txtBoxForename.BorderStyle = BorderStyle.None;
+			this.txtBoxForename.Font = new Font("Segoe UI", 14F);
+			this.txtBoxForename.Location = new Point(236, 220);
+			this.txtBoxForename.Name = "txtBoxForename";
+			this.txtBoxForename.Size = new Size(220, 25);
+			this.txtBoxForename.TabIndex = 0;
 			// 
-			// txtBoxMaximumLevel
+			// btnConfirmEditStaff
 			// 
-			txtBoxMaximumLevel.Anchor = AnchorStyles.None;
-			txtBoxMaximumLevel.BorderStyle = BorderStyle.None;
-			txtBoxMaximumLevel.Font = new Font("Segoe UI", 14F);
-			txtBoxMaximumLevel.Location = new Point(552, 209);
-			txtBoxMaximumLevel.Name = "txtBoxMaximumLevel";
-			txtBoxMaximumLevel.Size = new Size(220, 25);
-			txtBoxMaximumLevel.TabIndex = 3;
+			btnConfirmEditStaff.Anchor = AnchorStyles.None;
+			btnConfirmEditStaff.BackColor = Color.FromArgb(150, 12, 150);
+			btnConfirmEditStaff.FlatAppearance.BorderSize = 0;
+			btnConfirmEditStaff.FlatStyle = FlatStyle.Flat;
+			btnConfirmEditStaff.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			btnConfirmEditStaff.ForeColor = Color.White;
+			btnConfirmEditStaff.Location = new Point(552, 441);
+			btnConfirmEditStaff.Name = "btnConfirmEditStaff";
+			btnConfirmEditStaff.Size = new Size(220, 50);
+			btnConfirmEditStaff.TabIndex = 8;
+			btnConfirmEditStaff.Text = "Confirm Changes";
+			btnConfirmEditStaff.UseVisualStyleBackColor = false;
 			// 
-			// txtBoxMinimumLevel
+			// lblSurname
 			// 
-			txtBoxMinimumLevel.Anchor = AnchorStyles.None;
-			txtBoxMinimumLevel.BorderStyle = BorderStyle.None;
-			txtBoxMinimumLevel.Font = new Font("Segoe UI", 14F);
-			txtBoxMinimumLevel.Location = new Point(236, 209);
-			txtBoxMinimumLevel.Name = "txtBoxMinimumLevel";
-			txtBoxMinimumLevel.Size = new Size(220, 25);
-			txtBoxMinimumLevel.TabIndex = 2;
+			this.lblSurname.Anchor = AnchorStyles.None;
+			this.lblSurname.AutoSize = true;
+			this.lblSurname.Font = new Font("Segoe UI", 14F);
+			this.lblSurname.ForeColor = Color.Black;
+			this.lblSurname.Location = new Point(552, 192);
+			this.lblSurname.Name = "lblSurname";
+			this.lblSurname.Size = new Size(91, 25);
+			this.lblSurname.TabIndex = 29;
+			this.lblSurname.Text = "Surname:";
 			// 
-			// txtBoxOrderQuantity
+			// lblUsername
 			// 
-			txtBoxOrderQuantity.Anchor = AnchorStyles.None;
-			txtBoxOrderQuantity.BorderStyle = BorderStyle.None;
-			txtBoxOrderQuantity.Font = new Font("Segoe UI", 14F);
-			txtBoxOrderQuantity.Location = new Point(236, 273);
-			txtBoxOrderQuantity.Name = "txtBoxOrderQuantity";
-			txtBoxOrderQuantity.Size = new Size(220, 25);
-			txtBoxOrderQuantity.TabIndex = 4;
+			this.lblUsername.Anchor = AnchorStyles.None;
+			this.lblUsername.AutoSize = true;
+			this.lblUsername.Font = new Font("Segoe UI", 14F);
+			this.lblUsername.ForeColor = Color.Black;
+			this.lblUsername.Location = new Point(236, 256);
+			this.lblUsername.Name = "lblUsername";
+			this.lblUsername.Size = new Size(101, 25);
+			this.lblUsername.TabIndex = 27;
+			this.lblUsername.Text = "Username:";
 			// 
-			// txtBoxPrice
+			// lblPassword
 			// 
-			txtBoxPrice.Anchor = AnchorStyles.None;
-			txtBoxPrice.BorderStyle = BorderStyle.None;
-			txtBoxPrice.Font = new Font("Segoe UI", 14F);
-			txtBoxPrice.Location = new Point(552, 273);
-			txtBoxPrice.Name = "txtBoxPrice";
-			txtBoxPrice.Size = new Size(220, 25);
-			txtBoxPrice.TabIndex = 5;
+			this.lblPassword.Anchor = AnchorStyles.None;
+			this.lblPassword.AutoSize = true;
+			this.lblPassword.Font = new Font("Segoe UI", 14F);
+			this.lblPassword.ForeColor = Color.Black;
+			this.lblPassword.Location = new Point(552, 257);
+			this.lblPassword.Name = "lblPassword";
+			this.lblPassword.Size = new Size(95, 25);
+			this.lblPassword.TabIndex = 25;
+			this.lblPassword.Text = "Password:";
 			// 
-			// lblErrorStockEdit
+			// lblForename
 			// 
-			lblErrorStockEdit.Anchor = AnchorStyles.None;
-			lblErrorStockEdit.BackColor = Color.FromArgb(255, 209, 209);
-			lblErrorStockEdit.BorderStyle = BorderStyle.FixedSingle;
-			lblErrorStockEdit.FlatStyle = FlatStyle.Flat;
-			lblErrorStockEdit.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-			lblErrorStockEdit.ForeColor = Color.FromArgb(250, 0, 0);
-			lblErrorStockEdit.Location = new Point(128, 396);
-			lblErrorStockEdit.Name = "lblErrorStockEdit";
-			lblErrorStockEdit.Size = new Size(726, 83);
-			lblErrorStockEdit.TabIndex = 17;
-			lblErrorStockEdit.Text = "Error message goes here";
-			lblErrorStockEdit.TextAlign = ContentAlignment.MiddleCenter;
-			lblErrorStockEdit.Visible = false;
-			// 
-			// txtBoxName
-			// 
-			txtBoxName.Anchor = AnchorStyles.None;
-			txtBoxName.BorderStyle = BorderStyle.None;
-			txtBoxName.Font = new Font("Segoe UI", 14F);
-			txtBoxName.Location = new Point(236, 145);
-			txtBoxName.Name = "txtBoxName";
-			txtBoxName.Size = new Size(220, 25);
-			txtBoxName.TabIndex = 0;
-			// 
-			// btnConfirmEditStockItem
-			// 
-			btnConfirmEditStockItem.Anchor = AnchorStyles.None;
-			btnConfirmEditStockItem.BackColor = Color.FromArgb(33, 150, 243);
-			btnConfirmEditStockItem.FlatAppearance.BorderSize = 0;
-			btnConfirmEditStockItem.FlatStyle = FlatStyle.Flat;
-			btnConfirmEditStockItem.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			btnConfirmEditStockItem.ForeColor = Color.White;
-			btnConfirmEditStockItem.Location = new Point(552, 513);
-			btnConfirmEditStockItem.Name = "btnConfirmEditStockItem";
-			btnConfirmEditStockItem.Size = new Size(220, 50);
-			btnConfirmEditStockItem.TabIndex = 8;
-			btnConfirmEditStockItem.Text = "Confirm Changes";
-			btnConfirmEditStockItem.UseVisualStyleBackColor = false;
-			// 
-			// lblDescription
-			// 
-			lblDescription.Anchor = AnchorStyles.None;
-			lblDescription.AutoSize = true;
-			lblDescription.Font = new Font("Segoe UI", 14F);
-			lblDescription.ForeColor = Color.Black;
-			lblDescription.Location = new Point(552, 117);
-			lblDescription.Name = "lblDescription";
-			lblDescription.Size = new Size(112, 25);
-			lblDescription.TabIndex = 29;
-			lblDescription.Text = "Description:";
-			// 
-			// lblPrice
-			// 
-			lblPrice.Anchor = AnchorStyles.None;
-			lblPrice.AutoSize = true;
-			lblPrice.Font = new Font("Segoe UI", 14F);
-			lblPrice.ForeColor = Color.Black;
-			lblPrice.Location = new Point(552, 244);
-			lblPrice.Name = "lblPrice";
-			lblPrice.Size = new Size(58, 25);
-			lblPrice.TabIndex = 28;
-			lblPrice.Text = "Price:";
-			// 
-			// lblMinimumLevel
-			// 
-			lblMinimumLevel.Anchor = AnchorStyles.None;
-			lblMinimumLevel.AutoSize = true;
-			lblMinimumLevel.Font = new Font("Segoe UI", 14F);
-			lblMinimumLevel.ForeColor = Color.Black;
-			lblMinimumLevel.Location = new Point(236, 181);
-			lblMinimumLevel.Name = "lblMinimumLevel";
-			lblMinimumLevel.Size = new Size(145, 25);
-			lblMinimumLevel.TabIndex = 27;
-			lblMinimumLevel.Text = "Minimum Level:";
-			// 
-			// lblOrderQuantity
-			// 
-			lblOrderQuantity.Anchor = AnchorStyles.None;
-			lblOrderQuantity.AutoSize = true;
-			lblOrderQuantity.Font = new Font("Segoe UI", 14F);
-			lblOrderQuantity.ForeColor = Color.Black;
-			lblOrderQuantity.Location = new Point(236, 244);
-			lblOrderQuantity.Name = "lblOrderQuantity";
-			lblOrderQuantity.Size = new Size(142, 25);
-			lblOrderQuantity.TabIndex = 26;
-			lblOrderQuantity.Text = "Order Quantity:";
-			// 
-			// lblMaximumLevel
-			// 
-			lblMaximumLevel.Anchor = AnchorStyles.None;
-			lblMaximumLevel.AutoSize = true;
-			lblMaximumLevel.Font = new Font("Segoe UI", 14F);
-			lblMaximumLevel.ForeColor = Color.Black;
-			lblMaximumLevel.Location = new Point(552, 182);
-			lblMaximumLevel.Name = "lblMaximumLevel";
-			lblMaximumLevel.Size = new Size(148, 25);
-			lblMaximumLevel.TabIndex = 25;
-			lblMaximumLevel.Text = "Maximum Level:";
-			// 
-			// lblName
-			// 
-			lblName.Anchor = AnchorStyles.None;
-			lblName.AutoSize = true;
-			lblName.Font = new Font("Segoe UI", 14F);
-			lblName.ForeColor = Color.Black;
-			lblName.Location = new Point(236, 117);
-			lblName.Name = "lblName";
-			lblName.Size = new Size(66, 25);
-			lblName.TabIndex = 24;
-			lblName.Text = "Name:";
+			lblForename.Anchor = AnchorStyles.None;
+			lblForename.AutoSize = true;
+			lblForename.Font = new Font("Segoe UI", 14F);
+			lblForename.ForeColor = Color.Black;
+			lblForename.Location = new Point(236, 192);
+			lblForename.Name = "lblForename";
+			lblForename.Size = new Size(100, 25);
+			lblForename.TabIndex = 24;
+			lblForename.Text = "Forename:";
 			// 
 			// frmStaffManagement
 			// 
@@ -410,20 +306,20 @@
 			AutoScroll = true;
 			AutoSize = true;
 			ClientSize = new Size(1000, 680);
-			Controls.Add(pnlEditStockItem);
-			Controls.Add(pnlOrderInfo);
+			Controls.Add(pnlEditStaffMember);
+			Controls.Add(pnlStaffInfo);
 			Name = "frmStaffManagement";
 			Text = "frmStaffManagement";
-			pnlOrderInfo.ResumeLayout(false);
-			pnlOrderInfo.PerformLayout();
-			pnlEditStockItem.ResumeLayout(false);
-			pnlEditStockItem.PerformLayout();
+			pnlStaffInfo.ResumeLayout(false);
+			pnlStaffInfo.PerformLayout();
+			pnlEditStaffMember.ResumeLayout(false);
+			pnlEditStaffMember.PerformLayout();
 			ResumeLayout(false);
 		}
 
 		#endregion
 
-		private Panel pnlOrderInfo;
+		private Panel pnlStaffInfo;
 		private Button btnEditPosition;
 		private Button btnEditStaffMember;
 		private Label lblInstructions;
@@ -431,8 +327,8 @@
 		private ColumnHeader cHeaderStaffForename;
 		private ColumnHeader cHeaderStaffSurname;
 		private ColumnHeader cHeaderPosition;
-		private Panel pnlEditStockItem;
-		private Button btnCancelStockEdit;
+		private Panel pnlEditStaffMember;
+		private Button btnCancelStaffEdit;
 		private TextBox txtBoxStockCheckFrequency;
 		private TextBox txtBoxDeliveryTime;
 		private Label lblStockCheckFrequency;
@@ -444,13 +340,13 @@
 		private TextBox txtBoxPrice;
 		private Label lblErrorStockEdit;
 		private TextBox txtBoxName;
-		private Button btnConfirmEditStockItem;
+		private Button btnConfirmEditStaff;
 		private Label lblDescription;
 		private Label lblPrice;
 		private Label lblMinimumLevel;
 		private Label lblOrderQuantity;
 		private Label lblMaximumLevel;
-		private Label lblName;
+		private Label lblForename;
 		private ColumnHeader cHeaderActive;
 	}
 }
