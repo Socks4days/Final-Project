@@ -49,8 +49,14 @@
 			this.lblUsername = new Label();
 			this.lblPassword = new Label();
 			lblForename = new Label();
+			panel1 = new Panel();
+			button1 = new Button();
+			button2 = new Button();
+			lblStaffToEditPosition = new Label();
+			cBoxStaffPositions = new ComboBox();
 			pnlStaffInfo.SuspendLayout();
 			pnlEditStaffMember.SuspendLayout();
+			panel1.SuspendLayout();
 			SuspendLayout();
 			// 
 			// pnlStaffInfo
@@ -299,6 +305,70 @@
 			lblForename.TabIndex = 24;
 			lblForename.Text = "Forename:";
 			// 
+			// panel1
+			// 
+			panel1.BackColor = Color.FromArgb(200, 200, 200);
+			panel1.Controls.Add(cBoxStaffPositions);
+			panel1.Controls.Add(button1);
+			panel1.Controls.Add(button2);
+			panel1.Controls.Add(lblStaffToEditPosition);
+			panel1.Dock = DockStyle.Top;
+			panel1.Location = new Point(0, 1360);
+			panel1.Name = "panel1";
+			panel1.Size = new Size(982, 680);
+			panel1.TabIndex = 8;
+			// 
+			// button1
+			// 
+			button1.Anchor = AnchorStyles.None;
+			button1.BackColor = Color.FromArgb(150, 12, 150);
+			button1.FlatAppearance.BorderSize = 0;
+			button1.FlatStyle = FlatStyle.Flat;
+			button1.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			button1.ForeColor = Color.White;
+			button1.Location = new Point(223, 337);
+			button1.Name = "button1";
+			button1.Size = new Size(220, 50);
+			button1.TabIndex = 9;
+			button1.Text = "Cancel";
+			button1.UseVisualStyleBackColor = false;
+			// 
+			// button2
+			// 
+			button2.Anchor = AnchorStyles.None;
+			button2.BackColor = Color.FromArgb(150, 12, 150);
+			button2.FlatAppearance.BorderSize = 0;
+			button2.FlatStyle = FlatStyle.Flat;
+			button2.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			button2.ForeColor = Color.White;
+			button2.Location = new Point(539, 337);
+			button2.Name = "button2";
+			button2.Size = new Size(220, 50);
+			button2.TabIndex = 8;
+			button2.Text = "Confirm Changes";
+			button2.UseVisualStyleBackColor = false;
+			// 
+			// lblStaffToEditPosition
+			// 
+			lblStaffToEditPosition.Anchor = AnchorStyles.None;
+			lblStaffToEditPosition.Font = new Font("Segoe UI", 14F);
+			lblStaffToEditPosition.ForeColor = Color.Black;
+			lblStaffToEditPosition.Location = new Point(224, 217);
+			lblStaffToEditPosition.Name = "lblStaffToEditPosition";
+			lblStaffToEditPosition.Size = new Size(535, 25);
+			lblStaffToEditPosition.TabIndex = 24;
+			lblStaffToEditPosition.Text = "Editing position for:";
+			lblStaffToEditPosition.TextAlign = ContentAlignment.MiddleCenter;
+			// 
+			// cBoxStaffPositions
+			// 
+			cBoxStaffPositions.Font = new Font("Segoe UI", 14F);
+			cBoxStaffPositions.FormattingEnabled = true;
+			cBoxStaffPositions.Location = new Point(381, 266);
+			cBoxStaffPositions.Name = "cBoxStaffPositions";
+			cBoxStaffPositions.Size = new Size(220, 33);
+			cBoxStaffPositions.TabIndex = 25;
+			// 
 			// frmStaffManagement
 			// 
 			AutoScaleDimensions = new SizeF(96F, 96F);
@@ -306,6 +376,7 @@
 			AutoScroll = true;
 			AutoSize = true;
 			ClientSize = new Size(1000, 680);
+			Controls.Add(panel1);
 			Controls.Add(pnlEditStaffMember);
 			Controls.Add(pnlStaffInfo);
 			Name = "frmStaffManagement";
@@ -314,6 +385,7 @@
 			pnlStaffInfo.PerformLayout();
 			pnlEditStaffMember.ResumeLayout(false);
 			pnlEditStaffMember.PerformLayout();
+			panel1.ResumeLayout(false);
 			ResumeLayout(false);
 		}
 
@@ -348,5 +420,10 @@
 		private Label lblMaximumLevel;
 		private Label lblForename;
 		private ColumnHeader cHeaderActive;
+		private Panel panel1;
+		private ComboBox cBoxStaffPositions;
+		private Button button1;
+		private Button button2;
+		private Label lblStaffToEditPosition;
 	}
 }
