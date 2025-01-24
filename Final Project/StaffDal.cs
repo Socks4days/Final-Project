@@ -79,35 +79,45 @@ namespace Final_Project
         }
 
         public static Staff GetStaffByStaffId(int staffId)
-        {
-            using (SqlConnection connection = new SqlConnection(_connectionstring))
-            {
-                Staff staff = new Staff();
-                connection.Open();
-
-                string sqlQuery = string.Format("SELECT * FROM Staff WHERE StaffId = {0}", staffId);
-
-                SqlCommand getStaffByStaffId = new SqlCommand(sqlQuery, connection);
-
-                SqlDataReader sqlDataReader = getStaffByStaffId.ExecuteReader();
-
-                while (sqlDataReader.Read())
-                {
-                    staff = new Staff(
-                        (string)sqlDataReader["Forename"],
-                        (string)sqlDataReader["Surname"],
-                        (string)sqlDataReader["Username"],
-                        (string)sqlDataReader["Password"],
-                        (string)sqlDataReader["StaffPosition"],
-                        (int)sqlDataReader["Active"]
-                        );
-
-                    staff.staffId = (int)sqlDataReader["StaffId"];
-                }
-
-                connection.Close();
-                return staff;
-            }
+        {          
+            string sqlQuery = string.Format("SELECT * FROM Staff WHERE StaffId = {0}", staffId);
+            return GetStaffSql(sqlQuery);
         }
-    }
+
+        public static Staff GetStaffByStaffFullName(string staffForename, string staffSurname)
+        {
+            string sqlQuery = string.Format($"SELECT * FROM Staff WHERE Forename = {staffForename} AND Surname = {staffSurname}");
+            return GetStaffSql(sqlQuery);
+        }
+
+		public static Staff GetStaffSql(string sqlQuery)
+		{
+			using (SqlConnection connection = new SqlConnection(_connectionstring))
+			{
+				Staff staff = new Staff();
+				connection.Open();
+
+				SqlCommand getStaffSql = new SqlCommand(sqlQuery, connection);
+
+				SqlDataReader sqlDataReader = getStaffSql.ExecuteReader();
+
+				while (sqlDataReader.Read())
+				{
+					staff = new Staff(
+						(string)sqlDataReader["Forename"],
+						(string)sqlDataReader["Surname"],
+						(string)sqlDataReader["Username"],
+						(string)sqlDataReader["Password"],
+						(string)sqlDataReader["StaffPosition"],
+						(int)sqlDataReader["Active"]
+						);
+
+					staff.staffId = (int)sqlDataReader["StaffId"];
+				}
+
+				connection.Close();
+				return staff;
+			}
+		}
+	}
 }

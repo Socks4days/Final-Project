@@ -17,12 +17,21 @@ namespace Final_Project
 		{
 			InitializeComponent();
 		}
+			
+		Staff staffToEdit = new Staff();
 
-		private void lstViewStaff_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+		private void lstViewOrders_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
 		{
 			if (e.IsSelected)
 			{
-				
+				pnlOptionButtons.Visible = true;
+				pnlOptionButtons.Dock = DockStyle.Bottom;
+				pnlStaffListView.Dock = DockStyle.Fill;
+
+				string forename = e.Item.SubItems[0].Text;
+				string surname = e.Item.SubItems[1].Text;
+
+				staffToEdit = StaffDal.GetStaffByStaffFullName(forename, surname);
 			}
 		}
 	}

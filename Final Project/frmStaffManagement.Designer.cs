@@ -39,33 +39,35 @@
 			cHeaderActive = new ColumnHeader();
 			pnlEditStaffMember = new Panel();
 			btnCancelStaffEdit = new Button();
-			this.txtBoxSurname = new TextBox();
-			this.txtBoxPassword = new TextBox();
-			this.txtBoxUsername = new TextBox();
-			this.lblErrorStaffEdit = new Label();
-			this.txtBoxForename = new TextBox();
+			txtBoxSurname = new TextBox();
+			txtBoxPassword = new TextBox();
+			txtBoxUsername = new TextBox();
+			lblErrorStaffEdit = new Label();
+			txtBoxForename = new TextBox();
 			btnConfirmEditStaff = new Button();
-			this.lblSurname = new Label();
-			this.lblUsername = new Label();
-			this.lblPassword = new Label();
+			lblSurname = new Label();
+			lblUsername = new Label();
+			lblPassword = new Label();
 			lblForename = new Label();
 			panel1 = new Panel();
+			cBoxStaffPositions = new ComboBox();
 			button1 = new Button();
 			button2 = new Button();
 			lblStaffToEditPosition = new Label();
-			cBoxStaffPositions = new ComboBox();
+			pnlStaffListView = new Panel();
+			pnlOptionButtons = new Panel();
 			pnlStaffInfo.SuspendLayout();
 			pnlEditStaffMember.SuspendLayout();
 			panel1.SuspendLayout();
+			pnlStaffListView.SuspendLayout();
+			pnlOptionButtons.SuspendLayout();
 			SuspendLayout();
 			// 
 			// pnlStaffInfo
 			// 
 			pnlStaffInfo.BackColor = SystemColors.ScrollBar;
-			pnlStaffInfo.Controls.Add(btnEditPosition);
-			pnlStaffInfo.Controls.Add(btnEditStaffMember);
-			pnlStaffInfo.Controls.Add(lblInstructions);
-			pnlStaffInfo.Controls.Add(lstViewOrders);
+			pnlStaffInfo.Controls.Add(pnlStaffListView);
+			pnlStaffInfo.Controls.Add(pnlOptionButtons);
 			pnlStaffInfo.Dock = DockStyle.Top;
 			pnlStaffInfo.Location = new Point(0, 0);
 			pnlStaffInfo.Name = "pnlStaffInfo";
@@ -80,7 +82,7 @@
 			btnEditPosition.FlatStyle = FlatStyle.Flat;
 			btnEditPosition.Font = new Font("Segoe UI", 14F);
 			btnEditPosition.ForeColor = SystemColors.Control;
-			btnEditPosition.Location = new Point(551, 604);
+			btnEditPosition.Location = new Point(566, 18);
 			btnEditPosition.Name = "btnEditPosition";
 			btnEditPosition.Size = new Size(220, 50);
 			btnEditPosition.TabIndex = 17;
@@ -95,7 +97,7 @@
 			btnEditStaffMember.FlatStyle = FlatStyle.Flat;
 			btnEditStaffMember.Font = new Font("Segoe UI", 14F);
 			btnEditStaffMember.ForeColor = SystemColors.Control;
-			btnEditStaffMember.Location = new Point(211, 604);
+			btnEditStaffMember.Location = new Point(223, 18);
 			btnEditStaffMember.Name = "btnEditStaffMember";
 			btnEditStaffMember.Size = new Size(220, 50);
 			btnEditStaffMember.TabIndex = 16;
@@ -109,7 +111,7 @@
 			lblInstructions.FlatStyle = FlatStyle.Flat;
 			lblInstructions.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			lblInstructions.ForeColor = SystemColors.ControlText;
-			lblInstructions.Location = new Point(273, 558);
+			lblInstructions.Location = new Point(273, 560);
 			lblInstructions.Name = "lblInstructions";
 			lblInstructions.Size = new Size(436, 25);
 			lblInstructions.TabIndex = 15;
@@ -124,12 +126,13 @@
 			lstViewOrders.ForeColor = Color.Black;
 			lstViewOrders.FullRowSelect = true;
 			lstViewOrders.GridLines = true;
-			lstViewOrders.Location = new Point(16, 27);
+			lstViewOrders.Location = new Point(12, 28);
 			lstViewOrders.Name = "lstViewOrders";
 			lstViewOrders.Size = new Size(942, 518);
 			lstViewOrders.TabIndex = 0;
 			lstViewOrders.UseCompatibleStateImageBehavior = false;
 			lstViewOrders.View = View.Details;
+			lstViewOrders.ItemSelectionChanged += lstViewOrders_ItemSelectionChanged;
 			// 
 			// cHeaderStaffForename
 			// 
@@ -155,15 +158,15 @@
 			// 
 			pnlEditStaffMember.BackColor = Color.FromArgb(200, 200, 200);
 			pnlEditStaffMember.Controls.Add(btnCancelStaffEdit);
-			pnlEditStaffMember.Controls.Add(this.txtBoxSurname);
-			pnlEditStaffMember.Controls.Add(this.txtBoxPassword);
-			pnlEditStaffMember.Controls.Add(this.txtBoxUsername);
-			pnlEditStaffMember.Controls.Add(this.lblErrorStaffEdit);
-			pnlEditStaffMember.Controls.Add(this.txtBoxForename);
+			pnlEditStaffMember.Controls.Add(txtBoxSurname);
+			pnlEditStaffMember.Controls.Add(txtBoxPassword);
+			pnlEditStaffMember.Controls.Add(txtBoxUsername);
+			pnlEditStaffMember.Controls.Add(lblErrorStaffEdit);
+			pnlEditStaffMember.Controls.Add(txtBoxForename);
 			pnlEditStaffMember.Controls.Add(btnConfirmEditStaff);
-			pnlEditStaffMember.Controls.Add(this.lblSurname);
-			pnlEditStaffMember.Controls.Add(this.lblUsername);
-			pnlEditStaffMember.Controls.Add(this.lblPassword);
+			pnlEditStaffMember.Controls.Add(lblSurname);
+			pnlEditStaffMember.Controls.Add(lblUsername);
+			pnlEditStaffMember.Controls.Add(lblPassword);
 			pnlEditStaffMember.Controls.Add(lblForename);
 			pnlEditStaffMember.Dock = DockStyle.Top;
 			pnlEditStaffMember.Location = new Point(0, 680);
@@ -188,59 +191,59 @@
 			// 
 			// txtBoxSurname
 			// 
-			this.txtBoxSurname.Anchor = AnchorStyles.None;
-			this.txtBoxSurname.BorderStyle = BorderStyle.None;
-			this.txtBoxSurname.Font = new Font("Segoe UI", 14F);
-			this.txtBoxSurname.Location = new Point(552, 220);
-			this.txtBoxSurname.Name = "txtBoxSurname";
-			this.txtBoxSurname.Size = new Size(220, 25);
-			this.txtBoxSurname.TabIndex = 1;
+			txtBoxSurname.Anchor = AnchorStyles.None;
+			txtBoxSurname.BorderStyle = BorderStyle.None;
+			txtBoxSurname.Font = new Font("Segoe UI", 14F);
+			txtBoxSurname.Location = new Point(552, 220);
+			txtBoxSurname.Name = "txtBoxSurname";
+			txtBoxSurname.Size = new Size(220, 25);
+			txtBoxSurname.TabIndex = 1;
 			// 
 			// txtBoxPassword
 			// 
-			this.txtBoxPassword.Anchor = AnchorStyles.None;
-			this.txtBoxPassword.BorderStyle = BorderStyle.None;
-			this.txtBoxPassword.Font = new Font("Segoe UI", 14F);
-			this.txtBoxPassword.Location = new Point(552, 284);
-			this.txtBoxPassword.Name = "txtBoxPassword";
-			this.txtBoxPassword.Size = new Size(220, 25);
-			this.txtBoxPassword.TabIndex = 3;
+			txtBoxPassword.Anchor = AnchorStyles.None;
+			txtBoxPassword.BorderStyle = BorderStyle.None;
+			txtBoxPassword.Font = new Font("Segoe UI", 14F);
+			txtBoxPassword.Location = new Point(552, 284);
+			txtBoxPassword.Name = "txtBoxPassword";
+			txtBoxPassword.Size = new Size(220, 25);
+			txtBoxPassword.TabIndex = 3;
 			// 
 			// txtBoxUsername
 			// 
-			this.txtBoxUsername.Anchor = AnchorStyles.None;
-			this.txtBoxUsername.BorderStyle = BorderStyle.None;
-			this.txtBoxUsername.Font = new Font("Segoe UI", 14F);
-			this.txtBoxUsername.Location = new Point(236, 284);
-			this.txtBoxUsername.Name = "txtBoxUsername";
-			this.txtBoxUsername.Size = new Size(220, 25);
-			this.txtBoxUsername.TabIndex = 2;
+			txtBoxUsername.Anchor = AnchorStyles.None;
+			txtBoxUsername.BorderStyle = BorderStyle.None;
+			txtBoxUsername.Font = new Font("Segoe UI", 14F);
+			txtBoxUsername.Location = new Point(236, 284);
+			txtBoxUsername.Name = "txtBoxUsername";
+			txtBoxUsername.Size = new Size(220, 25);
+			txtBoxUsername.TabIndex = 2;
 			// 
 			// lblErrorStaffEdit
 			// 
-			this.lblErrorStaffEdit.Anchor = AnchorStyles.None;
-			this.lblErrorStaffEdit.BackColor = Color.FromArgb(255, 209, 209);
-			this.lblErrorStaffEdit.BorderStyle = BorderStyle.FixedSingle;
-			this.lblErrorStaffEdit.FlatStyle = FlatStyle.Flat;
-			this.lblErrorStaffEdit.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-			this.lblErrorStaffEdit.ForeColor = Color.FromArgb(250, 0, 0);
-			this.lblErrorStaffEdit.Location = new Point(128, 331);
-			this.lblErrorStaffEdit.Name = "lblErrorStaffEdit";
-			this.lblErrorStaffEdit.Size = new Size(726, 83);
-			this.lblErrorStaffEdit.TabIndex = 17;
-			this.lblErrorStaffEdit.Text = "Error message goes here";
-			this.lblErrorStaffEdit.TextAlign = ContentAlignment.MiddleCenter;
-			this.lblErrorStaffEdit.Visible = false;
+			lblErrorStaffEdit.Anchor = AnchorStyles.None;
+			lblErrorStaffEdit.BackColor = Color.FromArgb(255, 209, 209);
+			lblErrorStaffEdit.BorderStyle = BorderStyle.FixedSingle;
+			lblErrorStaffEdit.FlatStyle = FlatStyle.Flat;
+			lblErrorStaffEdit.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			lblErrorStaffEdit.ForeColor = Color.FromArgb(250, 0, 0);
+			lblErrorStaffEdit.Location = new Point(128, 331);
+			lblErrorStaffEdit.Name = "lblErrorStaffEdit";
+			lblErrorStaffEdit.Size = new Size(726, 83);
+			lblErrorStaffEdit.TabIndex = 17;
+			lblErrorStaffEdit.Text = "Error message goes here";
+			lblErrorStaffEdit.TextAlign = ContentAlignment.MiddleCenter;
+			lblErrorStaffEdit.Visible = false;
 			// 
 			// txtBoxForename
 			// 
-			this.txtBoxForename.Anchor = AnchorStyles.None;
-			this.txtBoxForename.BorderStyle = BorderStyle.None;
-			this.txtBoxForename.Font = new Font("Segoe UI", 14F);
-			this.txtBoxForename.Location = new Point(236, 220);
-			this.txtBoxForename.Name = "txtBoxForename";
-			this.txtBoxForename.Size = new Size(220, 25);
-			this.txtBoxForename.TabIndex = 0;
+			txtBoxForename.Anchor = AnchorStyles.None;
+			txtBoxForename.BorderStyle = BorderStyle.None;
+			txtBoxForename.Font = new Font("Segoe UI", 14F);
+			txtBoxForename.Location = new Point(236, 220);
+			txtBoxForename.Name = "txtBoxForename";
+			txtBoxForename.Size = new Size(220, 25);
+			txtBoxForename.TabIndex = 0;
 			// 
 			// btnConfirmEditStaff
 			// 
@@ -259,39 +262,39 @@
 			// 
 			// lblSurname
 			// 
-			this.lblSurname.Anchor = AnchorStyles.None;
-			this.lblSurname.AutoSize = true;
-			this.lblSurname.Font = new Font("Segoe UI", 14F);
-			this.lblSurname.ForeColor = Color.Black;
-			this.lblSurname.Location = new Point(552, 192);
-			this.lblSurname.Name = "lblSurname";
-			this.lblSurname.Size = new Size(91, 25);
-			this.lblSurname.TabIndex = 29;
-			this.lblSurname.Text = "Surname:";
+			lblSurname.Anchor = AnchorStyles.None;
+			lblSurname.AutoSize = true;
+			lblSurname.Font = new Font("Segoe UI", 14F);
+			lblSurname.ForeColor = Color.Black;
+			lblSurname.Location = new Point(552, 192);
+			lblSurname.Name = "lblSurname";
+			lblSurname.Size = new Size(91, 25);
+			lblSurname.TabIndex = 29;
+			lblSurname.Text = "Surname:";
 			// 
 			// lblUsername
 			// 
-			this.lblUsername.Anchor = AnchorStyles.None;
-			this.lblUsername.AutoSize = true;
-			this.lblUsername.Font = new Font("Segoe UI", 14F);
-			this.lblUsername.ForeColor = Color.Black;
-			this.lblUsername.Location = new Point(236, 256);
-			this.lblUsername.Name = "lblUsername";
-			this.lblUsername.Size = new Size(101, 25);
-			this.lblUsername.TabIndex = 27;
-			this.lblUsername.Text = "Username:";
+			lblUsername.Anchor = AnchorStyles.None;
+			lblUsername.AutoSize = true;
+			lblUsername.Font = new Font("Segoe UI", 14F);
+			lblUsername.ForeColor = Color.Black;
+			lblUsername.Location = new Point(236, 256);
+			lblUsername.Name = "lblUsername";
+			lblUsername.Size = new Size(101, 25);
+			lblUsername.TabIndex = 27;
+			lblUsername.Text = "Username:";
 			// 
 			// lblPassword
 			// 
-			this.lblPassword.Anchor = AnchorStyles.None;
-			this.lblPassword.AutoSize = true;
-			this.lblPassword.Font = new Font("Segoe UI", 14F);
-			this.lblPassword.ForeColor = Color.Black;
-			this.lblPassword.Location = new Point(552, 257);
-			this.lblPassword.Name = "lblPassword";
-			this.lblPassword.Size = new Size(95, 25);
-			this.lblPassword.TabIndex = 25;
-			this.lblPassword.Text = "Password:";
+			lblPassword.Anchor = AnchorStyles.None;
+			lblPassword.AutoSize = true;
+			lblPassword.Font = new Font("Segoe UI", 14F);
+			lblPassword.ForeColor = Color.Black;
+			lblPassword.Location = new Point(552, 257);
+			lblPassword.Name = "lblPassword";
+			lblPassword.Size = new Size(95, 25);
+			lblPassword.TabIndex = 25;
+			lblPassword.Text = "Password:";
 			// 
 			// lblForename
 			// 
@@ -317,6 +320,15 @@
 			panel1.Name = "panel1";
 			panel1.Size = new Size(982, 680);
 			panel1.TabIndex = 8;
+			// 
+			// cBoxStaffPositions
+			// 
+			cBoxStaffPositions.Font = new Font("Segoe UI", 14F);
+			cBoxStaffPositions.FormattingEnabled = true;
+			cBoxStaffPositions.Location = new Point(381, 266);
+			cBoxStaffPositions.Name = "cBoxStaffPositions";
+			cBoxStaffPositions.Size = new Size(220, 33);
+			cBoxStaffPositions.TabIndex = 25;
 			// 
 			// button1
 			// 
@@ -360,14 +372,25 @@
 			lblStaffToEditPosition.Text = "Editing position for:";
 			lblStaffToEditPosition.TextAlign = ContentAlignment.MiddleCenter;
 			// 
-			// cBoxStaffPositions
+			// pnlStaffListView
 			// 
-			cBoxStaffPositions.Font = new Font("Segoe UI", 14F);
-			cBoxStaffPositions.FormattingEnabled = true;
-			cBoxStaffPositions.Location = new Point(381, 266);
-			cBoxStaffPositions.Name = "cBoxStaffPositions";
-			cBoxStaffPositions.Size = new Size(220, 33);
-			cBoxStaffPositions.TabIndex = 25;
+			pnlStaffListView.Controls.Add(lstViewOrders);
+			pnlStaffListView.Controls.Add(lblInstructions);
+			pnlStaffListView.Dock = DockStyle.Top;
+			pnlStaffListView.Location = new Point(0, 0);
+			pnlStaffListView.Name = "pnlStaffListView";
+			pnlStaffListView.Size = new Size(982, 598);
+			pnlStaffListView.TabIndex = 18;
+			// 
+			// pnlOptionButtons
+			// 
+			pnlOptionButtons.Controls.Add(btnEditPosition);
+			pnlOptionButtons.Controls.Add(btnEditStaffMember);
+			pnlOptionButtons.Dock = DockStyle.Bottom;
+			pnlOptionButtons.Location = new Point(0, 598);
+			pnlOptionButtons.Name = "pnlOptionButtons";
+			pnlOptionButtons.Size = new Size(982, 82);
+			pnlOptionButtons.TabIndex = 19;
 			// 
 			// frmStaffManagement
 			// 
@@ -382,10 +405,12 @@
 			Name = "frmStaffManagement";
 			Text = "frmStaffManagement";
 			pnlStaffInfo.ResumeLayout(false);
-			pnlStaffInfo.PerformLayout();
 			pnlEditStaffMember.ResumeLayout(false);
 			pnlEditStaffMember.PerformLayout();
 			panel1.ResumeLayout(false);
+			pnlStaffListView.ResumeLayout(false);
+			pnlStaffListView.PerformLayout();
+			pnlOptionButtons.ResumeLayout(false);
 			ResumeLayout(false);
 		}
 
@@ -401,6 +426,11 @@
 		private ColumnHeader cHeaderPosition;
 		private Panel pnlEditStaffMember;
 		private Button btnCancelStaffEdit;
+		private TextBox txtBoxSurname;
+		private TextBox txtBoxPassword;
+		private TextBox txtBoxUsername;
+		private Label lblErrorStaffEdit;
+		private TextBox txtBoxForename;
 		private TextBox txtBoxStockCheckFrequency;
 		private TextBox txtBoxDeliveryTime;
 		private Label lblStockCheckFrequency;
@@ -413,6 +443,9 @@
 		private Label lblErrorStockEdit;
 		private TextBox txtBoxName;
 		private Button btnConfirmEditStaff;
+		private Label lblSurname;
+		private Label lblUsername;
+		private Label lblPassword;
 		private Label lblDescription;
 		private Label lblPrice;
 		private Label lblMinimumLevel;
@@ -425,5 +458,7 @@
 		private Button button1;
 		private Button button2;
 		private Label lblStaffToEditPosition;
+		private Panel pnlStaffListView;
+		private Panel pnlOptionButtons;
 	}
 }
