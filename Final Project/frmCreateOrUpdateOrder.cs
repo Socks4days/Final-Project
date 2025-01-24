@@ -113,6 +113,34 @@ namespace Final_Project
 
 		#endregion PanelShowing
 
+		#region OrderSetup
+
+		// method to give values to the combo box for selection
+		private void PopulateComboBox()
+		{
+			// get a list of all items in an order 
+			sortedOrderItemList = OrderDal.GetAllOrderItems(this.order.orderNumber);
+			allStockNames.Clear();
+			// add all stock names to a list
+			foreach (Stock stock in allStock)
+			{
+				allStockNames.Add(stock.stockName);
+			}
+
+			// remove all stock names of each order item from the stock name list
+			foreach (OrderItem orderItem in sortedOrderItemList)
+			{
+				allStockNames.Remove(orderItem.stockName);
+			}
+
+			allStockNames = allStockNames.OrderBy(x => x).ToList();
+
+			// populate the combo box with this new list
+			cBoxStock.DataSource = allStockNames;
+		}
+
+		#endregion OrderSetup
+
 		#region OrderScreenButtonClicks
 
 		// button click to show the add item to order panel
@@ -226,33 +254,9 @@ namespace Final_Project
 			pnlViewOrderItems.Height = pnlOrderInfo.Height;
 		}
 
-		#endregion OrderConfirmationButtonClicks		
+		#endregion OrderConfirmationButtonClicks				
 
-		#region OrderFormFunctions
-
-		// method to give values to the combo box for selection
-		private void PopulateComboBox()
-		{
-			// get a list of all items in an order 
-			sortedOrderItemList = OrderDal.GetAllOrderItems(this.order.orderNumber);
-			allStockNames.Clear();
-			// add all stock names to a list
-			foreach (Stock stock in allStock)
-			{
-				allStockNames.Add(stock.stockName);
-			}
-
-			// remove all stock names of each order item from the stock name list
-			foreach (OrderItem orderItem in sortedOrderItemList)
-			{
-				allStockNames.Remove(orderItem.stockName);
-			}
-
-			allStockNames = allStockNames.OrderBy(x => x).ToList();
-
-			// populate the combo box with this new list
-			cBoxStock.DataSource = allStockNames;
-		}
+		#region ListViewUpdating
 
 		// method to update the list view of items in an order
 		private void UpdateOrderItemListView()
@@ -288,6 +292,10 @@ namespace Final_Project
 			lblOrderTotal.Text = $"Order Total: £{orderTotal}";
 		}
 
+		#endregion ListViewUpdating
+
+		#region ListViewSelecting
+
 		private void lstViewOrderItems_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
 		{
 			// if an item in the list view is selected, set instructions text, enable the buttons and find the stock that is selected
@@ -302,7 +310,7 @@ namespace Final_Project
 			}
 		}
 
-		#endregion OrderFormFunctions
+		#endregion ListViewSelecting
 
 		#region OrderItemFormFunctions
 

@@ -103,7 +103,7 @@
 			lstViewOrders.BackColor = Color.FromArgb(227, 115, 166);
 			lstViewOrders.Columns.AddRange(new ColumnHeader[] { cHeaderOrderNumber, cHeaderOrderStatus, cHeaderDateOrdered });
 			lstViewOrders.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			lstViewOrders.ForeColor = Color.White;
+			lstViewOrders.ForeColor = Color.Black;
 			lstViewOrders.FullRowSelect = true;
 			lstViewOrders.GridLines = true;
 			lstViewOrders.Location = new Point(26, 23);

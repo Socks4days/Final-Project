@@ -27,21 +27,13 @@ namespace Final_Project
 				ShowAuditHistory();
 		}
 
+		// values to be used throughout form
 		Audit audit;
 		Stock stockToAudit = new Stock();
 		List<AuditItem> auditItems = new List<AuditItem>();
-		List<Audit> audits = new List<Audit>();
+		List<Audit> audits = new List<Audit>();		
 
-		private void btnCancel_Click(object sender, EventArgs e)
-		{
-			lstViewAllStock.SelectedItems.Clear();
-			ShowAuditInfo();
-		}
-
-		private void btnCompleteAudit_Click(object sender, EventArgs e)
-		{
-			ShowAuditHistory();
-		}
+		#region ListViewUpdating
 
 		private void UpdateStockItems()
 		{
@@ -165,6 +157,34 @@ namespace Final_Project
 			}
 		}
 
+		#endregion ListViewUpdating
+
+		#region ListViewSelecting
+
+		private void lstViewAllStock_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+		{
+			if (e.IsSelected && e.Item != null)
+			{
+				btnAddItemToAudit.Enabled = true;
+				string stockName = e.Item.SubItems[0].Text;
+				stockToAudit = StockDal.GetStockByStockName(stockName);
+			}
+		}
+
+		private void lstViewAuditHistory_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+		{
+			if (e.IsSelected && e.Item != null)
+			{
+				btnViewAuditDetails.Enabled = true;
+
+				auditItems = AuditDal.GetAllAuditItems(Convert.ToInt32(e.Item.SubItems[0].Text));
+			}
+		}
+
+		#endregion ListViewSelecting
+
+		#region PanelShowing
+
 		private void ShowAuditInfo()
 		{
 			pnlAuditInfo.Visible = true;
@@ -208,20 +228,9 @@ namespace Final_Project
 			UpdateAuditHistoryDetails();
 		}
 
-		private void btnAddItemToAudit_Click(object sender, EventArgs e)
-		{
-			ShowCreateAudit();
-		}
+		#endregion PanelShowing
 
-		private void lstViewAllStock_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
-		{
-			if (e.IsSelected && e.Item != null)
-			{
-				btnAddItemToAudit.Enabled = true;
-				string stockName = e.Item.SubItems[0].Text;
-				stockToAudit = StockDal.GetStockByStockName(stockName);
-			}
-		}
+		#region AuditButtonClicks
 
 		private void btnCreateAudit_Click(object sender, EventArgs e)
 		{
@@ -248,20 +257,25 @@ namespace Final_Project
 			ShowAuditInfo();
 		}
 
-		private void frmCreateAudit_Resize(object sender, EventArgs e)
+		private void btnAddItemToAudit_Click(object sender, EventArgs e)
 		{
-			lstViewAuditHistory.Height = (pnlAuditHistory.Height - 100);
+			ShowCreateAudit();
 		}
 
-		private void lstViewAuditHistory_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+		private void btnCompleteAudit_Click(object sender, EventArgs e)
 		{
-			if (e.IsSelected && e.Item != null)
-			{
-				btnViewAuditDetails.Enabled = true;
-
-				auditItems = AuditDal.GetAllAuditItems(Convert.ToInt32(e.Item.SubItems[0].Text));
-			}
+			ShowAuditHistory();
 		}
+
+		private void btnCancel_Click(object sender, EventArgs e)
+		{
+			lstViewAllStock.SelectedItems.Clear();
+			ShowAuditInfo();
+		}
+
+		#endregion AuditButtonClicks
+
+		#region AuditHistoryButtonClicks
 
 		private void btnViewAuditDetails_Click(object sender, EventArgs e)
 		{
@@ -272,5 +286,16 @@ namespace Final_Project
 		{
 			ShowAuditHistory();
 		}
+
+		#endregion AuditHistoryButtonClicks
+
+		#region Resizing
+
+		private void frmCreateAudit_Resize(object sender, EventArgs e)
+		{
+			lstViewAuditHistory.Height = (pnlAuditHistory.Height - 100);
+		}
+
+		#endregion Resizing
 	}
 }

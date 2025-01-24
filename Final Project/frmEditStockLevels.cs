@@ -21,7 +21,7 @@ namespace Final_Project
 			ShowViewStock();
 		}
 
-		#region PanelViewing
+		#region PanelShowing
 		private void ShowViewStock()
 		{
 			foreach (ListViewItem item in lstViewStock.Items)
@@ -84,25 +84,7 @@ namespace Final_Project
 			pnlEditStockItem.Dock = DockStyle.Fill;
 		}
 
-		#endregion PanelViewing
-
-		#region LookupStock
-
-		public static Stock lookupStock = new Stock();
-
-		public static void LookupStock(string stockName)
-		{
-			List<Stock> allStock = StockDal.GetAllStock();
-			foreach (Stock stock in allStock)
-			{
-				if (stock.stockName.ToString() == stockName)
-				{
-					lookupStock = StockDal.GetStockByStockId(stock.stockId);
-				}
-			}
-		}
-
-		#endregion LookupStock
+		#endregion PanelShowing		
 
 		#region TakingAndReturningStock
 		private void btnReturnStock_Click(object sender, EventArgs e)
@@ -186,26 +168,7 @@ namespace Final_Project
 			}
 		}
 
-		#endregion TakingAndReturningStock
-
-		#region ErrorHandling
-		private void ShowErrorStockLevel(string errorMessage)
-		{
-			// shows an error indicating which boxes need to be filled in to be valid
-			lblError.Text = errorMessage;
-			lblError.Visible = true;
-		}
-
-		private void ClearError()
-		{
-			// hide error message
-			lblError.Text = "";
-			lblError.Visible = false;
-			lblErrorStockEdit.Visible = false;
-			lblErrorStockEdit.Text = "";
-		}
-
-		#endregion ErrorHandling
+		#endregion TakingAndReturningStock		
 
 		#region EditingStock
 		private void btnEditStock_Click(object sender, EventArgs e)
@@ -243,7 +206,17 @@ namespace Final_Project
 			ShowViewStock();
 		}
 
-		#endregion EditingStock
+		#endregion EditingStock		
+
+		#region GoingBack
+
+		private void btnBack_Click(object sender, EventArgs e)
+		{
+			ClearError();
+			ShowViewStock();
+		}
+
+		#endregion GoingBack
 
 		#region PanelClicks
 		private void pnlOptionButtons_Click(object sender, EventArgs e)
@@ -264,13 +237,7 @@ namespace Final_Project
 
 		#endregion PanelClicks
 
-		private void btnBack_Click(object sender, EventArgs e)
-		{
-			ClearError();
-			ShowViewStock();
-		}
-
-		#region ListViewClick
+		#region ListViewSelecting
 		private void lstViewStock_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
 		{
 			if (e.IsSelected)
@@ -285,7 +252,44 @@ namespace Final_Project
 			}
 		}
 
-		#endregion ListViewClick
+		#endregion ListViewSelecting
+
+		#region LookupStock
+
+		public static Stock lookupStock = new Stock();
+
+		public static void LookupStock(string stockName)
+		{
+			List<Stock> allStock = StockDal.GetAllStock();
+			foreach (Stock stock in allStock)
+			{
+				if (stock.stockName.ToString() == stockName)
+				{
+					lookupStock = StockDal.GetStockByStockId(stock.stockId);
+				}
+			}
+		}
+
+		#endregion LookupStock
+
+		#region ErrorHandling
+		private void ShowErrorStockLevel(string errorMessage)
+		{
+			// shows an error indicating which boxes need to be filled in to be valid
+			lblError.Text = errorMessage;
+			lblError.Visible = true;
+		}
+
+		private void ClearError()
+		{
+			// hide error message
+			lblError.Text = "";
+			lblError.Visible = false;
+			lblErrorStockEdit.Visible = false;
+			lblErrorStockEdit.Text = "";
+		}
+
+		#endregion ErrorHandling
 
 		#region Resizing
 		private void frmEditStockLevels_Resize(object sender, EventArgs e)

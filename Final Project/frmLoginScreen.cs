@@ -73,6 +73,7 @@ namespace Final_Project
                 {
                     loggedInStaff = staff;
                     frmMainScreen.frmMain.OpenChildForm(null, null);
+                    frmMainScreen.frmMain.SetUserPermissions(staff);
                     break;
                 }
                 // if only username is correct, tell them password is incorrect
@@ -127,6 +128,8 @@ namespace Final_Project
 
 		#endregion ErrorHandling
 
+		#region PasswordHashing
+
 		private void cBoxPassword_CheckedChanged(object sender, EventArgs e)
         {
             if (cBoxPassword.Checked)
@@ -139,6 +142,8 @@ namespace Final_Project
                 // when the check box is unticked, the user will only be able to see * so the password is hidden
                 txtBoxPassword.PasswordChar = '*';
             }
-        }        
-    }
+        }
+
+		#endregion PasswordHashing
+	}
 }

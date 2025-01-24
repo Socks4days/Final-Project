@@ -20,15 +20,21 @@ namespace Final_Project
 			ShowOrders();
 		}
 
+		// values to be used throughout form 
 		Order orderToAddDelivery = new Order();
 		OrderItem orderItemSelected = new OrderItem();
 		List<DeliveryItem> deliveryItemsToBeAdded = new List<DeliveryItem>();
 		OrderItemsDeliveredView selectedOrderItemsDeliveredView = new OrderItemsDeliveredView();
 		List<OrderItemsDeliveredView> sortedOrderItemsDelivered = new List<OrderItemsDeliveredView>();
 		List<DeliveryItemsView> sortedDeliveryItems = new List<DeliveryItemsView>();
-
 		Delivery delivery;
+		string orderItemStatus = Order.NotReceived;
+		private int itemsOrdered;
+		private int itemsReceived;
+		private int itemsFaulty;
+		private int itemsRemaining;
 
+		#region ListViewUpdating
 		private void UpdateOrderListView()
 		{
 			// create a list of orders and fill with all orders
@@ -77,9 +83,7 @@ namespace Final_Project
 					lstViewOrders.Items.Add(item);
 				}
 			}
-		}
-
-		string orderItemStatus = Order.NotReceived;
+		}		
 
 		private void UpdateOrderItemsDeliveredListView(int orderNumber)
 		{
@@ -191,6 +195,10 @@ namespace Final_Project
 			}
 		}
 
+		#endregion ListViewUpdating
+
+		#region ListViewSelecting
+
 		private void lstViewOrders_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
 		{
 			// if an item in the list view is selected, set instructions text, enable the buttons and find the stock that is selected
@@ -220,40 +228,9 @@ namespace Final_Project
 			}
 		}
 
-		private void btnRecordDelivery_Click(object sender, EventArgs e)
-		{
-			if (orderToAddDelivery != null)
-			{
-				ShowDelivery();
-			}
-			else
-			{
-				lblOrderError.Visible = true;
-				lblOrderError.Text = "Select an order to add a delivery!";
-			}
-		}
+		#endregion ListViewSelecting		
 
-		private void btnAddItem_Click(object sender, EventArgs e)
-		{
-			if (orderItemStatus != Order.Fulfilled)
-			{
-				foreach (ListViewItem item in lstViewDeliveryItems.Items)
-				{
-					if (item.SubItems[0].Text == selectedOrderItemsDeliveredView.stockName)
-					{
-						lblDeliveryItemError.Visible = true;
-						lblDeliveryItemError.Text = "You have already added that item in this delivery";
-						return;
-					}
-				}
-				ShowItemToAddToDelivery();
-			}
-			else
-			{
-				lblDeliveryItemError.Visible = true;
-				lblDeliveryItemError.Text = $"All {selectedOrderItemsDeliveredView.stockName} received! Select a different item to add a delivery for.";
-			}
-		}
+		#region PanelShowing
 
 		private void ShowOrders()
 		{
@@ -277,11 +254,7 @@ namespace Final_Project
 			lblOrderDateAndStatus.Text = $"Placed On: {orderToAddDelivery.orderDate}  ({orderToAddDelivery.orderStatus})";
 			UpdateOrderItemsDeliveredListView(orderToAddDelivery.orderNumber);
 		}
-
-		private int itemsOrdered;
-		private int itemsReceived;
-		private int itemsFaulty;
-		private int itemsRemaining;
+		
 		private void ShowItemToAddToDelivery()
 		{
 			itemsOrdered = selectedOrderItemsDeliveredView.orderItemQuantity;
@@ -322,12 +295,77 @@ namespace Final_Project
 			UpdateDeliveryItemsListView();
 		}
 
+		#endregion PanelShowing
+
+		#region FormSetup
+
 		private void SetNumberUpDownValues()
 		{
 			nUDQuantityDelivered.Maximum = itemsRemaining;
 			nUDQuantityFaulty.Maximum = itemsRemaining;
 			nUDQuantityDelivered.Value = 1;
 			nUDQuantityFaulty.Value = 0;
+		}
+
+		#endregion FormSetup
+
+		#region Starting
+
+		private void btnRecordDelivery_Click(object sender, EventArgs e)
+		{
+			if (orderToAddDelivery != null)
+			{
+				ShowDelivery();
+			}
+			else
+			{
+				lblOrderError.Visible = true;
+				lblOrderError.Text = "Select an order to add a delivery!";
+			}
+		}
+
+		private void btnRecordDeliveryForOrder_Click(object sender, EventArgs e)
+		{
+			if (orderToAddDelivery.orderStatus != Order.Fulfilled && orderToAddDelivery.orderStatus != Order.Completed)
+			{
+				delivery = new Delivery();
+				delivery.deliveryDate = DateTime.Now;
+				delivery.orderNumber = orderToAddDelivery.orderNumber;
+				delivery = DeliveryDal.AddDelivery(delivery);
+				btnMarkOrderAsCompleted.Enabled = false;
+				ShowDeliveryDetails();
+			}
+			else
+			{
+				lblDeliveryItemError.Visible = true;
+				lblDeliveryItemError.Text = "All items are fully delivered!";
+			}
+		}
+
+		#endregion Starting
+
+		#region Adding
+
+		private void btnAddItem_Click(object sender, EventArgs e)
+		{
+			if (orderItemStatus != Order.Fulfilled)
+			{
+				foreach (ListViewItem item in lstViewDeliveryItems.Items)
+				{
+					if (item.SubItems[0].Text == selectedOrderItemsDeliveredView.stockName)
+					{
+						lblDeliveryItemError.Visible = true;
+						lblDeliveryItemError.Text = "You have already added that item in this delivery";
+						return;
+					}
+				}
+				ShowItemToAddToDelivery();
+			}
+			else
+			{
+				lblDeliveryItemError.Visible = true;
+				lblDeliveryItemError.Text = $"All {selectedOrderItemsDeliveredView.stockName} received! Select a different item to add a delivery for.";
+			}
 		}
 
 		private void btnAddItemToDelivery_Click(object sender, EventArgs e)
@@ -349,23 +387,9 @@ namespace Final_Project
 			ShowDeliveryDetails();
 		}
 
-		private void btnRecordDeliveryForOrder_Click(object sender, EventArgs e)
-		{
-			if (orderToAddDelivery.orderStatus != Order.Fulfilled && orderToAddDelivery.orderStatus != Order.Completed)
-			{
-				delivery = new Delivery();
-				delivery.deliveryDate = DateTime.Now;
-				delivery.orderNumber = orderToAddDelivery.orderNumber;
-				delivery = DeliveryDal.AddDelivery(delivery);
-				btnMarkOrderAsCompleted.Enabled = false;
-				ShowDeliveryDetails();
-			}
-			else
-			{
-				lblDeliveryItemError.Visible = true;
-				lblDeliveryItemError.Text = "All items are fully delivered!";
-			}
-		}
+		#endregion Adding		
+
+		#region Completing
 
 		private void btnMarkDeliveryAsCompleted_Click(object sender, EventArgs e)
 		{
@@ -374,12 +398,7 @@ namespace Final_Project
 			btnMarkOrderAsCompleted.Enabled = true;
 			lblDeliveryItemError.Visible = false;
 			lblOrderDateAndStatus.Text = $"Placed On: {orderToAddDelivery.orderDate}  ({orderToAddDelivery.orderStatus})";
-		}
-
-		private void frmAddDelivery_Resize(object sender, EventArgs e)
-		{
-			lstViewOrders.Height = pnlOrders.Height - 282;
-		}
+		}		
 
 		private void btnMarkOrderAsCompleted_Click(object sender, EventArgs e)
 		{
@@ -397,9 +416,20 @@ namespace Final_Project
 
 		}
 
+		#endregion Completing
+
+		#region Resizing
+
 		private void pnlOrders_Resize(object sender, EventArgs e)
 		{
 			lstViewOrders.Height = pnlOrders.Height - 212;
 		}
+
+		private void frmAddDelivery_Resize(object sender, EventArgs e)
+		{
+			lstViewOrders.Height = pnlOrders.Height - 282;
+		}
+
+		#endregion Resizing
 	}
 }

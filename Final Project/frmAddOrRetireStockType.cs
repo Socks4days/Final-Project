@@ -32,9 +32,7 @@ namespace Final_Project
 			{
 				ShowRetireStock();
 				lblErrorRetireStock.Visible = false;
-			}
-
-			
+			}			
 		}
 
 		// base stock objects to hold information about the stock to add or delete

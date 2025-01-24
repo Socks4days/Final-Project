@@ -30,6 +30,9 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainScreen));
 			pnlSideBar = new Panel();
+			pnlStaff = new Panel();
+			btnManageStaff = new Button();
+			btnStaff = new Button();
 			btnLogout = new Button();
 			pnlAudits = new Panel();
 			btnAuditHistory = new Button();
@@ -54,6 +57,7 @@
 			pnlFormContainer = new Panel();
 			pctBoxLogo = new PictureBox();
 			pnlSideBar.SuspendLayout();
+			pnlStaff.SuspendLayout();
 			pnlAudits.SuspendLayout();
 			pnlDelivery.SuspendLayout();
 			pnlOrder.SuspendLayout();
@@ -69,6 +73,8 @@
 			// 
 			pnlSideBar.AutoScroll = true;
 			pnlSideBar.BackColor = Color.FromArgb(51, 51, 79);
+			pnlSideBar.Controls.Add(pnlStaff);
+			pnlSideBar.Controls.Add(btnStaff);
 			pnlSideBar.Controls.Add(btnLogout);
 			pnlSideBar.Controls.Add(pnlAudits);
 			pnlSideBar.Controls.Add(btnAudits);
@@ -86,6 +92,54 @@
 			pnlSideBar.Size = new Size(200, 750);
 			pnlSideBar.TabIndex = 0;
 			// 
+			// pnlStaff
+			// 
+			pnlStaff.Controls.Add(btnManageStaff);
+			pnlStaff.Dock = DockStyle.Top;
+			pnlStaff.Location = new Point(0, 980);
+			pnlStaff.Name = "pnlStaff";
+			pnlStaff.Size = new Size(182, 70);
+			pnlStaff.TabIndex = 17;
+			// 
+			// btnManageStaff
+			// 
+			btnManageStaff.BackColor = Color.Transparent;
+			btnManageStaff.Dock = DockStyle.Top;
+			btnManageStaff.FlatAppearance.BorderSize = 0;
+			btnManageStaff.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
+			btnManageStaff.FlatStyle = FlatStyle.Flat;
+			btnManageStaff.Font = new Font("Segoe UI", 14F);
+			btnManageStaff.ForeColor = SystemColors.Control;
+			btnManageStaff.Location = new Point(0, 0);
+			btnManageStaff.Margin = new Padding(2);
+			btnManageStaff.Name = "btnManageStaff";
+			btnManageStaff.Padding = new Padding(20, 0, 0, 0);
+			btnManageStaff.Size = new Size(182, 70);
+			btnManageStaff.TabIndex = 15;
+			btnManageStaff.Text = "Manage Staff";
+			btnManageStaff.TextAlign = ContentAlignment.MiddleLeft;
+			btnManageStaff.UseVisualStyleBackColor = false;
+			btnManageStaff.Click += btnManageStaff_Click;
+			// 
+			// btnStaff
+			// 
+			btnStaff.BackColor = Color.Transparent;
+			btnStaff.Dock = DockStyle.Top;
+			btnStaff.FlatAppearance.BorderSize = 0;
+			btnStaff.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
+			btnStaff.FlatStyle = FlatStyle.Flat;
+			btnStaff.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+			btnStaff.ForeColor = SystemColors.Control;
+			btnStaff.Location = new Point(0, 910);
+			btnStaff.Margin = new Padding(2);
+			btnStaff.Name = "btnStaff";
+			btnStaff.Size = new Size(182, 70);
+			btnStaff.TabIndex = 16;
+			btnStaff.Text = "Staff";
+			btnStaff.TextAlign = ContentAlignment.MiddleLeft;
+			btnStaff.UseVisualStyleBackColor = false;
+			btnStaff.Click += btnStaff_Click;
+			// 
 			// btnLogout
 			// 
 			btnLogout.BackColor = Color.Transparent;
@@ -95,7 +149,7 @@
 			btnLogout.FlatStyle = FlatStyle.Flat;
 			btnLogout.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
 			btnLogout.ForeColor = SystemColors.Control;
-			btnLogout.Location = new Point(0, 910);
+			btnLogout.Location = new Point(0, 1050);
 			btnLogout.Margin = new Padding(2);
 			btnLogout.Name = "btnLogout";
 			btnLogout.Size = new Size(182, 70);
@@ -469,6 +523,7 @@
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Stock Control";
 			pnlSideBar.ResumeLayout(false);
+			pnlStaff.ResumeLayout(false);
 			pnlAudits.ResumeLayout(false);
 			pnlDelivery.ResumeLayout(false);
 			pnlOrder.ResumeLayout(false);
@@ -503,11 +558,14 @@
 		private Panel pnlFormContainer;
 		private PictureBox pctBoxLogo;
 		private PictureBox pctBoxSmallLogo;
-		private Button button2;
 		private Button btnAudits;
 		private Panel pnlAudits;
 		private Button btnCreateAudit;
 		private Button btnAuditHistory;
 		private Button btnLogout;
+		private Panel pnlStaff;
+		private Button button2;
+		private Button btnStaff;
+		private Button btnManageStaff;
 	}
 }

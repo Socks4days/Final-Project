@@ -235,12 +235,28 @@ namespace Final_Project
 			parentMenuButton = btnAudits;
 		}
 
+		private void btnStaff_Click(object sender, EventArgs e)
+		{
+			CloseChildForm();
+			ToggleSubMenu(pnlStaff);
+			ResetMainButtonColours();
+			if (pnlStaff.Visible == true)
+			{
+				btnStaff.BackColor = Color.FromArgb(100, 12, 100);
+			}
+			else
+			{
+				btnStaff.BackColor = Color.FromArgb(51, 51, 79);
+			}
+		}
+
 		private void ResetMainButtonColours()
 		{
 			btnStock.BackColor = Color.FromArgb(51, 51, 79);
 			btnOrder.BackColor = Color.FromArgb(51, 51, 79);
 			btnDelivery.BackColor = Color.FromArgb(51, 51, 79);
 			btnAudits.BackColor = Color.FromArgb(51, 51, 79);
+			btnStaff.BackColor = Color.FromArgb(51, 51, 79);
 		}
 
 		// Hide the settings and admin submenus when a menu option is clicked
@@ -250,6 +266,7 @@ namespace Final_Project
 			pnlOrder.Visible = false;
 			pnlDelivery.Visible = false;
 			pnlAudits.Visible = false;
+			pnlStaff.Visible = false;
 		}
 
 		// Hide the main menu and title bar
@@ -332,11 +349,81 @@ namespace Final_Project
 			OpenChildForm(new frmCreateAudit(audit, "Audit History"), (Button)sender);
 		}
 
+		private void btnManageStaff_Click(object sender, EventArgs e)
+		{
+
+		}
+
 		private void btnLogout_Click(object sender, EventArgs e)
 		{
 			OpenChildForm(new frmLoginScreen(), null);
 		}
 
 		#endregion ButtonNavigation
+
+		#region PermissionHandling		
+
+		public void SetUserPermissions(Staff loggedInStaff)
+		{
+			string staffPosition = loggedInStaff.staffPosition;
+			ResetButtonVisibilities();
+
+			// If the user is an initiate, they will only be able to take out stock and return stock
+			if (staffPosition == "Initiate")
+				Initiate();
+
+			// If the user is a mechanic, they can do what an initate can, as well as perform stock audits
+			else if (staffPosition == "Mechanic")
+				Mechanic();
+
+			// If the user is a senior mechanic, they can do what a mechanic can, as well as add and retire stock items
+			else if (staffPosition == "Senior Mechanic")
+				SeniorMechanic();
+
+			else if (staffPosition == "Manager")
+				Manager();
+
+			// If the user is another level, e.g. CEO, they will have access to the full system
+
+			HideSubMenus();
+			ResetMainButtonColours();
+		}
+
+		private void Initiate()
+		{
+			pnlStock.Height = btnManageStockLevels.Height;
+			btnOrder.Visible = false;
+			btnDelivery.Visible = false;
+			btnAudits.Visible = false;
+		}
+
+		private void Mechanic()
+		{
+			pnlStock.Height = btnManageStockLevels.Height;
+			btnOrder.Visible = false;
+			btnDelivery.Visible = false;
+		}
+
+		private void SeniorMechanic()
+		{
+			btnOrder.Visible = false;
+			btnDelivery.Visible = false;
+		}
+
+		private void Manager()
+		{
+			btnStaff.Visible = false;
+		}
+
+		private void ResetButtonVisibilities()
+		{
+			pnlStock.Height = btnManageStockLevels.Height * 3;
+			btnOrder.Visible = true;
+			btnDelivery.Visible = true;
+			btnAudits.Visible = true;
+			btnStaff.Visible = true;
+		}
+
+		#endregion PermissionHandling		
 	}
 }

@@ -165,9 +165,13 @@ namespace Final_Project
 
 		#endregion Clearing
 
+		#region GoingBack
+
 		private void btnBack_Click(object sender, EventArgs e)
 		{
 			frmMainScreen.frmMain.OpenChildForm(new frmLoginScreen(), null);
 		}
+
+		#endregion GoingBack
 	}
 }
