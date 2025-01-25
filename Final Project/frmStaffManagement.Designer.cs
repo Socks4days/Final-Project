@@ -158,6 +158,7 @@
 			btnEditPosition.TabIndex = 17;
 			btnEditPosition.Text = "Edit Staff Position";
 			btnEditPosition.UseVisualStyleBackColor = false;
+			btnEditPosition.Click += btnEditPosition_Click;
 			// 
 			// btnEditStaffMember
 			// 
@@ -383,6 +384,7 @@
 			btnConfirmEditStaffPositionChanges.TabIndex = 8;
 			btnConfirmEditStaffPositionChanges.Text = "Confirm Changes";
 			btnConfirmEditStaffPositionChanges.UseVisualStyleBackColor = false;
+			btnConfirmEditStaffPositionChanges.Click += btnConfirmEditStaffPositionChanges_Click;
 			// 
 			// lblStaffToEditPosition
 			// 

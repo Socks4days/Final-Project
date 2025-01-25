@@ -144,5 +144,28 @@ namespace Final_Project
 				connection.Close();
 			}
         }
+
+        public static void UpdateStaffPosition(Staff staff)
+        {
+            using(SqlConnection connection = new SqlConnection(_connectionstring))
+            {
+                connection.Open();
+
+                SqlCommand updateStaffPositionCommand = new SqlCommand();
+                updateStaffPositionCommand.Connection = connection;
+
+				// specifies its a stored procedure
+				updateStaffPositionCommand.CommandType = System.Data.CommandType.StoredProcedure;
+				// name of stored procedure to execute
+				updateStaffPositionCommand.CommandText = "UpdateStaffPosition";
+				// now add parameters that are passed to the stored procedure
+				updateStaffPositionCommand.Parameters.Add(new SqlParameter("@StaffId", staff.staffId));
+				updateStaffPositionCommand.Parameters.Add(new SqlParameter("@StaffPosition", staff.staffPosition));
+
+                updateStaffPositionCommand.ExecuteReader();
+
+                connection.Close();
+			}
+        }
 	}
 }

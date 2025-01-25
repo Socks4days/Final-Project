@@ -377,12 +377,9 @@ namespace Final_Project
 
 			// If the user is a senior mechanic, they can do what a mechanic can, as well as add and retire stock items
 			else if (staffPosition == "Senior Mechanic")
-				SeniorMechanic();
+				SeniorMechanic();			
 
-			else if (staffPosition == "Manager")
-				Manager();
-
-			// If the user is another level, e.g. CEO, they will have access to the full system
+			// If the user is another level, e.g. CEO or Manager, they will have access to the full system
 
 			HideSubMenus();
 			ResetMainButtonColours();
@@ -394,6 +391,7 @@ namespace Final_Project
 			btnOrder.Visible = false;
 			btnDelivery.Visible = false;
 			btnAudits.Visible = false;
+			btnStaff.Visible = false;
 		}
 
 		private void Mechanic()
@@ -401,18 +399,15 @@ namespace Final_Project
 			pnlStock.Height = btnManageStockLevels.Height;
 			btnOrder.Visible = false;
 			btnDelivery.Visible = false;
+			btnStaff.Visible = false;
 		}
 
 		private void SeniorMechanic()
 		{
 			btnOrder.Visible = false;
 			btnDelivery.Visible = false;
-		}
-
-		private void Manager()
-		{
 			btnStaff.Visible = false;
-		}
+		}		
 
 		private void ResetButtonVisibilities()
 		{

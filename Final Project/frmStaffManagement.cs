@@ -22,6 +22,7 @@ namespace Final_Project
 
 		Staff staffToEdit = new Staff();
 		List<Staff> staffList = StaffDal.GetAllStaff();
+		string[] positions = { "Initiate", "Mechanic", "Senior Mechanic", "Manager" };
 
 		private void lstViewOrders_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
 		{
@@ -62,6 +63,15 @@ namespace Final_Project
 			txtBoxSurname.Text = staffToEdit.surname;
 			txtBoxUsername.Text = staffToEdit.username;
 			txtBoxPassword.Text = staffToEdit.password;
+		}
+
+		private void ShowEditStaffPosition()
+		{
+			pnlStaffInfo.Visible = false;
+			pnlEditStaffMember.Visible = false;
+			pnlEditStaffPosition.Visible = true;
+			pnlEditStaffPosition.Dock = DockStyle.Fill;
+			cBoxStaffPositions.DataSource = positions;
 		}
 
 		private void UpdateStaffListView()
@@ -117,21 +127,21 @@ namespace Final_Project
 		}
 
 		private void btnConfirmEditStaff_Click(object sender, EventArgs e)
-		{			
+		{
 			string forename = txtBoxForename.Text;
 			string surname = txtBoxSurname.Text;
 			string username = txtBoxUsername.Text;
 			string password = txtBoxPassword.Text;
 
-			if(forename == "" || surname == "" || username == "" || password == "")
+			if (forename == "" || surname == "" || username == "" || password == "")
 			{
 				ShowErrorStaffLevel("Fill all fields before confirming changes!");
 				return;
 			}
 
-			foreach(Staff staff in staffList)
+			foreach (Staff staff in staffList)
 			{
-				if(staff.forename == forename && staff.surname == surname)
+				if (staff.forename == forename && staff.surname == surname)
 				{
 					ShowErrorStaffLevel("There is already a staff member with that name!");
 					return;
@@ -159,6 +169,18 @@ namespace Final_Project
 			// hide error message			
 			lblErrorStaffEdit.Visible = false;
 			lblErrorStaffEdit.Text = "";
+		}
+
+		private void btnEditPosition_Click(object sender, EventArgs e)
+		{
+			ShowEditStaffPosition();
+		}
+
+		private void btnConfirmEditStaffPositionChanges_Click(object sender, EventArgs e)
+		{
+			staffToEdit.staffPosition = cBoxStaffPositions.Text;
+			StaffDal.UpdateStaffPosition(staffToEdit);
+			ShowStaffInfo();
 		}
 	}
 }
