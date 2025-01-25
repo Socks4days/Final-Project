@@ -87,13 +87,13 @@
 			// lstViewStaffMembers
 			// 
 			lstViewStaffMembers.Anchor = AnchorStyles.Top;
-			lstViewStaffMembers.BackColor = Color.FromArgb(200, 12, 200);
+			lstViewStaffMembers.BackColor = Color.FromArgb(244, 112, 255);
 			lstViewStaffMembers.Columns.AddRange(new ColumnHeader[] { cHeaderStaffForename, cHeaderStaffSurname, cHeaderPosition, cHeaderActive });
 			lstViewStaffMembers.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			lstViewStaffMembers.ForeColor = Color.Black;
 			lstViewStaffMembers.FullRowSelect = true;
 			lstViewStaffMembers.GridLines = true;
-			lstViewStaffMembers.Location = new Point(12, 28);
+			lstViewStaffMembers.Location = new Point(20, 28);
 			lstViewStaffMembers.Name = "lstViewStaffMembers";
 			lstViewStaffMembers.Size = new Size(942, 518);
 			lstViewStaffMembers.TabIndex = 0;
