@@ -46,7 +46,7 @@ namespace Final_Project
 
 		#endregion StaffInfo
 
-        #region ButtonLogic
+        #region ButtonClicks
 		private void btnSubmit_Click(object sender, EventArgs e)
         {
             // create default username and password strings
@@ -72,6 +72,8 @@ namespace Final_Project
                 if (staff.username == username && staff.password == password)
                 {
                     loggedInStaff = staff;
+                    loggedInStaff.active = 1;
+                    StaffDal.UpdateStaffStatus(loggedInStaff);
                     frmMainScreen.frmMain.OpenChildForm(null, null);
                     frmMainScreen.frmMain.SetUserPermissions(staff);
                     break;
@@ -108,7 +110,7 @@ namespace Final_Project
             txtBoxPassword.PasswordChar = '*';
         }
 
-		#endregion ButtonLogic
+		#endregion ButtonClicks
 
 		#region ErrorHandling
 		private void ShowError(string errorMessage)

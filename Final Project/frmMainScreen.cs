@@ -424,11 +424,10 @@ namespace Final_Project
 
 		private void frmMainScreen_FormClosed(object sender, FormClosedEventArgs e)
 		{
-			
+			frmLoginScreen.loggedInStaff.active = 0;
+			StaffDal.UpdateStaffStatus(frmLoginScreen.loggedInStaff);
 		}
 
 		#endregion Exiting
-
-
 	}
 }

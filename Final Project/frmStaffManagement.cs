@@ -103,6 +103,14 @@ namespace Final_Project
 				lstViewStaffMembers.Items.Add(item);
 			}
 
+			// Remove the logged in staff member from the list
+			foreach (ListViewItem item in lstViewStaffMembers.Items)
+			{
+				if (item.SubItems[0].Text == frmLoginScreen.loggedInStaff.forename && item.SubItems[1].Text == frmLoginScreen.loggedInStaff.surname)
+				{
+					lstViewStaffMembers.Items.Remove(item);
+				}				
+			}
 			lstViewStaffMembers.SelectedItems.Clear();
 		}
 
