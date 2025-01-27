@@ -29,6 +29,7 @@
 		private void InitializeComponent()
 		{
 			pnlAddItemToOrder = new Panel();
+			lblDeliveryTime = new Label();
 			lblWarning = new Label();
 			lblOrderNumberItem = new Label();
 			lblCurrentStockLevel = new Label();
@@ -72,6 +73,7 @@
 			// 
 			// pnlAddItemToOrder
 			// 
+			pnlAddItemToOrder.Controls.Add(lblDeliveryTime);
 			pnlAddItemToOrder.Controls.Add(lblWarning);
 			pnlAddItemToOrder.Controls.Add(lblOrderNumberItem);
 			pnlAddItemToOrder.Controls.Add(lblCurrentStockLevel);
@@ -88,6 +90,18 @@
 			pnlAddItemToOrder.Size = new Size(1000, 680);
 			pnlAddItemToOrder.TabIndex = 0;
 			// 
+			// lblDeliveryTime
+			// 
+			lblDeliveryTime.Anchor = AnchorStyles.None;
+			lblDeliveryTime.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			lblDeliveryTime.ForeColor = Color.Black;
+			lblDeliveryTime.Location = new Point(245, 313);
+			lblDeliveryTime.Name = "lblDeliveryTime";
+			lblDeliveryTime.Size = new Size(511, 35);
+			lblDeliveryTime.TabIndex = 28;
+			lblDeliveryTime.Text = "Item Delivery Time Goes Here:";
+			lblDeliveryTime.TextAlign = ContentAlignment.TopCenter;
+			// 
 			// lblWarning
 			// 
 			lblWarning.Anchor = AnchorStyles.None;
@@ -95,7 +109,7 @@
 			lblWarning.BorderStyle = BorderStyle.FixedSingle;
 			lblWarning.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
 			lblWarning.ForeColor = Color.FromArgb(250, 0, 0);
-			lblWarning.Location = new Point(245, 316);
+			lblWarning.Location = new Point(245, 349);
 			lblWarning.Name = "lblWarning";
 			lblWarning.Size = new Size(511, 56);
 			lblWarning.TabIndex = 27;
@@ -145,7 +159,7 @@
 			btnAddToOrder.FlatStyle = FlatStyle.Flat;
 			btnAddToOrder.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			btnAddToOrder.ForeColor = Color.White;
-			btnAddToOrder.Location = new Point(536, 404);
+			btnAddToOrder.Location = new Point(536, 437);
 			btnAddToOrder.Name = "btnAddToOrder";
 			btnAddToOrder.Size = new Size(220, 50);
 			btnAddToOrder.TabIndex = 23;
@@ -161,7 +175,7 @@
 			btnCancel.FlatStyle = FlatStyle.Flat;
 			btnCancel.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			btnCancel.ForeColor = Color.White;
-			btnCancel.Location = new Point(245, 404);
+			btnCancel.Location = new Point(245, 437);
 			btnCancel.Name = "btnCancel";
 			btnCancel.Size = new Size(220, 50);
 			btnCancel.TabIndex = 22;
@@ -202,7 +216,7 @@
 			cBoxStock.Name = "cBoxStock";
 			cBoxStock.Size = new Size(176, 33);
 			cBoxStock.TabIndex = 18;
-			cBoxStock.SelectionChangeCommitted += cBoxStock_SelectionChangeCommitted;
+			cBoxStock.SelectedIndexChanged += cBoxStock_SelectedIndexChanged;
 			// 
 			// lblStockItem
 			// 
@@ -558,5 +572,6 @@
 		private Label lblConfirmation;
 		private Label lblFinalOrderTotal;
 		private Label lblDeliveringTo;
+		private Label lblDeliveryTime;
 	}
 }

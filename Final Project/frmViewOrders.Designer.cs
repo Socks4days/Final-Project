@@ -36,6 +36,7 @@
 			cHeaderOrderNumber = new ColumnHeader();
 			cHeaderOrderStatus = new ColumnHeader();
 			cHeaderDateOrdered = new ColumnHeader();
+			cHeaderStaffName = new ColumnHeader();
 			pnlOrderInfo.SuspendLayout();
 			SuspendLayout();
 			// 
@@ -101,7 +102,7 @@
 			// 
 			lstViewOrders.Anchor = AnchorStyles.Top;
 			lstViewOrders.BackColor = Color.FromArgb(227, 115, 166);
-			lstViewOrders.Columns.AddRange(new ColumnHeader[] { cHeaderOrderNumber, cHeaderOrderStatus, cHeaderDateOrdered });
+			lstViewOrders.Columns.AddRange(new ColumnHeader[] { cHeaderOrderNumber, cHeaderOrderStatus, cHeaderDateOrdered, cHeaderStaffName });
 			lstViewOrders.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			lstViewOrders.ForeColor = Color.Black;
 			lstViewOrders.FullRowSelect = true;
@@ -128,6 +129,11 @@
 			// 
 			cHeaderDateOrdered.Text = "Date Ordered";
 			cHeaderDateOrdered.Width = 250;
+			// 
+			// cHeaderStaffName
+			// 
+			cHeaderStaffName.Text = "Placed By";
+			cHeaderStaffName.Width = 200;
 			// 
 			// frmViewOrders
 			// 
@@ -156,5 +162,6 @@
 		private ColumnHeader cHeaderDateOrdered;
 		private Button btnViewOrder;
 		private Button btnEditOrder;
+		private ColumnHeader cHeaderStaffName;
 	}
 }

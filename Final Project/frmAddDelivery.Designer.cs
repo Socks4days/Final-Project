@@ -30,7 +30,7 @@
 		{
 			pnlOrders = new Panel();
 			lblOrderError = new Label();
-			btnRecordDelivery = new Button();
+			btnViewOrRecordDelivery = new Button();
 			lstViewOrders = new ListView();
 			cHeaderOrderNumber = new ColumnHeader();
 			cHeaderOrderDate = new ColumnHeader();
@@ -78,7 +78,7 @@
 			// pnlOrders
 			// 
 			pnlOrders.Controls.Add(lblOrderError);
-			pnlOrders.Controls.Add(btnRecordDelivery);
+			pnlOrders.Controls.Add(btnViewOrRecordDelivery);
 			pnlOrders.Controls.Add(lstViewOrders);
 			pnlOrders.Dock = DockStyle.Top;
 			pnlOrders.Location = new Point(0, 0);
@@ -102,22 +102,22 @@
 			lblOrderError.Text = "Error message goes here";
 			lblOrderError.TextAlign = ContentAlignment.MiddleCenter;
 			// 
-			// btnRecordDelivery
+			// btnViewOrRecordDelivery
 			// 
-			btnRecordDelivery.Anchor = AnchorStyles.Bottom;
-			btnRecordDelivery.BackColor = Color.FromArgb(0, 151, 136);
-			btnRecordDelivery.FlatAppearance.BorderSize = 0;
-			btnRecordDelivery.FlatStyle = FlatStyle.Flat;
-			btnRecordDelivery.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			btnRecordDelivery.ForeColor = Color.White;
-			btnRecordDelivery.Location = new Point(373, 602);
-			btnRecordDelivery.Margin = new Padding(3, 2, 3, 2);
-			btnRecordDelivery.Name = "btnRecordDelivery";
-			btnRecordDelivery.Size = new Size(220, 50);
-			btnRecordDelivery.TabIndex = 25;
-			btnRecordDelivery.Text = "Record Delivery";
-			btnRecordDelivery.UseVisualStyleBackColor = false;
-			btnRecordDelivery.Click += btnRecordDelivery_Click;
+			btnViewOrRecordDelivery.Anchor = AnchorStyles.Bottom;
+			btnViewOrRecordDelivery.BackColor = Color.FromArgb(0, 151, 136);
+			btnViewOrRecordDelivery.FlatAppearance.BorderSize = 0;
+			btnViewOrRecordDelivery.FlatStyle = FlatStyle.Flat;
+			btnViewOrRecordDelivery.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			btnViewOrRecordDelivery.ForeColor = Color.White;
+			btnViewOrRecordDelivery.Location = new Point(373, 602);
+			btnViewOrRecordDelivery.Margin = new Padding(3, 2, 3, 2);
+			btnViewOrRecordDelivery.Name = "btnViewOrRecordDelivery";
+			btnViewOrRecordDelivery.Size = new Size(220, 50);
+			btnViewOrRecordDelivery.TabIndex = 25;
+			btnViewOrRecordDelivery.Text = "View / Record Delivery";
+			btnViewOrRecordDelivery.UseVisualStyleBackColor = false;
+			btnViewOrRecordDelivery.Click += btnRecordDelivery_Click;
 			// 
 			// lstViewOrders
 			// 
@@ -541,7 +541,7 @@
         private ListView lstViewOrders;
         private ColumnHeader cHeaderOrderNumber;
         private ColumnHeader cHeaderOrderDate;
-        private Button btnRecordDelivery;
+        private Button btnViewOrRecordDelivery;
         private Panel pnlDelivery;
         private Button btnMarkOrderAsCompleted;
         private Button btnAddItem;

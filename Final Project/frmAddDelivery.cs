@@ -204,7 +204,7 @@ namespace Final_Project
 			// if an item in the list view is selected, set instructions text, enable the buttons and find the stock that is selected
 			if (e.IsSelected)
 			{
-				btnRecordDelivery.Enabled = true;
+				btnViewOrRecordDelivery.Enabled = true;
 				string orderNumber = e.Item.SubItems[0].Text;
 				orderToAddDelivery = OrderDal.GetOrderByOrderNumber(Convert.ToInt32(orderNumber));
 			}
@@ -398,6 +398,9 @@ namespace Final_Project
 			btnMarkOrderAsCompleted.Enabled = true;
 			lblDeliveryItemError.Visible = false;
 			lblOrderDateAndStatus.Text = $"Placed On: {orderToAddDelivery.orderDate}  ({orderToAddDelivery.orderStatus})";
+
+			delivery.deliveryCheckedByStaffId = frmLoginScreen.loggedInStaff.staffId;
+			DeliveryDal.SetDeliveryPlacedBy(delivery);
 		}		
 
 		private void btnMarkOrderAsCompleted_Click(object sender, EventArgs e)

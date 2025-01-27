@@ -275,5 +275,26 @@ namespace Final_Project
                 connection.Close();
             }
         }
-    }
+
+		public static void SetOrderPlacedBy(Order newOrder)
+		{
+			using (SqlConnection connection = new SqlConnection(_connectionstring))
+			{
+				connection.Open();
+
+				SqlCommand insertOrderPlacedByCommand = new SqlCommand();
+				insertOrderPlacedByCommand.Connection = connection;
+
+				insertOrderPlacedByCommand.CommandType = System.Data.CommandType.StoredProcedure;
+				insertOrderPlacedByCommand.CommandText = "SetOrderPlacedBy";				
+
+				insertOrderPlacedByCommand.Parameters.Add(new SqlParameter("@OrderNumber", newOrder.orderNumber));
+				insertOrderPlacedByCommand.Parameters.Add(new SqlParameter("@OrderPlacedByStaffId", newOrder.orderPlacedByStaffId));
+
+				insertOrderPlacedByCommand.ExecuteNonQuery();
+
+				connection.Close();
+			}
+		}
+	}
 }

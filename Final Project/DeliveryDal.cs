@@ -253,5 +253,26 @@ namespace Final_Project
                 return deliveryItems;
             }
         }
-    }
+
+		public static void SetDeliveryPlacedBy(Delivery newDelivery)
+		{
+			using (SqlConnection connection = new SqlConnection(_connectionstring))
+			{
+				connection.Open();
+
+				SqlCommand insertDeliveryCheckedByCommand = new SqlCommand();
+				insertDeliveryCheckedByCommand.Connection = connection;
+
+				insertDeliveryCheckedByCommand.CommandType = System.Data.CommandType.StoredProcedure;
+				insertDeliveryCheckedByCommand.CommandText = "SetDeliveryCheckedBy";
+
+				insertDeliveryCheckedByCommand.Parameters.Add(new SqlParameter("@DeliveryNumber", newDelivery.deliveryNumber));
+				insertDeliveryCheckedByCommand.Parameters.Add(new SqlParameter("@DeliveryCheckedByStaffId", newDelivery.deliveryCheckedByStaffId));
+
+				insertDeliveryCheckedByCommand.ExecuteNonQuery();
+
+				connection.Close();
+			}
+		}
+	}
 }

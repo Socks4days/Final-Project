@@ -69,8 +69,10 @@ namespace Final_Project
 			// Add each order in the sorted list to the order list
 			foreach (Order order in sortedOrderItemList)
 			{
+				Staff staff = StaffDal.GetStaffByStaffId(order.orderPlacedByStaffId);
+				string staffFullName = $"{staff.forename} {staff.surname}";
 				// Create an array with order details
-				string[] row = { order.orderNumber.ToString(), order.orderStatus, order.orderDate.ToString() };
+				string[] row = { order.orderNumber.ToString(), order.orderStatus, order.orderDate.ToString(), staffFullName };
 
 				// Create a new list item based on the array
 				ListViewItem item = new ListViewItem(row);

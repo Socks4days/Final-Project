@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -28,6 +29,7 @@ namespace Final_Project
 			// make sure it isn't showing anything when initially show into the form
 			cBoxStock.DroppedDown = false;
 			cBoxStock.Text = "";
+			cBoxStock.SelectedIndex = -1;
 
 			// hide the confirmation panel
 			pnlOrderConfirmation.Visible = false;
@@ -219,6 +221,7 @@ namespace Final_Project
 			allStockNames.Remove(stockToAdd.stockName);
 			cBoxStock.DataSource = allStockNames;
 			cBoxStock.Text = "";
+			cBoxStock.SelectedIndex = -1;
 
 			// refresh the list view
 			UpdateOrderItemListView();
@@ -241,8 +244,10 @@ namespace Final_Project
 			btnConfirmAndPlace.Enabled = false;
 			// set the order status to 'placed' and save it
 			order.orderStatus = "Placed";
+			order.orderPlacedByStaffId = frmLoginScreen.loggedInStaff.staffId;
 			lblOrderStatus.Text = $"Order Status: {order.orderStatus}";
 			OrderDal.UpdateOrderStatus(order);
+			OrderDal.SetOrderPlacedBy(order);
 			frmMainScreen.frmMain.OpenChildForm(new frmViewOrders(), frmMainScreen.frmMain.btnViewOrders);
 		}
 
@@ -314,11 +319,25 @@ namespace Final_Project
 
 		#region OrderItemFormFunctions
 
-		private void cBoxStock_SelectionChangeCommitted(object sender, EventArgs e)
-		{
-			string stockName = cBoxStock.Text;
-			Stock selectedStock = StockDal.GetStockByStockName(stockName);
-			lblCurrentStockLevel.Text = $"Current Stock Level: {selectedStock.stockLevel}";
+		private void cBoxStock_SelectedIndexChanged(object sender, EventArgs e)
+		{			
+			int index = cBoxStock.SelectedIndex;		
+			Stock selectedStock = new Stock();
+
+			if (index != -1 && cBoxStock.Text != "")
+			{
+				selectedStock = StockDal.GetStockByStockName(cBoxStock.Items[index].ToString());
+				lblCurrentStockLevel.Text = $"Current Stock Level: {selectedStock.stockLevel}";
+				lblDeliveryTime.Text = $"Item Delivery Time: {selectedStock.deliveryTimeDays} days";
+
+				lblCurrentStockLevel.Visible = true;
+				lblDeliveryTime.Visible = true;
+			}
+			else
+			{
+				lblCurrentStockLevel.Visible = false;
+				lblDeliveryTime.Visible = false;
+			}
 		}
 
 		#endregion OrderItemFormFunctions					
@@ -329,6 +348,6 @@ namespace Final_Project
 			lstViewOrderItems.Height = pnlOrderInfo.Height - 50;
 		}
 
-		#endregion Resizing
+		#endregion Resizing		
 	}
 }
