@@ -1,7 +1,7 @@
 USE [C:\USERS\ANDRE\ONEDRIVE\DESKTOP\A2 SSD\TASKS\FINAL PROJECT\FINAL PROJECT\FINAL PROJECT\STOCKMANAGEMENT.MDF]
 GO
 
-/****** Object: SqlProcedure [dbo].[AddOrderItem] Script Date: 04/12/2024 19:27:03 ******/
+/****** Object: SqlProcedure [dbo].[AddOrderItem] Script Date: 27/01/2025 21:05:30 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -13,5 +13,5 @@ CREATE PROCEDURE [dbo].[AddOrderItem]
 	@StockId int,
 	@OrderItemQuantity int
 AS
-	INSERT INTO OrderLine VALUES(@OrderNumber, @StockId, @OrderItemQuantity)
+	INSERT INTO OrderItem VALUES(@OrderNumber, @StockId, @OrderItemQuantity)
 RETURN 0

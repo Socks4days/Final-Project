@@ -1,15 +1,4 @@
 ﻿using Final_Project.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Numerics;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Final_Project
 {
@@ -29,22 +18,29 @@ namespace Final_Project
 				lstViewStock.Items.Remove(item);
 			}
 
-			List<StockLevelsView> sortedStockList = StockDal.GetStockLevelsView("StockName");
+			List<Stock> sortedStockList = StockDal.GetAllStock();
 
 			// Add each stock in the sorted list to the stock list
-			foreach (StockLevelsView stockLevel in sortedStockList)
+			foreach (Stock stock in sortedStockList)
 			{
-				string nextCheckDue = "Overdue";
+				string stockLevelStatus = "In stock";
+				if (stock.stockLevel == 0)
+				{
+					stockLevelStatus = "Out of stock";
+				}
+				else if (stock.stockLevel <= stock.minimumLevel)
+				{
+					stockLevelStatus = "Low stock";
+				}
+				else if (stock.stockLevel >= stock.maximumLevel)
+				{
+					stockLevelStatus = "Storage full";
+				}
 
-				if (stockLevel.daysToNextAudit == 0)
-					nextCheckDue = "Today";
-				else if (stockLevel.daysToNextAudit == 1)
-					nextCheckDue = $"Tomorrow";
-				else if (stockLevel.daysToNextAudit > 1)
-					nextCheckDue = $"{stockLevel.daysToNextAudit} days";
+
 
 				// Create an array with stock details
-				string[] row = { stockLevel.stockName, stockLevel.stockLevel.ToString(), stockLevel.auditDate.ToString(), stockLevel.auditedByStaffFullName, nextCheckDue };
+				string[] row = { stock.stockName, stock.stockLevel.ToString(), stock.minimumLevel.ToString(), stock.maximumLevel.ToString(), stockLevelStatus,  };
 
 				// Create a new list item based on the array
 				ListViewItem item = new ListViewItem(row);

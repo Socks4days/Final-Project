@@ -1,0 +1,18 @@
+USE [C:\USERS\ANDRE\ONEDRIVE\DESKTOP\A2 SSD\TASKS\FINAL PROJECT\FINAL PROJECT\FINAL PROJECT\STOCKMANAGEMENT.MDF]
+GO
+
+/****** Object: SqlProcedure [dbo].[AddAudit] Script Date: 27/01/2025 21:04:53 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[AddAudit]
+	@AuditId int OUTPUT,
+	@AuditDate DateTime,
+	@AuditedByStaffId int
+AS
+	INSERT INTO [Audit] VALUES (@AuditDate, @AuditedByStaffId)
+	SELECT @AuditId = SCOPE_IDENTITY();
+RETURN 0

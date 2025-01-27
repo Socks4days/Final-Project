@@ -37,12 +37,14 @@
 			cHeaderOrderStatus = new ColumnHeader();
 			cHeaderDateOrdered = new ColumnHeader();
 			cHeaderStaffName = new ColumnHeader();
+			btnCancelOrder = new Button();
 			pnlOrderInfo.SuspendLayout();
 			SuspendLayout();
 			// 
 			// pnlOrderInfo
 			// 
 			pnlOrderInfo.BackColor = SystemColors.ScrollBar;
+			pnlOrderInfo.Controls.Add(btnCancelOrder);
 			pnlOrderInfo.Controls.Add(btnViewOrder);
 			pnlOrderInfo.Controls.Add(btnEditOrder);
 			pnlOrderInfo.Controls.Add(lblInstructions);
@@ -61,7 +63,7 @@
 			btnViewOrder.FlatStyle = FlatStyle.Flat;
 			btnViewOrder.Font = new Font("Segoe UI", 14F);
 			btnViewOrder.ForeColor = SystemColors.Control;
-			btnViewOrder.Location = new Point(239, 618);
+			btnViewOrder.Location = new Point(102, 618);
 			btnViewOrder.Name = "btnViewOrder";
 			btnViewOrder.Size = new Size(220, 50);
 			btnViewOrder.TabIndex = 17;
@@ -77,7 +79,7 @@
 			btnEditOrder.FlatStyle = FlatStyle.Flat;
 			btnEditOrder.Font = new Font("Segoe UI", 14F);
 			btnEditOrder.ForeColor = SystemColors.Control;
-			btnEditOrder.Location = new Point(525, 618);
+			btnEditOrder.Location = new Point(388, 618);
 			btnEditOrder.Name = "btnEditOrder";
 			btnEditOrder.Size = new Size(220, 50);
 			btnEditOrder.TabIndex = 16;
@@ -135,6 +137,21 @@
 			cHeaderStaffName.Text = "Placed By";
 			cHeaderStaffName.Width = 200;
 			// 
+			// btnCancelOrder
+			// 
+			btnCancelOrder.Anchor = AnchorStyles.Bottom;
+			btnCancelOrder.BackColor = Color.FromArgb(161, 32, 89);
+			btnCancelOrder.FlatAppearance.BorderSize = 0;
+			btnCancelOrder.FlatStyle = FlatStyle.Flat;
+			btnCancelOrder.Font = new Font("Segoe UI", 14F);
+			btnCancelOrder.ForeColor = SystemColors.Control;
+			btnCancelOrder.Location = new Point(678, 618);
+			btnCancelOrder.Name = "btnCancelOrder";
+			btnCancelOrder.Size = new Size(220, 50);
+			btnCancelOrder.TabIndex = 18;
+			btnCancelOrder.Text = "Cancel Order";
+			btnCancelOrder.UseVisualStyleBackColor = false;
+			// 
 			// frmViewOrders
 			// 
 			AutoScaleDimensions = new SizeF(96F, 96F);
@@ -163,5 +180,6 @@
 		private Button btnViewOrder;
 		private Button btnEditOrder;
 		private ColumnHeader cHeaderStaffName;
+		private Button btnCancelOrder;
 	}
 }

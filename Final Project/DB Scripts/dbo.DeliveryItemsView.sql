@@ -1,7 +1,7 @@
 USE [C:\USERS\ANDRE\ONEDRIVE\DESKTOP\A2 SSD\TASKS\FINAL PROJECT\FINAL PROJECT\FINAL PROJECT\STOCKMANAGEMENT.MDF]
 GO
 
-/****** Object: View [dbo].[DeliveryItemsView] Script Date: 24/12/2024 14:51:53 ******/
+/****** Object: View [dbo].[DeliveryItemsView] Script Date: 27/01/2025 21:06:05 ******/
 SET ANSI_NULLS ON
 GO
 

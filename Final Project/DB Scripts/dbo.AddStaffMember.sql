@@ -1,7 +1,7 @@
 USE [C:\USERS\ANDRE\ONEDRIVE\DESKTOP\A2 SSD\TASKS\FINAL PROJECT\FINAL PROJECT\FINAL PROJECT\STOCKMANAGEMENT.MDF]
 GO
 
-/****** Object: SqlProcedure [dbo].[AddStaffMember] Script Date: 04/12/2024 19:27:17 ******/
+/****** Object: SqlProcedure [dbo].[AddStaffMember] Script Date: 27/01/2025 21:05:37 ******/
 SET ANSI_NULLS ON
 GO
 

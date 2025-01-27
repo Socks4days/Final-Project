@@ -1,0 +1,16 @@
+USE [C:\USERS\ANDRE\ONEDRIVE\DESKTOP\A2 SSD\TASKS\FINAL PROJECT\FINAL PROJECT\FINAL PROJECT\STOCKMANAGEMENT.MDF]
+GO
+
+/****** Object: SqlProcedure [dbo].[RemoveOrderItem] Script Date: 27/01/2025 21:05:51 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[RemoveOrderItem]
+	@OrderNumber int,
+	@StockId int
+AS
+	DELETE FROM OrderItem WHERE OrderNumber = @OrderNumber AND StockId = @StockId
+RETURN 0

@@ -149,7 +149,7 @@ namespace Final_Project
                 List<Stock> stockItems = new List<Stock>();
                 connection.Open();
 
-                string sqlQuery = "SELECT * FROM Stock";
+                string sqlQuery = "SELECT * FROM Stock ORDER BY StockName ASC";
 
                 SqlCommand getAllStockCommand = new SqlCommand(sqlQuery, connection);
 

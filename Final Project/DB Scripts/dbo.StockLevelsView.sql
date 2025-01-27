@@ -1,7 +1,7 @@
 USE [C:\USERS\ANDRE\ONEDRIVE\DESKTOP\A2 SSD\TASKS\FINAL PROJECT\FINAL PROJECT\FINAL PROJECT\STOCKMANAGEMENT.MDF]
 GO
 
-/****** Object: View [dbo].[StockLevelsView] Script Date: 11/01/2025 18:02:08 ******/
+/****** Object: View [dbo].[StockLevelsView] Script Date: 27/01/2025 21:06:27 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -13,7 +13,7 @@ CREATE VIEW [dbo].[StockLevelsView]
 			  [Audit].AuditDate, [Audit].AuditedByStaffId,
 			  CONCAT([Staff].Forename, ' ', [Staff].Surname) AS AuditedByStaffFullName,
 			  DATEADD(DAY, [Stock].StockCheckFrequency, AuditDate) AS NextAuditDueDate,
-			  DATEDIFF(DAY, [Audit].AuditDate, DATEADD(DAY, [Stock].StockCheckFrequency, AuditDate)) AS DaysToNextAudit
+			  DATEDIFF(DAY, GETDATE(), DATEADD(DAY, [Stock].StockCheckFrequency, AuditDate)) AS DaysToNextAudit
 	FROM [Stock]
 	LEFT OUTER JOIN [AuditItem] ON [Stock].StockId = [AuditItem].StockId
 	LEFT OUTER JOIN [Audit] ON [Audit].AuditId = [AuditItem].AuditId

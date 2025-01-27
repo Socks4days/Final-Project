@@ -61,9 +61,9 @@
 			lstViewStock = new ListView();
 			cHeaderStockName = new ColumnHeader();
 			cHeaderStockQuantity = new ColumnHeader();
-			cHeaderLastCheckedDate = new ColumnHeader();
-			cHeaderCheckedBy = new ColumnHeader();
-			cHeaderNextCheck = new ColumnHeader();
+			cHeaderMinLevel = new ColumnHeader();
+			cHeaderMaxLevel = new ColumnHeader();
+			cHeaderStockStatus = new ColumnHeader();
 			pnlOptionButtons = new Panel();
 			btnEditStock = new Button();
 			lblInstructions = new Label();
@@ -468,7 +468,7 @@
 			lstViewStock.Anchor = AnchorStyles.Top;
 			lstViewStock.BackColor = Color.FromArgb(149, 204, 249);
 			lstViewStock.BackgroundImageTiled = true;
-			lstViewStock.Columns.AddRange(new ColumnHeader[] { cHeaderStockName, cHeaderStockQuantity, cHeaderLastCheckedDate, cHeaderCheckedBy, cHeaderNextCheck });
+			lstViewStock.Columns.AddRange(new ColumnHeader[] { cHeaderStockName, cHeaderStockQuantity, cHeaderMinLevel, cHeaderMaxLevel, cHeaderStockStatus });
 			lstViewStock.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			lstViewStock.ForeColor = Color.Black;
 			lstViewStock.FullRowSelect = true;
@@ -492,20 +492,20 @@
 			cHeaderStockQuantity.Text = "Quantity";
 			cHeaderStockQuantity.Width = 120;
 			// 
-			// cHeaderLastCheckedDate
+			// cHeaderMinLevel
 			// 
-			cHeaderLastCheckedDate.Text = "Last Checked";
-			cHeaderLastCheckedDate.Width = 250;
+			cHeaderMinLevel.Text = "Minimum Level";
+			cHeaderMinLevel.Width = 250;
 			// 
-			// cHeaderCheckedBy
+			// cHeaderMaxLevel
 			// 
-			cHeaderCheckedBy.Text = "Checked By";
-			cHeaderCheckedBy.Width = 215;
+			cHeaderMaxLevel.Text = "Maximum Level";
+			cHeaderMaxLevel.Width = 215;
 			// 
-			// cHeaderNextCheck
+			// cHeaderStockStatus
 			// 
-			cHeaderNextCheck.Text = "Next Check";
-			cHeaderNextCheck.Width = 150;
+			cHeaderStockStatus.Text = "Status";
+			cHeaderStockStatus.Width = 150;
 			// 
 			// pnlOptionButtons
 			// 
@@ -639,14 +639,14 @@
 		private ListView lstViewStock;
 		private ColumnHeader cHeaderStockName;
 		private ColumnHeader cHeaderStockQuantity;
-		private ColumnHeader cHeaderLastCheckedDate;
-		private ColumnHeader cHeaderCheckedBy;
+		private ColumnHeader cHeaderMinLevel;
+		private ColumnHeader cHeaderMaxLevel;
 		private Panel pnlOptionButtons;
 		private Label lblInstructions;
 		private Button btnEditStock;
 		private Button btnTakeOutStock;
 		private Button btnReturnStock;
 		private Label lblAmountTo;
-		private ColumnHeader cHeaderNextCheck;
+		private ColumnHeader cHeaderStockStatus;
 	}
 }
