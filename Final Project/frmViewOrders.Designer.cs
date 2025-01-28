@@ -29,6 +29,7 @@
 		private void InitializeComponent()
 		{
 			pnlOrderInfo = new Panel();
+			btnCancelOrder = new Button();
 			btnViewOrder = new Button();
 			btnEditOrder = new Button();
 			lblInstructions = new Label();
@@ -37,7 +38,6 @@
 			cHeaderOrderStatus = new ColumnHeader();
 			cHeaderDateOrdered = new ColumnHeader();
 			cHeaderStaffName = new ColumnHeader();
-			btnCancelOrder = new Button();
 			pnlOrderInfo.SuspendLayout();
 			SuspendLayout();
 			// 
@@ -54,6 +54,22 @@
 			pnlOrderInfo.Name = "pnlOrderInfo";
 			pnlOrderInfo.Size = new Size(1000, 680);
 			pnlOrderInfo.TabIndex = 5;
+			// 
+			// btnCancelOrder
+			// 
+			btnCancelOrder.Anchor = AnchorStyles.Bottom;
+			btnCancelOrder.BackColor = Color.FromArgb(161, 32, 89);
+			btnCancelOrder.FlatAppearance.BorderSize = 0;
+			btnCancelOrder.FlatStyle = FlatStyle.Flat;
+			btnCancelOrder.Font = new Font("Segoe UI", 14F);
+			btnCancelOrder.ForeColor = SystemColors.Control;
+			btnCancelOrder.Location = new Point(678, 618);
+			btnCancelOrder.Name = "btnCancelOrder";
+			btnCancelOrder.Size = new Size(220, 50);
+			btnCancelOrder.TabIndex = 18;
+			btnCancelOrder.Text = "Cancel Order";
+			btnCancelOrder.UseVisualStyleBackColor = false;
+			btnCancelOrder.Click += btnCancelOrder_Click;
 			// 
 			// btnViewOrder
 			// 
@@ -136,21 +152,6 @@
 			// 
 			cHeaderStaffName.Text = "Placed By";
 			cHeaderStaffName.Width = 200;
-			// 
-			// btnCancelOrder
-			// 
-			btnCancelOrder.Anchor = AnchorStyles.Bottom;
-			btnCancelOrder.BackColor = Color.FromArgb(161, 32, 89);
-			btnCancelOrder.FlatAppearance.BorderSize = 0;
-			btnCancelOrder.FlatStyle = FlatStyle.Flat;
-			btnCancelOrder.Font = new Font("Segoe UI", 14F);
-			btnCancelOrder.ForeColor = SystemColors.Control;
-			btnCancelOrder.Location = new Point(678, 618);
-			btnCancelOrder.Name = "btnCancelOrder";
-			btnCancelOrder.Size = new Size(220, 50);
-			btnCancelOrder.TabIndex = 18;
-			btnCancelOrder.Text = "Cancel Order";
-			btnCancelOrder.UseVisualStyleBackColor = false;
 			// 
 			// frmViewOrders
 			// 

@@ -242,5 +242,27 @@ namespace Final_Project
                 return stockLevelItems;
             }
         }
-    }
+
+		public static void UpdateStockLevel(Stock stock)
+		{	
+			using (SqlConnection connection = new SqlConnection(_connectionstring))
+			{
+				connection.Open();
+
+				SqlCommand updateStockLevelCommand = new SqlCommand();
+				updateStockLevelCommand.Connection = connection;
+				// specifies its a stored procedure
+				updateStockLevelCommand.CommandType = System.Data.CommandType.StoredProcedure;
+				// name of stored procedure to execute
+				updateStockLevelCommand.CommandText = "UpdateStockLevel";
+				// now add parameters that are passed to the stored procedure
+				updateStockLevelCommand.Parameters.Add(new SqlParameter("@StockId", stock.stockId));
+				updateStockLevelCommand.Parameters.Add(new SqlParameter("@StockLevel", stock.stockLevel));
+
+				updateStockLevelCommand.ExecuteNonQuery();
+
+				connection.Close();
+			}
+		}
+	}
 }

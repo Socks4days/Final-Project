@@ -23,7 +23,7 @@ namespace Final_Project
 		}
 
 		private string orderStatus = "";
-		private Order order;		
+		private Order order;
 
 		#region ButtonPermissions
 
@@ -32,6 +32,7 @@ namespace Final_Project
 		{
 			btnEditOrder.Enabled = false;
 			btnViewOrder.Enabled = false;
+			btnCancelOrder.Enabled = false;
 		}
 
 		#endregion ButtonPermissions
@@ -88,9 +89,13 @@ namespace Final_Project
 			if (e.IsSelected)
 			{
 				// enable buttons and set order status and then find the order
-				btnViewOrder.Enabled = true;
+				btnViewOrder.Enabled = true;				
 				orderStatus = e.Item.SubItems[1].Text;
-				order = OrderDal.GetOrderByOrderNumber(Convert.ToInt32(e.Item.SubItems[0].Text));
+				if (orderStatus == "Placed")
+				{
+					btnCancelOrder.Enabled = true;
+				}
+				order = OrderDal.GetOrderByOrderNumber(Convert.ToInt32(e.Item.SubItems[0].Text));				
 			}
 			else
 			{
@@ -98,7 +103,7 @@ namespace Final_Project
 				orderStatus = "";
 				DisableButtons();
 			}
-			if (orderStatus == "Draft" || orderStatus == "To Start")
+			if (orderStatus == "Draft")
 			{
 				// if the status is draft or to start, allow the user to edit the order
 				btnEditOrder.Enabled = true;
@@ -115,5 +120,10 @@ namespace Final_Project
 		}
 
 		#endregion Resizing
+
+		private void btnCancelOrder_Click(object sender, EventArgs e)
+		{
+			frmMainScreen.frmMain.OpenChildForm(new frmCreateOrUpdateOrder(order, "Cancel"), null);
+		}
 	}
 }

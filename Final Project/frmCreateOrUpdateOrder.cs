@@ -31,12 +31,35 @@ namespace Final_Project
 			cBoxStock.Text = "";
 			cBoxStock.SelectedIndex = -1;
 
-			// hide the confirmation panel
-			pnlOrderConfirmation.Visible = false;
-			pnlAddItemToOrder.Visible = false;
-
 			// update the list view to show all items in the order
 			UpdateOrderItemListView();
+
+			// set labels to appropriate data depending on the order
+			lblOrderNumberOrder.Text = "Order Number " + order.orderNumber.ToString();
+			lblOrderStatus.Text = "Order Status: " + order.orderStatus;
+
+			if (viewToShow == "Cancel")
+			{				
+				pnlAddItemToOrder.Visible = false;
+				pnlOrderNoToStat.Visible = false;
+				btnConfirmAndPlace.Visible = false;
+				btnReturnToEditScreen.Visible = false;
+				pnlViewOrderItems.Visible = true;
+				pnlViewOrderItems.Dock = DockStyle.Fill;
+				pnlOrderConfirmation.Dock = DockStyle.Bottom;
+				pnlOrderInfo.Dock = DockStyle.Fill;
+				btnCancelOrder.Visible = true;
+				btnReturn.Visible = true;
+				lblConfirmation.Text = "Are you sure you want to cancel this order?";
+				SetOrderSumUpLabels();
+				return;
+			}
+			else
+			{
+				// hide the confirmation panel			
+				pnlOrderConfirmation.Visible = false;
+				pnlAddItemToOrder.Visible = false;
+			}						
 
 			#region PanelSelection
 
@@ -65,21 +88,18 @@ namespace Final_Project
 				lblInstructions.Visible = true;
 				lstViewOrderItems.FullRowSelect = true;
 			}
-			if (viewToShow == "View")
+			else if (viewToShow == "View")
 			{
 				// if the user is only viewing, hide option buttons, instructions and disallow full row selection
 				lblInstructions.Visible = false;
 				lstViewOrderItems.FullRowSelect = false;
 				lblWarning.Visible = false;
 			}
+			
 			// show the view table
 			ShowViewOrderItems();
 
-			#endregion PanelSelection
-
-			// set labels to appropriate data depending on the order
-			lblOrderNumberOrder.Text = "Order Number " + order.orderNumber.ToString();
-			lblOrderStatus.Text = "Order Status: " + order.orderStatus;
+			#endregion PanelSelection			
 		}
 
 		// lists, values and order for use throughout the form
@@ -112,6 +132,22 @@ namespace Final_Project
 			lblOrderNumberItem.Text = "Order Number " + order.orderNumber.ToString();
 			warningNumber = 0;
 		}
+
+		private void ShowConfirmationPanel()
+		{
+			pnlOrderInfo.Dock = DockStyle.Top;
+			pnlOrderNoToStat.Visible = false;
+			pnlOrderConfirmation.Visible = true;
+			pnlOrderConfirmation.Dock = DockStyle.Bottom;
+			pnlOrderInfo.Dock = DockStyle.Fill;
+
+			btnConfirmAndPlace.Visible = true;
+			btnConfirmAndPlace.Enabled = true;
+			btnReturnToEditScreen.Visible = true;
+			btnCancelOrder.Visible = false;
+			btnReturn.Visible = false;
+			lblConfirmation.Text = "Please confirm all information before confirming order";
+		}	
 
 		#endregion PanelShowing
 
@@ -175,15 +211,17 @@ namespace Final_Project
 
 		private void btnPlaceOrder_Click(object sender, EventArgs e)
 		{
-			pnlOrderInfo.Dock = DockStyle.Top;
-			pnlOrderNoToStat.Visible = false;
-			pnlOrderConfirmation.Visible = true;
-			pnlOrderConfirmation.Dock = DockStyle.Bottom;
-			pnlOrderInfo.Dock = DockStyle.Fill;
-			btnConfirmAndPlace.Enabled = true;
+			ShowConfirmationPanel();
+			SetOrderSumUpLabels();
+		}
+
+		private void SetOrderSumUpLabels()
+		{
 			lblFinalOrderTotal.Text = $"Order Total: £{orderTotal.ToString()}";
 			lblDeliveringTo.Text = $"Order For: Maintenance Department, Movers Ltd";
 		}
+
+		
 
 		#endregion OrderScreenButtonClicks
 
@@ -261,6 +299,22 @@ namespace Final_Project
 
 		#endregion OrderConfirmationButtonClicks				
 
+		#region CancelOrderButtonClicks
+
+		private void btnReturn_Click(object sender, EventArgs e)
+		{
+			frmMainScreen.frmMain.OpenChildForm(new frmViewOrders(), frmMainScreen.frmMain.btnViewOrders);
+		}
+
+		private void btnCancelOrder_Click(object sender, EventArgs e)
+		{
+			order.orderStatus = "Cancelled";
+			OrderDal.UpdateOrderStatus(order);
+			frmMainScreen.frmMain.OpenChildForm(new frmViewOrders(), frmMainScreen.frmMain.btnViewOrders);
+		}
+
+		#endregion CancelOrderButtonClicks
+
 		#region ListViewUpdating
 
 		// method to update the list view of items in an order
@@ -320,8 +374,8 @@ namespace Final_Project
 		#region OrderItemFormFunctions
 
 		private void cBoxStock_SelectedIndexChanged(object sender, EventArgs e)
-		{			
-			int index = cBoxStock.SelectedIndex;		
+		{
+			int index = cBoxStock.SelectedIndex;
 			Stock selectedStock = new Stock();
 
 			if (index != -1 && cBoxStock.Text != "")
@@ -348,6 +402,6 @@ namespace Final_Project
 			lstViewOrderItems.Height = pnlOrderInfo.Height - 50;
 		}
 
-		#endregion Resizing		
+		#endregion Resizing				
 	}
 }

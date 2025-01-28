@@ -47,6 +47,8 @@
 			lblDeliveringTo = new Label();
 			btnConfirmAndPlace = new Button();
 			btnReturnToEditScreen = new Button();
+			btnCancelOrder = new Button();
+			btnReturn = new Button();
 			pnlOrderNoToStat = new Panel();
 			btnPlaceOrder = new Button();
 			lblInstructions = new Label();
@@ -250,6 +252,8 @@
 			pnlOrderConfirmation.Controls.Add(lblDeliveringTo);
 			pnlOrderConfirmation.Controls.Add(btnConfirmAndPlace);
 			pnlOrderConfirmation.Controls.Add(btnReturnToEditScreen);
+			pnlOrderConfirmation.Controls.Add(btnCancelOrder);
+			pnlOrderConfirmation.Controls.Add(btnReturn);
 			pnlOrderConfirmation.Dock = DockStyle.Top;
 			pnlOrderConfirmation.Location = new Point(0, 680);
 			pnlOrderConfirmation.Name = "pnlOrderConfirmation";
@@ -259,15 +263,15 @@
 			// lblConfirmation
 			// 
 			lblConfirmation.Anchor = AnchorStyles.Top;
-			lblConfirmation.AutoSize = true;
 			lblConfirmation.FlatStyle = FlatStyle.Flat;
 			lblConfirmation.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			lblConfirmation.ForeColor = SystemColors.ControlText;
-			lblConfirmation.Location = new Point(247, 11);
+			lblConfirmation.Location = new Point(264, 11);
 			lblConfirmation.Name = "lblConfirmation";
 			lblConfirmation.Size = new Size(473, 25);
 			lblConfirmation.TabIndex = 24;
 			lblConfirmation.Text = "Please confirm all information before confirming order";
+			lblConfirmation.TextAlign = ContentAlignment.MiddleCenter;
 			// 
 			// lblFinalOrderTotal
 			// 
@@ -325,6 +329,38 @@
 			btnReturnToEditScreen.Text = "Cancel";
 			btnReturnToEditScreen.UseVisualStyleBackColor = false;
 			btnReturnToEditScreen.Click += btnReturnToEditScreen_Click;
+			// 
+			// btnCancelOrder
+			// 
+			btnCancelOrder.Anchor = AnchorStyles.Top;
+			btnCancelOrder.BackColor = Color.FromArgb(161, 32, 89);
+			btnCancelOrder.FlatAppearance.BorderSize = 0;
+			btnCancelOrder.FlatStyle = FlatStyle.Flat;
+			btnCancelOrder.Font = new Font("Segoe UI", 12F);
+			btnCancelOrder.ForeColor = SystemColors.Control;
+			btnCancelOrder.Location = new Point(514, 140);
+			btnCancelOrder.Name = "btnCancelOrder";
+			btnCancelOrder.Size = new Size(220, 50);
+			btnCancelOrder.TabIndex = 25;
+			btnCancelOrder.Text = "Cancel Order";
+			btnCancelOrder.UseVisualStyleBackColor = false;
+			btnCancelOrder.Click += btnCancelOrder_Click;
+			// 
+			// btnReturn
+			// 
+			btnReturn.Anchor = AnchorStyles.Top;
+			btnReturn.BackColor = Color.FromArgb(161, 32, 89);
+			btnReturn.FlatAppearance.BorderSize = 0;
+			btnReturn.FlatStyle = FlatStyle.Flat;
+			btnReturn.Font = new Font("Segoe UI", 12F);
+			btnReturn.ForeColor = SystemColors.Control;
+			btnReturn.Location = new Point(269, 140);
+			btnReturn.Name = "btnReturn";
+			btnReturn.Size = new Size(220, 50);
+			btnReturn.TabIndex = 26;
+			btnReturn.Text = "Return";
+			btnReturn.UseVisualStyleBackColor = false;
+			btnReturn.Click += btnReturn_Click;
 			// 
 			// pnlOrderNoToStat
 			// 
@@ -529,7 +565,6 @@
 			((System.ComponentModel.ISupportInitialize)nUDQuantity).EndInit();
 			pnlViewOrderItems.ResumeLayout(false);
 			pnlOrderConfirmation.ResumeLayout(false);
-			pnlOrderConfirmation.PerformLayout();
 			pnlOrderNoToStat.ResumeLayout(false);
 			pnlOrderNoToStat.PerformLayout();
 			pnlOrderInfo.ResumeLayout(false);
@@ -573,5 +608,7 @@
 		private Label lblFinalOrderTotal;
 		private Label lblDeliveringTo;
 		private Label lblDeliveryTime;
+		private Button btnCancelOrder;
+		private Button btnReturn;
 	}
 }

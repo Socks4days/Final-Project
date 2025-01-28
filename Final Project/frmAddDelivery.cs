@@ -379,9 +379,9 @@ namespace Final_Project
 			item.stockId = selectedOrderItemsDeliveredView.stockId;
 			DeliveryDal.AddDeliveryItem(item);
 
-			Stock stock = StockDal.GetStockByStockId(orderItemSelected.stockId);
+			Stock stock = StockDal.GetStockByStockId(selectedOrderItemsDeliveredView.stockId);
 			stock.stockLevel = stock.stockLevel + quantityDelivered - quantityFaulty;
-			StockDal.UpdateStockInformation(stock);
+			StockDal.UpdateStockLevel(stock);
 
 			ShowDelivery();
 			ShowDeliveryDetails();
