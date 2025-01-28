@@ -266,12 +266,16 @@ namespace Final_Project
             {
                 connection.Open();
 
-                string sqlQuery = string.Format($"UPDATE [Order] SET OrderStatus = '{order.orderStatus}' WHERE OrderNumber = {order.orderNumber}");
+				SqlCommand insertOrderStatusCommand = new SqlCommand();
+				insertOrderStatusCommand.Connection = connection;
 
-                SqlCommand updateOrderStatusByOrderNumber = new SqlCommand(sqlQuery, connection);
+				insertOrderStatusCommand.CommandType = System.Data.CommandType.StoredProcedure;
+				insertOrderStatusCommand.CommandText = "UpdateOrderStatus";
 
-                SqlDataReader sqlDataReader = updateOrderStatusByOrderNumber.ExecuteReader();
+				insertOrderStatusCommand.Parameters.Add(new SqlParameter("@OrderNumber", order.orderNumber));
+				insertOrderStatusCommand.Parameters.Add(new SqlParameter("@OrderStatus", order.orderStatus));			
 
+				insertOrderStatusCommand.ExecuteNonQuery();
                 connection.Close();
             }
         }

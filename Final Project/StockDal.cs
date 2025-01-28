@@ -88,24 +88,28 @@ namespace Final_Project
             {
                 connection.Open();
 
-                string sqlQuery = string.Format($"UPDATE Stock SET stockLevel = '{stock.stockLevel}', " +
-                    $"stockName = '{stock.stockName}', " +
-                    $"stockDescription = '{stock.stockDescription}', " +
-                    $"price = '{stock.price}', " +
-                    $"deliveryTimeDays = '{stock.deliveryTimeDays}', " +
-                    $"maximumLevel = '{stock.maximumLevel}', " +
-                    $"minimumLevel = '{stock.minimumLevel}', " +
-                    $"orderQuantity = '{stock.orderQuantity}', " +
-                    $"stockCheckFrequency = '{stock.stockCheckFrequency}', " +
-                    $"lastUpdatedByStaffId = '{stock.lastUpdatedByStaffId}', " +
-                    $"active = {sqlActive} " +
-                    $"WHERE stockId = {stock.stockId}");
+				SqlCommand updateStockInformationCommand = new SqlCommand();
+				updateStockInformationCommand.Connection = connection;
+				// specifies its a stored procedure
+				updateStockInformationCommand.CommandType = System.Data.CommandType.StoredProcedure;
+				// name of stored procedure to execute
+				updateStockInformationCommand.CommandText = "UpdateStockInformation";
+				// now add parameters that are passed to the stored procedure
+				updateStockInformationCommand.Parameters.Add(new SqlParameter("@StockId", stock.stockId));
+				updateStockInformationCommand.Parameters.Add(new SqlParameter("@StockName", stock.stockName));
+				updateStockInformationCommand.Parameters.Add(new SqlParameter("@StockDescription", stock.stockDescription));
+				updateStockInformationCommand.Parameters.Add(new SqlParameter("@Price", stock.price));
+				updateStockInformationCommand.Parameters.Add(new SqlParameter("@DeliveryTimeDays", stock.deliveryTimeDays));
+				updateStockInformationCommand.Parameters.Add(new SqlParameter("@MaximumLevel", stock.maximumLevel));
+				updateStockInformationCommand.Parameters.Add(new SqlParameter("@MinimumLevel", stock.minimumLevel));
+				updateStockInformationCommand.Parameters.Add(new SqlParameter("@OrderQuantity", stock.orderQuantity));
+				updateStockInformationCommand.Parameters.Add(new SqlParameter("@StockCheckFrequency", stock.stockCheckFrequency));				
+				updateStockInformationCommand.Parameters.Add(new SqlParameter("@LastUpdatedByStaffId", stock.lastUpdatedByStaffId));
+				updateStockInformationCommand.Parameters.Add(new SqlParameter("@Active", sqlActive));
 
-                SqlCommand updateStockByStockIdCommand = new SqlCommand(sqlQuery, connection);
+				updateStockInformationCommand.ExecuteNonQuery();
 
-                updateStockByStockIdCommand.ExecuteNonQuery();
-
-                connection.Close();
+				connection.Close();				
             }
         }
 
