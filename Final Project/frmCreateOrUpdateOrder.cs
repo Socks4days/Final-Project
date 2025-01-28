@@ -38,8 +38,10 @@ namespace Final_Project
 			lblOrderNumberOrder.Text = "Order Number " + order.orderNumber.ToString();
 			lblOrderStatus.Text = "Order Status: " + order.orderStatus;
 
+			#region PanelSelection
+
 			if (viewToShow == "Cancel")
-			{				
+			{
 				pnlAddItemToOrder.Visible = false;
 				pnlOrderNoToStat.Visible = false;
 				btnConfirmAndPlace.Visible = false;
@@ -59,9 +61,7 @@ namespace Final_Project
 				// hide the confirmation panel			
 				pnlOrderConfirmation.Visible = false;
 				pnlAddItemToOrder.Visible = false;
-			}						
-
-			#region PanelSelection
+			}
 
 			// check if an order is ready to start or if it is a draft
 			if (order.orderStatus == "Draft" && viewToShow == "Edit")
