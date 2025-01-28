@@ -104,7 +104,7 @@ namespace Final_Project
 
 		// lists, values and order for use throughout the form
 		Order order;
-		List<Stock> allStock = StockDal.GetAllStock();
+		List<Stock> allStock = StockDal.GetAllActiveStock();
 		List<string> allStockNames = new List<string>();
 		List<OrderItem> sortedOrderItemList;
 		int warningNumber = 0;

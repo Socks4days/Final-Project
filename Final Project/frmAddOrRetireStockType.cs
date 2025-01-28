@@ -40,7 +40,7 @@ namespace Final_Project
 		Stock stockToRetire = new Stock();
 
 		// get a list of all stock
-		List<Stock> allStock = StockDal.GetAllStock();
+		List<Stock> allStock = StockDal.GetAllActiveStock();
 
 		string actionTakingPlace = "";
 

@@ -146,7 +146,7 @@ namespace Final_Project
             }
         }
 
-        public static List<Stock> GetAllStock()
+        public static List<Stock> GetAllActiveStock()
         {
             using (SqlConnection connection = new SqlConnection(_connectionstring))
             {
@@ -161,7 +161,14 @@ namespace Final_Project
 
                 while (sqlDataReader.Read())
                 {
-                    Stock stock = new Stock(
+                    bool active = true;
+                    int activeInt = (int)sqlDataReader["Active"];
+                    if(activeInt == 0)
+                    {
+                        active = false;
+                    }
+
+					Stock stock = new Stock(
                         (string)sqlDataReader["StockName"],
                         (string)sqlDataReader["StockDescription"],
                         (decimal)sqlDataReader["Price"],
@@ -171,11 +178,16 @@ namespace Final_Project
                         (int)sqlDataReader["OrderQuantity"],
                         (int)sqlDataReader["StockCheckFrequency"],
                         (int)sqlDataReader["StockLevel"],
-                        (int)sqlDataReader["LastUpdatedByStaffId"]
+                        (int)sqlDataReader["LastUpdatedByStaffId"],
+                        active
                         );
 
                     stock.stockId = (int)sqlDataReader["StockId"];
-                    stockItems.Add(stock);
+
+                    if(stock.active == true)
+                    {
+						stockItems.Add(stock);
+					}                    
                 }
 
                 connection.Close();
@@ -183,7 +195,7 @@ namespace Final_Project
             }
         }
 
-        public static List<StockLevelsView> GetStockLevelsView(string orderBy)
+		public static List<StockLevelsView> GetStockLevelsView(string orderBy)
         {
             using (SqlConnection connection = new SqlConnection(_connectionstring))
             {
@@ -235,7 +247,8 @@ namespace Final_Project
 						(int)sqlDataReader["DaysToNextAudit"]
 						);
 
-                    
+                    Stock stock = GetStockByStockId(stockLevel.stockId);
+                    if(stock.active == true)                    
                     stockLevelItems.Add(stockLevel);
                 }
                 connection.Close();

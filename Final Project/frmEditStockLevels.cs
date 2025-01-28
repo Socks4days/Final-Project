@@ -18,11 +18,11 @@ namespace Final_Project
 				lstViewStock.Items.Remove(item);
 			}
 
-			List<Stock> sortedStockList = StockDal.GetAllStock();
+			List<Stock> sortedStockList = StockDal.GetAllActiveStock();
 
 			// Add each stock in the sorted list to the stock list
 			foreach (Stock stock in sortedStockList)
-			{
+			{				
 				string stockLevelStatus = "In stock";
 				if (stock.stockLevel == 0)
 				{
@@ -37,16 +37,14 @@ namespace Final_Project
 					stockLevelStatus = "Storage full";
 				}
 
-
-
 				// Create an array with stock details
-				string[] row = { stock.stockName, stock.stockLevel.ToString(), stock.minimumLevel.ToString(), stock.maximumLevel.ToString(), stockLevelStatus,  };
+				string[] row = { stock.stockName, stock.stockLevel.ToString(), stock.minimumLevel.ToString(), stock.maximumLevel.ToString(), stockLevelStatus, };
 
 				// Create a new list item based on the array
 				ListViewItem item = new ListViewItem(row);
 
 				// Add the list item to the stock list view
-				lstViewStock.Items.Add(item);
+				lstViewStock.Items.Add(item);							
 			}
 
 			pnlEditStockLevels.Visible = false;
@@ -256,7 +254,7 @@ namespace Final_Project
 
 		public static void LookupStock(string stockName)
 		{
-			List<Stock> allStock = StockDal.GetAllStock();
+			List<Stock> allStock = StockDal.GetAllActiveStock();
 			foreach (Stock stock in allStock)
 			{
 				if (stock.stockName.ToString() == stockName)
