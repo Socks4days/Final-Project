@@ -139,7 +139,7 @@
 			btnCancel.Location = new Point(227, 415);
 			btnCancel.Name = "btnCancel";
 			btnCancel.Size = new Size(220, 50);
-			btnCancel.TabIndex = 16;
+			btnCancel.TabIndex = 2;
 			btnCancel.Text = "Cancel";
 			btnCancel.UseVisualStyleBackColor = false;
 			btnCancel.Click += btnBack_Click;
@@ -166,7 +166,7 @@
 			txtBoxAmountOfStockToChange.Location = new Point(373, 270);
 			txtBoxAmountOfStockToChange.Name = "txtBoxAmountOfStockToChange";
 			txtBoxAmountOfStockToChange.Size = new Size(220, 32);
-			txtBoxAmountOfStockToChange.TabIndex = 14;
+			txtBoxAmountOfStockToChange.TabIndex = 0;
 			// 
 			// btnTakeOutStockConfirm
 			// 
@@ -179,7 +179,7 @@
 			btnTakeOutStockConfirm.Location = new Point(520, 415);
 			btnTakeOutStockConfirm.Name = "btnTakeOutStockConfirm";
 			btnTakeOutStockConfirm.Size = new Size(220, 50);
-			btnTakeOutStockConfirm.TabIndex = 13;
+			btnTakeOutStockConfirm.TabIndex = 1;
 			btnTakeOutStockConfirm.Text = "Take Out Stock";
 			btnTakeOutStockConfirm.UseVisualStyleBackColor = false;
 			btnTakeOutStockConfirm.Click += btnTakeOutStockConfirm_Click;
@@ -532,7 +532,7 @@
 			btnEditStock.Location = new Point(640, 38);
 			btnEditStock.Name = "btnEditStock";
 			btnEditStock.Size = new Size(220, 50);
-			btnEditStock.TabIndex = 8;
+			btnEditStock.TabIndex = 2;
 			btnEditStock.Text = "Edit Stock Item";
 			btnEditStock.UseVisualStyleBackColor = false;
 			btnEditStock.Click += btnEditStock_Click;
@@ -559,7 +559,7 @@
 			btnTakeOutStock.Location = new Point(106, 38);
 			btnTakeOutStock.Name = "btnTakeOutStock";
 			btnTakeOutStock.Size = new Size(220, 50);
-			btnTakeOutStock.TabIndex = 7;
+			btnTakeOutStock.TabIndex = 0;
 			btnTakeOutStock.Text = "Take Out Stock";
 			btnTakeOutStock.UseVisualStyleBackColor = false;
 			btnTakeOutStock.Click += btnTakeOutStock_Click;
@@ -575,7 +575,7 @@
 			btnReturnStock.Location = new Point(373, 38);
 			btnReturnStock.Name = "btnReturnStock";
 			btnReturnStock.Size = new Size(220, 50);
-			btnReturnStock.TabIndex = 5;
+			btnReturnStock.TabIndex = 1;
 			btnReturnStock.Text = "Return Stock";
 			btnReturnStock.UseVisualStyleBackColor = false;
 			btnReturnStock.Click += btnReturnStock_Click;

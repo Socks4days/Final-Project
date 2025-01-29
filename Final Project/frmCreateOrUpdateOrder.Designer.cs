@@ -150,7 +150,7 @@
 			nUDQuantity.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
 			nUDQuantity.Name = "nUDQuantity";
 			nUDQuantity.Size = new Size(176, 32);
-			nUDQuantity.TabIndex = 24;
+			nUDQuantity.TabIndex = 1;
 			nUDQuantity.Value = new decimal(new int[] { 1, 0, 0, 0 });
 			// 
 			// btnAddToOrder
@@ -164,7 +164,7 @@
 			btnAddToOrder.Location = new Point(536, 437);
 			btnAddToOrder.Name = "btnAddToOrder";
 			btnAddToOrder.Size = new Size(220, 50);
-			btnAddToOrder.TabIndex = 23;
+			btnAddToOrder.TabIndex = 2;
 			btnAddToOrder.Text = "Add To Order";
 			btnAddToOrder.UseVisualStyleBackColor = false;
 			btnAddToOrder.Click += btnAddToOrder_Click;
@@ -180,7 +180,7 @@
 			btnCancel.Location = new Point(245, 437);
 			btnCancel.Name = "btnCancel";
 			btnCancel.Size = new Size(220, 50);
-			btnCancel.TabIndex = 22;
+			btnCancel.TabIndex = 3;
 			btnCancel.Text = "Cancel";
 			btnCancel.UseVisualStyleBackColor = false;
 			btnCancel.Click += btnCancel_Click;
@@ -217,7 +217,7 @@
 			cBoxStock.Location = new Point(289, 230);
 			cBoxStock.Name = "cBoxStock";
 			cBoxStock.Size = new Size(176, 33);
-			cBoxStock.TabIndex = 18;
+			cBoxStock.TabIndex = 0;
 			cBoxStock.SelectedIndexChanged += cBoxStock_SelectedIndexChanged;
 			// 
 			// lblStockItem
@@ -309,7 +309,7 @@
 			btnConfirmAndPlace.Location = new Point(514, 140);
 			btnConfirmAndPlace.Name = "btnConfirmAndPlace";
 			btnConfirmAndPlace.Size = new Size(220, 50);
-			btnConfirmAndPlace.TabIndex = 21;
+			btnConfirmAndPlace.TabIndex = 0;
 			btnConfirmAndPlace.Text = "Confirm and Place";
 			btnConfirmAndPlace.UseVisualStyleBackColor = false;
 			btnConfirmAndPlace.Click += btnConfirmAndPlace_Click;
@@ -325,7 +325,7 @@
 			btnReturnToEditScreen.Location = new Point(269, 140);
 			btnReturnToEditScreen.Name = "btnReturnToEditScreen";
 			btnReturnToEditScreen.Size = new Size(220, 50);
-			btnReturnToEditScreen.TabIndex = 20;
+			btnReturnToEditScreen.TabIndex = 1;
 			btnReturnToEditScreen.Text = "Cancel";
 			btnReturnToEditScreen.UseVisualStyleBackColor = false;
 			btnReturnToEditScreen.Click += btnReturnToEditScreen_Click;
@@ -390,7 +390,7 @@
 			btnPlaceOrder.Location = new Point(754, 140);
 			btnPlaceOrder.Name = "btnPlaceOrder";
 			btnPlaceOrder.Size = new Size(220, 50);
-			btnPlaceOrder.TabIndex = 12;
+			btnPlaceOrder.TabIndex = 3;
 			btnPlaceOrder.Text = "Place Order";
 			btnPlaceOrder.UseVisualStyleBackColor = false;
 			btnPlaceOrder.Click += btnPlaceOrder_Click;
@@ -419,7 +419,7 @@
 			btnRemoveFromOrder.Location = new Point(269, 140);
 			btnRemoveFromOrder.Name = "btnRemoveFromOrder";
 			btnRemoveFromOrder.Size = new Size(220, 50);
-			btnRemoveFromOrder.TabIndex = 10;
+			btnRemoveFromOrder.TabIndex = 1;
 			btnRemoveFromOrder.Text = "Remove From Order";
 			btnRemoveFromOrder.UseVisualStyleBackColor = false;
 			btnRemoveFromOrder.Click += btnRemoveFromOrder_Click;
@@ -435,7 +435,7 @@
 			btnAddAnItemToOrder.Location = new Point(26, 140);
 			btnAddAnItemToOrder.Name = "btnAddAnItemToOrder";
 			btnAddAnItemToOrder.Size = new Size(220, 50);
-			btnAddAnItemToOrder.TabIndex = 9;
+			btnAddAnItemToOrder.TabIndex = 0;
 			btnAddAnItemToOrder.Text = "Add Item To Order";
 			btnAddAnItemToOrder.UseVisualStyleBackColor = false;
 			btnAddAnItemToOrder.Click += btnAddAnItemToOrder_Click;
@@ -464,7 +464,7 @@
 			btnSaveAsDraft.Location = new Point(514, 140);
 			btnSaveAsDraft.Name = "btnSaveAsDraft";
 			btnSaveAsDraft.Size = new Size(220, 50);
-			btnSaveAsDraft.TabIndex = 11;
+			btnSaveAsDraft.TabIndex = 2;
 			btnSaveAsDraft.Text = "Save Order As Draft";
 			btnSaveAsDraft.UseVisualStyleBackColor = false;
 			btnSaveAsDraft.Click += btnSaveAsDraft_Click;

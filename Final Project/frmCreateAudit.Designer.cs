@@ -107,7 +107,7 @@
 			btnCancel.Location = new Point(236, 374);
 			btnCancel.Name = "btnCancel";
 			btnCancel.Size = new Size(220, 50);
-			btnCancel.TabIndex = 7;
+			btnCancel.TabIndex = 2;
 			btnCancel.Text = "Cancel";
 			btnCancel.UseVisualStyleBackColor = false;
 			btnCancel.Click += btnCancel_Click;
@@ -131,7 +131,7 @@
 			nUDNoInStockActual.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
 			nUDNoInStockActual.Name = "nUDNoInStockActual";
 			nUDNoInStockActual.Size = new Size(220, 32);
-			nUDNoInStockActual.TabIndex = 4;
+			nUDNoInStockActual.TabIndex = 0;
 			// 
 			// lblNoExpectedInStock
 			// 
@@ -231,7 +231,7 @@
 			btnAddItemToAudit.Margin = new Padding(3, 2, 3, 2);
 			btnAddItemToAudit.Name = "btnAddItemToAudit";
 			btnAddItemToAudit.Size = new Size(220, 50);
-			btnAddItemToAudit.TabIndex = 44;
+			btnAddItemToAudit.TabIndex = 0;
 			btnAddItemToAudit.Text = "Add Item";
 			btnAddItemToAudit.UseVisualStyleBackColor = false;
 			btnAddItemToAudit.Click += btnAddItemToAudit_Click;
@@ -248,7 +248,7 @@
 			btnCompleteAudit.Margin = new Padding(3, 2, 3, 2);
 			btnCompleteAudit.Name = "btnCompleteAudit";
 			btnCompleteAudit.Size = new Size(220, 50);
-			btnCompleteAudit.TabIndex = 42;
+			btnCompleteAudit.TabIndex = 1;
 			btnCompleteAudit.Text = "Audit Completed";
 			btnCompleteAudit.UseVisualStyleBackColor = false;
 			btnCompleteAudit.Click += btnCompleteAudit_Click;
@@ -405,7 +405,7 @@
 			btnReturnToAuditHistory.Margin = new Padding(3, 2, 3, 2);
 			btnReturnToAuditHistory.Name = "btnReturnToAuditHistory";
 			btnReturnToAuditHistory.Size = new Size(220, 50);
-			btnReturnToAuditHistory.TabIndex = 48;
+			btnReturnToAuditHistory.TabIndex = 0;
 			btnReturnToAuditHistory.Text = "Return To Audits";
 			btnReturnToAuditHistory.UseVisualStyleBackColor = false;
 			btnReturnToAuditHistory.Click += btnBackToAuditHistory_Click;

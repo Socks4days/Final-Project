@@ -56,6 +56,8 @@
 			btnCancelEditStaffPosition = new Button();
 			btnConfirmEditStaffPositionChanges = new Button();
 			lblStaffToEditPosition = new Label();
+			button1 = new Button();
+			btnFireStaffMember = new Button();
 			pnlStaffInfo.SuspendLayout();
 			pnlStaffListView.SuspendLayout();
 			pnlOptionButtons.SuspendLayout();
@@ -136,6 +138,8 @@
 			// 
 			// pnlOptionButtons
 			// 
+			pnlOptionButtons.Controls.Add(btnFireStaffMember);
+			pnlOptionButtons.Controls.Add(button1);
 			pnlOptionButtons.Controls.Add(btnEditPosition);
 			pnlOptionButtons.Controls.Add(btnEditStaffMember);
 			pnlOptionButtons.Dock = DockStyle.Bottom;
@@ -152,10 +156,10 @@
 			btnEditPosition.FlatStyle = FlatStyle.Flat;
 			btnEditPosition.Font = new Font("Segoe UI", 14F);
 			btnEditPosition.ForeColor = SystemColors.Control;
-			btnEditPosition.Location = new Point(566, 18);
+			btnEditPosition.Location = new Point(381, 18);
 			btnEditPosition.Name = "btnEditPosition";
 			btnEditPosition.Size = new Size(220, 50);
-			btnEditPosition.TabIndex = 17;
+			btnEditPosition.TabIndex = 1;
 			btnEditPosition.Text = "Edit Staff Position";
 			btnEditPosition.UseVisualStyleBackColor = false;
 			btnEditPosition.Click += btnEditPosition_Click;
@@ -168,10 +172,10 @@
 			btnEditStaffMember.FlatStyle = FlatStyle.Flat;
 			btnEditStaffMember.Font = new Font("Segoe UI", 14F);
 			btnEditStaffMember.ForeColor = SystemColors.Control;
-			btnEditStaffMember.Location = new Point(223, 18);
+			btnEditStaffMember.Location = new Point(128, 18);
 			btnEditStaffMember.Name = "btnEditStaffMember";
 			btnEditStaffMember.Size = new Size(220, 50);
-			btnEditStaffMember.TabIndex = 16;
+			btnEditStaffMember.TabIndex = 0;
 			btnEditStaffMember.Text = "Edit Staff Member";
 			btnEditStaffMember.UseVisualStyleBackColor = false;
 			btnEditStaffMember.Click += btnEditStaffMember_Click;
@@ -207,7 +211,7 @@
 			btnCancelStaffEdit.Location = new Point(236, 441);
 			btnCancelStaffEdit.Name = "btnCancelStaffEdit";
 			btnCancelStaffEdit.Size = new Size(220, 50);
-			btnCancelStaffEdit.TabIndex = 9;
+			btnCancelStaffEdit.TabIndex = 5;
 			btnCancelStaffEdit.Text = "Cancel";
 			btnCancelStaffEdit.UseVisualStyleBackColor = false;
 			btnCancelStaffEdit.Click += btnCancelStaffEdit_Click;
@@ -279,7 +283,7 @@
 			btnConfirmEditStaff.Location = new Point(552, 441);
 			btnConfirmEditStaff.Name = "btnConfirmEditStaff";
 			btnConfirmEditStaff.Size = new Size(220, 50);
-			btnConfirmEditStaff.TabIndex = 8;
+			btnConfirmEditStaff.TabIndex = 4;
 			btnConfirmEditStaff.Text = "Confirm Changes";
 			btnConfirmEditStaff.UseVisualStyleBackColor = false;
 			btnConfirmEditStaff.Click += btnConfirmEditStaff_Click;
@@ -352,7 +356,7 @@
 			cBoxStaffPositions.Location = new Point(381, 266);
 			cBoxStaffPositions.Name = "cBoxStaffPositions";
 			cBoxStaffPositions.Size = new Size(220, 33);
-			cBoxStaffPositions.TabIndex = 25;
+			cBoxStaffPositions.TabIndex = 0;
 			// 
 			// btnCancelEditStaffPosition
 			// 
@@ -365,7 +369,7 @@
 			btnCancelEditStaffPosition.Location = new Point(223, 337);
 			btnCancelEditStaffPosition.Name = "btnCancelEditStaffPosition";
 			btnCancelEditStaffPosition.Size = new Size(220, 50);
-			btnCancelEditStaffPosition.TabIndex = 9;
+			btnCancelEditStaffPosition.TabIndex = 2;
 			btnCancelEditStaffPosition.Text = "Cancel";
 			btnCancelEditStaffPosition.UseVisualStyleBackColor = false;
 			btnCancelEditStaffPosition.Click += btnCancelEditStaffPosition_Click;
@@ -381,7 +385,7 @@
 			btnConfirmEditStaffPositionChanges.Location = new Point(539, 337);
 			btnConfirmEditStaffPositionChanges.Name = "btnConfirmEditStaffPositionChanges";
 			btnConfirmEditStaffPositionChanges.Size = new Size(220, 50);
-			btnConfirmEditStaffPositionChanges.TabIndex = 8;
+			btnConfirmEditStaffPositionChanges.TabIndex = 1;
 			btnConfirmEditStaffPositionChanges.Text = "Confirm Changes";
 			btnConfirmEditStaffPositionChanges.UseVisualStyleBackColor = false;
 			btnConfirmEditStaffPositionChanges.Click += btnConfirmEditStaffPositionChanges_Click;
@@ -397,6 +401,37 @@
 			lblStaffToEditPosition.TabIndex = 24;
 			lblStaffToEditPosition.Text = "Editing position for:";
 			lblStaffToEditPosition.TextAlign = ContentAlignment.MiddleCenter;
+			// 
+			// button1
+			// 
+			button1.Anchor = AnchorStyles.Bottom;
+			button1.BackColor = Color.FromArgb(150, 12, 150);
+			button1.FlatAppearance.BorderSize = 0;
+			button1.FlatStyle = FlatStyle.Flat;
+			button1.Font = new Font("Segoe UI", 14F);
+			button1.ForeColor = SystemColors.Control;
+			button1.Location = new Point(381, 16);
+			button1.Name = "button1";
+			button1.Size = new Size(220, 50);
+			button1.TabIndex = 2;
+			button1.Text = "Edit Staff Position";
+			button1.UseVisualStyleBackColor = false;
+			// 
+			// btnFireStaffMember
+			// 
+			btnFireStaffMember.Anchor = AnchorStyles.Bottom;
+			btnFireStaffMember.BackColor = Color.FromArgb(150, 12, 150);
+			btnFireStaffMember.FlatAppearance.BorderSize = 0;
+			btnFireStaffMember.FlatStyle = FlatStyle.Flat;
+			btnFireStaffMember.Font = new Font("Segoe UI", 14F);
+			btnFireStaffMember.ForeColor = SystemColors.Control;
+			btnFireStaffMember.Location = new Point(634, 18);
+			btnFireStaffMember.Name = "btnFireStaffMember";
+			btnFireStaffMember.Size = new Size(220, 50);
+			btnFireStaffMember.TabIndex = 3;
+			btnFireStaffMember.Text = "Fire Staff Member";
+			btnFireStaffMember.UseVisualStyleBackColor = false;
+			btnFireStaffMember.Click += btnFireStaffMember_Click;
 			// 
 			// frmStaffManagement
 			// 
@@ -467,5 +502,7 @@
 		private Label lblStaffToEditPosition;
 		private Panel pnlStaffListView;
 		private Panel pnlOptionButtons;
+		private Button btnFireStaffMember;
+		private Button button1;
 	}
 }

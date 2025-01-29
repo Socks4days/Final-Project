@@ -58,9 +58,9 @@
 			lblConfirmation = new Label();
 			btnConfirmed = new Button();
 			pnlRetireStock = new Panel();
+			cBoxStockItemsToRetire = new ComboBox();
 			lblStockToRetire = new Label();
 			lblErrorRetireStock = new Label();
-			txtBoxRetireStockName = new TextBox();
 			btnRetireStock = new Button();
 			pnlAddNewStock.SuspendLayout();
 			pnlConfirmation.SuspendLayout();
@@ -197,7 +197,7 @@
 			txtBoxNewDeliveryTime.Location = new Point(502, 379);
 			txtBoxNewDeliveryTime.Name = "txtBoxNewDeliveryTime";
 			txtBoxNewDeliveryTime.Size = new Size(221, 32);
-			txtBoxNewDeliveryTime.TabIndex = 18;
+			txtBoxNewDeliveryTime.TabIndex = 7;
 			// 
 			// txtBoxNewStockCheckFrequency
 			// 
@@ -206,7 +206,7 @@
 			txtBoxNewStockCheckFrequency.Location = new Point(246, 379);
 			txtBoxNewStockCheckFrequency.Name = "txtBoxNewStockCheckFrequency";
 			txtBoxNewStockCheckFrequency.Size = new Size(221, 32);
-			txtBoxNewStockCheckFrequency.TabIndex = 17;
+			txtBoxNewStockCheckFrequency.TabIndex = 6;
 			// 
 			// txtBoxNewOrderQuantity
 			// 
@@ -215,7 +215,7 @@
 			txtBoxNewOrderQuantity.Location = new Point(247, 306);
 			txtBoxNewOrderQuantity.Name = "txtBoxNewOrderQuantity";
 			txtBoxNewOrderQuantity.Size = new Size(221, 32);
-			txtBoxNewOrderQuantity.TabIndex = 16;
+			txtBoxNewOrderQuantity.TabIndex = 4;
 			// 
 			// lblErrorAddNewStock
 			// 
@@ -247,7 +247,7 @@
 			txtBoxNewMinimumLevel.Location = new Point(247, 233);
 			txtBoxNewMinimumLevel.Name = "txtBoxNewMinimumLevel";
 			txtBoxNewMinimumLevel.Size = new Size(221, 32);
-			txtBoxNewMinimumLevel.TabIndex = 4;
+			txtBoxNewMinimumLevel.TabIndex = 2;
 			// 
 			// txtBoxNewStockPrice
 			// 
@@ -256,7 +256,7 @@
 			txtBoxNewStockPrice.Location = new Point(502, 306);
 			txtBoxNewStockPrice.Name = "txtBoxNewStockPrice";
 			txtBoxNewStockPrice.Size = new Size(221, 32);
-			txtBoxNewStockPrice.TabIndex = 2;
+			txtBoxNewStockPrice.TabIndex = 5;
 			// 
 			// txtBoxNewMaximumLevel
 			// 
@@ -287,7 +287,7 @@
 			btnAddNewStock.Location = new Point(375, 527);
 			btnAddNewStock.Name = "btnAddNewStock";
 			btnAddNewStock.Size = new Size(220, 50);
-			btnAddNewStock.TabIndex = 5;
+			btnAddNewStock.TabIndex = 8;
 			btnAddNewStock.Text = "Add New Stock";
 			btnAddNewStock.UseVisualStyleBackColor = false;
 			btnAddNewStock.Click += btnAddNewStock_Click;
@@ -321,7 +321,7 @@
 			btnReturn.Location = new Point(247, 448);
 			btnReturn.Name = "btnReturn";
 			btnReturn.Size = new Size(220, 50);
-			btnReturn.TabIndex = 13;
+			btnReturn.TabIndex = 1;
 			btnReturn.Text = "Return";
 			btnReturn.UseVisualStyleBackColor = false;
 			btnReturn.Click += btnReturn_Click;
@@ -421,7 +421,7 @@
 			btnConfirmed.Location = new Point(532, 448);
 			btnConfirmed.Name = "btnConfirmed";
 			btnConfirmed.Size = new Size(220, 50);
-			btnConfirmed.TabIndex = 6;
+			btnConfirmed.TabIndex = 0;
 			btnConfirmed.Text = "Confirm";
 			btnConfirmed.UseVisualStyleBackColor = false;
 			btnConfirmed.Click += btnConfirmed_Click;
@@ -429,9 +429,9 @@
 			// pnlRetireStock
 			// 
 			pnlRetireStock.BackColor = Color.FromArgb(200, 200, 200);
+			pnlRetireStock.Controls.Add(cBoxStockItemsToRetire);
 			pnlRetireStock.Controls.Add(lblStockToRetire);
 			pnlRetireStock.Controls.Add(lblErrorRetireStock);
-			pnlRetireStock.Controls.Add(txtBoxRetireStockName);
 			pnlRetireStock.Controls.Add(btnRetireStock);
 			pnlRetireStock.Dock = DockStyle.Top;
 			pnlRetireStock.Location = new Point(0, 1422);
@@ -439,13 +439,23 @@
 			pnlRetireStock.Size = new Size(966, 711);
 			pnlRetireStock.TabIndex = 5;
 			// 
+			// cBoxStockItemsToRetire
+			// 
+			cBoxStockItemsToRetire.Anchor = AnchorStyles.None;
+			cBoxStockItemsToRetire.Font = new Font("Segoe UI", 14F);
+			cBoxStockItemsToRetire.FormattingEnabled = true;
+			cBoxStockItemsToRetire.Location = new Point(373, 269);
+			cBoxStockItemsToRetire.Name = "cBoxStockItemsToRetire";
+			cBoxStockItemsToRetire.Size = new Size(220, 33);
+			cBoxStockItemsToRetire.TabIndex = 17;
+			// 
 			// lblStockToRetire
 			// 
 			lblStockToRetire.Anchor = AnchorStyles.None;
 			lblStockToRetire.AutoSize = true;
 			lblStockToRetire.Font = new Font("Segoe UI", 14F);
 			lblStockToRetire.ForeColor = Color.Black;
-			lblStockToRetire.Location = new Point(375, 237);
+			lblStockToRetire.Location = new Point(401, 237);
 			lblStockToRetire.Name = "lblStockToRetire";
 			lblStockToRetire.Size = new Size(164, 25);
 			lblStockToRetire.TabIndex = 16;
@@ -465,15 +475,6 @@
 			lblErrorRetireStock.Text = "Error message goes here";
 			lblErrorRetireStock.TextAlign = ContentAlignment.MiddleCenter;
 			// 
-			// txtBoxRetireStockName
-			// 
-			txtBoxRetireStockName.Anchor = AnchorStyles.None;
-			txtBoxRetireStockName.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			txtBoxRetireStockName.Location = new Point(375, 267);
-			txtBoxRetireStockName.Name = "txtBoxRetireStockName";
-			txtBoxRetireStockName.Size = new Size(220, 32);
-			txtBoxRetireStockName.TabIndex = 12;
-			// 
 			// btnRetireStock
 			// 
 			btnRetireStock.Anchor = AnchorStyles.None;
@@ -482,10 +483,10 @@
 			btnRetireStock.FlatStyle = FlatStyle.Flat;
 			btnRetireStock.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			btnRetireStock.ForeColor = Color.White;
-			btnRetireStock.Location = new Point(375, 400);
+			btnRetireStock.Location = new Point(373, 400);
 			btnRetireStock.Name = "btnRetireStock";
 			btnRetireStock.Size = new Size(220, 50);
-			btnRetireStock.TabIndex = 0;
+			btnRetireStock.TabIndex = 1;
 			btnRetireStock.Text = "Retire Stock";
 			btnRetireStock.UseVisualStyleBackColor = false;
 			btnRetireStock.Click += btnRetireStock_Click;
@@ -501,7 +502,7 @@
 			Controls.Add(pnlConfirmation);
 			Controls.Add(pnlAddNewStock);
 			Name = "frmAddOrRetireStockType";
-			Text = "AddOrRemoveStockType";
+			Text = "Add Or Retire Stock Item";
 			pnlAddNewStock.ResumeLayout(false);
 			pnlAddNewStock.PerformLayout();
 			pnlConfirmation.ResumeLayout(false);
@@ -532,7 +533,6 @@
         private Label lblErrorAddNewStock;
         private Panel pnlRetireStock;
         private Label lblErrorRetireStock;
-        private TextBox txtBoxRetireStockName;
         private Label lblRemoveStock;
         private Button btnRetireStock;
         private TextBox txtBoxNewOrderQuantity;
@@ -547,5 +547,6 @@
 		private Label lblNewMaximumLevel;
 		private Label lblNewDeliveryTime;
 		private Label lblNewStockCheckFrequency;
+		private ComboBox cBoxStockItemsToRetire;
 	}
 }

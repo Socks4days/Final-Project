@@ -48,7 +48,7 @@
 			btnClear.Margin = new Padding(3, 4, 3, 4);
 			btnClear.Name = "btnClear";
 			btnClear.Size = new Size(220, 50);
-			btnClear.TabIndex = 0;
+			btnClear.TabIndex = 3;
 			btnClear.Text = "Clear";
 			btnClear.UseVisualStyleBackColor = true;
 			btnClear.Click += btnClear_Click;
@@ -74,7 +74,7 @@
 			txtBoxUsername.MaxLength = 50;
 			txtBoxUsername.Name = "txtBoxUsername";
 			txtBoxUsername.Size = new Size(372, 32);
-			txtBoxUsername.TabIndex = 1;
+			txtBoxUsername.TabIndex = 0;
 			// 
 			// cBoxPassword
 			// 
@@ -99,7 +99,7 @@
 			btnSubmit.Margin = new Padding(3, 4, 3, 4);
 			btnSubmit.Name = "btnSubmit";
 			btnSubmit.Size = new Size(220, 50);
-			btnSubmit.TabIndex = 3;
+			btnSubmit.TabIndex = 2;
 			btnSubmit.Text = "Submit";
 			btnSubmit.UseVisualStyleBackColor = true;
 			btnSubmit.Click += btnSubmit_Click;
@@ -114,7 +114,7 @@
 			txtBoxPassword.Name = "txtBoxPassword";
 			txtBoxPassword.PasswordChar = '*';
 			txtBoxPassword.Size = new Size(372, 32);
-			txtBoxPassword.TabIndex = 2;
+			txtBoxPassword.TabIndex = 1;
 			// 
 			// lblError
 			// 
@@ -143,7 +143,7 @@
 			btnRegister.Margin = new Padding(3, 4, 3, 4);
 			btnRegister.Name = "btnRegister";
 			btnRegister.Size = new Size(260, 50);
-			btnRegister.TabIndex = 7;
+			btnRegister.TabIndex = 4;
 			btnRegister.Text = "Register a new account";
 			btnRegister.UseVisualStyleBackColor = false;
 			btnRegister.Click += btnRegister_Click;

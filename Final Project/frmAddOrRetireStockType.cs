@@ -93,24 +93,15 @@ namespace Final_Project
 
 		private void btnRetireStock_Click(object sender, EventArgs e)
 		{
-			// try to set a value for the stock to remove
-			try
+			if(cBoxStockItemsToRetire.Text != "")
 			{
-				stockToRetire.stockName = txtBoxRetireStockName.Text;
+				stockToRetire.stockName = cBoxStockItemsToRetire.Text;
 			}
-			catch (Exception ex)
+			else
 			{
-				// if not valid, alert user
 				lblErrorRetireStock.Visible = true;
-				lblErrorRetireStock.Text = "There is no stock with that name, please try again...";
-			}
-
-			if (txtBoxRetireStockName.Text == "")
-			{
-				// if not valid, alert user
-				lblErrorRetireStock.Visible = true;
-				lblErrorRetireStock.Text = "There is no stock with that name, please try again...";
-			}
+				lblErrorRetireStock.Text = "Select a stock to retire!";
+			}			
 
 			// go through each stock to find the stock the user input
 			foreach (Stock stock in allStock)
@@ -166,6 +157,14 @@ namespace Final_Project
 			pnlConfirmation.Visible = false;
 			pnlRetireStock.Dock = DockStyle.Fill;
 			actionTakingPlace = "Retire Stock";
+
+			List<Stock> stockToRetire = StockDal.GetAllActiveStock();
+			List<string> stockNamesToRetire = new List<string>();
+			foreach (Stock stock in stockToRetire)
+			{
+				stockNamesToRetire.Add(stock.stockName);
+			}
+			cBoxStockItemsToRetire.DataSource = stockNamesToRetire;
 		}
 
 		#endregion PanelShowing
@@ -201,8 +200,7 @@ namespace Final_Project
 			txtBoxNewStockCheckFrequency.Text = "";
 			txtBoxNewDeliveryTime.Text = "";
 
-			txtBoxRetireStockName.Text = "";
-
+			cBoxStockItemsToRetire.Text = "";
 			// check to see which panel to show and then show the respective panel
 			if (actionTakingPlace == "Add Stock")
 			{
@@ -236,7 +234,7 @@ namespace Final_Project
 			{
 				ShowRetireStock();
 				lblErrorRetireStock.Visible = false;
-				txtBoxRetireStockName.Text = stockToRetire.stockName;
+				cBoxStockItemsToRetire.Text = stockToRetire.stockName;
 			}
 		}
 

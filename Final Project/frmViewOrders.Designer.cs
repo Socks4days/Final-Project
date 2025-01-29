@@ -66,7 +66,7 @@
 			btnCancelOrder.Location = new Point(678, 618);
 			btnCancelOrder.Name = "btnCancelOrder";
 			btnCancelOrder.Size = new Size(220, 50);
-			btnCancelOrder.TabIndex = 18;
+			btnCancelOrder.TabIndex = 2;
 			btnCancelOrder.Text = "Cancel Order";
 			btnCancelOrder.UseVisualStyleBackColor = false;
 			btnCancelOrder.Click += btnCancelOrder_Click;
@@ -82,7 +82,7 @@
 			btnViewOrder.Location = new Point(102, 618);
 			btnViewOrder.Name = "btnViewOrder";
 			btnViewOrder.Size = new Size(220, 50);
-			btnViewOrder.TabIndex = 17;
+			btnViewOrder.TabIndex = 0;
 			btnViewOrder.Text = "View Order";
 			btnViewOrder.UseVisualStyleBackColor = false;
 			btnViewOrder.Click += btnViewOrder_Click;
@@ -98,7 +98,7 @@
 			btnEditOrder.Location = new Point(388, 618);
 			btnEditOrder.Name = "btnEditOrder";
 			btnEditOrder.Size = new Size(220, 50);
-			btnEditOrder.TabIndex = 16;
+			btnEditOrder.TabIndex = 1;
 			btnEditOrder.Text = "Edit Order";
 			btnEditOrder.UseVisualStyleBackColor = false;
 			btnEditOrder.Click += btnEditOrder_Click;

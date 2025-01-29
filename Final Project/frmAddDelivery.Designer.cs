@@ -114,7 +114,7 @@
 			btnViewOrRecordDelivery.Margin = new Padding(3, 2, 3, 2);
 			btnViewOrRecordDelivery.Name = "btnViewOrRecordDelivery";
 			btnViewOrRecordDelivery.Size = new Size(220, 50);
-			btnViewOrRecordDelivery.TabIndex = 25;
+			btnViewOrRecordDelivery.TabIndex = 0;
 			btnViewOrRecordDelivery.Text = "View / Record Delivery";
 			btnViewOrRecordDelivery.UseVisualStyleBackColor = false;
 			btnViewOrRecordDelivery.Click += btnRecordDelivery_Click;
@@ -203,7 +203,7 @@
 			btnRecordDeliveryForOrder.Margin = new Padding(3, 2, 3, 2);
 			btnRecordDeliveryForOrder.Name = "btnRecordDeliveryForOrder";
 			btnRecordDeliveryForOrder.Size = new Size(220, 50);
-			btnRecordDeliveryForOrder.TabIndex = 31;
+			btnRecordDeliveryForOrder.TabIndex = 0;
 			btnRecordDeliveryForOrder.Text = "Record Delivery";
 			btnRecordDeliveryForOrder.UseVisualStyleBackColor = false;
 			btnRecordDeliveryForOrder.Click += btnRecordDeliveryForOrder_Click;
@@ -220,7 +220,7 @@
 			btnMarkOrderAsCompleted.Margin = new Padding(3, 2, 3, 2);
 			btnMarkOrderAsCompleted.Name = "btnMarkOrderAsCompleted";
 			btnMarkOrderAsCompleted.Size = new Size(220, 50);
-			btnMarkOrderAsCompleted.TabIndex = 27;
+			btnMarkOrderAsCompleted.TabIndex = 1;
 			btnMarkOrderAsCompleted.Text = "Order Completed";
 			btnMarkOrderAsCompleted.UseVisualStyleBackColor = false;
 			btnMarkOrderAsCompleted.Click += btnMarkOrderAsCompleted_Click;
@@ -342,7 +342,7 @@
 			btnMarkDeliveryAsCompleted.Margin = new Padding(3, 2, 3, 2);
 			btnMarkDeliveryAsCompleted.Name = "btnMarkDeliveryAsCompleted";
 			btnMarkDeliveryAsCompleted.Size = new Size(220, 50);
-			btnMarkDeliveryAsCompleted.TabIndex = 32;
+			btnMarkDeliveryAsCompleted.TabIndex = 1;
 			btnMarkDeliveryAsCompleted.Text = "Delivery Completed";
 			btnMarkDeliveryAsCompleted.UseVisualStyleBackColor = false;
 			btnMarkDeliveryAsCompleted.Click += btnMarkDeliveryAsCompleted_Click;
@@ -359,7 +359,7 @@
 			btnAddItem.Margin = new Padding(3, 2, 3, 2);
 			btnAddItem.Name = "btnAddItem";
 			btnAddItem.Size = new Size(220, 50);
-			btnAddItem.TabIndex = 26;
+			btnAddItem.TabIndex = 0;
 			btnAddItem.Text = "Add Item";
 			btnAddItem.UseVisualStyleBackColor = false;
 			btnAddItem.Click += btnAddItem_Click;
@@ -434,7 +434,7 @@
 			btnAddItemToDelivery.Margin = new Padding(3, 2, 3, 2);
 			btnAddItemToDelivery.Name = "btnAddItemToDelivery";
 			btnAddItemToDelivery.Size = new Size(220, 50);
-			btnAddItemToDelivery.TabIndex = 29;
+			btnAddItemToDelivery.TabIndex = 0;
 			btnAddItemToDelivery.Text = "Add Item To Delivery";
 			btnAddItemToDelivery.UseVisualStyleBackColor = false;
 			btnAddItemToDelivery.Click += btnAddItemToDelivery_Click;

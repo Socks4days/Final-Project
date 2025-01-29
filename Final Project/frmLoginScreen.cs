@@ -19,6 +19,7 @@ namespace Final_Project
             lblError.Visible = false;
             // Code to be able to hit enter to do same thing as submit when in the password textbox
             txtBoxPassword.KeyDown += KeyPressedDown;
+            txtBoxUsername.KeyDown += KeyPressedDown;
             KeyDown += KeyPressedDown;
         }
 
@@ -69,29 +70,25 @@ namespace Final_Project
             foreach (Staff staff in staffList)
             {
                 // if user is found, proceed to main menu
-                if (staff.username == username && staff.password == password)
+                if(staff.username == username && staff.password == password)
                 {
-                    loggedInStaff = staff;
-                    loggedInStaff.active = 1;
-                    StaffDal.UpdateStaffStatus(loggedInStaff);
-                    frmMainScreen.frmMain.OpenChildForm(null, null);
-                    frmMainScreen.frmMain.SetUserPermissions(staff);
-                    break;
-                }
-                // if only username is correct, tell them password is incorrect
-                else if (staff.username == username)
-                {
-                    ShowError("The password you have entered is invalid");
-                    break;
-                }
-                // if only password is correct, say that the username is incorrect
-                else if (staff.password == password)
-                {
-                    ShowError("The username you have entered is invalid");
-                    break;
-                }
-            }
-        }
+                    if(staff.active == 1)
+                    {
+						loggedInStaff = staff;
+						frmMainScreen.frmMain.OpenChildForm(null, null);
+						frmMainScreen.frmMain.SetUserPermissions(staff);
+						break;
+					}
+                    else
+                    {
+                        ShowError("You do not have access to the system");
+                    }
+                    
+                }                
+            }	
+            if(loggedInStaff == null)
+			ShowError("The details you have entered are invalid");			
+		}
 
         private void btnRegister_Click(object sender, EventArgs e)
         {

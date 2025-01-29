@@ -26,7 +26,7 @@ namespace Final_Project
 
 		private void lstViewOrders_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
 		{
-			if (e.IsSelected)
+			if (e.IsSelected && e.Item != null)
 			{
 				pnlOptionButtons.Visible = true;
 				pnlOptionButtons.Dock = DockStyle.Bottom;
@@ -109,7 +109,7 @@ namespace Final_Project
 				if (item.SubItems[0].Text == frmLoginScreen.loggedInStaff.forename && item.SubItems[1].Text == frmLoginScreen.loggedInStaff.surname)
 				{
 					lstViewStaffMembers.Items.Remove(item);
-				}				
+				}
 			}
 			lstViewStaffMembers.SelectedItems.Clear();
 		}
@@ -189,6 +189,13 @@ namespace Final_Project
 			staffToEdit.staffPosition = cBoxStaffPositions.Text;
 			StaffDal.UpdateStaffPosition(staffToEdit);
 			ShowStaffInfo();
+		}
+
+		private void btnFireStaffMember_Click(object sender, EventArgs e)
+		{
+			staffToEdit.active = 0;
+			StaffDal.UpdateStaffStatus(staffToEdit);
+			UpdateStaffListView();
 		}
 	}
 }

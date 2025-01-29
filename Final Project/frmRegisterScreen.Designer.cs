@@ -66,7 +66,7 @@
 			btnRegister.Location = new Point(630, 526);
 			btnRegister.Name = "btnRegister";
 			btnRegister.Size = new Size(220, 50);
-			btnRegister.TabIndex = 0;
+			btnRegister.TabIndex = 4;
 			btnRegister.Text = "Register";
 			btnRegister.UseVisualStyleBackColor = true;
 			btnRegister.Click += btnRegister_Click;
@@ -78,7 +78,7 @@
 			txtBoxUsername.Location = new Point(331, 245);
 			txtBoxUsername.Name = "txtBoxUsername";
 			txtBoxUsername.Size = new Size(240, 32);
-			txtBoxUsername.TabIndex = 1;
+			txtBoxUsername.TabIndex = 0;
 			// 
 			// txtBoxSurname
 			// 
@@ -87,7 +87,7 @@
 			txtBoxSurname.Location = new Point(630, 321);
 			txtBoxSurname.Name = "txtBoxSurname";
 			txtBoxSurname.Size = new Size(240, 32);
-			txtBoxSurname.TabIndex = 4;
+			txtBoxSurname.TabIndex = 3;
 			// 
 			// txtBoxForename
 			// 
@@ -96,7 +96,7 @@
 			txtBoxForename.Location = new Point(331, 321);
 			txtBoxForename.Name = "txtBoxForename";
 			txtBoxForename.Size = new Size(240, 32);
-			txtBoxForename.TabIndex = 3;
+			txtBoxForename.TabIndex = 2;
 			// 
 			// txtBoxPassword
 			// 
@@ -105,7 +105,7 @@
 			txtBoxPassword.Location = new Point(630, 247);
 			txtBoxPassword.Name = "txtBoxPassword";
 			txtBoxPassword.Size = new Size(240, 32);
-			txtBoxPassword.TabIndex = 2;
+			txtBoxPassword.TabIndex = 1;
 			// 
 			// lblTitle
 			// 
@@ -188,7 +188,7 @@
 			btnBack.Location = new Point(12, 12);
 			btnBack.Name = "btnBack";
 			btnBack.Size = new Size(90, 50);
-			btnBack.TabIndex = 12;
+			btnBack.TabIndex = 6;
 			btnBack.Text = "←";
 			btnBack.TextAlign = ContentAlignment.TopCenter;
 			btnBack.UseVisualStyleBackColor = true;

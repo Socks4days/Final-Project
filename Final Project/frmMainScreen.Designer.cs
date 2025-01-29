@@ -222,7 +222,7 @@
 			btnAudits.Margin = new Padding(2);
 			btnAudits.Name = "btnAudits";
 			btnAudits.Size = new Size(182, 70);
-			btnAudits.TabIndex = 12;
+			btnAudits.TabIndex = 3;
 			btnAudits.Text = "Audits";
 			btnAudits.TextAlign = ContentAlignment.MiddleLeft;
 			btnAudits.UseVisualStyleBackColor = false;
@@ -253,7 +253,7 @@
 			btnViewDeliveries.Name = "btnViewDeliveries";
 			btnViewDeliveries.Padding = new Padding(20, 0, 0, 0);
 			btnViewDeliveries.Size = new Size(182, 70);
-			btnViewDeliveries.TabIndex = 6;
+			btnViewDeliveries.TabIndex = 0;
 			btnViewDeliveries.Text = "View Deliveries";
 			btnViewDeliveries.TextAlign = ContentAlignment.MiddleLeft;
 			btnViewDeliveries.UseVisualStyleBackColor = false;
@@ -272,7 +272,7 @@
 			btnDelivery.Margin = new Padding(2);
 			btnDelivery.Name = "btnDelivery";
 			btnDelivery.Size = new Size(182, 70);
-			btnDelivery.TabIndex = 10;
+			btnDelivery.TabIndex = 2;
 			btnDelivery.Text = "Deliveries";
 			btnDelivery.TextAlign = ContentAlignment.MiddleLeft;
 			btnDelivery.UseVisualStyleBackColor = false;
@@ -303,7 +303,7 @@
 			btnViewOrders.Name = "btnViewOrders";
 			btnViewOrders.Padding = new Padding(20, 0, 0, 0);
 			btnViewOrders.Size = new Size(182, 70);
-			btnViewOrders.TabIndex = 5;
+			btnViewOrders.TabIndex = 1;
 			btnViewOrders.Text = "View Orders";
 			btnViewOrders.TextAlign = ContentAlignment.MiddleLeft;
 			btnViewOrders.UseVisualStyleBackColor = false;
@@ -323,7 +323,7 @@
 			btnOrderStock.Name = "btnOrderStock";
 			btnOrderStock.Padding = new Padding(20, 0, 0, 0);
 			btnOrderStock.Size = new Size(182, 70);
-			btnOrderStock.TabIndex = 4;
+			btnOrderStock.TabIndex = 0;
 			btnOrderStock.Text = "Order Stock";
 			btnOrderStock.TextAlign = ContentAlignment.MiddleLeft;
 			btnOrderStock.UseVisualStyleBackColor = false;
@@ -342,7 +342,7 @@
 			btnOrder.Margin = new Padding(2);
 			btnOrder.Name = "btnOrder";
 			btnOrder.Size = new Size(182, 70);
-			btnOrder.TabIndex = 4;
+			btnOrder.TabIndex = 1;
 			btnOrder.Text = "Orders";
 			btnOrder.TextAlign = ContentAlignment.MiddleLeft;
 			btnOrder.UseVisualStyleBackColor = false;
@@ -374,7 +374,7 @@
 			btnRetireStockItem.Name = "btnRetireStockItem";
 			btnRetireStockItem.Padding = new Padding(20, 0, 0, 0);
 			btnRetireStockItem.Size = new Size(182, 70);
-			btnRetireStockItem.TabIndex = 9;
+			btnRetireStockItem.TabIndex = 2;
 			btnRetireStockItem.Text = "Retire Stock Item";
 			btnRetireStockItem.TextAlign = ContentAlignment.MiddleLeft;
 			btnRetireStockItem.UseVisualStyleBackColor = false;
@@ -394,7 +394,7 @@
 			btnNewStockItem.Name = "btnNewStockItem";
 			btnNewStockItem.Padding = new Padding(20, 0, 0, 0);
 			btnNewStockItem.Size = new Size(182, 70);
-			btnNewStockItem.TabIndex = 6;
+			btnNewStockItem.TabIndex = 1;
 			btnNewStockItem.Text = "New Stock Item";
 			btnNewStockItem.TextAlign = ContentAlignment.MiddleLeft;
 			btnNewStockItem.UseVisualStyleBackColor = false;
@@ -414,7 +414,7 @@
 			btnManageStockLevels.Name = "btnManageStockLevels";
 			btnManageStockLevels.Padding = new Padding(20, 0, 0, 0);
 			btnManageStockLevels.Size = new Size(182, 70);
-			btnManageStockLevels.TabIndex = 4;
+			btnManageStockLevels.TabIndex = 0;
 			btnManageStockLevels.Text = "Manage Stock";
 			btnManageStockLevels.TextAlign = ContentAlignment.MiddleLeft;
 			btnManageStockLevels.UseVisualStyleBackColor = false;
@@ -433,7 +433,7 @@
 			btnStock.Margin = new Padding(2);
 			btnStock.Name = "btnStock";
 			btnStock.Size = new Size(182, 70);
-			btnStock.TabIndex = 1;
+			btnStock.TabIndex = 0;
 			btnStock.Text = "Stock";
 			btnStock.TextAlign = ContentAlignment.MiddleLeft;
 			btnStock.UseVisualStyleBackColor = false;
@@ -522,7 +522,6 @@
 			Name = "frmMainScreen";
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Stock Control";
-			FormClosed += frmMainScreen_FormClosed;
 			pnlSideBar.ResumeLayout(false);
 			pnlStaff.ResumeLayout(false);
 			pnlAudits.ResumeLayout(false);
