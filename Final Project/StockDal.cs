@@ -20,21 +20,100 @@ namespace Final_Project
         // Replace {0} in connection string with project directory
         private static string _connectionstring = string.Format(ConfigurationManager.ConnectionStrings["StockManagementConnectionString"].ConnectionString, projectDirectoryPath);
 
-        public static Stock GetStockByStockId(int stockId)
-        {
-			string sqlQuery = string.Format("SELECT * FROM Stock WHERE StockId = {0}", stockId);
-			return GetStockSql(sqlQuery);
+		public static int AddNewStock(Stock newStock)
+		{
+			using (SqlConnection connection = new SqlConnection(_connectionstring))
+			{
+
+				connection.Open();
+
+				SqlCommand addStockCommand = new SqlCommand();
+				addStockCommand.Connection = connection;
+				// specifies its a stored procedure
+				addStockCommand.CommandType = System.Data.CommandType.StoredProcedure;
+				// name of stored procedure to execute
+				addStockCommand.CommandText = "AddStock";
+				// now add parameters that are passed to the stored procedure
+				addStockCommand.Parameters.Add(new SqlParameter("@StockName", newStock.stockName));
+				addStockCommand.Parameters.Add(new SqlParameter("@StockDescription", newStock.stockDescription));
+				addStockCommand.Parameters.Add(new SqlParameter("@Price", newStock.price));
+				addStockCommand.Parameters.Add(new SqlParameter("@DeliveryTimeDays", newStock.deliveryTimeDays));
+				addStockCommand.Parameters.Add(new SqlParameter("@MaximumLevel", newStock.maximumLevel));
+				addStockCommand.Parameters.Add(new SqlParameter("@MinimumLevel", newStock.minimumLevel));
+				addStockCommand.Parameters.Add(new SqlParameter("@OrderQuantity", newStock.orderQuantity));
+				addStockCommand.Parameters.Add(new SqlParameter("@StockCheckFrequency", newStock.stockCheckFrequency));
+				addStockCommand.Parameters.Add(new SqlParameter("@StockLevel", newStock.stockLevel));
+				addStockCommand.Parameters.Add(new SqlParameter("@LastUpdatedByStaffId", newStock.lastUpdatedByStaffId));
+
+				int rowsAffected = addStockCommand.ExecuteNonQuery();
+
+				connection.Close();
+
+				return rowsAffected;
+			}
 		}
 
-		public static Stock GetStockByStockName(string stockName)
-        {
-			string sqlQuery = string.Format("SELECT * FROM Stock WHERE StockName = '{0}'", stockName);
+		public static void UpdateStockLevel(Stock stock)
+		{
+			using (SqlConnection connection = new SqlConnection(_connectionstring))
+			{
+				connection.Open();
 
-			return GetStockSql(sqlQuery);
-        }
+				SqlCommand updateStockLevelCommand = new SqlCommand();
+				updateStockLevelCommand.Connection = connection;
+				// specifies its a stored procedure
+				updateStockLevelCommand.CommandType = System.Data.CommandType.StoredProcedure;
+				// name of stored procedure to execute
+				updateStockLevelCommand.CommandText = "UpdateStockLevel";
+				// now add parameters that are passed to the stored procedure
+				updateStockLevelCommand.Parameters.Add(new SqlParameter("@StockId", stock.stockId));
+				updateStockLevelCommand.Parameters.Add(new SqlParameter("@StockLevel", stock.stockLevel));
 
-        private static Stock GetStockSql(string sqlQuery)
-        {
+				updateStockLevelCommand.ExecuteNonQuery();
+
+				connection.Close();
+			}
+		}
+
+		public static void UpdateStockInformation(Stock stock)
+		{
+			int sqlActive = 0;
+			if (stock.active == true)
+			{
+				sqlActive = 1;
+			}
+
+			using (SqlConnection connection = new SqlConnection(_connectionstring))
+			{
+				connection.Open();
+
+				SqlCommand updateStockInformationCommand = new SqlCommand();
+				updateStockInformationCommand.Connection = connection;
+				// specifies its a stored procedure
+				updateStockInformationCommand.CommandType = System.Data.CommandType.StoredProcedure;
+				// name of stored procedure to execute
+				updateStockInformationCommand.CommandText = "UpdateStockInformation";
+				// now add parameters that are passed to the stored procedure
+				updateStockInformationCommand.Parameters.Add(new SqlParameter("@StockId", stock.stockId));
+				updateStockInformationCommand.Parameters.Add(new SqlParameter("@StockName", stock.stockName));
+				updateStockInformationCommand.Parameters.Add(new SqlParameter("@StockDescription", stock.stockDescription));
+				updateStockInformationCommand.Parameters.Add(new SqlParameter("@Price", stock.price));
+				updateStockInformationCommand.Parameters.Add(new SqlParameter("@DeliveryTimeDays", stock.deliveryTimeDays));
+				updateStockInformationCommand.Parameters.Add(new SqlParameter("@MaximumLevel", stock.maximumLevel));
+				updateStockInformationCommand.Parameters.Add(new SqlParameter("@MinimumLevel", stock.minimumLevel));
+				updateStockInformationCommand.Parameters.Add(new SqlParameter("@OrderQuantity", stock.orderQuantity));
+				updateStockInformationCommand.Parameters.Add(new SqlParameter("@StockCheckFrequency", stock.stockCheckFrequency));
+				updateStockInformationCommand.Parameters.Add(new SqlParameter("@LastUpdatedByStaffId", stock.lastUpdatedByStaffId));
+				updateStockInformationCommand.Parameters.Add(new SqlParameter("@Active", sqlActive));
+
+				updateStockInformationCommand.ExecuteNonQuery();
+
+				connection.Close();
+			}
+		}
+
+		private static Stock GetStockSql(string sqlQuery)
+		{
 			using (SqlConnection connection = new SqlConnection(_connectionstring))
 			{
 				Stock stock = new Stock();
@@ -76,75 +155,18 @@ namespace Final_Project
 			}
 		}
 
-        public static void UpdateStockInformation(Stock stock)
+		public static Stock GetStockByStockId(int stockId)
         {
-            int sqlActive = 0;
-            if(stock.active == true)
-            {
-                sqlActive = 1;
-            }
+			string sqlQuery = string.Format("SELECT * FROM Stock WHERE StockId = {0}", stockId);
+			return GetStockSql(sqlQuery);
+		}
 
-            using (SqlConnection connection = new SqlConnection(_connectionstring))
-            {
-                connection.Open();
-
-				SqlCommand updateStockInformationCommand = new SqlCommand();
-				updateStockInformationCommand.Connection = connection;
-				// specifies its a stored procedure
-				updateStockInformationCommand.CommandType = System.Data.CommandType.StoredProcedure;
-				// name of stored procedure to execute
-				updateStockInformationCommand.CommandText = "UpdateStockInformation";
-				// now add parameters that are passed to the stored procedure
-				updateStockInformationCommand.Parameters.Add(new SqlParameter("@StockId", stock.stockId));
-				updateStockInformationCommand.Parameters.Add(new SqlParameter("@StockName", stock.stockName));
-				updateStockInformationCommand.Parameters.Add(new SqlParameter("@StockDescription", stock.stockDescription));
-				updateStockInformationCommand.Parameters.Add(new SqlParameter("@Price", stock.price));
-				updateStockInformationCommand.Parameters.Add(new SqlParameter("@DeliveryTimeDays", stock.deliveryTimeDays));
-				updateStockInformationCommand.Parameters.Add(new SqlParameter("@MaximumLevel", stock.maximumLevel));
-				updateStockInformationCommand.Parameters.Add(new SqlParameter("@MinimumLevel", stock.minimumLevel));
-				updateStockInformationCommand.Parameters.Add(new SqlParameter("@OrderQuantity", stock.orderQuantity));
-				updateStockInformationCommand.Parameters.Add(new SqlParameter("@StockCheckFrequency", stock.stockCheckFrequency));				
-				updateStockInformationCommand.Parameters.Add(new SqlParameter("@LastUpdatedByStaffId", stock.lastUpdatedByStaffId));
-				updateStockInformationCommand.Parameters.Add(new SqlParameter("@Active", sqlActive));
-
-				updateStockInformationCommand.ExecuteNonQuery();
-
-				connection.Close();				
-            }
-        }
-
-        public static int AddNewStock(Stock newStock)
+		public static Stock GetStockByStockName(string stockName)
         {
-            using (SqlConnection connection = new SqlConnection(_connectionstring))
-            {
+			string sqlQuery = string.Format("SELECT * FROM Stock WHERE StockName = '{0}'", stockName);
 
-                connection.Open();
-
-                SqlCommand addStockCommand = new SqlCommand();
-                addStockCommand.Connection = connection;
-                // specifies its a stored procedure
-                addStockCommand.CommandType = System.Data.CommandType.StoredProcedure;
-                // name of stored procedure to execute
-                addStockCommand.CommandText = "AddStock";
-                // now add parameters that are passed to the stored procedure
-                addStockCommand.Parameters.Add(new SqlParameter("@StockName", newStock.stockName));
-                addStockCommand.Parameters.Add(new SqlParameter("@StockDescription", newStock.stockDescription));
-                addStockCommand.Parameters.Add(new SqlParameter("@Price", newStock.price));
-                addStockCommand.Parameters.Add(new SqlParameter("@DeliveryTimeDays", newStock.deliveryTimeDays));
-                addStockCommand.Parameters.Add(new SqlParameter("@MaximumLevel", newStock.maximumLevel));
-                addStockCommand.Parameters.Add(new SqlParameter("@MinimumLevel", newStock.minimumLevel));
-                addStockCommand.Parameters.Add(new SqlParameter("@OrderQuantity", newStock.orderQuantity));
-                addStockCommand.Parameters.Add(new SqlParameter("@StockCheckFrequency", newStock.stockCheckFrequency));
-                addStockCommand.Parameters.Add(new SqlParameter("@StockLevel", newStock.stockLevel));
-                addStockCommand.Parameters.Add(new SqlParameter("@LastUpdatedByStaffId", newStock.lastUpdatedByStaffId));
-
-                int rowsAffected = addStockCommand.ExecuteNonQuery();
-
-                connection.Close();
-
-                return rowsAffected;
-            }
-        }
+			return GetStockSql(sqlQuery);
+        }     
 
         public static List<Stock> GetAllActiveStock()
         {
@@ -254,28 +276,6 @@ namespace Final_Project
                 connection.Close();
                 return stockLevelItems;
             }
-        }
-
-		public static void UpdateStockLevel(Stock stock)
-		{	
-			using (SqlConnection connection = new SqlConnection(_connectionstring))
-			{
-				connection.Open();
-
-				SqlCommand updateStockLevelCommand = new SqlCommand();
-				updateStockLevelCommand.Connection = connection;
-				// specifies its a stored procedure
-				updateStockLevelCommand.CommandType = System.Data.CommandType.StoredProcedure;
-				// name of stored procedure to execute
-				updateStockLevelCommand.CommandText = "UpdateStockLevel";
-				// now add parameters that are passed to the stored procedure
-				updateStockLevelCommand.Parameters.Add(new SqlParameter("@StockId", stock.stockId));
-				updateStockLevelCommand.Parameters.Add(new SqlParameter("@StockLevel", stock.stockLevel));
-
-				updateStockLevelCommand.ExecuteNonQuery();
-
-				connection.Close();
-			}
-		}
+        }		
 	}
 }

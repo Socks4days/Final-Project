@@ -117,7 +117,7 @@ namespace Final_Project
 				{
 					btnDelivery.BackColor = Color.FromArgb(0, 92, 83);
 					pnlTitleBar.BackColor = Color.FromArgb(0, 151, 136);
-					btnViewDeliveries.BackColor = Color.FromArgb(0, 151, 136);					
+					btnViewDeliveries.BackColor = Color.FromArgb(0, 151, 136);
 				}
 				else if (name == "Create Audit" || name == "Audit History")
 				{
@@ -249,6 +249,22 @@ namespace Final_Project
 			parentMenuButton = btnStaff;
 		}
 
+		private void btnReports_Click(object sender, EventArgs e)
+		{
+			CloseChildForm();
+			ToggleSubMenu(pnlReports);
+			ResetMainButtonColours();
+			if (pnlReports.Visible == true)
+			{
+				btnReports.BackColor = Color.FromArgb(150, 12, 150);
+			}
+			else
+			{
+				btnReports.BackColor = Color.FromArgb(51, 51, 79);
+			}
+			parentMenuButton = btnReports;
+		}
+
 		private void ResetMainButtonColours()
 		{
 			btnStock.BackColor = Color.FromArgb(51, 51, 79);
@@ -256,6 +272,7 @@ namespace Final_Project
 			btnDelivery.BackColor = Color.FromArgb(51, 51, 79);
 			btnAudits.BackColor = Color.FromArgb(51, 51, 79);
 			btnStaff.BackColor = Color.FromArgb(51, 51, 79);
+			btnReports.BackColor = Color.FromArgb(51, 51, 79);
 		}
 
 		// Hide the settings and admin submenus when a menu option is clicked
@@ -266,6 +283,7 @@ namespace Final_Project
 			pnlDelivery.Visible = false;
 			pnlAudits.Visible = false;
 			pnlStaff.Visible = false;
+			pnlReports.Visible = false;
 		}
 
 		// Hide the main menu and title bar
@@ -353,6 +371,11 @@ namespace Final_Project
 			OpenChildForm(new frmStaffManagement(), (Button)sender);
 		}
 
+		private void btnOrderReports_Click(object sender, EventArgs e)
+		{
+			OpenChildForm(new frmReports(), (Button)sender);
+		}
+
 		private void btnLogout_Click(object sender, EventArgs e)
 		{
 			OpenChildForm(new frmLoginScreen(), null);
@@ -377,9 +400,9 @@ namespace Final_Project
 
 			// If the user is a senior mechanic, they can do what a mechanic can, as well as add and retire stock items
 			else if (staffPosition == "Senior Mechanic")
-				SeniorMechanic();			
+				SeniorMechanic();
 
-			// If the user is another level, e.g. CEO or Manager, they will have access to the full system
+			// If the user is another level, e.g. Manager, they will have access to the full system
 
 			HideSubMenus();
 			ResetMainButtonColours();
@@ -407,7 +430,7 @@ namespace Final_Project
 			btnOrder.Visible = false;
 			btnDelivery.Visible = false;
 			btnStaff.Visible = false;
-		}		
+		}
 
 		private void ResetButtonVisibilities()
 		{
@@ -418,6 +441,6 @@ namespace Final_Project
 			btnStaff.Visible = true;
 		}
 
-		#endregion PermissionHandling		
+		#endregion PermissionHandling				
 	}
 }

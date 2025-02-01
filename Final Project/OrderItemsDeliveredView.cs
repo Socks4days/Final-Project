@@ -6,13 +6,10 @@ using System.Threading.Tasks;
 
 namespace Final_Project
 {
-    public class OrderItemsDeliveredView
+    public class OrderItemsDeliveredView: OrderItem
     {
         #region Properties
-        public int orderNumber { get; set; }
-        public int stockId { get; set; }
         public string stockName { get; set; }
-        public int orderItemQuantity { get; set; }
         public DateTime? deliveryDate { get; set; }
         public int? quantityDelivered { get; set; }
         public int? quantityFaulty { get; set; }       
@@ -24,12 +21,9 @@ namespace Final_Project
 
         }
 
-        public OrderItemsDeliveredView(int orderNumber, int stockId, string stockName, int orderItemQuantity, DateTime? deliveryDate, int? quantityDelivered, int? quantityFaulty)
+        public OrderItemsDeliveredView(int orderNumber, int stockId, string stockName, int orderItemQuantity, DateTime? deliveryDate, int? quantityDelivered, int? quantityFaulty): base(orderNumber, stockId, orderItemQuantity)
         {
-            this.orderNumber = orderNumber;
-            this.stockId = stockId;
             this.stockName = stockName;
-            this.orderItemQuantity = orderItemQuantity;
             this.deliveryDate = deliveryDate;
             this.quantityDelivered = quantityDelivered;
             this.quantityFaulty = quantityFaulty;
