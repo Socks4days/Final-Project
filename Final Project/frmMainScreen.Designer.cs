@@ -30,9 +30,6 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainScreen));
 			pnlSideBar = new Panel();
-			pnlReports = new Panel();
-			btnOrderReports = new Button();
-			btnReports = new Button();
 			pnlStaff = new Panel();
 			btnManageStaff = new Button();
 			btnStaff = new Button();
@@ -58,9 +55,9 @@
 			pnlTitleBar = new Panel();
 			lblTitle = new Label();
 			pnlFormContainer = new Panel();
+			btnLowStockReport = new Button();
 			pctBoxLogo = new PictureBox();
 			pnlSideBar.SuspendLayout();
-			pnlReports.SuspendLayout();
 			pnlStaff.SuspendLayout();
 			pnlAudits.SuspendLayout();
 			pnlDelivery.SuspendLayout();
@@ -77,8 +74,6 @@
 			// 
 			pnlSideBar.AutoScroll = true;
 			pnlSideBar.BackColor = Color.FromArgb(51, 51, 79);
-			pnlSideBar.Controls.Add(pnlReports);
-			pnlSideBar.Controls.Add(btnReports);
 			pnlSideBar.Controls.Add(pnlStaff);
 			pnlSideBar.Controls.Add(btnStaff);
 			pnlSideBar.Controls.Add(btnLogout);
@@ -97,54 +92,6 @@
 			pnlSideBar.Name = "pnlSideBar";
 			pnlSideBar.Size = new Size(200, 750);
 			pnlSideBar.TabIndex = 0;
-			// 
-			// pnlReports
-			// 
-			pnlReports.Controls.Add(btnOrderReports);
-			pnlReports.Dock = DockStyle.Top;
-			pnlReports.Location = new Point(0, 1120);
-			pnlReports.Name = "pnlReports";
-			pnlReports.Size = new Size(182, 210);
-			pnlReports.TabIndex = 19;
-			// 
-			// btnOrderReports
-			// 
-			btnOrderReports.BackColor = Color.Transparent;
-			btnOrderReports.Dock = DockStyle.Top;
-			btnOrderReports.FlatAppearance.BorderSize = 0;
-			btnOrderReports.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
-			btnOrderReports.FlatStyle = FlatStyle.Flat;
-			btnOrderReports.Font = new Font("Segoe UI", 14F);
-			btnOrderReports.ForeColor = SystemColors.Control;
-			btnOrderReports.Location = new Point(0, 0);
-			btnOrderReports.Margin = new Padding(2);
-			btnOrderReports.Name = "btnOrderReports";
-			btnOrderReports.Padding = new Padding(20, 0, 0, 0);
-			btnOrderReports.Size = new Size(182, 70);
-			btnOrderReports.TabIndex = 16;
-			btnOrderReports.Text = "Orders";
-			btnOrderReports.TextAlign = ContentAlignment.MiddleLeft;
-			btnOrderReports.UseVisualStyleBackColor = false;
-			btnOrderReports.Click += btnOrderReports_Click;
-			// 
-			// btnReports
-			// 
-			btnReports.BackColor = Color.Transparent;
-			btnReports.Dock = DockStyle.Top;
-			btnReports.FlatAppearance.BorderSize = 0;
-			btnReports.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
-			btnReports.FlatStyle = FlatStyle.Flat;
-			btnReports.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-			btnReports.ForeColor = SystemColors.Control;
-			btnReports.Location = new Point(0, 1050);
-			btnReports.Margin = new Padding(2);
-			btnReports.Name = "btnReports";
-			btnReports.Size = new Size(182, 70);
-			btnReports.TabIndex = 18;
-			btnReports.Text = "Reports";
-			btnReports.TextAlign = ContentAlignment.MiddleLeft;
-			btnReports.UseVisualStyleBackColor = false;
-			btnReports.Click += btnReports_Click;
 			// 
 			// pnlStaff
 			// 
@@ -203,7 +150,7 @@
 			btnLogout.FlatStyle = FlatStyle.Flat;
 			btnLogout.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
 			btnLogout.ForeColor = SystemColors.Control;
-			btnLogout.Location = new Point(0, 1330);
+			btnLogout.Location = new Point(0, 1050);
 			btnLogout.Margin = new Padding(2);
 			btnLogout.Name = "btnLogout";
 			btnLogout.Size = new Size(182, 70);
@@ -542,6 +489,7 @@
 			// 
 			pnlFormContainer.AutoSize = true;
 			pnlFormContainer.BackColor = SystemColors.ScrollBar;
+			pnlFormContainer.Controls.Add(btnLowStockReport);
 			pnlFormContainer.Controls.Add(pctBoxLogo);
 			pnlFormContainer.Dock = DockStyle.Fill;
 			pnlFormContainer.Location = new Point(200, 70);
@@ -549,6 +497,22 @@
 			pnlFormContainer.Name = "pnlFormContainer";
 			pnlFormContainer.Size = new Size(1000, 680);
 			pnlFormContainer.TabIndex = 6;
+			// 
+			// btnLowStockReport
+			// 
+			btnLowStockReport.Anchor = AnchorStyles.None;
+			btnLowStockReport.BackColor = Color.FromArgb(33, 150, 243);
+			btnLowStockReport.FlatAppearance.BorderSize = 0;
+			btnLowStockReport.FlatStyle = FlatStyle.Flat;
+			btnLowStockReport.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			btnLowStockReport.ForeColor = Color.White;
+			btnLowStockReport.Location = new Point(385, 300);
+			btnLowStockReport.Name = "btnLowStockReport";
+			btnLowStockReport.Size = new Size(220, 50);
+			btnLowStockReport.TabIndex = 3;
+			btnLowStockReport.Text = "Low Stock Report";
+			btnLowStockReport.UseVisualStyleBackColor = false;
+			btnLowStockReport.Click += btnLowStockReport_Click;
 			// 
 			// pctBoxLogo
 			// 
@@ -577,7 +541,6 @@
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Stock Control";
 			pnlSideBar.ResumeLayout(false);
-			pnlReports.ResumeLayout(false);
 			pnlStaff.ResumeLayout(false);
 			pnlAudits.ResumeLayout(false);
 			pnlDelivery.ResumeLayout(false);
@@ -607,7 +570,7 @@
         private Button btnRetireStockItem;
         private Button btnDelivery;
         private Panel pnlDelivery;
-        private Button btnViewDeliveries;
+        public Button btnViewDeliveries;
 		private Panel pnlTitleBar;
 		public Label lblTitle;
 		private Panel pnlFormContainer;
@@ -622,8 +585,6 @@
 		private Button button2;
 		private Button btnStaff;
 		private Button btnManageStaff;
-		private Panel pnlReports;
-		private Button btnOrderReports;
-		private Button btnReports;
+		private Button btnLowStockReport;
 	}
 }

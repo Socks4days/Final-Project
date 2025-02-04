@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Reporting;
 using Microsoft.Reporting.WinForms;
+using Final_Project.Models;
 
 
 namespace Final_Project
@@ -34,9 +35,14 @@ namespace Final_Project
 		private string reportFooterLine = "Report Footer Line";
 		private List<string[]> reportLines = new List<string[]>();
 
-		public frmReports()
+		private int orderNumberToCreateReportFor = 0;
+		private string reportToShow = "";
+
+		public frmReports(string reportType, int orderNumber)
 		{
 			InitializeComponent();
+			orderNumberToCreateReportFor = orderNumber;
+			reportToShow = reportType;
 
 			// Initialise report colours/styles
 			centreTopText.Alignment = StringAlignment.Center;
@@ -51,12 +57,13 @@ namespace Final_Project
 		}
 
 		private string documentContents = "";
+
 		private void btnPreviewReport_Click(object sender, EventArgs e)
 		{
 			printPreviewReport.Document = printReportDocument;
 		}
 
-		private void getOrderReportDetails (int orderNumber)
+		private void GetOrderReportDetails(int orderNumber)
 		{
 			// Set report details
 			reportName = "Order";
@@ -64,7 +71,7 @@ namespace Final_Project
 			List<OrderItem> orderItems = OrderDal.GetAllOrderItems(orderNumber);
 			Staff staff = StaffDal.GetStaffByStaffId(order.orderPlacedByStaffId);
 
-			// Set Header/Footer
+			// Set report header
 			reportHeaderLine = $"Order Number: {order.orderNumber}   Placed On: {order.orderDate}\nPlaced By: {staff.forename} {staff.surname}   Status: {order.orderStatus}";
 
 			// Set table details as an array
@@ -91,11 +98,133 @@ namespace Final_Project
 			reportFooterLine = $"Order Total: £{orderTotal}";
 		}
 
+		private void GetLowStockReportDetails()
+		{
+			// Set report details
+			reportName = "Low Stock";
+			Staff loggedInStaff = frmLoginScreen.loggedInStaff;
+			List<Stock> stockItems = StockDal.GetAllActiveStock();
+			List<Stock> lowLevelStockItems = new List<Stock>();
+
+			foreach (Stock stock in stockItems)
+			{
+				if (stock.stockLevel <= stock.minimumLevel)
+				{
+					lowLevelStockItems.Add(stock);
+				}
+			}
+
+			// Set report header
+			reportHeaderLine = $"Created On: {DateTime.Now}   Created By: {loggedInStaff.forename} {loggedInStaff.surname}";
+
+			// Set table details as an array
+			reportLines = new List<string[]>();
+
+			// Add a row for the column headings
+			reportLines.Add(["Item", "Current Level", "Minimum Level"]);
+
+			// Add a row for each item
+			decimal lowLevelItemCount = 0;
+			for (int ls = 0; ls < lowLevelStockItems.Count; ls++)
+			{
+				reportLines.Add(
+					[lowLevelStockItems[ls].stockName,
+					lowLevelStockItems[ls].stockLevel.ToString(),
+					lowLevelStockItems[ls].minimumLevel.ToString()
+					]
+				);
+				lowLevelItemCount++;
+			}
+
+			// Set report footer to low item total
+			reportFooterLine = $"Number of items needing reordering: {lowLevelItemCount}";
+		}
+
+		private void GetStockDiscrepancyDetails()
+		{
+			// Set report details
+			reportName = "Stock Discrepancies";
+			Staff loggedInStaff = frmLoginScreen.loggedInStaff;
+
+			List<Order> orders = OrderDal.GetAllOrders("ASC");
+			List<Order> partialOrders = new List<Order>();
+
+			foreach (Order order in orders)
+			{
+				if (order.orderStatus == "Part Filled")
+				{
+					partialOrders.Add(order);
+				}
+			}
+
+			List<OrderItemsDeliveredView> orderItemsDeliveredWithDiscrepancy = new List<OrderItemsDeliveredView>();
+			List<OrderItemsDeliveredView> allOrderItems = new List<OrderItemsDeliveredView>();
+
+			foreach (Order order in partialOrders)
+			{
+				foreach (OrderItemsDeliveredView item in DeliveryDal.GetOrderItemsDeliveredView(order.orderNumber))
+				{
+					allOrderItems.Add(item);
+				}
+			}
+
+			foreach (OrderItemsDeliveredView orderItem in allOrderItems)
+			{
+				if (orderItem.quantityDelivered < orderItem.orderItemQuantity || orderItem.quantityFaulty > 0)
+				{
+					orderItemsDeliveredWithDiscrepancy.Add(orderItem);
+				}
+			}
+
+			// Set report header/footer
+			reportHeaderLine = $"Created On: {DateTime.Now}   Created By: {loggedInStaff.forename} {loggedInStaff.surname}";
+			reportFooterLine = "";
+
+			// Set table details as an array
+			reportLines = new List<string[]>();
+
+			// Add a row for the column headings
+			reportLines.Add(["Order Number", "Item", "Ordered", "Missing", "Faulty"]);
+
+			// Add a row for each item
+			for (int oi = 0; oi < orderItemsDeliveredWithDiscrepancy.Count; oi++)
+			{
+				int quantityMissing = 0;
+				int quantityFaulty = 0;
+				if (orderItemsDeliveredWithDiscrepancy[oi].quantityDelivered != null && (orderItemsDeliveredWithDiscrepancy[oi].orderItemQuantity - orderItemsDeliveredWithDiscrepancy[oi].quantityDelivered) > 0)
+					quantityMissing = (int)(orderItemsDeliveredWithDiscrepancy[oi].orderItemQuantity - orderItemsDeliveredWithDiscrepancy[oi].quantityDelivered)!;
+				if (orderItemsDeliveredWithDiscrepancy[oi].quantityFaulty != null)
+					quantityFaulty = (int)(orderItemsDeliveredWithDiscrepancy[oi].quantityFaulty)!;
+
+
+				reportLines.Add(
+					[orderItemsDeliveredWithDiscrepancy[oi].orderNumber.ToString(),
+					orderItemsDeliveredWithDiscrepancy[oi].stockName,
+					orderItemsDeliveredWithDiscrepancy[oi].orderItemQuantity.ToString(),
+					quantityMissing.ToString(),
+					quantityFaulty.ToString()
+					]
+				);
+			}
+		}
+
 		private void printReportDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
 		{
-
-			// Get order report details
-			getOrderReportDetails(263);
+			if (reportToShow == "Order")
+			{
+				// Get order report details
+				GetOrderReportDetails(orderNumberToCreateReportFor);
+			}
+			else if (reportToShow == "Low Stock")
+			{
+				// Get low stock report details
+				GetLowStockReportDetails();
+			}
+			else if (reportToShow == "Delivery Discrepancies")
+			{
+				// Get stock discrepancy report details
+				GetStockDiscrepancyDetails();
+			}
 
 			// Print report details
 
@@ -153,6 +282,12 @@ namespace Final_Project
 			printReportDocument.DocumentName = reportName;
 			printPreviewReportDialog.Document = printReportDocument;
 			printPreviewReportDialog.ShowDialog();
+		}
+
+		private void frmReports_Resize(object sender, EventArgs e)
+		{
+			printPreviewReport.Height = pnlOrdersReport.Height - 190;
+			printPreviewReport.Width = pnlOrdersReport.Width - 60;
 		}
 	}
 }

@@ -29,6 +29,7 @@
 		private void InitializeComponent()
 		{
 			pnlOrderInfo = new Panel();
+			btnOrderReport = new Button();
 			btnCancelOrder = new Button();
 			btnViewOrder = new Button();
 			btnEditOrder = new Button();
@@ -44,6 +45,7 @@
 			// pnlOrderInfo
 			// 
 			pnlOrderInfo.BackColor = SystemColors.ScrollBar;
+			pnlOrderInfo.Controls.Add(btnOrderReport);
 			pnlOrderInfo.Controls.Add(btnCancelOrder);
 			pnlOrderInfo.Controls.Add(btnViewOrder);
 			pnlOrderInfo.Controls.Add(btnEditOrder);
@@ -55,6 +57,22 @@
 			pnlOrderInfo.Size = new Size(1000, 680);
 			pnlOrderInfo.TabIndex = 5;
 			// 
+			// btnOrderReport
+			// 
+			btnOrderReport.Anchor = AnchorStyles.Bottom;
+			btnOrderReport.BackColor = Color.FromArgb(161, 32, 89);
+			btnOrderReport.FlatAppearance.BorderSize = 0;
+			btnOrderReport.FlatStyle = FlatStyle.Flat;
+			btnOrderReport.Font = new Font("Segoe UI", 14F);
+			btnOrderReport.ForeColor = SystemColors.Control;
+			btnOrderReport.Location = new Point(748, 618);
+			btnOrderReport.Name = "btnOrderReport";
+			btnOrderReport.Size = new Size(220, 50);
+			btnOrderReport.TabIndex = 16;
+			btnOrderReport.Text = "Order Report";
+			btnOrderReport.UseVisualStyleBackColor = false;
+			btnOrderReport.Click += btnOrderReport_Click;
+			// 
 			// btnCancelOrder
 			// 
 			btnCancelOrder.Anchor = AnchorStyles.Bottom;
@@ -63,7 +81,7 @@
 			btnCancelOrder.FlatStyle = FlatStyle.Flat;
 			btnCancelOrder.Font = new Font("Segoe UI", 14F);
 			btnCancelOrder.ForeColor = SystemColors.Control;
-			btnCancelOrder.Location = new Point(678, 618);
+			btnCancelOrder.Location = new Point(507, 618);
 			btnCancelOrder.Name = "btnCancelOrder";
 			btnCancelOrder.Size = new Size(220, 50);
 			btnCancelOrder.TabIndex = 2;
@@ -79,7 +97,7 @@
 			btnViewOrder.FlatStyle = FlatStyle.Flat;
 			btnViewOrder.Font = new Font("Segoe UI", 14F);
 			btnViewOrder.ForeColor = SystemColors.Control;
-			btnViewOrder.Location = new Point(102, 618);
+			btnViewOrder.Location = new Point(26, 618);
 			btnViewOrder.Name = "btnViewOrder";
 			btnViewOrder.Size = new Size(220, 50);
 			btnViewOrder.TabIndex = 0;
@@ -95,7 +113,7 @@
 			btnEditOrder.FlatStyle = FlatStyle.Flat;
 			btnEditOrder.Font = new Font("Segoe UI", 14F);
 			btnEditOrder.ForeColor = SystemColors.Control;
-			btnEditOrder.Location = new Point(388, 618);
+			btnEditOrder.Location = new Point(266, 618);
 			btnEditOrder.Name = "btnEditOrder";
 			btnEditOrder.Size = new Size(220, 50);
 			btnEditOrder.TabIndex = 1;
@@ -182,5 +200,6 @@
 		private Button btnEditOrder;
 		private ColumnHeader cHeaderStaffName;
 		private Button btnCancelOrder;
+		private Button btnOrderReport;
 	}
 }

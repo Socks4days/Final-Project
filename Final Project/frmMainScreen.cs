@@ -18,7 +18,7 @@ namespace Final_Project
 		{
 			InitializeComponent();
 			frmMainScreen.frmMain = this;
-			OpenChildForm(new frmLoginScreen(), null);
+			OpenChildForm(new frmLoginScreen(), null!);
 			HideSubMenus();
 			SetLogo();
 		}
@@ -41,9 +41,9 @@ namespace Final_Project
 
 		#region FormNavigation
 
-		private Form activeForm = null;
-		private Button activeMenuButton = null;
-		private Button parentMenuButton = null;
+		private Form activeForm = null!;
+		private Button activeMenuButton = null!;
+		private Button parentMenuButton = null!;
 
 		public void OpenChildForm(Form childForm, Button menuButton)
 		{
@@ -151,13 +151,13 @@ namespace Final_Project
 			if (activeForm != null)
 			{
 				activeForm.Close();
-				activeForm = null;
+				activeForm = null!;
 			}
 
 			if (activeMenuButton != null)
 			{
 				activeMenuButton.BackColor = Color.Transparent;
-				activeMenuButton = null;
+				activeMenuButton = null!;
 				parentMenuButton.BackColor = Color.Transparent;
 			}
 
@@ -249,21 +249,7 @@ namespace Final_Project
 			parentMenuButton = btnStaff;
 		}
 
-		private void btnReports_Click(object sender, EventArgs e)
-		{
-			CloseChildForm();
-			ToggleSubMenu(pnlReports);
-			ResetMainButtonColours();
-			if (pnlReports.Visible == true)
-			{
-				btnReports.BackColor = Color.FromArgb(150, 12, 150);
-			}
-			else
-			{
-				btnReports.BackColor = Color.FromArgb(51, 51, 79);
-			}
-			parentMenuButton = btnReports;
-		}
+		
 
 		private void ResetMainButtonColours()
 		{
@@ -272,7 +258,6 @@ namespace Final_Project
 			btnDelivery.BackColor = Color.FromArgb(51, 51, 79);
 			btnAudits.BackColor = Color.FromArgb(51, 51, 79);
 			btnStaff.BackColor = Color.FromArgb(51, 51, 79);
-			btnReports.BackColor = Color.FromArgb(51, 51, 79);
 		}
 
 		// Hide the settings and admin submenus when a menu option is clicked
@@ -283,7 +268,6 @@ namespace Final_Project
 			pnlDelivery.Visible = false;
 			pnlAudits.Visible = false;
 			pnlStaff.Visible = false;
-			pnlReports.Visible = false;
 		}
 
 		// Hide the main menu and title bar
@@ -348,7 +332,7 @@ namespace Final_Project
 
 		private void btnViewDeliveries_Click(object sender, EventArgs e)
 		{
-			OpenChildForm(new frmAddDelivery(), (Button)sender);
+			OpenChildForm(new frmViewOrAddDelivery(), (Button)sender);
 		}
 
 		private void btnCreateAudit_Click(object sender, EventArgs e)
@@ -373,12 +357,12 @@ namespace Final_Project
 
 		private void btnOrderReports_Click(object sender, EventArgs e)
 		{
-			OpenChildForm(new frmReports(), (Button)sender);
+			OpenChildForm(new frmReports("Order", 263), (Button)sender);
 		}
 
 		private void btnLogout_Click(object sender, EventArgs e)
 		{
-			OpenChildForm(new frmLoginScreen(), null);
+			OpenChildForm(new frmLoginScreen(), null!);
 		}
 
 		#endregion ButtonNavigation
@@ -442,5 +426,10 @@ namespace Final_Project
 		}
 
 		#endregion PermissionHandling				
+
+		private void btnLowStockReport_Click(object sender, EventArgs e)
+		{
+			OpenChildForm(new frmReports("Low Stock", -1), null!);
+		}
 	}
 }

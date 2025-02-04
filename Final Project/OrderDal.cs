@@ -133,14 +133,19 @@ namespace Final_Project
 			}
 		}
 
-		public static List<Order> GetAllOrders()
+		public static List<Order> GetAllOrders(string orderBy)
 		{
 			using (SqlConnection connection = new SqlConnection(_connectionstring))
 			{
 				List<Order> orders = new List<Order>();
 				connection.Open();
 
-				string sqlQuery = "SELECT * FROM [Order] ORDER BY OrderNumber DESC";
+				string sqlQuery = "SELECT * FROM [Order] ORDER BY OrderNumber ";
+
+				if (orderBy == "DESC")
+					sqlQuery += "DESC";
+				else if (orderBy == "ASC")
+					sqlQuery += "ASC";
 
 				SqlCommand getAllOrdersCommand = new SqlCommand(sqlQuery, connection);
 

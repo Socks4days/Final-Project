@@ -33,6 +33,7 @@ namespace Final_Project
 			btnEditOrder.Enabled = false;
 			btnViewOrder.Enabled = false;
 			btnCancelOrder.Enabled = false;
+			btnOrderReport.Enabled = false;
 		}
 
 		#endregion ButtonPermissions
@@ -51,6 +52,16 @@ namespace Final_Project
 			frmMainScreen.frmMain.OpenChildForm(new frmCreateOrUpdateOrder(order, "View"), frmMainScreen.frmMain.btnViewOrders);
 		}
 
+		private void btnCancelOrder_Click(object sender, EventArgs e)
+		{
+			frmMainScreen.frmMain.OpenChildForm(new frmCreateOrUpdateOrder(order, "Cancel"), null!);
+		}
+
+		private void btnOrderReport_Click(object sender, EventArgs e)
+		{
+			frmMainScreen.frmMain.OpenChildForm(new frmReports("Order", order.orderNumber), frmMainScreen.frmMain.btnViewOrders);
+		}
+
 		#endregion ButtonClicks
 
 		#region ListViewFunctions
@@ -59,7 +70,7 @@ namespace Final_Project
 		private void UpdateOrderListView()
 		{
 			// create a list of orders and fill with all orders
-			List<Order> sortedOrderItemList = OrderDal.GetAllOrders();
+			List<Order> sortedOrderItemList = OrderDal.GetAllOrders("DESC");
 
 			decimal orderTotal = 0;
 			foreach (ListViewItem item in lstViewOrders.Items)
@@ -89,13 +100,16 @@ namespace Final_Project
 			if (e.IsSelected)
 			{
 				// enable buttons and set order status and then find the order
-				btnViewOrder.Enabled = true;				
+				btnViewOrder.Enabled = true;
+				btnOrderReport.Enabled = true;
+				if(e.Item != null)
 				orderStatus = e.Item.SubItems[1].Text;
 				if (orderStatus == "Placed")
 				{
 					btnCancelOrder.Enabled = true;
 				}
-				order = OrderDal.GetOrderByOrderNumber(Convert.ToInt32(e.Item.SubItems[0].Text));				
+				if(e.Item != null)
+				order = OrderDal.GetOrderByOrderNumber(Convert.ToInt32(e.Item.SubItems[0].Text));
 			}
 			else
 			{
@@ -121,9 +135,6 @@ namespace Final_Project
 
 		#endregion Resizing
 
-		private void btnCancelOrder_Click(object sender, EventArgs e)
-		{
-			frmMainScreen.frmMain.OpenChildForm(new frmCreateOrUpdateOrder(order, "Cancel"), null);
-		}
+		
 	}
 }

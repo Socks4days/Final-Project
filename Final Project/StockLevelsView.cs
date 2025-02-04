@@ -22,9 +22,9 @@ namespace Final_Project
 
 		public StockLevelsView() { }
 
-        public StockLevelsView(int StockId, string stockName, int stockLevel, DateTime? auditDate, int auditedByStaffId, string auditedByStaffFullName, DateTime? nextAuditDueDate, int daysToNextAudit)
+        public StockLevelsView(int stockId, string stockName, int stockLevel, DateTime? auditDate, int auditedByStaffId, string auditedByStaffFullName, DateTime? nextAuditDueDate, int daysToNextAudit)
         {
-            this.stockId = StockId;
+            this.stockId = stockId;
             this.stockName = stockName;            
             this.stockLevel = stockLevel;
             this.auditDate = auditDate;                      

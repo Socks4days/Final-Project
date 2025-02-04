@@ -16,10 +16,7 @@ namespace Final_Project
 
         #endregion Properties
 
-        public OrderItemsDeliveredView()
-        {
-
-        }
+        public OrderItemsDeliveredView() { }        
 
         public OrderItemsDeliveredView(int orderNumber, int stockId, string stockName, int orderItemQuantity, DateTime? deliveryDate, int? quantityDelivered, int? quantityFaulty): base(orderNumber, stockId, orderItemQuantity)
         {

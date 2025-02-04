@@ -28,6 +28,5 @@ namespace Final_Project
             this.quantityDelivered = quantityDelivered;
             this.quantityFaulty = quantityFaulty;
         }   
-
     }
 }

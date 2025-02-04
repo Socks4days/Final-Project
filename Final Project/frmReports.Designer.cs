@@ -44,7 +44,7 @@
 			pnlOrdersReport.Controls.Add(btnPrintReport);
 			pnlOrdersReport.Controls.Add(printPreviewReport);
 			pnlOrdersReport.Controls.Add(btnPreviewReport);
-			pnlOrdersReport.Dock = DockStyle.Top;
+			pnlOrdersReport.Dock = DockStyle.Fill;
 			pnlOrdersReport.Location = new Point(0, 0);
 			pnlOrdersReport.Name = "pnlOrdersReport";
 			pnlOrdersReport.Size = new Size(1000, 680);
@@ -52,9 +52,10 @@
 			// 
 			// btnPrintReport
 			// 
-			btnPrintReport.Location = new Point(715, 30);
+			btnPrintReport.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+			btnPrintReport.Location = new Point(748, 30);
 			btnPrintReport.Name = "btnPrintReport";
-			btnPrintReport.Size = new Size(253, 68);
+			btnPrintReport.Size = new Size(220, 50);
 			btnPrintReport.TabIndex = 4;
 			btnPrintReport.Text = "Print";
 			btnPrintReport.UseVisualStyleBackColor = true;
@@ -64,14 +65,14 @@
 			// 
 			printPreviewReport.Location = new Point(27, 119);
 			printPreviewReport.Name = "printPreviewReport";
-			printPreviewReport.Size = new Size(941, 487);
+			printPreviewReport.Size = new Size(940, 490);
 			printPreviewReport.TabIndex = 3;
 			// 
 			// btnPreviewReport
 			// 
 			btnPreviewReport.Location = new Point(27, 30);
 			btnPreviewReport.Name = "btnPreviewReport";
-			btnPreviewReport.Size = new Size(258, 68);
+			btnPreviewReport.Size = new Size(220, 50);
 			btnPreviewReport.TabIndex = 2;
 			btnPreviewReport.Text = "Preview";
 			btnPreviewReport.UseVisualStyleBackColor = true;
@@ -101,6 +102,7 @@
 			Font = new Font("Segoe UI", 14F);
 			Name = "frmReports";
 			Text = "Reports";
+			Resize += frmReports_Resize;
 			pnlOrdersReport.ResumeLayout(false);
 			ResumeLayout(false);
 		}

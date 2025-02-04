@@ -11,9 +11,9 @@ using Final_Project.Models;
 
 namespace Final_Project
 {
-	public partial class frmAddDelivery : Form
+	public partial class frmViewOrAddDelivery : Form
 	{
-		public frmAddDelivery()
+		public frmViewOrAddDelivery()
 		{
 			InitializeComponent();
 			orderToAddDelivery = null;
@@ -53,9 +53,9 @@ namespace Final_Project
 					// Get expected delivery date(s)
 					string expected = "";
 
-					if(order.minDeliveryDueDate != null && order.maxDeliveryDueDate != null) 
+					if (order.minDeliveryDueDate != null && order.maxDeliveryDueDate != null)
 					{
-						if(order.minDeliveryDueDate == order.maxDeliveryDueDate)
+						if (order.minDeliveryDueDate == order.maxDeliveryDueDate)
 						{
 							expected = order.minDeliveryDueDate.Value.Date.ToString("dd/MM/yyyy");
 						}
@@ -66,9 +66,9 @@ namespace Final_Project
 					}
 
 					// Get last updated date
-					string lastUpdated = "No deliveries yet";				
+					string lastUpdated = "No deliveries yet";
 
-					if(order.lastDeliveryDate != null)
+					if (order.lastDeliveryDate != null)
 					{
 						lastUpdated = order.lastDeliveryDate.Value.Date.ToString("dd/MM/yyyy");
 					}
@@ -83,7 +83,7 @@ namespace Final_Project
 					lstViewOrders.Items.Add(item);
 				}
 			}
-		}		
+		}
 
 		private void UpdateOrderItemsDeliveredListView(int orderNumber)
 		{
@@ -234,11 +234,11 @@ namespace Final_Project
 
 		private void ShowOrders()
 		{
-			pnlDelivery.Visible = false;			
+			pnlDelivery.Visible = false;
 			pnlItemToAddToDelivery.Visible = false;
 			lblOrderError.Visible = false;
 			pnlOrders.Visible = true;
-			pnlOrders.Dock = DockStyle.Fill;	
+			pnlOrders.Dock = DockStyle.Fill;
 			UpdateOrderListView();
 		}
 
@@ -254,7 +254,7 @@ namespace Final_Project
 			lblOrderDateAndStatus.Text = $"Placed On: {orderToAddDelivery.orderDate}  ({orderToAddDelivery.orderStatus})";
 			UpdateOrderItemsDeliveredListView(orderToAddDelivery.orderNumber);
 		}
-		
+
 		private void ShowItemToAddToDelivery()
 		{
 			itemsOrdered = selectedOrderItemsDeliveredView.orderItemQuantity;
@@ -401,7 +401,7 @@ namespace Final_Project
 
 			delivery.deliveryCheckedByStaffId = frmLoginScreen.loggedInStaff.staffId;
 			DeliveryDal.SetDeliveryPlacedBy(delivery);
-		}		
+		}
 
 		private void btnMarkOrderAsCompleted_Click(object sender, EventArgs e)
 		{
@@ -434,5 +434,10 @@ namespace Final_Project
 		}
 
 		#endregion Resizing
+
+		private void btnDeliveryDiscrepanciesReport_Click(object sender, EventArgs e)
+		{
+			frmMainScreen.frmMain.OpenChildForm(new frmReports("Delivery Discrepancies", -1), frmMainScreen.frmMain.btnViewDeliveries);
+		}
 	}
 }

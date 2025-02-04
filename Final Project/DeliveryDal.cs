@@ -175,6 +175,7 @@ namespace Final_Project
             }
         }
 
+
         public static Delivery GetDeliveryByDeliveryNumber(int deliveryNumber)
         {
             using (SqlConnection connection = new SqlConnection(_connectionstring))

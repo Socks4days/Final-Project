@@ -1,6 +1,6 @@
 ﻿namespace Final_Project
 {
-    partial class frmAddDelivery
+    partial class frmViewOrAddDelivery
     {
         /// <summary>
         /// Required designer variable.
@@ -67,6 +67,7 @@
 			nUDQuantityFaulty = new NumericUpDown();
 			lblSelectedItem = new Label();
 			lblSelectedItemQuantity = new Label();
+			btnDeliveryDiscrepanciesReport = new Button();
 			pnlOrders.SuspendLayout();
 			pnlDelivery.SuspendLayout();
 			pnlDeliveryDetails.SuspendLayout();
@@ -77,6 +78,7 @@
 			// 
 			// pnlOrders
 			// 
+			pnlOrders.Controls.Add(btnDeliveryDiscrepanciesReport);
 			pnlOrders.Controls.Add(lblOrderError);
 			pnlOrders.Controls.Add(btnViewOrRecordDelivery);
 			pnlOrders.Controls.Add(lstViewOrders);
@@ -110,7 +112,7 @@
 			btnViewOrRecordDelivery.FlatStyle = FlatStyle.Flat;
 			btnViewOrRecordDelivery.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			btnViewOrRecordDelivery.ForeColor = Color.White;
-			btnViewOrRecordDelivery.Location = new Point(373, 602);
+			btnViewOrRecordDelivery.Location = new Point(206, 602);
 			btnViewOrRecordDelivery.Margin = new Padding(3, 2, 3, 2);
 			btnViewOrRecordDelivery.Name = "btnViewOrRecordDelivery";
 			btnViewOrRecordDelivery.Size = new Size(220, 50);
@@ -509,7 +511,24 @@
 			lblSelectedItemQuantity.Text = "Item Quantity Goes Here";
 			lblSelectedItemQuantity.TextAlign = ContentAlignment.TopCenter;
 			// 
-			// frmAddDelivery
+			// btnDeliveryDiscrepanciesReport
+			// 
+			btnDeliveryDiscrepanciesReport.Anchor = AnchorStyles.Bottom;
+			btnDeliveryDiscrepanciesReport.BackColor = Color.FromArgb(0, 151, 136);
+			btnDeliveryDiscrepanciesReport.FlatAppearance.BorderSize = 0;
+			btnDeliveryDiscrepanciesReport.FlatStyle = FlatStyle.Flat;
+			btnDeliveryDiscrepanciesReport.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			btnDeliveryDiscrepanciesReport.ForeColor = Color.White;
+			btnDeliveryDiscrepanciesReport.Location = new Point(540, 602);
+			btnDeliveryDiscrepanciesReport.Margin = new Padding(3, 2, 3, 2);
+			btnDeliveryDiscrepanciesReport.Name = "btnDeliveryDiscrepanciesReport";
+			btnDeliveryDiscrepanciesReport.Size = new Size(220, 50);
+			btnDeliveryDiscrepanciesReport.TabIndex = 27;
+			btnDeliveryDiscrepanciesReport.Text = "Discrepancy Report";
+			btnDeliveryDiscrepanciesReport.UseVisualStyleBackColor = false;
+			btnDeliveryDiscrepanciesReport.Click += btnDeliveryDiscrepanciesReport_Click;
+			// 
+			// frmViewOrAddDelivery
 			// 
 			AutoScaleDimensions = new SizeF(96F, 96F);
 			AutoScaleMode = AutoScaleMode.Dpi;
@@ -520,7 +539,7 @@
 			Controls.Add(pnlItemToAddToDelivery);
 			Controls.Add(pnlDelivery);
 			Controls.Add(pnlOrders);
-			Name = "frmAddDelivery";
+			Name = "frmViewOrAddDelivery";
 			Text = "frmAddDelivery";
 			Resize += frmAddDelivery_Resize;
 			pnlOrders.ResumeLayout(false);
@@ -576,5 +595,6 @@
 		private Label lblInstructionsDeliveryItem;
 		private ColumnHeader cHeaderExpected;
 		private ColumnHeader cHeaderLatestDelivery;
+		private Button btnDeliveryDiscrepanciesReport;
 	}
 }
