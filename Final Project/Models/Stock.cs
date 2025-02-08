@@ -33,14 +33,20 @@ namespace Final_Project.Models
         public int lastUpdatedByStaffId { get; set; }
         public bool active { get; set; } = true;
 
+        public int? numberOnOrder { get; set; }
+
 #endregion Properties
 
-        public Stock() { }
+        public Stock()
+		{
+			this.stockName = "";
+			this.stockDescription = "";
+		}
 
 		public Stock(string stockName, string stockDescription, decimal price, int deliveryTimeDays, int maximumLevel, int minimumLevel, int orderQuantity, int stockCheckFrequency, int stockLevel, int lastUpdatedByStaffId, bool active)
 		{
 			this.stockName = stockName;
-			this.stockDescription = stockDescription;
+			this.stockDescription = stockDescription!;
 			this.price = price;
 			this.deliveryTimeDays = deliveryTimeDays;
 			this.maximumLevel = maximumLevel;
@@ -54,6 +60,12 @@ namespace Final_Project.Models
 
 		public Stock (string stockName, string stockDescription, decimal price, int deliveryTimeDays, int maximumLevel, int minimumLevel, int orderQuantity, int stockCheckFrequency, int stockLevel, int lastUpdatedByStaffId) :
             this(stockName, stockDescription, price, deliveryTimeDays, maximumLevel, minimumLevel, orderQuantity, stockCheckFrequency, stockLevel, lastUpdatedByStaffId, true) { }
-        		
+
+		public Stock(int stockId, string stockName, string stockDescription, decimal price, int deliveryTimeDays, int maximumLevel, int minimumLevel, int orderQuantity, int stockCheckFrequency, int stockLevel, int lastUpdatedByStaffId, bool active) :
+			this(stockName, stockDescription, price, deliveryTimeDays, maximumLevel, minimumLevel, orderQuantity, stockCheckFrequency, stockLevel, lastUpdatedByStaffId, active)
+		{
+			this.stockId = stockId;
+		}
+
 	}
 }

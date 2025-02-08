@@ -18,9 +18,9 @@ namespace Final_Project
             InitializeComponent();
             lblError.Visible = false;
             // Code to be able to hit enter to do same thing as submit when in the password textbox
-            txtBoxPassword.KeyDown += KeyPressedDown;
-            txtBoxUsername.KeyDown += KeyPressedDown;
-            KeyDown += KeyPressedDown;
+            txtBoxPassword.KeyDown += KeyPressedDown!;
+            txtBoxUsername.KeyDown += KeyPressedDown!;
+            KeyDown += KeyPressedDown!;
         }
 
 		#region EnterKeyLogic
@@ -60,7 +60,7 @@ namespace Final_Project
                 username = (txtBoxUsername.Text);
                 password = txtBoxPassword.Text;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // if invalid, let user know
                 ShowError("Invalid data entered, please try again");
@@ -93,7 +93,7 @@ namespace Final_Project
         private void btnRegister_Click(object sender, EventArgs e)
         {
             // show the register screen
-            frmMainScreen.frmMain.OpenChildForm(new frmRegisterScreen(), null);
+            frmMainScreen.frmMain!.OpenChildForm(new frmRegisterScreen(), null);
         }
 
         private void btnClear_Click(object sender, EventArgs e)

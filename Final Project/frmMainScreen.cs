@@ -12,7 +12,7 @@ namespace Final_Project
 {
 	public partial class frmMainScreen : Form
 	{
-		public static frmMainScreen frmMain;
+		public static frmMainScreen? frmMain;
 
 		public frmMainScreen()
 		{
@@ -45,7 +45,7 @@ namespace Final_Project
 		private Button activeMenuButton = null!;
 		private Button parentMenuButton = null!;
 
-		public void OpenChildForm(Form childForm, Button menuButton)
+		public void OpenChildForm(Form? childForm, Button? menuButton)
 		{
 			// Check if title/side panels should be display
 			if (childForm == null || (childForm.Name != "frmLoginScreen" && childForm.Name != "frmRegisterScreen"))
@@ -341,13 +341,13 @@ namespace Final_Project
 			newAudit.auditDate = DateTime.Now;
 			newAudit.auditedByStaffId = frmLoginScreen.loggedInStaff.staffId;
 			newAudit = AuditDal.AddAudit(newAudit);
-			OpenChildForm(new frmCreateAudit(newAudit, "Create Audit"), (Button)sender);
+			OpenChildForm(new frmAuditing(newAudit, "Create Audit"), (Button)sender);
 		}
 
 		private void btnAuditHistory_Click(object sender, EventArgs e)
 		{
 			Audit audit = new Audit();
-			OpenChildForm(new frmCreateAudit(audit, "Audit History"), (Button)sender);
+			OpenChildForm(new frmAuditing(audit, "Audit History"), (Button)sender);
 		}
 
 		private void btnManageStaff_Click(object sender, EventArgs e)

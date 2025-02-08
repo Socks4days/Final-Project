@@ -60,7 +60,7 @@ namespace Final_Project
 				stockToAdd.stockCheckFrequency = Convert.ToInt32(txtBoxNewStockCheckFrequency.Text);
 				stockToAdd.deliveryTimeDays = Convert.ToInt32(txtBoxNewDeliveryTime.Text);
 			}
-			catch (Exception ex)
+			catch (Exception)
 			{
 				// if there are any errors, the system rejects it and the user is told to try give better information
 				lblErrorAddNewStock.Visible = true;

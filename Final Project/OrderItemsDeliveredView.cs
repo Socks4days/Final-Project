@@ -9,7 +9,6 @@ namespace Final_Project
     public class OrderItemsDeliveredView: OrderItem
     {
         #region Properties
-        public string stockName { get; set; }
         public DateTime? deliveryDate { get; set; }
         public int? quantityDelivered { get; set; }
         public int? quantityFaulty { get; set; }       

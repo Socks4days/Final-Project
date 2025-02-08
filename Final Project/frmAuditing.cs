@@ -13,9 +13,9 @@ using Final_Project.Models;
 
 namespace Final_Project
 {
-	public partial class frmCreateAudit : Form
+	public partial class frmAuditing : Form
 	{
-		public frmCreateAudit(Audit audit, string viewToShow)
+		public frmAuditing(Audit audit, string viewToShow)
 		{
 			InitializeComponent();
 			this.audit = audit;
@@ -57,7 +57,7 @@ namespace Final_Project
 					nextCheckDue = $"{stockLevel.daysToNextAudit} days";
 
 				// Create an array with stock details
-				string[] row = { stockLevel.stockName, stockLevel.auditDate.ToString(), stockLevel.auditedByStaffFullName, nextCheckDue };
+				string[] row = { stockLevel.stockName, stockLevel.auditDate.ToString()!, stockLevel.auditedByStaffFullName, nextCheckDue };
 
 				// Create a new list item based on the array
 				ListViewItem item = new ListViewItem(row);

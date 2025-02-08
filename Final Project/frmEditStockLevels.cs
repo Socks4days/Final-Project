@@ -109,7 +109,7 @@ namespace Final_Project
 			{
 				amountToAdd = Convert.ToInt32(txtBoxAmountOfStockToChange.Text);
 			}
-			catch (Exception ex)
+			catch (Exception)
 			{
 				ShowErrorStockLevel("That is not a valid number");
 			}
@@ -138,7 +138,7 @@ namespace Final_Project
 			{
 				amountToRemove = Convert.ToInt32(txtBoxAmountOfStockToChange.Text);
 			}
-			catch (Exception ex)
+			catch (Exception)
 			{
 				ShowErrorStockLevel("That is not a valid number.");
 			}
@@ -241,7 +241,7 @@ namespace Final_Project
 				pnlStockList.Dock = DockStyle.Fill;
 				lblInstructions.Text = "Select an option to proceed";
 
-				string stockName = e.Item.SubItems[0].Text;
+				string stockName = e.Item!.SubItems[0].Text;
 				LookupStock(stockName);
 			}
 		}

@@ -1,6 +1,6 @@
 ﻿namespace Final_Project
 {
-	partial class frmCreateAudit
+	partial class frmAuditing
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			components = new System.ComponentModel.Container();
 			pnlCreateAudit = new Panel();
 			lblStockToAudit = new Label();
 			btnCancel = new Button();
@@ -64,6 +65,7 @@
 			columnHeader6 = new ColumnHeader();
 			columnHeader7 = new ColumnHeader();
 			columnHeader8 = new ColumnHeader();
+			toolTipAuditing = new ToolTip(components);
 			pnlCreateAudit.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)nUDNoInStockActual).BeginInit();
 			pnlAuditInfo.SuspendLayout();
@@ -157,6 +159,7 @@
 			btnAddToAudit.Size = new Size(220, 50);
 			btnAddToAudit.TabIndex = 1;
 			btnAddToAudit.Text = "Add To Audit";
+			toolTipAuditing.SetToolTip(btnAddToAudit, "\"Twst\"");
 			btnAddToAudit.UseVisualStyleBackColor = false;
 			btnAddToAudit.Click += btnCreateAudit_Click;
 			// 
@@ -233,6 +236,7 @@
 			btnAddItemToAudit.Size = new Size(220, 50);
 			btnAddItemToAudit.TabIndex = 0;
 			btnAddItemToAudit.Text = "Add Item";
+			toolTipAuditing.SetToolTip(btnAddItemToAudit, "Select an item to add it to an audit");
 			btnAddItemToAudit.UseVisualStyleBackColor = false;
 			btnAddItemToAudit.Click += btnAddItemToAudit_Click;
 			// 
@@ -443,7 +447,11 @@
 			columnHeader8.Text = "Actual Quantity";
 			columnHeader8.Width = 200;
 			// 
-			// frmCreateAudit
+			// toolTipAuditing
+			// 
+			toolTipAuditing.IsBalloon = true;
+			// 
+			// frmAuditing
 			// 
 			AutoScaleDimensions = new SizeF(96F, 96F);
 			AutoScaleMode = AutoScaleMode.Dpi;
@@ -455,7 +463,7 @@
 			Controls.Add(pnlAuditHistory);
 			Controls.Add(pnlAuditInfo);
 			Controls.Add(pnlCreateAudit);
-			Name = "frmCreateAudit";
+			Name = "frmAuditing";
 			Text = "frmCreateAudit";
 			Resize += frmCreateAudit_Resize;
 			pnlCreateAudit.ResumeLayout(false);
@@ -514,5 +522,6 @@
 		private ColumnHeader columnHeader8;
 		private Button btnViewAuditDetails;
 		private Button btnReturnToAuditHistory;
+		private ToolTip toolTipAuditing;
 	}
 }

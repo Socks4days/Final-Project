@@ -103,12 +103,13 @@ namespace Final_Project
 			// Set report details
 			reportName = "Low Stock";
 			Staff loggedInStaff = frmLoginScreen.loggedInStaff;
-			List<Stock> stockItems = StockDal.GetAllActiveStock();
+			// Get stock levels for all stock items, including number on order
+			List<Stock> stockItems = StockDal.GetAllActiveStock(true);
 			List<Stock> lowLevelStockItems = new List<Stock>();
 
 			foreach (Stock stock in stockItems)
 			{
-				if (stock.stockLevel <= stock.minimumLevel)
+				if (stock.stockLevel < stock.minimumLevel)
 				{
 					lowLevelStockItems.Add(stock);
 				}
@@ -121,23 +122,35 @@ namespace Final_Project
 			reportLines = new List<string[]>();
 
 			// Add a row for the column headings
-			reportLines.Add(["Item", "Current Level", "Minimum Level"]);
+			reportLines.Add(["Item", "Current Level", "Minimum Level", "Number Ordered"]);
 
 			// Add a row for each item
 			decimal lowLevelItemCount = 0;
 			for (int ls = 0; ls < lowLevelStockItems.Count; ls++)
 			{
+				string stockName = lowLevelStockItems[ls].stockName;
+				int stockLevel = lowLevelStockItems[ls].stockLevel;
+				int minimumLevel = lowLevelStockItems[ls].minimumLevel;
+				int numberOnOrder = (int)lowLevelStockItems[ls].numberOnOrder!;
+
+				// Check if the number ordered won't bring stock level up to minimum
+				if (stockLevel + numberOnOrder < minimumLevel)
+				{
+					// If so, add an asterisk to the name and increase the low level item count
+					stockName += "*";
+					lowLevelItemCount++;
+				}
 				reportLines.Add(
-					[lowLevelStockItems[ls].stockName,
-					lowLevelStockItems[ls].stockLevel.ToString(),
-					lowLevelStockItems[ls].minimumLevel.ToString()
+					[stockName,
+					stockLevel.ToString()!,
+					minimumLevel.ToString()!,
+					numberOnOrder.ToString()!
 					]
 				);
-				lowLevelItemCount++;
 			}
 
 			// Set report footer to low item total
-			reportFooterLine = $"Number of items needing reordering: {lowLevelItemCount}";
+			reportFooterLine = $"Number of items needing reordering (marked with *): {lowLevelItemCount}";
 		}
 
 		private void GetStockDiscrepancyDetails()
@@ -256,10 +269,10 @@ namespace Final_Project
 			// e.Graphics.DrawRectangle(blackPen, e.MarginBounds);
 
 			// Show title centred at top
-			e.Graphics.DrawString(reportName, titleFont, textBrush, titleArea, centreTopText);
+			e.Graphics!.DrawString(reportName, titleFont, textBrush, titleArea, centreTopText);
 
 			// Show header line below title
-			e.Graphics.DrawString(reportHeaderLine, labelFont, textBrush, headerLineArea, centreTopText);
+			e.Graphics!.DrawString(reportHeaderLine, labelFont, textBrush, headerLineArea, centreTopText);
 
 			// Draw grid using tableRows and tableColumns
 			Font cellFont = labelFont; // Show first row as header

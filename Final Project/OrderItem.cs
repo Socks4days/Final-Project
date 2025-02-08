@@ -25,7 +25,7 @@ namespace Final_Project
 
         public OrderItem()
         {
-
+            this.stockName = "";
         }
 
         public OrderItem(int orderNumber, int stockId, int orderItemQuantity)

@@ -512,7 +512,7 @@
 			lstViewOrderItems.BackColor = Color.FromArgb(227, 115, 166);
 			lstViewOrderItems.Columns.AddRange(new ColumnHeader[] { cHeaderStockItem, cHeaderUnit, cHeaderUnitPrice, cHeaderNoOfUnits, cHeaderTotalPrice });
 			lstViewOrderItems.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			lstViewOrderItems.ForeColor = Color.White;
+			lstViewOrderItems.ForeColor = Color.Black;
 			lstViewOrderItems.FullRowSelect = true;
 			lstViewOrderItems.GridLines = true;
 			lstViewOrderItems.Location = new Point(38, 25);

@@ -16,7 +16,7 @@ namespace Final_Project
         // Get current directory ending in bin/Debug/net8.0-windows
         private static string workingDirectoryPath = AppDomain.CurrentDomain.BaseDirectory;
         // Go back 3 levels to get project directory 
-        private static string projectDirectoryPath = Directory.GetParent(workingDirectoryPath).Parent.Parent.Parent.FullName;
+        private static string projectDirectoryPath = Directory.GetParent(workingDirectoryPath)!.Parent!.Parent!.Parent!.FullName;
         // Replace {0} in connection string with project directory
         private static string _connectionstring = string.Format(ConfigurationManager.ConnectionStrings["StockManagementConnectionString"].ConnectionString, projectDirectoryPath);
 
@@ -112,6 +112,34 @@ namespace Final_Project
 			}
 		}
 
+		private static Stock GetStockFromSqlDataReader (SqlDataReader sqlDataReader)
+		{
+			bool active = false;
+			int sqlActive = (int)sqlDataReader["Active"];
+
+			if (sqlActive == 1)
+			{
+				active = true;
+			}
+
+			Stock stock = new Stock(
+				(int)sqlDataReader["StockId"],
+				(string)sqlDataReader["StockName"],
+				(string)sqlDataReader["StockDescription"],
+				(decimal)sqlDataReader["Price"],
+				(int)sqlDataReader["DeliveryTimeDays"],
+				(int)sqlDataReader["MaximumLevel"],
+				(int)sqlDataReader["MinimumLevel"],
+				(int)sqlDataReader["OrderQuantity"],
+				(int)sqlDataReader["StockCheckFrequency"],
+				(int)sqlDataReader["StockLevel"],
+				(int)sqlDataReader["LastUpdatedByStaffId"],
+				active
+				);
+
+			return stock;
+		}
+
 		private static Stock GetStockSql(string sqlQuery)
 		{
 			using (SqlConnection connection = new SqlConnection(_connectionstring))
@@ -126,29 +154,7 @@ namespace Final_Project
 
 				while (sqlDataReader.Read())
 				{
-					bool active = false;
-					int sqlActive = (int)sqlDataReader["Active"];
-
-					if (sqlActive == 1)
-					{
-						active = true;
-					}
-
-					stock = new Stock(
-						(string)sqlDataReader["StockName"],
-						(string)sqlDataReader["StockDescription"],
-						(decimal)sqlDataReader["Price"],
-						(int)sqlDataReader["DeliveryTimeDays"],
-						(int)sqlDataReader["MaximumLevel"],
-						(int)sqlDataReader["MinimumLevel"],
-						(int)sqlDataReader["OrderQuantity"],
-						(int)sqlDataReader["StockCheckFrequency"],
-						(int)sqlDataReader["StockLevel"],
-						(int)sqlDataReader["LastUpdatedByStaffId"],
-						active
-						);
-
-					stock.stockId = (int)sqlDataReader["StockId"];
+					stock = GetStockFromSqlDataReader(sqlDataReader);
 				}
 				connection.Close();
 				return stock;
@@ -166,50 +172,49 @@ namespace Final_Project
 			string sqlQuery = string.Format("SELECT * FROM Stock WHERE StockName = '{0}'", stockName);
 
 			return GetStockSql(sqlQuery);
-        }     
+        }
 
-        public static List<Stock> GetAllActiveStock()
+		public static List<Stock> GetAllActiveStock()
+		{
+			return GetAllActiveStock(false);
+		}
+
+		public static List<Stock> GetAllActiveStock(bool includeNumberOnOrder)
         {
             using (SqlConnection connection = new SqlConnection(_connectionstring))
             {
                 List<Stock> stockItems = new List<Stock>();
                 connection.Open();
 
-                string sqlQuery = "SELECT * FROM Stock ORDER BY StockName ASC";
+				string sqlQuery = "";
+				if (includeNumberOnOrder) 
+				{
+					// Get stock details including number on order
+					sqlQuery =
+						"SELECT Stock.*, ISNULL(StockOnOrderView.NumberOnOrder, 0) AS NumberOnOrder " +
+						"FROM Stock " +
+						"LEFT OUTER JOIN StockOnOrderView ON StockOnOrderView.StockId = Stock.StockId " +
+						"WHERE Active = 1 " +
+						"ORDER BY StockName ASC";
+				}
+				else
+				{
+					// Get stock details only
+					sqlQuery = "SELECT * FROM Stock WHERE Active = 1 ORDER BY StockName ASC";
+				}
 
-                SqlCommand getAllStockCommand = new SqlCommand(sqlQuery, connection);
+				SqlCommand getAllStockCommand = new SqlCommand(sqlQuery, connection);
 
                 SqlDataReader sqlDataReader = getAllStockCommand.ExecuteReader();
 
                 while (sqlDataReader.Read())
                 {
-                    bool active = true;
-                    int activeInt = (int)sqlDataReader["Active"];
-                    if(activeInt == 0)
-                    {
-                        active = false;
-                    }
-
-					Stock stock = new Stock(
-                        (string)sqlDataReader["StockName"],
-                        (string)sqlDataReader["StockDescription"],
-                        (decimal)sqlDataReader["Price"],
-                        (int)sqlDataReader["DeliveryTimeDays"],
-                        (int)sqlDataReader["MaximumLevel"],
-                        (int)sqlDataReader["MinimumLevel"],
-                        (int)sqlDataReader["OrderQuantity"],
-                        (int)sqlDataReader["StockCheckFrequency"],
-                        (int)sqlDataReader["StockLevel"],
-                        (int)sqlDataReader["LastUpdatedByStaffId"],
-                        active
-                        );
-
-                    stock.stockId = (int)sqlDataReader["StockId"];
-
-                    if(stock.active == true)
-                    {
-						stockItems.Add(stock);
-					}                    
+					Stock stock = GetStockFromSqlDataReader(sqlDataReader);
+					if (includeNumberOnOrder)
+					{
+						stock.numberOnOrder = (int)sqlDataReader["NumberOnOrder"];
+					}
+					stockItems.Add(stock);                  
                 }
 
                 connection.Close();
