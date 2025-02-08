@@ -479,7 +479,6 @@
 		#endregion
 
 		private Panel pnlCreateAudit;
-		private NumericUpDown numericUpDown1;
 		private Label lblNoExpectedInStock;
 		private Button btnAddToAudit;
 		private NumericUpDown nUDNoInStockActual;
@@ -488,17 +487,10 @@
 		private Panel pnlAuditInfo;
 		private Label lblAuditError;
 		private Button btnCompleteAudit;
-		private Label lblOrderDateAndStatus;
 		private ListView lstViewAllStock;
 		private ColumnHeader cHeaderStockItem;
 		private ColumnHeader cHeaderLastAudited;
-		private Label lblOrderNumber;
-		private Label lblInstructionsDeliveryItem;
-		private Label lblDeliveryDate;
-		private Button btnMarkDeliveryAsCompleted;
-		private Button btnAddItem;
 		private ColumnHeader cHeaderItem;
-		private ColumnHeader cHeaderDeliveryQuantityReceived;
 		private Button btnAddItemToAudit;
 		private Label lblAuditNumber;
 		private ListView lstViewAuditItems;

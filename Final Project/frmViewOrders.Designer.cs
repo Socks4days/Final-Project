@@ -187,9 +187,6 @@
 		}
 
 		#endregion
-		private Button btnPlaceOrder;
-        private Button btnSaveAsDraft;
-        private Button btnRemoveFromOrder;
 		private Panel pnlOrderInfo;
 		private Label lblInstructions;
 		private ListView lstViewOrders;

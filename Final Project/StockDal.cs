@@ -11,14 +11,14 @@ using Microsoft.Data.SqlClient;
 
 namespace Final_Project
 {
-    public class StockDal
-    {
-        // Get current directory ending in bin/Debug/net8.0-windows
-        private static string workingDirectoryPath = AppDomain.CurrentDomain.BaseDirectory;
-        // Go back 3 levels to get project directory 
-        private static string projectDirectoryPath = Directory.GetParent(workingDirectoryPath)!.Parent!.Parent!.Parent!.FullName;
-        // Replace {0} in connection string with project directory
-        private static string _connectionstring = string.Format(ConfigurationManager.ConnectionStrings["StockManagementConnectionString"].ConnectionString, projectDirectoryPath);
+	public class StockDal
+	{
+		// Get current directory ending in bin/Debug/net8.0-windows
+		private static string workingDirectoryPath = AppDomain.CurrentDomain.BaseDirectory;
+		// Go back 3 levels to get project directory 
+		private static string projectDirectoryPath = Directory.GetParent(workingDirectoryPath)!.Parent!.Parent!.Parent!.FullName;
+		// Replace {0} in connection string with project directory
+		private static string _connectionstring = string.Format(ConfigurationManager.ConnectionStrings["StockManagementConnectionString"].ConnectionString, projectDirectoryPath);
 
 		public static int AddNewStock(Stock newStock)
 		{
@@ -112,7 +112,7 @@ namespace Final_Project
 			}
 		}
 
-		private static Stock GetStockFromSqlDataReader (SqlDataReader sqlDataReader)
+		private static Stock GetStockFromSqlDataReader(SqlDataReader sqlDataReader)
 		{
 			bool active = false;
 			int sqlActive = (int)sqlDataReader["Active"];
@@ -162,17 +162,17 @@ namespace Final_Project
 		}
 
 		public static Stock GetStockByStockId(int stockId)
-        {
+		{
 			string sqlQuery = string.Format("SELECT * FROM Stock WHERE StockId = {0}", stockId);
 			return GetStockSql(sqlQuery);
 		}
 
 		public static Stock GetStockByStockName(string stockName)
-        {
+		{
 			string sqlQuery = string.Format("SELECT * FROM Stock WHERE StockName = '{0}'", stockName);
 
 			return GetStockSql(sqlQuery);
-        }
+		}
 
 		public static List<Stock> GetAllActiveStock()
 		{
@@ -180,14 +180,14 @@ namespace Final_Project
 		}
 
 		public static List<Stock> GetAllActiveStock(bool includeNumberOnOrder)
-        {
-            using (SqlConnection connection = new SqlConnection(_connectionstring))
-            {
-                List<Stock> stockItems = new List<Stock>();
-                connection.Open();
+		{
+			using (SqlConnection connection = new SqlConnection(_connectionstring))
+			{
+				List<Stock> stockItems = new List<Stock>();
+				connection.Open();
 
 				string sqlQuery = "";
-				if (includeNumberOnOrder) 
+				if (includeNumberOnOrder)
 				{
 					// Get stock details including number on order
 					sqlQuery =
@@ -205,58 +205,58 @@ namespace Final_Project
 
 				SqlCommand getAllStockCommand = new SqlCommand(sqlQuery, connection);
 
-                SqlDataReader sqlDataReader = getAllStockCommand.ExecuteReader();
+				SqlDataReader sqlDataReader = getAllStockCommand.ExecuteReader();
 
-                while (sqlDataReader.Read())
-                {
+				while (sqlDataReader.Read())
+				{
 					Stock stock = GetStockFromSqlDataReader(sqlDataReader);
 					if (includeNumberOnOrder)
 					{
 						stock.numberOnOrder = (int)sqlDataReader["NumberOnOrder"];
 					}
-					stockItems.Add(stock);                  
-                }
+					stockItems.Add(stock);
+				}
 
-                connection.Close();
-                return stockItems;
-            }
-        }
+				connection.Close();
+				return stockItems;
+			}
+		}
 
 		public static List<StockLevelsView> GetStockLevelsView(string orderBy)
-        {
-            using (SqlConnection connection = new SqlConnection(_connectionstring))
-            {
-                List<StockLevelsView> stockLevelItems = new List<StockLevelsView>();
-                connection.Open();
+		{
+			using (SqlConnection connection = new SqlConnection(_connectionstring))
+			{
+				List<StockLevelsView> stockLevelItems = new List<StockLevelsView>();
+				connection.Open();
 
-                string sqlQuery = "SELECT * FROM StockLevelsView";
-                if (orderBy == "StockName")
-                {
-                    sqlQuery += " ORDER BY [StockName] ASC";
-                }
-                else if (orderBy == "AuditDate")
-                {
-                    sqlQuery += " ORDER BY [AuditDate] ASC";
-                }
+				string sqlQuery = "SELECT * FROM StockLevelsView";
+				if (orderBy == "StockName")
+				{
+					sqlQuery += " ORDER BY [StockName] ASC";
+				}
+				else if (orderBy == "AuditDate")
+				{
+					sqlQuery += " ORDER BY [AuditDate] ASC";
+				}
 				else if (orderBy == "NextAuditDueDate")
 				{
 					sqlQuery += " ORDER BY [NextAuditDueDate] ASC";
 				}
 				SqlCommand getAllStockCommand = new SqlCommand(sqlQuery, connection);
 
-                SqlDataReader sqlDataReader = getAllStockCommand.ExecuteReader();
+				SqlDataReader sqlDataReader = getAllStockCommand.ExecuteReader();
 
-                while (sqlDataReader.Read())
-                {
-                    DateTime? auditDate = null;
-                    var dbAuditDateTime = sqlDataReader["AuditDate"];
-                    if (dbAuditDateTime != DBNull.Value)
-                        auditDate = Convert.ToDateTime(dbAuditDateTime);
+				while (sqlDataReader.Read())
+				{
+					DateTime? auditDate = null;
+					var dbAuditDateTime = sqlDataReader["AuditDate"];
+					if (dbAuditDateTime != DBNull.Value)
+						auditDate = Convert.ToDateTime(dbAuditDateTime);
 
-                    int auditedByStaffId = 0;
-                    var dbAuditedByStaffId = sqlDataReader["AuditedByStaffId"];
-                    if (dbAuditedByStaffId != DBNull.Value)
-                        auditedByStaffId = Convert.ToInt32(dbAuditedByStaffId);
+					int auditedByStaffId = 0;
+					var dbAuditedByStaffId = sqlDataReader["AuditedByStaffId"];
+					if (dbAuditedByStaffId != DBNull.Value)
+						auditedByStaffId = Convert.ToInt32(dbAuditedByStaffId);
 
 					DateTime? nextAuditDueDate = null;
 					var dbNextAuditDueDateTime = sqlDataReader["NextAuditDueDate"];
@@ -264,23 +264,50 @@ namespace Final_Project
 						nextAuditDueDate = Convert.ToDateTime(dbNextAuditDueDateTime);
 
 					StockLevelsView stockLevel = new StockLevelsView(
-                        (int)sqlDataReader["StockId"],
-                        (string)sqlDataReader["StockName"],                        
-                        (int)sqlDataReader["StockLevel"],
-                        auditDate,
-                        auditedByStaffId,
-                        (string)sqlDataReader["AuditedByStaffFullName"],
-                        nextAuditDueDate,
+						(int)sqlDataReader["StockId"],
+						(string)sqlDataReader["StockName"],
+						(int)sqlDataReader["StockLevel"],
+						auditDate,
+						auditedByStaffId,
+						(string)sqlDataReader["AuditedByStaffFullName"],
+						nextAuditDueDate,
 						(int)sqlDataReader["DaysToNextAudit"]
 						);
 
-                    Stock stock = GetStockByStockId(stockLevel.stockId);
-                    if(stock.active == true)                    
-                    stockLevelItems.Add(stockLevel);
-                }
-                connection.Close();
-                return stockLevelItems;
-            }
-        }		
+					Stock stock = GetStockByStockId(stockLevel.stockId);
+					if (stock.active == true)
+						stockLevelItems.Add(stockLevel);
+				}
+				connection.Close();
+				return stockLevelItems;
+			}
+		}
+
+		public static int GetNumberOfLowStockItems()
+		{
+			int numberOfLowStockItems = 0;
+
+			string sqlQuery =
+				"SELECT COUNT(StockId) AS NumberOfLowStockItems " +
+				"FROM Stock " +
+				"WHERE StockLevel < MinimumLevel";
+
+			using (SqlConnection connection = new SqlConnection(_connectionstring))
+			{
+				connection.Open();
+				SqlCommand sqlCommand = new SqlCommand(sqlQuery, connection);
+
+				SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+
+				while (sqlDataReader.Read())
+				{
+					numberOfLowStockItems = (int)sqlDataReader["NumberOfLowStockItems"];
+				}
+				connection.Close();
+			}
+
+			return numberOfLowStockItems;
+		}
+
 	}
 }

@@ -23,7 +23,7 @@ namespace Final_Project
 		}
 
 		private string orderStatus = "";
-		private Order order;
+		private Order order = new Order();
 
 		#region ButtonPermissions
 
@@ -72,7 +72,6 @@ namespace Final_Project
 			// create a list of orders and fill with all orders
 			List<Order> sortedOrderItemList = OrderDal.GetAllOrders("DESC");
 
-			decimal orderTotal = 0;
 			foreach (ListViewItem item in lstViewOrders.Items)
 			{
 				lstViewOrders.Items.Remove(item);

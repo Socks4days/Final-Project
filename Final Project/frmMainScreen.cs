@@ -12,7 +12,7 @@ namespace Final_Project
 {
 	public partial class frmMainScreen : Form
 	{
-		public static frmMainScreen? frmMain;
+		public static frmMainScreen frmMain;
 
 		public frmMainScreen()
 		{
@@ -55,6 +55,49 @@ namespace Final_Project
 			else
 			{
 				HideMenus();
+			}
+
+			// If displaying main menu (without a child form), get and show KPIs
+			if (childForm == null)
+			{
+				// Low stock items
+				int numberOfLowStockItems = StockDal.GetNumberOfLowStockItems();
+				lblNumberLowStockItems.Text = numberOfLowStockItems.ToString();
+
+				if (numberOfLowStockItems == 0)
+				{
+					lblNumberLowStockItems.BackColor = Color.Green;
+				}
+				else
+				{
+					lblNumberLowStockItems.BackColor = Color.Red;
+				}
+
+				// Overdue audits
+				int numberOfOverdueAudits = 3; // TODO: AuditDal.GetNumberOfOverdueAudits();
+				lblNumberOverdueAudits.Text = numberOfOverdueAudits.ToString();
+
+				if (numberOfOverdueAudits == 0)
+				{
+					lblNumberOverdueAudits.BackColor = Color.Green;
+				}
+				else
+				{
+					lblNumberOverdueAudits.BackColor = Color.Red;
+				}
+
+				// Delivery discrepancies
+				int numberOfDeliveryDiscrepancies = 2; // TODO: DeliveryDal.GetNumberDeliveryDiscrepancies();
+				lblNumberDeliveryDiscrepancies.Text = numberOfDeliveryDiscrepancies.ToString();
+
+				if (numberOfDeliveryDiscrepancies == 0)
+				{
+					lblNumberDeliveryDiscrepancies.BackColor = Color.Green;
+				}
+				else
+				{
+					lblNumberDeliveryDiscrepancies.BackColor = Color.Red;
+				}
 			}
 
 			// If an existing child form is already open, close it
@@ -249,7 +292,7 @@ namespace Final_Project
 			parentMenuButton = btnStaff;
 		}
 
-		
+
 
 		private void ResetMainButtonColours()
 		{
@@ -430,6 +473,20 @@ namespace Final_Project
 		private void btnLowStockReport_Click(object sender, EventArgs e)
 		{
 			OpenChildForm(new frmReports("Low Stock", -1), null!);
+		}
+
+		private void btnDeliveryDiscrepancies_Click(object sender, EventArgs e)
+		{
+			frmMainScreen.frmMain.OpenChildForm(new frmReports("Delivery Discrepancies", -1), frmMainScreen.frmMain.btnViewDeliveries);
+		}
+
+		private void btnOverdueAudits_Click(object sender, EventArgs e)
+		{
+			Audit newAudit = new Audit();
+			newAudit.auditDate = DateTime.Now;
+			newAudit.auditedByStaffId = frmLoginScreen.loggedInStaff.staffId;
+			newAudit = AuditDal.AddAudit(newAudit);
+			OpenChildForm(new frmAuditing(newAudit, "Create Audit"), (Button)sender);
 		}
 	}
 }

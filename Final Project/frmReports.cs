@@ -54,9 +54,9 @@ namespace Final_Project
 			leftMiddleText.Alignment = StringAlignment.Near;
 			leftMiddleText.LineAlignment = StringAlignment.Center;
 
+			// Show report
+			printPreviewReport.Document = printReportDocument;
 		}
-
-		private string documentContents = "";
 
 		private void btnPreviewReport_Click(object sender, EventArgs e)
 		{
@@ -156,7 +156,7 @@ namespace Final_Project
 		private void GetStockDiscrepancyDetails()
 		{
 			// Set report details
-			reportName = "Stock Discrepancies";
+			reportName = "Delivery Discrepancies";
 			Staff loggedInStaff = frmLoginScreen.loggedInStaff;
 
 			List<Order> orders = OrderDal.GetAllOrders("ASC");

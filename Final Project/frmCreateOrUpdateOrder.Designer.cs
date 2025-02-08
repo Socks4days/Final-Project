@@ -572,7 +572,6 @@
 		}
 
 		#endregion
-		private ComboBox cBoxQuantity;
         private Panel pnlAddItemToOrder;
         private Label lblCurrentStockLevel;
         private NumericUpDown nUDQuantity;

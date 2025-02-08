@@ -6,7 +6,7 @@ namespace Final_Project
     public class DeliveryDal
     {
         private static string workingDirectoryPath = AppDomain.CurrentDomain.BaseDirectory;
-        private static string projectDirectoryPath = Directory.GetParent(workingDirectoryPath).Parent.Parent.Parent.FullName;
+        private static string projectDirectoryPath = Directory.GetParent(workingDirectoryPath)!.Parent!.Parent!.Parent!.FullName!;
         private static string _connectionstring = string.Format(ConfigurationManager.ConnectionStrings["StockManagementConnectionString"].ConnectionString, projectDirectoryPath);
 
         public static List<DeliveryItem> GetAllDeliveryItems(int deliveryNumber)
@@ -55,7 +55,6 @@ namespace Final_Project
 
                 while (sqlDataReader.Read())
                 {
-                    int? deliveryNumber = null;                   
                     DateTime? deliveryDate = null;
                     int? quantityDelivered = null;
                     int? quantityFaulty = null;
@@ -220,7 +219,6 @@ namespace Final_Project
 
                 while (sqlDataReader.Read())
                 {
-                    int? deliveryNumber = null;
                     DateTime? deliveryDate = null;
                     int? quantityDelivered = null;
                     int? quantityFaulty = null;

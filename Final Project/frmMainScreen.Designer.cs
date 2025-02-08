@@ -55,6 +55,14 @@
 			pnlTitleBar = new Panel();
 			lblTitle = new Label();
 			pnlFormContainer = new Panel();
+			lblDeliveries = new Label();
+			lblNumberDeliveryDiscrepancies = new Label();
+			btnDeliveryDiscrepancies = new Button();
+			lblAudits = new Label();
+			lblNumberOverdueAudits = new Label();
+			btnOverdueAudits = new Button();
+			lblLowStock = new Label();
+			lblNumberLowStockItems = new Label();
 			btnLowStockReport = new Button();
 			pctBoxLogo = new PictureBox();
 			pnlSideBar.SuspendLayout();
@@ -489,6 +497,14 @@
 			// 
 			pnlFormContainer.AutoSize = true;
 			pnlFormContainer.BackColor = SystemColors.ScrollBar;
+			pnlFormContainer.Controls.Add(lblDeliveries);
+			pnlFormContainer.Controls.Add(lblNumberDeliveryDiscrepancies);
+			pnlFormContainer.Controls.Add(btnDeliveryDiscrepancies);
+			pnlFormContainer.Controls.Add(lblAudits);
+			pnlFormContainer.Controls.Add(lblNumberOverdueAudits);
+			pnlFormContainer.Controls.Add(btnOverdueAudits);
+			pnlFormContainer.Controls.Add(lblLowStock);
+			pnlFormContainer.Controls.Add(lblNumberLowStockItems);
 			pnlFormContainer.Controls.Add(btnLowStockReport);
 			pnlFormContainer.Controls.Add(pctBoxLogo);
 			pnlFormContainer.Dock = DockStyle.Fill;
@@ -498,6 +514,104 @@
 			pnlFormContainer.Size = new Size(1000, 680);
 			pnlFormContainer.TabIndex = 6;
 			// 
+			// lblDeliveries
+			// 
+			lblDeliveries.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			lblDeliveries.Location = new Point(167, 280);
+			lblDeliveries.Name = "lblDeliveries";
+			lblDeliveries.Size = new Size(132, 29);
+			lblDeliveries.TabIndex = 11;
+			lblDeliveries.Text = "Deliveries";
+			lblDeliveries.TextAlign = ContentAlignment.MiddleCenter;
+			// 
+			// lblNumberDeliveryDiscrepancies
+			// 
+			lblNumberDeliveryDiscrepancies.BackColor = Color.Red;
+			lblNumberDeliveryDiscrepancies.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			lblNumberDeliveryDiscrepancies.ForeColor = Color.White;
+			lblNumberDeliveryDiscrepancies.Location = new Point(184, 309);
+			lblNumberDeliveryDiscrepancies.Name = "lblNumberDeliveryDiscrepancies";
+			lblNumberDeliveryDiscrepancies.Size = new Size(100, 100);
+			lblNumberDeliveryDiscrepancies.TabIndex = 10;
+			lblNumberDeliveryDiscrepancies.Text = "99";
+			lblNumberDeliveryDiscrepancies.TextAlign = ContentAlignment.MiddleCenter;
+			// 
+			// btnDeliveryDiscrepancies
+			// 
+			btnDeliveryDiscrepancies.Anchor = AnchorStyles.None;
+			btnDeliveryDiscrepancies.BackColor = Color.FromArgb(33, 150, 243);
+			btnDeliveryDiscrepancies.FlatAppearance.BorderSize = 0;
+			btnDeliveryDiscrepancies.FlatStyle = FlatStyle.Flat;
+			btnDeliveryDiscrepancies.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			btnDeliveryDiscrepancies.ForeColor = Color.White;
+			btnDeliveryDiscrepancies.Location = new Point(124, 430);
+			btnDeliveryDiscrepancies.Name = "btnDeliveryDiscrepancies";
+			btnDeliveryDiscrepancies.Size = new Size(220, 50);
+			btnDeliveryDiscrepancies.TabIndex = 9;
+			btnDeliveryDiscrepancies.Text = "Delivery Discrepancies";
+			btnDeliveryDiscrepancies.UseVisualStyleBackColor = false;
+			btnDeliveryDiscrepancies.Click += btnDeliveryDiscrepancies_Click;
+			// 
+			// lblAudits
+			// 
+			lblAudits.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			lblAudits.Location = new Point(679, 280);
+			lblAudits.Name = "lblAudits";
+			lblAudits.Size = new Size(132, 29);
+			lblAudits.TabIndex = 8;
+			lblAudits.Text = "Audits";
+			lblAudits.TextAlign = ContentAlignment.MiddleCenter;
+			// 
+			// lblNumberOverdueAudits
+			// 
+			lblNumberOverdueAudits.BackColor = Color.Red;
+			lblNumberOverdueAudits.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			lblNumberOverdueAudits.ForeColor = Color.White;
+			lblNumberOverdueAudits.Location = new Point(696, 309);
+			lblNumberOverdueAudits.Name = "lblNumberOverdueAudits";
+			lblNumberOverdueAudits.Size = new Size(100, 100);
+			lblNumberOverdueAudits.TabIndex = 7;
+			lblNumberOverdueAudits.Text = "99";
+			lblNumberOverdueAudits.TextAlign = ContentAlignment.MiddleCenter;
+			// 
+			// btnOverdueAudits
+			// 
+			btnOverdueAudits.Anchor = AnchorStyles.None;
+			btnOverdueAudits.BackColor = Color.FromArgb(33, 150, 243);
+			btnOverdueAudits.FlatAppearance.BorderSize = 0;
+			btnOverdueAudits.FlatStyle = FlatStyle.Flat;
+			btnOverdueAudits.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			btnOverdueAudits.ForeColor = Color.White;
+			btnOverdueAudits.Location = new Point(636, 430);
+			btnOverdueAudits.Name = "btnOverdueAudits";
+			btnOverdueAudits.Size = new Size(220, 50);
+			btnOverdueAudits.TabIndex = 6;
+			btnOverdueAudits.Text = "Overdue Audits";
+			btnOverdueAudits.UseVisualStyleBackColor = false;
+			btnOverdueAudits.Click += btnOverdueAudits_Click;
+			// 
+			// lblLowStock
+			// 
+			lblLowStock.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			lblLowStock.Location = new Point(424, 280);
+			lblLowStock.Name = "lblLowStock";
+			lblLowStock.Size = new Size(132, 29);
+			lblLowStock.TabIndex = 5;
+			lblLowStock.Text = "Stock Levels";
+			lblLowStock.TextAlign = ContentAlignment.MiddleCenter;
+			// 
+			// lblNumberLowStockItems
+			// 
+			lblNumberLowStockItems.BackColor = Color.Red;
+			lblNumberLowStockItems.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			lblNumberLowStockItems.ForeColor = Color.White;
+			lblNumberLowStockItems.Location = new Point(441, 309);
+			lblNumberLowStockItems.Name = "lblNumberLowStockItems";
+			lblNumberLowStockItems.Size = new Size(100, 100);
+			lblNumberLowStockItems.TabIndex = 4;
+			lblNumberLowStockItems.Text = "99";
+			lblNumberLowStockItems.TextAlign = ContentAlignment.MiddleCenter;
+			// 
 			// btnLowStockReport
 			// 
 			btnLowStockReport.Anchor = AnchorStyles.None;
@@ -506,7 +620,7 @@
 			btnLowStockReport.FlatStyle = FlatStyle.Flat;
 			btnLowStockReport.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			btnLowStockReport.ForeColor = Color.White;
-			btnLowStockReport.Location = new Point(385, 300);
+			btnLowStockReport.Location = new Point(381, 430);
 			btnLowStockReport.Name = "btnLowStockReport";
 			btnLowStockReport.Size = new Size(220, 50);
 			btnLowStockReport.TabIndex = 3;
@@ -582,9 +696,16 @@
 		private Button btnAuditHistory;
 		private Button btnLogout;
 		private Panel pnlStaff;
-		private Button button2;
 		private Button btnStaff;
 		private Button btnManageStaff;
 		private Button btnLowStockReport;
+		private Label lblNumberLowStockItems;
+		private Label lblLowStock;
+		private Label lblDeliveries;
+		private Label lblNumberDeliveryDiscrepancies;
+		private Button btnDeliveryDiscrepancies;
+		private Label lblAudits;
+		private Label lblNumberOverdueAudits;
+		private Button btnOverdueAudits;
 	}
 }

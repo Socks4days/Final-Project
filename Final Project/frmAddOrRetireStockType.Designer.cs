@@ -533,7 +533,6 @@
         private Label lblErrorAddNewStock;
         private Panel pnlRetireStock;
         private Label lblErrorRetireStock;
-        private Label lblRemoveStock;
         private Button btnRetireStock;
         private TextBox txtBoxNewOrderQuantity;
         private TextBox txtBoxNewStockCheckFrequency;

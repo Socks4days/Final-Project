@@ -32,7 +32,7 @@
 			pnlOrdersReport = new Panel();
 			btnPrintReport = new Button();
 			printPreviewReport = new PrintPreviewControl();
-			btnPreviewReport = new Button();
+			btnRefreshReport = new Button();
 			printReportDocument = new System.Drawing.Printing.PrintDocument();
 			printPreviewReportDialog = new PrintPreviewDialog();
 			pnlOrdersReport.SuspendLayout();
@@ -43,7 +43,7 @@
 			pnlOrdersReport.BackColor = SystemColors.ScrollBar;
 			pnlOrdersReport.Controls.Add(btnPrintReport);
 			pnlOrdersReport.Controls.Add(printPreviewReport);
-			pnlOrdersReport.Controls.Add(btnPreviewReport);
+			pnlOrdersReport.Controls.Add(btnRefreshReport);
 			pnlOrdersReport.Dock = DockStyle.Fill;
 			pnlOrdersReport.Location = new Point(0, 0);
 			pnlOrdersReport.Name = "pnlOrdersReport";
@@ -68,15 +68,15 @@
 			printPreviewReport.Size = new Size(940, 490);
 			printPreviewReport.TabIndex = 3;
 			// 
-			// btnPreviewReport
+			// btnRefreshReport
 			// 
-			btnPreviewReport.Location = new Point(27, 30);
-			btnPreviewReport.Name = "btnPreviewReport";
-			btnPreviewReport.Size = new Size(220, 50);
-			btnPreviewReport.TabIndex = 2;
-			btnPreviewReport.Text = "Preview";
-			btnPreviewReport.UseVisualStyleBackColor = true;
-			btnPreviewReport.Click += btnPreviewReport_Click;
+			btnRefreshReport.Location = new Point(27, 30);
+			btnRefreshReport.Name = "btnRefreshReport";
+			btnRefreshReport.Size = new Size(220, 50);
+			btnRefreshReport.TabIndex = 2;
+			btnRefreshReport.Text = "Refresh";
+			btnRefreshReport.UseVisualStyleBackColor = true;
+			btnRefreshReport.Click += btnPreviewReport_Click;
 			// 
 			// printReportDocument
 			// 
@@ -110,7 +110,7 @@
 		#endregion
 
 		private Panel pnlOrdersReport;
-		private Button btnPreviewReport;
+		private Button btnRefreshReport;
 		private System.Drawing.Printing.PrintDocument printReportDocument;
 		private PrintPreviewDialog printPreviewReportDialog;
 		private PrintPreviewControl printPreviewReport;
