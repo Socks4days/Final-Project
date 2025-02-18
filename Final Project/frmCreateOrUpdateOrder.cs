@@ -199,6 +199,17 @@ namespace Final_Project
 			OrderDal.RemoveOrderItem(item);
 			// update list view to show change
 			UpdateOrderItemListView();
+			cBoxStock.DataSource = null;
+			allStockNames.Clear();
+			foreach (Stock stock in allStock)
+				allStockNames.Add(stock.stockName);
+			sortedOrderItemList = OrderDal.GetAllOrderItems(this.order.orderNumber);
+			foreach (OrderItem orderItem in sortedOrderItemList) 
+				allStockNames.Remove(orderItem.stockName);
+			cBoxStock.DataSource = allStockNames;
+			cBoxStock.Text = "";
+			cBoxStock.SelectedIndex = -1;
+			nUDQuantity.Value = 1;
 		}
 
 		private void btnSaveAsDraft_Click(object sender, EventArgs e)
@@ -220,8 +231,6 @@ namespace Final_Project
 			lblFinalOrderTotal.Text = $"Order Total: £{orderTotal.ToString()}";
 			lblDeliveringTo.Text = $"Order For: Maintenance Department, Movers Ltd";
 		}
-
-		
 
 		#endregion OrderScreenButtonClicks
 
@@ -260,6 +269,7 @@ namespace Final_Project
 			cBoxStock.DataSource = allStockNames;
 			cBoxStock.Text = "";
 			cBoxStock.SelectedIndex = -1;
+			nUDQuantity.Value = 1;
 
 			// refresh the list view
 			UpdateOrderItemListView();

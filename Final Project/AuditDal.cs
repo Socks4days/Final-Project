@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
+using System.Net.NetworkInformation;
 
 namespace Final_Project
 {
@@ -127,6 +128,32 @@ namespace Final_Project
 				connection.Close();
 				return auditItems;
 			}
-		}		
+		}
+		
+		public static int GetNumberOfOverdueAudits()
+		{
+			int numberOfOverdueAudits = 0;
+
+			string sqlQuery =
+				"SELECT COUNT(StockId) AS NumberOfOverdueAudits " +
+				"FROM StockLevelsView " +
+				"WHERE DaysToNextAudit < 0";
+
+			using (SqlConnection connection = new SqlConnection(_connectionstring))
+			{
+				connection.Open();
+				SqlCommand sqlCommand = new SqlCommand(sqlQuery, connection);
+
+				SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+
+				while (sqlDataReader.Read())
+				{
+					numberOfOverdueAudits = (int)sqlDataReader["NumberOfOverdueAudits"];
+				}
+				connection.Close();
+			}
+
+			return numberOfOverdueAudits;
+		}
 	}
 }

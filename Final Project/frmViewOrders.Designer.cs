@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			components = new System.ComponentModel.Container();
 			pnlOrderInfo = new Panel();
 			btnOrderReport = new Button();
 			btnCancelOrder = new Button();
@@ -39,6 +40,7 @@
 			cHeaderOrderStatus = new ColumnHeader();
 			cHeaderDateOrdered = new ColumnHeader();
 			cHeaderStaffName = new ColumnHeader();
+			toolTipViewOrders = new ToolTip(components);
 			pnlOrderInfo.SuspendLayout();
 			SuspendLayout();
 			// 
@@ -70,6 +72,7 @@
 			btnOrderReport.Size = new Size(220, 50);
 			btnOrderReport.TabIndex = 16;
 			btnOrderReport.Text = "Order Report";
+			toolTipViewOrders.SetToolTip(btnOrderReport, "View order report");
 			btnOrderReport.UseVisualStyleBackColor = false;
 			btnOrderReport.Click += btnOrderReport_Click;
 			// 
@@ -86,6 +89,7 @@
 			btnCancelOrder.Size = new Size(220, 50);
 			btnCancelOrder.TabIndex = 2;
 			btnCancelOrder.Text = "Cancel Order";
+			toolTipViewOrders.SetToolTip(btnCancelOrder, "Cancel order");
 			btnCancelOrder.UseVisualStyleBackColor = false;
 			btnCancelOrder.Click += btnCancelOrder_Click;
 			// 
@@ -102,6 +106,7 @@
 			btnViewOrder.Size = new Size(220, 50);
 			btnViewOrder.TabIndex = 0;
 			btnViewOrder.Text = "View Order";
+			toolTipViewOrders.SetToolTip(btnViewOrder, "View items in order");
 			btnViewOrder.UseVisualStyleBackColor = false;
 			btnViewOrder.Click += btnViewOrder_Click;
 			// 
@@ -118,6 +123,7 @@
 			btnEditOrder.Size = new Size(220, 50);
 			btnEditOrder.TabIndex = 1;
 			btnEditOrder.Text = "Edit Order";
+			toolTipViewOrders.SetToolTip(btnEditOrder, "Edit items in drafted order");
 			btnEditOrder.UseVisualStyleBackColor = false;
 			btnEditOrder.Click += btnEditOrder_Click;
 			// 
@@ -147,6 +153,7 @@
 			lstViewOrders.Name = "lstViewOrders";
 			lstViewOrders.Size = new Size(942, 518);
 			lstViewOrders.TabIndex = 0;
+			toolTipViewOrders.SetToolTip(lstViewOrders, "Select order to view options");
 			lstViewOrders.UseCompatibleStateImageBehavior = false;
 			lstViewOrders.View = View.Details;
 			lstViewOrders.ItemSelectionChanged += lstViewOrders_ItemSelectionChanged;
@@ -198,5 +205,6 @@
 		private ColumnHeader cHeaderStaffName;
 		private Button btnCancelOrder;
 		private Button btnOrderReport;
+		private ToolTip toolTipViewOrders;
 	}
 }

@@ -1,5 +1,8 @@
 ﻿using Microsoft.Data.SqlClient;
 using System.Configuration;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
+using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace Final_Project
 {
@@ -219,6 +222,7 @@ namespace Final_Project
 
                 while (sqlDataReader.Read())
                 {
+                    // TODO: Use null handling method
                     DateTime? deliveryDate = null;
                     int? quantityDelivered = null;
                     int? quantityFaulty = null;
@@ -237,7 +241,7 @@ namespace Final_Project
 
                     DeliveryItemsView deliveryItem = new DeliveryItemsView(
                         (int)sqlDataReader["OrderNumber"],
-                        (int)sqlDataReader["StockId"],
+                        (int)sqlDataReader["DeliveryNumber"],
                         deliveryDate,
                         (int)sqlDataReader["StockId"],
                         (string)sqlDataReader["StockName"],                        
@@ -273,5 +277,62 @@ namespace Final_Project
 				connection.Close();
 			}
 		}
+
+        public static int GetNumberOfDeliveryDiscrepancies()
+        {
+			int numberOfDeliveryDiscrepancies = 0;
+
+            // Get count of items delivered where the number received minus the number faulty is less than the number ordered
+			string sqlQuery =
+				"SELECT COUNT(OrderNumber) AS NumberOfDeliveryDiscrepancies " +
+				"FROM OrderItemsDeliveredView " +
+				"WHERE(QuantityDelivered - QuantityFaulty) < OrderItemQuantity";
+
+			using (SqlConnection connection = new SqlConnection(_connectionstring))
+			{
+				connection.Open();
+				SqlCommand sqlCommand = new SqlCommand(sqlQuery, connection);
+
+				SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+
+				while (sqlDataReader.Read())
+				{
+					numberOfDeliveryDiscrepancies = (int)sqlDataReader["NumberOfDeliveryDiscrepancies"];
+				}
+				connection.Close();
+			}
+
+			return numberOfDeliveryDiscrepancies;
+		}
+
+		public static List<DeliveryItemsView> GetListOfDeliveryDiscrepancies()
+		{
+            List<DeliveryItemsView> deliveryDiscrepanciesList = new List<DeliveryItemsView>();
+
+			// Get list of items delivered where the number received minus the number faulty is less than the number ordered
+			string sqlQuery =
+				"SELECT * " +
+				"FROM OrderItemsDeliveredView " +
+				"WHERE(QuantityDelivered - QuantityFaulty) < OrderItemQuantity " +
+                "ORDER BY OrderNumber DESC";
+
+			using (SqlConnection connection = new SqlConnection(_connectionstring))
+			{
+				connection.Open();
+				SqlCommand sqlCommand = new SqlCommand(sqlQuery, connection);
+
+				SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+
+				while (sqlDataReader.Read())
+				{
+					//Get list details and add to list
+                    // Share code with delivery items above
+				}
+				connection.Close();
+			}
+
+			return deliveryDiscrepanciesList;
+		}
+
 	}
 }

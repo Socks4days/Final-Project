@@ -111,6 +111,7 @@
 			btnCancel.Size = new Size(220, 50);
 			btnCancel.TabIndex = 2;
 			btnCancel.Text = "Cancel";
+			toolTipAuditing.SetToolTip(btnCancel, "Go back to audit screen\r\nDiscard current item\r\n");
 			btnCancel.UseVisualStyleBackColor = false;
 			btnCancel.Click += btnCancel_Click;
 			// 
@@ -134,6 +135,7 @@
 			nUDNoInStockActual.Name = "nUDNoInStockActual";
 			nUDNoInStockActual.Size = new Size(220, 32);
 			nUDNoInStockActual.TabIndex = 0;
+			toolTipAuditing.SetToolTip(nUDNoInStockActual, "How many of this item are in stock");
 			// 
 			// lblNoExpectedInStock
 			// 
@@ -159,7 +161,7 @@
 			btnAddToAudit.Size = new Size(220, 50);
 			btnAddToAudit.TabIndex = 1;
 			btnAddToAudit.Text = "Add To Audit";
-			toolTipAuditing.SetToolTip(btnAddToAudit, "\"Twst\"");
+			toolTipAuditing.SetToolTip(btnAddToAudit, "Add item to audit with selected information");
 			btnAddToAudit.UseVisualStyleBackColor = false;
 			btnAddToAudit.Click += btnCreateAudit_Click;
 			// 
@@ -204,6 +206,7 @@
 			lstViewAuditItems.Name = "lstViewAuditItems";
 			lstViewAuditItems.Size = new Size(866, 173);
 			lstViewAuditItems.TabIndex = 45;
+			toolTipAuditing.SetToolTip(lstViewAuditItems, "Current items on audit");
 			lstViewAuditItems.UseCompatibleStateImageBehavior = false;
 			lstViewAuditItems.View = View.Details;
 			// 
@@ -236,7 +239,7 @@
 			btnAddItemToAudit.Size = new Size(220, 50);
 			btnAddItemToAudit.TabIndex = 0;
 			btnAddItemToAudit.Text = "Add Item";
-			toolTipAuditing.SetToolTip(btnAddItemToAudit, "Select an item to add it to an audit");
+			toolTipAuditing.SetToolTip(btnAddItemToAudit, "Add selected item to current audit");
 			btnAddItemToAudit.UseVisualStyleBackColor = false;
 			btnAddItemToAudit.Click += btnAddItemToAudit_Click;
 			// 
@@ -254,6 +257,7 @@
 			btnCompleteAudit.Size = new Size(220, 50);
 			btnCompleteAudit.TabIndex = 1;
 			btnCompleteAudit.Text = "Audit Completed";
+			toolTipAuditing.SetToolTip(btnCompleteAudit, "Complete current audit");
 			btnCompleteAudit.UseVisualStyleBackColor = false;
 			btnCompleteAudit.Click += btnCompleteAudit_Click;
 			// 
@@ -286,6 +290,7 @@
 			lstViewAllStock.Name = "lstViewAllStock";
 			lstViewAllStock.Size = new Size(866, 167);
 			lstViewAllStock.TabIndex = 36;
+			toolTipAuditing.SetToolTip(lstViewAllStock, "All stock items ordered by which item most needs to be checked");
 			lstViewAllStock.UseCompatibleStateImageBehavior = false;
 			lstViewAllStock.View = View.Details;
 			lstViewAllStock.ItemSelectionChanged += lstViewAllStock_ItemSelectionChanged;
@@ -339,6 +344,7 @@
 			btnViewAuditDetails.Size = new Size(220, 50);
 			btnViewAuditDetails.TabIndex = 47;
 			btnViewAuditDetails.Text = "View Audit Details";
+			toolTipAuditing.SetToolTip(btnViewAuditDetails, "View selected audit details");
 			btnViewAuditDetails.UseVisualStyleBackColor = false;
 			btnViewAuditDetails.Click += btnViewAuditDetails_Click;
 			// 
@@ -411,6 +417,7 @@
 			btnReturnToAuditHistory.Size = new Size(220, 50);
 			btnReturnToAuditHistory.TabIndex = 0;
 			btnReturnToAuditHistory.Text = "Return To Audits";
+			toolTipAuditing.SetToolTip(btnReturnToAuditHistory, "View all audits");
 			btnReturnToAuditHistory.UseVisualStyleBackColor = false;
 			btnReturnToAuditHistory.Click += btnBackToAuditHistory_Click;
 			// 
@@ -464,7 +471,7 @@
 			Controls.Add(pnlAuditInfo);
 			Controls.Add(pnlCreateAudit);
 			Name = "frmAuditing";
-			Text = "frmCreateAudit";
+			Text = "frmAuditing";
 			Resize += frmCreateAudit_Resize;
 			pnlCreateAudit.ResumeLayout(false);
 			pnlCreateAudit.PerformLayout();

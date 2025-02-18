@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Microsoft.Reporting;
 using Microsoft.Reporting.WinForms;
 using Final_Project.Models;
+using System.Linq.Expressions;
 
 
 namespace Final_Project
@@ -158,8 +159,9 @@ namespace Final_Project
 			// Set report details
 			reportName = "Delivery Discrepancies";
 			Staff loggedInStaff = frmLoginScreen.loggedInStaff;
+			List<OrderItemsDeliveredView> discrepancies = OrderDal.GetOrderItemDiscrepancies();
 
-			List<Order> orders = OrderDal.GetAllOrders("ASC");
+			/*List<Order> orders = OrderDal.GetAllOrders("ASC");
 			List<Order> partialOrders = new List<Order>();
 
 			foreach (Order order in orders)
@@ -187,7 +189,7 @@ namespace Final_Project
 				{
 					orderItemsDeliveredWithDiscrepancy.Add(orderItem);
 				}
-			}
+			}*/
 
 			// Set report header/footer
 			reportHeaderLine = $"Created On: {DateTime.Now}   Created By: {loggedInStaff.forename} {loggedInStaff.surname}";
@@ -200,22 +202,17 @@ namespace Final_Project
 			reportLines.Add(["Order Number", "Item", "Ordered", "Missing", "Faulty"]);
 
 			// Add a row for each item
-			for (int oi = 0; oi < orderItemsDeliveredWithDiscrepancy.Count; oi++)
+			for (int oi = 0; oi < discrepancies.Count; oi++)
 			{
 				int quantityMissing = 0;
-				int quantityFaulty = 0;
-				if (orderItemsDeliveredWithDiscrepancy[oi].quantityDelivered != null && (orderItemsDeliveredWithDiscrepancy[oi].orderItemQuantity - orderItemsDeliveredWithDiscrepancy[oi].quantityDelivered) > 0)
-					quantityMissing = (int)(orderItemsDeliveredWithDiscrepancy[oi].orderItemQuantity - orderItemsDeliveredWithDiscrepancy[oi].quantityDelivered)!;
-				if (orderItemsDeliveredWithDiscrepancy[oi].quantityFaulty != null)
-					quantityFaulty = (int)(orderItemsDeliveredWithDiscrepancy[oi].quantityFaulty)!;
-
+					quantityMissing = (int)(discrepancies[oi].orderItemQuantity - discrepancies[oi].quantityDelivered)!;
 
 				reportLines.Add(
-					[orderItemsDeliveredWithDiscrepancy[oi].orderNumber.ToString(),
-					orderItemsDeliveredWithDiscrepancy[oi].stockName,
-					orderItemsDeliveredWithDiscrepancy[oi].orderItemQuantity.ToString(),
+					[discrepancies[oi].orderNumber.ToString(),
+					discrepancies[oi].stockName,
+					discrepancies[oi].orderItemQuantity.ToString(),
 					quantityMissing.ToString(),
-					quantityFaulty.ToString()
+					discrepancies[oi].quantityFaulty.ToString()!
 					]
 				);
 			}

@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			components = new System.ComponentModel.Container();
 			pnlStaffInfo = new Panel();
 			pnlStaffListView = new Panel();
 			lstViewStaffMembers = new ListView();
@@ -37,6 +38,8 @@
 			cHeaderActive = new ColumnHeader();
 			lblInstructions = new Label();
 			pnlOptionButtons = new Panel();
+			btnFireStaffMember = new Button();
+			button1 = new Button();
 			btnEditPosition = new Button();
 			btnEditStaffMember = new Button();
 			pnlEditStaffMember = new Panel();
@@ -56,8 +59,7 @@
 			btnCancelEditStaffPosition = new Button();
 			btnConfirmEditStaffPositionChanges = new Button();
 			lblStaffToEditPosition = new Label();
-			button1 = new Button();
-			btnFireStaffMember = new Button();
+			toolTipStaff = new ToolTip(components);
 			pnlStaffInfo.SuspendLayout();
 			pnlStaffListView.SuspendLayout();
 			pnlOptionButtons.SuspendLayout();
@@ -99,6 +101,7 @@
 			lstViewStaffMembers.Name = "lstViewStaffMembers";
 			lstViewStaffMembers.Size = new Size(942, 518);
 			lstViewStaffMembers.TabIndex = 0;
+			toolTipStaff.SetToolTip(lstViewStaffMembers, "All staff members, past and present");
 			lstViewStaffMembers.UseCompatibleStateImageBehavior = false;
 			lstViewStaffMembers.View = View.Details;
 			lstViewStaffMembers.ItemSelectionChanged += lstViewOrders_ItemSelectionChanged;
@@ -148,6 +151,39 @@
 			pnlOptionButtons.Size = new Size(982, 82);
 			pnlOptionButtons.TabIndex = 19;
 			// 
+			// btnFireStaffMember
+			// 
+			btnFireStaffMember.Anchor = AnchorStyles.Bottom;
+			btnFireStaffMember.BackColor = Color.FromArgb(150, 12, 150);
+			btnFireStaffMember.FlatAppearance.BorderSize = 0;
+			btnFireStaffMember.FlatStyle = FlatStyle.Flat;
+			btnFireStaffMember.Font = new Font("Segoe UI", 14F);
+			btnFireStaffMember.ForeColor = SystemColors.Control;
+			btnFireStaffMember.Location = new Point(634, 18);
+			btnFireStaffMember.Name = "btnFireStaffMember";
+			btnFireStaffMember.Size = new Size(220, 50);
+			btnFireStaffMember.TabIndex = 3;
+			btnFireStaffMember.Text = "Fire Staff Member";
+			toolTipStaff.SetToolTip(btnFireStaffMember, "Fire selected staff member\r\nWARNING: Member will be immediately removed from system\r\n");
+			btnFireStaffMember.UseVisualStyleBackColor = false;
+			btnFireStaffMember.Click += btnFireStaffMember_Click;
+			// 
+			// button1
+			// 
+			button1.Anchor = AnchorStyles.Bottom;
+			button1.BackColor = Color.FromArgb(150, 12, 150);
+			button1.FlatAppearance.BorderSize = 0;
+			button1.FlatStyle = FlatStyle.Flat;
+			button1.Font = new Font("Segoe UI", 14F);
+			button1.ForeColor = SystemColors.Control;
+			button1.Location = new Point(381, 16);
+			button1.Name = "button1";
+			button1.Size = new Size(220, 50);
+			button1.TabIndex = 2;
+			button1.Text = "Edit Staff Position";
+			toolTipStaff.SetToolTip(button1, "Edit selected staff member's position");
+			button1.UseVisualStyleBackColor = false;
+			// 
 			// btnEditPosition
 			// 
 			btnEditPosition.Anchor = AnchorStyles.Bottom;
@@ -177,6 +213,7 @@
 			btnEditStaffMember.Size = new Size(220, 50);
 			btnEditStaffMember.TabIndex = 0;
 			btnEditStaffMember.Text = "Edit Staff Member";
+			toolTipStaff.SetToolTip(btnEditStaffMember, "Edit selected staff member's information");
 			btnEditStaffMember.UseVisualStyleBackColor = false;
 			btnEditStaffMember.Click += btnEditStaffMember_Click;
 			// 
@@ -213,6 +250,7 @@
 			btnCancelStaffEdit.Size = new Size(220, 50);
 			btnCancelStaffEdit.TabIndex = 5;
 			btnCancelStaffEdit.Text = "Cancel";
+			toolTipStaff.SetToolTip(btnCancelStaffEdit, "Discard changes");
 			btnCancelStaffEdit.UseVisualStyleBackColor = false;
 			btnCancelStaffEdit.Click += btnCancelStaffEdit_Click;
 			// 
@@ -222,6 +260,7 @@
 			txtBoxSurname.BorderStyle = BorderStyle.None;
 			txtBoxSurname.Font = new Font("Segoe UI", 14F);
 			txtBoxSurname.Location = new Point(552, 220);
+			txtBoxSurname.MaxLength = 20;
 			txtBoxSurname.Name = "txtBoxSurname";
 			txtBoxSurname.Size = new Size(220, 25);
 			txtBoxSurname.TabIndex = 1;
@@ -232,6 +271,7 @@
 			txtBoxPassword.BorderStyle = BorderStyle.None;
 			txtBoxPassword.Font = new Font("Segoe UI", 14F);
 			txtBoxPassword.Location = new Point(552, 284);
+			txtBoxPassword.MaxLength = 20;
 			txtBoxPassword.Name = "txtBoxPassword";
 			txtBoxPassword.Size = new Size(220, 25);
 			txtBoxPassword.TabIndex = 3;
@@ -242,6 +282,7 @@
 			txtBoxUsername.BorderStyle = BorderStyle.None;
 			txtBoxUsername.Font = new Font("Segoe UI", 14F);
 			txtBoxUsername.Location = new Point(236, 284);
+			txtBoxUsername.MaxLength = 20;
 			txtBoxUsername.Name = "txtBoxUsername";
 			txtBoxUsername.Size = new Size(220, 25);
 			txtBoxUsername.TabIndex = 2;
@@ -268,6 +309,7 @@
 			txtBoxForename.BorderStyle = BorderStyle.None;
 			txtBoxForename.Font = new Font("Segoe UI", 14F);
 			txtBoxForename.Location = new Point(236, 220);
+			txtBoxForename.MaxLength = 20;
 			txtBoxForename.Name = "txtBoxForename";
 			txtBoxForename.Size = new Size(220, 25);
 			txtBoxForename.TabIndex = 0;
@@ -285,6 +327,7 @@
 			btnConfirmEditStaff.Size = new Size(220, 50);
 			btnConfirmEditStaff.TabIndex = 4;
 			btnConfirmEditStaff.Text = "Confirm Changes";
+			toolTipStaff.SetToolTip(btnConfirmEditStaff, "Staff information will be updated to match what is in each textbox accordingly");
 			btnConfirmEditStaff.UseVisualStyleBackColor = false;
 			btnConfirmEditStaff.Click += btnConfirmEditStaff_Click;
 			// 
@@ -357,6 +400,7 @@
 			cBoxStaffPositions.Name = "cBoxStaffPositions";
 			cBoxStaffPositions.Size = new Size(220, 33);
 			cBoxStaffPositions.TabIndex = 0;
+			toolTipStaff.SetToolTip(cBoxStaffPositions, "Select new rank for staff member");
 			// 
 			// btnCancelEditStaffPosition
 			// 
@@ -371,6 +415,7 @@
 			btnCancelEditStaffPosition.Size = new Size(220, 50);
 			btnCancelEditStaffPosition.TabIndex = 2;
 			btnCancelEditStaffPosition.Text = "Cancel";
+			toolTipStaff.SetToolTip(btnCancelEditStaffPosition, "Discard changes");
 			btnCancelEditStaffPosition.UseVisualStyleBackColor = false;
 			btnCancelEditStaffPosition.Click += btnCancelEditStaffPosition_Click;
 			// 
@@ -387,6 +432,7 @@
 			btnConfirmEditStaffPositionChanges.Size = new Size(220, 50);
 			btnConfirmEditStaffPositionChanges.TabIndex = 1;
 			btnConfirmEditStaffPositionChanges.Text = "Confirm Changes";
+			toolTipStaff.SetToolTip(btnConfirmEditStaffPositionChanges, "Confirm new position for staff member");
 			btnConfirmEditStaffPositionChanges.UseVisualStyleBackColor = false;
 			btnConfirmEditStaffPositionChanges.Click += btnConfirmEditStaffPositionChanges_Click;
 			// 
@@ -401,37 +447,6 @@
 			lblStaffToEditPosition.TabIndex = 24;
 			lblStaffToEditPosition.Text = "Editing position for:";
 			lblStaffToEditPosition.TextAlign = ContentAlignment.MiddleCenter;
-			// 
-			// button1
-			// 
-			button1.Anchor = AnchorStyles.Bottom;
-			button1.BackColor = Color.FromArgb(150, 12, 150);
-			button1.FlatAppearance.BorderSize = 0;
-			button1.FlatStyle = FlatStyle.Flat;
-			button1.Font = new Font("Segoe UI", 14F);
-			button1.ForeColor = SystemColors.Control;
-			button1.Location = new Point(381, 16);
-			button1.Name = "button1";
-			button1.Size = new Size(220, 50);
-			button1.TabIndex = 2;
-			button1.Text = "Edit Staff Position";
-			button1.UseVisualStyleBackColor = false;
-			// 
-			// btnFireStaffMember
-			// 
-			btnFireStaffMember.Anchor = AnchorStyles.Bottom;
-			btnFireStaffMember.BackColor = Color.FromArgb(150, 12, 150);
-			btnFireStaffMember.FlatAppearance.BorderSize = 0;
-			btnFireStaffMember.FlatStyle = FlatStyle.Flat;
-			btnFireStaffMember.Font = new Font("Segoe UI", 14F);
-			btnFireStaffMember.ForeColor = SystemColors.Control;
-			btnFireStaffMember.Location = new Point(634, 18);
-			btnFireStaffMember.Name = "btnFireStaffMember";
-			btnFireStaffMember.Size = new Size(220, 50);
-			btnFireStaffMember.TabIndex = 3;
-			btnFireStaffMember.Text = "Fire Staff Member";
-			btnFireStaffMember.UseVisualStyleBackColor = false;
-			btnFireStaffMember.Click += btnFireStaffMember_Click;
 			// 
 			// frmStaffManagement
 			// 
@@ -488,5 +503,6 @@
 		private Panel pnlOptionButtons;
 		private Button btnFireStaffMember;
 		private Button button1;
+		private ToolTip toolTipStaff;
 	}
 }

@@ -27,8 +27,8 @@ namespace Final_Project
 
 		private void SetLogo()
 		{
-			pctBoxLogo.ImageLocation = @"C:\Users\andre\OneDrive\Desktop\A2 SSD\Tasks\Final Project\Movers Logo Black.png";
-			pctBoxSmallLogo.ImageLocation = @"C:\Users\andre\OneDrive\Desktop\A2 SSD\Tasks\Final Project\Movers Logo White.png";
+			pctBoxLogo.ImageLocation = @"C:\Users\andre\OneDrive\Desktop\A2 SSD\Tasks\Final Project\Icons\Movers Logo Black.png";
+			pctBoxSmallLogo.ImageLocation = @"C:\Users\andre\OneDrive\Desktop\A2 SSD\Tasks\Final Project\Icons\Movers Logo White.png";
 		}
 
 		private void pctBoxSmallLogo_Click(object sender, EventArgs e)
@@ -55,49 +55,6 @@ namespace Final_Project
 			else
 			{
 				HideMenus();
-			}
-
-			// If displaying main menu (without a child form), get and show KPIs
-			if (childForm == null)
-			{
-				// Low stock items
-				int numberOfLowStockItems = StockDal.GetNumberOfLowStockItems();
-				lblNumberLowStockItems.Text = numberOfLowStockItems.ToString();
-
-				if (numberOfLowStockItems == 0)
-				{
-					lblNumberLowStockItems.BackColor = Color.Green;
-				}
-				else
-				{
-					lblNumberLowStockItems.BackColor = Color.Red;
-				}
-
-				// Overdue audits
-				int numberOfOverdueAudits = 3; // TODO: AuditDal.GetNumberOfOverdueAudits();
-				lblNumberOverdueAudits.Text = numberOfOverdueAudits.ToString();
-
-				if (numberOfOverdueAudits == 0)
-				{
-					lblNumberOverdueAudits.BackColor = Color.Green;
-				}
-				else
-				{
-					lblNumberOverdueAudits.BackColor = Color.Red;
-				}
-
-				// Delivery discrepancies
-				int numberOfDeliveryDiscrepancies = 2; // TODO: DeliveryDal.GetNumberDeliveryDiscrepancies();
-				lblNumberDeliveryDiscrepancies.Text = numberOfDeliveryDiscrepancies.ToString();
-
-				if (numberOfDeliveryDiscrepancies == 0)
-				{
-					lblNumberDeliveryDiscrepancies.BackColor = Color.Green;
-				}
-				else
-				{
-					lblNumberDeliveryDiscrepancies.BackColor = Color.Red;
-				}
 			}
 
 			// If an existing child form is already open, close it
@@ -201,7 +158,57 @@ namespace Final_Project
 			{
 				activeMenuButton.BackColor = Color.Transparent;
 				activeMenuButton = null!;
-				parentMenuButton.BackColor = Color.Transparent;
+				if(parentMenuButton != null)
+				{
+					parentMenuButton.BackColor = Color.Transparent;
+				}				
+			}
+
+			// If displaying main menu (without a child form), get and show KPIs
+
+			var path = new System.Drawing.Drawing2D.GraphicsPath();
+			path.AddEllipse(0, 0, lblNumberLowStockItems.Width, lblNumberLowStockItems.Height);
+			this.lblNumberLowStockItems.Region = new Region(path);
+			this.lblNumberOverdueAudits.Region = new Region(path);
+			this.lblNumberDeliveryDiscrepancies.Region = new Region(path);
+
+			// Low stock items
+			int numberOfLowStockItems = StockDal.GetNumberOfLowStockItems();
+			lblNumberLowStockItems.Text = numberOfLowStockItems.ToString();
+
+			if (numberOfLowStockItems == 0)
+			{
+				lblNumberLowStockItems.BackColor = Color.Green;
+			}
+			else
+			{
+				lblNumberLowStockItems.BackColor = Color.Red;
+			}
+
+			// Overdue audits
+			int numberOfOverdueAudits = AuditDal.GetNumberOfOverdueAudits();
+			lblNumberOverdueAudits.Text = numberOfOverdueAudits.ToString();
+
+			if (numberOfOverdueAudits == 0)
+			{
+				lblNumberOverdueAudits.BackColor = Color.Green;
+			}
+			else
+			{
+				lblNumberOverdueAudits.BackColor = Color.Red;
+			}
+
+			// Delivery discrepancies
+			int numberOfDeliveryDiscrepancies = DeliveryDal.GetNumberOfDeliveryDiscrepancies();
+			lblNumberDeliveryDiscrepancies.Text = numberOfDeliveryDiscrepancies.ToString();
+
+			if (numberOfDeliveryDiscrepancies == 0)
+			{
+				lblNumberDeliveryDiscrepancies.BackColor = Color.Green;
+			}
+			else
+			{
+				lblNumberDeliveryDiscrepancies.BackColor = Color.Red;
 			}
 
 
@@ -408,6 +415,25 @@ namespace Final_Project
 			OpenChildForm(new frmLoginScreen(), null!);
 		}
 
+		private void btnLowStockReport_Click(object sender, EventArgs e)
+		{
+			OpenChildForm(new frmReports("Low Stock", -1), null!);
+		}
+
+		private void btnDeliveryDiscrepancies_Click(object sender, EventArgs e)
+		{
+			frmMainScreen.frmMain.OpenChildForm(new frmReports("Delivery Discrepancies", -1), frmMainScreen.frmMain.btnViewDeliveries);
+		}
+
+		private void btnOverdueAudits_Click(object sender, EventArgs e)
+		{
+			Audit newAudit = new Audit();
+			newAudit.auditDate = DateTime.Now;
+			newAudit.auditedByStaffId = frmLoginScreen.loggedInStaff.staffId;
+			newAudit = AuditDal.AddAudit(newAudit);
+			OpenChildForm(new frmAuditing(newAudit, "Create Audit"), (Button)sender);
+		}
+
 		#endregion ButtonNavigation
 
 		#region PermissionHandling		
@@ -469,24 +495,6 @@ namespace Final_Project
 		}
 
 		#endregion PermissionHandling				
-
-		private void btnLowStockReport_Click(object sender, EventArgs e)
-		{
-			OpenChildForm(new frmReports("Low Stock", -1), null!);
-		}
-
-		private void btnDeliveryDiscrepancies_Click(object sender, EventArgs e)
-		{
-			frmMainScreen.frmMain.OpenChildForm(new frmReports("Delivery Discrepancies", -1), frmMainScreen.frmMain.btnViewDeliveries);
-		}
-
-		private void btnOverdueAudits_Click(object sender, EventArgs e)
-		{
-			Audit newAudit = new Audit();
-			newAudit.auditDate = DateTime.Now;
-			newAudit.auditedByStaffId = frmLoginScreen.loggedInStaff.staffId;
-			newAudit = AuditDal.AddAudit(newAudit);
-			OpenChildForm(new frmAuditing(newAudit, "Create Audit"), (Button)sender);
-		}
+				
 	}
 }

@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReports));
 			pnlOrdersReport = new Panel();
 			btnPrintReport = new Button();
@@ -35,6 +36,7 @@
 			btnRefreshReport = new Button();
 			printReportDocument = new System.Drawing.Printing.PrintDocument();
 			printPreviewReportDialog = new PrintPreviewDialog();
+			toolTipReports = new ToolTip(components);
 			pnlOrdersReport.SuspendLayout();
 			SuspendLayout();
 			// 
@@ -58,6 +60,7 @@
 			btnPrintReport.Size = new Size(220, 50);
 			btnPrintReport.TabIndex = 4;
 			btnPrintReport.Text = "Print";
+			toolTipReports.SetToolTip(btnPrintReport, "Open print preview for current report");
 			btnPrintReport.UseVisualStyleBackColor = true;
 			btnPrintReport.Click += btnPrintReport_Click;
 			// 
@@ -75,6 +78,7 @@
 			btnRefreshReport.Size = new Size(220, 50);
 			btnRefreshReport.TabIndex = 2;
 			btnRefreshReport.Text = "Refresh";
+			toolTipReports.SetToolTip(btnRefreshReport, "Refresh current report below");
 			btnRefreshReport.UseVisualStyleBackColor = true;
 			btnRefreshReport.Click += btnPreviewReport_Click;
 			// 
@@ -115,5 +119,6 @@
 		private PrintPreviewDialog printPreviewReportDialog;
 		private PrintPreviewControl printPreviewReport;
 		private Button btnPrintReport;
+		private ToolTip toolTipReports;
 	}
 }

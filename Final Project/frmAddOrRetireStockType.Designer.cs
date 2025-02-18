@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			components = new System.ComponentModel.Container();
 			pnlAddNewStock = new Panel();
 			lblNewDescription = new Label();
 			lblNewStockName = new Label();
@@ -62,6 +63,7 @@
 			lblStockToRetire = new Label();
 			lblErrorRetireStock = new Label();
 			btnRetireStock = new Button();
+			toolTipAddOrRetireStockItem = new ToolTip(components);
 			pnlAddNewStock.SuspendLayout();
 			pnlConfirmation.SuspendLayout();
 			pnlRetireStock.SuspendLayout();
@@ -448,6 +450,7 @@
 			cBoxStockItemsToRetire.Name = "cBoxStockItemsToRetire";
 			cBoxStockItemsToRetire.Size = new Size(220, 33);
 			cBoxStockItemsToRetire.TabIndex = 17;
+			toolTipAddOrRetireStockItem.SetToolTip(cBoxStockItemsToRetire, "Select stock to retire");
 			// 
 			// lblStockToRetire
 			// 
@@ -547,5 +550,6 @@
 		private Label lblNewDeliveryTime;
 		private Label lblNewStockCheckFrequency;
 		private ComboBox cBoxStockItemsToRetire;
+		private ToolTip toolTipAddOrRetireStockItem;
 	}
 }

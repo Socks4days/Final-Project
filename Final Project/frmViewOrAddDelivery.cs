@@ -379,10 +379,13 @@ namespace Final_Project
 			item.stockId = selectedOrderItemsDeliveredView.stockId;
 			DeliveryDal.AddDeliveryItem(item);
 
-			Stock stock = StockDal.GetStockByStockId(selectedOrderItemsDeliveredView.stockId);
-			stock.stockLevel = stock.stockLevel + quantityDelivered - quantityFaulty;
+			Stock stock = StockDal.GetStockByStockId(selectedOrderItemsDeliveredView.stockId);			
+			int newStockLevel = stock.stockLevel + quantityDelivered - quantityFaulty;
+			if(newStockLevel >= stock.maximumLevel)
+				stock.stockLevel = stock.maximumLevel;
+			else
+				stock.stockLevel = newStockLevel;
 			StockDal.UpdateStockLevel(stock);
-
 			ShowDelivery();
 			ShowDeliveryDetails();
 		}

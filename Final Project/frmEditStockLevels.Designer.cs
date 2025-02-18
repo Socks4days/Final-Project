@@ -28,13 +28,14 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			components = new System.ComponentModel.Container();
 			pnlEditStockLevels = new Panel();
+			nUDStockLevel = new NumericUpDown();
 			lblAmountTo = new Label();
 			lblCurrentStockLevel = new Label();
 			lblStockLevelToEdit = new Label();
 			btnCancel = new Button();
 			lblError = new Label();
-			txtBoxAmountOfStockToChange = new TextBox();
 			btnTakeOutStockConfirm = new Button();
 			btnReturnStockConfirm = new Button();
 			pnlEditStockItem = new Panel();
@@ -69,7 +70,9 @@
 			lblInstructions = new Label();
 			btnTakeOutStock = new Button();
 			btnReturnStock = new Button();
+			toolTipEditStockLevels = new ToolTip(components);
 			pnlEditStockLevels.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)nUDStockLevel).BeginInit();
 			pnlEditStockItem.SuspendLayout();
 			pnlStockList.SuspendLayout();
 			pnlOptionButtons.SuspendLayout();
@@ -78,12 +81,12 @@
 			// pnlEditStockLevels
 			// 
 			pnlEditStockLevels.BackColor = Color.FromArgb(200, 200, 200);
+			pnlEditStockLevels.Controls.Add(nUDStockLevel);
 			pnlEditStockLevels.Controls.Add(lblAmountTo);
 			pnlEditStockLevels.Controls.Add(lblCurrentStockLevel);
 			pnlEditStockLevels.Controls.Add(lblStockLevelToEdit);
 			pnlEditStockLevels.Controls.Add(btnCancel);
 			pnlEditStockLevels.Controls.Add(lblError);
-			pnlEditStockLevels.Controls.Add(txtBoxAmountOfStockToChange);
 			pnlEditStockLevels.Controls.Add(btnTakeOutStockConfirm);
 			pnlEditStockLevels.Controls.Add(btnReturnStockConfirm);
 			pnlEditStockLevels.Dock = DockStyle.Top;
@@ -91,6 +94,15 @@
 			pnlEditStockLevels.Name = "pnlEditStockLevels";
 			pnlEditStockLevels.Size = new Size(966, 680);
 			pnlEditStockLevels.TabIndex = 1;
+			// 
+			// nUDStockLevel
+			// 
+			nUDStockLevel.Anchor = AnchorStyles.None;
+			nUDStockLevel.Font = new Font("Segoe UI", 14F);
+			nUDStockLevel.Location = new Point(373, 270);
+			nUDStockLevel.Name = "nUDStockLevel";
+			nUDStockLevel.Size = new Size(220, 32);
+			nUDStockLevel.TabIndex = 26;
 			// 
 			// lblAmountTo
 			// 
@@ -158,15 +170,6 @@
 			lblError.Text = "Error message goes here";
 			lblError.TextAlign = ContentAlignment.MiddleCenter;
 			lblError.Visible = false;
-			// 
-			// txtBoxAmountOfStockToChange
-			// 
-			txtBoxAmountOfStockToChange.Anchor = AnchorStyles.None;
-			txtBoxAmountOfStockToChange.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			txtBoxAmountOfStockToChange.Location = new Point(373, 270);
-			txtBoxAmountOfStockToChange.Name = "txtBoxAmountOfStockToChange";
-			txtBoxAmountOfStockToChange.Size = new Size(220, 32);
-			txtBoxAmountOfStockToChange.TabIndex = 0;
 			// 
 			// btnTakeOutStockConfirm
 			// 
@@ -478,6 +481,7 @@
 			lstViewStock.Name = "lstViewStock";
 			lstViewStock.Size = new Size(892, 522);
 			lstViewStock.TabIndex = 13;
+			toolTipEditStockLevels.SetToolTip(lstViewStock, "Select stock to manage its level and info");
 			lstViewStock.UseCompatibleStateImageBehavior = false;
 			lstViewStock.View = View.Details;
 			lstViewStock.ItemSelectionChanged += lstViewStock_ItemSelectionChanged;
@@ -534,6 +538,7 @@
 			btnEditStock.Size = new Size(220, 50);
 			btnEditStock.TabIndex = 2;
 			btnEditStock.Text = "Edit Stock Item";
+			toolTipEditStockLevels.SetToolTip(btnEditStock, "Edit stock item info");
 			btnEditStock.UseVisualStyleBackColor = false;
 			btnEditStock.Click += btnEditStock_Click;
 			// 
@@ -561,6 +566,7 @@
 			btnTakeOutStock.Size = new Size(220, 50);
 			btnTakeOutStock.TabIndex = 0;
 			btnTakeOutStock.Text = "Take Out Stock";
+			toolTipEditStockLevels.SetToolTip(btnTakeOutStock, "Take Out Stock");
 			btnTakeOutStock.UseVisualStyleBackColor = false;
 			btnTakeOutStock.Click += btnTakeOutStock_Click;
 			// 
@@ -577,6 +583,7 @@
 			btnReturnStock.Size = new Size(220, 50);
 			btnReturnStock.TabIndex = 1;
 			btnReturnStock.Text = "Return Stock";
+			toolTipEditStockLevels.SetToolTip(btnReturnStock, "Return Stock");
 			btnReturnStock.UseVisualStyleBackColor = false;
 			btnReturnStock.Click += btnReturnStock_Click;
 			// 
@@ -595,10 +602,11 @@
 			Margin = new Padding(3, 2, 3, 2);
 			MaximizeBox = false;
 			Name = "frmEditStockLevels";
-			Text = "ViewStock";
+			Text = "View / Edit Stock";
 			Resize += frmEditStockLevels_Resize;
 			pnlEditStockLevels.ResumeLayout(false);
 			pnlEditStockLevels.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)nUDStockLevel).EndInit();
 			pnlEditStockItem.ResumeLayout(false);
 			pnlEditStockItem.PerformLayout();
 			pnlStockList.ResumeLayout(false);
@@ -611,7 +619,6 @@
         private Label lblStockLevelToEdit;
         private Button btnCancel;
         private Label lblError;
-        private TextBox txtBoxAmountOfStockToChange;
         private Button btnTakeOutStockConfirm;
         private Button btnReturnStockConfirm;
         private Label lblCurrentStockLevel;
@@ -648,5 +655,7 @@
 		private Button btnReturnStock;
 		private Label lblAmountTo;
 		private ColumnHeader cHeaderStockStatus;
+		private ToolTip toolTipEditStockLevels;
+		private NumericUpDown nUDStockLevel;
 	}
 }

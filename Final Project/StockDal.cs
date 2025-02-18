@@ -290,7 +290,7 @@ namespace Final_Project
 			string sqlQuery =
 				"SELECT COUNT(StockId) AS NumberOfLowStockItems " +
 				"FROM Stock " +
-				"WHERE StockLevel < MinimumLevel";
+				"WHERE StockLevel < MinimumLevel AND Active = 1";
 
 			using (SqlConnection connection = new SqlConnection(_connectionstring))
 			{

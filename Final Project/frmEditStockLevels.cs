@@ -60,7 +60,9 @@ namespace Final_Project
 
 		private void ShowEditStockLevels()
 		{
-			txtBoxAmountOfStockToChange.Text = "1";
+			nUDStockLevel.Value = 0;
+			lblCurrentStockLevel.Text = $"Current Stock Level: {lookupStock.stockLevel.ToString()}";
+			lblStockLevelToEdit.Text = lookupStock.stockName;
 			pnlStockList.Visible = false;
 			pnlEditStockItem.Visible = false;
 			pnlOptionButtons.Visible = false;
@@ -83,36 +85,27 @@ namespace Final_Project
 		#region TakingAndReturningStock
 		private void btnReturnStock_Click(object sender, EventArgs e)
 		{
-			ShowEditStockLevels();
 			btnTakeOutStockConfirm.Visible = false;
 			btnReturnStockConfirm.Visible = true;
-			lblStockLevelToEdit.Text = lookupStock.stockName;
 			frmMainScreen.frmMain.lblTitle.Text = "Return Stock";
-			lblCurrentStockLevel.Text = $"Current Stock Level: {lookupStock.stockLevel.ToString()}";
+			nUDStockLevel.Maximum = lookupStock.maximumLevel - lookupStock.stockLevel;
+			ShowEditStockLevels();			
 		}
 
 		private void btnTakeOutStock_Click(object sender, EventArgs e)
 		{
-			ShowEditStockLevels();
 			btnReturnStockConfirm.Visible = false;
 			btnTakeOutStockConfirm.Visible = true;
-			lblStockLevelToEdit.Text = lookupStock.stockName;
 			frmMainScreen.frmMain.lblTitle.Text = "Take Out Stock";
-			lblCurrentStockLevel.Text = $"Current Stock Level: {lookupStock.stockLevel.ToString()}";
+			nUDStockLevel.Maximum = lookupStock.stockLevel;
+			ShowEditStockLevels();			
 		}
 
 		private void btnReturnStockConfirm_Click(object sender, EventArgs e)
 		{
 			int amountToAdd = 0;
 			int originalStockLevel = lookupStock.stockLevel;
-			try
-			{
-				amountToAdd = Convert.ToInt32(txtBoxAmountOfStockToChange.Text);
-			}
-			catch (Exception)
-			{
-				ShowErrorStockLevel("That is not a valid number");
-			}
+			amountToAdd = (int)nUDStockLevel.Value;
 			if (lookupStock.stockLevel + amountToAdd <= lookupStock.maximumLevel)
 			{
 				lookupStock.stockLevel += amountToAdd;
@@ -133,15 +126,7 @@ namespace Final_Project
 		{
 			int amountToRemove = 0;
 			int originalStockLevel = lookupStock.stockLevel;
-
-			try
-			{
-				amountToRemove = Convert.ToInt32(txtBoxAmountOfStockToChange.Text);
-			}
-			catch (Exception)
-			{
-				ShowErrorStockLevel("That is not a valid number.");
-			}
+			amountToRemove = (int)nUDStockLevel.Value;
 			if (amountToRemove <= 0)
 			{
 				ShowErrorStockLevel("That is not a valid number.");

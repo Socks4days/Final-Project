@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			components = new System.ComponentModel.Container();
 			pnlAddItemToOrder = new Panel();
 			lblDeliveryTime = new Label();
 			lblWarning = new Label();
@@ -61,10 +62,11 @@
 			pnlOrderInfo = new Panel();
 			lstViewOrderItems = new ListView();
 			cHeaderStockItem = new ColumnHeader();
-			cHeaderUnit = new ColumnHeader();
-			cHeaderUnitPrice = new ColumnHeader();
-			cHeaderNoOfUnits = new ColumnHeader();
-			cHeaderTotalPrice = new ColumnHeader();
+			toolTipCreateOrUpdateOrder = new ToolTip(components);
+			cHeaderQuantity = new ColumnHeader();
+			cHeaderRecommendedQty = new ColumnHeader();
+			cHeaderPricePerUnit = new ColumnHeader();
+			cHeaderTotalPricePerItem = new ColumnHeader();
 			pnlAddItemToOrder.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)nUDQuantity).BeginInit();
 			pnlViewOrderItems.SuspendLayout();
@@ -151,6 +153,7 @@
 			nUDQuantity.Name = "nUDQuantity";
 			nUDQuantity.Size = new Size(176, 32);
 			nUDQuantity.TabIndex = 1;
+			toolTipCreateOrUpdateOrder.SetToolTip(nUDQuantity, "Quantity to add to order");
 			nUDQuantity.Value = new decimal(new int[] { 1, 0, 0, 0 });
 			// 
 			// btnAddToOrder
@@ -166,6 +169,7 @@
 			btnAddToOrder.Size = new Size(220, 50);
 			btnAddToOrder.TabIndex = 2;
 			btnAddToOrder.Text = "Add To Order";
+			toolTipCreateOrUpdateOrder.SetToolTip(btnAddToOrder, "Add item to order");
 			btnAddToOrder.UseVisualStyleBackColor = false;
 			btnAddToOrder.Click += btnAddToOrder_Click;
 			// 
@@ -182,6 +186,7 @@
 			btnCancel.Size = new Size(220, 50);
 			btnCancel.TabIndex = 3;
 			btnCancel.Text = "Cancel";
+			toolTipCreateOrUpdateOrder.SetToolTip(btnCancel, "Go back to order");
 			btnCancel.UseVisualStyleBackColor = false;
 			btnCancel.Click += btnCancel_Click;
 			// 
@@ -218,6 +223,7 @@
 			cBoxStock.Name = "cBoxStock";
 			cBoxStock.Size = new Size(176, 33);
 			cBoxStock.TabIndex = 0;
+			toolTipCreateOrUpdateOrder.SetToolTip(cBoxStock, "Select item to add");
 			cBoxStock.SelectedIndexChanged += cBoxStock_SelectedIndexChanged;
 			// 
 			// lblStockItem
@@ -285,6 +291,7 @@
 			lblFinalOrderTotal.TabIndex = 23;
 			lblFinalOrderTotal.Text = "Order Total:";
 			lblFinalOrderTotal.TextAlign = ContentAlignment.TopCenter;
+			toolTipCreateOrUpdateOrder.SetToolTip(lblFinalOrderTotal, "Total price of order");
 			// 
 			// lblDeliveringTo
 			// 
@@ -297,6 +304,7 @@
 			lblDeliveringTo.TabIndex = 22;
 			lblDeliveringTo.Text = "Order For:";
 			lblDeliveringTo.TextAlign = ContentAlignment.TopCenter;
+			toolTipCreateOrUpdateOrder.SetToolTip(lblDeliveringTo, "Where order will be delivered");
 			// 
 			// btnConfirmAndPlace
 			// 
@@ -311,6 +319,7 @@
 			btnConfirmAndPlace.Size = new Size(220, 50);
 			btnConfirmAndPlace.TabIndex = 0;
 			btnConfirmAndPlace.Text = "Confirm and Place";
+			toolTipCreateOrUpdateOrder.SetToolTip(btnConfirmAndPlace, "Confirm and place order\r\nYou will no longer be able to edit items\r\n");
 			btnConfirmAndPlace.UseVisualStyleBackColor = false;
 			btnConfirmAndPlace.Click += btnConfirmAndPlace_Click;
 			// 
@@ -327,6 +336,7 @@
 			btnReturnToEditScreen.Size = new Size(220, 50);
 			btnReturnToEditScreen.TabIndex = 1;
 			btnReturnToEditScreen.Text = "Cancel";
+			toolTipCreateOrUpdateOrder.SetToolTip(btnReturnToEditScreen, "Go back to edit order");
 			btnReturnToEditScreen.UseVisualStyleBackColor = false;
 			btnReturnToEditScreen.Click += btnReturnToEditScreen_Click;
 			// 
@@ -392,6 +402,7 @@
 			btnPlaceOrder.Size = new Size(220, 50);
 			btnPlaceOrder.TabIndex = 3;
 			btnPlaceOrder.Text = "Place Order";
+			toolTipCreateOrUpdateOrder.SetToolTip(btnPlaceOrder, "Place Order");
 			btnPlaceOrder.UseVisualStyleBackColor = false;
 			btnPlaceOrder.Click += btnPlaceOrder_Click;
 			// 
@@ -421,6 +432,7 @@
 			btnRemoveFromOrder.Size = new Size(220, 50);
 			btnRemoveFromOrder.TabIndex = 1;
 			btnRemoveFromOrder.Text = "Remove From Order";
+			toolTipCreateOrUpdateOrder.SetToolTip(btnRemoveFromOrder, "Remove selected item from order");
 			btnRemoveFromOrder.UseVisualStyleBackColor = false;
 			btnRemoveFromOrder.Click += btnRemoveFromOrder_Click;
 			// 
@@ -437,6 +449,7 @@
 			btnAddAnItemToOrder.Size = new Size(220, 50);
 			btnAddAnItemToOrder.TabIndex = 0;
 			btnAddAnItemToOrder.Text = "Add Item To Order";
+			toolTipCreateOrUpdateOrder.SetToolTip(btnAddAnItemToOrder, "Add an item to order");
 			btnAddAnItemToOrder.UseVisualStyleBackColor = false;
 			btnAddAnItemToOrder.Click += btnAddAnItemToOrder_Click;
 			// 
@@ -452,6 +465,7 @@
 			lblOrderNumberOrder.Size = new Size(152, 25);
 			lblOrderNumberOrder.TabIndex = 18;
 			lblOrderNumberOrder.Text = "Order Number ...";
+			toolTipCreateOrUpdateOrder.SetToolTip(lblOrderNumberOrder, "Current order number");
 			// 
 			// btnSaveAsDraft
 			// 
@@ -466,6 +480,7 @@
 			btnSaveAsDraft.Size = new Size(220, 50);
 			btnSaveAsDraft.TabIndex = 2;
 			btnSaveAsDraft.Text = "Save Order As Draft";
+			toolTipCreateOrUpdateOrder.SetToolTip(btnSaveAsDraft, "Save order as draft");
 			btnSaveAsDraft.UseVisualStyleBackColor = false;
 			btnSaveAsDraft.Click += btnSaveAsDraft_Click;
 			// 
@@ -481,6 +496,7 @@
 			lblOrderStatus.Size = new Size(120, 25);
 			lblOrderStatus.TabIndex = 17;
 			lblOrderStatus.Text = "Order Status:";
+			toolTipCreateOrUpdateOrder.SetToolTip(lblOrderStatus, "Current status of order");
 			// 
 			// lblOrderTotal
 			// 
@@ -494,6 +510,7 @@
 			lblOrderTotal.Size = new Size(110, 25);
 			lblOrderTotal.TabIndex = 16;
 			lblOrderTotal.Text = "Order Total:";
+			toolTipCreateOrUpdateOrder.SetToolTip(lblOrderTotal, "Total price of order");
 			// 
 			// pnlOrderInfo
 			// 
@@ -510,15 +527,16 @@
 			// 
 			lstViewOrderItems.Anchor = AnchorStyles.Top;
 			lstViewOrderItems.BackColor = Color.FromArgb(227, 115, 166);
-			lstViewOrderItems.Columns.AddRange(new ColumnHeader[] { cHeaderStockItem, cHeaderUnit, cHeaderUnitPrice, cHeaderNoOfUnits, cHeaderTotalPrice });
+			lstViewOrderItems.Columns.AddRange(new ColumnHeader[] { cHeaderStockItem, cHeaderQuantity, cHeaderRecommendedQty, cHeaderPricePerUnit, cHeaderTotalPricePerItem });
 			lstViewOrderItems.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			lstViewOrderItems.ForeColor = Color.Black;
 			lstViewOrderItems.FullRowSelect = true;
 			lstViewOrderItems.GridLines = true;
-			lstViewOrderItems.Location = new Point(38, 25);
+			lstViewOrderItems.Location = new Point(52, 25);
 			lstViewOrderItems.Name = "lstViewOrderItems";
 			lstViewOrderItems.Size = new Size(897, 424);
 			lstViewOrderItems.TabIndex = 0;
+			toolTipCreateOrUpdateOrder.SetToolTip(lstViewOrderItems, "Stock on current order");
 			lstViewOrderItems.UseCompatibleStateImageBehavior = false;
 			lstViewOrderItems.View = View.Details;
 			lstViewOrderItems.ItemSelectionChanged += lstViewOrderItems_ItemSelectionChanged;
@@ -528,25 +546,25 @@
 			cHeaderStockItem.Text = "Stock";
 			cHeaderStockItem.Width = 250;
 			// 
-			// cHeaderUnit
+			// cHeaderQuantity
 			// 
-			cHeaderUnit.Text = "Unit Size";
-			cHeaderUnit.Width = 150;
+			cHeaderQuantity.Text = "Quantity";
+			cHeaderQuantity.Width = 150;
 			// 
-			// cHeaderUnitPrice
+			// cHeaderRecommendedQty
 			// 
-			cHeaderUnitPrice.Text = "Unit Price";
-			cHeaderUnitPrice.Width = 150;
+			cHeaderRecommendedQty.Text = "Recommended Qty";
+			cHeaderRecommendedQty.Width = 150;
 			// 
-			// cHeaderNoOfUnits
+			// cHeaderPricePerUnit
 			// 
-			cHeaderNoOfUnits.Text = "No. Units";
-			cHeaderNoOfUnits.Width = 150;
+			cHeaderPricePerUnit.Text = "Unit Price";
+			cHeaderPricePerUnit.Width = 150;
 			// 
-			// cHeaderTotalPrice
+			// cHeaderTotalPricePerItem
 			// 
-			cHeaderTotalPrice.Text = "Total Price";
-			cHeaderTotalPrice.Width = 150;
+			cHeaderTotalPricePerItem.Text = "Total Price";
+			cHeaderTotalPricePerItem.Width = 170;
 			// 
 			// frmCreateOrUpdateOrder
 			// 
@@ -572,7 +590,7 @@
 		}
 
 		#endregion
-        private Panel pnlAddItemToOrder;
+		private Panel pnlAddItemToOrder;
         private Label lblCurrentStockLevel;
         private NumericUpDown nUDQuantity;
         private Button btnAddToOrder;
@@ -583,10 +601,6 @@
         private Panel pnlViewOrderItems;
         private ListView lstViewOrderItems;
         private ColumnHeader cHeaderStockItem;
-        private ColumnHeader cHeaderUnit;
-        private ColumnHeader cHeaderUnitPrice;
-        private ColumnHeader cHeaderNoOfUnits;
-        private ColumnHeader cHeaderTotalPrice;
         private Panel pnlOrderInfo;
         private Button btnSaveAsDraft;
         private Button btnRemoveFromOrder;
@@ -609,5 +623,10 @@
 		private Label lblDeliveryTime;
 		private Button btnCancelOrder;
 		private Button btnReturn;
+		private ToolTip toolTipCreateOrUpdateOrder;
+		private ColumnHeader cHeaderQuantity;
+		private ColumnHeader cHeaderRecommendedQty;
+		private ColumnHeader cHeaderPricePerUnit;
+		private ColumnHeader cHeaderTotalPricePerItem;
 	}
 }

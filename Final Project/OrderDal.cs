@@ -305,5 +305,42 @@ namespace Final_Project
                 return orderItem;
             }
         }
+
+		public static List<OrderItemsDeliveredView> GetOrderItemDiscrepancies()
+		{
+			using (SqlConnection connection = new SqlConnection(_connectionstring))
+			{
+				List<OrderItemsDeliveredView> orderItemsDelivered = new List<OrderItemsDeliveredView>();
+
+				connection.Open();
+
+				string sqlQuery = "SELECT * " +
+					"FROM OrderItemsDeliveredView " +
+					"WHERE (QuantityDelivered - QuantityFaulty) < OrderItemQuantity " +
+					"ORDER BY OrderNumber DESC";
+
+				SqlCommand getAllOrderItemsDeliveredCommand = new SqlCommand(sqlQuery, connection);
+
+				SqlDataReader sqlDataReader = getAllOrderItemsDeliveredCommand.ExecuteReader();
+
+				while (sqlDataReader.Read())
+				{
+					OrderItemsDeliveredView orderItemDelivered = new OrderItemsDeliveredView(
+						(int)sqlDataReader["OrderNumber"],
+						(int)sqlDataReader["StockId"],
+						(string)sqlDataReader["StockName"],
+						(int)sqlDataReader["OrderItemQuantity"],
+						(DateTime)sqlDataReader["DeliveryDate"],
+						(int)sqlDataReader["QuantityDelivered"],
+						(int)sqlDataReader["QuantityFaulty"]
+						);
+
+					orderItemsDelivered.Add(orderItemDelivered);
+				}
+
+				connection.Close();
+				return orderItemsDelivered;
+			}
+		}
 	}
 }

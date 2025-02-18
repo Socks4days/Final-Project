@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			components = new System.ComponentModel.Container();
 			pnlOrders = new Panel();
 			btnDeliveryDiscrepanciesReport = new Button();
 			lblOrderError = new Label();
@@ -68,6 +69,7 @@
 			nUDQuantityFaulty = new NumericUpDown();
 			lblSelectedItem = new Label();
 			lblSelectedItemQuantity = new Label();
+			toolTipDeliveries = new ToolTip(components);
 			pnlOrders.SuspendLayout();
 			pnlDelivery.SuspendLayout();
 			pnlDeliveryDetails.SuspendLayout();
@@ -104,6 +106,7 @@
 			btnDeliveryDiscrepanciesReport.Size = new Size(220, 50);
 			btnDeliveryDiscrepanciesReport.TabIndex = 27;
 			btnDeliveryDiscrepanciesReport.Text = "Discrepancy Report";
+			toolTipDeliveries.SetToolTip(btnDeliveryDiscrepanciesReport, "View report featuring delivery discrepancies");
 			btnDeliveryDiscrepanciesReport.UseVisualStyleBackColor = false;
 			btnDeliveryDiscrepanciesReport.Click += btnDeliveryDiscrepanciesReport_Click;
 			// 
@@ -135,6 +138,7 @@
 			btnViewOrRecordDelivery.Size = new Size(220, 50);
 			btnViewOrRecordDelivery.TabIndex = 0;
 			btnViewOrRecordDelivery.Text = "View / Record Delivery";
+			toolTipDeliveries.SetToolTip(btnViewOrRecordDelivery, "View or record a delivery for the selected order");
 			btnViewOrRecordDelivery.UseVisualStyleBackColor = false;
 			btnViewOrRecordDelivery.Click += btnRecordDelivery_Click;
 			// 
@@ -152,6 +156,7 @@
 			lstViewOrders.Name = "lstViewOrders";
 			lstViewOrders.Size = new Size(875, 468);
 			lstViewOrders.TabIndex = 0;
+			toolTipDeliveries.SetToolTip(lstViewOrders, "All orders that are due a delivery");
 			lstViewOrders.UseCompatibleStateImageBehavior = false;
 			lstViewOrders.View = View.Details;
 			lstViewOrders.ItemSelectionChanged += lstViewOrders_ItemSelectionChanged;
@@ -224,6 +229,7 @@
 			btnRecordDeliveryForOrder.Size = new Size(220, 50);
 			btnRecordDeliveryForOrder.TabIndex = 0;
 			btnRecordDeliveryForOrder.Text = "Record Delivery";
+			toolTipDeliveries.SetToolTip(btnRecordDeliveryForOrder, "Record a delivery");
 			btnRecordDeliveryForOrder.UseVisualStyleBackColor = false;
 			btnRecordDeliveryForOrder.Click += btnRecordDeliveryForOrder_Click;
 			// 
@@ -241,6 +247,7 @@
 			btnMarkOrderAsCompleted.Size = new Size(220, 50);
 			btnMarkOrderAsCompleted.TabIndex = 1;
 			btnMarkOrderAsCompleted.Text = "Order Completed";
+			toolTipDeliveries.SetToolTip(btnMarkOrderAsCompleted, "Mark the order as fully completed");
 			btnMarkOrderAsCompleted.UseVisualStyleBackColor = false;
 			btnMarkOrderAsCompleted.Click += btnMarkOrderAsCompleted_Click;
 			// 
@@ -363,6 +370,7 @@
 			btnMarkDeliveryAsCompleted.Size = new Size(220, 50);
 			btnMarkDeliveryAsCompleted.TabIndex = 1;
 			btnMarkDeliveryAsCompleted.Text = "Delivery Completed";
+			toolTipDeliveries.SetToolTip(btnMarkDeliveryAsCompleted, "Mark the current delivery as completed");
 			btnMarkDeliveryAsCompleted.UseVisualStyleBackColor = false;
 			btnMarkDeliveryAsCompleted.Click += btnMarkDeliveryAsCompleted_Click;
 			// 
@@ -380,6 +388,7 @@
 			btnAddItem.Size = new Size(220, 50);
 			btnAddItem.TabIndex = 0;
 			btnAddItem.Text = "Add Item";
+			toolTipDeliveries.SetToolTip(btnAddItem, "Add the selected item to the delivery");
 			btnAddItem.UseVisualStyleBackColor = false;
 			btnAddItem.Click += btnAddItem_Click;
 			// 
@@ -408,6 +417,7 @@
 			lstViewDeliveryItems.Name = "lstViewDeliveryItems";
 			lstViewDeliveryItems.Size = new Size(731, 177);
 			lstViewDeliveryItems.TabIndex = 29;
+			toolTipDeliveries.SetToolTip(lstViewDeliveryItems, "All current items added to current delivery");
 			lstViewDeliveryItems.UseCompatibleStateImageBehavior = false;
 			lstViewDeliveryItems.View = View.Details;
 			// 
@@ -455,6 +465,7 @@
 			btnAddItemToDelivery.Size = new Size(220, 50);
 			btnAddItemToDelivery.TabIndex = 0;
 			btnAddItemToDelivery.Text = "Add Item To Delivery";
+			toolTipDeliveries.SetToolTip(btnAddItemToDelivery, "Add item to delivery with selected information");
 			btnAddItemToDelivery.UseVisualStyleBackColor = false;
 			btnAddItemToDelivery.Click += btnAddItemToDelivery_Click;
 			// 
@@ -493,6 +504,7 @@
 			nUDQuantityDelivered.Name = "nUDQuantityDelivered";
 			nUDQuantityDelivered.Size = new Size(176, 32);
 			nUDQuantityDelivered.TabIndex = 26;
+			toolTipDeliveries.SetToolTip(nUDQuantityDelivered, "How many items were delivered");
 			nUDQuantityDelivered.Value = new decimal(new int[] { 1, 0, 0, 0 });
 			// 
 			// nUDQuantityFaulty
@@ -503,6 +515,7 @@
 			nUDQuantityFaulty.Name = "nUDQuantityFaulty";
 			nUDQuantityFaulty.Size = new Size(176, 32);
 			nUDQuantityFaulty.TabIndex = 25;
+			toolTipDeliveries.SetToolTip(nUDQuantityFaulty, "How many items were faulty");
 			// 
 			// lblSelectedItem
 			// 
@@ -535,7 +548,7 @@
 			AutoScroll = true;
 			AutoSize = true;
 			BackColor = Color.FromArgb(200, 200, 200);
-			ClientSize = new Size(984, 711);
+			ClientSize = new Size(984, 680);
 			Controls.Add(pnlItemToAddToDelivery);
 			Controls.Add(pnlDelivery);
 			Controls.Add(pnlOrders);
@@ -596,5 +609,6 @@
 		private ColumnHeader cHeaderExpected;
 		private ColumnHeader cHeaderLatestDelivery;
 		private Button btnDeliveryDiscrepanciesReport;
+		private ToolTip toolTipDeliveries;
 	}
 }

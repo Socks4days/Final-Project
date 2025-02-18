@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainScreen));
 			pnlSideBar = new Panel();
 			pnlStaff = new Panel();
@@ -65,6 +66,7 @@
 			lblNumberLowStockItems = new Label();
 			btnLowStockReport = new Button();
 			pctBoxLogo = new PictureBox();
+			toolTipMainMenu = new ToolTip(components);
 			pnlSideBar.SuspendLayout();
 			pnlStaff.SuspendLayout();
 			pnlAudits.SuspendLayout();
@@ -127,6 +129,7 @@
 			btnManageStaff.TabIndex = 15;
 			btnManageStaff.Text = "Manage Staff";
 			btnManageStaff.TextAlign = ContentAlignment.MiddleLeft;
+			toolTipMainMenu.SetToolTip(btnManageStaff, "Manage Company Staff");
 			btnManageStaff.UseVisualStyleBackColor = false;
 			btnManageStaff.Click += btnManageStaff_Click;
 			// 
@@ -165,6 +168,7 @@
 			btnLogout.TabIndex = 15;
 			btnLogout.Text = "Logout";
 			btnLogout.TextAlign = ContentAlignment.MiddleLeft;
+			toolTipMainMenu.SetToolTip(btnLogout, "Logout of system");
 			btnLogout.UseVisualStyleBackColor = false;
 			btnLogout.Click += btnLogout_Click;
 			// 
@@ -195,6 +199,7 @@
 			btnAuditHistory.TabIndex = 14;
 			btnAuditHistory.Text = "Audit History";
 			btnAuditHistory.TextAlign = ContentAlignment.MiddleLeft;
+			toolTipMainMenu.SetToolTip(btnAuditHistory, "View All Previous Audits");
 			btnAuditHistory.UseVisualStyleBackColor = false;
 			btnAuditHistory.Click += btnAuditHistory_Click;
 			// 
@@ -215,6 +220,7 @@
 			btnCreateAudit.TabIndex = 13;
 			btnCreateAudit.Text = "Create Audit";
 			btnCreateAudit.TextAlign = ContentAlignment.MiddleLeft;
+			toolTipMainMenu.SetToolTip(btnCreateAudit, "Create Audit");
 			btnCreateAudit.UseVisualStyleBackColor = false;
 			btnCreateAudit.Click += btnCreateAudit_Click;
 			// 
@@ -265,6 +271,7 @@
 			btnViewDeliveries.TabIndex = 0;
 			btnViewDeliveries.Text = "View Deliveries";
 			btnViewDeliveries.TextAlign = ContentAlignment.MiddleLeft;
+			toolTipMainMenu.SetToolTip(btnViewDeliveries, "View Deliveries");
 			btnViewDeliveries.UseVisualStyleBackColor = false;
 			btnViewDeliveries.Click += btnViewDeliveries_Click;
 			// 
@@ -315,6 +322,7 @@
 			btnViewOrders.TabIndex = 1;
 			btnViewOrders.Text = "View Orders";
 			btnViewOrders.TextAlign = ContentAlignment.MiddleLeft;
+			toolTipMainMenu.SetToolTip(btnViewOrders, "View All Orders");
 			btnViewOrders.UseVisualStyleBackColor = false;
 			btnViewOrders.Click += btnViewOrders_Click;
 			// 
@@ -335,6 +343,7 @@
 			btnOrderStock.TabIndex = 0;
 			btnOrderStock.Text = "Order Stock";
 			btnOrderStock.TextAlign = ContentAlignment.MiddleLeft;
+			toolTipMainMenu.SetToolTip(btnOrderStock, "Order Stock");
 			btnOrderStock.UseVisualStyleBackColor = false;
 			btnOrderStock.Click += btnOrderStock_Click;
 			// 
@@ -386,6 +395,7 @@
 			btnRetireStockItem.TabIndex = 2;
 			btnRetireStockItem.Text = "Retire Stock Item";
 			btnRetireStockItem.TextAlign = ContentAlignment.MiddleLeft;
+			toolTipMainMenu.SetToolTip(btnRetireStockItem, "Retire Stock Item");
 			btnRetireStockItem.UseVisualStyleBackColor = false;
 			btnRetireStockItem.Click += btnRetireStockItem_Click;
 			// 
@@ -406,6 +416,7 @@
 			btnNewStockItem.TabIndex = 1;
 			btnNewStockItem.Text = "New Stock Item";
 			btnNewStockItem.TextAlign = ContentAlignment.MiddleLeft;
+			toolTipMainMenu.SetToolTip(btnNewStockItem, "Add New Stock Item");
 			btnNewStockItem.UseVisualStyleBackColor = false;
 			btnNewStockItem.Click += btnNewStockItem_Click;
 			// 
@@ -426,6 +437,7 @@
 			btnManageStockLevels.TabIndex = 0;
 			btnManageStockLevels.Text = "Manage Stock";
 			btnManageStockLevels.TextAlign = ContentAlignment.MiddleLeft;
+			toolTipMainMenu.SetToolTip(btnManageStockLevels, "Manage all stock levels and items");
 			btnManageStockLevels.UseVisualStyleBackColor = false;
 			btnManageStockLevels.Click += btnManageStockLevels_Click;
 			// 
@@ -468,6 +480,7 @@
 			pctBoxSmallLogo.SizeMode = PictureBoxSizeMode.Zoom;
 			pctBoxSmallLogo.TabIndex = 2;
 			pctBoxSmallLogo.TabStop = false;
+			toolTipMainMenu.SetToolTip(pctBoxSmallLogo, "Main Menu");
 			pctBoxSmallLogo.Click += pctBoxSmallLogo_Click;
 			// 
 			// pnlTitleBar
@@ -516,6 +529,7 @@
 			// 
 			// lblDeliveries
 			// 
+			lblDeliveries.Anchor = AnchorStyles.None;
 			lblDeliveries.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			lblDeliveries.Location = new Point(167, 280);
 			lblDeliveries.Name = "lblDeliveries";
@@ -526,6 +540,7 @@
 			// 
 			// lblNumberDeliveryDiscrepancies
 			// 
+			lblNumberDeliveryDiscrepancies.Anchor = AnchorStyles.None;
 			lblNumberDeliveryDiscrepancies.BackColor = Color.Red;
 			lblNumberDeliveryDiscrepancies.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
 			lblNumberDeliveryDiscrepancies.ForeColor = Color.White;
@@ -535,6 +550,7 @@
 			lblNumberDeliveryDiscrepancies.TabIndex = 10;
 			lblNumberDeliveryDiscrepancies.Text = "99";
 			lblNumberDeliveryDiscrepancies.TextAlign = ContentAlignment.MiddleCenter;
+			toolTipMainMenu.SetToolTip(lblNumberDeliveryDiscrepancies, "Number of unchecked deliveries");
 			// 
 			// btnDeliveryDiscrepancies
 			// 
@@ -549,11 +565,13 @@
 			btnDeliveryDiscrepancies.Size = new Size(220, 50);
 			btnDeliveryDiscrepancies.TabIndex = 9;
 			btnDeliveryDiscrepancies.Text = "Delivery Discrepancies";
+			toolTipMainMenu.SetToolTip(btnDeliveryDiscrepancies, "Delivery Discrepancy Report");
 			btnDeliveryDiscrepancies.UseVisualStyleBackColor = false;
 			btnDeliveryDiscrepancies.Click += btnDeliveryDiscrepancies_Click;
 			// 
 			// lblAudits
 			// 
+			lblAudits.Anchor = AnchorStyles.None;
 			lblAudits.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			lblAudits.Location = new Point(679, 280);
 			lblAudits.Name = "lblAudits";
@@ -564,6 +582,7 @@
 			// 
 			// lblNumberOverdueAudits
 			// 
+			lblNumberOverdueAudits.Anchor = AnchorStyles.None;
 			lblNumberOverdueAudits.BackColor = Color.Red;
 			lblNumberOverdueAudits.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
 			lblNumberOverdueAudits.ForeColor = Color.White;
@@ -573,6 +592,7 @@
 			lblNumberOverdueAudits.TabIndex = 7;
 			lblNumberOverdueAudits.Text = "99";
 			lblNumberOverdueAudits.TextAlign = ContentAlignment.MiddleCenter;
+			toolTipMainMenu.SetToolTip(lblNumberOverdueAudits, "Number of overdue audits");
 			// 
 			// btnOverdueAudits
 			// 
@@ -587,11 +607,13 @@
 			btnOverdueAudits.Size = new Size(220, 50);
 			btnOverdueAudits.TabIndex = 6;
 			btnOverdueAudits.Text = "Overdue Audits";
+			toolTipMainMenu.SetToolTip(btnOverdueAudits, "Overdue Audits Report");
 			btnOverdueAudits.UseVisualStyleBackColor = false;
 			btnOverdueAudits.Click += btnOverdueAudits_Click;
 			// 
 			// lblLowStock
 			// 
+			lblLowStock.Anchor = AnchorStyles.None;
 			lblLowStock.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			lblLowStock.Location = new Point(424, 280);
 			lblLowStock.Name = "lblLowStock";
@@ -602,6 +624,7 @@
 			// 
 			// lblNumberLowStockItems
 			// 
+			lblNumberLowStockItems.Anchor = AnchorStyles.None;
 			lblNumberLowStockItems.BackColor = Color.Red;
 			lblNumberLowStockItems.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
 			lblNumberLowStockItems.ForeColor = Color.White;
@@ -611,6 +634,7 @@
 			lblNumberLowStockItems.TabIndex = 4;
 			lblNumberLowStockItems.Text = "99";
 			lblNumberLowStockItems.TextAlign = ContentAlignment.MiddleCenter;
+			toolTipMainMenu.SetToolTip(lblNumberLowStockItems, "Number of low stock levels");
 			// 
 			// btnLowStockReport
 			// 
@@ -625,6 +649,7 @@
 			btnLowStockReport.Size = new Size(220, 50);
 			btnLowStockReport.TabIndex = 3;
 			btnLowStockReport.Text = "Low Stock Report";
+			toolTipMainMenu.SetToolTip(btnLowStockReport, "Low Stock Report");
 			btnLowStockReport.UseVisualStyleBackColor = false;
 			btnLowStockReport.Click += btnLowStockReport_Click;
 			// 
@@ -638,6 +663,11 @@
 			pctBoxLogo.SizeMode = PictureBoxSizeMode.Zoom;
 			pctBoxLogo.TabIndex = 1;
 			pctBoxLogo.TabStop = false;
+			// 
+			// toolTipMainMenu
+			// 
+			toolTipMainMenu.UseAnimation = false;
+			toolTipMainMenu.UseFading = false;
 			// 
 			// frmMainScreen
 			// 
@@ -707,5 +737,6 @@
 		private Label lblAudits;
 		private Label lblNumberOverdueAudits;
 		private Button btnOverdueAudits;
+		private ToolTip toolTipMainMenu;
 	}
 }
