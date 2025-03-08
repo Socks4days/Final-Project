@@ -20,16 +20,9 @@ namespace Final_Project
 			frmMainScreen.frmMain = this;
 			OpenChildForm(new frmLoginScreen(), null!);
 			HideSubMenus();
-			SetLogo();
 		}
 
 		#region LogoHandling
-
-		private void SetLogo()
-		{
-			pctBoxLogo.ImageLocation = @"C:\Users\andre\OneDrive\Desktop\A2 SSD\Tasks\Final Project\Icons\Movers Logo Black.png";
-			pctBoxSmallLogo.ImageLocation = @"C:\Users\andre\OneDrive\Desktop\A2 SSD\Tasks\Final Project\Icons\Movers Logo White.png";
-		}
 
 		private void pctBoxSmallLogo_Click(object sender, EventArgs e)
 		{

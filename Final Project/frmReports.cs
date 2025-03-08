@@ -161,36 +161,6 @@ namespace Final_Project
 			Staff loggedInStaff = frmLoginScreen.loggedInStaff;
 			List<OrderItemsDeliveredView> discrepancies = OrderDal.GetOrderItemDiscrepancies();
 
-			/*List<Order> orders = OrderDal.GetAllOrders("ASC");
-			List<Order> partialOrders = new List<Order>();
-
-			foreach (Order order in orders)
-			{
-				if (order.orderStatus == "Part Filled")
-				{
-					partialOrders.Add(order);
-				}
-			}
-
-			List<OrderItemsDeliveredView> orderItemsDeliveredWithDiscrepancy = new List<OrderItemsDeliveredView>();
-			List<OrderItemsDeliveredView> allOrderItems = new List<OrderItemsDeliveredView>();
-
-			foreach (Order order in partialOrders)
-			{
-				foreach (OrderItemsDeliveredView item in DeliveryDal.GetOrderItemsDeliveredView(order.orderNumber))
-				{
-					allOrderItems.Add(item);
-				}
-			}
-
-			foreach (OrderItemsDeliveredView orderItem in allOrderItems)
-			{
-				if (orderItem.quantityDelivered < orderItem.orderItemQuantity || orderItem.quantityFaulty > 0)
-				{
-					orderItemsDeliveredWithDiscrepancy.Add(orderItem);
-				}
-			}*/
-
 			// Set report header/footer
 			reportHeaderLine = $"Created On: {DateTime.Now}   Created By: {loggedInStaff.forename} {loggedInStaff.surname}";
 			reportFooterLine = "";
@@ -247,6 +217,7 @@ namespace Final_Project
 			int pageHeight = e.MarginBounds.Height;
 
 			// Define area for title, header line, table
+			Rectangle departmentNameArea = new Rectangle(leftMargin, topMargin - 30, pageWidth, 30);
 			Rectangle titleArea = new Rectangle(leftMargin, topMargin, pageWidth, 40);
 			Rectangle headerLineArea = new Rectangle(leftMargin, topMargin + 40, pageWidth, 60);
 			Rectangle footerArea = new Rectangle(leftMargin, topMargin + pageHeight - 60, pageWidth, 60);
@@ -264,6 +235,17 @@ namespace Final_Project
 
 			// Draw rectangle at margins of page (used for testing)
 			// e.Graphics.DrawRectangle(blackPen, e.MarginBounds);
+
+			// Add logo in top left of page
+			Bitmap logoImage = new Bitmap(Resources.Movers_Logo_Black);
+			int logoWidth = logoImage.Width;
+			int logoHeight = logoImage.Height;
+			int scaledLogoWidth = 100;
+			int scaledLogoHeight = (int) (logoHeight * scaledLogoWidth / logoWidth);
+			e.Graphics!.DrawImage(logoImage, leftMargin - (scaledLogoWidth/2), departmentNameArea.Top, scaledLogoWidth, scaledLogoHeight);
+
+			// Add department name
+			e.Graphics!.DrawString("Movers Maintenance Dept", labelFont, textBrush, departmentNameArea, centreTopText);
 
 			// Show title centred at top
 			e.Graphics!.DrawString(reportName, titleFont, textBrush, titleArea, centreTopText);

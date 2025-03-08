@@ -473,6 +473,7 @@
 			// pctBoxSmallLogo
 			// 
 			pctBoxSmallLogo.Dock = DockStyle.Fill;
+			pctBoxSmallLogo.Image = Resources.Movers_Logo_White;
 			pctBoxSmallLogo.Location = new Point(0, 0);
 			pctBoxSmallLogo.Margin = new Padding(2);
 			pctBoxSmallLogo.Name = "pctBoxSmallLogo";
@@ -656,6 +657,7 @@
 			// pctBoxLogo
 			// 
 			pctBoxLogo.Anchor = AnchorStyles.None;
+			pctBoxLogo.Image = Resources.Movers_Logo_Black;
 			pctBoxLogo.Location = new Point(266, 70);
 			pctBoxLogo.Margin = new Padding(2);
 			pctBoxLogo.Name = "pctBoxLogo";
