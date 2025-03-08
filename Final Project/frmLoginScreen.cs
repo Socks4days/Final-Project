@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Final_Project.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Final_Project
 {
-    public partial class frmLoginScreen : Form
+	public partial class frmLoginScreen : Form
     {
         public frmLoginScreen()
         {

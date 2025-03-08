@@ -3,10 +3,11 @@ using System.Configuration;
 using static System.ComponentModel.Design.ObjectSelectorEditor;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using Final_Project.Models;
 
 namespace Final_Project
 {
-    public class DeliveryDal
+	public class DeliveryDal
     {
         private static string workingDirectoryPath = AppDomain.CurrentDomain.BaseDirectory;
         private static string projectDirectoryPath = Directory.GetParent(workingDirectoryPath)!.Parent!.Parent!.Parent!.FullName!;

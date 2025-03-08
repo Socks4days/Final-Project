@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace Final_Project
+namespace Final_Project.Models
 {
 	public class Audit
 	{

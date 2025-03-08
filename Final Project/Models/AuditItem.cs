@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Final_Project
+namespace Final_Project.Models
 {
 	public class AuditItem
 	{
-		public int auditId {  get; set; }
-		public int stockId {  get; set; }
+		public int auditId { get; set; }
+		public int stockId { get; set; }
 		public int predictedAmount { get; set; }
 		public int actualAmount { get; set; }
 

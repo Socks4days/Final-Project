@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Final_Project.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Final_Project
 {
-    public class OrderItemsDeliveredView: OrderItem
+	public class OrderItemsDeliveredView: OrderItem
     {
         #region Properties
         public DateTime? deliveryDate { get; set; }

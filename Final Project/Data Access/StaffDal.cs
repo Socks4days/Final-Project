@@ -9,7 +9,7 @@ using Final_Project.Models;
 
 namespace Final_Project
 {
-    public class StaffDal
+	public class StaffDal
     {
         private static string workingDirectoryPath = AppDomain.CurrentDomain.BaseDirectory;
         private static string projectDirectoryPath = Directory.GetParent(workingDirectoryPath).Parent.Parent.Parent.FullName;
