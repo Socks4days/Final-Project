@@ -219,7 +219,7 @@ namespace Final_Project
 		{
 			// set status to a draft and close the form
 			order.orderStatus = "Draft";
-			OrderDal.UpdateOrderStatus(order);
+			int rowsAffected = OrderDal.UpdateOrderStatus(order);
 			frmMainScreen.frmMain.OpenChildForm(new frmViewOrders(), frmMainScreen.frmMain.btnViewOrders);
 		}
 
@@ -266,7 +266,7 @@ namespace Final_Project
 				orderNumber = this.order.orderNumber
 			};
 			// add new order item to the order
-			OrderDal.AddOrderItem(newOrderItem);
+			int rowsAffected = OrderDal.AddOrderItem(newOrderItem);
 			cBoxStock.DataSource = null;
 			allStockNames.Remove(stockToAdd.stockName);
 			cBoxStock.DataSource = allStockNames;
@@ -297,8 +297,9 @@ namespace Final_Project
 			order.orderStatus = "Placed";
 			order.orderPlacedByStaffId = frmLoginScreen.loggedInStaff.staffId;
 			lblOrderStatus.Text = $"Order Status: {order.orderStatus}";
-			OrderDal.UpdateOrderStatus(order);
-			OrderDal.SetOrderPlacedBy(order);
+			int rowsAffected;
+			rowsAffected = OrderDal.UpdateOrderStatus(order);
+			rowsAffected = OrderDal.SetOrderPlacedBy(order);
 			frmMainScreen.frmMain.OpenChildForm(new frmViewOrders(), frmMainScreen.frmMain.btnViewOrders);
 		}
 
@@ -322,7 +323,7 @@ namespace Final_Project
 		private void btnCancelOrder_Click(object sender, EventArgs e)
 		{
 			order.orderStatus = "Cancelled";
-			OrderDal.UpdateOrderStatus(order);
+			int rowsAffected = OrderDal.UpdateOrderStatus(order);
 			frmMainScreen.frmMain.OpenChildForm(new frmViewOrders(), frmMainScreen.frmMain.btnViewOrders);
 		}
 

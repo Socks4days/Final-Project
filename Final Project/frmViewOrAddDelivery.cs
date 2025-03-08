@@ -167,7 +167,7 @@ namespace Final_Project
 			{
 				// Order status has changed so update it
 				orderToAddDelivery.orderStatus = newOrderStatus;
-				OrderDal.UpdateOrderStatus(orderToAddDelivery);
+				int rowsAffected = OrderDal.UpdateOrderStatus(orderToAddDelivery);
 			}
 		}
 
@@ -411,7 +411,7 @@ namespace Final_Project
 			if (orderToAddDelivery.orderStatus == Order.Fulfilled)
 			{
 				orderToAddDelivery.orderStatus = Order.Completed;
-				OrderDal.UpdateOrderStatus(orderToAddDelivery);
+				int rowsAffected = OrderDal.UpdateOrderStatus(orderToAddDelivery);
 				ShowOrders();
 			}
 			else
