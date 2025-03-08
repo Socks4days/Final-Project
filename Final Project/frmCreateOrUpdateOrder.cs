@@ -190,26 +190,29 @@ namespace Final_Project
 		// method to remove an item from an order
 		private void btnRemoveFromOrder_Click(object sender, EventArgs e)
 		{
-			// create new instance of an order item
-			OrderItem item = new OrderItem();
-			// give values to order item
-			item.stockId = frmEditStockLevels.lookupStock.stockId;
-			item.orderNumber = order.orderNumber;
-			// remove item from order
-			OrderDal.RemoveOrderItem(item);
-			// update list view to show change
-			UpdateOrderItemListView();
-			cBoxStock.DataSource = null;
-			allStockNames.Clear();
-			foreach (Stock stock in allStock)
-				allStockNames.Add(stock.stockName);
-			sortedOrderItemList = OrderDal.GetAllOrderItems(this.order.orderNumber);
-			foreach (OrderItem orderItem in sortedOrderItemList) 
-				allStockNames.Remove(orderItem.stockName);
-			cBoxStock.DataSource = allStockNames;
-			cBoxStock.Text = "";
-			cBoxStock.SelectedIndex = -1;
-			nUDQuantity.Value = 1;
+			if(lstViewOrderItems.SelectedItems.Count > 0)
+			{
+				// create new instance of an order item
+				OrderItem item = new OrderItem();
+				// give values to order item
+				item.stockId = frmEditStockLevels.lookupStock.stockId;
+				item.orderNumber = order.orderNumber;
+				// remove item from order
+				OrderDal.RemoveOrderItem(item);
+				// update list view to show change
+				UpdateOrderItemListView();
+				cBoxStock.DataSource = null;
+				allStockNames.Clear();
+				foreach (Stock stock in allStock)
+					allStockNames.Add(stock.stockName);
+				sortedOrderItemList = OrderDal.GetAllOrderItems(this.order.orderNumber);
+				foreach (OrderItem orderItem in sortedOrderItemList)
+					allStockNames.Remove(orderItem.stockName);
+				cBoxStock.DataSource = allStockNames;
+				cBoxStock.Text = "";
+				cBoxStock.SelectedIndex = -1;
+				nUDQuantity.Value = 1;
+			}			
 		}
 
 		private void btnSaveAsDraft_Click(object sender, EventArgs e)

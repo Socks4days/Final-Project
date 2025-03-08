@@ -217,6 +217,7 @@ namespace Final_Project
 			pnlAuditInfo.Visible = false;
 			pnlAuditHistoryDetails.Visible = false;
 			btnViewAuditDetails.Enabled = false;
+			pnlAuditHistory.Dock = DockStyle.Fill;
 			UpdateAuditHistory();
 		}
 
@@ -226,6 +227,8 @@ namespace Final_Project
 			pnlCreateAudit.Visible = false;
 			pnlAuditInfo.Visible = false;
 			pnlAuditHistory.Visible = false;
+			pnlAuditHistoryDetails.Dock = DockStyle.Fill;
+			lstViewAuditHistoryDetails.Height = (pnlAuditHistoryDetails.Height - 130);
 			UpdateAuditHistoryDetails();
 		}
 
@@ -246,7 +249,7 @@ namespace Final_Project
 
 			Stock stock = StockDal.GetStockByStockId(stockToAudit.stockId);
 			stock.stockLevel = actualAmount;
-			StockDal.UpdateStockInformation(stock);
+			StockDal.UpdateStockLevel(stock);
 
 			foreach (ListViewItem stockItem in lstViewAllStock.Items)
 			{
@@ -294,7 +297,8 @@ namespace Final_Project
 
 		private void frmCreateAudit_Resize(object sender, EventArgs e)
 		{
-			lstViewAuditHistory.Height = (pnlAuditHistory.Height - 100);
+			lstViewAuditHistory.Height = (pnlAuditHistory.Height - 130);
+			lstViewAuditHistoryDetails.Height = (pnlAuditHistoryDetails.Height - 130);
 		}
 
 		#endregion Resizing

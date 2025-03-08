@@ -359,7 +359,7 @@
 			lstViewAuditHistory.GridLines = true;
 			lstViewAuditHistory.Location = new Point(93, 25);
 			lstViewAuditHistory.Margin = new Padding(3, 2, 3, 2);
-			lstViewAuditHistory.MaximumSize = new Size(790, 553);
+			lstViewAuditHistory.MinimumSize = new Size(790, 553);
 			lstViewAuditHistory.MultiSelect = false;
 			lstViewAuditHistory.Name = "lstViewAuditHistory";
 			lstViewAuditHistory.Size = new Size(790, 553);
