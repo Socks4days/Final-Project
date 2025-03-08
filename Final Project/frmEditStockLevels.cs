@@ -195,11 +195,12 @@ namespace Final_Project
 
 			List<StockLevelsView> allStock = StockDal.GetStockLevelsView("StockName");
 
+			// Check that there isn't a different stock item with the same name before updating
 			foreach(StockLevelsView stock in allStock)
 			{
-				if(lookupStock.stockName == stock.stockName)
+				if(lookupStock.stockId != stock.stockId && lookupStock.stockName == stock.stockName)
 				{
-					ShowErrorStockItem("There is already a stock with that name!");
+					ShowErrorStockItem("There is already another stock item with that name!");
 					return;
 				}					
 			}

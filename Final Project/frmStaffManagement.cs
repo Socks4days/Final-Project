@@ -173,9 +173,10 @@ namespace Final_Project
 
 			foreach (Staff staff in staffList)
 			{
-				if (staff.forename == forename && staff.surname == surname)
+				// Check that there aren't any other staff members with the same name forename and surname
+				if (staff.username != username && staff.forename == forename && staff.surname == surname)
 				{
-					ShowErrorStaffLevel("There is already a staff member with that name!");
+					ShowErrorStaffLevel("There is already another staff member with that name!");
 					return;
 				}
 			}

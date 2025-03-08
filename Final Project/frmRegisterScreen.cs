@@ -54,8 +54,8 @@ namespace Final_Project
 
 		public static bool IsValidUsername(string username)
 		{
-			// Regular expression to match usernames containing only letters and numbers with at least 4 letters
-			string pattern = @"^(?=.*[a-zA-Z])(?=.*[0-9]).{4,}$";
+			// Regular expression to match usernames containing only letters and/or numbers with at least 4 characters
+			string pattern = @"^(?=.*[a-zA-Z0-9]).{4,}$";
 			Match match = Regex.Match(username, pattern);
 			return match.Success;
 		}
@@ -85,7 +85,7 @@ namespace Final_Project
 
 			if (!IsValidUsername(txtBoxUsername.Text))
 			{
-				ShowError("Invalid username, must be in the format Example123, at least 5 characters");
+				ShowError("Invalid username, must be letters or numbers only with at least 4 characters");
 				return;
 			}
 			if (!IsValidName(txtBoxForename.Text))
@@ -141,7 +141,7 @@ namespace Final_Project
 				newStaff.staffPosition = "Newbie";
 				newStaff.username = txtBoxUsername.Text;
 				newStaff.password = txtBoxPassword.Text;
-				newStaff.active = 0;
+				newStaff.active = 1;
 			}
 			catch (Exception ex)
 			{
