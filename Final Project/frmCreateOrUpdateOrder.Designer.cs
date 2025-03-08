@@ -62,11 +62,11 @@
 			pnlOrderInfo = new Panel();
 			lstViewOrderItems = new ListView();
 			cHeaderStockItem = new ColumnHeader();
-			toolTipCreateOrUpdateOrder = new ToolTip(components);
 			cHeaderQuantity = new ColumnHeader();
 			cHeaderRecommendedQty = new ColumnHeader();
 			cHeaderPricePerUnit = new ColumnHeader();
 			cHeaderTotalPricePerItem = new ColumnHeader();
+			toolTipCreateOrUpdateOrder = new ToolTip(components);
 			pnlAddItemToOrder.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)nUDQuantity).BeginInit();
 			pnlViewOrderItems.SuspendLayout();
@@ -271,7 +271,7 @@
 			lblConfirmation.Anchor = AnchorStyles.Top;
 			lblConfirmation.FlatStyle = FlatStyle.Flat;
 			lblConfirmation.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			lblConfirmation.ForeColor = SystemColors.ControlText;
+			lblConfirmation.ForeColor = Color.Black;
 			lblConfirmation.Location = new Point(264, 11);
 			lblConfirmation.Name = "lblConfirmation";
 			lblConfirmation.Size = new Size(473, 25);
@@ -284,7 +284,7 @@
 			lblFinalOrderTotal.Anchor = AnchorStyles.Top;
 			lblFinalOrderTotal.FlatStyle = FlatStyle.Flat;
 			lblFinalOrderTotal.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			lblFinalOrderTotal.ForeColor = SystemColors.ControlText;
+			lblFinalOrderTotal.ForeColor = Color.Black;
 			lblFinalOrderTotal.Location = new Point(289, 84);
 			lblFinalOrderTotal.Name = "lblFinalOrderTotal";
 			lblFinalOrderTotal.Size = new Size(422, 32);
@@ -297,7 +297,7 @@
 			// 
 			lblDeliveringTo.Anchor = AnchorStyles.Top;
 			lblDeliveringTo.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			lblDeliveringTo.ForeColor = SystemColors.ControlText;
+			lblDeliveringTo.ForeColor = Color.Black;
 			lblDeliveringTo.Location = new Point(289, 52);
 			lblDeliveringTo.Name = "lblDeliveringTo";
 			lblDeliveringTo.Size = new Size(422, 32);
@@ -313,7 +313,7 @@
 			btnConfirmAndPlace.FlatAppearance.BorderSize = 0;
 			btnConfirmAndPlace.FlatStyle = FlatStyle.Flat;
 			btnConfirmAndPlace.Font = new Font("Segoe UI", 12F);
-			btnConfirmAndPlace.ForeColor = SystemColors.Control;
+			btnConfirmAndPlace.ForeColor = Color.White;
 			btnConfirmAndPlace.Location = new Point(514, 140);
 			btnConfirmAndPlace.Name = "btnConfirmAndPlace";
 			btnConfirmAndPlace.Size = new Size(220, 50);
@@ -330,7 +330,7 @@
 			btnReturnToEditScreen.FlatAppearance.BorderSize = 0;
 			btnReturnToEditScreen.FlatStyle = FlatStyle.Flat;
 			btnReturnToEditScreen.Font = new Font("Segoe UI", 12F);
-			btnReturnToEditScreen.ForeColor = SystemColors.Control;
+			btnReturnToEditScreen.ForeColor = Color.White;
 			btnReturnToEditScreen.Location = new Point(269, 140);
 			btnReturnToEditScreen.Name = "btnReturnToEditScreen";
 			btnReturnToEditScreen.Size = new Size(220, 50);
@@ -347,7 +347,7 @@
 			btnCancelOrder.FlatAppearance.BorderSize = 0;
 			btnCancelOrder.FlatStyle = FlatStyle.Flat;
 			btnCancelOrder.Font = new Font("Segoe UI", 12F);
-			btnCancelOrder.ForeColor = SystemColors.Control;
+			btnCancelOrder.ForeColor = Color.White;
 			btnCancelOrder.Location = new Point(514, 140);
 			btnCancelOrder.Name = "btnCancelOrder";
 			btnCancelOrder.Size = new Size(220, 50);
@@ -363,7 +363,7 @@
 			btnReturn.FlatAppearance.BorderSize = 0;
 			btnReturn.FlatStyle = FlatStyle.Flat;
 			btnReturn.Font = new Font("Segoe UI", 12F);
-			btnReturn.ForeColor = SystemColors.Control;
+			btnReturn.ForeColor = Color.White;
 			btnReturn.Location = new Point(269, 140);
 			btnReturn.Name = "btnReturn";
 			btnReturn.Size = new Size(220, 50);
@@ -396,7 +396,7 @@
 			btnPlaceOrder.FlatAppearance.BorderSize = 0;
 			btnPlaceOrder.FlatStyle = FlatStyle.Flat;
 			btnPlaceOrder.Font = new Font("Segoe UI", 12F);
-			btnPlaceOrder.ForeColor = SystemColors.Control;
+			btnPlaceOrder.ForeColor = Color.White;
 			btnPlaceOrder.Location = new Point(754, 140);
 			btnPlaceOrder.Name = "btnPlaceOrder";
 			btnPlaceOrder.Size = new Size(220, 50);
@@ -412,7 +412,7 @@
 			lblInstructions.AutoSize = true;
 			lblInstructions.FlatStyle = FlatStyle.Flat;
 			lblInstructions.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			lblInstructions.ForeColor = SystemColors.ControlText;
+			lblInstructions.ForeColor = Color.Black;
 			lblInstructions.Location = new Point(277, 8);
 			lblInstructions.Name = "lblInstructions";
 			lblInstructions.Size = new Size(413, 25);
@@ -426,7 +426,7 @@
 			btnRemoveFromOrder.FlatAppearance.BorderSize = 0;
 			btnRemoveFromOrder.FlatStyle = FlatStyle.Flat;
 			btnRemoveFromOrder.Font = new Font("Segoe UI", 12F);
-			btnRemoveFromOrder.ForeColor = SystemColors.Control;
+			btnRemoveFromOrder.ForeColor = Color.White;
 			btnRemoveFromOrder.Location = new Point(269, 140);
 			btnRemoveFromOrder.Name = "btnRemoveFromOrder";
 			btnRemoveFromOrder.Size = new Size(220, 50);
@@ -443,7 +443,7 @@
 			btnAddAnItemToOrder.FlatAppearance.BorderSize = 0;
 			btnAddAnItemToOrder.FlatStyle = FlatStyle.Flat;
 			btnAddAnItemToOrder.Font = new Font("Segoe UI", 12F);
-			btnAddAnItemToOrder.ForeColor = SystemColors.Control;
+			btnAddAnItemToOrder.ForeColor = Color.White;
 			btnAddAnItemToOrder.Location = new Point(26, 140);
 			btnAddAnItemToOrder.Name = "btnAddAnItemToOrder";
 			btnAddAnItemToOrder.Size = new Size(220, 50);
@@ -459,7 +459,7 @@
 			lblOrderNumberOrder.AutoSize = true;
 			lblOrderNumberOrder.FlatStyle = FlatStyle.Flat;
 			lblOrderNumberOrder.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			lblOrderNumberOrder.ForeColor = SystemColors.ControlText;
+			lblOrderNumberOrder.ForeColor = Color.Black;
 			lblOrderNumberOrder.Location = new Point(247, 54);
 			lblOrderNumberOrder.Name = "lblOrderNumberOrder";
 			lblOrderNumberOrder.Size = new Size(152, 25);
@@ -474,7 +474,7 @@
 			btnSaveAsDraft.FlatAppearance.BorderSize = 0;
 			btnSaveAsDraft.FlatStyle = FlatStyle.Flat;
 			btnSaveAsDraft.Font = new Font("Segoe UI", 12F);
-			btnSaveAsDraft.ForeColor = SystemColors.Control;
+			btnSaveAsDraft.ForeColor = Color.White;
 			btnSaveAsDraft.Location = new Point(514, 140);
 			btnSaveAsDraft.Name = "btnSaveAsDraft";
 			btnSaveAsDraft.Size = new Size(220, 50);
@@ -490,7 +490,7 @@
 			lblOrderStatus.AutoSize = true;
 			lblOrderStatus.FlatStyle = FlatStyle.Flat;
 			lblOrderStatus.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			lblOrderStatus.ForeColor = SystemColors.ControlText;
+			lblOrderStatus.ForeColor = Color.Black;
 			lblOrderStatus.Location = new Point(573, 91);
 			lblOrderStatus.Name = "lblOrderStatus";
 			lblOrderStatus.Size = new Size(120, 25);
@@ -504,7 +504,7 @@
 			lblOrderTotal.AutoSize = true;
 			lblOrderTotal.FlatStyle = FlatStyle.Flat;
 			lblOrderTotal.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			lblOrderTotal.ForeColor = SystemColors.ControlText;
+			lblOrderTotal.ForeColor = Color.Black;
 			lblOrderTotal.Location = new Point(573, 54);
 			lblOrderTotal.Name = "lblOrderTotal";
 			lblOrderTotal.Size = new Size(110, 25);

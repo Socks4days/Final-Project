@@ -206,6 +206,7 @@ namespace Final_Project
 			pnlAuditHistoryDetails.Visible = false;
 			lblNoExpectedInStock.Text = $"Number expected in stock: {stockToAudit.stockLevel}";
 			lblStockToAudit.Text = $"You are auditing: {stockToAudit.stockName}";
+			nUDNoInStockActual.Maximum = stockToAudit.maximumLevel;
 			nUDNoInStockActual.Value = 0;
 		}
 

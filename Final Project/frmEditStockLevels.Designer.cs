@@ -532,7 +532,7 @@
 			btnEditStock.FlatAppearance.BorderSize = 0;
 			btnEditStock.FlatStyle = FlatStyle.Flat;
 			btnEditStock.Font = new Font("Segoe UI", 14F);
-			btnEditStock.ForeColor = SystemColors.Control;
+			btnEditStock.ForeColor = Color.White;
 			btnEditStock.Location = new Point(640, 38);
 			btnEditStock.Name = "btnEditStock";
 			btnEditStock.Size = new Size(220, 50);
@@ -560,7 +560,7 @@
 			btnTakeOutStock.FlatAppearance.BorderSize = 0;
 			btnTakeOutStock.FlatStyle = FlatStyle.Flat;
 			btnTakeOutStock.Font = new Font("Segoe UI", 14F);
-			btnTakeOutStock.ForeColor = SystemColors.Control;
+			btnTakeOutStock.ForeColor = Color.White;
 			btnTakeOutStock.Location = new Point(106, 38);
 			btnTakeOutStock.Name = "btnTakeOutStock";
 			btnTakeOutStock.Size = new Size(220, 50);
@@ -577,7 +577,7 @@
 			btnReturnStock.FlatAppearance.BorderSize = 0;
 			btnReturnStock.FlatStyle = FlatStyle.Flat;
 			btnReturnStock.Font = new Font("Segoe UI", 14F);
-			btnReturnStock.ForeColor = SystemColors.Control;
+			btnReturnStock.ForeColor = Color.White;
 			btnReturnStock.Location = new Point(373, 38);
 			btnReturnStock.Name = "btnReturnStock";
 			btnReturnStock.Size = new Size(220, 50);

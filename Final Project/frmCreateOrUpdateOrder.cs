@@ -247,7 +247,7 @@ namespace Final_Project
 			}
 
 			Stock stockToAdd = StockDal.GetStockByStockName(cBoxStock.Text);
-			if (((stockToAdd.stockLevel + (nUDQuantity.Value * stockToAdd.orderQuantity)) > stockToAdd.maximumLevel) && (warningNumber == 0))
+			if ((stockToAdd.stockLevel + nUDQuantity.Value > stockToAdd.maximumLevel) && (warningNumber == 0))
 			{
 				lblWarning.Visible = true;
 				lblWarning.Text = "This amount is greater than storage can hold. Click 'Add To Order' again to continue.";
@@ -346,7 +346,7 @@ namespace Final_Project
 			foreach (OrderItem orderItem in sortedOrderItemList)
 			{
 				// Create an array with information of each order item in an order
-				string[] row = { orderItem.stockName, orderItem.unitSize.ToString(), orderItem.unitPrice.ToString(), orderItem.orderItemQuantity.ToString(), orderItem.totalPrice.ToString() };
+				string[] row = { orderItem.stockName, orderItem.orderItemQuantity.ToString(), orderItem.recommendedOrderItemQuantity.ToString(),  orderItem.unitPrice.ToString(),  orderItem.totalPrice.ToString() };
 
 				// Create a new list item based on the array
 				ListViewItem item = new ListViewItem(row);
@@ -374,7 +374,7 @@ namespace Final_Project
 				btnRemoveFromOrder.Enabled = true;
 				btnPlaceOrder.Enabled = true;
 				btnSaveAsDraft.Enabled = true;
-				string stockName = e.Item.SubItems[0].Text;
+				string stockName = e.Item!.SubItems[0].Text;
 				frmEditStockLevels.LookupStock(stockName);
 			}
 		}
@@ -390,7 +390,7 @@ namespace Final_Project
 
 			if (index != -1 && cBoxStock.Text != "")
 			{
-				selectedStock = StockDal.GetStockByStockName(cBoxStock.Items[index].ToString());
+				selectedStock = StockDal.GetStockByStockName(cBoxStock.Items[index]!.ToString()!);
 				lblCurrentStockLevel.Text = $"Current Stock Level: {selectedStock.stockLevel}";
 				lblDeliveryTime.Text = $"Item Delivery Time: {selectedStock.deliveryTimeDays} days";
 

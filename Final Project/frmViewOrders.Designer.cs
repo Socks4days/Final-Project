@@ -66,7 +66,7 @@
 			btnOrderReport.FlatAppearance.BorderSize = 0;
 			btnOrderReport.FlatStyle = FlatStyle.Flat;
 			btnOrderReport.Font = new Font("Segoe UI", 14F);
-			btnOrderReport.ForeColor = SystemColors.Control;
+			btnOrderReport.ForeColor = Color.White;
 			btnOrderReport.Location = new Point(748, 618);
 			btnOrderReport.Name = "btnOrderReport";
 			btnOrderReport.Size = new Size(220, 50);
@@ -83,7 +83,7 @@
 			btnCancelOrder.FlatAppearance.BorderSize = 0;
 			btnCancelOrder.FlatStyle = FlatStyle.Flat;
 			btnCancelOrder.Font = new Font("Segoe UI", 14F);
-			btnCancelOrder.ForeColor = SystemColors.Control;
+			btnCancelOrder.ForeColor = Color.White;
 			btnCancelOrder.Location = new Point(507, 618);
 			btnCancelOrder.Name = "btnCancelOrder";
 			btnCancelOrder.Size = new Size(220, 50);
@@ -100,7 +100,7 @@
 			btnViewOrder.FlatAppearance.BorderSize = 0;
 			btnViewOrder.FlatStyle = FlatStyle.Flat;
 			btnViewOrder.Font = new Font("Segoe UI", 14F);
-			btnViewOrder.ForeColor = SystemColors.Control;
+			btnViewOrder.ForeColor = Color.White;
 			btnViewOrder.Location = new Point(26, 618);
 			btnViewOrder.Name = "btnViewOrder";
 			btnViewOrder.Size = new Size(220, 50);
@@ -117,7 +117,7 @@
 			btnEditOrder.FlatAppearance.BorderSize = 0;
 			btnEditOrder.FlatStyle = FlatStyle.Flat;
 			btnEditOrder.Font = new Font("Segoe UI", 14F);
-			btnEditOrder.ForeColor = SystemColors.Control;
+			btnEditOrder.ForeColor = Color.White;
 			btnEditOrder.Location = new Point(266, 618);
 			btnEditOrder.Name = "btnEditOrder";
 			btnEditOrder.Size = new Size(220, 50);
@@ -133,7 +133,7 @@
 			lblInstructions.AutoSize = true;
 			lblInstructions.FlatStyle = FlatStyle.Flat;
 			lblInstructions.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			lblInstructions.ForeColor = SystemColors.ControlText;
+			lblInstructions.ForeColor = Color.Black;
 			lblInstructions.Location = new Point(311, 568);
 			lblInstructions.Name = "lblInstructions";
 			lblInstructions.Size = new Size(362, 25);

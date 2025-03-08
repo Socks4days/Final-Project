@@ -6,8 +6,10 @@ using System.Drawing;
 using System.Linq;
 using System.Numerics;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Final_Project
 {
@@ -27,8 +29,6 @@ namespace Final_Project
 		{
 			// Hide any previously shown error message
 			ClearError();
-
-
 
 			// when register button is clicked, check to see if any of the textboxes have been left empty
 			// if so, throw an error message addressing this
@@ -51,6 +51,22 @@ namespace Final_Project
 			}
 		}
 
+		public static bool IsValidUsername(string username)
+		{
+			// Regular expression to match usernames containing only letters and numbers with at least 4 letters
+			string pattern = @"^(?=.*[a-zA-Z])(?=.*[0-9]).{4,}$";
+			Match match = Regex.Match(username, pattern);
+			return match.Success;
+		}
+
+		public static bool IsValidName(string name)
+		{
+			// Regular expression to match names containing only letters
+			string pattern = @"^[a-zA-Z]+$";
+			Match match = Regex.Match(name, pattern);
+			return match.Success;
+		}
+
 		public void UsernameAndPasswordValidation()
 		{
 			// Check if the username is already taken
@@ -65,9 +81,27 @@ namespace Final_Project
 					return;
 				}
 			}
+
+			if (!IsValidUsername(txtBoxUsername.Text))
+			{
+				ShowError("Invalid username, must be in the format Example123, at least 5 characters");
+				return;
+			}
+			if (!IsValidName(txtBoxForename.Text))
+			{
+				ShowError("Invalid forename, must be only letters");
+				return;
+			}
+			if (!IsValidName(txtBoxSurname.Text))
+			{
+				ShowError("Invalid surname, must be only letters");
+				return;
+			}
+
+
 			// setting variable equal to what the user inputs for password
 			string password = txtBoxPassword.Text;
-
+			
 			// checks to see if the input password passes all the checks: More than 8 chatacters, contain a capital, contain a number
 			if (!((password.Length >= 8) && (password.Length <= 15)
 				&& (password.Any(char.IsUpper)) && (password.Any(char.IsDigit))))

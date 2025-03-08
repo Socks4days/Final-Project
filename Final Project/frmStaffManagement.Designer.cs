@@ -39,7 +39,7 @@
 			lblInstructions = new Label();
 			pnlOptionButtons = new Panel();
 			btnFireStaffMember = new Button();
-			button1 = new Button();
+			btnEditStaffPosition = new Button();
 			btnEditPosition = new Button();
 			btnEditStaffMember = new Button();
 			pnlEditStaffMember = new Panel();
@@ -132,7 +132,7 @@
 			lblInstructions.AutoSize = true;
 			lblInstructions.FlatStyle = FlatStyle.Flat;
 			lblInstructions.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			lblInstructions.ForeColor = SystemColors.ControlText;
+			lblInstructions.ForeColor = Color.Black;
 			lblInstructions.Location = new Point(273, 560);
 			lblInstructions.Name = "lblInstructions";
 			lblInstructions.Size = new Size(436, 25);
@@ -142,7 +142,7 @@
 			// pnlOptionButtons
 			// 
 			pnlOptionButtons.Controls.Add(btnFireStaffMember);
-			pnlOptionButtons.Controls.Add(button1);
+			pnlOptionButtons.Controls.Add(btnEditStaffPosition);
 			pnlOptionButtons.Controls.Add(btnEditPosition);
 			pnlOptionButtons.Controls.Add(btnEditStaffMember);
 			pnlOptionButtons.Dock = DockStyle.Bottom;
@@ -158,7 +158,7 @@
 			btnFireStaffMember.FlatAppearance.BorderSize = 0;
 			btnFireStaffMember.FlatStyle = FlatStyle.Flat;
 			btnFireStaffMember.Font = new Font("Segoe UI", 14F);
-			btnFireStaffMember.ForeColor = SystemColors.Control;
+			btnFireStaffMember.ForeColor = Color.White;
 			btnFireStaffMember.Location = new Point(634, 18);
 			btnFireStaffMember.Name = "btnFireStaffMember";
 			btnFireStaffMember.Size = new Size(220, 50);
@@ -168,21 +168,22 @@
 			btnFireStaffMember.UseVisualStyleBackColor = false;
 			btnFireStaffMember.Click += btnFireStaffMember_Click;
 			// 
-			// button1
+			// btnEditStaffPosition
 			// 
-			button1.Anchor = AnchorStyles.Bottom;
-			button1.BackColor = Color.FromArgb(150, 12, 150);
-			button1.FlatAppearance.BorderSize = 0;
-			button1.FlatStyle = FlatStyle.Flat;
-			button1.Font = new Font("Segoe UI", 14F);
-			button1.ForeColor = SystemColors.Control;
-			button1.Location = new Point(381, 16);
-			button1.Name = "button1";
-			button1.Size = new Size(220, 50);
-			button1.TabIndex = 2;
-			button1.Text = "Edit Staff Position";
-			toolTipStaff.SetToolTip(button1, "Edit selected staff member's position");
-			button1.UseVisualStyleBackColor = false;
+			btnEditStaffPosition.Anchor = AnchorStyles.Bottom;
+			btnEditStaffPosition.BackColor = Color.FromArgb(150, 12, 150);
+			btnEditStaffPosition.FlatAppearance.BorderSize = 0;
+			btnEditStaffPosition.FlatStyle = FlatStyle.Flat;
+			btnEditStaffPosition.Font = new Font("Segoe UI", 14F);
+			btnEditStaffPosition.ForeColor = Color.White;
+			btnEditStaffPosition.Location = new Point(381, 16);
+			btnEditStaffPosition.Name = "btnEditStaffPosition";
+			btnEditStaffPosition.Size = new Size(220, 50);
+			btnEditStaffPosition.TabIndex = 2;
+			btnEditStaffPosition.Text = "Edit Staff Position";
+			toolTipStaff.SetToolTip(btnEditStaffPosition, "Edit selected staff member's position");
+			btnEditStaffPosition.UseVisualStyleBackColor = false;
+			btnEditStaffPosition.Click += btnEditStaffPosition_Click;
 			// 
 			// btnEditPosition
 			// 
@@ -191,14 +192,13 @@
 			btnEditPosition.FlatAppearance.BorderSize = 0;
 			btnEditPosition.FlatStyle = FlatStyle.Flat;
 			btnEditPosition.Font = new Font("Segoe UI", 14F);
-			btnEditPosition.ForeColor = SystemColors.Control;
+			btnEditPosition.ForeColor = Color.White;
 			btnEditPosition.Location = new Point(381, 18);
 			btnEditPosition.Name = "btnEditPosition";
 			btnEditPosition.Size = new Size(220, 50);
 			btnEditPosition.TabIndex = 1;
 			btnEditPosition.Text = "Edit Staff Position";
 			btnEditPosition.UseVisualStyleBackColor = false;
-			btnEditPosition.Click += btnEditPosition_Click;
 			// 
 			// btnEditStaffMember
 			// 
@@ -207,7 +207,7 @@
 			btnEditStaffMember.FlatAppearance.BorderSize = 0;
 			btnEditStaffMember.FlatStyle = FlatStyle.Flat;
 			btnEditStaffMember.Font = new Font("Segoe UI", 14F);
-			btnEditStaffMember.ForeColor = SystemColors.Control;
+			btnEditStaffMember.ForeColor = Color.White;
 			btnEditStaffMember.Location = new Point(128, 18);
 			btnEditStaffMember.Name = "btnEditStaffMember";
 			btnEditStaffMember.Size = new Size(220, 50);
@@ -394,6 +394,7 @@
 			// 
 			// cBoxStaffPositions
 			// 
+			cBoxStaffPositions.Anchor = AnchorStyles.None;
 			cBoxStaffPositions.Font = new Font("Segoe UI", 14F);
 			cBoxStaffPositions.FormattingEnabled = true;
 			cBoxStaffPositions.Location = new Point(381, 266);
@@ -502,7 +503,7 @@
 		private Panel pnlStaffListView;
 		private Panel pnlOptionButtons;
 		private Button btnFireStaffMember;
-		private Button button1;
+		private Button btnEditStaffPosition;
 		private ToolTip toolTipStaff;
 	}
 }

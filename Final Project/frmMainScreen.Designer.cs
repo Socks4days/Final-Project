@@ -64,7 +64,7 @@
 			btnOverdueAudits = new Button();
 			lblLowStock = new Label();
 			lblNumberLowStockItems = new Label();
-			btnLowStockReport = new Button();
+			btnLowStock = new Button();
 			pctBoxLogo = new PictureBox();
 			toolTipMainMenu = new ToolTip(components);
 			pnlSideBar.SuspendLayout();
@@ -120,7 +120,7 @@
 			btnManageStaff.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
 			btnManageStaff.FlatStyle = FlatStyle.Flat;
 			btnManageStaff.Font = new Font("Segoe UI", 14F);
-			btnManageStaff.ForeColor = SystemColors.Control;
+			btnManageStaff.ForeColor = Color.White;
 			btnManageStaff.Location = new Point(0, 0);
 			btnManageStaff.Margin = new Padding(2);
 			btnManageStaff.Name = "btnManageStaff";
@@ -141,7 +141,7 @@
 			btnStaff.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
 			btnStaff.FlatStyle = FlatStyle.Flat;
 			btnStaff.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-			btnStaff.ForeColor = SystemColors.Control;
+			btnStaff.ForeColor = Color.White;
 			btnStaff.Location = new Point(0, 910);
 			btnStaff.Margin = new Padding(2);
 			btnStaff.Name = "btnStaff";
@@ -160,7 +160,7 @@
 			btnLogout.FlatAppearance.MouseOverBackColor = Color.FromArgb(250, 0, 0);
 			btnLogout.FlatStyle = FlatStyle.Flat;
 			btnLogout.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-			btnLogout.ForeColor = SystemColors.Control;
+			btnLogout.ForeColor = Color.White;
 			btnLogout.Location = new Point(0, 1050);
 			btnLogout.Margin = new Padding(2);
 			btnLogout.Name = "btnLogout";
@@ -190,7 +190,7 @@
 			btnAuditHistory.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
 			btnAuditHistory.FlatStyle = FlatStyle.Flat;
 			btnAuditHistory.Font = new Font("Segoe UI", 14F);
-			btnAuditHistory.ForeColor = SystemColors.Control;
+			btnAuditHistory.ForeColor = Color.White;
 			btnAuditHistory.Location = new Point(0, 70);
 			btnAuditHistory.Margin = new Padding(2);
 			btnAuditHistory.Name = "btnAuditHistory";
@@ -211,7 +211,7 @@
 			btnCreateAudit.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
 			btnCreateAudit.FlatStyle = FlatStyle.Flat;
 			btnCreateAudit.Font = new Font("Segoe UI", 14F);
-			btnCreateAudit.ForeColor = SystemColors.Control;
+			btnCreateAudit.ForeColor = Color.White;
 			btnCreateAudit.Location = new Point(0, 0);
 			btnCreateAudit.Margin = new Padding(2);
 			btnCreateAudit.Name = "btnCreateAudit";
@@ -232,7 +232,7 @@
 			btnAudits.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
 			btnAudits.FlatStyle = FlatStyle.Flat;
 			btnAudits.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-			btnAudits.ForeColor = SystemColors.Control;
+			btnAudits.ForeColor = Color.White;
 			btnAudits.Location = new Point(0, 700);
 			btnAudits.Margin = new Padding(2);
 			btnAudits.Name = "btnAudits";
@@ -262,7 +262,7 @@
 			btnViewDeliveries.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
 			btnViewDeliveries.FlatStyle = FlatStyle.Flat;
 			btnViewDeliveries.Font = new Font("Segoe UI", 14F);
-			btnViewDeliveries.ForeColor = SystemColors.Control;
+			btnViewDeliveries.ForeColor = Color.White;
 			btnViewDeliveries.Location = new Point(0, 0);
 			btnViewDeliveries.Margin = new Padding(2);
 			btnViewDeliveries.Name = "btnViewDeliveries";
@@ -283,7 +283,7 @@
 			btnDelivery.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
 			btnDelivery.FlatStyle = FlatStyle.Flat;
 			btnDelivery.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-			btnDelivery.ForeColor = SystemColors.Control;
+			btnDelivery.ForeColor = Color.White;
 			btnDelivery.Location = new Point(0, 560);
 			btnDelivery.Margin = new Padding(2);
 			btnDelivery.Name = "btnDelivery";
@@ -313,7 +313,7 @@
 			btnViewOrders.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
 			btnViewOrders.FlatStyle = FlatStyle.Flat;
 			btnViewOrders.Font = new Font("Segoe UI", 14F);
-			btnViewOrders.ForeColor = SystemColors.Control;
+			btnViewOrders.ForeColor = Color.White;
 			btnViewOrders.Location = new Point(0, 70);
 			btnViewOrders.Margin = new Padding(2);
 			btnViewOrders.Name = "btnViewOrders";
@@ -334,7 +334,7 @@
 			btnOrderStock.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
 			btnOrderStock.FlatStyle = FlatStyle.Flat;
 			btnOrderStock.Font = new Font("Segoe UI", 14F);
-			btnOrderStock.ForeColor = SystemColors.Control;
+			btnOrderStock.ForeColor = Color.White;
 			btnOrderStock.Location = new Point(0, 0);
 			btnOrderStock.Margin = new Padding(2);
 			btnOrderStock.Name = "btnOrderStock";
@@ -355,7 +355,7 @@
 			btnOrder.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
 			btnOrder.FlatStyle = FlatStyle.Flat;
 			btnOrder.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-			btnOrder.ForeColor = SystemColors.Control;
+			btnOrder.ForeColor = Color.White;
 			btnOrder.Location = new Point(0, 350);
 			btnOrder.Margin = new Padding(2);
 			btnOrder.Name = "btnOrder";
@@ -386,7 +386,7 @@
 			btnRetireStockItem.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
 			btnRetireStockItem.FlatStyle = FlatStyle.Flat;
 			btnRetireStockItem.Font = new Font("Segoe UI", 14F);
-			btnRetireStockItem.ForeColor = SystemColors.Control;
+			btnRetireStockItem.ForeColor = Color.White;
 			btnRetireStockItem.Location = new Point(0, 140);
 			btnRetireStockItem.Margin = new Padding(2);
 			btnRetireStockItem.Name = "btnRetireStockItem";
@@ -407,7 +407,7 @@
 			btnNewStockItem.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
 			btnNewStockItem.FlatStyle = FlatStyle.Flat;
 			btnNewStockItem.Font = new Font("Segoe UI", 14F);
-			btnNewStockItem.ForeColor = SystemColors.Control;
+			btnNewStockItem.ForeColor = Color.White;
 			btnNewStockItem.Location = new Point(0, 70);
 			btnNewStockItem.Margin = new Padding(2);
 			btnNewStockItem.Name = "btnNewStockItem";
@@ -428,7 +428,7 @@
 			btnManageStockLevels.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
 			btnManageStockLevels.FlatStyle = FlatStyle.Flat;
 			btnManageStockLevels.Font = new Font("Segoe UI", 14F);
-			btnManageStockLevels.ForeColor = SystemColors.Control;
+			btnManageStockLevels.ForeColor = Color.White;
 			btnManageStockLevels.Location = new Point(0, 0);
 			btnManageStockLevels.Margin = new Padding(2);
 			btnManageStockLevels.Name = "btnManageStockLevels";
@@ -449,7 +449,7 @@
 			btnStock.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
 			btnStock.FlatStyle = FlatStyle.Flat;
 			btnStock.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-			btnStock.ForeColor = SystemColors.Control;
+			btnStock.ForeColor = Color.White;
 			btnStock.Location = new Point(0, 70);
 			btnStock.Margin = new Padding(2);
 			btnStock.Name = "btnStock";
@@ -497,7 +497,7 @@
 			// 
 			lblTitle.Anchor = AnchorStyles.None;
 			lblTitle.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			lblTitle.ForeColor = SystemColors.Control;
+			lblTitle.ForeColor = Color.White;
 			lblTitle.Location = new Point(129, 10);
 			lblTitle.Margin = new Padding(2, 0, 2, 0);
 			lblTitle.Name = "lblTitle";
@@ -518,7 +518,7 @@
 			pnlFormContainer.Controls.Add(btnOverdueAudits);
 			pnlFormContainer.Controls.Add(lblLowStock);
 			pnlFormContainer.Controls.Add(lblNumberLowStockItems);
-			pnlFormContainer.Controls.Add(btnLowStockReport);
+			pnlFormContainer.Controls.Add(btnLowStock);
 			pnlFormContainer.Controls.Add(pctBoxLogo);
 			pnlFormContainer.Dock = DockStyle.Fill;
 			pnlFormContainer.Location = new Point(200, 70);
@@ -636,22 +636,22 @@
 			lblNumberLowStockItems.TextAlign = ContentAlignment.MiddleCenter;
 			toolTipMainMenu.SetToolTip(lblNumberLowStockItems, "Number of low stock levels");
 			// 
-			// btnLowStockReport
+			// btnLowStock
 			// 
-			btnLowStockReport.Anchor = AnchorStyles.None;
-			btnLowStockReport.BackColor = Color.FromArgb(33, 150, 243);
-			btnLowStockReport.FlatAppearance.BorderSize = 0;
-			btnLowStockReport.FlatStyle = FlatStyle.Flat;
-			btnLowStockReport.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			btnLowStockReport.ForeColor = Color.White;
-			btnLowStockReport.Location = new Point(381, 430);
-			btnLowStockReport.Name = "btnLowStockReport";
-			btnLowStockReport.Size = new Size(220, 50);
-			btnLowStockReport.TabIndex = 3;
-			btnLowStockReport.Text = "Low Stock Report";
-			toolTipMainMenu.SetToolTip(btnLowStockReport, "Low Stock Report");
-			btnLowStockReport.UseVisualStyleBackColor = false;
-			btnLowStockReport.Click += btnLowStockReport_Click;
+			btnLowStock.Anchor = AnchorStyles.None;
+			btnLowStock.BackColor = Color.FromArgb(33, 150, 243);
+			btnLowStock.FlatAppearance.BorderSize = 0;
+			btnLowStock.FlatStyle = FlatStyle.Flat;
+			btnLowStock.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			btnLowStock.ForeColor = Color.White;
+			btnLowStock.Location = new Point(381, 430);
+			btnLowStock.Name = "btnLowStock";
+			btnLowStock.Size = new Size(220, 50);
+			btnLowStock.TabIndex = 3;
+			btnLowStock.Text = "Low Stock";
+			toolTipMainMenu.SetToolTip(btnLowStock, "Low Stock Report");
+			btnLowStock.UseVisualStyleBackColor = false;
+			btnLowStock.Click += btnLowStockReport_Click;
 			// 
 			// pctBoxLogo
 			// 
@@ -674,6 +674,7 @@
 			AutoScaleDimensions = new SizeF(96F, 96F);
 			AutoScaleMode = AutoScaleMode.Dpi;
 			AutoSize = true;
+			BackColor = Color.White;
 			ClientSize = new Size(1200, 750);
 			Controls.Add(pnlFormContainer);
 			Controls.Add(pnlTitleBar);
@@ -728,7 +729,7 @@
 		private Panel pnlStaff;
 		private Button btnStaff;
 		private Button btnManageStaff;
-		private Button btnLowStockReport;
+		private Button btnLowStock;
 		private Label lblNumberLowStockItems;
 		private Label lblLowStock;
 		private Label lblDeliveries;

@@ -1,4 +1,5 @@
 ﻿using Final_Project.Models;
+using System.Text.RegularExpressions;
 
 namespace Final_Project
 {
@@ -166,14 +167,42 @@ namespace Final_Project
 
 		private void btnEditStockItem_Click(object sender, EventArgs e)
 		{
-			lookupStock.stockName = txtBoxName.Text;
-			lookupStock.stockDescription = txtBoxDescription.Text;
-			lookupStock.minimumLevel = Convert.ToInt32(txtBoxMinimumLevel.Text);
-			lookupStock.maximumLevel = Convert.ToInt32(txtBoxMaximumLevel.Text);
-			lookupStock.orderQuantity = Convert.ToInt32(txtBoxOrderQuantity.Text);
-			lookupStock.price = Convert.ToInt32(txtBoxPrice.Text);
-			lookupStock.deliveryTimeDays = Convert.ToInt32(txtBoxDeliveryTime.Text);
-			lookupStock.stockCheckFrequency = Convert.ToInt32(txtBoxStockCheckFrequency.Text);
+			if((txtBoxName.Text != "") && (txtBoxDescription.Text != ""))
+			{
+				lookupStock.stockName = txtBoxName.Text;
+				lookupStock.stockDescription = txtBoxDescription.Text;
+			}
+			else
+			{
+				ShowErrorStockItem("Please complete all fields before saving changes.");
+				return;
+			}
+			
+			try
+			{
+				lookupStock.minimumLevel = Convert.ToInt32(txtBoxMinimumLevel.Text);
+				lookupStock.maximumLevel = Convert.ToInt32(txtBoxMaximumLevel.Text);
+				lookupStock.orderQuantity = Convert.ToInt32(txtBoxOrderQuantity.Text);
+				lookupStock.price = Convert.ToDecimal(txtBoxPrice.Text);
+				lookupStock.deliveryTimeDays = Convert.ToInt32(txtBoxDeliveryTime.Text);
+				lookupStock.stockCheckFrequency = Convert.ToInt32(txtBoxStockCheckFrequency.Text);
+			}
+			catch (Exception)
+			{
+				ShowErrorStockItem("Numerical data is not in correct format. Ensure all fields excluding name and description are valid numbers.");
+				return;
+			}
+
+			List<StockLevelsView> allStock = StockDal.GetStockLevelsView("StockName");
+
+			foreach(StockLevelsView stock in allStock)
+			{
+				if(lookupStock.stockName == stock.stockName)
+				{
+					ShowErrorStockItem("There is already a stock with that name!");
+					return;
+				}					
+			}
 
 			StockDal.UpdateStockInformation(lookupStock);
 			ShowViewStock();
@@ -257,6 +286,13 @@ namespace Final_Project
 			// shows an error indicating which boxes need to be filled in to be valid
 			lblError.Text = errorMessage;
 			lblError.Visible = true;
+		}
+
+		private void ShowErrorStockItem(string errorMessage)
+		{
+			// shows an error indicating which boxes need to be filled in to be valid
+			lblErrorStockEdit.Text = errorMessage;
+			lblErrorStockEdit.Visible = true;
 		}
 
 		private void ClearError()

@@ -1,4 +1,5 @@
 ﻿using Final_Project.Models;
+using Microsoft.Data.SqlTypes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -48,10 +49,20 @@ namespace Final_Project
 		private void btnAddNewStock_Click(object sender, EventArgs e)
 		{
 			// system will try to set each to an appropriate piece of information, catching any errors
-			try
+			if(txtBoxNewStockName.Text != "" && txtBoxNewStockDescription.Text != "")
 			{
 				stockToAdd.stockName = txtBoxNewStockName.Text;
 				stockToAdd.stockDescription = txtBoxNewStockDescription.Text;
+			}
+			else
+			{
+				lblErrorAddNewStock.Visible = true;
+				lblErrorAddNewStock.Text = "Fill all fields before confirming changes!";
+				return;
+			}				
+
+			try
+			{				
 				stockToAdd.price = Convert.ToDecimal(txtBoxNewStockPrice.Text);
 				stockToAdd.orderQuantity = Convert.ToInt32(txtBoxNewOrderQuantity.Text);
 				stockToAdd.maximumLevel = Convert.ToInt32(txtBoxNewMaximumLevel.Text);
@@ -64,7 +75,7 @@ namespace Final_Project
 			{
 				// if there are any errors, the system rejects it and the user is told to try give better information
 				lblErrorAddNewStock.Visible = true;
-				lblErrorAddNewStock.Text = "Insufficient details have been provided, please try again.";
+				lblErrorAddNewStock.Text = "Numerical data is not in correct format. Ensure numerical fields are valid numbers.";
 				return;
 			}
 			// if all information looks good, show a panel with the information they input, allowing them to confirm if it is correct
@@ -73,7 +84,7 @@ namespace Final_Project
 			{
 				if(stock.stockName == stockToAdd.stockName)
 				{
-					lblErrorAddNewStock.Text = "There is already a stock item with that name, please enter another";
+					lblErrorAddNewStock.Text = "There is already a stock item with that name, please try another";
 					lblErrorAddNewStock.Visible = true;
 					return;
 				}				
@@ -123,6 +134,11 @@ namespace Final_Project
 					lblErrorRetireStock.Visible = true;
 					lblErrorRetireStock.Text = "Use all items of this stock first before retiring!";
 					return;
+				}
+				else
+				{
+					lblErrorRetireStock.Visible = true;
+					lblErrorRetireStock.Text = "That stock item does not exist.";
 				}
 			}
 		}

@@ -224,7 +224,7 @@
 			lblErrorAddNewStock.Anchor = AnchorStyles.None;
 			lblErrorAddNewStock.BackColor = Color.FromArgb(255, 209, 209);
 			lblErrorAddNewStock.BorderStyle = BorderStyle.FixedSingle;
-			lblErrorAddNewStock.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			lblErrorAddNewStock.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
 			lblErrorAddNewStock.ForeColor = Color.FromArgb(250, 0, 0);
 			lblErrorAddNewStock.Location = new Point(231, 450);
 			lblErrorAddNewStock.Name = "lblErrorAddNewStock";
@@ -237,7 +237,7 @@
 			// 
 			txtBoxNewStockName.Anchor = AnchorStyles.None;
 			txtBoxNewStockName.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			txtBoxNewStockName.Location = new Point(246, 155);
+			txtBoxNewStockName.Location = new Point(247, 155);
 			txtBoxNewStockName.Name = "txtBoxNewStockName";
 			txtBoxNewStockName.Size = new Size(221, 32);
 			txtBoxNewStockName.TabIndex = 0;

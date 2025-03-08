@@ -37,6 +37,31 @@ namespace Final_Project
 				string surname = e.Item.SubItems[1].Text;
 
 				staffToEdit = StaffDal.GetStaffByStaffFullName(forename, surname);
+
+				if (frmLoginScreen.loggedInStaff.staffPosition == "Manager")
+				{
+					if (staffToEdit.staffId == frmLoginScreen.loggedInStaff.staffId)
+					{
+						btnEditStaffPosition.Enabled = false;
+						btnFireStaffMember.Enabled = false;
+					}
+					else
+					{
+						btnEditStaffPosition.Enabled = true;
+						btnFireStaffMember.Enabled = true;
+					}
+				}
+				else
+				{
+					if (staffToEdit.staffId == frmLoginScreen.loggedInStaff.staffId)
+					{
+						btnEditStaffMember.Enabled = true;
+					}
+					else
+					{
+						btnEditStaffMember.Enabled = false;
+					}
+				}			
 			}
 		}
 
@@ -49,6 +74,12 @@ namespace Final_Project
 			pnlStaffListView.Dock = DockStyle.Fill;
 			pnlStaffInfo.Dock = DockStyle.Fill;
 			UpdateStaffListView();
+
+			if (staffToEdit.staffPosition != "Manager")
+			{
+				btnFireStaffMember.Enabled = false;
+				btnEditStaffPosition.Enabled = false;
+			}
 		}
 
 		private void ShowEditStaffMember()
@@ -72,6 +103,7 @@ namespace Final_Project
 			pnlEditStaffPosition.Visible = true;
 			pnlEditStaffPosition.Dock = DockStyle.Fill;
 			cBoxStaffPositions.DataSource = positions;
+			lblStaffToEditPosition.Text = $"Editing position for: {staffToEdit.forename} {staffToEdit.surname}";
 		}
 
 		private void UpdateStaffListView()
@@ -103,14 +135,6 @@ namespace Final_Project
 				lstViewStaffMembers.Items.Add(item);
 			}
 
-			// Remove the logged in staff member from the list
-			foreach (ListViewItem item in lstViewStaffMembers.Items)
-			{
-				if (item.SubItems[0].Text == frmLoginScreen.loggedInStaff.forename && item.SubItems[1].Text == frmLoginScreen.loggedInStaff.surname)
-				{
-					lstViewStaffMembers.Items.Remove(item);
-				}
-			}
 			lstViewStaffMembers.SelectedItems.Clear();
 		}
 
@@ -156,6 +180,54 @@ namespace Final_Project
 				}
 			}
 
+			if (!frmRegisterScreen.IsValidUsername(username))
+			{
+				ShowErrorStaffLevel("Invalid username, must be in the format Example123, at least 5 characters");
+				return;
+			}
+			if (!frmRegisterScreen.IsValidName(forename))
+			{
+				ShowErrorStaffLevel("Invalid forename, must be only letters");
+				return;
+			}
+			if (!frmRegisterScreen.IsValidName(surname))
+			{
+				ShowErrorStaffLevel("Invalid surname, must be only letters");
+				return;
+			}
+
+			// checks to see if the input password passes all the checks: More than 8 chatacters, contain a capital, contain a number
+			if (!((password.Length >= 8) && (password.Length <= 15)
+				&& (password.Any(char.IsUpper)) && (password.Any(char.IsDigit))))
+			{
+				// if it fails, a list of the password requirements are shown
+				ShowErrorStaffLevel("Enter a password between 8-15 characters, with at least\n1 number, 1 capital letter and 1 symbol");
+				return;
+			}
+
+			// Creates a list of valid password symbols and populates it
+			List<char> symbols = new List<char>()
+				{ '!', '<', '>', '*', '-', '£', '$', '%', '&', '^', '.',':', ';', '/', '?', '#', '@',};
+
+
+			bool hasSymbol = false;
+			// checks to see if the input password contains one of these symbols and if so registers the user
+			foreach (char sym in symbols)
+			{
+				if (password.Contains(sym))
+				{
+					// if it does, then the program runs the register method which will register the user as a valid user
+					hasSymbol = true;
+				}
+			}
+
+			if (!hasSymbol)
+			{
+				ShowErrorStaffLevel("Your password does not have a valid symbol, the following are acceptable: ! < > * - £ $ % & ^ . : ; / ? # @");
+				return;
+			}
+
+
 			staffToEdit.forename = forename;
 			staffToEdit.surname = surname;
 			staffToEdit.username = username;
@@ -164,6 +236,8 @@ namespace Final_Project
 			StaffDal.UpdateStaffInformation(staffToEdit);
 			ShowStaffInfo();
 		}
+
+
 
 		private void ShowErrorStaffLevel(string errorMessage)
 		{
@@ -179,11 +253,6 @@ namespace Final_Project
 			lblErrorStaffEdit.Text = "";
 		}
 
-		private void btnEditPosition_Click(object sender, EventArgs e)
-		{
-			ShowEditStaffPosition();
-		}
-
 		private void btnConfirmEditStaffPositionChanges_Click(object sender, EventArgs e)
 		{
 			staffToEdit.staffPosition = cBoxStaffPositions.Text;
@@ -191,11 +260,16 @@ namespace Final_Project
 			ShowStaffInfo();
 		}
 
+		private void btnEditStaffPosition_Click(object sender, EventArgs e)
+		{
+			ShowEditStaffPosition();
+		}
+
 		private void btnFireStaffMember_Click(object sender, EventArgs e)
 		{
 			staffToEdit.active = 0;
 			StaffDal.UpdateStaffStatus(staffToEdit);
 			UpdateStaffListView();
-		}
+		}		
 	}
 }

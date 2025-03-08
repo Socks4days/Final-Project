@@ -77,17 +77,17 @@ namespace Final_Project
 						loggedInStaff = staff;
 						frmMainScreen.frmMain.OpenChildForm(null, null);
 						frmMainScreen.frmMain.SetUserPermissions(staff);
-						break;
+						return;
 					}
                     else
                     {
                         ShowError("You do not have access to the system");
+                        return;
                     }
                     
                 }                
             }	
-            if(loggedInStaff == null)
-			ShowError("The details you have entered are invalid");			
+            ShowError("The details you have entered are invalid");			
 		}
 
         private void btnRegister_Click(object sender, EventArgs e)

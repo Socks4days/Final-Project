@@ -158,10 +158,11 @@ namespace Final_Project
 			{
 				activeMenuButton.BackColor = Color.Transparent;
 				activeMenuButton = null!;
-				if(parentMenuButton != null)
-				{
-					parentMenuButton.BackColor = Color.Transparent;
-				}				
+								
+			}
+			if (parentMenuButton != null)
+			{
+				parentMenuButton.BackColor = Color.Transparent;
 			}
 
 			// If displaying main menu (without a child form), get and show KPIs
@@ -299,8 +300,6 @@ namespace Final_Project
 			parentMenuButton = btnStaff;
 		}
 
-
-
 		private void ResetMainButtonColours()
 		{
 			btnStock.BackColor = Color.FromArgb(51, 51, 79);
@@ -405,11 +404,6 @@ namespace Final_Project
 			OpenChildForm(new frmStaffManagement(), (Button)sender);
 		}
 
-		private void btnOrderReports_Click(object sender, EventArgs e)
-		{
-			OpenChildForm(new frmReports("Order", 263), (Button)sender);
-		}
-
 		private void btnLogout_Click(object sender, EventArgs e)
 		{
 			OpenChildForm(new frmLoginScreen(), null!);
@@ -417,21 +411,24 @@ namespace Final_Project
 
 		private void btnLowStockReport_Click(object sender, EventArgs e)
 		{
-			OpenChildForm(new frmReports("Low Stock", -1), null!);
+			parentMenuButton = btnStock;
+			OpenChildForm(new frmReports("Low Stock", -1), btnManageStockLevels);
 		}
 
 		private void btnDeliveryDiscrepancies_Click(object sender, EventArgs e)
 		{
-			frmMainScreen.frmMain.OpenChildForm(new frmReports("Delivery Discrepancies", -1), frmMainScreen.frmMain.btnViewDeliveries);
+			parentMenuButton = btnDelivery;
+			OpenChildForm(new frmReports("Delivery Discrepancies", -1), btnViewDeliveries);
 		}
 
 		private void btnOverdueAudits_Click(object sender, EventArgs e)
 		{
+			parentMenuButton = btnAudits;
 			Audit newAudit = new Audit();
 			newAudit.auditDate = DateTime.Now;
 			newAudit.auditedByStaffId = frmLoginScreen.loggedInStaff.staffId;
 			newAudit = AuditDal.AddAudit(newAudit);
-			OpenChildForm(new frmAuditing(newAudit, "Create Audit"), (Button)sender);
+			OpenChildForm(new frmAuditing(newAudit, "Create Audit"), btnCreateAudit);
 		}
 
 		#endregion ButtonNavigation
@@ -467,7 +464,6 @@ namespace Final_Project
 			btnOrder.Visible = false;
 			btnDelivery.Visible = false;
 			btnAudits.Visible = false;
-			btnStaff.Visible = false;
 		}
 
 		private void Mechanic()
@@ -475,14 +471,12 @@ namespace Final_Project
 			pnlStock.Height = btnManageStockLevels.Height;
 			btnOrder.Visible = false;
 			btnDelivery.Visible = false;
-			btnStaff.Visible = false;
 		}
 
 		private void SeniorMechanic()
 		{
 			btnOrder.Visible = false;
 			btnDelivery.Visible = false;
-			btnStaff.Visible = false;
 		}
 
 		private void ResetButtonVisibilities()
@@ -491,7 +485,6 @@ namespace Final_Project
 			btnOrder.Visible = true;
 			btnDelivery.Visible = true;
 			btnAudits.Visible = true;
-			btnStaff.Visible = true;
 		}
 
 		#endregion PermissionHandling				

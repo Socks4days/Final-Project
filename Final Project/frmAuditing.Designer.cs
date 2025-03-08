@@ -454,10 +454,6 @@
 			columnHeader8.Text = "Actual Quantity";
 			columnHeader8.Width = 200;
 			// 
-			// toolTipAuditing
-			// 
-			toolTipAuditing.IsBalloon = true;
-			// 
 			// frmAuditing
 			// 
 			AutoScaleDimensions = new SizeF(96F, 96F);
