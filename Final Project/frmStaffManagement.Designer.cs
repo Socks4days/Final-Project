@@ -260,7 +260,7 @@
 			txtBoxSurname.BorderStyle = BorderStyle.None;
 			txtBoxSurname.Font = new Font("Segoe UI", 14F);
 			txtBoxSurname.Location = new Point(552, 220);
-			txtBoxSurname.MaxLength = 20;
+			txtBoxSurname.MaxLength = 30;
 			txtBoxSurname.Name = "txtBoxSurname";
 			txtBoxSurname.Size = new Size(220, 25);
 			txtBoxSurname.TabIndex = 1;
@@ -309,7 +309,7 @@
 			txtBoxForename.BorderStyle = BorderStyle.None;
 			txtBoxForename.Font = new Font("Segoe UI", 14F);
 			txtBoxForename.Location = new Point(236, 220);
-			txtBoxForename.MaxLength = 20;
+			txtBoxForename.MaxLength = 30;
 			txtBoxForename.Name = "txtBoxForename";
 			txtBoxForename.Size = new Size(220, 25);
 			txtBoxForename.TabIndex = 0;

@@ -86,7 +86,7 @@
 			txtBoxSurname.Anchor = AnchorStyles.None;
 			txtBoxSurname.Font = new Font("Segoe UI", 14F);
 			txtBoxSurname.Location = new Point(630, 321);
-			txtBoxSurname.MaxLength = 15;
+			txtBoxSurname.MaxLength = 30;
 			txtBoxSurname.Name = "txtBoxSurname";
 			txtBoxSurname.Size = new Size(240, 32);
 			txtBoxSurname.TabIndex = 3;
@@ -96,7 +96,7 @@
 			txtBoxForename.Anchor = AnchorStyles.None;
 			txtBoxForename.Font = new Font("Segoe UI", 14F);
 			txtBoxForename.Location = new Point(331, 321);
-			txtBoxForename.MaxLength = 15;
+			txtBoxForename.MaxLength = 30;
 			txtBoxForename.Name = "txtBoxForename";
 			txtBoxForename.Size = new Size(240, 32);
 			txtBoxForename.TabIndex = 2;

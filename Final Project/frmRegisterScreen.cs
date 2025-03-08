@@ -62,8 +62,8 @@ namespace Final_Project
 
 		public static bool IsValidName(string name)
 		{
-			// Regular expression to match names containing only letters
-			string pattern = @"^[a-zA-Z]+$";
+			// Regular expression to match names containing letters, apostrophe, spaces or dashes
+			string pattern = @"^[a-zA-Z' \-]+$";
 			Match match = Regex.Match(name, pattern);
 			return match.Success;
 		}
@@ -85,17 +85,17 @@ namespace Final_Project
 
 			if (!IsValidUsername(txtBoxUsername.Text))
 			{
-				ShowError("Invalid username, must be letters or numbers only with at least 4 characters");
+				ShowError("Invalid username, must only contain letters or numbers with at least 4 characters");
 				return;
 			}
 			if (!IsValidName(txtBoxForename.Text))
 			{
-				ShowError("Invalid forename, must be only letters");
+				ShowError("Invalid forename, must only contain letters, spaces, dashes or apostrophes");
 				return;
 			}
 			if (!IsValidName(txtBoxSurname.Text))
 			{
-				ShowError("Invalid surname, must be only letters");
+				ShowError("Invalid surname, must only contain letters, spaces, dashes or apostrophes");
 				return;
 			}
 
