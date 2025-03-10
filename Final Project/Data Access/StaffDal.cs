@@ -6,17 +6,16 @@ using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
 using System.Configuration;
 using Final_Project.Models;
+using Final_Project.Data_Access;
 
 namespace Final_Project
 {
 	public class StaffDal
     {
-        private static string workingDirectoryPath = AppDomain.CurrentDomain.BaseDirectory;
-        private static string projectDirectoryPath = Directory.GetParent(workingDirectoryPath).Parent.Parent.Parent.FullName;
-        private static string _connectionstring = string.Format(ConfigurationManager.ConnectionStrings["StockManagementConnectionString"].ConnectionString, projectDirectoryPath);
+		// Get connection string using DalHelper class
+		private static string _connectionstring = DalHelper._connectionstring;
 
-
-        public static List<Staff> GetAllStaff()
+		public static List<Staff> GetAllStaff()
         {
             using (SqlConnection connection = new SqlConnection(_connectionstring))
             { 

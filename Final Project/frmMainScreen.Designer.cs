@@ -67,6 +67,7 @@
 			btnLowStock = new Button();
 			pctBoxLogo = new PictureBox();
 			toolTipMainMenu = new ToolTip(components);
+			btnEditStaffDetails = new Button();
 			pnlSideBar.SuspendLayout();
 			pnlStaff.SuspendLayout();
 			pnlAudits.SuspendLayout();
@@ -84,6 +85,7 @@
 			// 
 			pnlSideBar.AutoScroll = true;
 			pnlSideBar.BackColor = Color.FromArgb(51, 51, 79);
+			pnlSideBar.Controls.Add(btnEditStaffDetails);
 			pnlSideBar.Controls.Add(pnlStaff);
 			pnlSideBar.Controls.Add(btnStaff);
 			pnlSideBar.Controls.Add(btnLogout);
@@ -161,7 +163,7 @@
 			btnLogout.FlatStyle = FlatStyle.Flat;
 			btnLogout.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
 			btnLogout.ForeColor = Color.White;
-			btnLogout.Location = new Point(0, 1050);
+			btnLogout.Location = new Point(0, 1120);
 			btnLogout.Margin = new Padding(2);
 			btnLogout.Name = "btnLogout";
 			btnLogout.Size = new Size(182, 70);
@@ -671,6 +673,27 @@
 			toolTipMainMenu.UseAnimation = false;
 			toolTipMainMenu.UseFading = false;
 			// 
+			// btnEditStaffDetails
+			// 
+			btnEditStaffDetails.BackColor = Color.Transparent;
+			btnEditStaffDetails.Dock = DockStyle.Top;
+			btnEditStaffDetails.FlatAppearance.BorderSize = 0;
+			btnEditStaffDetails.FlatAppearance.MouseOverBackColor = Color.FromArgb(74, 74, 114);
+			btnEditStaffDetails.FlatStyle = FlatStyle.Flat;
+			btnEditStaffDetails.Font = new Font("Segoe UI", 14F);
+			btnEditStaffDetails.ForeColor = Color.White;
+			btnEditStaffDetails.Location = new Point(0, 1050);
+			btnEditStaffDetails.Margin = new Padding(2);
+			btnEditStaffDetails.Name = "btnEditStaffDetails";
+			btnEditStaffDetails.Padding = new Padding(20, 0, 0, 0);
+			btnEditStaffDetails.Size = new Size(182, 70);
+			btnEditStaffDetails.TabIndex = 18;
+			btnEditStaffDetails.Text = "Edit Staff Details";
+			btnEditStaffDetails.TextAlign = ContentAlignment.MiddleLeft;
+			toolTipMainMenu.SetToolTip(btnEditStaffDetails, "Manage Company Staff");
+			btnEditStaffDetails.UseVisualStyleBackColor = false;
+			btnEditStaffDetails.Click += btnEditStaffDetails_Click;
+			// 
 			// frmMainScreen
 			// 
 			AutoScaleDimensions = new SizeF(96F, 96F);
@@ -741,5 +764,6 @@
 		private Label lblNumberOverdueAudits;
 		private Button btnOverdueAudits;
 		private ToolTip toolTipMainMenu;
+		private Button btnEditStaffDetails;
 	}
 }

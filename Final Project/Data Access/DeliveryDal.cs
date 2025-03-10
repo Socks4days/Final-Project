@@ -4,15 +4,16 @@ using static System.ComponentModel.Design.ObjectSelectorEditor;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using Final_Project.Models;
+using Final_Project.Data_Access;
 
 namespace Final_Project
 {
 	public class DeliveryDal
     {
-        private static string workingDirectoryPath = AppDomain.CurrentDomain.BaseDirectory;
-        private static string projectDirectoryPath = Directory.GetParent(workingDirectoryPath)!.Parent!.Parent!.Parent!.FullName!;
-        private static string _connectionstring = string.Format(ConfigurationManager.ConnectionStrings["StockManagementConnectionString"].ConnectionString, projectDirectoryPath);
+        // Get connection string using DalHelper class
+        private static string _connectionstring = DalHelper._connectionstring;
 
+        // Get a list of items in a delivery
         public static List<DeliveryItem> GetAllDeliveryItems(int deliveryNumber)
         {
             using (SqlConnection connection = new SqlConnection(_connectionstring))
@@ -44,6 +45,7 @@ namespace Final_Project
             }
         }
 
+        // Get a list of items and delivered/remaining for an order
         public static List<OrderItemsDeliveredView> GetOrderItemsDeliveredView(int orderNumber)
         {
             using (SqlConnection connection = new SqlConnection(_connectionstring))
@@ -59,30 +61,14 @@ namespace Final_Project
 
                 while (sqlDataReader.Read())
                 {
-                    DateTime? deliveryDate = null;
-                    int? quantityDelivered = null;
-                    int? quantityFaulty = null;
-
-                    var dbDeliveryDateTime = sqlDataReader["DeliveryDate"];
-                    if (dbDeliveryDateTime != DBNull.Value)
-                        deliveryDate = Convert.ToDateTime(dbDeliveryDateTime);
-
-                    var dbQuantityDelivered = sqlDataReader["QuantityDelivered"];
-                    if (dbQuantityDelivered != DBNull.Value)
-                        quantityDelivered = Convert.ToInt32(dbQuantityDelivered);
-
-                    var dbQuantityFaulty = sqlDataReader["QuantityFaulty"];
-                    if (dbQuantityFaulty != DBNull.Value)
-                        quantityFaulty = Convert.ToInt32(dbQuantityFaulty);
-
                     OrderItemsDeliveredView deliveryItem = new OrderItemsDeliveredView(
                         (int)sqlDataReader["OrderNumber"],
                         (int)sqlDataReader["StockId"],
                         (string)sqlDataReader["StockName"],
                         (int)sqlDataReader["OrderItemQuantity"],
-                        deliveryDate,
-                        quantityDelivered,
-                        quantityFaulty
+				        DalHelper.GetSqlDate(sqlDataReader, "DeliveryDate"),
+					    DalHelper.GetSqlInt(sqlDataReader, "QuantityDelivered"),
+					    DalHelper.GetSqlInt(sqlDataReader, "QuantityFaulty")
                         );
 
                     deliveryItems.Add(deliveryItem);
@@ -223,31 +209,14 @@ namespace Final_Project
 
                 while (sqlDataReader.Read())
                 {
-                    // TODO: Use null handling method
-                    DateTime? deliveryDate = null;
-                    int? quantityDelivered = null;
-                    int? quantityFaulty = null;
-
-                    var dbDeliveryDateTime = sqlDataReader["DeliveryDate"];
-                    if (dbDeliveryDateTime != DBNull.Value)
-                        deliveryDate = Convert.ToDateTime(dbDeliveryDateTime);
-
-                    var dbQuantityDelivered = sqlDataReader["QuantityDelivered"];
-                    if (dbQuantityDelivered != DBNull.Value)
-                        quantityDelivered = Convert.ToInt32(dbQuantityDelivered);
-
-                    var dbQuantityFaulty = sqlDataReader["QuantityFaulty"];
-                    if (dbQuantityFaulty != DBNull.Value)
-                        quantityFaulty = Convert.ToInt32(dbQuantityFaulty);
-
                     DeliveryItemsView deliveryItem = new DeliveryItemsView(
                         (int)sqlDataReader["OrderNumber"],
                         (int)sqlDataReader["DeliveryNumber"],
-                        deliveryDate,
+                        DalHelper.GetSqlDate(sqlDataReader, "DeliveryDate"),
                         (int)sqlDataReader["StockId"],
                         (string)sqlDataReader["StockName"],                        
-                        quantityDelivered,
-                        quantityFaulty
+                        DalHelper.GetSqlInt(sqlDataReader, "QuantityDelivered"),
+                        DalHelper.GetSqlInt(sqlDataReader, "QuantityFaulty")
                         );
 
                     deliveryItems.Add(deliveryItem);
@@ -279,6 +248,8 @@ namespace Final_Project
 			}
 		}
 
+        // Get a count of delivery discrepancies (i.e. order item discrepancies)
+        // See corresponding method to get full list in OrderDal
         public static int GetNumberOfDeliveryDiscrepancies()
         {
 			int numberOfDeliveryDiscrepancies = 0;
@@ -305,35 +276,5 @@ namespace Final_Project
 
 			return numberOfDeliveryDiscrepancies;
 		}
-
-		public static List<DeliveryItemsView> GetListOfDeliveryDiscrepancies()
-		{
-            List<DeliveryItemsView> deliveryDiscrepanciesList = new List<DeliveryItemsView>();
-
-			// Get list of items delivered where the number received minus the number faulty is less than the number ordered
-			string sqlQuery =
-				"SELECT * " +
-				"FROM OrderItemsDeliveredView " +
-				"WHERE(QuantityDelivered - QuantityFaulty) < OrderItemQuantity " +
-                "ORDER BY OrderNumber DESC";
-
-			using (SqlConnection connection = new SqlConnection(_connectionstring))
-			{
-				connection.Open();
-				SqlCommand sqlCommand = new SqlCommand(sqlQuery, connection);
-
-				SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
-
-				while (sqlDataReader.Read())
-				{
-					//Get list details and add to list
-                    // Share code with delivery items above
-				}
-				connection.Close();
-			}
-
-			return deliveryDiscrepanciesList;
-		}
-
 	}
 }

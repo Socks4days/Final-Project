@@ -7,15 +7,16 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Net.NetworkInformation;
 using Final_Project.Models;
+using Final_Project.Data_Access;
 
 namespace Final_Project
 {
 	public class AuditDal
 	{
-		private static string workingDirectoryPath = AppDomain.CurrentDomain.BaseDirectory;
-		private static string projectDirectoryPath = Directory.GetParent(workingDirectoryPath).Parent.Parent.Parent.FullName;
-		private static string _connectionstring = string.Format(ConfigurationManager.ConnectionStrings["StockManagementConnectionString"].ConnectionString, projectDirectoryPath);
+		// Get connection string using DalHelper class
+		private static string _connectionstring = DalHelper._connectionstring;
 
+		// Record an audit
 		public static Audit AddAudit(Audit newAudit)
 		{
 			using (SqlConnection connection = new SqlConnection(_connectionstring))
@@ -25,9 +26,11 @@ namespace Final_Project
 				SqlCommand insertAuditCommand = new SqlCommand();
 				insertAuditCommand.Connection = connection;
 
+				// Call AddAudit stored procedure
 				insertAuditCommand.CommandType = System.Data.CommandType.StoredProcedure;
 				insertAuditCommand.CommandText = "AddAudit";
 
+				// Set output parameter for AuditId of new entry
 				SqlParameter dbAuditId = new SqlParameter("@AuditId", 0);
 				dbAuditId.Direction = System.Data.ParameterDirection.Output;
 
@@ -37,14 +40,25 @@ namespace Final_Project
 
 				int rowsAffected = insertAuditCommand.ExecuteNonQuery();
 
-				newAudit.auditId = Convert.ToInt32(dbAuditId.Value);
+				if (rowsAffected > 0)
+				{
+					// If a row was inserted successfully, set id of row in audit object
+					newAudit.auditId = Convert.ToInt32(dbAuditId.Value);
+				}
+				else 
+				{
+					// Otherwise, set id to 0 to indicate an error
+					newAudit.auditId = 0;
+				}
 
 				connection.Close();
 
+				// Return updated audit object
 				return newAudit;
 			}
 		}
 
+		// Add a stock item to an audit
 		public static int AddAuditItem(AuditItem newAuditItem)
 		{
 			using (SqlConnection connection = new SqlConnection(_connectionstring))
@@ -54,6 +68,7 @@ namespace Final_Project
 				SqlCommand insertAuditItemCommand = new SqlCommand();
 				insertAuditItemCommand.Connection = connection;
 
+				// Call AddAuditItem stored procedure
 				insertAuditItemCommand.CommandType = System.Data.CommandType.StoredProcedure;
 				insertAuditItemCommand.CommandText = "AddAuditItem";
 
@@ -66,10 +81,12 @@ namespace Final_Project
 
 				connection.Close();
 
+				// Return number of rows affected
 				return rowsAffected;
 			}
 		}
 
+		// Get a list of all audits that have been recorded
 		public static List<Audit> GetAllAudits()
 		{
 			using (SqlConnection connection = new SqlConnection(_connectionstring))
@@ -77,6 +94,7 @@ namespace Final_Project
 				List<Audit> audits = new List<Audit>();
 				connection.Open();
 
+				// Build SQL query to get list of audits (most recent first)
 				string sqlQuery = $"SELECT * FROM Audit ORDER BY AuditId DESC";
 
 				SqlCommand getAllAuditsCommand = new SqlCommand(sqlQuery, connection);
@@ -85,6 +103,7 @@ namespace Final_Project
 
 				while (sqlDataReader.Read())
 				{
+					// Create an Audit object for each row returned
 					Audit audit = new Audit(
 
 						(int)sqlDataReader["AuditId"],
@@ -96,10 +115,13 @@ namespace Final_Project
 				}
 
 				connection.Close();
+
+				// Return list of Audit objects
 				return audits;
 			}
 		}
 
+		// Get a list of all audit tems for a specific audit
 		public static List<AuditItem> GetAllAuditItems(int auditId)
 		{
 			using (SqlConnection connection = new SqlConnection(_connectionstring))
@@ -107,6 +129,7 @@ namespace Final_Project
 				List<AuditItem> auditItems = new List<AuditItem>();
 				connection.Open();
 
+				// Build SQL query to get list of audit items
 				string sqlQuery = $"SELECT * FROM AuditItem WHERE auditId = {auditId}";
 
 				SqlCommand getAllAuditItemsCommand = new SqlCommand(sqlQuery, connection);
@@ -127,14 +150,19 @@ namespace Final_Project
 				}
 
 				connection.Close();
+
+				// Return list of AuditItem objects
 				return auditItems;
 			}
 		}
 		
+		// Get number of overdue audits
 		public static int GetNumberOfOverdueAudits()
 		{
 			int numberOfOverdueAudits = 0;
 
+			// Build SQL query to get count of audits where the DaysToNextAudit < 0
+			// Uses StockLevelsView which calculates the number of days to the next audit
 			string sqlQuery =
 				"SELECT COUNT(StockId) AS NumberOfOverdueAudits " +
 				"FROM StockLevelsView " +
@@ -149,11 +177,13 @@ namespace Final_Project
 
 				while (sqlDataReader.Read())
 				{
+					// Read the count returned by the SQL query
 					numberOfOverdueAudits = (int)sqlDataReader["NumberOfOverdueAudits"];
 				}
 				connection.Close();
 			}
 
+			// Return the count
 			return numberOfOverdueAudits;
 		}
 	}

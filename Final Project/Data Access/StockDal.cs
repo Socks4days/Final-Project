@@ -8,17 +8,15 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using Microsoft.Data.SqlClient;
+using Final_Project.Data_Access;
 
 namespace Final_Project
 {
 	public class StockDal
 	{
-		// Get current directory ending in bin/Debug/net8.0-windows
-		private static string workingDirectoryPath = AppDomain.CurrentDomain.BaseDirectory;
-		// Go back 3 levels to get project directory 
-		private static string projectDirectoryPath = Directory.GetParent(workingDirectoryPath)!.Parent!.Parent!.Parent!.FullName;
-		// Replace {0} in connection string with project directory
-		private static string _connectionstring = string.Format(ConfigurationManager.ConnectionStrings["StockManagementConnectionString"].ConnectionString, projectDirectoryPath);
+
+		// Get connection string using DalHelper class
+		private static string _connectionstring = DalHelper._connectionstring;
 
 		public static int AddNewStock(Stock newStock)
 		{

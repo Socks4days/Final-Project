@@ -6,15 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using Final_Project.Models;
-
+using Final_Project.Data_Access;
 
 namespace Final_Project
 {
 	public class OrderDal
     {
-        private static string workingDirectoryPath = AppDomain.CurrentDomain.BaseDirectory;
-        private static string projectDirectoryPath = Directory.GetParent(workingDirectoryPath).Parent.Parent.Parent.FullName;
-        private static string _connectionstring = string.Format(ConfigurationManager.ConnectionStrings["StockManagementConnectionString"].ConnectionString, projectDirectoryPath);
+		// Get connection string using DalHelper class
+		private static string _connectionstring = DalHelper._connectionstring;
 
 		// Create a new order
 		public static Order AddOrder(Order newOrder)
@@ -296,10 +295,10 @@ namespace Final_Project
 						(DateTime)sqlDataReader["OrderDate"],
 						(int)sqlDataReader["OrderPlacedByStaffId"],
 						(string)sqlDataReader["OrderStatus"],
-						GetSqlString(sqlDataReader, "OrderPlacedByStaffName"),
-						GetSqlDate(sqlDataReader, "MinDeliveryDueDate"),
-						GetSqlDate(sqlDataReader, "MaxDeliveryDueDate"),
-						GetSqlDate(sqlDataReader, "LastDeliveryDate")
+						DalHelper.GetSqlString(sqlDataReader, "OrderPlacedByStaffName"),
+						DalHelper.GetSqlDate(sqlDataReader, "MinDeliveryDueDate"),
+						DalHelper.GetSqlDate(sqlDataReader, "MaxDeliveryDueDate"),
+						DalHelper.GetSqlDate(sqlDataReader, "LastDeliveryDate")
 					);
 					orders.Add(order);
 				}
@@ -355,26 +354,6 @@ namespace Final_Project
 				// Return a list of all order items that have discrepancies
 				return orderItemsDelivered;
 			}
-		}
-
-		// Helper method to check for null values in a SQL datetime column
-		public static DateTime? GetSqlDate(SqlDataReader sqlDataReader, string columnName)
-		{
-			var dbDateTime = sqlDataReader[columnName];
-			DateTime? dateTime = null;
-			if (dbDateTime != DBNull.Value)
-				dateTime = Convert.ToDateTime(dbDateTime);
-			return dateTime;
-		}
-
-		// Helper method to check for null values in a SQL nverchar column
-		public static string GetSqlString(SqlDataReader sqlDataReader, string columnName)
-		{
-			var dbString = sqlDataReader[columnName];
-			string returnString = "";
-			if (dbString != DBNull.Value)
-				returnString = (string)dbString;
-			return returnString;
 		}
 	}
 }

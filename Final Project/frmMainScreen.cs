@@ -128,12 +128,21 @@ namespace Final_Project
 
 					}
 				}
-				else if (name == "Manage Staff")
+				else if (name == "Manage Staff" || name == "Edit Staff Details")
 				{
 					btnStaff.BackColor = Color.FromArgb(100, 12, 100);
 					pnlTitleBar.BackColor = Color.FromArgb(150, 12, 150);
-					btnManageStaff.BackColor = Color.FromArgb(150, 12, 150);
-				}
+					switch (name)
+					{
+						case "Manage Staff":
+							btnManageStaff.BackColor = Color.FromArgb(150, 12, 150);
+							break;
+						case "Edit Staff Details":
+							btnEditStaffDetails.BackColor = Color.FromArgb(255, 138, 98);
+							break;
+
+					}
+				}				
 			}
 
 			#endregion Colouring
@@ -152,7 +161,7 @@ namespace Final_Project
 			{
 				activeMenuButton.BackColor = Color.Transparent;
 				activeMenuButton = null!;
-								
+
 			}
 			if (parentMenuButton != null)
 			{
@@ -482,6 +491,10 @@ namespace Final_Project
 		}
 
 		#endregion PermissionHandling				
-				
+
+		private void btnEditStaffDetails_Click(object sender, EventArgs e)
+		{
+
+		}
 	}
 }
