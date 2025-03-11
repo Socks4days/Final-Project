@@ -14,15 +14,21 @@ namespace Final_Project
 {
 	public partial class frmStaffManagement : Form
 	{
-		public frmStaffManagement()
+		public frmStaffManagement(string viewToShow)
 		{
 			InitializeComponent();
+			viewing = viewToShow;
+			if(viewToShow == "All Staff")
 			ShowStaffInfo();
+			else if(viewToShow == "My Details")
+				ShowMyDetails();
 		}
 
 		Staff staffToEdit = new Staff();
 		List<Staff> staffList = StaffDal.GetAllStaff();
 		string[] positions = { "Initiate", "Mechanic", "Senior Mechanic", "Manager" };
+		string viewing = "";
+	
 
 		private void lstViewOrders_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
 		{
@@ -61,7 +67,7 @@ namespace Final_Project
 					{
 						btnEditStaffMember.Enabled = false;
 					}
-				}			
+				}
 			}
 		}
 
@@ -71,6 +77,7 @@ namespace Final_Project
 			pnlOptionButtons.Visible = false;
 			pnlEditStaffMember.Visible = false;
 			pnlEditStaffPosition.Visible = false;
+			pnlMyDetails.Visible = false;
 			pnlStaffListView.Dock = DockStyle.Fill;
 			pnlStaffInfo.Dock = DockStyle.Fill;
 			UpdateStaffListView();
@@ -87,6 +94,7 @@ namespace Final_Project
 			pnlStaffInfo.Visible = false;
 			pnlEditStaffMember.Visible = true;
 			pnlEditStaffPosition.Visible = false;
+			pnlMyDetails.Visible = false;
 			pnlEditStaffMember.Dock = DockStyle.Fill;
 
 			ClearError();
@@ -100,10 +108,24 @@ namespace Final_Project
 		{
 			pnlStaffInfo.Visible = false;
 			pnlEditStaffMember.Visible = false;
+			pnlMyDetails.Visible = false;
 			pnlEditStaffPosition.Visible = true;
 			pnlEditStaffPosition.Dock = DockStyle.Fill;
 			cBoxStaffPositions.DataSource = positions;
 			lblStaffToEditPosition.Text = $"Editing position for: {staffToEdit.forename} {staffToEdit.surname}";
+		}
+
+		private void ShowMyDetails()
+		{
+			Staff me = frmLoginScreen.loggedInStaff;
+			pnlStaffInfo.Visible = false;
+			pnlEditStaffMember.Visible = false;
+			pnlEditStaffPosition.Visible = false;
+			pnlMyDetails.Visible = true;
+			pnlMyDetails.Dock = DockStyle.Fill;
+			lblMyForename.Text = $"Forename: {me.forename}";
+			lblMySurname.Text = $"Surname: {me.surname}";
+			lblMyUsername.Text = $"Username: {me.username}";
 		}
 
 		private void UpdateStaffListView()
@@ -150,7 +172,10 @@ namespace Final_Project
 
 		private void btnCancelStaffEdit_Click(object sender, EventArgs e)
 		{
+			if(viewing == "All Staff")
 			ShowStaffInfo();
+			else if (viewing == "My Details")
+			ShowMyDetails();
 		}
 
 		private void btnCancelEditStaffPosition_Click(object sender, EventArgs e)
@@ -271,6 +296,12 @@ namespace Final_Project
 			staffToEdit.active = 0;
 			StaffDal.UpdateStaffStatus(staffToEdit);
 			UpdateStaffListView();
-		}		
+		}
+
+		private void btnEditMyDetails_Click(object sender, EventArgs e)
+		{
+			staffToEdit = frmLoginScreen.loggedInStaff;
+			ShowEditStaffMember();
+		}
 	}
 }

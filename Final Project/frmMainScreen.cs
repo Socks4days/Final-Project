@@ -128,7 +128,7 @@ namespace Final_Project
 
 					}
 				}
-				else if (name == "Manage Staff" || name == "Edit Staff Details")
+				else if (name == "Manage Staff" || name == "My Details")
 				{
 					btnStaff.BackColor = Color.FromArgb(100, 12, 100);
 					pnlTitleBar.BackColor = Color.FromArgb(150, 12, 150);
@@ -137,12 +137,12 @@ namespace Final_Project
 						case "Manage Staff":
 							btnManageStaff.BackColor = Color.FromArgb(150, 12, 150);
 							break;
-						case "Edit Staff Details":
-							btnEditStaffDetails.BackColor = Color.FromArgb(255, 138, 98);
+						case "My Details":
+							btnMyDetails.BackColor = Color.FromArgb(150, 12, 150);
 							break;
 
 					}
-				}				
+				}
 			}
 
 			#endregion Colouring
@@ -404,7 +404,12 @@ namespace Final_Project
 
 		private void btnManageStaff_Click(object sender, EventArgs e)
 		{
-			OpenChildForm(new frmStaffManagement(), (Button)sender);
+			OpenChildForm(new frmStaffManagement("All Staff"), (Button)sender);
+		}
+
+		private void btnMyDetails_Click(object sender, EventArgs e)
+		{
+			OpenChildForm(new frmStaffManagement("My Details"), (Button)sender);
 		}
 
 		private void btnLogout_Click(object sender, EventArgs e)
@@ -467,6 +472,8 @@ namespace Final_Project
 			btnOrder.Visible = false;
 			btnDelivery.Visible = false;
 			btnAudits.Visible = false;
+			btnManageStaff.Visible = false;
+			pnlStaff.Height = btnMyDetails.Height;
 		}
 
 		private void Mechanic()
@@ -474,12 +481,16 @@ namespace Final_Project
 			pnlStock.Height = btnManageStockLevels.Height;
 			btnOrder.Visible = false;
 			btnDelivery.Visible = false;
+			btnManageStaff.Visible = false;
+			pnlStaff.Height = btnMyDetails.Height;
 		}
 
 		private void SeniorMechanic()
 		{
 			btnOrder.Visible = false;
 			btnDelivery.Visible = false;
+			btnManageStaff.Visible = false;
+			pnlStaff.Height = btnMyDetails.Height;
 		}
 
 		private void ResetButtonVisibilities()
@@ -488,13 +499,12 @@ namespace Final_Project
 			btnOrder.Visible = true;
 			btnDelivery.Visible = true;
 			btnAudits.Visible = true;
+			pnlStaff.Height = btnMyDetails.Height * 2;
 		}
 
 		#endregion PermissionHandling				
 
-		private void btnEditStaffDetails_Click(object sender, EventArgs e)
-		{
 
-		}
+		
 	}
 }

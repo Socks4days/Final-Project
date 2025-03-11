@@ -60,11 +60,17 @@
 			btnConfirmEditStaffPositionChanges = new Button();
 			lblStaffToEditPosition = new Label();
 			toolTipStaff = new ToolTip(components);
+			btnEditMyDetails = new Button();
+			pnlMyDetails = new Panel();
+			lblMySurname = new Label();
+			lblMyUsername = new Label();
+			lblMyForename = new Label();
 			pnlStaffInfo.SuspendLayout();
 			pnlStaffListView.SuspendLayout();
 			pnlOptionButtons.SuspendLayout();
 			pnlEditStaffMember.SuspendLayout();
 			pnlEditStaffPosition.SuspendLayout();
+			pnlMyDetails.SuspendLayout();
 			SuspendLayout();
 			// 
 			// pnlStaffInfo
@@ -449,6 +455,72 @@
 			lblStaffToEditPosition.Text = "Editing position for:";
 			lblStaffToEditPosition.TextAlign = ContentAlignment.MiddleCenter;
 			// 
+			// btnEditMyDetails
+			// 
+			btnEditMyDetails.Anchor = AnchorStyles.None;
+			btnEditMyDetails.BackColor = Color.FromArgb(150, 12, 150);
+			btnEditMyDetails.FlatAppearance.BorderSize = 0;
+			btnEditMyDetails.FlatStyle = FlatStyle.Flat;
+			btnEditMyDetails.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			btnEditMyDetails.ForeColor = Color.White;
+			btnEditMyDetails.Location = new Point(381, 409);
+			btnEditMyDetails.Name = "btnEditMyDetails";
+			btnEditMyDetails.Size = new Size(220, 50);
+			btnEditMyDetails.TabIndex = 4;
+			btnEditMyDetails.Text = "Edit My Details";
+			toolTipStaff.SetToolTip(btnEditMyDetails, "Staff information will be updated to match what is in each textbox accordingly");
+			btnEditMyDetails.UseVisualStyleBackColor = false;
+			btnEditMyDetails.Click += btnEditMyDetails_Click;
+			// 
+			// pnlMyDetails
+			// 
+			pnlMyDetails.BackColor = Color.FromArgb(200, 200, 200);
+			pnlMyDetails.Controls.Add(btnEditMyDetails);
+			pnlMyDetails.Controls.Add(lblMySurname);
+			pnlMyDetails.Controls.Add(lblMyUsername);
+			pnlMyDetails.Controls.Add(lblMyForename);
+			pnlMyDetails.Dock = DockStyle.Top;
+			pnlMyDetails.Location = new Point(0, 2040);
+			pnlMyDetails.Name = "pnlMyDetails";
+			pnlMyDetails.Size = new Size(982, 680);
+			pnlMyDetails.TabIndex = 9;
+			// 
+			// lblMySurname
+			// 
+			lblMySurname.Anchor = AnchorStyles.None;
+			lblMySurname.AutoSize = true;
+			lblMySurname.Font = new Font("Segoe UI", 14F);
+			lblMySurname.ForeColor = Color.Black;
+			lblMySurname.Location = new Point(381, 264);
+			lblMySurname.Name = "lblMySurname";
+			lblMySurname.Size = new Size(91, 25);
+			lblMySurname.TabIndex = 29;
+			lblMySurname.Text = "Surname:";
+			// 
+			// lblMyUsername
+			// 
+			lblMyUsername.Anchor = AnchorStyles.None;
+			lblMyUsername.AutoSize = true;
+			lblMyUsername.Font = new Font("Segoe UI", 14F);
+			lblMyUsername.ForeColor = Color.Black;
+			lblMyUsername.Location = new Point(381, 305);
+			lblMyUsername.Name = "lblMyUsername";
+			lblMyUsername.Size = new Size(101, 25);
+			lblMyUsername.TabIndex = 27;
+			lblMyUsername.Text = "Username:";
+			// 
+			// lblMyForename
+			// 
+			lblMyForename.Anchor = AnchorStyles.None;
+			lblMyForename.AutoSize = true;
+			lblMyForename.Font = new Font("Segoe UI", 14F);
+			lblMyForename.ForeColor = Color.Black;
+			lblMyForename.Location = new Point(381, 220);
+			lblMyForename.Name = "lblMyForename";
+			lblMyForename.Size = new Size(100, 25);
+			lblMyForename.TabIndex = 24;
+			lblMyForename.Text = "Forename:";
+			// 
 			// frmStaffManagement
 			// 
 			AutoScaleDimensions = new SizeF(96F, 96F);
@@ -456,6 +528,7 @@
 			AutoScroll = true;
 			AutoSize = true;
 			ClientSize = new Size(1000, 680);
+			Controls.Add(pnlMyDetails);
 			Controls.Add(pnlEditStaffPosition);
 			Controls.Add(pnlEditStaffMember);
 			Controls.Add(pnlStaffInfo);
@@ -469,6 +542,8 @@
 			pnlEditStaffMember.ResumeLayout(false);
 			pnlEditStaffMember.PerformLayout();
 			pnlEditStaffPosition.ResumeLayout(false);
+			pnlMyDetails.ResumeLayout(false);
+			pnlMyDetails.PerformLayout();
 			ResumeLayout(false);
 		}
 
@@ -505,5 +580,10 @@
 		private Button btnFireStaffMember;
 		private Button btnEditStaffPosition;
 		private ToolTip toolTipStaff;
+		private Panel pnlMyDetails;
+		private Button btnEditMyDetails;
+		private Label lblMySurname;
+		private Label lblMyUsername;
+		private Label lblMyForename;
 	}
 }
