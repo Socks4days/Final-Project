@@ -16,7 +16,12 @@ namespace Final_Project.Models
 		public int? quantityDelivered { get; set; }
 		public int? quantityFaulty { get; set; }
 
-		public DeliveryItemsView() { }
+		public DeliveryItemsView() 
+		{
+			this.orderNumber = 0;
+			this.stockId = 0;
+			this.stockName = "";
+		}
 
 		public DeliveryItemsView(int orderNumber, int? deliveryNumber, DateTime? deliveryDate, int stockId, string stockName, int? quantityDelivered, int? quantityFaulty)
 		{

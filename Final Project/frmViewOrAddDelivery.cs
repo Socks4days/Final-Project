@@ -16,7 +16,7 @@ namespace Final_Project
 		public frmViewOrAddDelivery()
 		{
 			InitializeComponent();
-			orderToAddDelivery = null;
+			orderToAddDelivery = new Order();
 			ShowOrders();
 		}
 
@@ -27,7 +27,7 @@ namespace Final_Project
 		OrderItemsDeliveredView selectedOrderItemsDeliveredView = new OrderItemsDeliveredView();
 		List<OrderItemsDeliveredView> sortedOrderItemsDelivered = new List<OrderItemsDeliveredView>();
 		List<DeliveryItemsView> sortedDeliveryItems = new List<DeliveryItemsView>();
-		Delivery delivery;
+		Delivery delivery = new Delivery();
 		string orderItemStatus = Order.NotReceived;
 		private int itemsOrdered;
 		private int itemsReceived;
@@ -128,12 +128,12 @@ namespace Final_Project
 
 				if (orderItemDelivered.quantityDelivered.HasValue)
 				{
-					quantityReceived = orderItemDelivered.quantityDelivered.ToString();
+					quantityReceived = orderItemDelivered.quantityDelivered.ToString()!;
 				}
 
 				if (orderItemDelivered.quantityFaulty.HasValue)
 				{
-					quantityFaulty = orderItemDelivered.quantityFaulty.ToString();
+					quantityFaulty = orderItemDelivered.quantityFaulty.ToString()!;
 				}
 
 				// Create an array with order details
@@ -185,7 +185,7 @@ namespace Final_Project
 			foreach (DeliveryItemsView deliveryItem in sortedDeliveryItems)
 			{
 				// Create an array with order details
-				string[] row = { deliveryItem.stockName, deliveryItem.quantityDelivered.ToString(), deliveryItem.quantityFaulty.ToString() };
+				string[] row = { deliveryItem.stockName, deliveryItem.quantityDelivered.ToString()!, deliveryItem.quantityFaulty.ToString()! };
 
 				// Create a new list item based on the array
 				ListViewItem item = new ListViewItem(row);
@@ -205,7 +205,7 @@ namespace Final_Project
 			if (e.IsSelected)
 			{
 				btnViewOrRecordDelivery.Enabled = true;
-				string orderNumber = e.Item.SubItems[0].Text;
+				string orderNumber = e.Item!.SubItems[0].Text;
 				orderToAddDelivery = OrderDal.GetOrderByOrderNumber(Convert.ToInt32(orderNumber));
 			}
 		}
@@ -216,7 +216,7 @@ namespace Final_Project
 			if (e.IsSelected)
 			{
 				btnAddItem.Enabled = true;
-				string stockName = e.Item.SubItems[0].Text;
+				string stockName = e.Item!.SubItems[0].Text;
 				orderItemStatus = e.Item.SubItems[2].Text;
 				foreach (OrderItemsDeliveredView dIV in sortedOrderItemsDelivered)
 				{
@@ -403,7 +403,7 @@ namespace Final_Project
 			lblOrderDateAndStatus.Text = $"Placed On: {orderToAddDelivery.orderDate}  ({orderToAddDelivery.orderStatus})";
 
 			delivery.deliveryCheckedByStaffId = frmLoginScreen.loggedInStaff.staffId;
-			DeliveryDal.SetDeliveryPlacedBy(delivery);
+			DeliveryDal.SetDeliveryCheckedBy(delivery);
 		}
 
 		private void btnMarkOrderAsCompleted_Click(object sender, EventArgs e)

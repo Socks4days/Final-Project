@@ -29,7 +29,7 @@ namespace Final_Project
 				{
 					stockLevelStatus = "Out of stock";
 				}
-				else if (stock.stockLevel <= stock.minimumLevel)
+				else if (stock.stockLevel < stock.minimumLevel)
 				{
 					stockLevelStatus = "Low stock";
 				}

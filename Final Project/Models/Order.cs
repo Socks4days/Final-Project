@@ -31,7 +31,11 @@ namespace Final_Project.Models
 		#endregion Properties
 		public Order()
 		{
-
+			this.orderNumber = 0;
+			this.orderDate = System.DateTime.Now;
+			this.orderPlacedByStaffId = 0;
+			this.orderStatus = "";
+			this.orderPlacedByStaffName = "";
 		}
 		public Order(int orderNumber, DateTime orderDate, int orderPlacedByStaffId, string orderStatus)
 		{
@@ -39,6 +43,7 @@ namespace Final_Project.Models
 			this.orderDate = orderDate;
 			this.orderPlacedByStaffId = orderPlacedByStaffId;
 			this.orderStatus = orderStatus;
+			this.orderPlacedByStaffName = "";
 		}
 
 		public Order(int orderNumber, DateTime orderDate, int orderPlacedByStaffId, string orderStatus,

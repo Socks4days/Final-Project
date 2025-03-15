@@ -13,7 +13,11 @@ namespace Final_Project
 {
 	public partial class frmMainScreen : Form
 	{
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
+#pragma warning disable CA2211 // Non-constant fields should not be visible
 		public static frmMainScreen frmMain;
+#pragma warning restore CA2211 // Non-constant fields should not be visible
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 
 		public frmMainScreen()
 		{
