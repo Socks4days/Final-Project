@@ -136,7 +136,7 @@ namespace Final_Project
 			newStaff.password = password;
 			newStaff.active = 1;
 			StaffDal.AddStaffMember(newStaff);
-			MessageBox.Show("Account Created \nReturning to login screen now");
+			MessageBox.Show("Account Created\nReturning to login screen now");
 			frmMainScreen.frmMain.OpenChildForm(new frmLoginScreen(), null);
 		}
 

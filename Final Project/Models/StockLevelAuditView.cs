@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Final_Project.Models
 {
-	public class StockLevelsView
+	// Extended view of stock items that includes details of last/next audit 
+	public class StockLevelAuditView
 	{
 		#region Properties
 		public int stockId { get; set; }
@@ -20,13 +21,8 @@ namespace Final_Project.Models
 
 		#endregion Properties
 
-		public StockLevelsView()
-		{
-			stockName = "";
-			auditedByStaffFullName = "";
-		}
-
-		public StockLevelsView(int stockId, string stockName, int stockLevel, DateTime? auditDate, int? auditedByStaffId, string auditedByStaffFullName, DateTime? nextAuditDueDate, int daysToNextAudit)
+		// Constructor method with details of stock item and audit information
+		public StockLevelAuditView(int stockId, string stockName, int stockLevel, DateTime? auditDate, int? auditedByStaffId, string auditedByStaffFullName, DateTime? nextAuditDueDate, int daysToNextAudit)
 		{
 			this.stockId = stockId;
 			this.stockName = stockName;

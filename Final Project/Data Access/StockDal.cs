@@ -221,9 +221,9 @@ namespace Final_Project
 		// Get details of the stock levels for each active stock item
 		// Including details of the last audit and when the next audit is due
 		// Parameter allows the list to be sorted by: StockName, AuditDate or NextAuditDueDate
-		public static List<StockLevelsView> GetStockLevelsView(string orderBy)
+		public static List<StockLevelAuditView> GetStockLevelsView(string orderBy)
 		{
-			List<StockLevelsView> stockLevelItems = new List<StockLevelsView>();
+			List<StockLevelAuditView> stockLevelItems = new List<StockLevelAuditView>();
 
 			using (SqlConnection connection = new SqlConnection(_connectionstring))
 			{
@@ -249,7 +249,7 @@ namespace Final_Project
 				// Create list of StockLevelsView objects based on results
 				while (sqlDataReader.Read())
 				{
-					StockLevelsView stockLevel = new StockLevelsView(
+					StockLevelAuditView stockLevel = new StockLevelAuditView(
 						(int)sqlDataReader["StockId"],
 						(string)sqlDataReader["StockName"],
 						(int)sqlDataReader["StockLevel"],

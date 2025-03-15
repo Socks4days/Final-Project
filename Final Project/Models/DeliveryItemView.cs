@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Final_Project.Models
 {
-	// Summary view of items delivered/remaining for an order
-	public class DeliveryItemsView
+	// Used to show a list of items included in a delivery
+	public class DeliveryItemView
 	{
 		public int orderNumber { get; set; }
 		public int? deliveryNumber { get; set; }
@@ -17,14 +17,8 @@ namespace Final_Project.Models
 		public int? quantityDelivered { get; set; }
 		public int? quantityFaulty { get; set; }
 
-		public DeliveryItemsView() 
-		{
-			this.orderNumber = 0;
-			this.stockId = 0;
-			this.stockName = "";
-		}
-
-		public DeliveryItemsView(int orderNumber, int? deliveryNumber, DateTime? deliveryDate, int stockId, string stockName, int? quantityDelivered, int? quantityFaulty)
+		// Constructor method with details of an existing delivery item
+		public DeliveryItemView(int orderNumber, int? deliveryNumber, DateTime? deliveryDate, int stockId, string stockName, int? quantityDelivered, int? quantityFaulty)
 		{
 			this.orderNumber = orderNumber;
 			this.deliveryNumber = deliveryNumber;

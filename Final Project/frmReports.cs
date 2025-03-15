@@ -159,7 +159,7 @@ namespace Final_Project
 			// Set report details
 			reportName = "Delivery Discrepancies";
 			Staff loggedInStaff = frmLoginScreen.loggedInStaff;
-			List<OrderItemsDeliveredView> discrepancies = OrderDal.GetOrderItemDiscrepancies();
+			List<OrderItemDeliveredView> discrepancies = OrderDal.GetOrderItemDiscrepancies();
 
 			// Set report header/footer
 			reportHeaderLine = $"Created On: {DateTime.Now}   Created By: {loggedInStaff.forename} {loggedInStaff.surname}";

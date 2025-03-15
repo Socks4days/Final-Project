@@ -7,13 +7,13 @@ SELECT	[Order].OrderNumber,
 		[Order].OrderPlacedByStaffId,
 		CONCAT([Staff].Forename,' ',[Staff].Surname) AS OrderPlacedByStaffName,
 		[Order].OrderStatus,
-		MIN([OrderItemsDeliveredView].DeliveryDueDate) AS MinDeliveryDueDate,
-		MAX([OrderItemsDeliveredView].DeliveryDueDate) AS MaxDeliveryDueDate,
-		MAX([OrderItemsDeliveredView].DeliveryDate) AS LastDeliveryDate
+		MIN([OrderItemDeliveredView].DeliveryDueDate) AS MinDeliveryDueDate,
+		MAX([OrderItemDeliveredView].DeliveryDueDate) AS MaxDeliveryDueDate,
+		MAX([OrderItemDeliveredView].DeliveryDate) AS LastDeliveryDate
 FROM [Order]
--- Use left outer joins on Staff and OrderItemsDeliveredView to include orders not yet placed and orders with no items delivered
+-- Use left outer joins on Staff and OrderItemDeliveredView to include orders not yet placed and orders with no items delivered
 LEFT OUTER JOIN [Staff] ON [Staff].StaffId = [Order].OrderPlacedByStaffId
-LEFT OUTER JOIN [OrderItemsDeliveredView] ON [OrderItemsDeliveredView].OrderNumber = [Order].OrderNumber
+LEFT OUTER JOIN [OrderItemDeliveredView] ON [OrderItemDeliveredView].OrderNumber = [Order].OrderNumber
 -- Use group by to get summary min/max values for all deliveries linked to the order
 GROUP BY [Order].OrderNumber, [Order].OrderDate, [Order].OrderPlacedByStaffId,
          CONCAT([Staff].Forename,' ',[Staff].Surname), [Order].OrderStatus

@@ -281,9 +281,9 @@ namespace Final_Project
 
 		// Get list of all order items that have discrepancies (orders with missing/faulty items)
 		// Uses OrderItemsDeliveredView database view
-		public static List<OrderItemsDeliveredView> GetOrderItemDiscrepancies()
+		public static List<OrderItemDeliveredView> GetOrderItemDiscrepancies()
 		{
-			List<OrderItemsDeliveredView> orderItemsDelivered = new List<OrderItemsDeliveredView>();
+			List<OrderItemDeliveredView> orderItemsDelivered = new List<OrderItemDeliveredView>();
 
 			using (SqlConnection connection = new SqlConnection(_connectionstring))
 			{
@@ -292,7 +292,7 @@ namespace Final_Project
 				// i.e. the quantity delivered minus the quantity faulty is less than the number ordered
 				string sqlQuery =
 					"SELECT * " +
-					"FROM OrderItemsDeliveredView " +
+					"FROM OrderItemDeliveredView " +
 					"WHERE (QuantityDelivered - QuantityFaulty) < OrderItemQuantity " +
 					"ORDER BY OrderNumber DESC";
 				connection.Open();
@@ -302,7 +302,7 @@ namespace Final_Project
 				// Create an OrderItemsDeliveredView object for each row returned
 				while (sqlDataReader.Read())
 				{
-					OrderItemsDeliveredView orderItemDelivered = new OrderItemsDeliveredView(
+					OrderItemDeliveredView orderItemDelivered = new OrderItemDeliveredView(
 						(int)sqlDataReader["OrderNumber"],
 						(int)sqlDataReader["StockId"],
 						(string)sqlDataReader["StockName"],

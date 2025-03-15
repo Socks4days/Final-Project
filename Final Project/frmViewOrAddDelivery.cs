@@ -24,9 +24,9 @@ namespace Final_Project
 		Order orderToAddDelivery = new Order();
 		OrderItem orderItemSelected = new OrderItem();
 		List<DeliveryItem> deliveryItemsToBeAdded = new List<DeliveryItem>();
-		OrderItemsDeliveredView selectedOrderItemsDeliveredView = new OrderItemsDeliveredView();
-		List<OrderItemsDeliveredView> sortedOrderItemsDelivered = new List<OrderItemsDeliveredView>();
-		List<DeliveryItemsView> sortedDeliveryItems = new List<DeliveryItemsView>();
+		OrderItemDeliveredView selectedOrderItemsDeliveredView = new OrderItemDeliveredView();
+		List<OrderItemDeliveredView> sortedOrderItemsDelivered = new List<OrderItemDeliveredView>();
+		List<DeliveryItemView> sortedDeliveryItems = new List<DeliveryItemView>();
 		Delivery delivery;
 		string orderItemStatus = Order.NotReceived;
 		private int itemsOrdered;
@@ -101,7 +101,7 @@ namespace Final_Project
 			bool allOrderItemsNotReceived = true;
 
 			// Add each order in the sorted list to the order list
-			foreach (OrderItemsDeliveredView orderItemDelivered in sortedOrderItemsDelivered)
+			foreach (OrderItemDeliveredView orderItemDelivered in sortedOrderItemsDelivered)
 			{
 				string quantityReceived = "";
 				string quantityFaulty = "";
@@ -171,26 +171,28 @@ namespace Final_Project
 			}
 		}
 
+		// Refresh list of items in the delivery
 		private void UpdateDeliveryItemsListView()
 		{
+			// Clear the list view
 			foreach (ListViewItem item in lstViewDeliveryItems.Items)
 			{
 				lstViewDeliveryItems.Items.Remove(item);
 			}
 
-			// create a list of orders and fill with all orders
-			sortedDeliveryItems = DeliveryDal.GetDeliveryItemsView(delivery.deliveryNumber);
+			// Get a list of items in the delivery
+			sortedDeliveryItems = DeliveryDal.GetDeliveryItemViewList(delivery.deliveryNumber);
 
-			// Add each order in the sorted list to the order list
-			foreach (DeliveryItemsView deliveryItem in sortedDeliveryItems)
+			// Add each item to the list view
+			foreach (DeliveryItemView deliveryItem in sortedDeliveryItems)
 			{
-				// Create an array with order details
+				// Create an array for a row in the list using the delivery details
 				string[] row = { deliveryItem.stockName, deliveryItem.quantityDelivered.ToString()!, deliveryItem.quantityFaulty.ToString()! };
 
 				// Create a new list item based on the array
 				ListViewItem item = new ListViewItem(row);
 
-				// Add the list item to the order list view
+				// Add the list item to the delivery item list view
 				lstViewDeliveryItems.Items.Add(item);
 			}
 		}
@@ -218,7 +220,7 @@ namespace Final_Project
 				btnAddItem.Enabled = true;
 				string stockName = e.Item!.SubItems[0].Text;
 				orderItemStatus = e.Item.SubItems[2].Text;
-				foreach (OrderItemsDeliveredView dIV in sortedOrderItemsDelivered)
+				foreach (OrderItemDeliveredView dIV in sortedOrderItemsDelivered)
 				{
 					if (dIV.stockName == stockName)
 					{

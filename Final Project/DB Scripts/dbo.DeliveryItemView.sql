@@ -1,6 +1,6 @@
 ﻿-- Get list of stock items delivered for an order along with counts of the number delivered and number faulty
--- Used by OrderItemsDeliveredView
-CREATE VIEW [dbo].[DeliveryItemsView]
+-- Used by OrderItemDeliveredView
+CREATE VIEW [dbo].[DeliveryItemView]
 	AS SELECT
 		[Delivery].OrderNumber,
 		[Delivery].[DeliveryNumber],

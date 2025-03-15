@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace Final_Project
 {
-	public class OrderItemsDeliveredView: OrderItem
+    // Extended view inheriting from an OrderItem including extra delivery details
+	public class OrderItemDeliveredView: OrderItem
     {
         #region Properties
         public DateTime? deliveryDate { get; set; }
@@ -16,9 +17,12 @@ namespace Final_Project
 
         #endregion Properties
 
-        public OrderItemsDeliveredView() { }        
+        // Default constructor
+        public OrderItemDeliveredView() { }        
 
-        public OrderItemsDeliveredView(int orderNumber, int stockId, string stockName, int orderItemQuantity, DateTime? deliveryDate, int? quantityDelivered, int? quantityFaulty): base(orderNumber, stockId, orderItemQuantity)
+        // Main constructor with order item and delivery details
+        // Uses base constructor from OrderItem class
+        public OrderItemDeliveredView(int orderNumber, int stockId, string stockName, int orderItemQuantity, DateTime? deliveryDate, int? quantityDelivered, int? quantityFaulty): base(orderNumber, stockId, orderItemQuantity)
         {
             this.stockName = stockName;
             this.deliveryDate = deliveryDate;

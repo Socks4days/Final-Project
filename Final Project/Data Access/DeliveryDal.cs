@@ -15,9 +15,9 @@ namespace Final_Project
         private static string _connectionstring = DalHelper._connectionstring;
 
         // Get a list of items for an order (with number delivered/remaining)
-        public static List<OrderItemsDeliveredView> GetOrderItemsDeliveredView(int orderNumber)
+        public static List<OrderItemDeliveredView> GetOrderItemsDeliveredView(int orderNumber)
         {
-			List<OrderItemsDeliveredView> deliveryItems = new List<OrderItemsDeliveredView>();
+			List<OrderItemDeliveredView> deliveryItems = new List<OrderItemDeliveredView>();
 
 			using (SqlConnection connection = new SqlConnection(_connectionstring))
             {
@@ -30,7 +30,7 @@ namespace Final_Project
 				// Create an OrderItemsDeliveredView object for each row returned
 				while (sqlDataReader.Read())
                 {
-					OrderItemsDeliveredView deliveryItem = new OrderItemsDeliveredView(
+					OrderItemDeliveredView deliveryItem = new OrderItemDeliveredView(
                         (int)sqlDataReader["OrderNumber"],
                         (int)sqlDataReader["StockId"],
                         (string)sqlDataReader["StockName"],
@@ -99,21 +99,21 @@ namespace Final_Project
         }
 
         // Get all delivery items for a delivery
-        public static List<DeliveryItemsView> GetDeliveryItemsView(int deliveryNumberToLookup)
+        public static List<DeliveryItemView> GetDeliveryItemViewList(int deliveryNumberToLookup)
         {
-			List<DeliveryItemsView> deliveryItems = new List<DeliveryItemsView>();
+			List<DeliveryItemView> deliveryItems = new List<DeliveryItemView>();
 
 			using (SqlConnection connection = new SqlConnection(_connectionstring))
             {
-                // Build and run SQL query to get delivery items using the DeliveryItemsView which includes the total number delivered and number of faulty items
+                // Build and run SQL query to get delivery items using the DeliveryItemView which includes the total number delivered and number of faulty items
                 connection.Open();
-                string sqlQuery = $"SELECT * FROM DeliveryItemsView WHERE DeliveryNumber = {deliveryNumberToLookup} ORDER BY StockName";
+                string sqlQuery = $"SELECT * FROM DeliveryItemView WHERE DeliveryNumber = {deliveryNumberToLookup} ORDER BY StockName";
                 SqlCommand getAllDeliveryItemsCommand = new SqlCommand(sqlQuery, connection);
                 SqlDataReader sqlDataReader = getAllDeliveryItemsCommand.ExecuteReader();
                 while (sqlDataReader.Read())
                 {
-                    // Create a DeliveryItemsView object for each row returned
-                    DeliveryItemsView deliveryItem = new DeliveryItemsView(
+                    // Create a DeliveryItemView object for each row returned
+                    DeliveryItemView deliveryItem = new DeliveryItemView(
                         (int)sqlDataReader["OrderNumber"],
                         (int)sqlDataReader["DeliveryNumber"],
                         DalHelper.GetSqlDate(sqlDataReader, "DeliveryDate"),
@@ -126,7 +126,7 @@ namespace Final_Project
                 }
                 connection.Close();
 
-                // Return a list of DeliveryItemsView objects
+                // Return a list of DeliveryItemView objects
                 return deliveryItems;
             }
         }
@@ -160,7 +160,7 @@ namespace Final_Project
 				// Get count of order items delivered where the number received minus the number faulty is less than the number ordered
 				string sqlQuery =
 					"SELECT COUNT(OrderNumber) AS NumberOfDeliveryDiscrepancies " +
-					"FROM OrderItemsDeliveredView " +
+					"FROM OrderItemDeliveredView " +
 					"WHERE(QuantityDelivered - QuantityFaulty) < OrderItemQuantity";
 				connection.Open();
 				SqlCommand sqlCommand = new SqlCommand(sqlQuery, connection);
