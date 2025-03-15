@@ -42,7 +42,7 @@ namespace Final_Project
 				lstViewAllStock.Items.Remove(item);
 			}
 
-			List<StockLevelAuditView> sortedStockList = StockDal.GetStockLevelsView("NextAuditDueDate");
+			List<StockLevelAuditView> sortedStockList = StockDal.GetStockLevelAuditView("NextAuditDueDate");
 
 			// Add each stock in the sorted list to the stock list
 			foreach (StockLevelAuditView stockLevel in sortedStockList)

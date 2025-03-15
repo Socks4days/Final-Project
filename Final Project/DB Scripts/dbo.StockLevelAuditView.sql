@@ -1,5 +1,5 @@
 ﻿-- View to get list of stock items and details of the last audit/next audit due
-CREATE VIEW [dbo].[StockLevelsView]
+CREATE VIEW [dbo].[StockLevelAuditView]
 	AS SELECT
 		[Stock].*,
 		[Audit].AuditDate,

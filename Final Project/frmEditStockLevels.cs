@@ -193,7 +193,7 @@ namespace Final_Project
 				return;
 			}
 
-			List<StockLevelAuditView> allStock = StockDal.GetStockLevelsView("StockName");
+			List<StockLevelAuditView> allStock = StockDal.GetStockLevelAuditView("StockName");
 
 			// Check that there isn't a different stock item with the same name before updating
 			foreach(StockLevelAuditView stock in allStock)

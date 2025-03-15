@@ -151,7 +151,7 @@ namespace Final_Project
 				// Uses StockLevelsView which calculates the number of days to the next audit
 				string sqlQuery =
 					"SELECT COUNT(StockId) AS NumberOfOverdueAudits " +
-					"FROM StockLevelsView " +
+					"FROM StockLevelAuditView " +
 					"WHERE DaysToNextAudit < 0";
 				connection.Open();
 				SqlCommand sqlCommand = new SqlCommand(sqlQuery, connection);

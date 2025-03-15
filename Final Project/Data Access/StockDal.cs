@@ -221,7 +221,7 @@ namespace Final_Project
 		// Get details of the stock levels for each active stock item
 		// Including details of the last audit and when the next audit is due
 		// Parameter allows the list to be sorted by: StockName, AuditDate or NextAuditDueDate
-		public static List<StockLevelAuditView> GetStockLevelsView(string orderBy)
+		public static List<StockLevelAuditView> GetStockLevelAuditView(string orderBy)
 		{
 			List<StockLevelAuditView> stockLevelItems = new List<StockLevelAuditView>();
 
@@ -230,7 +230,7 @@ namespace Final_Project
 				// Build and run SQL query checking parameter value to determine correct order by
 				// Note it doesn't use the parameter directly to avoid SQL injection risks
 				connection.Open();
-				string sqlQuery = "SELECT * FROM StockLevelsView";
+				string sqlQuery = "SELECT * FROM StockLevelAuditView";
 				if (orderBy == "StockName")
 				{
 					sqlQuery += " ORDER BY [StockName] ASC";
