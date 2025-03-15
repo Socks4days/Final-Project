@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Final_Project.Models;
@@ -19,7 +20,7 @@ namespace Final_Project
 			InitializeComponent();
 			viewing = viewToShow;
 			if(viewToShow == "All Staff")
-			ShowStaffInfo();
+				ShowStaffInfo();
 			else if(viewToShow == "My Details")
 				ShowMyDetails();
 		}
@@ -28,7 +29,8 @@ namespace Final_Project
 		List<Staff> staffList = StaffDal.GetAllStaff();
 		string[] positions = { "Initiate", "Mechanic", "Senior Mechanic", "Manager" };
 		string viewing = "";
-	
+
+		#region ListViewHandling
 
 		private void lstViewOrders_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
 		{
@@ -39,10 +41,9 @@ namespace Final_Project
 				pnlStaffListView.Dock = DockStyle.Fill;
 				pnlStaffListView.BringToFront();
 
-				string forename = e.Item.SubItems[0].Text;
-				string surname = e.Item.SubItems[1].Text;
+				string username = e.Item.SubItems[0].Text;
 
-				staffToEdit = StaffDal.GetStaffByStaffFullName(forename, surname);
+				staffToEdit = StaffDal.GetStaffByStaffUsername(username);
 
 				if (frmLoginScreen.loggedInStaff.staffPosition == "Manager")
 				{
@@ -70,6 +71,42 @@ namespace Final_Project
 				}
 			}
 		}
+
+		private void UpdateStaffListView()
+		{
+			foreach (ListViewItem item in lstViewStaffMembers.Items)
+			{
+				lstViewStaffMembers.Items.Remove(item);
+			}
+
+			staffList = StaffDal.GetAllStaff();
+
+			// Add each stock in the sorted list to the stock list
+			foreach (Staff staff in staffList)
+			{
+				string active = "Inactive";
+
+				if (staff.active == 1)
+				{
+					active = "Active";
+				}
+
+				// Create an array with stock details
+				string[] row = { staff.username, staff.staffPosition, active };
+
+				// Create a new list item based on the array
+				ListViewItem item = new ListViewItem(row);
+
+				// Add the list item to the stock list view
+				lstViewStaffMembers.Items.Add(item);
+			}
+
+			lstViewStaffMembers.SelectedItems.Clear();
+		}
+
+		#endregion ListViewHandling
+
+		#region PanelShowing
 
 		private void ShowStaffInfo()
 		{
@@ -128,59 +165,22 @@ namespace Final_Project
 			lblMyUsername.Text = $"Username: {me.username}";
 		}
 
-		private void UpdateStaffListView()
-		{
-			foreach (ListViewItem item in lstViewStaffMembers.Items)
-			{
-				lstViewStaffMembers.Items.Remove(item);
-			}
+		#endregion PanelShowing		
 
-			staffList = StaffDal.GetAllStaff();
-
-			// Add each stock in the sorted list to the stock list
-			foreach (Staff staff in staffList)
-			{
-				string active = "Inactive";
-
-				if (staff.active == 1)
-				{
-					active = "Active";
-				}
-
-				// Create an array with stock details
-				string[] row = { staff.forename, staff.surname, staff.staffPosition, active };
-
-				// Create a new list item based on the array
-				ListViewItem item = new ListViewItem(row);
-
-				// Add the list item to the stock list view
-				lstViewStaffMembers.Items.Add(item);
-			}
-
-			lstViewStaffMembers.SelectedItems.Clear();
-		}
+		#region Resizing
 
 		private void frmStaffManagement_Resize(object sender, EventArgs e)
 		{
 			lstViewStaffMembers.Height = pnlStaffListView.Height - 80;
 		}
 
+		#endregion Resizing
+
+		#region EditingStaffMemberButtonClicks
+
 		private void btnEditStaffMember_Click(object sender, EventArgs e)
 		{
 			ShowEditStaffMember();
-		}
-
-		private void btnCancelStaffEdit_Click(object sender, EventArgs e)
-		{
-			if(viewing == "All Staff")
-			ShowStaffInfo();
-			else if (viewing == "My Details")
-			ShowMyDetails();
-		}
-
-		private void btnCancelEditStaffPosition_Click(object sender, EventArgs e)
-		{
-			ShowStaffInfo();
 		}
 
 		private void btnConfirmEditStaff_Click(object sender, EventArgs e)
@@ -190,82 +190,79 @@ namespace Final_Project
 			string username = txtBoxUsername.Text;
 			string password = txtBoxPassword.Text;
 
-			if (forename == "" || surname == "" || username == "" || password == "")
+			string errorMessage = frmRegisterScreen.AccountValidation(forename, surname, username, password);
+
+			if (errorMessage == "")
 			{
-				ShowErrorStaffLevel("Fill all fields before confirming changes!");
-				return;
-			}
+				staffToEdit.forename = forename;
+				staffToEdit.surname = surname;
+				staffToEdit.username = username;
+				staffToEdit.password = password;
 
-			foreach (Staff staff in staffList)
+				StaffDal.UpdateStaffInformation(staffToEdit);
+				ShowStaffInfo();
+			}
+			else
 			{
-				// Check that there aren't any other staff members with the same name forename and surname
-				if (staff.username != username && staff.forename == forename && staff.surname == surname)
-				{
-					ShowErrorStaffLevel("There is already another staff member with that name!");
-					return;
-				}
-			}
+				ShowError(errorMessage);
+			}			
+		}
 
-			if (!frmRegisterScreen.IsValidUsername(username))
-			{
-				ShowErrorStaffLevel("Invalid username, must be in the format Example123, at least 5 characters");
-				return;
-			}
-			if (!frmRegisterScreen.IsValidName(forename))
-			{
-				ShowErrorStaffLevel("Invalid forename, must be only letters");
-				return;
-			}
-			if (!frmRegisterScreen.IsValidName(surname))
-			{
-				ShowErrorStaffLevel("Invalid surname, must be only letters");
-				return;
-			}
+		private void btnCancelStaffEdit_Click(object sender, EventArgs e)
+		{
+			if (viewing == "All Staff")
+				ShowStaffInfo();
+			else if (viewing == "My Details")
+				ShowMyDetails();
+		}
 
-			// checks to see if the input password passes all the checks: More than 8 chatacters, contain a capital, contain a number
-			if (!((password.Length >= 8) && (password.Length <= 15)
-				&& (password.Any(char.IsUpper)) && (password.Any(char.IsDigit))))
-			{
-				// if it fails, a list of the password requirements are shown
-				ShowErrorStaffLevel("Enter a password between 8-15 characters, with at least\n1 number, 1 capital letter and 1 symbol");
-				return;
-			}
+		#endregion EditingStaffMemberButtonClicks
 
-			// Creates a list of valid password symbols and populates it
-			List<char> symbols = new List<char>()
-				{ '!', '<', '>', '*', '-', '£', '$', '%', '&', '^', '.',':', ';', '/', '?', '#', '@',};
+		#region EditingMyDetailsButtonClicks
 
+		private void btnEditMyDetails_Click(object sender, EventArgs e)
+		{
+			staffToEdit = frmLoginScreen.loggedInStaff;
+			ShowEditStaffMember();
+		}
 
-			bool hasSymbol = false;
-			// checks to see if the input password contains one of these symbols and if so registers the user
-			foreach (char sym in symbols)
-			{
-				if (password.Contains(sym))
-				{
-					// if it does, then the program runs the register method which will register the user as a valid user
-					hasSymbol = true;
-				}
-			}
+		#endregion EditingMyDetailsButtonClicks
 
-			if (!hasSymbol)
-			{
-				ShowErrorStaffLevel("Your password does not have a valid symbol, the following are acceptable: ! < > * - £ $ % & ^ . : ; / ? # @");
-				return;
-			}
+		#region EditingStaffMemberPositionButtonClicks
 
+		private void btnEditStaffPosition_Click(object sender, EventArgs e)
+		{
+			ShowEditStaffPosition();
+		}
 
-			staffToEdit.forename = forename;
-			staffToEdit.surname = surname;
-			staffToEdit.username = username;
-			staffToEdit.password = password;
-
-			StaffDal.UpdateStaffInformation(staffToEdit);
+		private void btnConfirmEditStaffPositionChanges_Click(object sender, EventArgs e)
+		{
+			staffToEdit.staffPosition = cBoxStaffPositions.Text;
+			StaffDal.UpdateStaffPosition(staffToEdit);
 			ShowStaffInfo();
 		}
 
+		private void btnCancelEditStaffPosition_Click(object sender, EventArgs e)
+		{
+			ShowStaffInfo();
+		}
 
+		#endregion EditingStaffMemberPositionButtonClicks
 
-		private void ShowErrorStaffLevel(string errorMessage)
+		#region FireStaffButtonClicks
+
+		private void btnFireStaffMember_Click(object sender, EventArgs e)
+		{
+			staffToEdit.active = 0;
+			StaffDal.UpdateStaffStatus(staffToEdit);
+			UpdateStaffListView();
+		}
+
+		#endregion FireStaffButtonClicks
+
+		#region ErrorHandling
+
+		private void ShowError(string errorMessage)
 		{
 			// shows an error indicating which boxes need to be filled in to be valid
 			lblErrorStaffEdit.Text = errorMessage;
@@ -279,29 +276,7 @@ namespace Final_Project
 			lblErrorStaffEdit.Text = "";
 		}
 
-		private void btnConfirmEditStaffPositionChanges_Click(object sender, EventArgs e)
-		{
-			staffToEdit.staffPosition = cBoxStaffPositions.Text;
-			StaffDal.UpdateStaffPosition(staffToEdit);
-			ShowStaffInfo();
-		}
-
-		private void btnEditStaffPosition_Click(object sender, EventArgs e)
-		{
-			ShowEditStaffPosition();
-		}
-
-		private void btnFireStaffMember_Click(object sender, EventArgs e)
-		{
-			staffToEdit.active = 0;
-			StaffDal.UpdateStaffStatus(staffToEdit);
-			UpdateStaffListView();
-		}
-
-		private void btnEditMyDetails_Click(object sender, EventArgs e)
-		{
-			staffToEdit = frmLoginScreen.loggedInStaff;
-			ShowEditStaffMember();
-		}
+		#endregion ErrorHandling	
+		
 	}
 }

@@ -23,7 +23,11 @@ namespace Final_Project
 		}
 
 		Staff newStaff = new Staff();
-		List<Staff> allStaff = StaffDal.GetAllStaff();
+		
+		string forename = "";
+		string surname = "";
+		string username = "";
+		string password = "";
 
 		#region RegisteringProcess
 		private void btnRegister_Click(object sender, EventArgs e)
@@ -31,25 +35,80 @@ namespace Final_Project
 			// Hide any previously shown error message
 			ClearError();
 
-			// when register button is clicked, check to see if any of the textboxes have been left empty
-			// if so, throw an error message addressing this
-			if ((txtBoxUsername.Text == "") || (txtBoxPassword.Text == "") || (txtBoxForename.Text == "")
-					|| (txtBoxSurname.Text == ""))
+			forename = txtBoxForename.Text;
+			surname = txtBoxSurname.Text;
+			username = txtBoxUsername.Text;
+			password = txtBoxPassword.Text;
+
+			string errorMessage = AccountValidation(forename, surname, username, password);
+			if (errorMessage == "") 
 			{
-				ShowError("Please complete all indicated fields");
-				return;
-			}
-			if ((txtBoxUsername.Text.Contains(',')) || (txtBoxPassword.Text.Contains(',')) || (txtBoxForename.Text.Contains(','))
-					|| (txtBoxSurname.Text.Contains(',')))
-			{
-				ShowError("All fields, including passwords, cannot contain any commas\nPlease remove any commas and try again...");
-				return;
+				Register();
 			}
 			else
 			{
-				// if all are filled in, then begin the Verification process
-				UsernameAndPasswordValidation();
+				ShowError(errorMessage);
 			}
+		}	
+
+		public static string AccountValidation(string forename, string surname, string username, string password)
+		{
+			List<Staff> allStaff = StaffDal.GetAllStaff();
+
+			if (forename == "" || surname == "" || username == "" || password == "")
+			{
+				return("Fill all fields before confirming changes!");
+			}
+
+			foreach (Staff staff in allStaff)
+			{
+				// Check that there aren't any other staff members with the same name forename and surname
+				if (staff.username != username && staff.forename == forename && staff.surname == surname)
+				{
+					return ("There is already another staff member with that name!");
+				}
+			}
+
+			if (!IsValidUsername(username))
+			{
+				return ("Invalid username, must only contain letters or numbers, at least 4 characters");
+			}
+			if (!IsValidName(forename))
+			{
+				return ("Invalid forename");
+			}
+			if (!IsValidName(surname))
+			{
+				return ("Invalid surname");				
+			}
+
+			// Password validation
+
+			// Check length
+			if (password.Length < 8 || password.Length > 15)
+			{
+				return ("Password must be between 8 and 15 characters long.");
+			}
+
+			// Check for uppercase letter
+			if (!Regex.IsMatch(password, @"[A-Z]"))
+			{
+				return ("Password must include at least one uppercase letter.");
+			}
+
+			// Check for numbers
+			if (!Regex.IsMatch(password, @"[0-9]"))
+			{
+				return ("Password must include at least one number.");
+			}
+
+			// Check for symbols
+			if (!Regex.IsMatch(password, @"[!@#$%^&*()_+\-=$$$${};':\\|,.<>\/?]"))
+			{
+				return ("Password must include at least one symbol.");
+			}
+
+			return "";
 		}
 
 		public static bool IsValidUsername(string username)
@@ -68,85 +127,14 @@ namespace Final_Project
 			return match.Success;
 		}
 
-		public void UsernameAndPasswordValidation()
-		{
-			// Check if the username is already taken
-			foreach (Staff staff in allStaff)
-			{
-				if (staff.username == txtBoxUsername.Text)
-				{
-					// if someone already has already got the same username, then an error message is thrown saying they have to change it
-					ShowError("Sorry, that username is already taken.\nPlease try a different one...");
-					//sets mouse to go to the username textbox
-					this.ActiveControl = txtBoxUsername;
-					return;
-				}
-			}
-
-			if (!IsValidUsername(txtBoxUsername.Text))
-			{
-				ShowError("Invalid username, must only contain letters or numbers with at least 4 characters");
-				return;
-			}
-			if (!IsValidName(txtBoxForename.Text))
-			{
-				ShowError("Invalid forename, must only contain letters, spaces, dashes or apostrophes");
-				return;
-			}
-			if (!IsValidName(txtBoxSurname.Text))
-			{
-				ShowError("Invalid surname, must only contain letters, spaces, dashes or apostrophes");
-				return;
-			}
-
-
-			// setting variable equal to what the user inputs for password
-			string password = txtBoxPassword.Text;
-			
-			// checks to see if the input password passes all the checks: More than 8 chatacters, contain a capital, contain a number
-			if (!((password.Length >= 8) && (password.Length <= 15)
-				&& (password.Any(char.IsUpper)) && (password.Any(char.IsDigit))))
-			{
-				// if it fails, a list of the password requirements are shown
-				ShowError("Enter a password between 8-15 characters, with at least\n1 number, 1 capital letter and 1 symbol");
-				return;
-			}
-
-			// Creates a list of valid password symbols and populates it
-			List<char> symbols = new List<char>()
-				{ '!', '<', '>', '*', '-', '£', '$', '%', '&', '^', '.',':', ';', '/', '?', '#', '@',};
-
-
-			bool hasSymbol = false;
-			// checks to see if the input password contains one of these symbols and if so registers the user
-			foreach (char sym in symbols)
-			{
-				if (password.Contains(sym))
-				{
-					// if it does, then the program runs the register method which will register the user as a valid user
-					hasSymbol = true;
-				}
-			}
-			if (!hasSymbol)
-				ShowError("Your password does not have a valid symbol, the following are acceptable: ! < > * - £ $ % & ^ . : ; / ? # @");
-			else Register();
-		}
-
 		public void Register()
 		{
-			try
-			{
-				newStaff.forename = txtBoxForename.Text;
-				newStaff.surname = txtBoxSurname.Text;
-				newStaff.staffPosition = "Newbie";
-				newStaff.username = txtBoxUsername.Text;
-				newStaff.password = txtBoxPassword.Text;
-				newStaff.active = 1;
-			}
-			catch (Exception ex)
-			{
-				lblError.Text = ex.Message;
-			}
+			newStaff.forename = forename;
+			newStaff.surname = surname;
+			newStaff.staffPosition = "Newbie";
+			newStaff.username = username;
+			newStaff.password = password;
+			newStaff.active = 1;
 			StaffDal.AddStaffMember(newStaff);
 			MessageBox.Show("Account Created \nReturning to login screen now");
 			frmMainScreen.frmMain.OpenChildForm(new frmLoginScreen(), null);

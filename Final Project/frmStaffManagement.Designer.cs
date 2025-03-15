@@ -32,10 +32,6 @@
 			pnlStaffInfo = new Panel();
 			pnlStaffListView = new Panel();
 			lstViewStaffMembers = new ListView();
-			cHeaderStaffForename = new ColumnHeader();
-			cHeaderStaffSurname = new ColumnHeader();
-			cHeaderPosition = new ColumnHeader();
-			cHeaderActive = new ColumnHeader();
 			lblInstructions = new Label();
 			pnlOptionButtons = new Panel();
 			btnFireStaffMember = new Button();
@@ -65,6 +61,9 @@
 			lblMySurname = new Label();
 			lblMyUsername = new Label();
 			lblMyForename = new Label();
+			cHeaderUsername = new ColumnHeader();
+			cHeaderStaffPosition = new ColumnHeader();
+			cHeaderActiveInactive = new ColumnHeader();
 			pnlStaffInfo.SuspendLayout();
 			pnlStaffListView.SuspendLayout();
 			pnlOptionButtons.SuspendLayout();
@@ -98,7 +97,7 @@
 			// 
 			lstViewStaffMembers.Anchor = AnchorStyles.Top;
 			lstViewStaffMembers.BackColor = Color.FromArgb(244, 112, 255);
-			lstViewStaffMembers.Columns.AddRange(new ColumnHeader[] { cHeaderStaffForename, cHeaderStaffSurname, cHeaderPosition, cHeaderActive });
+			lstViewStaffMembers.Columns.AddRange(new ColumnHeader[] { cHeaderUsername, cHeaderStaffPosition, cHeaderActiveInactive });
 			lstViewStaffMembers.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			lstViewStaffMembers.ForeColor = Color.Black;
 			lstViewStaffMembers.FullRowSelect = true;
@@ -111,26 +110,6 @@
 			lstViewStaffMembers.UseCompatibleStateImageBehavior = false;
 			lstViewStaffMembers.View = View.Details;
 			lstViewStaffMembers.ItemSelectionChanged += lstViewOrders_ItemSelectionChanged;
-			// 
-			// cHeaderStaffForename
-			// 
-			cHeaderStaffForename.Text = "Forename";
-			cHeaderStaffForename.Width = 250;
-			// 
-			// cHeaderStaffSurname
-			// 
-			cHeaderStaffSurname.Text = "Surname";
-			cHeaderStaffSurname.Width = 250;
-			// 
-			// cHeaderPosition
-			// 
-			cHeaderPosition.Text = "Position";
-			cHeaderPosition.Width = 250;
-			// 
-			// cHeaderActive
-			// 
-			cHeaderActive.Text = "Active";
-			cHeaderActive.Width = 150;
 			// 
 			// lblInstructions
 			// 
@@ -521,6 +500,21 @@
 			lblMyForename.TabIndex = 24;
 			lblMyForename.Text = "Forename:";
 			// 
+			// cHeaderUsername
+			// 
+			cHeaderUsername.Text = "Username";
+			cHeaderUsername.Width = 300;
+			// 
+			// cHeaderStaffPosition
+			// 
+			cHeaderStaffPosition.Text = "Position";
+			cHeaderStaffPosition.Width = 300;
+			// 
+			// cHeaderActiveInactive
+			// 
+			cHeaderActiveInactive.Text = "Active";
+			cHeaderActiveInactive.Width = 300;
+			// 
 			// frmStaffManagement
 			// 
 			AutoScaleDimensions = new SizeF(96F, 96F);
@@ -554,9 +548,6 @@
 		private Button btnEditStaffMember;
 		private Label lblInstructions;
 		private ListView lstViewStaffMembers;
-		private ColumnHeader cHeaderStaffForename;
-		private ColumnHeader cHeaderStaffSurname;
-		private ColumnHeader cHeaderPosition;
 		private Panel pnlEditStaffMember;
 		private Button btnCancelStaffEdit;
 		private TextBox txtBoxSurname;
@@ -569,7 +560,6 @@
 		private Label lblUsername;
 		private Label lblPassword;
 		private Label lblForename;
-		private ColumnHeader cHeaderActive;
 		private Panel pnlEditStaffPosition;
 		private ComboBox cBoxStaffPositions;
 		private Button btnCancelEditStaffPosition;
@@ -585,5 +575,8 @@
 		private Label lblMySurname;
 		private Label lblMyUsername;
 		private Label lblMyForename;
+		private ColumnHeader cHeaderUsername;
+		private ColumnHeader cHeaderStaffPosition;
+		private ColumnHeader cHeaderActiveInactive;
 	}
 }

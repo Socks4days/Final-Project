@@ -13,37 +13,7 @@ namespace Final_Project
         // Get connection string using DalHelper class
         private static string _connectionstring = DalHelper._connectionstring;
 
-        // Get a list of items in a delivery
-        public static List<DeliveryItem> GetAllDeliveryItems(int deliveryNumber)
-        {
-            using (SqlConnection connection = new SqlConnection(_connectionstring))
-            {
-                List<DeliveryItem> deliveryItems = new List<DeliveryItem>();
-                connection.Open();
 
-                string sqlQuery = $"SELECT * FROM DeliveryItem WHERE deliveryNumber = {deliveryNumber}";
-
-                SqlCommand getAllDeliveryItemsCommand = new SqlCommand(sqlQuery, connection);
-
-                SqlDataReader sqlDataReader = getAllDeliveryItemsCommand.ExecuteReader();
-
-                while (sqlDataReader.Read())
-                {
-                    DeliveryItem deliveryItem = new DeliveryItem(
-
-                        (int)sqlDataReader["DeliveryNumber"],
-                        (int)sqlDataReader["StockId"],
-                        (int)sqlDataReader["QuantityDelivered"],
-                        (int)sqlDataReader["QuantityFaulty"]
-                        );
-
-                    deliveryItems.Add(deliveryItem);
-                }
-
-                connection.Close();
-                return deliveryItems;
-            }
-        }
 
         // Get a list of items and delivered/remaining for an order
         public static List<OrderItemsDeliveredView> GetOrderItemsDeliveredView(int orderNumber)
@@ -104,36 +74,6 @@ namespace Final_Project
             }
         }
 
-        public static List<Delivery> GetAllDeliveries()
-        {
-            using (SqlConnection connection = new SqlConnection(_connectionstring))
-            {
-                List<Delivery> deliveries = new List<Delivery>();
-                connection.Open();
-
-                string sqlQuery = "SELECT * FROM Delivery";
-
-                SqlCommand getAllDeliveriesCommand = new SqlCommand(sqlQuery, connection);
-
-                SqlDataReader sqlDataReader = getAllDeliveriesCommand.ExecuteReader();
-
-                while (sqlDataReader.Read())
-                {
-                    Delivery delivery = new Delivery(
-
-                        (int)sqlDataReader["DeliveryNumber"],
-                        (int)sqlDataReader["OrderNumber"],
-                        (DateTime)sqlDataReader["DeliveryDate"],
-                        (int)sqlDataReader["DeliveryCheckedByStaffId"]
-                        );
-                    deliveries.Add(delivery);
-                }
-
-                connection.Close();
-                return deliveries;
-            }
-        }
-
         public static Delivery AddDelivery(Delivery newDelivery)
         {
             using (SqlConnection connection = new SqlConnection(_connectionstring))
@@ -161,35 +101,6 @@ namespace Final_Project
                 connection.Close();
 
                 return newDelivery;
-            }
-        }
-
-
-        public static Delivery GetDeliveryByDeliveryNumber(int deliveryNumber)
-        {
-            using (SqlConnection connection = new SqlConnection(_connectionstring))
-            {
-                Delivery delivery = new Delivery();
-                connection.Open();
-
-                string sqlQuery = string.Format($"SELECT * FROM Delivery WHERE DeliveryNumber = {deliveryNumber}");
-
-                SqlCommand getDeliveryByDeliveryNumber = new SqlCommand(sqlQuery, connection);
-
-                SqlDataReader sqlDataReader = getDeliveryByDeliveryNumber.ExecuteReader();
-
-                while (sqlDataReader.Read())
-                {
-                    delivery = new Delivery(
-                        (int)sqlDataReader["DeliveryNumber"],
-                        (int)sqlDataReader["OrderNumber"],
-                        (DateTime)sqlDataReader["DeliveryDate"],
-                        (int)sqlDataReader["DeliveryCheckedByStaffId"]
-                        );
-                }
-
-                connection.Close();
-                return delivery;
             }
         }
 

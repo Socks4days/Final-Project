@@ -83,9 +83,9 @@ namespace Final_Project
             return GetStaffSql(sqlQuery);
         }
 
-        public static Staff GetStaffByStaffFullName(string staffForename, string staffSurname)
+        public static Staff GetStaffByStaffUsername(string staffUsername)
         {
-            string sqlQuery = string.Format($"SELECT * FROM Staff WHERE Forename = '{staffForename}' AND Surname = '{staffSurname}'");
+            string sqlQuery = string.Format($"SELECT * FROM Staff WHERE Username = '{staffUsername}'");
             return GetStaffSql(sqlQuery);
         }
 

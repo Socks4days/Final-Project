@@ -474,6 +474,9 @@ namespace Final_Project
 			btnAudits.Visible = false;
 			btnManageStaff.Visible = false;
 			pnlStaff.Height = btnMyDetails.Height;
+			btnLowStock.Visible = false;
+			btnDeliveryDiscrepancies.Visible = false;
+			btnOverdueAudits.Visible = false;
 		}
 
 		private void Mechanic()
@@ -500,6 +503,9 @@ namespace Final_Project
 			btnDelivery.Visible = true;
 			btnAudits.Visible = true;
 			pnlStaff.Height = btnMyDetails.Height * 2;
+			btnLowStock.Visible = true;
+			btnDeliveryDiscrepancies.Visible = true;
+			btnOverdueAudits.Visible = true;
 		}
 
 		#endregion PermissionHandling				

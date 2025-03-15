@@ -18,7 +18,7 @@ namespace Final_Project
         {
             InitializeComponent();
             lblError.Visible = false;
-            // Code to be able to hit enter to do same thing as submit when in the password textbox
+            // Code to be able to hit enter to do same thing as submit when in the textboxes
             txtBoxPassword.KeyDown += KeyPressedDown!;
             txtBoxUsername.KeyDown += KeyPressedDown!;
             KeyDown += KeyPressedDown!;
