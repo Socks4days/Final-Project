@@ -17,6 +17,7 @@ namespace Final_Project.Models
 		public string staffPosition { get; set; }
 		public int active { get; set; }
 
+		// Default constructor method
 		public Staff()
 		{
 			this.forename = "";

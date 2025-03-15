@@ -8,11 +8,10 @@ using System.Threading.Tasks;
 
 namespace Final_Project.Models
 {
-	// Holds details of the stock items included in an order
+	// Holds details of an order line for an order
 	public class OrderItem
 	{
 		#region Properties
-
 		public int orderNumber { get; set; }
 		public int stockId { get; set; }
 		public string stockName { get; set; }
@@ -20,14 +19,15 @@ namespace Final_Project.Models
 		public decimal totalPrice { get; set; }
 		public int orderItemQuantity { get; set; }
 		public int recommendedOrderItemQuantity { get; set; }
-
 		#endregion Properties
 
+		// Defult constructor method
 		public OrderItem()
 		{
 			stockName = "";
 		}
 
+		// Main constructor method with order item details
 		public OrderItem(int orderNumber, int stockId, int orderItemQuantity)
 		{
 			this.orderNumber = orderNumber;

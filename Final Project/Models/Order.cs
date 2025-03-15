@@ -32,6 +32,8 @@ namespace Final_Project.Models
 		public const string Completed = "Completed";
 
 		#endregion Properties
+
+		// Defult constructor method
 		public Order()
 		{
 			this.orderNumber = 0;

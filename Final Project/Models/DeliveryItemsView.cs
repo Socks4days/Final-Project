@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Final_Project.Models
 {
+	// Summary view of items delivered/remaining for an order
 	public class DeliveryItemsView
 	{
 		public int orderNumber { get; set; }

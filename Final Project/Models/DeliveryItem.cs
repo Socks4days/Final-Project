@@ -14,8 +14,11 @@ namespace Final_Project.Models
 		public int quantityDelivered { get; set; }
 		public int quantityFaulty { get; set; }
 
+		// Defult constructor method
+
 		public DeliveryItem() { }
 
+		// Main constructor method with delivery details
 		public DeliveryItem(int deliveryNumber, int stockId, int quantityDelivered, int quantityFaulty)
 		{
 			this.deliveryNumber = deliveryNumber;

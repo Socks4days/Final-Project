@@ -131,7 +131,7 @@ namespace Final_Project
 		{
 			newStaff.forename = forename;
 			newStaff.surname = surname;
-			newStaff.staffPosition = "Newbie";
+			newStaff.staffPosition = "Initiate";
 			newStaff.username = username;
 			newStaff.password = password;
 			newStaff.active = 1;
