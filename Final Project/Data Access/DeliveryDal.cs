@@ -83,15 +83,16 @@ namespace Final_Project
                 insertDeliveryCommand.CommandType = System.Data.CommandType.StoredProcedure;
                 insertDeliveryCommand.CommandText = "AddDelivery";
                 // Set DeliveryNumber as an output parameter
-                SqlParameter dbDeliveryNumber = new SqlParameter("@DeliveryNumber", 0);
+                SqlParameter dbDeliveryNumber = new SqlParameter("@DeliveryNumber", newDelivery.deliveryNumber);
                 dbDeliveryNumber.Direction = System.Data.ParameterDirection.Output;
                 insertDeliveryCommand.Parameters.Add(dbDeliveryNumber);
                 insertDeliveryCommand.Parameters.Add(new SqlParameter("@OrderNumber", newDelivery.orderNumber));
                 insertDeliveryCommand.Parameters.Add(new SqlParameter("@DeliveryDate", newDelivery.deliveryDate));
                 insertDeliveryCommand.Parameters.Add(new SqlParameter("@DeliveryCheckedByStaffId", newDelivery.deliveryCheckedByStaffId));
+				int rowsAffected = insertDeliveryCommand.ExecuteNonQuery();
 
-                // Update the Delivery object with the id of the row created and return the updated Delivery object 
-                newDelivery.deliveryNumber = Convert.ToInt32(dbDeliveryNumber.Value);
+				// Update the Delivery object with the id of the row created and return the updated Delivery object 
+				newDelivery.deliveryNumber = Convert.ToInt32(dbDeliveryNumber.Value);
                 connection.Close();
                 return newDelivery;
             }

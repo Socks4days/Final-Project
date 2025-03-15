@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Final_Project.Models
 {
+	// Holds details of the stock items included in an order
 	public class OrderItem
 	{
 		#region Properties

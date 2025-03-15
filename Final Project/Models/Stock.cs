@@ -6,43 +6,36 @@ using System.Threading.Tasks;
 
 namespace Final_Project.Models
 {
+	// Holds details of a stock item
     public class Stock
     {
-
         #region Properties
+		// Basic stock item details
         public int stockId {  get; set; }
-
         public string stockName { get; set; }
-
         public string stockDescription { get; set; }
-
         public decimal price { get; set; }
-
         public int deliveryTimeDays { get; set; }
-
         public int maximumLevel { get; set; }   
-
         public int minimumLevel { get; set; }
-
         public int orderQuantity { get; set; }
-
         public int stockCheckFrequency { get; set; }
-
         public int stockLevel { get; set; } 
-
         public int lastUpdatedByStaffId { get; set; }
         public bool active { get; set; } = true;
 
+		// Extended stock item details (number that are on back order)
         public int? numberOnOrder { get; set; }
-
 #endregion Properties
 
+		// Defult constructor method
         public Stock()
 		{
 			this.stockName = "";
 			this.stockDescription = "";
 		}
 
+		// Constructor used when creating a Stock object for new stock item (without a stockId)
 		public Stock(string stockName, string stockDescription, decimal price, int deliveryTimeDays, int maximumLevel, int minimumLevel, int orderQuantity, int stockCheckFrequency, int stockLevel, int lastUpdatedByStaffId, bool active)
 		{
 			this.stockName = stockName;
@@ -58,14 +51,11 @@ namespace Final_Project.Models
 			this.active = active;
 		}
 
-		public Stock (string stockName, string stockDescription, decimal price, int deliveryTimeDays, int maximumLevel, int minimumLevel, int orderQuantity, int stockCheckFrequency, int stockLevel, int lastUpdatedByStaffId) :
-            this(stockName, stockDescription, price, deliveryTimeDays, maximumLevel, minimumLevel, orderQuantity, stockCheckFrequency, stockLevel, lastUpdatedByStaffId, true) { }
-
+		// Constructor used when creating a Stock object for an existing stock item (with a stockId)
 		public Stock(int stockId, string stockName, string stockDescription, decimal price, int deliveryTimeDays, int maximumLevel, int minimumLevel, int orderQuantity, int stockCheckFrequency, int stockLevel, int lastUpdatedByStaffId, bool active) :
 			this(stockName, stockDescription, price, deliveryTimeDays, maximumLevel, minimumLevel, orderQuantity, stockCheckFrequency, stockLevel, lastUpdatedByStaffId, active)
 		{
 			this.stockId = stockId;
 		}
-
 	}
 }

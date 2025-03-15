@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Final_Project.Models
 {
-	// Staff member class
+	// Holds details of a staff member
 	public class Staff
 	{
 		public int staffId { get; set; }

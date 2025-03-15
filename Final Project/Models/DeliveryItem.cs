@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Final_Project.Models
 {
+	// Holds details of the specific stock items received as part of a delivery
 	public class DeliveryItem
 	{
 		public int deliveryNumber { get; set; }

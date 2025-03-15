@@ -27,7 +27,7 @@ namespace Final_Project
 		OrderItemsDeliveredView selectedOrderItemsDeliveredView = new OrderItemsDeliveredView();
 		List<OrderItemsDeliveredView> sortedOrderItemsDelivered = new List<OrderItemsDeliveredView>();
 		List<DeliveryItemsView> sortedDeliveryItems = new List<DeliveryItemsView>();
-		Delivery delivery = new Delivery();
+		Delivery delivery;
 		string orderItemStatus = Order.NotReceived;
 		private int itemsOrdered;
 		private int itemsReceived;

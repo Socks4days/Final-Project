@@ -6,13 +6,22 @@ using System.Threading.Tasks;
 
 namespace Final_Project.Models
 {
+	// Holds details of an order (includes both basic and extended versions of class)
 	public class Order
 	{
 		#region Properties
+
+		// Basic order details
 		public int orderNumber { get; set; }
 		public DateTime orderDate { get; set; }
 		public int orderPlacedByStaffId { get; set; }
 		public string orderStatus { get; set; }
+
+		// Extended order details (including delivery information)
+		public string orderPlacedByStaffName { get; set; }
+		public DateTime? minDeliveryDueDate { get; set; }
+		public DateTime? maxDeliveryDueDate { get; set; }
+		public DateTime? lastDeliveryDate { get; set; }
 
 		// Status values for orders and order items
 		public const string Draft = "Draft";
@@ -21,12 +30,6 @@ namespace Final_Project.Models
 		public const string PartFilled = "Part Filled";
 		public const string Fulfilled = "Fulfilled";
 		public const string Completed = "Completed";
-
-		public string orderPlacedByStaffName { get; set; }
-		public DateTime? minDeliveryDueDate { get; set; }
-		public DateTime? maxDeliveryDueDate { get; set; }
-		public DateTime? lastDeliveryDate { get; set; }
-
 
 		#endregion Properties
 		public Order()
@@ -37,6 +40,8 @@ namespace Final_Project.Models
 			this.orderStatus = "";
 			this.orderPlacedByStaffName = "";
 		}
+
+		// Basic constructor method used when creating a new order
 		public Order(int orderNumber, DateTime orderDate, int orderPlacedByStaffId, string orderStatus)
 		{
 			this.orderNumber = orderNumber;
@@ -46,6 +51,7 @@ namespace Final_Project.Models
 			this.orderPlacedByStaffName = "";
 		}
 
+		// Extended constructor method used to show a summary of orders including delivery information
 		public Order(int orderNumber, DateTime orderDate, int orderPlacedByStaffId, string orderStatus,
 			string orderPlacedByStaffName, DateTime? minDeliveryDueDate, DateTime? maxDeliveryDueDate, DateTime? lastDeliveryDate)
 		{

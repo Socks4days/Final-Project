@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Final_Project.Models
 {
+	// Holds details of teh specific stock items that were checked as part of an audit
 	public class AuditItem
 	{
 		public int auditId { get; set; }
@@ -13,7 +14,10 @@ namespace Final_Project.Models
 		public int predictedAmount { get; set; }
 		public int actualAmount { get; set; }
 
+		// Defult constructor method
 		public AuditItem() { }
+
+		// Main constructor method with audit item details
 		public AuditItem(int auditId, int stockId, int predictedAmount, int actualAmount)
 		{
 			this.auditId = auditId;

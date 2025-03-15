@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Final_Project.Models
 {
+	// Holds details of a delivery for an order
 	public class Delivery
 	{
 		public int deliveryNumber { get; set; }
@@ -13,8 +14,10 @@ namespace Final_Project.Models
 		public DateTime deliveryDate { get; set; }
 		public int deliveryCheckedByStaffId { get; set; }
 
+		// Defult constructor method
 		public Delivery() { }
 
+		// Main constructor method with delivery details
 		public Delivery(int deliveryNumber, int orderNumber, DateTime deliveryDate, int deliveryCheckedByStaffId)
 		{
 			this.deliveryNumber = deliveryNumber;
