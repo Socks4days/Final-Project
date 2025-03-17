@@ -40,7 +40,7 @@ namespace Final_Project
 			username = txtBoxUsername.Text;
 			password = txtBoxPassword.Text;
 
-			string errorMessage = AccountValidation(forename, surname, username, password);
+			string errorMessage = AccountValidation(0, forename, surname, username, password);
 			if (errorMessage == "") 
 			{
 				Register();
@@ -51,7 +51,7 @@ namespace Final_Project
 			}
 		}	
 
-		public static string AccountValidation(string forename, string surname, string username, string password)
+		public static string AccountValidation(int staffId, string forename, string surname, string username, string password)
 		{
 			List<Staff> allStaff = StaffDal.GetAllStaff();
 
@@ -62,10 +62,10 @@ namespace Final_Project
 
 			foreach (Staff staff in allStaff)
 			{
-				// Check that there aren't any other staff members with the same name forename and surname
-				if (staff.username != username && staff.forename == forename && staff.surname == surname)
+				// Check that there aren't any other staff members with the same username
+				if (staff.staffId != staffId && staff.username == username)
 				{
-					return ("There is already another staff member with that name!");
+					return ("There is already another staff member with that username!");
 				}
 			}
 

@@ -92,7 +92,7 @@ namespace Final_Project
 				}
 
 				// Create an array with stock details
-				string[] row = { staff.username, staff.staffPosition, active };
+				string[] row = { staff.username, string.Concat(staff.forename, " ", staff.surname), staff.staffPosition, active };
 
 				// Create a new list item based on the array
 				ListViewItem item = new ListViewItem(row);
@@ -190,7 +190,7 @@ namespace Final_Project
 			string username = txtBoxUsername.Text;
 			string password = txtBoxPassword.Text;
 
-			string errorMessage = frmRegisterScreen.AccountValidation(forename, surname, username, password);
+			string errorMessage = frmRegisterScreen.AccountValidation(staffToEdit.staffId, forename, surname, username, password);
 
 			if (errorMessage == "")
 			{
@@ -276,7 +276,6 @@ namespace Final_Project
 			lblErrorStaffEdit.Text = "";
 		}
 
-		#endregion ErrorHandling	
-		
+		#endregion ErrorHandling			
 	}
 }
