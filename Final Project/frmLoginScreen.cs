@@ -67,7 +67,6 @@ namespace Final_Project
                 ShowError("Invalid data entered, please try again");
             }
 
-
             foreach (Staff staff in staffList)
             {
                 // if user is found, proceed to main menu
@@ -84,8 +83,7 @@ namespace Final_Project
                     {
                         ShowError("You do not have access to the system");
                         return;
-                    }
-                    
+                    }                    
                 }                
             }	
             ShowError("The details you have entered are invalid");			
@@ -99,14 +97,14 @@ namespace Final_Project
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            // Clear fields and set focus on username text box
-            // and hide any previously shown error messages
-            ClearError();
+			// Clear fields and set focus on username text box
+			// and hide any previously shown error messages
+			ClearError();
             txtBoxUsername.Text = "";
-            txtBoxPassword.Text = "";
-            this.ActiveControl = txtBoxUsername;
+            txtBoxPassword.Text = "";            
             txtBoxPassword.PasswordChar = '*';
-        }
+			this.ActiveControl = txtBoxUsername;
+		}
 
 		#endregion ButtonClicks
 

@@ -472,12 +472,8 @@ namespace Final_Project
 
 		private void Initiate()
 		{
-			pnlStock.Height = btnManageStockLevels.Height;
-			btnOrder.Visible = false;
-			btnDelivery.Visible = false;
+			Mechanic();
 			btnAudits.Visible = false;
-			btnManageStaff.Visible = false;
-			pnlStaff.Height = btnMyDetails.Height;
 			btnLowStock.Visible = false;
 			btnDeliveryDiscrepancies.Visible = false;
 			btnOverdueAudits.Visible = false;
@@ -485,11 +481,8 @@ namespace Final_Project
 
 		private void Mechanic()
 		{
+			SeniorMechanic();
 			pnlStock.Height = btnManageStockLevels.Height;
-			btnOrder.Visible = false;
-			btnDelivery.Visible = false;
-			btnManageStaff.Visible = false;
-			pnlStaff.Height = btnMyDetails.Height;
 		}
 
 		private void SeniorMechanic()
@@ -512,9 +505,6 @@ namespace Final_Project
 			btnOverdueAudits.Visible = true;
 		}
 
-		#endregion PermissionHandling				
-
-
-		
+		#endregion PermissionHandling			
 	}
 }

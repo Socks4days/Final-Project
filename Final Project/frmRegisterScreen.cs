@@ -121,7 +121,7 @@ namespace Final_Project
 
 		public static bool IsValidName(string name)
 		{
-			// Regular expression to match names containing letters, apostrophe, spaces or dashes
+			// Regular expression to match names containing letters and numbers and at least 4 characters
 			string pattern = @"^[a-zA-Z' \-]+$";
 			Match match = Regex.Match(name, pattern);
 			return match.Success;
@@ -139,6 +139,8 @@ namespace Final_Project
 			MessageBox.Show("Account Created\nReturning to login screen now");
 			frmMainScreen.frmMain.OpenChildForm(new frmLoginScreen(), null);
 		}
+
+	
 
 		#endregion RegisteringProcess
 

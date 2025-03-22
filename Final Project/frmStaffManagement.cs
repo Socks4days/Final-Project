@@ -171,7 +171,7 @@ namespace Final_Project
 
 		private void frmStaffManagement_Resize(object sender, EventArgs e)
 		{
-			lstViewStaffMembers.Height = pnlStaffListView.Height - 80;
+			lstViewStaffMembers.Height = pnlStaffListView.Height - 100;
 		}
 
 		#endregion Resizing

@@ -555,6 +555,7 @@
 			// 
 			lblDeliveries.Anchor = AnchorStyles.None;
 			lblDeliveries.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			lblDeliveries.ForeColor = Color.Black;
 			lblDeliveries.Location = new Point(167, 280);
 			lblDeliveries.Name = "lblDeliveries";
 			lblDeliveries.Size = new Size(132, 29);
@@ -597,6 +598,7 @@
 			// 
 			lblAudits.Anchor = AnchorStyles.None;
 			lblAudits.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			lblAudits.ForeColor = Color.Black;
 			lblAudits.Location = new Point(679, 280);
 			lblAudits.Name = "lblAudits";
 			lblAudits.Size = new Size(132, 29);
@@ -639,6 +641,7 @@
 			// 
 			lblLowStock.Anchor = AnchorStyles.None;
 			lblLowStock.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			lblLowStock.ForeColor = Color.Black;
 			lblLowStock.Location = new Point(424, 280);
 			lblLowStock.Name = "lblLowStock";
 			lblLowStock.Size = new Size(132, 29);

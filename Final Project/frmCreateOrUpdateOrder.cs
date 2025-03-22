@@ -265,6 +265,7 @@ namespace Final_Project
 				orderItemQuantity = Convert.ToInt32(nUDQuantity.Value),
 				orderNumber = this.order.orderNumber
 			};
+
 			// add new order item to the order
 			int rowsAffected = OrderDal.AddOrderItem(newOrderItem);
 			cBoxStock.DataSource = null;
@@ -278,7 +279,7 @@ namespace Final_Project
 			UpdateOrderItemListView();
 			// show the list view of order items
 			ShowViewOrderItems();
-		}
+		} 
 
 		// method to cancel adding a new item to an order
 		private void btnCancel_Click(object sender, EventArgs e)

@@ -106,7 +106,7 @@ namespace Final_Project
 		{
 			int amountToAdd = 0;
 			int originalStockLevel = lookupStock.stockLevel;
-			amountToAdd = (int)nUDStockLevel.Value;
+			amountToAdd = (int)nUDStockLevel.Value;			
 			if (lookupStock.stockLevel + amountToAdd <= lookupStock.maximumLevel)
 			{
 				lookupStock.stockLevel += amountToAdd;

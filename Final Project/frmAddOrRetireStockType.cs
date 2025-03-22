@@ -48,7 +48,7 @@ namespace Final_Project
 		#region AddingNewStock
 		private void btnAddNewStock_Click(object sender, EventArgs e)
 		{
-			// system will try to set each to an appropriate piece of information, catching any errors
+			// Ensure there are no blank inputs
 			if(txtBoxNewStockName.Text != "" && txtBoxNewStockDescription.Text != "")
 			{
 				stockToAdd.stockName = txtBoxNewStockName.Text;
@@ -59,8 +59,9 @@ namespace Final_Project
 				lblErrorAddNewStock.Visible = true;
 				lblErrorAddNewStock.Text = "Fill all fields before confirming changes!";
 				return;
-			}				
+			}
 
+			// system will try to set each to an appropriate piece of information, catching any errors
 			try
 			{				
 				stockToAdd.price = Convert.ToDecimal(txtBoxNewStockPrice.Text);

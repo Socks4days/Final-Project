@@ -217,6 +217,7 @@
 			// cBoxStock
 			// 
 			cBoxStock.Anchor = AnchorStyles.None;
+			cBoxStock.DropDownStyle = ComboBoxStyle.DropDownList;
 			cBoxStock.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			cBoxStock.FormattingEnabled = true;
 			cBoxStock.Location = new Point(289, 230);

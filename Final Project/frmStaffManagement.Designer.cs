@@ -401,6 +401,7 @@
 			// cBoxStaffPositions
 			// 
 			cBoxStaffPositions.Anchor = AnchorStyles.None;
+			cBoxStaffPositions.DropDownStyle = ComboBoxStyle.DropDownList;
 			cBoxStaffPositions.Font = new Font("Segoe UI", 14F);
 			cBoxStaffPositions.FormattingEnabled = true;
 			cBoxStaffPositions.Location = new Point(381, 266);
