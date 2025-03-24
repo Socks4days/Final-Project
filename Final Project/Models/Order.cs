@@ -9,7 +9,7 @@ namespace Final_Project.Models
 	// Holds details of an order (includes both basic and extended versions of class)
 	public class Order
 	{
-		#region Properties
+		#region PropertiesAndConstants
 
 		// Basic order details
 		public int orderNumber { get; set; }
@@ -31,7 +31,7 @@ namespace Final_Project.Models
 		public const string Fulfilled = "Fulfilled";
 		public const string Completed = "Completed";
 
-		#endregion Properties
+		#endregion PropertiesAndConstants
 
 		// Defult constructor method
 		public Order()
