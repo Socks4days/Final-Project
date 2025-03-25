@@ -16,7 +16,7 @@ namespace Final_Project.Models
 		public int quantityDelivered { get; set; }
 		public int quantityFaulty { get; set; }
 
-		// Defult constructor method
+		// Default constructor method
 		public DeliveryItem() { }
 
 	}

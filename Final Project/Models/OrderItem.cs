@@ -21,7 +21,7 @@ namespace Final_Project.Models
 		public int recommendedOrderItemQuantity { get; set; }
 		#endregion Properties
 
-		// Defult constructor method
+		// Default constructor method
 		public OrderItem()
 		{
 			stockName = "";

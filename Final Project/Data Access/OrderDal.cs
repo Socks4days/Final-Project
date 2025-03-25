@@ -101,7 +101,7 @@ namespace Final_Project
 			}
 		}
 
-		// Store the id of the staff memeber who placed an an order
+		// Store the id of the staff member who placed an an order
 		public static int SetOrderPlacedBy(Order newOrder)
 		{
 			using (SqlConnection connection = new SqlConnection(_connectionstring))

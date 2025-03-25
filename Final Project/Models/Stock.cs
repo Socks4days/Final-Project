@@ -28,7 +28,7 @@ namespace Final_Project.Models
         public int? numberOnOrder { get; set; }
 #endregion Properties
 
-		// Defult constructor method
+		// Default constructor method
         public Stock()
 		{
 			this.stockName = "";

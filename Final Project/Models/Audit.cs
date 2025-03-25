@@ -14,7 +14,7 @@ namespace Final_Project.Models
 		public DateTime auditDate { get; set; }
 		public int auditedByStaffId { get; set; }
 
-		// Defult constructor method
+		// Default constructor method
 		public Audit() { }
 
 		// Main constructor method with audit details

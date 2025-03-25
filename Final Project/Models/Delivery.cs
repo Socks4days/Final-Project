@@ -14,7 +14,7 @@ namespace Final_Project.Models
 		public DateTime deliveryDate { get; set; }
 		public int deliveryCheckedByStaffId { get; set; }
 
-		// Defult constructor method
+		// Default constructor method
 		public Delivery() { }
 
 		// Main constructor method with delivery details

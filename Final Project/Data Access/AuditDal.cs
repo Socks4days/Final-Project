@@ -109,7 +109,7 @@ namespace Final_Project
 			return audits;
 		}
 
-		// Get a list of all audit tems for a specific audit
+		// Get a list of all audit items for a specific audit
 		public static List<AuditItem> GetAllAuditItems(int auditId)
 		{
 			List<AuditItem> auditItems = new List<AuditItem>();

@@ -8,6 +8,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
+-- Table that stores all stock items
 CREATE TABLE [dbo].[Stock] (
     [StockId]              INT            IDENTITY (1, 1) NOT NULL,
     [StockName]            NVARCHAR (50)  NOT NULL,
@@ -22,5 +23,3 @@ CREATE TABLE [dbo].[Stock] (
     [LastUpdatedByStaffId] INT            NULL,
     [Active]               INT            NOT NULL
 );
-
-

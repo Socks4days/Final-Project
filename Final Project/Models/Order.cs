@@ -33,7 +33,7 @@ namespace Final_Project.Models
 
 		#endregion PropertiesAndConstants
 
-		// Defult constructor method
+		// Default constructor method
 		public Order()
 		{
 			this.orderNumber = 0;
