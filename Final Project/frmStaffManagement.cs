@@ -200,7 +200,10 @@ namespace Final_Project
 				staffToEdit.password = password;
 
 				StaffDal.UpdateStaffInformation(staffToEdit);
-				ShowStaffInfo();
+				if (viewing == "All Staff")
+					ShowStaffInfo();
+				else if (viewing == "My Details")
+					ShowMyDetails();
 			}
 			else
 			{

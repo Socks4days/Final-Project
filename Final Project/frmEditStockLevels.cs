@@ -1,4 +1,5 @@
 ﻿using Final_Project.Models;
+using System.Diagnostics;
 using System.Text.RegularExpressions;
 
 namespace Final_Project
@@ -64,6 +65,7 @@ namespace Final_Project
 			nUDStockLevel.Value = 0;
 			lblCurrentStockLevel.Text = $"Current Stock Level: {lookupStock.stockLevel.ToString()}";
 			lblStockLevelToEdit.Text = lookupStock.stockName;
+			lblError.Visible = false;
 			pnlStockList.Visible = false;
 			pnlEditStockItem.Visible = false;
 			pnlOptionButtons.Visible = false;
@@ -110,7 +112,7 @@ namespace Final_Project
 			if (lookupStock.stockLevel + amountToAdd <= lookupStock.maximumLevel)
 			{
 				lookupStock.stockLevel += amountToAdd;
-				StockDal.UpdateStockInformation(lookupStock);
+				StockDal.UpdateStockLevel(lookupStock);
 				ShowViewStock();
 			}
 			else if (lookupStock.stockLevel == lookupStock.maximumLevel)
@@ -135,7 +137,7 @@ namespace Final_Project
 			if (lookupStock.stockLevel - amountToRemove >= 0)
 			{
 				lookupStock.stockLevel -= amountToRemove;
-				StockDal.UpdateStockInformation(lookupStock);
+				StockDal.UpdateStockLevel(lookupStock);
 				ShowViewStock();
 			}
 			else if (lookupStock.stockLevel == 0)
@@ -167,17 +169,6 @@ namespace Final_Project
 
 		private void btnEditStockItem_Click(object sender, EventArgs e)
 		{
-			if((txtBoxName.Text != "") && (txtBoxDescription.Text != ""))
-			{
-				lookupStock.stockName = txtBoxName.Text;
-				lookupStock.stockDescription = txtBoxDescription.Text;
-			}
-			else
-			{
-				ShowErrorStockItem("Please complete all fields before saving changes.");
-				return;
-			}
-			
 			try
 			{
 				lookupStock.minimumLevel = Convert.ToInt32(txtBoxMinimumLevel.Text);
@@ -193,17 +184,23 @@ namespace Final_Project
 				return;
 			}
 
-			List<StockLevelAuditView> allStock = StockDal.GetStockLevelAuditView("StockName");
-
-			// Check that there isn't a different stock item with the same name before updating
-			foreach(StockLevelAuditView stock in allStock)
+			try
 			{
-				if(lookupStock.stockId != stock.stockId && lookupStock.stockName == stock.stockName)
-				{
-					ShowErrorStockItem("There is already another stock item with that name!");
-					return;
-				}					
+				lookupStock.price = Math.Round(lookupStock.price, 2);
 			}
+			catch (Exception)
+			{
+				ShowErrorStockItem("Please enter a price to 2 decimal places");
+				return;
+			}
+
+			string errorMessage = frmAddOrRetireStockType.StockValidation(lookupStock.stockId, lookupStock.stockName, lookupStock.stockDescription, lookupStock.price, lookupStock.orderQuantity, lookupStock.maximumLevel, lookupStock.minimumLevel, lookupStock.stockLevel, lookupStock.stockCheckFrequency, lookupStock.deliveryTimeDays);
+
+			if(errorMessage != "")
+			{
+				ShowErrorStockItem(errorMessage);
+				return;
+			}		
 
 			StockDal.UpdateStockInformation(lookupStock);
 			ShowViewStock();

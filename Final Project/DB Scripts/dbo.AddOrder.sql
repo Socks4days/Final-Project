@@ -1,13 +1,4 @@
-USE [C:\USERS\ANDRE\ONEDRIVE\DESKTOP\A2 SSD\TASKS\FINAL PROJECT\FINAL PROJECT\FINAL PROJECT\STOCKMANAGEMENT.MDF]
-GO
-
-/****** Object: SqlProcedure [dbo].[AddOrder] Script Date: 27/01/2025 21:05:23 ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
-
+﻿-- Stored Procedure for adding an order
 CREATE PROCEDURE [dbo].[AddOrder]
 	@OrderNumber int OUTPUT,
 	@OrderDate DateTime,

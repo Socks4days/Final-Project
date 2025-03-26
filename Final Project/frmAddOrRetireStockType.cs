@@ -46,50 +46,99 @@ namespace Final_Project
 		string actionTakingPlace = "";
 
 		#region AddingNewStock
-		private void btnAddNewStock_Click(object sender, EventArgs e)
-		{
-			// Ensure there are no blank inputs
-			if(txtBoxNewStockName.Text != "" && txtBoxNewStockDescription.Text != "")
-			{
-				stockToAdd.stockName = txtBoxNewStockName.Text;
-				stockToAdd.stockDescription = txtBoxNewStockDescription.Text;
-			}
-			else
-			{
-				lblErrorAddNewStock.Visible = true;
-				lblErrorAddNewStock.Text = "Fill all fields before confirming changes!";
-				return;
-			}
 
-			// system will try to set each to an appropriate piece of information, catching any errors
-			try
-			{				
-				stockToAdd.price = Convert.ToDecimal(txtBoxNewStockPrice.Text);
-				stockToAdd.orderQuantity = Convert.ToInt32(txtBoxNewOrderQuantity.Text);
-				stockToAdd.maximumLevel = Convert.ToInt32(txtBoxNewMaximumLevel.Text);
-				stockToAdd.minimumLevel = Convert.ToInt32(txtBoxNewMinimumLevel.Text);
-				stockToAdd.stockLevel = 0;
-				stockToAdd.stockCheckFrequency = Convert.ToInt32(txtBoxNewStockCheckFrequency.Text);
-				stockToAdd.deliveryTimeDays = Convert.ToInt32(txtBoxNewDeliveryTime.Text);
-			}
-			catch (Exception)
-			{
-				// if there are any errors, the system rejects it and the user is told to try give better information
-				lblErrorAddNewStock.Visible = true;
-				lblErrorAddNewStock.Text = "Numerical data is not in correct format. Ensure numerical fields are valid numbers.";
-				return;
-			}
-			// if all information looks good, show a panel with the information they input, allowing them to confirm if it is correct
+		string name = "";
+		string description = "";
+		decimal price = -1;
+		int orderQuantity = -1;
+		int maximumLevel = -1;
+		int minimumLevel = -1;
+		int stockLevel = -1;
+		int stockCheckFrequency = -1;
+		int deliveryTimeDays = -1;
+
+		public static string StockValidation(int stockId, string name, string description, decimal price, int orderQuantity, int maximumLevel, int minimumLevel, int stockLevel, int stockCheckFrequency, int deliveryTimeDays)
+		{
+			List<Stock> allStock = StockDal.GetAllActiveStock();
+
+			// Ensure there are no blank inputs
+			if (name != "" && description != "")
+				return "Fill all fields before confirming changes!";
+
+			if (price <= 0)
+				return "Price cannot be negative or 0!";
+
+			if (orderQuantity <= 0)
+				return "Order Quantity cannot be negative or 0!";
+
+			if (minimumLevel < 1)
+				return "Minimum level must be at least 1!";
+
+			if (maximumLevel < 1)
+				return "Maximum level must be at least 1!";
+
+			if (maximumLevel < minimumLevel)
+				return "Maximum level cannot be less than the minimum level!";
+
+			if (stockCheckFrequency < 0)
+				return "Stock check frequency cannot be less than 0!";
+
+			if (deliveryTimeDays < 0)
+				return "Delivery time cannot be less than 0!";
+
+			if (orderQuantity > maximumLevel)
+				return "Order quantity cannot be more than the max level!";
 
 			foreach (Stock stock in allStock)
 			{
-				if(stock.stockName == stockToAdd.stockName)
+				if (stock.stockName == name && stock.stockId != stockId)
 				{
-					lblErrorAddNewStock.Text = "There is already a stock item with that name, please try another";
-					lblErrorAddNewStock.Visible = true;
-					return;
-				}				
+					return "There is already a stock item with that name, please try another";					
+				}
 			}
+
+			return "";
+		}
+
+		private void btnAddNewStock_Click(object sender, EventArgs e)
+		{	
+			// system will try to set each to an appropriate piece of information, catching any errors
+			try
+			{				
+				price = Convert.ToDecimal(txtBoxNewStockPrice.Text);
+				orderQuantity = Convert.ToInt32(txtBoxNewOrderQuantity.Text);
+				maximumLevel = Convert.ToInt32(txtBoxNewMaximumLevel.Text);
+				minimumLevel = Convert.ToInt32(txtBoxNewMinimumLevel.Text);
+				stockLevel = 0;
+				stockCheckFrequency = Convert.ToInt32(txtBoxNewStockCheckFrequency.Text);
+				deliveryTimeDays = Convert.ToInt32(txtBoxNewDeliveryTime.Text);
+			}
+			catch (Exception)
+			{
+				// if there are any errors, the system rejects it and the user is told to try give better information				
+				ShowErrorAddStock("Numerical data is not in correct format. Ensure numerical fields are valid numbers.");
+				return;
+			}
+
+			try
+			{
+				price = Math.Round(price, 2);
+			}
+			catch (Exception)
+			{
+				ShowErrorAddStock("Please enter a price to 2 decimal places");
+				return;
+			}
+
+			string errorMessage = StockValidation(0, name, description, price, orderQuantity, maximumLevel, minimumLevel, stockLevel, stockCheckFrequency, deliveryTimeDays);
+
+			if(errorMessage != "")
+			{
+				ShowErrorAddStock(errorMessage);
+				return;
+			}
+					
+			// if all information looks good, show a panel with the information they input, allowing them to confirm if it is correct			
 			ShowConfirmation();
 			lblStockTo.Text = "Stock To Add:";
 			lblStockName.Text = $"Stock Name: {stockToAdd.stockName}";
@@ -256,5 +305,15 @@ namespace Final_Project
 		}
 
 		#endregion Return
+
+		#region ErrorHandling
+
+		private void ShowErrorAddStock(string errorMessage)
+		{
+			lblErrorAddNewStock.Text = errorMessage;
+			lblErrorAddNewStock.Visible = true;
+		}
+
+		#endregion ErrorHandling
 	}
 }

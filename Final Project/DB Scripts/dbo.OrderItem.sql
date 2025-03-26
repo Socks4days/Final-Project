@@ -8,7 +8,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[OrderLine] (
+CREATE TABLE [dbo].[OrderItem] (
     [OrderNumber]       INT NOT NULL,
     [StockId]           INT NOT NULL,
     [OrderItemQuantity] INT NOT NULL

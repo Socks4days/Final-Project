@@ -88,7 +88,7 @@ namespace Final_Project
 		private void UpdateOrderItemsDeliveredListView(int orderNumber)
 		{
 			// create a list of orders and fill with all orders
-			sortedOrderItemsDelivered = DeliveryDal.GetOrderItemsDeliveredView(orderNumber);
+			sortedOrderItemsDelivered = DeliveryDal.GetOrderItemDeliveredView(orderNumber);
 
 			foreach (ListViewItem item in lstViewOrderItemsDelivered.Items)
 			{

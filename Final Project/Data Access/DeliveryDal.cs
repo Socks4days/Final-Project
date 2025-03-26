@@ -15,7 +15,7 @@ namespace Final_Project
         private static string _connectionstring = DalHelper._connectionstring;
 
         // Get a list of items for an order (with number delivered/remaining)
-        public static List<OrderItemDeliveredView> GetOrderItemsDeliveredView(int orderNumber)
+        public static List<OrderItemDeliveredView> GetOrderItemDeliveredView(int orderNumber)
         {
 			List<OrderItemDeliveredView> deliveryItems = new List<OrderItemDeliveredView>();
 
@@ -23,7 +23,7 @@ namespace Final_Project
             {
                 // Build run run SQL query to get list of order items using view
                 connection.Open();
-                string sqlQuery = $"SELECT * FROM OrderItemsDeliveredView WHERE OrderNumber = {orderNumber} ORDER BY StockName";
+                string sqlQuery = $"SELECT * FROM OrderItemDeliveredView WHERE OrderNumber = {orderNumber} ORDER BY StockName";
                 SqlCommand getAllDeliveryItemsCommand = new SqlCommand(sqlQuery, connection);
                 SqlDataReader sqlDataReader = getAllDeliveryItemsCommand.ExecuteReader();
 
