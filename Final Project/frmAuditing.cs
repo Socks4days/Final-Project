@@ -240,6 +240,14 @@ namespace Final_Project
 		{
 			int actualAmount = (int)nUDNoInStockActual.Value;
 			int predictedAmount = stockToAudit.stockLevel;
+
+			if(actualAmount > stockToAudit.maximumLevel)
+			{
+				lblAuditError.Visible = true;
+				lblAuditError.Text = "You cannot have more than the maximum level in stock";
+				return;
+			}				
+
 			AuditItem item = new AuditItem();
 			item.auditId = audit.auditId;
 			item.stockId = stockToAudit.stockId;

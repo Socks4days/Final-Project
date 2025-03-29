@@ -110,12 +110,16 @@ namespace Final_Project
 				active = true;
 			}
 
+			decimal price = sqlDataReader.GetDecimal(3);
+			
+
+
 			// Create and return Stock object
 			Stock stock = new Stock(
 				(int)sqlDataReader["StockId"],
 				(string)sqlDataReader["StockName"],
 				(string)sqlDataReader["StockDescription"],
-				(decimal)sqlDataReader["Price"],
+				price,//(decimal)sqlDataReader["Price"], //issue
 				(int)sqlDataReader["DeliveryTimeDays"],
 				(int)sqlDataReader["MaximumLevel"],
 				(int)sqlDataReader["MinimumLevel"],

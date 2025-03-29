@@ -67,6 +67,7 @@
 			cHeaderPricePerUnit = new ColumnHeader();
 			cHeaderTotalPricePerItem = new ColumnHeader();
 			toolTipCreateOrUpdateOrder = new ToolTip(components);
+			lblRecommendedQuantity = new Label();
 			pnlAddItemToOrder.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)nUDQuantity).BeginInit();
 			pnlViewOrderItems.SuspendLayout();
@@ -77,6 +78,7 @@
 			// 
 			// pnlAddItemToOrder
 			// 
+			pnlAddItemToOrder.Controls.Add(lblRecommendedQuantity);
 			pnlAddItemToOrder.Controls.Add(lblDeliveryTime);
 			pnlAddItemToOrder.Controls.Add(lblWarning);
 			pnlAddItemToOrder.Controls.Add(lblOrderNumberItem);
@@ -113,7 +115,7 @@
 			lblWarning.BorderStyle = BorderStyle.FixedSingle;
 			lblWarning.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
 			lblWarning.ForeColor = Color.FromArgb(250, 0, 0);
-			lblWarning.Location = new Point(245, 349);
+			lblWarning.Location = new Point(245, 392);
 			lblWarning.Name = "lblWarning";
 			lblWarning.Size = new Size(511, 56);
 			lblWarning.TabIndex = 27;
@@ -164,7 +166,7 @@
 			btnAddToOrder.FlatStyle = FlatStyle.Flat;
 			btnAddToOrder.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			btnAddToOrder.ForeColor = Color.White;
-			btnAddToOrder.Location = new Point(536, 437);
+			btnAddToOrder.Location = new Point(536, 480);
 			btnAddToOrder.Name = "btnAddToOrder";
 			btnAddToOrder.Size = new Size(220, 50);
 			btnAddToOrder.TabIndex = 2;
@@ -181,7 +183,7 @@
 			btnCancel.FlatStyle = FlatStyle.Flat;
 			btnCancel.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			btnCancel.ForeColor = Color.White;
-			btnCancel.Location = new Point(245, 437);
+			btnCancel.Location = new Point(245, 480);
 			btnCancel.Name = "btnCancel";
 			btnCancel.Size = new Size(220, 50);
 			btnCancel.TabIndex = 3;
@@ -567,6 +569,18 @@
 			cHeaderTotalPricePerItem.Text = "Total Price";
 			cHeaderTotalPricePerItem.Width = 170;
 			// 
+			// lblRecommendedQuantity
+			// 
+			lblRecommendedQuantity.Anchor = AnchorStyles.None;
+			lblRecommendedQuantity.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			lblRecommendedQuantity.ForeColor = Color.Black;
+			lblRecommendedQuantity.Location = new Point(245, 348);
+			lblRecommendedQuantity.Name = "lblRecommendedQuantity";
+			lblRecommendedQuantity.Size = new Size(511, 35);
+			lblRecommendedQuantity.TabIndex = 29;
+			lblRecommendedQuantity.Text = "Recommended Quantity Goes Here:";
+			lblRecommendedQuantity.TextAlign = ContentAlignment.TopCenter;
+			// 
 			// frmCreateOrUpdateOrder
 			// 
 			AutoScaleDimensions = new SizeF(96F, 96F);
@@ -629,5 +643,6 @@
 		private ColumnHeader cHeaderRecommendedQty;
 		private ColumnHeader cHeaderPricePerUnit;
 		private ColumnHeader cHeaderTotalPricePerItem;
+		private Label lblRecommendedQuantity;
 	}
 }

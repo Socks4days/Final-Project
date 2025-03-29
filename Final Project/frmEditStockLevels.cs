@@ -169,28 +169,21 @@ namespace Final_Project
 
 		private void btnEditStockItem_Click(object sender, EventArgs e)
 		{
+			lookupStock.stockName = txtBoxName.Text;
+			lookupStock.stockDescription = txtBoxDescription.Text;
+
 			try
 			{
+				lookupStock.price = Math.Round(Convert.ToDecimal(txtBoxPrice.Text), 2);
 				lookupStock.minimumLevel = Convert.ToInt32(txtBoxMinimumLevel.Text);
 				lookupStock.maximumLevel = Convert.ToInt32(txtBoxMaximumLevel.Text);
-				lookupStock.orderQuantity = Convert.ToInt32(txtBoxOrderQuantity.Text);
-				lookupStock.price = Convert.ToDecimal(txtBoxPrice.Text);
+				lookupStock.orderQuantity = Convert.ToInt32(txtBoxOrderQuantity.Text);				
 				lookupStock.deliveryTimeDays = Convert.ToInt32(txtBoxDeliveryTime.Text);
 				lookupStock.stockCheckFrequency = Convert.ToInt32(txtBoxStockCheckFrequency.Text);
 			}
 			catch (Exception)
 			{
-				ShowErrorStockItem("Numerical data is not in correct format. Ensure all fields excluding name and description are valid numbers.");
-				return;
-			}
-
-			try
-			{
-				lookupStock.price = Math.Round(lookupStock.price, 2);
-			}
-			catch (Exception)
-			{
-				ShowErrorStockItem("Please enter a price to 2 decimal places");
+				ShowErrorStockItem("Numerical data is not in correct format. Ensure all numerical fields contain valid numbers.");
 				return;
 			}
 

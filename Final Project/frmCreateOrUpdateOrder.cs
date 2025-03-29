@@ -398,14 +398,17 @@ namespace Final_Project
 				selectedStock = StockDal.GetStockByStockName(cBoxStock.Items[index]!.ToString()!);
 				lblCurrentStockLevel.Text = $"Current Stock Level: {selectedStock.stockLevel}";
 				lblDeliveryTime.Text = $"Item Delivery Time: {selectedStock.deliveryTimeDays} days";
+				lblRecommendedQuantity.Text = $"Recommended Quantity: {selectedStock.orderQuantity}";
 
 				lblCurrentStockLevel.Visible = true;
 				lblDeliveryTime.Visible = true;
+				lblRecommendedQuantity.Visible = true;
 			}
 			else
 			{
 				lblCurrentStockLevel.Visible = false;
 				lblDeliveryTime.Visible = false;
+				lblRecommendedQuantity.Visible = false;
 			}
 		}
 

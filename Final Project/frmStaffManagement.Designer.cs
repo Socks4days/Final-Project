@@ -277,7 +277,7 @@
 			txtBoxPassword.BorderStyle = BorderStyle.None;
 			txtBoxPassword.Font = new Font("Segoe UI", 14F);
 			txtBoxPassword.Location = new Point(552, 284);
-			txtBoxPassword.MaxLength = 20;
+			txtBoxPassword.MaxLength = 15;
 			txtBoxPassword.Name = "txtBoxPassword";
 			txtBoxPassword.Size = new Size(220, 25);
 			txtBoxPassword.TabIndex = 3;
@@ -288,7 +288,7 @@
 			txtBoxUsername.BorderStyle = BorderStyle.None;
 			txtBoxUsername.Font = new Font("Segoe UI", 14F);
 			txtBoxUsername.Location = new Point(236, 284);
-			txtBoxUsername.MaxLength = 20;
+			txtBoxUsername.MaxLength = 15;
 			txtBoxUsername.Name = "txtBoxUsername";
 			txtBoxUsername.Size = new Size(220, 25);
 			txtBoxUsername.TabIndex = 2;
