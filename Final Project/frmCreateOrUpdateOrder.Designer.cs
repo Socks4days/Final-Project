@@ -30,6 +30,7 @@
 		{
 			components = new System.ComponentModel.Container();
 			pnlAddItemToOrder = new Panel();
+			lblRecommendedQuantity = new Label();
 			lblDeliveryTime = new Label();
 			lblWarning = new Label();
 			lblOrderNumberItem = new Label();
@@ -67,7 +68,6 @@
 			cHeaderPricePerUnit = new ColumnHeader();
 			cHeaderTotalPricePerItem = new ColumnHeader();
 			toolTipCreateOrUpdateOrder = new ToolTip(components);
-			lblRecommendedQuantity = new Label();
 			pnlAddItemToOrder.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)nUDQuantity).BeginInit();
 			pnlViewOrderItems.SuspendLayout();
@@ -95,6 +95,18 @@
 			pnlAddItemToOrder.Name = "pnlAddItemToOrder";
 			pnlAddItemToOrder.Size = new Size(1000, 680);
 			pnlAddItemToOrder.TabIndex = 0;
+			// 
+			// lblRecommendedQuantity
+			// 
+			lblRecommendedQuantity.Anchor = AnchorStyles.None;
+			lblRecommendedQuantity.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			lblRecommendedQuantity.ForeColor = Color.Black;
+			lblRecommendedQuantity.Location = new Point(245, 348);
+			lblRecommendedQuantity.Name = "lblRecommendedQuantity";
+			lblRecommendedQuantity.Size = new Size(511, 35);
+			lblRecommendedQuantity.TabIndex = 29;
+			lblRecommendedQuantity.Text = "Recommended Quantity Goes Here:";
+			lblRecommendedQuantity.TextAlign = ContentAlignment.TopCenter;
 			// 
 			// lblDeliveryTime
 			// 
@@ -151,6 +163,7 @@
 			nUDQuantity.Anchor = AnchorStyles.None;
 			nUDQuantity.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			nUDQuantity.Location = new Point(536, 230);
+			nUDQuantity.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
 			nUDQuantity.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
 			nUDQuantity.Name = "nUDQuantity";
 			nUDQuantity.Size = new Size(176, 32);
@@ -568,18 +581,6 @@
 			// 
 			cHeaderTotalPricePerItem.Text = "Total Price";
 			cHeaderTotalPricePerItem.Width = 170;
-			// 
-			// lblRecommendedQuantity
-			// 
-			lblRecommendedQuantity.Anchor = AnchorStyles.None;
-			lblRecommendedQuantity.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			lblRecommendedQuantity.ForeColor = Color.Black;
-			lblRecommendedQuantity.Location = new Point(245, 348);
-			lblRecommendedQuantity.Name = "lblRecommendedQuantity";
-			lblRecommendedQuantity.Size = new Size(511, 35);
-			lblRecommendedQuantity.TabIndex = 29;
-			lblRecommendedQuantity.Text = "Recommended Quantity Goes Here:";
-			lblRecommendedQuantity.TextAlign = ContentAlignment.TopCenter;
 			// 
 			// frmCreateOrUpdateOrder
 			// 

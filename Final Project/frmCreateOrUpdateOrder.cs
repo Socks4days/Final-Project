@@ -403,12 +403,16 @@ namespace Final_Project
 				lblCurrentStockLevel.Visible = true;
 				lblDeliveryTime.Visible = true;
 				lblRecommendedQuantity.Visible = true;
+
+				nUDQuantity.Maximum = selectedStock.maximumLevel;
+				nUDQuantity.Enabled = true;
 			}
 			else
 			{
 				lblCurrentStockLevel.Visible = false;
 				lblDeliveryTime.Visible = false;
 				lblRecommendedQuantity.Visible = false;
+				nUDQuantity.Enabled = false;
 			}
 		}
 

@@ -39,8 +39,7 @@ namespace Final_Project
 		}
 
 		// base stock objects to hold information about the stock to add or retire
-		Stock stockToAdd = new Stock();
-		Stock stockToRetire = new Stock();
+		Stock stockToAddOrRetire = new Stock();
 
 		// get a list of all stock
 		List<Stock> allStock = StockDal.GetAllActiveStock();
@@ -151,7 +150,7 @@ namespace Final_Project
 		{
 			if(cBoxStockItemsToRetire.Text != "")
 			{
-				stockToRetire.stockName = cBoxStockItemsToRetire.Text;
+				stockToAddOrRetire.stockName = cBoxStockItemsToRetire.Text;
 			}
 			else
 			{
@@ -162,19 +161,19 @@ namespace Final_Project
 			// go through each stock to find the stock the user input
 			foreach (Stock stock in allStock)
 			{
-				if (stock.stockName == stockToRetire.stockName && stock.stockLevel == 0)
+				if (stock.stockName == stockToAddOrRetire.stockName && stock.stockLevel == 0)
 				{
 					// if found, show confirmation with the values of the input stock
-					stockToRetire = stock;
+					stockToAddOrRetire = stock;
 					ShowConfirmation();
 					lblStockTo.Text = "Stock To Remove:";
-					lblStockName.Text = $"Stock Name: {stockToRetire.stockName}";
-					lblStockDescription.Text = $"Stock Description: {stockToRetire.stockDescription}";
-					lblPrice.Text = $"Price: {stockToRetire.price}";
-					lblMaximumLevel.Text = $"Maximum Level: {stockToRetire.maximumLevel}";
-					lblMinimumLevel.Text = $"Minimum Level: {stockToRetire.minimumLevel}";
+					lblStockName.Text = $"Stock Name: {stockToAddOrRetire.stockName}";
+					lblStockDescription.Text = $"Stock Description: {stockToAddOrRetire.stockDescription}";
+					lblPrice.Text = $"Price: {stockToAddOrRetire.price}";
+					lblMaximumLevel.Text = $"Maximum Level: {stockToAddOrRetire.maximumLevel}";
+					lblMinimumLevel.Text = $"Minimum Level: {stockToAddOrRetire.minimumLevel}";
 				}
-				else if (stock.stockName == stockToRetire.stockName && stock.stockLevel != 0)
+				else if (stock.stockName == stockToAddOrRetire.stockName && stock.stockLevel != 0)
 				{
 					ShowErrorRetireStock("Use all items of this stock first before retiring!");
 					return;
@@ -234,22 +233,22 @@ namespace Final_Project
 			// if the add stock object isn't null, it will add the stock to the database
 			if (name != "")
 			{
-				stockToAdd.stockName = name;
-				stockToAdd.stockDescription = description;
-				stockToAdd.price = price;
-				stockToAdd.minimumLevel = minimumLevel;
-				stockToAdd.maximumLevel = maximumLevel;
-				stockToAdd.orderQuantity = orderQuantity;
-				stockToAdd.stockCheckFrequency = stockCheckFrequency;
-				stockToAdd.deliveryTimeDays = deliveryTimeDays;
-				StockDal.AddNewStock(stockToAdd);
+				stockToAddOrRetire.stockName = name;
+				stockToAddOrRetire.stockDescription = description;
+				stockToAddOrRetire.price = price;
+				stockToAddOrRetire.minimumLevel = minimumLevel;
+				stockToAddOrRetire.maximumLevel = maximumLevel;
+				stockToAddOrRetire.orderQuantity = orderQuantity;
+				stockToAddOrRetire.stockCheckFrequency = stockCheckFrequency;
+				stockToAddOrRetire.deliveryTimeDays = deliveryTimeDays;
+				StockDal.AddNewStock(stockToAddOrRetire);
 				ReturnToPreviousScreen();
 			}
 			// if the remove stock object isn't null, it will remove the stock from the database
-			else if (stockToRetire.stockName != null)
+			else if (stockToAddOrRetire.stockName != null)
 			{
-				stockToRetire.active = false;
-				StockDal.UpdateStockInformation(stockToRetire);
+				stockToAddOrRetire.active = false;
+				StockDal.UpdateStockInformation(stockToAddOrRetire);
 				ReturnToPreviousScreen();
 			}
 		}
@@ -287,7 +286,7 @@ namespace Final_Project
 		private void btnReturn_Click(object sender, EventArgs e)
 		{
 			// if the return button is clicked, the information the user entered will reappear in the textbox(es)
-			if (stockToAdd.stockName != null)
+			if (actionTakingPlace == "Add Stock")
 			{
 				ShowAddStock();
 				lblErrorAddNewStock.Visible = false;
@@ -300,11 +299,11 @@ namespace Final_Project
 				txtBoxNewStockCheckFrequency.Text = stockCheckFrequency.ToString();
 				txtBoxNewDeliveryTime.Text = deliveryTimeDays.ToString();
 			}
-			else if (stockToRetire.stockName != null)
+			else if (actionTakingPlace == "Retire Stock")
 			{
 				ShowRetireStock();
 				lblErrorRetireStock.Visible = false;
-				cBoxStockItemsToRetire.Text = stockToRetire.stockName;
+				cBoxStockItemsToRetire.Text = stockToAddOrRetire.stockName;
 			}
 		}
 

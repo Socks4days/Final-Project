@@ -499,6 +499,7 @@ namespace Final_Project
 			btnOrder.Visible = true;
 			btnDelivery.Visible = true;
 			btnAudits.Visible = true;
+			btnManageStaff.Visible = true;
 			pnlStaff.Height = btnMyDetails.Height * 2;
 			btnLowStock.Visible = true;
 			btnDeliveryDiscrepancies.Visible = true;
