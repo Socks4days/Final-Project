@@ -172,6 +172,7 @@ namespace Final_Project
 			lookupStock.stockName = txtBoxName.Text;
 			lookupStock.stockDescription = txtBoxDescription.Text;
 
+			// system will try to set each to an appropriate piece of information, catching any errors
 			try
 			{
 				lookupStock.price = Math.Round(Convert.ToDecimal(txtBoxPrice.Text), 2);
@@ -183,6 +184,7 @@ namespace Final_Project
 			}
 			catch (Exception)
 			{
+				// if there are any errors, the system rejects it and the user is told to try give better information
 				ShowErrorStockItem("Numerical data is not in correct format. Ensure all numerical fields contain valid numbers.");
 				return;
 			}

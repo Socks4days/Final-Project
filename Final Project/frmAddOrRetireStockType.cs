@@ -38,7 +38,7 @@ namespace Final_Project
 			ClearError();
 		}
 
-		// base stock objects to hold information about the stock to add or delete
+		// base stock objects to hold information about the stock to add or retire
 		Stock stockToAdd = new Stock();
 		Stock stockToRetire = new Stock();
 
@@ -291,11 +291,14 @@ namespace Final_Project
 			{
 				ShowAddStock();
 				lblErrorAddNewStock.Visible = false;
-				txtBoxNewStockName.Text = stockToAdd.stockName;
-				txtBoxNewStockDescription.Text = stockToAdd.stockDescription;
-				txtBoxNewStockPrice.Text = stockToAdd.price.ToString();
-				txtBoxNewMaximumLevel.Text = stockToAdd.maximumLevel.ToString();
-				txtBoxNewMinimumLevel.Text = stockToAdd.minimumLevel.ToString();
+				txtBoxNewStockName.Text = name;
+				txtBoxNewStockDescription.Text = description;
+				txtBoxNewMinimumLevel.Text = minimumLevel.ToString();
+				txtBoxNewMaximumLevel.Text = maximumLevel.ToString();
+				txtBoxNewOrderQuantity.Text = orderQuantity.ToString();
+				txtBoxNewStockPrice.Text = price.ToString();
+				txtBoxNewStockCheckFrequency.Text = stockCheckFrequency.ToString();
+				txtBoxNewDeliveryTime.Text = deliveryTimeDays.ToString();
 			}
 			else if (stockToRetire.stockName != null)
 			{
