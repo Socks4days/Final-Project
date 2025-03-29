@@ -229,7 +229,6 @@ namespace Final_Project
 		#region ToggleSubMenus
 		private void btnStock_Click(object sender, EventArgs e)
 		{
-			CloseChildForm();
 			ToggleSubMenu(pnlStock);
 			ResetMainButtonColours();
 			if (pnlStock.Visible == true)
@@ -245,7 +244,6 @@ namespace Final_Project
 
 		private void btnOrder_Click(object sender, EventArgs e)
 		{
-			CloseChildForm();
 			ToggleSubMenu(pnlOrder);
 			ResetMainButtonColours();
 			if (pnlOrder.Visible == true)
@@ -261,7 +259,6 @@ namespace Final_Project
 
 		private void btnDelivery_Click(object sender, EventArgs e)
 		{
-			CloseChildForm();
 			ToggleSubMenu(pnlDelivery);
 			ResetMainButtonColours();
 			if (pnlDelivery.Visible == true)
@@ -277,7 +274,6 @@ namespace Final_Project
 
 		private void btnAudits_Click(object sender, EventArgs e)
 		{
-			CloseChildForm();
 			ToggleSubMenu(pnlAudits);
 			ResetMainButtonColours();
 			if (pnlAudits.Visible == true)
@@ -293,7 +289,6 @@ namespace Final_Project
 
 		private void btnStaff_Click(object sender, EventArgs e)
 		{
-			CloseChildForm();
 			ToggleSubMenu(pnlStaff);
 			ResetMainButtonColours();
 			if (pnlStaff.Visible == true)
