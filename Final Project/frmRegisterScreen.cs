@@ -121,7 +121,7 @@ namespace Final_Project
 
 		public static bool IsValidName(string name)
 		{
-			// Regular expression to match names containing letters and numbers and at least 4 characters
+			// Regular expression to match names containing letters
 			string pattern = @"^[a-zA-Z' \-]+$";
 			Match match = Regex.Match(name, pattern);
 			return match.Success;
